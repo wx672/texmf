@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>《西南林业大学本科毕业论文LaTeX模版》使用说明</title>
+<!-- 2016-05-18 Wed 16:06 -->
+<meta  charset="utf-8">
+<meta  name="generator" content="Org-mode">
+<meta  name="author" content="王晓林">
+<meta  name="description" content="简要介绍如何利用西南林业大学的LaTeX模版来撰写本科毕业论文"
+>
+<link rel="stylesheet" href="http://cs2.swfu.edu.cn/org-info-js/org-manual.css" type="text/css">
+<style>code {font-family:Monospace; font-size:90%; background-color: #eee} body {font-size:14pt}</style>
+<script type="text/javascript" src="http://cs2.swfc.edu.cn/org-info-js/org-info.js">
+/**
+ *
+ * @source: http://cs2.swfc.edu.cn/org-info-js/org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in http://cs2.swfc.edu.cn/org-info-js/org-info.js.
+ *
+ * Copyright (C) 2012-2013 Free Software Foundation, Inc.
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in http://cs2.swfc.edu.cn/org-info-js/org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "3");
+org_html_manager.set("LINK_HOME", "");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "1");
+org_html_manager.set("VIEW", "plain");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">《西南林业大学本科毕业论文LaTeX模版》使用说明</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">文件清单</a></li>
+<li><a href="#sec-2">各文件的使用说明</a>
+<ul>
+<li><a href="#sec-2-1">swfcthesis.cls</a></li>
+<li><a href="#sec-2-2">sample.tex</a></li>
+<li><a href="#sec-2-3">chapters</a></li>
+<li><a href="#sec-2-4">sample.bib</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">注意事项</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">文件清单</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+本模版的最新版本可以从 <a href="http://cs2.swfc.edu.cn/~wx672/swfcthesis">http://cs2.swfc.edu.cn/~wx672/swfcthesis</a> 下载。 模版目录中包含如下内容：
+</p>
+<ul class="org-ul">
+<li><a href="./swfcthesis.cls"><b>swfcthesis.cls</b></a> &#x2014; 是论文模版的class文件，它决定了论文的排版格式；
+</li>
+<li><a href="sample/"><b>sample</b></a> &#x2014; 完整的论文实例；
+<ul class="org-ul">
+<li><a href="./sample/sample.tex"><b>sample.tex</b></a> &#x2014; TeX源文件；
+</li>
+<li><a href="./sample/sample.pdf"><b>sample.pdf</b></a> &#x2014; 编译完成的PDF文件；
+</li>
+<li><a href="./sample/sample.bib"><b>sample.bib</b></a> &#x2014; 参考文献实例；
+</li>
+<li><a href="./sample/chapters"><b>chapters</b></a> &#x2014; 章节实例。此目录中的每个TeX文件对应论文的一章。其中，
+<ul class="org-ul">
+<li><a href="./sample/chapters/preamble.tex"><b>preamble.tex</b></a> &#x2014; 封面、摘要、指导教师、鸣谢……示例；
+</li>
+<li><a href="./sample/chapters/dogstick.tex"><b>dogstick.tex</b></a> &#x2014; 插入图片示例；
+</li>
+<li><a href="./sample/chapters/appendix.tex"><b>appendix.tex</b></a> &#x2014; 插入表格示例；
+</li>
+<li><a href="./sample/chapters/src.tex"><b>src.tex</b></a> &#x2014; 插入程序代码示例；
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="./example"><b>example</b></a> &#x2014; 历年毕业论文范例，可供参考；
+</li>
+<li><a href="./tutorial"><b>tutorial</b></a> &#x2014; 小教程，同时也是一个标准模板。其中，
+<ul class="org-ul">
+<li><a href="tutorial/tutorial.tex"><b>tutorial.tex</b></a> &#x2014; 源文件；
+</li>
+<li><a href="tutorial/tutorial.pdf"><b>tutorial.pdf</b></a> &#x2014; 编译好的PDF；
+</li>
+<li><a href="tutorial/tutorial.bib"><b>tutorial.bib</b></a> &#x2014; 参考文献；
+</li>
+<li><a href="./tutorial/tutorial.mkv"><b>tutorial.mkv</b></a> &#x2014; 20分钟视频教程；
+</li>
+</ul>
+</li>
+<li><a href="./readme.html"><b>readme.html</b></a> &#x2014; 本说明文件。
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">各文件的使用说明</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">swfcthesis.cls</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>请勿改动 <a href="./swfcthesis.cls"><code>swfcthesis.cls</code></a> 文件！
+</li>
+<li>写论文时，请参照 <a href="./sample.tex"><code>sample.tex</code></a> 文件的开始部分，将 <code>\documentclass{swfcthesis}</code> 做为TeX文件的开始即可。
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">sample.tex</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>写论文时，可以直截修改<a href="./sample/sample.tex">此文件</a>的内容。当然也要根据需要修改 <a href="./sample/chapters"><code>chapters</code></a> 目录中的TeX文件。
+</li>
+<li>如果你对LaTeX不熟悉的话，不要随意改动你不理解的东西。
+</li>
+<li>修改完毕，需要用 <code>xelatex</code> 编译。以Linux平台为例：
+<pre class="example">
+xelatex --shell-escape sample &amp;&amp; xelatex --shell-escape sample &amp;&amp; xelatex --shell-escape sample
+</pre>
+<p>
+此命令是将 <a href="./sample/sample.tex"><code>sample.tex</code></a> 文件连续编译了三次，以正确生成正文、目录、参考文献等内容。如
+果编译没出问题的话，当前目录下应该有新生成的PDF文件了（ <a href="./sample/sample.pdf"><code>sample.pdf</code></a> ）。
+</p>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">chapters</h3>
+<div class="outline-text-3" id="text-2-3">
+<ul class="org-ul">
+<li>写论文时，直截修改<a href="./sample/chapters">此目录</a>中TeX文件的内容即可。
+</li>
+<li>可根据需要增加/删减章节数。当然 <a href="./sample/sample.tex"><code>sample.tex</code></a> 文件中相应的 <code>\include{}</code> 命令也要做相应
+的改动。
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4">sample.bib</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>参考此文件的格式来写参考文献清单；
+</li>
+<li>写论文时，
+<ol class="org-ol">
+<li>将 <code>\addbibresource{sample.bib}</code> 放在论文的 <code>preamble</code> 里面，也就是
+<code>\begin{document}</code> 之前。
+</li>
+<li>在想要生成参考文献的地方插入命令 <code>\printbibliography[title=参考文献]</code> 即可。
+</li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">注意事项</h2>
+<div class="outline-text-2" id="text-3">
+<ol class="org-ol">
+<li>不要改动 <a href="./swfcthesis.cls"><code>swfcthesis.cls</code></a> 文件！
+</li>
+<li>不要随意改动你不理解的东西，以免造成不必要的麻烦。
+</li>
+<li>建议用 <code>Emacs + AucTeX</code> 来编辑TeX文件。
+<ul class="org-ul">
+<li>计信学院D215机房的Linux平台安装了完整的LaTeX和Emacs可供使用；
+</li>
+<li>计信学院 <a href="http://cs2.swfu.edu.cn/cs2guide.html">cs2</a>/<a href="http://cs2.swfc.edu.cn/cs3guide.html">cs3</a> 服务器上也安装了完整的LaTeX和Emacs可供使用；
+<ul class="org-ul">
+<li>具体使用方法可以参考<a href="tutorial/">教程</a>；
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>如有任何问题或建议，欢迎 <a href="mailto:wx672ster@gmail.com">email</a> 联系。
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: 王晓林</p>
+<p class="date">Created: 2016-05-18 Wed 16:06</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

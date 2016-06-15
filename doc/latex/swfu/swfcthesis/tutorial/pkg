@@ -1,0 +1,59 @@
+i A xterm - X terminal emulator
+i A texlive-base - TeX Live: Essential programs and files
+i A texlive-bibtex-extra - TeX Live: BibTeX additional styles
+i A texlive-binaries - Binaries for TeX Live
+i  texlive-extra-utils - TeX Live: TeX auxiliary programs
+i  texlive-fonts-extra - TeX Live: Additional fonts
+i A texlive-fonts-recommended - TeX Live: Recommended fonts
+i A texlive-fonts-recommended-doc - TeX Live: Documentation files for texlive-fonts-recommended
+i  texlive-generic-extra - TeX Live: Generic additional packages
+i  texlive-generic-recommended - TeX Live: Generic recommended packages
+i  texlive-lang-chinese - TeX Live: Chinese
+i A texlive-lang-cjk - TeX Live: Chinese/Japanese/Korean (base)
+i  texlive-lang-english - TeX Live: US and UK English
+i A texlive-latex-base - TeX Live: LaTeX fundamental packages
+i A texlive-latex-base-doc - TeX Live: Documentation files for texlive-latex-base
+i A texlive-latex-extra - TeX Live: LaTeX additional packages
+i A texlive-latex-extra-doc - TeX Live: Documentation files for texlive-latex-extra
+i A texlive-latex-recommended - TeX Live: LaTeX recommended packages
+i A texlive-latex-recommended-doc - TeX Live: Documentation files for texlive-latex-recommended
+i A texlive-pictures - TeX Live: Graphics, pictures, diagrams
+i A texlive-pictures-doc - TeX Live: Documentation files for texlive-pictures
+i  texlive-xetex - TeX Live: XeTeX and packages
+i  sawfish - window manager for X11
+i  sawfish-data - sawfish architecture independent data
+i  sawfish-lisp-source - sawfish lisp files
+i  sawfish-merlin-ugliness - More flexible functions for sawfish
+i  emacs-goodies-el - Miscellaneous add-ons for Emacs
+i  emacs24 - GNU Emacs editor (with GTK+ GUI support)
+i A emacs24-common-non-dfsg - GNU Emacs common non-DFSG items, including the core documentation
+i A emacs24-el - GNU Emacs LISP (.el) files
+i A fonts-arphic-ukai - "AR PL UKai" Chinese Unicode TrueType font collection Kaiti style
+i A fonts-arphic-uming - "AR PL UMing" Chinese Unicode TrueType font collection Mingti style
+i  fonts-dejavu - metapackage to pull in fonts-dejavu-core and fonts-dejavu-extra
+i A fonts-dejavu-core - Vera font family derivate with additional characters
+i A fonts-dejavu-extra - Vera font family derivate with additional characters (extra variants)
+i A fonts-linuxlibertine - Linux Libertine family of fonts
+i  fonts-tlwg-purisa - Thai Purisa font (dependency package)
+i A fonts-wqy-microhei - Sans-serif style CJK font derived from Droid
+i A fonts-wqy-zenhei - "WenQuanYi Zen Hei" A Hei-Ti Style (sans-serif) Chinese font
+i  xfonts-wqy - WenQuanYi Bitmap Song CJK font for X
+i  auctex - integrated document editing environment for TeX etc.
+i  latexmk - Perl script for running LaTeX the correct number of times
+i  zathura - document viewer with a minimalistic interface
+i  zathura-cb - comic book archive support for zathura
+i  zathura-djvu - DjVu support for zathura
+i A zathura-pdf-poppler - PDF support for zathura
+i  zathura-ps - PostScript support for zathura
+i  google-chrome-stable - The web browser from Google
+i  python-pygments - syntax highlighting package written in Python
+i  python3-pygments - syntax highlighting package written in Python 3
+i  fcitx - Flexible Input Method Framework
+i A fcitx-config-gtk - graphic Fcitx configuration tool - Gtk+ 3 version
+i A fcitx-frontend-all - Flexible Input Method Framework - frontends metapackage
+i  fcitx-module-cloudpinyin - Flexible Input Method Framework - cloudpinyin module
+i A fcitx-module-dbus - Flexible Input Method Framework - D-Bus module and IPC frontend
+i A fcitx-module-x11 - Flexible Input Method Framework - X11 module and XIM frontend
+i A fcitx-modules - Flexible Input Method Framework - core modules
+i  fcitx-sunpinyin - fcitx wrapper for Sunpinyin IM engine
+i A fcitx-ui-classic - Flexible Input Method Framework - Classic user interface

@@ -1,0 +1,91 @@
+\documentclass[draft,12pt,a4paper]{article}
+\usepackage[margin=3cm]{geometry}
+
+\usepackage{graphicx}
+\graphicspath{{./figs/}{../figs/}{./}{../}} %mind the trailing “/”
+
+\usepackage{latexsym,pifont,units,amsmath,amsfonts,amssymb,marvosym}
+
+\usepackage[font=footnotesize,labelfont=bf]{caption}
+
+\usepackage{multicol,rotating,soul,indentfirst}
+\setul{1.5pt}{.4pt}% 1.5pt below contents
+
+% \usepackage[backend=biber,style=authoryear]{biblatex}
+% \addbibresource{os.bib}
+
+\usepackage{xltxtra} %fontspec,xunicode are loaded here.
+\defaultfontfeatures{Mapping=tex-text}
+\setsansfont{DejaVu Sans}
+\setmainfont{DejaVu Serif}
+\usepackage{xeCJK}
+\xeCJKDeclarePunctStyle{ mine }
+{
+  min-bound-to-kerning    = true,
+  kerning-margin-minimum  = .2em,
+}
+\xeCJKsetup{PunctStyle=mine}
+\xeCJKsetwidth{“”《》、（）}{1.2ex}
+\xeCJKsetkern{：}{（}{1ex}
+\xeCJKsetkern{；}{（}{1ex}
+\setCJKmainfont[BoldFont={WenQuanYi Micro Hei}]{SimSun}
+\setCJKsansfont{SimSun}
+\setCJKmonofont{WenQuanYi Micro Hei Mono}
+\setCJKfamilyfont{hei}{WenQuanYi Micro Hei}
+\setCJKfamilyfont{song}{SimSun}
+\setCJKfamilyfont{kai}{KaiTi} % e.g. \CJKfamily{kai}
+\newCJKfontfamily\quotefont{KaiTi}
+
+\newcommand{\ziju}[1]{\renewcommand{\CJKglue}{\hskip #1}}
+
+\usepackage[xetex,bookmarksnumbered,pdfpagelabels=true,
+    plainpages=false,colorlinks=true,linkcolor=black,
+    citecolor=black,urlcolor=blue]{hyperref}
+\usepackage{xcolor}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% \renewcommand{\refname}{参考文献} % article.cls
+% \renewcommand{\contentsname}{目\hspace{1em}录}
+% \renewcommand{\listfigurename}{插图目录}
+% \renewcommand{\listtablename}{表格目录}
+% \renewcommand{\abstractname}{摘\hspace{1em}要}
+% \renewcommand{\figurename}{图}
+% \renewcommand{\tablename}{表}
+% \renewcommand{\appendixname}{附\hspace{1em}录}
+% \renewcommand{\indexname}{索\hspace{1em}引}
+
+\newcommand{\singlespace}%
+    {\par\renewcommand{\baselinestretch}{1.2}\small\normalsize\par}
+\newcommand{\doublespace}
+    {\par\renewcommand{\baselinestretch}{1.6}\small\normalsize\par}
+\newcommand{\normalspace}
+    {\par\renewcommand{\baselinestretch}{1}\small\normalsize\par}
+\setlength{\parindent}{2em}
+
+\title{}
+\author{}
+
+\begin{document}
+\maketitle{}
+
+\begin{abstract}
+  
+\end{abstract}
+\clearpage
+
+\pagenumbering{roman}
+\tableofcontents
+\listoffigures{}
+\listoftables{}
+\clearpage
+\pagenumbering{arabic}
+
+\section{Hello, world!}
+\label{sec:hello-world}
+
+Hello, world!
+
+\end{document}
+% (setq-default TeX-master nil)

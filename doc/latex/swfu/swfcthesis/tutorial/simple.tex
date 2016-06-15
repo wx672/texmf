@@ -1,0 +1,130 @@
+\documentclass{article}  % documentclass可以是
+                           % article, book, report, letter...
+\begin{document}         % 文章的开始
+\title{How to Structure a \LaTeX{} Document}
+\author{Andrew Roberts\\
+  School of Computing,\\
+  University of Leeds,\\
+  Leeds,\\
+  United Kingdom,\\
+  LS2 1HE\\
+  \emph{andyr@comp.leeds.ac.uk}}
+\date{\today}
+\maketitle
+
+\begin{abstract} 
+  In this article, I shall discuss some of the fundamental
+  topics in producing a structured document.  This document
+  itself does not go into much depth, but is instead the
+  output of an example of how to implement structure. Its
+  \LaTeX{} source, when in used with my tutorial provides
+  all the relevant information.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:introduction}
+
+This small document is designed to illustrate how easy it is to create a well structured
+document within \LaTeX\cite{lamport94}.  You should quickly be able to see how the article
+looks very professional, despite the content being far from academic.  Titles, section
+headings, justified text, text formatting etc., is all there, and you would be surprised
+when you see just how little markup was required to get this output.
+
+\section{Structure}
+\label{sec:structure}
+
+One of the great advantages of \LaTeX{} is that all it needs to know is
+the structure of a document, and then it will take care of the layout
+and presentation itself.  So, here we shall begin looking at how exactly
+you tell \LaTeX{} what it needs to know about your document.
+
+\subsection{Top Matter}
+\label{sec:top-matter}
+
+The first thing you normally have is a title of the document, as well as
+information about the author and date of publication.  In \LaTeX{} terms,
+this is all generally referred to as \emph{top matter}.
+
+\subsubsection{Article Information}
+\label{sec:article-information}
+
+\begin{itemize}
+\item \verb|\title{}| --- The title of the article.
+\item \verb|\date| --- The date. Use:
+  \begin{itemize}
+  \item \verb|\date{\today}| --- to get the date that the document is typeset.
+  \item \verb|\date{}| --- for no date.
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Author Information}
+\label{sec:author-information}
+  
+The basic article class only provides the one command:
+\begin{itemize}
+\item \verb|\author{}| --- The author of the document.
+\end{itemize}
+
+It is common to not only include the author name, but to insert new lines (\verb|\\|)
+after and add things such as address and email details.  For a slightly more logical
+approach, use the AMS article class (\emph{amsart}) and you have the following extra
+commands:
+  
+\begin{itemize}
+\item \verb|address| --- The author's address.  Use the new line command (\verb|\\|) for
+  line breaks.
+\item \verb|thanks| --- Where you put any acknowledgments.
+\item \verb|email| --- The author's email address.
+\item \verb|urladdr| --- The URL for the author's web page.
+\end{itemize}
+
+\subsection{Sectioning Commands}
+\label{sec:sectioning-commands}
+  
+The commands for inserting sections are fairly intuitive.  Of course, certain commands are
+appropriate to different document classes. For example, a book has chapters but a article
+doesn't.
+  
+% A simple table. The center environment is first set up,
+% otherwise the table is left aligned.  The tabular environment
+% is what tells Latex that the data within is data for the table.
+
+\begin{center}
+  \begin{tabular}{|l|l|}
+    \hline 
+    Command & Level \\ \hline
+    \verb|\part{}| & -1 \\
+    \verb|\chapter{}| & 0 \\
+    \verb|\section{}| & 1 \\
+    \verb|\subsection{}| & 2 \\
+    \verb|\subsubsection{}| & 3 \\
+    \verb|\paragraph{}| & 4 \\
+    \verb|\subparagraph{}| & 5 \\
+    \hline
+  \end{tabular}
+\end{center}
+
+Numbering of the sections is performed automatically by \LaTeX{}, so don't bother adding
+them explicitly, just insert the heading you want between the curly braces.  If you don't
+want sections number, then add an asterisk (*) after the section command, but before the
+first curly brace, e.g., \verb|section*{A Title| \verb|Without Numbers}|.
+
+\begin{thebibliography}{99}
+\bibitem{lamport94}
+  Leslie Lamport,
+  \emph{\LaTeX: A Document Preparation System}.
+  Addison Wesley, Massachusetts,
+  2nd Edition,
+  1994.
+  \bibitem{simple}
+    Andrew Roberts,
+    \emph{A simple article to illustrate document structure}.
+    Wikibooks,
+    2003.
+\end{thebibliography} %Must end the environment
+\end{document}           % 文章的结束
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

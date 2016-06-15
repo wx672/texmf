@@ -1,0 +1,146 @@
+\ProvidesPackageRCS $Header: /cvsroot/latex-beamer/latex-beamer/themes/theme/compatibility/beamerthemedebian.sty,v 1.8 2004/10/07 20:53:10 tantau Exp $
+
+\mode<presentation>
+
+\setbeamersize{text margin left=3mm,text margin right=3mm}
+
+\useinnertheme{rounded}
+\useinnertheme{circles}
+\setbeamertemplate{itemize items}[default]
+\setbeamertemplate{blocks}[rounded]
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{sections/subsections in toc shaded}[default][50]
+
+%%% FONTS
+\setbeamerfont{frametitle}{parent=structure,size=\Large}
+\setbeamerfont{framesubtitle}{parent=frametitle,size=\large}
+% do not reduce size of subitems
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\normalsize}
+
+%%% COLORS
+\definecolor{debianred}{rgb}{.780,.000,.211} % 199,0,54
+\definecolor{debianblue}{rgb}{0,.208,.780} % 0,53,199
+\definecolor{debianlightbackgroundblue}{rgb}{.941,.941,.957} % 240,240,244
+\definecolor{debianbackgroundblue}{rgb}{.776,.784,.878} % 198,200,224
+
+\definecolor{noir}{RGB}{3,3,36}
+\definecolor{bleu}{RGB}{10,10,120}
+\definecolor{bleuclair}{RGB}{17,17,150}
+\definecolor{rouge}{RGB}{200,0,0}
+\definecolor{jaune}{RGB}{255,255,0}
+\definecolor{vert}{RGB}{0,255,0}
+\definecolor{rougebg}{RGB}{160,0,0}
+
+\setbeamercolor{alerted text}{fg=rouge}
+
+\setbeamercolor*{palette primary}{fg=jaune,bg=vert}
+\setbeamercolor*{palette secondary}{fg=jaune,bg=vert}
+\setbeamercolor*{palette tertiary}{fg=jaune,bg=vert}
+\setbeamercolor*{palette quaternary}{fg=jaune,bg=vert}
+\setbeamercolor*{palette sidebar primary}{fg=jaune,bg=vert}
+\setbeamercolor*{palette sidebar secondary}{fg=jaune,bg=vert}
+\setbeamercolor*{palette sidebar tertiary}{fg=jaune,bg=vert}
+\setbeamercolor*{palette sidebar quaternary}{fg=jaune,bg=vert}
+
+\setbeamercolor{section in head/foot}{fg=white,bg=noir}
+\setbeamercolor{subsection in head/foot}{fg=white,bg=noir}
+
+\setbeamercolor{author in head/foot}{fg=black,bg=white}
+\setbeamercolor{title in head/foot}{fg=black,bg=white}
+
+\setbeamercolor*{titlelike}{fg=white,bg=rougebg}
+
+\setbeamercolor{frametitle}{fg=rougebg,bg=white}
+
+\setbeamercolor{item projected}{fg=white,bg=rougebg}
+\setbeamercolor{item}{fg=rougebg}
+
+\setbeamercolor{block title}{fg=white,bg=rougebg}
+\setbeamercolor{block body}{parent=normal text, bg=rougebg!5!white}
+
+\setbeamercolor{section in toc}{fg=black,bg=white}
+\setbeamercolor{subsection in toc}{fg=black,bg=white}
+
+
+
+%\definecolor{altext}{rgb}{0.90,0.60,0.00}
+%\definecolor{altext}{rgb}{1.00,1.00,0.00}
+%\setbeamercolor{alerted text}{fg=altext}
+
+%%% OUTER THEME
+\usesectionheadtemplate
+  {\hfill\insertsectionhead}
+  {\hfill\color{fg!50!bg}\insertsectionhead}
+
+                                % Head
+
+
+\setbeamertemplate{frametitle}{%
+  \ifbeamer@plainframe%
+  \else%
+    \vskip0.1em%
+    {\leftskip-\beamer@leftmargin\advance\leftskip by0.3cm%
+      \rightskip-\beamer@rightmargin plus1fil\advance\rightskip by0.3cm\leavevmode
+      {\usebeamercolor{frametitle}\usebeamerfont{frametitle}
+      \Large\bfseries{\underline{\insertframetitle}}}\par}%
+      \vskip-.3cm
+  \fi%
+}
+
+\defbeamertemplate*{footline}{split theme}
+{%
+  \leavevmode%
+  \hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.1cm plus1fill,rightskip=.1cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.1cm,rightskip=.1cm plus1fil]{title in head/foot}%
+	  \hfill \usebeamerfont{title in head/foot}\insertshorttitle \hskip 2em \insertframenumber{} / \inserttotalframenumber{}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\setbeamerfont{block title}{size={}}
+
+% define sectionintoc (found in /usr/share/texmf/tex/latex/beamer/base/beamerbasetoc.sty)
+% to change vskip1.5em into vskip1em
+\def\beamer@sectionintoc#1#2#3#4#5{%
+  \ifnum\c@tocdepth>0%
+  \ifnum#4=\beamer@showpartnumber%
+  {
+  \beamer@saveanother%
+  \gdef\beamer@todo{}%
+  \beamer@slideinframe=#1\relax%
+  \expandafter\only\beamer@tocsections{\gdef\beamer@todo{%
+      \beamer@tempcount=#5\relax%
+      \advance\beamer@tempcount by\beamer@sectionadjust%
+      \edef\inserttocsectionnumber{\the\beamer@tempcount}%
+      \def\inserttocsection{\hyperlink{Navigation#3}{#2}}%
+      \beamer@tocifnothide{\ifnum\c@section=#1\beamer@toc@cs\else\beamer@toc@os\fi}%
+      {
+        \ifbeamer@pausesections\pause\fi%
+        \ifx\beamer@toc@ooss\beamer@hidetext
+          \vskip1em
+        \else
+          \vfill
+        \fi
+        {%
+          \hbox{\vbox{%
+              \def\beamer@breakhere{\\}%
+              \beamer@tocact{\ifnum\c@section=#1\beamer@toc@cs\else\beamer@toc@os\fi}{section in toc}}}%
+         \par%
+        }%
+      }%
+    }
+  }%
+  \beamer@restoreanother%
+  }
+  \beamer@todo%
+  \fi\fi%
+}
+
+
+\mode
+<all>
+
+

@@ -1,0 +1,97 @@
+\documentclass{swfcthesis}
+
+\addbibresource{tutorial.bib}    % 参照教程自己去写一个.bib文件
+
+\begin{document}
+
+\Title{论文标题}	% 论文标题
+\Author{作者姓名} 	% 作者姓名 
+\Advisor{指导教师姓名}      %指导教师姓名
+\AdvisorTitle{指导教师职称} %指导教师职称
+\AdvisorInfo{指导教师简介（约百余字）}	%指导教师简介（约百余字）
+\Month{六}		    %月份（比如 六）
+\Year{二〇一二} 	    %年份（比如 二〇一二）
+\Univ{西南林业大学}    		%校名
+\School{计算机与信息科学学院}		%院系名称
+\Subject{计算机科学与技术专业}	%专业名称（比如 电子信息工程专业）
+\Docname{本科毕业（设计）论文}	%本科？研究生？
+\Abstract{这里写论文摘要（约两百字）}	%论文摘要（约两百字）
+\Keywords{这里写关键字，比如 电阻, 电容}  %关键字（比如 电阻, 电容）
+\Acknowledgments{这里写鸣谢（约百余字）} %鸣谢 （感谢人民感谢党，约百字）
+\enTitle{英文标题}			%英文标题
+\enAuthor{英文姓名}		%作者英文姓名
+\enUniv{Southwest Forestry University} %英文校名
+\enSchool{School of Computer and Information Science} %英文院系名称
+\enAbstract{英文摘要}    	 %论文英文摘要
+\enKeywords{英文关键字}	 %英文关键字
+
+%%% 下面六行不要动！
+\makepreliminarypages % 排版封面
+\frontmatter          
+\tableofcontents      % 输出目录
+\listoffigures        % 插图目录
+\listoftables         % 表格目录
+\mainmatter
+
+\chapter{第一章标题}
+\label{cha:one}
+
+
+正文部分从此开始。可以参考模版目录中的各章节tex文件来写。
+
+\section{第一节标题}
+\label{sec:one}
+
+Hello, world!
+
+\subsection{第一小节}
+\label{sec:whatever}
+
+Hello again, world!
+
+\subsubsection{第一小小节}
+
+again?
+
+\chapter{又一章标题}
+\label{cha:two}
+
+接着写吧接着写吧接着写吧接着写吧
+
+%%% 正文部分到此结束。
+%%% 下面是『参考文献』、『指导教师简介』、『鸣谢』、『附录』
+
+%% 不要动下面四行！
+\Appendix{}
+\printbibliography[heading={bibintoc},title={参考文献}] % 输出参考文献
+\advisorinfopage{}                 % 输出指导教师简介
+\acknowledgmentspage{}             % 输出鸣谢
+
+%%% 下面是附录部分，可以没有。
+
+\chapter{我也不知道为什么要写附录} %附录一
+\label{app:one}
+
+可以参考模版目录中的 appendix.tex 文件来写。
+
+\chapter{我居然编程了！} %附录二
+\label{app:two}
+
+% 插入程序代码
+\inputminted[fontsize=\small]{c}{hello.c}
+
+% 也可以这样
+\begin{listing}[H]
+  \inputminted{c}{hello.c}
+  \caption{我居然编程了！}
+  \label{lst:hello}
+\end{listing}  
+
+% 不要动下面几行！
+
+\end{document} % 此行后面不要再写任何文字
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

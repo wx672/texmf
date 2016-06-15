@@ -1,0 +1,63 @@
+%%%
+% 「注意」此文件已作废!!!
+% 现行毕业论文模板采用biblatex生成参考文献，不再需要此文件。
+% 请参考 ../sample.bib 文件来排版参考文献。
+%%%
+
+% The \cleardoublepage command ends the current page and causes all figures and tables
+% that have so far appeared in the input to be printed. In a two-sided printing style, it
+% also makes the next page a right-hand (odd-numbered) page, producing a blank page if
+% necessary.
+\cleardoublepage
+
+% The \phantomsection command is nessesary for hyperref to jump to the correct page, in
+% other words it puts a hyper marker on the page. For example a starred section or chapter
+% added to the TOC would normally refer to the wrong place without \phantomsection
+\phantomsection
+
+% If you want the unnumbered section to be in the table of contents anyway, use the
+% \addcontentsline command
+\addcontentsline{toc}{chapter}{参考文献}
+\singlespace
+\begin{thebibliography}{99}
+\bibitem{shediao} 金庸, 《射雕英雄传》, 广州出版社, 2003.
+\bibitem{shendiao} 金庸, 《神雕侠侣》, 陕西人民出版社, 1992.
+\bibitem{yitian} 金庸, 《倚天屠龙记》, 广州出版社, 2002.
+\bibitem{jyinzj}達摩祖師,
+  \href{http://zh.wikipedia.org/wiki/\%E4\%B9\%9D\%E9\%99\%B0\%E7\%9C\%9F\%E7\%B6\%93}{《九
+    陰真經》}, 少林寺藏经阁出版社\footnote{成书年代参考[表~\ref{tab:historyline}].}, 530.
+\bibitem{jyangzj} 達摩祖師,
+  \href{http://zh.wikipedia.org/wiki/\%E4\%B9\%9D\%E9\%99\%BD\%E7\%9C\%9F\%E7\%B6\%93}{《九
+    陽真經》}, 少林寺藏经阁出版社, 530.
+\bibitem{ynxj} 林朝英, 《玉女心经》, 终南山活死人墓出版社, 1130.
+\bibitem{dagoubang} 洪七公\ 黄蓉,
+  \href{http://zh.wikipedia.org/wiki/\%E6\%89\%93\%E7\%8B\%97\%E6\%A3\%92\%E6\%B3\%95}{《打
+    狗棒法》}, 大宋丐帮出版社, 1245.
+\bibitem{yiyangzhi} 段誉,
+  \href{http://zh.wikipedia.org/wiki/\%E4\%B8\%80\%E9\%99\%BD\%E6\%8C\%87}{《一阳指》}, 大
+  理国皇家武术出版社, 1150.
+\bibitem{khbd} 前朝太監,
+  \href{http://zh.wikipedia.org/wiki/\%E8\%91\%B5\%E8\%8A\%B1\%E5\%AE\%9D\%E5\%85\%B8}{《葵
+    花寶典》}, 福建少林寺藏经阁出版社, 成书年月不详.
+\bibitem{pxjp} 前朝太監, 《辟邪劍譜》, 福建少林寺藏经阁出版社, 成书年月不详.
+\bibitem{wugong} 维基百科,
+  \href{http://zh.wikipedia.org/wiki/Category:\%E9\%87\%91\%E5\%BA\%B8\%E7\%AD\%86\%E4\%B8\%8B\%E6\%AD\%A6\%E5\%8A\%9F}{
+    金庸筆下武功}, 2008-11.
+\bibitem{jinyongcn} 维基百科,
+  \href{http://zh.wikipedia.org/wiki/\%E9\%87\%91\%E5\%BA\%B8}{金庸}, 2011-04.
+\bibitem{wushucn} 维基百科,
+  \href{http://zh.wikipedia.org/wiki/\%E4\%B8\%AD\%E5\%9B\%BD\%E6\%AD\%A6\%E6\%9C\%AF}{中国
+    武术}, 2011-02.
+\bibitem{jinyong} Wikipedia, \href{http://en.wikipedia.org/wiki/Jin_Yong}{Jin Yong},
+  2011-04.
+\bibitem{bluesnake} Brian Kennedy, \emph{Chinese Martial Arts Training Manuals: A
+    Historical Survey}, Blue Snake Books, 2008.
+\bibitem{wushu} Wikipedia,
+  \href{http://en.wikipedia.org/wiki/Chinese\_martial\_arts}{Chinese martial arts},
+  2011-4.
+\end{thebibliography}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../sample"
+%%% End: 

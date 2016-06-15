@@ -1,0 +1,1 @@
+../../../../../tex/latex/swfcthesis.cls

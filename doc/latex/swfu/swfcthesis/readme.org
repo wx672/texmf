@@ -1,0 +1,60 @@
+#+TITLE:     《西南林业大学本科毕业论文LaTeX模版》使用说明
+#+AUTHOR:    王晓林
+#+EMAIL:     wx672ster@gmail.com
+#+LANGUAGE:  cn
+#+OPTIONS:   H:3 num:nil toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+XSLT:
+# (setq org-export-html-use-infojs nil)
+# (setq org-export-ascii-links-to-notes nil)
+
+* 文件清单
+  本模版的最新版本可以从 [[http://cs2.swfc.edu.cn/~wx672/swfcthesis]] 下载。 模版目录中包含如下内容：
+  - [[./swfcthesis.cls][*swfcthesis.cls*]] --- 是论文模版的class文件，它决定了论文的排版格式；
+  - [[file:sample/][*sample*]] --- 完整的论文实例；
+    - [[./sample/sample.tex][*sample.tex*]] --- TeX源文件；
+    - [[./sample/sample.pdf][*sample.pdf*]] --- 编译完成的PDF文件；
+    - [[./sample/sample.bib][*sample.bib*]] --- 参考文献实例；
+    - [[./sample/chapters][*chapters*]] --- 章节实例。此目录中的每个TeX文件对应论文的一章。其中，
+      - [[./sample/chapters/preamble.tex][*preamble.tex*]] --- 封面、摘要、指导教师、鸣谢……示例；
+      - [[./sample/chapters/dogstick.tex][*dogstick.tex*]] --- 插入图片示例；
+      - [[./sample/chapters/appendix.tex][*appendix.tex*]] --- 插入表格示例；
+      - [[./sample/chapters/src.tex][*src.tex*]] --- 插入程序代码示例；
+  - [[./example][*example*]] --- 历年毕业论文范例，可供参考；
+  - [[./tutorial][*tutorial*]] --- 小教程，同时也是一个标准模板。其中，
+    - [[file:tutorial/tutorial.tex][*tutorial.tex*]] --- 源文件；
+    - [[file:tutorial/tutorial.pdf][*tutorial.pdf*]] --- 编译好的PDF；
+    - [[file:tutorial/tutorial.bib][*tutorial.bib*]] --- 参考文献；
+    - [[./tutorial/tutorial.mkv][*tutorial.mkv*]] --- 20分钟视频教程；
+  - [[./readme.html][*readme.html*]] --- 本说明文件。
+* 各文件的使用说明
+** swfcthesis.cls
+   - 请勿改动 [[./swfcthesis.cls][~swfcthesis.cls~]] 文件！
+   - 写论文时，请参照 [[./sample.tex][~sample.tex~]] 文件的开始部分，将 =\documentclass{swfcthesis}= 做为TeX文件的开始即可。
+** sample.tex
+   - 写论文时，可以直截修改[[./sample/sample.tex][此文件]]的内容。当然也要根据需要修改 [[./sample/chapters][=chapters=]] 目录中的TeX文件。
+   - 如果你对LaTeX不熟悉的话，不要随意改动你不理解的东西。
+   - 修改完毕，需要用 =xelatex= 编译。以Linux平台为例：
+     : xelatex --shell-escape sample && xelatex --shell-escape sample && xelatex --shell-escape sample
+     此命令是将 [[./sample/sample.tex][~sample.tex~]] 文件连续编译了三次，以正确生成正文、目录、参考文献等内容。如
+     果编译没出问题的话，当前目录下应该有新生成的PDF文件了（ [[./sample/sample.pdf][~sample.pdf~]] ）。
+** chapters   
+   - 写论文时，直截修改[[./sample/chapters][此目录]]中TeX文件的内容即可。
+   - 可根据需要增加/删减章节数。当然 [[./sample/sample.tex][=sample.tex=]] 文件中相应的 =\include{}= 命令也要做相应
+     的改动。
+** sample.bib
+   - 参考此文件的格式来写参考文献清单；
+   - 写论文时，
+     1. 将 =\addbibresource{sample.bib}= 放在论文的 =preamble= 里面，也就是
+	=\begin{document}= 之前。
+     2. 在想要生成参考文献的地方插入命令 =\printbibliography[title=参考文献]= 即可。
+* 注意事项
+  1. 不要改动 [[./swfcthesis.cls][=swfcthesis.cls=]] 文件！
+  2. 不要随意改动你不理解的东西，以免造成不必要的麻烦。
+  3. 建议用 ~Emacs + AucTeX~ 来编辑TeX文件。
+     - 计信学院D215机房的Linux平台安装了完整的LaTeX和Emacs可供使用；
+     - 计信学院 [[http://cs2.swfu.edu.cn/cs2guide.html][cs2]]/[[http://cs2.swfc.edu.cn/cs3guide.html][cs3]] 服务器上也安装了完整的LaTeX和Emacs可供使用；
+       - 具体使用方法可以参考[[file:tutorial/][教程]]；
+  4. 如有任何问题或建议，欢迎 [[mailto:wx672ster@gmail.com][email]] 联系。
