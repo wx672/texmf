@@ -22,6 +22,7 @@
 \defaultfontfeatures{Mapping=tex-text}
 \setsansfont{DejaVu Sans}
 \setmainfont{DejaVu Serif}
+\setsansfont{DejaVu Sans Mono}
 \RequirePackage{xeCJK}
 \xeCJKDeclarePunctStyle{ mine }
 {

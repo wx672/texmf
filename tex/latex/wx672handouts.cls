@@ -8,25 +8,15 @@
 \RequirePackage[noxcolor,hyperref]{beamerarticle}
 \RequirePackage[svgnames]{xcolor} 
 
-\hypersetup{xetex,breaklinks=true}
+\hypersetup{breaklinks=true}
 
 \RequirePackage[headings]{fullpage}
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
-\fancyhead[LE,RO]{}
+\fancyhead[R,C]{}
 
 \renewcommand{\refname}{} % article.cls
 
-\RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
-\defaultfontfeatures{Mapping=tex-text}
-\setsansfont{DejaVu Sans}
-\setmainfont{DejaVu Serif}
-\RequirePackage{xeCJK}
-\setCJKmainfont[BoldFont={WenQuanYi Zen Hei}, ItalicFont={WenQuanYi Zen Hei}]{SimSun}
-\setCJKsansfont{WenQuanYi Zen Hei}
-\setCJKmonofont{WenQuanYi Micro Hei Mono}
-\setCJKfamilyfont{hei}{WenQuanYi Zen Hei}
-\setCJKfamilyfont{song}{SimSun}
 \RequirePackage{latexsym,pifont,units,amsmath,amsfonts,amssymb,marvosym,mathtools}
 
 \RequirePackage[backend=biber,citestyle=authortitle,hyperref=true,doi=false,isbn=false,url=false]{biblatex}
@@ -71,3 +61,16 @@
 \graphicspath{{./figs/}{../figs/}{./}{../}} %note that the trailing “/” is required
 
 \RequirePackage[tt=false]{libertine} % keyboard symbol
+
+\RequirePackage{xltxtra,fontspec,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+\setsansfont{DejaVu Sans}
+\setmainfont{DejaVu Serif}
+\setmonofont{DejaVu Sans Mono}[Scale=MatchLowercase]
+
+\RequirePackage{xeCJK}
+\setCJKmainfont[BoldFont={WenQuanYi Zen Hei}, ItalicFont={WenQuanYi Zen Hei}]{SimSun}
+\setCJKsansfont{WenQuanYi Zen Hei}
+\setCJKmonofont{WenQuanYi Micro Hei Mono}
+\setCJKfamilyfont{hei}{WenQuanYi Zen Hei}
+\setCJKfamilyfont{song}{SimSun}

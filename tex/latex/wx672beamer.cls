@@ -1,20 +1,13 @@
-\ProvidesClass{wx672beamer}[2016/06/10 A simple beamer based class for saving some typings]
+\ProvidesClass{wx672beamer}[2016/06/15 A simple beamer based class for saving some typings]
 \NeedsTeXFormat{LaTeX2e}
 
-\LoadClass[10pt,ignorenonframetext,xcolor={svgnames,table},hyperref={xetex,colorlinks,linkcolor=blue},compress]{beamer}
+\LoadClass[10pt,ignorenonframetext,xcolor={svgnames,table},hyperref={colorlinks,linkcolor=blue},compress]{beamer}
 
-\RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
-\defaultfontfeatures{Mapping=tex-text}
-\setsansfont{DejaVu Sans}
-\setmainfont{DejaVu Sans}
+\RequirePackage{ifxetex} % This class can only be processed with XeTeX
 
-\RequirePackage{xeCJK}
-\setCJKmainfont[BoldFont={WenQuanYi Zen Hei}, ItalicFont={WenQuanYi Zen Hei}]{SimSun}
-\setCJKsansfont{WenQuanYi Zen Hei}
-\setCJKmonofont{WenQuanYi Micro Hei Mono}
-\setCJKfamilyfont{hei}{WenQuanYi Zen Hei}
-\setCJKfamilyfont{song}{SimSun}
 \RequirePackage{latexsym,pifont,units,amsmath,amsfonts,amssymb,marvosym,mathtools}
+
+\RequirePackage[tt=false]{libertine} % keyboard symbol
 
 \RequirePackage[backend=biber,citestyle=authortitle,hyperref=true,doi=false,isbn=false,url=false]{biblatex}
 \ExecuteBibliographyOptions{doi=false}
@@ -58,11 +51,19 @@
 \setbeamercolor{block body}{bg=Gray!4}
 \setbeamercolor{alerted text}{fg=blue}
 
-
-
-\RequirePackage{ifxetex} % This class can only be processed with XeTeX
-
 \RequirePackage{graphicx}
 \graphicspath{{./figs/}{../figs/}{./}{../}} %note that the trailing “/” is required
 
-\RequirePackage[tt=false]{libertine} % keyboard symbol
+% the following font specifics should be after theme settings.
+\RequirePackage{xltxtra,fontspec,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+\setsansfont{DejaVu Sans}
+\setmainfont{DejaVu Serif}
+%\setmonofont{DejaVu Sans Mono}[Scale=MatchLowercase]
+
+\RequirePackage{xeCJK}
+\setCJKmainfont[BoldFont={WenQuanYi Zen Hei}, ItalicFont={WenQuanYi Zen Hei}]{SimSun}
+\setCJKsansfont{WenQuanYi Zen Hei}
+\setCJKmonofont{WenQuanYi Micro Hei Mono}
+\setCJKfamilyfont{hei}{WenQuanYi Zen Hei}
+\setCJKfamilyfont{song}{SimSun}
