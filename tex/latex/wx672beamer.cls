@@ -57,9 +57,12 @@
 % the following font specifics should be after theme settings.
 \RequirePackage{xltxtra,fontspec,xunicode}
 \defaultfontfeatures{Mapping=tex-text}
-\setsansfont{DejaVu Sans}
-\setmainfont{DejaVu Serif}
+% \setsansfont{DejaVu Sans}
+% \setmainfont{DejaVu Serif}
 %\setmonofont{DejaVu Sans Mono}[Scale=MatchLowercase]
+\setmainfont{Noto Serif}
+\setsansfont{Noto Sans}
+\setmonofont{Noto Mono}[Scale=MatchLowercase]
 
 \RequirePackage{xeCJK}
 \setCJKmainfont[BoldFont={WenQuanYi Zen Hei}, ItalicFont={WenQuanYi Zen Hei}]{SimSun}
@@ -67,3 +70,9 @@
 \setCJKmonofont{WenQuanYi Micro Hei Mono}
 \setCJKfamilyfont{hei}{WenQuanYi Zen Hei}
 \setCJKfamilyfont{song}{SimSun}
+
+\newfontfamily\MyEmoji{DejaVu Sans}
+\newcommand\emoji[1]{\MyEmoji #1}
+\newcommand\good{\MyEmoji ☺}
+\newcommand\bad{\MyEmoji ☹}
+\newcommand\danger{\MyEmoji ☠}

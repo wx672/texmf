@@ -20,9 +20,13 @@
 
 \RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
 \defaultfontfeatures{Mapping=tex-text}
-\setsansfont{DejaVu Sans}
-\setmainfont{DejaVu Serif}
-\setsansfont{DejaVu Sans Mono}
+% \setsansfont{DejaVu Sans}
+% \setmainfont{DejaVu Serif}
+% \setsansfont{DejaVu Sans Mono}
+\setmainfont{Noto Serif}
+\setsansfont{Noto Sans}
+\setmonofont{Noto Mono}[Scale=MatchLowercase]
+
 \RequirePackage{xeCJK}
 \xeCJKDeclarePunctStyle{ mine }
 {
