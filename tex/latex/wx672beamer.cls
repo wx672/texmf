@@ -62,7 +62,6 @@
 %\setmonofont{DejaVu Sans Mono}[Scale=MatchLowercase]
 \setmainfont{Noto Serif}
 \setsansfont{Noto Sans}
-\setmonofont{Noto Mono}[Scale=MatchLowercase]
 
 \RequirePackage{xeCJK}
 \setCJKmainfont[BoldFont={WenQuanYi Zen Hei}, ItalicFont={WenQuanYi Zen Hei}]{SimSun}
@@ -71,8 +70,9 @@
 \setCJKfamilyfont{hei}{WenQuanYi Zen Hei}
 \setCJKfamilyfont{song}{SimSun}
 
-\newfontfamily\MyEmoji{DejaVu Sans}
-\newcommand\emoji[1]{\MyEmoji #1}
+\newfontfamily\MyEmoji{Symbola}
+\newcommand\Symbol[1]{\MyEmoji #1}
 \newcommand\good{\MyEmoji ☺}
 \newcommand\bad{\MyEmoji ☹}
 \newcommand\danger{\MyEmoji ☠}
+\newcommand\pointright{\MyEmoji ☞}

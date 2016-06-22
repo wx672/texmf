@@ -5,12 +5,32 @@
 
 % in beamerarticle package, there is a \RequirePackage[override]{xcolor}.
 % this clashes with [svgnames]
-\RequirePackage[noxcolor,hyperref]{beamerarticle}
+\RequirePackage[noxcolor]{beamerarticle}
 \RequirePackage[svgnames]{xcolor} 
+\RequirePackage{hyperref}
+\hypersetup{%
+  bookmarksnumbered,pdfpagelabels=true,plainpages=false,breaklinks=true,
+  colorlinks=false,
+  pdfborderstyle={/S/U/W .3},% border style will be underline of width .3pt 
+  linkbordercolor=red,       % internal links
+  citebordercolor=cyan,      % links to bibliography
+  filebordercolor=magenta,   % file links
+  urlbordercolor=blue,       % external links
+  %linkcolor=black,citecolor=black,urlcolor=blue
+}
 
-\hypersetup{breaklinks=true}
+%\RequirePackage[headings]{fullpage}
+\RequirePackage[top=2cm,bottom=2cm,left=3cm,right=2cm,
+nomarginpar,headheight=15pt, % to avoid "headheight too small"
+%showframe,showcrop,
+]{geometry}
 
-\RequirePackage[headings]{fullpage}
+\RequirePackage{parskip,indentfirst}
+\setlength{\parindent}{2em}
+\RequirePackage{setspace}
+
+\RequirePackage[bottom]{footmisc} % stick footnote at bottom of page
+
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhead[R,C]{}
@@ -38,8 +58,11 @@
 \RequirePackage{minted}
 \usemintedstyle{bw}
 
+\RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{} % to make centering minted works
+
 \renewcommand{\theFancyVerbLine}{
   \textcolor{lightgray}{\scriptsize \arabic{FancyVerbLine}}}
+
 \newminted{gas}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
   frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
 \newminted{c}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
@@ -69,7 +92,7 @@
 %\setmonofont{DejaVu Sans Mono}[Scale=MatchLowercase]
 \setmainfont{Noto Serif}
 \setsansfont{Noto Sans}
-\setmonofont{Noto Mono}[Scale=MatchLowercase]
+%\setmonofont{Noto Mono}[Scale=MatchLowercase]
 
 \RequirePackage{xeCJK}
 \setCJKmainfont[BoldFont={WenQuanYi Zen Hei}, ItalicFont={WenQuanYi Zen Hei}]{SimSun}
@@ -78,8 +101,9 @@
 \setCJKfamilyfont{hei}{WenQuanYi Zen Hei}
 \setCJKfamilyfont{song}{SimSun}
 
-\newfontfamily\MyEmoji{DejaVu Sans}
-\newcommand\emoji[1]{\MyEmoji #1}
+\newfontfamily\MyEmoji{Symbola}
+\newcommand\Symbol[1]{\MyEmoji #1}
 \newcommand\good{\MyEmoji ☺}
 \newcommand\bad{\MyEmoji ☹}
 \newcommand\danger{\MyEmoji ☠}
+\newcommand\pointright{\MyEmoji ☞}
