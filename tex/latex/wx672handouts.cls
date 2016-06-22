@@ -1,4 +1,4 @@
-\ProvidesClass{wx672handouts}[2016/06/15 A simple class for producing handouts]
+\ProvidesClass{wx672handouts}[2016/06/22 A simple class for producing handouts]
 \NeedsTeXFormat{LaTeX2e}
 
 \LoadClass[a4paper,10pt]{article}

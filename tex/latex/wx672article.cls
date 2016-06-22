@@ -1,4 +1,4 @@
-\ProvidesClass{wx672article}[2016/06/15 A simple class for saving some typings]
+\ProvidesClass{wx672article}[2016/06/22 A simple class for saving some typings]
 \NeedsTeXFormat{LaTeX2e}
 
 \LoadClass[12pt,a4paper]{article}
