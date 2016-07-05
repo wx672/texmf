@@ -1,4 +1,4 @@
-\ProvidesClass{wx672handouts}[2016/06/22 A simple class for producing handouts]
+\ProvidesClass{wx672handouts}[2016/07/05 A simple class for producing handouts]
 \NeedsTeXFormat{LaTeX2e}
 
 \LoadClass[a4paper,10pt]{article}
@@ -63,11 +63,11 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \renewcommand{\theFancyVerbLine}{
   \textcolor{lightgray}{\scriptsize \arabic{FancyVerbLine}}}
 
-\newminted{gas}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
+\newminted{gas}{ linenos=true,numbersep=2pt,fontsize=\small,
   frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
-\newminted{c}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
+\newminted{c}{ linenos=true,numbersep=2pt,fontsize=\small,
   frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
-\newminted{python}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
+\newminted{python}{ linenos=true,numbersep=2pt,fontsize=\small,
   frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
 \newcommand{\codec}[1]{\mintinline{c}|#1|}
 
@@ -89,17 +89,15 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \defaultfontfeatures{Mapping=tex-text}
 %\setsansfont{DejaVu Sans}
 %\setmainfont{DejaVu Serif}
-%\setmonofont{DejaVu Sans Mono}[Scale=MatchLowercase]
-\setmainfont{Noto Serif}
-\setsansfont{Noto Sans}
-%\setmonofont{Noto Mono}[Scale=MatchLowercase]
+\setmainfont{Liberation Serif}
+\setsansfont{Liberation Sans}
 
 \RequirePackage{xeCJK}
-\setCJKmainfont[BoldFont={WenQuanYi Zen Hei}, ItalicFont={WenQuanYi Zen Hei}]{SimSun}
-\setCJKsansfont{WenQuanYi Zen Hei}
-\setCJKmonofont{WenQuanYi Micro Hei Mono}
-\setCJKfamilyfont{hei}{WenQuanYi Zen Hei}
-\setCJKfamilyfont{song}{SimSun}
+\setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
+\setCJKsansfont{Noto Sans CJK SC Regular}
+\setCJKmonofont{Noto Sans Mono CJK SC Regular}
+\setCJKfamilyfont{hei}{Adobe Heiti Std}
+\setCJKfamilyfont{song}{Adobe Song Std}
 
 \newfontfamily\MyEmoji{Symbola}
 \newcommand\Symbol[1]{\MyEmoji #1}

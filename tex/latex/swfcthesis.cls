@@ -71,11 +71,20 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage{subcaption}
 \captionsetup{labelsep=quad}
 
-\RequirePackage[xetex,bookmarksnumbered,pdfpagelabels=true,
-%colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black,
-plainpages=false]{hyperref}
-
 \RequirePackage{xcolor}
+
+\RequirePackage{hyperref}
+\hypersetup{%
+  bookmarksnumbered,pdfpagelabels=true,plainpages=false,breaklinks=true,
+  colorlinks=false,
+  pdfborderstyle={/S/U/W .3},% border style will be underline of width .3pt 
+  linkbordercolor=red,       % internal links
+  citebordercolor=cyan,      % links to bibliography
+  filebordercolor=magenta,   % file links
+  urlbordercolor=blue,       % external links
+  %linkcolor=black,citecolor=black,urlcolor=blue
+}
+
 
 % before xunicode!
 \RequirePackage{amsmath,amsfonts,amssymb,latexsym,marvosym,pifont}
@@ -97,13 +106,15 @@ plainpages=false]{hyperref}
 %     {\par\renewcommand{\baselinestretch}{1.6}\small\normalsize\par}
 
 \defaultfontfeatures{Mapping=tex-text}
-\setmainfont{DejaVu Serif}
-\setsansfont{DejaVu Sans}
-\setCJKmainfont[BoldFont={WenQuanYi Micro Hei}]{SimSun}
-\setCJKsansfont[BoldFont={WenQuanYi Micro Hei}]{SimSun}
-\setCJKmonofont{WenQuanYi Micro Hei Mono}
-\setCJKfamilyfont{hei}{WenQuanYi Micro Hei}
-\setCJKfamilyfont{song}{SimSun}
+\setmainfont{Liberation Serif}
+\setsansfont{Liberation Sans}
+\setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
+\setCJKsansfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
+\setCJKmonofont{Noto Sans Mono CJK SC Regular}
+\setCJKfamilyfont{hei}{Adobe Heiti Std}
+\setCJKfamilyfont{song}{Adobe Song Std}
+\newCJKfontfamily\quotefont{Adobt Kaiti Std}
+
 \XeTeXlinebreaklocale "zh"
 \XeTeXlinebreakskip = 0pt plus 1pt
 

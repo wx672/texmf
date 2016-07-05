@@ -1,4 +1,4 @@
-\ProvidesClass{swfcsumup}[2014/05/31 SWFU teaching review form]
+\ProvidesClass{swfcsumup}[2016/07/05 SWFU teaching review form]
 \NeedsTeXFormat{LaTeX2e}
 
 % The swfcsumup class is for producing termly teaching review form used at SWFU
@@ -20,12 +20,13 @@
 
 %\renewcommand\normalsize{\fontsize{10pt}{12pt}\selectfont} % The LaTeX Companion, A.4.9
 \defaultfontfeatures{Mapping=tex-text}
-\setmainfont{DejaVu Serif}
-\setsansfont{DejaVu Sans}
-%\setmonofont{DejaVu Sans Mono}
-\setCJKmainfont[BoldFont={WenQuanYi Zen Hei}, ItalicFont={WenQuanYi Zen Hei}]{SimSun}
-\setCJKfamilyfont{hei}{WenQuanYi Zen Hei}
-\setCJKfamilyfont{song}{SimSun}
+\setmainfont{Liberation Serif}
+\setsansfont{Liberation Sans}
+
+\setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
+\setCJKsansfont{Noto Sans CJK SC Regular}
+\setCJKfamilyfont{hei}{Adobe Heiti Std}
+\setCJKfamilyfont{song}{Adobe Song Std}
 
 %%% make long title looks nicer
 %\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}

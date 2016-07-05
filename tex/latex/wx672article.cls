@@ -20,12 +20,8 @@
 
 \RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
 \defaultfontfeatures{Mapping=tex-text}
-% \setsansfont{DejaVu Sans}
-% \setmainfont{DejaVu Serif}
-% \setsansfont{DejaVu Sans Mono}
-\setmainfont{Noto Serif}
-\setsansfont{Noto Sans}
-\setmonofont{Noto Mono}[Scale=MatchLowercase]
+\setsansfont{Liberation Sans}
+\setmainfont{Liberation Serif}
 
 \RequirePackage{xeCJK}
 \xeCJKDeclarePunctStyle{ mine }
@@ -37,23 +33,25 @@
 \xeCJKsetwidth{“”《》、（）}{1.2ex}
 \xeCJKsetkern{：}{（}{1ex}
 \xeCJKsetkern{；}{（}{1ex}
-\setCJKmainfont[BoldFont={WenQuanYi Micro Hei}]{SimSun}
-\setCJKsansfont{SimSun}
-\setCJKmonofont{WenQuanYi Micro Hei Mono}
-\setCJKfamilyfont{hei}{WenQuanYi Micro Hei}
-\setCJKfamilyfont{song}{SimSun}
-\setCJKfamilyfont{kai}{KaiTi} % e.g. \CJKfamily{kai}
-\newCJKfontfamily\quotefont{KaiTi}
+
+\setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
+\setCJKsansfont{Noto Sans CJK SC Regular}
+\setCJKmonofont{Noto Sans Mono CJK SC Regular}
+
+\setCJKfamilyfont{hei}{Adobe Heiti Std}
+\setCJKfamilyfont{song}{Adobe Song Std}
+\setCJKfamilyfont{kai}{Adobe Kaiti Std} % e.g. \CJKfamily{kai}
+\newCJKfontfamily\quotefont{Adobt Kaiti Std}
 
 \RequirePackage{hyperref}
 \hypersetup{%
-  xetex,bookmarksnumbered,pdfpagelabels=true,plainpages=false,
+  bookmarksnumbered,pdfpagelabels=true,plainpages=false,
   pdfborderstyle={/S/U/W .5},% border style will be underline of width .5pt 
   colorlinks=false,
   linkbordercolor=red,       % color of internal links
-  citebordercolor=green,     % color of links to bibliography
+  citebordercolor=blue,     % color of links to bibliography
   filebordercolor=magenta,   % color of file links
-  urlbordercolor=cyan,
+  urlbordercolor=blue,
   % linkcolor=black,citecolor=black,urlcolor=blue
 }
 \RequirePackage{xcolor}
@@ -77,8 +75,6 @@
 % \renewcommand{\tablename}{表}
 % \renewcommand{\appendixname}{附\hspace{1em}录}
 % \renewcommand{\indexname}{索\hspace{1em}引}
-
-\newcommand{\code}[1]{\texttt{\textcolor{violet}{#1}}}
 
 \newfontfamily\MyEmoji{Symbola}
 \newcommand\Symbol[1]{\MyEmoji #1}

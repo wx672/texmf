@@ -20,12 +20,13 @@ margin=2.5cm]{geometry}
 
 %\renewcommand\normalsize{\fontsize{10pt}{12pt}\selectfont} % The LaTeX Companion, A.4.9
 \defaultfontfeatures{Mapping=tex-text}
-\setmainfont{DejaVu Serif}
-\setsansfont{DejaVu Sans}
-%\setmonofont{DejaVu Sans Mono}
-\setCJKmainfont[BoldFont={WenQuanYi Zen Hei}, ItalicFont={WenQuanYi Zen Hei}]{SimSun}
-\setCJKfamilyfont{hei}{WenQuanYi Zen Hei}
-\setCJKfamilyfont{song}{SimSun}
+\setmainfont{Liberation Serif}
+\setsansfont{Liberation Sans}
+
+\setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
+\setCJKsansfont{Noto Sans CJK SC Regular}
+\setCJKfamilyfont{hei}{Adobe Heiti Std}
+\setCJKfamilyfont{song}{Adobe Song Std}
 
 %%% array related. make long title looks nicer
 %\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}

@@ -59,16 +59,15 @@
 \defaultfontfeatures{Mapping=tex-text}
 % \setsansfont{DejaVu Sans}
 % \setmainfont{DejaVu Serif}
-%\setmonofont{DejaVu Sans Mono}[Scale=MatchLowercase]
-\setmainfont{Noto Serif}
-\setsansfont{Noto Sans}
+\setmainfont{Liberation Serif}
+\setsansfont{Liberation Sans}
 
 \RequirePackage{xeCJK}
-\setCJKmainfont[BoldFont={WenQuanYi Zen Hei}, ItalicFont={WenQuanYi Zen Hei}]{SimSun}
-\setCJKsansfont{WenQuanYi Zen Hei}
-\setCJKmonofont{WenQuanYi Micro Hei Mono}
-\setCJKfamilyfont{hei}{WenQuanYi Zen Hei}
-\setCJKfamilyfont{song}{SimSun}
+\setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
+\setCJKsansfont{Noto Sans CJK SC Regular}
+\setCJKmonofont{Noto Sans Mono CJK SC Regular}
+\setCJKfamilyfont{hei}{Adobe Heiti Std}
+\setCJKfamilyfont{song}{Adobe Song Std}
 
 \newfontfamily\MyEmoji{Symbola}
 \newcommand\Symbol[1]{\MyEmoji #1}

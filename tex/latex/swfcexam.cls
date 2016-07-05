@@ -43,12 +43,14 @@
 %%% fonts
 %\renewcommand\normalsize{\fontsize{10pt}{12pt}\selectfont} % The LaTeX Companion, A.4.9
 \defaultfontfeatures{Mapping=tex-text}
-\setmainfont{DejaVu Serif}
-\setsansfont{DejaVu Sans}
-%\setmonofont{DejaVu Sans Mono}
-\setCJKmainfont[BoldFont={WenQuanYi Micro Hei}]{SimSun}
-\setCJKsansfont[BoldFont={WenQuanYi Micro Hei}]{SimSun}
-\setCJKmonofont{WenQuanYi Micro Hei Mono}
+\setmainfont{Liberation Serif}
+\setsansfont{Liberation Sans}
+
+\setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
+\setCJKsansfont{Noto Sans CJK SC Regular}
+\setCJKmonofont{Noto Sans Mono CJK SC Regular}
+\setCJKfamilyfont{hei}{Adobe Heiti Std}
+\setCJKfamilyfont{song}{Adobe Song Std}
 
 \newlength{\bindingfieldlength}
 \setlength{\bindingfieldlength}{1in}

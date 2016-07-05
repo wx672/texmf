@@ -11,10 +11,10 @@
   },
 }
 
-\setCJKfamilyfont{hei}{WenQuanYi Micro Hei}
-\setCJKfamilyfont{song}{SimSun}
-\setCJKfamilyfont{kai}{KaiTi} % e.g. \CJKfamily{kai}
-\newCJKfontfamily\cjkquotefont{KaiTi}
+\setCJKfamilyfont{hei}{Adobe Heiti Std}
+\setCJKfamilyfont{song}{Adobe Song Std}
+\setCJKfamilyfont{kai}{Adobe Kaiti Std} % e.g. \CJKfamily{kai}
+\newCJKfontfamily\cjkquotefont{Adobe Kaiti Std}
 
 \addbibresource{tutorial.bib}
 
@@ -1729,13 +1729,13 @@ minted宏包提供了丰富的命令，可以支持数十种编程语言，后�
   \xeCJKsetwidth{“”《》、（）}{1.2ex}
   \xeCJKsetkern{：}{（}{1ex}
   \xeCJKsetkern{；}{（}{1ex}
-  \setCJKmainfont[BoldFont={WenQuanYi Micro Hei}]{SimSun}
-  \setCJKsansfont{SimSun}
-  \setCJKmonofont{WenQuanYi Micro Hei Mono}
-  \setCJKfamilyfont{hei}{WenQuanYi Micro Hei}
-  \setCJKfamilyfont{song}{SimSun}
-  \setCJKfamilyfont{kai}{KaiTi} % e.g. \CJKfamily{kai}
-  \newCJKfontfamily\quotefont{KaiTi}
+  \setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
+  \setCJKsansfont{Noto Sans CJK SC Regular}
+  \setCJKmonofont{Noto Sans Mono CJK SC Regular}
+  \setCJKfamilyfont{hei}{Adobe Heiti Std}
+  \setCJKfamilyfont{song}{Adobe Song Std}
+  \setCJKfamilyfont{kai}{Adobe Kaiti Std} % e.g. \CJKfamily{kai}
+  \newCJKfontfamily\quotefont{Adobe Kaiti Std}
   
   \newcommand{\ziju}[1]{\renewcommand{\CJKglue}{\hskip #1}}
 \end{minted}
@@ -1745,18 +1745,17 @@ minted宏包提供了丰富的命令，可以支持数十种编程语言，后�
   \cite{xecjk} 想了解更多，就\texttt{texdoc xecjk}，很值得一读；
 \item[22-30] 这几行都是用来调整中文标点排版的，可有可无。相邻的两个中文标点之间总是有遥不可
   及距离，如果你想把它们拉近，不妨照猫画虎地设置一下；
-\item[31-33] 这三行用来选择中文字体，非要不可。SimSun就是Windows宋体； WenQuanYi Micro Hei是
-  文泉驿微米黑，不错的开源字体；
+\item[31-33] 这三行用来选择中文字体，非要不可。Adobe Song Std就是Adobe的标准宋体字；Adobe
+  Heiti Std是黑体字。你当然也可以选用其它字体，比如WenQuanYi Zen Hei就是不错的开源字体。Noto
+  Sans CJK是Google提供的开源字体；
 \item[34-37] 这四行用于在文章中间变换字体，如果你没这个需求，就不必管它。
   举几个例子，
   \begin{itemize}
   \item \{\verb'\CJKfamily{kai}'楷体\} $\Rightarrow$ {\CJKfamily{kai}楷体}
-  \item \{\verb'\CJKfontspec{LiSu}'隶书\} $\Rightarrow$
-    {\CJKfontspec{LiSu}隶书}
-  % \item \{\verb'\CJKfontspec{badashanren}'八大山人毛笔字体\} $\Rightarrow$
-  %   {\CJKfontspec{badashanren}八大山人毛笔字体}
-  \item \{\verb'\CJKfontspec{QXyingbixing}'全新硬笔行书简体\} $\Rightarrow$
-    {\CJKfontspec{QXyingbixing}全新硬笔行书简体}
+  \item \{\verb'\CJKfontspec{FZGuLi-S12S}'方正古隶简体\} $\Rightarrow$
+    {\CJKfontspec{FZGuLi-S12S}方正古隶简体}
+  \item \{\verb'\CJKfontspec{FZXingKai-S04S}'方正行楷简体\} $\Rightarrow$
+    {\CJKfontspec{FZXingKai-S04S}方正行楷简体}
   \end{itemize}
   还不错吧？但前提是你的系统里要已经装上了这些字体才行。
 \item[39] 这一行用于调整字间距离。比如，
