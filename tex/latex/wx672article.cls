@@ -15,7 +15,7 @@
 \RequirePackage[skins]{tcolorbox}
 \tcbsetforeverylayer{colframe=black!5,coltitle=black,boxrule=.5pt,fonttitle=\bfseries,colback=white}
 
-\RequirePackage{multicol,rotating,soul,indentfirst}
+\RequirePackage{multicol,rotating,soul,indentfirst,tabu}
 \setul{1.5pt}{.4pt}% 1.5pt below contents
 
 \RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
@@ -63,6 +63,9 @@
 \RequirePackage{indentfirst}
 \setlength{\parindent}{2em}
 \RequirePackage{setspace}
+
+\RequirePackage[backend=biber,url=false,hyperref=true,
+    doi=false,isbn=false]{biblatex}
 
 \RequirePackage[bottom]{footmisc} % stick footnote at bottom of page
 
