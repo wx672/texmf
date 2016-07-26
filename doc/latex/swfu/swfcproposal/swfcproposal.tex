@@ -1,13 +1,13 @@
 \documentclass{swfcproposal}
 
-\Title{开题报告\LaTeX{}模板的制作}
+\Title{简单操作系统的实现}
 \Titlext{}
 \Projfrom{自选}
-\Author{王晓林}
+\Author{马元}
 \Grade{2011级}
-\Studid{20111156888}
+\Studid{20111151025}
 \Docname{本科毕业论文（设计）开题报告}
-\Advisor{我自己}
+\Advisor{王晓林}
 \AdvisorSig{\includegraphics[scale=.1]{signature}}
 \AdvisorTitle{讲师}
 \AdvisorAge{46}
@@ -16,64 +16,51 @@
 \AdvisorWhere{计算机与信息学院}
 \AdvisorComment{同意开题。}
 
-\Date{8}
-\Month{11}
+\Date{20}
+\Month{12}
 \Year{2014}
 \Univ{西南林业大学}
-\Subject{计算机科学与技术（网络信息工程）}
+\Subject{电子信息工程}
 
-\Partone{
+\Partone{% 1. 该研究的目的、意义
+  深入理解操作系统原理，对课本上的一些难以琢磨的概念进行实践，为以后做有关操作系统的
+  研究打下扎实的基础。
+}
+\Parttwo{% 2. 国内外研究现状及发展趋势
+  操作系统是管理计算机硬件与软件资源的计算机程序，同时也是计算机系统的核心与基石。
+  操作系统主要处理内存管理与配置，决定系统资源供需的优先次序，控制输入输出设备，操作网络与
+  管理文件系统等基本事务。此外，操作系统还能协调好各任务使之能正确，有序地执行。操作系统实
+  现了系统，应用软件和用户之间交流的一个接口。
+  
+  操作系统是计算机系统中最核心最底层的软件，对操作系统的学习关系到对整个系统的运作机制的全面
+  理解，一方面能够学系操作系统的经典内容，另一方面又能够了解和跟踪最前沿的新技术和研究成果。
+}
+
+\addbibresource{os.bib}
+\Partthree{% 3. 主要参考文献
+  \nocite{wangshuang03,yuyuan2009orange,intel86,zouhengming09,mos,tanenbaum2008modern}
+  \printbibliography[heading=none]{}
+}
+
+\Partfour{% 4. 该研究的主要内容，重点解决的问题，预期结果或成果
+  本实验通过对操作系统的简单研究和探索，了解操作系统的原理和实现过程。通过了解操作系统的基本
+  概念，包括系统的启动、进程及进程间通信、消息传递、调度算法、输入/输出、设备驱动程序、死锁、
+  存储器管理、页面调度算法、文件系统设计、安全机制等。另外，对相应的硬件设备也进行了一些简单
+  的了解。在此基础上，立足实践，开发出一个简单的操作系统，用以理解由启动到运行，并执行用户输
+  入命令的过程。通过探究操作系统开发的细节问题，更深刻的理解操作系统的核心原理。
+}
+\Partfive{% 5. 拟采取的研究方法或实验方法，步骤，可能出现的技术问题及解决办法
+  主要参考《OrangeS：一个操作系统的实现》和《30天自制操作系统》一步步学习，立足实践，
+  开发出一个简单的操作系统。
+}
+\Partsix{% 6. 完成该研究已具备的条件
   \begin{itemize}
-  \item 
-  \item 
-  \item
-  \item 
-  \item 
-  \item 
-  \item
-  \item 
-  \end{itemize}
-}
-\Parttwo{  \begin{itemize}
-  \item 
-  \item 
-  \item 
-  \item 
-  \item 
-  \item 
-  \item 
-  \item 
-  \end{itemize}
-}
-\Partthree{  \begin{itemize}
-  \item 
-  \item 
-  \item 
-  \item 
-  \end{itemize}
-}
-\Partfour{  \begin{itemize}
-  \item 
-  \item 
-  \item 
-  \item 
-  \end{itemize}
-}
-\Partfive{  \begin{itemize}
-  \item 
-  \item 
-  \item 
-  \item 
-  \end{itemize}
-}
-\Partsix{  \begin{itemize}
-  \item 
-  \item 
-  \item 
-  \item 
+  \item 对操作系统概念的了解
+  \item C与汇编的编程基础
+  \item 硬件条件已具备
   \end{itemize}
 }
 
 \begin{document}
-\maketitlepage
+\makeproposal
 \end{document}
