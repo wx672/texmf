@@ -79,6 +79,7 @@
 % \renewcommand{\appendixname}{附\hspace{1em}录}
 % \renewcommand{\indexname}{索\hspace{1em}引}
 
+% use C-x 8 RET to input utf8 symbols
 \newfontfamily\MyEmoji{Symbola}
 \newcommand\Symbol[1]{\MyEmoji #1}
 \newcommand\good{\MyEmoji ☺}
@@ -86,5 +87,7 @@
 \newcommand\danger{\MyEmoji ☠}
 \newcommand\pointright{\MyEmoji ☞}
 
-\setlength{\parindent}{2em}
-
+\RequirePackage{minted} % minted has to be loaded at last!!!
+\usemintedstyle{bw}
+\renewcommand{\listingscaption}{程序} % used by minted
+\renewcommand{\listoflistingscaption}{程序目录}
