@@ -1,7 +1,7 @@
-% The swfcthesis class is for producing senior year theses proposal
-% that meet the SWFU requirements.
-\ProvidesClass{swfcproposal}[2016/07/25 SWFU Theses Proposal]
+% The swfcproposal class is for producing senior year theses proposal (开题报告) that meet
+% the SWFU requirements.
 \NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{swfcproposal}%[TeX Live 2016/Debian SWFU Theses Proposal]
 
 % \DeclareOption{noacknowlegments}{% Allow opt-out on acknowledgments
 %   \renewcommand{\acknowledgmentspage}{}

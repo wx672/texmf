@@ -1,5 +1,5 @@
-\ProvidesClass{swfcpractice}[2014/05/22 SWFU practice registration form]
 \NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{swfcpractice}%[TeX Live 2016/Debian SWFU practice registration form]
 
 % The swfcgplan class is for producing planning form used at SWFU
 

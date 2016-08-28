@@ -1,6 +1,6 @@
 % The swfcgcomments class is for producing comments form used at SWFU
-\ProvidesClass{swfcgcomments}[2014/05/22 SWFU graduation comments form]
 \NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{swfcgcomments}%[TeX Live 2016/Debian SWFU graduation comments form]
 
 \LoadClass[10pt]{article}
 

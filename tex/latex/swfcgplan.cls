@@ -1,5 +1,5 @@
-\ProvidesClass{swfcgplan}[2014/05/22 SWFU graduation planning form]
 \NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{swfcgplan}%[TeX Live 2016/Debian SWFU graduation planning form]
 
 % The swfcgplan class is for producing planning form used at SWFU
 

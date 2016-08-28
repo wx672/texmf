@@ -1,5 +1,5 @@
-\ProvidesClass{wx672beamer}[2016/06/22 A simple beamer based class for saving some typings]
 \NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{wx672beamer}%[TeX Live 2016/Debian A simple beamer based class for saving some typings]
 
 \LoadClass[10pt,ignorenonframetext,xcolor={svgnames,table},hyperref={colorlinks,linkcolor=blue},compress]{beamer}
 

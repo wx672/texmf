@@ -1,5 +1,5 @@
-\ProvidesClass{wx672handouts}[2016/07/05 A simple class for producing handouts]
 \NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{wx672handouts}%[TeX Live 2016/Debian A simple class for producing handouts]
 
 \LoadClass[a4paper,10pt]{article}
 

@@ -1,7 +1,7 @@
 % The swfcthesis class is for producing senior year theses and dissertations
 % that meet the SWFU requirements.
-\ProvidesClass{swfcthesis}[2016/06/10 SWFU Theses and Dissertations]
 \NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{swfcthesis}%[TeX Live 2016/Debian SWFU Theses and Dissertations]
 
 \DeclareOption{noacknowlegments}{% Allow opt-out on acknowledgments
   \renewcommand{\acknowledgmentspage}{}

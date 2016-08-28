@@ -1,5 +1,5 @@
-\ProvidesClass{swfcbilingual}[2015/11/06 SWFU bilingual lecturing application form]
 \NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{swfcbilingual}%[TeX Live 2016/Debian SWFU bilingual lecturing application form]
 
 \LoadClass[a4paper]{article}
 

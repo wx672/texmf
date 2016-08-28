@@ -1,5 +1,5 @@
-\ProvidesClass{wx672article}[2016/06/22 A simple class for saving some typings]
 \NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{wx672article}%[TeX Live 2016/Debian A simple class for saving some typings]
 
 \LoadClass[12pt,a4paper]{article}
 

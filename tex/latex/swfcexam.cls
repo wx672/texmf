@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{swfcexam}[2014/05/31 SWFC exam paper]
+\ProvidesClass{swfcexam}%[TeX Live 2016/Debian SWFC exam paper]
 
 \DeclareOption{a3}{
   \PassOptionsToPackage{a3paper,landscape,twocolumn,columnsep=3cm,top=2cm,bottom=20mm,left=4cm,right=2cm}{geometry}

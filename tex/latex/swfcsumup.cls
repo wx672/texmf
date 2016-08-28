@@ -1,5 +1,5 @@
-\ProvidesClass{swfcsumup}[2016/07/05 SWFU teaching review form]
 \NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{swfcsumup}%[TeX Live 2016/Debian SWFU teaching review form]
 
 % The swfcsumup class is for producing termly teaching review form used at SWFU
 
