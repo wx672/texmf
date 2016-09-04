@@ -3,9 +3,8 @@
 
 \LoadClass[a4paper,12pt]{article}
 
-%\RequirePackage{calc,ifthen}
-\RequirePackage{array}
-\RequirePackage{tabu,longtable}
+%\RequirePackage{array}
+\RequirePackage{tabu}
 \RequirePackage{graphicx}
 \RequirePackage[ % showframe,
 paperwidth=195mm,paperheight=270mm,
@@ -13,37 +12,26 @@ top=2cm,bottom=2cm,
 left=2cm,right=2cm
 ]{geometry}
 
-% \RequirePackage{latexsym}%,amsmath,amsfonts,amssymb}
 \RequirePackage{marvosym,amssymb}
 \RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
 \RequirePackage{xeCJK}
 
-%\renewcommand\normalsize{\fontsize{10pt}{12pt}\selectfont} % The LaTeX Companion, A.4.9
 \defaultfontfeatures{Mapping=tex-text}
 \setmainfont{Liberation Serif}
 \setsansfont{Liberation Sans}
-
 \setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
 \setCJKsansfont{Noto Sans CJK SC Regular}
 \setCJKfamilyfont{hei}{Adobe Heiti Std}
 \setCJKfamilyfont{song}{Adobe Song Std}
 
-%%% array related. make long title looks nicer
-\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-%\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-%\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-
-%\renewcommand{\arraystretch}{1.5} % make table row higher
+\RequirePackage[backend=biber,url=false,hyperref=false,
+    doi=false,isbn=false]{biblatex}
 
 % Declare some variables to hold the text fields for the preliminary pages
 \newcommand{\Univ}[1]{\gdef\SWFCField@Univ{#1}} % 西南林业大学
 \newcommand{\Prjtitle}[1]{\gdef\SWFCField@Prjtitle{#1}} % 论文标题
-\newcommand{\Prjclass}[1]{\gdef\SWFCField@Prjclass{#1}} % 课题类别
-\newcommand{\Prjattri}[1]{\gdef\SWFCField@Prjattri{#1}} % 课题性质
 \newcommand{\Signature}[1]{\gdef\SWFCField@Signature{#1}} % 指导教师签名
 \newcommand{\StudSignature}[1]{\gdef\SWFCField@StudSignature{#1}} % 指导教师签名
-%\newcommand{\AdvisorName}[1]{\gdef\SWFCField@AdvisorName{#1}} % 指导教师姓名
-%\newcommand{\AdvisorTitle}[1]{\gdef\SWFCField@AdvisorTitle{#1}} % 职称
 \newcommand{\Studname}[1]{\gdef\SWFCField@Studname{#1}} % 学生姓名
 \newcommand{\Studid}[1]{\gdef\SWFCField@Studid{#1}} % 学生姓名
 \newcommand{\Studclass}[1]{\gdef\SWFCField@Studclass{#1}} % 学生班级
@@ -51,7 +39,6 @@ left=2cm,right=2cm
 \newcommand{\Prjwhat}[1]{\gdef\SWFCField@Prjwhat{#1}} % 学生任务及要求
 \newcommand{\Prjwhen}[1]{\gdef\SWFCField@Prjwhen{#1}} % 进度安排
 \newcommand{\Prjbib}[1]{\gdef\SWFCField@Prjbib{#1}} % 参考文献
-
 \newcommand{\Gyear}[1]{\gdef\SWFCField@Gyear{#1}}
 \newcommand{\Year}[1]{\gdef\SWFCField@Year{#1}}
 \newcommand{\Month}[1]{\gdef\SWFCField@Month{#1}}
@@ -61,10 +48,7 @@ left=2cm,right=2cm
   \pagestyle{empty}
   {\centering
     {\bfseries\large\SWFCField@Univ\SWFCField@Gyear{}届毕业论文（设计）任务书}\\[3ex]
-    % \begin{tabu}{X[r]@{}}
-    %   （本表由指导教师填写）\\\tabucline-
-    % \end{tabu}\vskip -1pt
-    \tabulinesep=2mm
+    \tabulinesep=3pt
     \begin{tabu}{|X[c,m,-1]|X[c]|}
       \tabucline-
       \textbf{论文（设计）}\par{}\textbf{题目}&\SWFCField@Prjtitle{}\\\tabucline-
@@ -83,7 +67,6 @@ left=2cm,right=2cm
       \end{tabu}&
       \textbf{题目类别}&$\Box{}$论文\qquad{\large \Checkedbox{}}设计\\\tabucline-
     \end{tabu}\vskip -1pt
-%    \tabulinesep=5ex
     \begin{tabu}{|X[c,-1]|X|}
       \vskip 10ex
       \textbf{选}\par{}\textbf{题}\par{}\textbf{的}\par{}\textbf{目}\par{}\textbf{的}\par{}
@@ -97,7 +80,6 @@ left=2cm,right=2cm
   }
     \clearpage
     {\centering
-%      \tabulinesep=3ex
       \begin{tabu}{|X[c,-1]|X|}
         \tabucline-
         \vskip 10ex\textbf{进}\par{}\textbf{度}\par{}\textbf{安}\par{}\textbf{排}\vskip 10ex\,
@@ -152,8 +134,6 @@ left=2cm,right=2cm
 \Signature{\hspace{4em}}
 \StudSignature{\hspace{4em}}
 \Prjtitle{}
-\Prjclass{} % 科研 设计 调查 其它
-\Prjattri{} % 自选题 计划任务 横向任务 其它
 \Studclass{}
 \Studname{}
 \Gyear{\underline{\hspace{4em}}}
@@ -172,7 +152,7 @@ left=2cm,right=2cm
   \item
   \item 
   \end{itemize}
-}  % 毕业实习指导工作计划内容
+}
 
 \Prjwhen{ % 进度、安排
   \begin{itemize}

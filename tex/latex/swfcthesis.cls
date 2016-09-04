@@ -15,7 +15,6 @@
 
 \RequirePackage{ifxetex} % This class can only be processed with XeTeX
 
-%\RequirePackage[margin=2.5cm]{geometry}
 \RequirePackage[top=3cm,bottom=2.5cm,left=3cm,right=2.5cm,
 nomarginpar,headheight=15pt, % to avoid "headheight too small"
 %showframe,showcrop,
