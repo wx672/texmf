@@ -1,7 +1,6 @@
 \documentclass{swfcthesis}
 
 \usepackage{xpinyin}
-\usepackage{wrapfig}
 
 \hypersetup{xetex,breaklinks=true,
   pdfinfo={
@@ -58,58 +57,30 @@
 \AdvisorInfo{% 指导教师简介（约百余字）
   \noindent{}\texttt{{\large \$ dict google}}
   \begin{singlespace}
-  \noindent{}\texttt{From The Free On-line Dictionary of Computing (05 May 2016) [foldoc]:}
+    \noindent{}\texttt{From The Free On-line Dictionary of Computing (05 May 2016) [foldoc]:}
 
-  \begin{quote}{\ttfamily
-      \hspace{-2em}Google
+    \begin{quote}
+      {\ttfamily \hspace{-2em}Google
     
-      <web> The \{web\} \{search engine\} that indexes the greatest number of web pages - over
-      two billion by December 2001 and provides a free service that searches this index in
-      less than a second.
+        <web> The \{web\} \{search engine\} that indexes the greatest number of web pages
+        - over two billion by December 2001 and provides a free service that searches this
+        index in less than a second.
   
-      The site's name is apparently derived from "\{googol\}", but note the difference in
-      spelling.
+        The site's name is apparently derived from "\{googol\}", but note the difference
+        in spelling.
   
-      The "Google" spelling is also used in "The Hitchhikers Guide to the Galaxy" by Douglas
-      Adams, in which one of Deep Thought's designers asks, "And are you not," said Fook,
-      leaning anxiously foward, "a greater analyst than the Googleplex Star Thinker in the
-      Seventh Galaxy of Light and Ingenuity which can calculate the trajectory of every
-      single dust particle throughout a five-week Dangrabad Beta sand blizzard?"
+        The "Google" spelling is also used in "The Hitchhikers Guide to the Galaxy" by
+        Douglas Adams, in which one of Deep Thought's designers asks, "And are you not,"
+        said Fook, leaning anxiously foward, "a greater analyst than the Googleplex Star
+        Thinker in the Seventh Galaxy of Light and Ingenuity which can calculate the
+        trajectory of every single dust particle throughout a five-week Dangrabad Beta
+        sand blizzard?"
       
-      \{(http://google.com/)\}.
+        \{(http://google.com/)\}.
       
-      (2001-12-28) }
-  \end{quote}
+        (2001-12-28) }
+    \end{quote}
   \end{singlespace}
-  % \begin{wrapfigure}{r}{.4\textwidth}
-  %   \centering
-  %   \includegraphics[width=.39\textwidth]{albus}
-  %   \caption*{By Source, Fair use, \url{https://en.wikipedia.org/w/index.php?curid=12991223}}
-  % \end{wrapfigure}
-  % Professor Albus Percival Wulfric Brian Dumbledore is a fictional character in
-  % J. K. Rowling's Harry Potter series. For most of the series, he is the headmaster of the
-  % wizarding school Hogwarts. As part of his backstory, it is revealed that he is the
-  % founder and leader of the Order of the Phoenix, an organisation dedicated to fighting
-  % Lord Voldemort.  Dumbledore is portrayed by Richard Harris in the film adaptations of
-  % Harry Potter and the Philosopher's Stone and Harry Potter and the Chamber of
-  % Secrets. After Harris' death, Michael Gambon portrayed Dumbledore for all of the
-  % remaining films.  Rowling stated she chose the name Dumbledore, which is an Early Modern
-  % English word for "bumblebee", because of Dumbledore's love of music: she imagined him
-  % walking around "humming to himself a lot".\cite{wiki:albus}
-
-  
-  % 独孤求败，外号剑魔，是金庸小说中唯一被提及“真正无敌于天下”的高手，并当称为金庸
-  % 小说世界中至高无上第一人。于小说中从未出场过，其事迹在极少数武林人士之间的口耳相传。其名
-  % 字曾于金庸的三部小说中出现，分别为《神雕侠侣》、《笑傲江湖》以及《鹿鼎记
-  % 》。\cite{wiki:duguqiubai}
-  % \begin{itemize}
-  % \item 《神雕侠侣》中，主角杨过习得独孤求败使用重剑以及其修练内力的法门后，继以晋身当代绝
-  %   顶高手之列。
-  % \item 《笑傲江湖》中，主角令狐冲原来武功平平，因缘际会学得独孤九剑以后，一跃为当代剑术高
-  %   手。
-  % \item 《鹿鼎记》一书中，实际上只有一句提及独孤求败，就是澄观和尚想及“无招胜有招”的前人例
-  %   子时念起。
-  % \end{itemize}
 } 
 
 \Year{二〇一六} 
@@ -139,7 +110,6 @@
   算机科学家莱斯利·兰波特（Leslie Lamport）教授为\TeX{}开发的简单易用的\LaTeX{}宏包。感谢本
   文作者能有如此多的闲功夫和好心情来饶有兴致地做这样一件不能当饭吃的事情。}
 
-
 \enTitle{How to write your dissertation with \LaTeX}% 英文标题
 \enAuthor{WANG Xiaolin} % 作者英文姓名
 \enUniv{Southwest Forestry University} % 英文校名
@@ -162,20 +132,24 @@
 
 \enKeywords{\LaTeX{}, \TeX{}, tutorial, dissertation template, SWFU} % 英文关键字
 
-%%% 下面六行不要动！
+%%% 排版封面、中英文摘要
 \makepreliminarypages
+
+%%% 排版目录、插图目录、表格目录
 \frontmatter
 \tableofcontents
-\listoffigures
-\listoftables
+\listoffigures % 可以没有
+\listoftables  % 可以没有
+
+%%% 论文主体部分由此开始
 \mainmatter
-%%% 上面六行不要动！
 
 \chapter{工欲善其事，必先利其器} % 第一章标题
 \label{cha:pre-requisite}
 
 用\LaTeX{}撰写毕业论文是一件赏心乐事，前提是你得会。网上关于\LaTeX{}的入门教程很多，下面这
 几个小教程就很不错，花一两天时间去熟悉一下，
+
 \begin{enumerate}
 \item \LaTeX{} from Wikibooks\footnote{\url{https://en.wikibooks.org/wiki/LaTeX}}
 \item The very short guide to typesetting with
@@ -183,12 +157,14 @@
 \item The not so Short Introduction to
   \LaTeX{}\footnote{\url{https://www.ctan.org/tex-archive/info/lshort/english/?lang=en}}
 \end{enumerate}
+
 在有了对\LaTeX{}的基础认识之后，再接着往下看。
 
 \section{工作环境}
 \label{sec:env}
 
 工作环境当然要清静、优雅。一杯热咖啡，配上轻音乐……除此之外，你还需要一台电脑，最好是像我用的电脑，
+
 \begin{description}
 \item[硬件：]不用太高级，但内存最好大一些，不少于4G为宜，因为在我看，CPU已经足够快了，电脑
   的运行速度更多的是取决于内存是否充足；
@@ -211,25 +187,30 @@
   幕，还是Sawfish更友好些，因为它能方便地让我全屏操作。
 
   除了窗口管理器，显然你还需要几个“窗口”。下面这三个恐怕是必须有的，
+
   \begin{itemize}
   \item Web浏览器，我用google-chrome；
   \item PDF阅读工具，我用zathura；
   \item 终端，我用xterm；
   \end{itemize}
+
 \item[\LaTeX{}套件：]TeXLive\footnote{\url{https://en.wikipedia.org/wiki/TeX_Live}}，它完备
   而庞大，我们只需要其中很少的一些软件包就够了；
 \item[中文字体：]从你的Windows系统里拷贝过来就行了。相信我，这其实是你人生中唯一需要Windows的时
   候；
 \item[编辑器：]Emacs + AUC\TeX{}\footnote{\url{https://en.wikipedia.org/wiki/AUCTeX}} +
   Yasnippet\footnote{\url{https://www.emacswiki.org/emacs/Yasnippet}}；
+
   \begin{itemize}
-  \item Emacs，世界上最强大的编辑器。\cite{emacs}作为计科专业的学生，如果你不熟悉它的使用，怎么好意思
-    写毕业论文呢？
-  \item AUC\TeX{}是一个历史悠久而强大的Emacs插件，它为我们编辑\LaTeX{}文件提供了丰富的快捷键操作；\cite{auctex}
-  \item Yasnippet也是Emacs插件，它的功用就是为\Tab{}键施加魔法。\cite{yasnippet}有了它，期待奇迹出现的
-    时候，你只要左手小指在\Tab{}键上轻轻一按……当然，你得先学会写魔咒（snippets）才
-    行\,\Frowny{}。\label{p:yasnippet}
+  \item Emacs，世界上最强大的编辑器。\cite{emacs}作为计科专业的学生，如果你不熟悉它的使用，
+    怎么好意思写毕业论文呢？
+  \item AUC\TeX{}是一个历史悠久而强大的Emacs插件，它为我们编辑\LaTeX{}文件提供了丰富的快捷
+    键操作；\cite{auctex}
+  \item Yasnippet也是Emacs插件，它的功用就是为\Tab{}键施加魔法。\cite{yasnippet}有了它，期
+    待奇迹出现的时候，你只要左手小指在\Tab{}键上轻轻一按……当然，你得先学会写魔咒（snippets）
+    才行\,\Frowny{}。\label{p:yasnippet}
   \end{itemize}
+
   简而言之，有了上面两个插件，Emacs就成了一个强大的\LaTeX{}排版IDE\footnote{集成开发环境（Integrated
     Development Environment）。}。有了它，写起论文来，就像领导说套话一样顺滑流畅。
 \end{description}
@@ -259,6 +240,7 @@
 \label{sec:hello.c}
 
 我们先回忆一下用Emacs写一个\texttt{hello.c}的键盘操作过程:
+
 \begin{enumerate}
 \item \Se{}，如果你的系统配置和我的一样，那么只要按下\Se{}键，Emacs窗口就
   出现在你面前了，而且（感谢Sawfish）是全屏的；
@@ -266,6 +248,7 @@
   上你要编辑的文件的名字，也就是\texttt{hello.c}，然后按\Enter{}（回车键），或者\Cj{}，其
   实，后面你会发现，\Cj{}带自动缩进，比按\Enter{}更方便；
 \item 现在可以向你打开的空文件里写东西了；
+
   \begin{minted}[fontsize=\small,baselinestretch=1,
     linenos=true,numbersep=3pt,
     frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
@@ -279,6 +262,7 @@
       return 0;
     }
   \end{minted}
+
 \item 存盘：\Cx \Cs{}；
 \item 编译：\texttt{gcc hello.c}；
 \item 运行：\texttt{./a.out}；
@@ -288,10 +272,12 @@
 \label{sec:hello.tex}
 
 现在，我们再看看用\LaTeX{}写一个\texttt{hello.tex}文件的过程：
+
 \begin{enumerate}
 \item \Se{}，打开Emacs；
 \item \Cx{} \Cf{}，\texttt{hello.tex}，开始编辑；
 \item 写入文件内容；
+
   \begin{minted}[fontsize=\small,baselinestretch=1,
     linenos=true,numbersep=3pt,
     frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
@@ -303,6 +289,7 @@
       Hello, world!
     \end{document}
   \end{minted}
+
 \item 存盘：\Cx \Cs{}；
 \item 编译：\texttt{xelatex hello.tex}；
 \item 看结果：\texttt{xpdf hello.pdf}。
@@ -310,12 +297,14 @@
 
 怎么样？ \texttt{hello.c}和\texttt{hello.tex}的编辑过程没什么分别吧。只要把Emacs用熟练，触
 类旁通，不管写什么程序，都是这么个过程。你
+
 \begin{itemize}
 \item 不必学习VC去写C/C++；
 \item 不必学习eclipse去写Java；
 \item 不必学习MS-Word去写报告、幻灯片；
 \item 不必学习……
 \end{itemize}
+
 一句话，“Everything Emacs”，你可以省下大量不必要的学习时间。人生苦短，何必让你的生活
 被 VC/eclipse/MS-Word 搞得头昏脑胀呢？ 简单而强大，本就是计科专业学生和非专业学生应有的不
 同。
@@ -329,6 +318,7 @@
 样痛苦。但只有不依赖拐杖的人才是健康的，不是吗？
 
 现在，你终于有了走向健康生活的冲动，那么我们开始吧。简短截说，
+
 \begin{enumerate}
 \item 先把你的双手在标准键盘上放好。然后，
 \item 左手小指稍向左移，按在\Caps{}(CapsLock)键上\footnote{如果你的系统配置和我一
@@ -337,9 +327,11 @@
 \item 小指按在\Caps{}上别放开，左手食指在\LKey{f}键上轻按一下就放开，这就是\Cf{}。
 \item 现在左手小指可以放开了。
 \end{enumerate}
+
 这就是\Cx \Cf{}，最常用的Emacs快捷键之一，作用是要求打开一个文
 件\footnote{如果你要打开的文件不存在，那么Emacs会认为你要写一个新文件。}，f代表file 。那么，
 告诉我
+
 \begin{itemize}
 \item 什么是 \LKeyCtrlX{x} \LKeyCtrlX{s}?
 \item 什么是 \LKeyCtrlX{x} \LKey{2}? 什么是\LKeyCtrlX{x} \LKey{3}? 什么是\LKeyCtrlX{x}
@@ -353,6 +345,7 @@
 \item 什么是 \LKeyCtrlX{a}? 什么是\LKeyCtrlX{e}? 什么是\LKeyCtrlX{f}? 什么是\LKeyCtrlX{b}?
   什么是\LKeyCtrlX{n}? 什么是\LKeyCtrlX{p}?
 \end{itemize}
+
 如果你还不熟悉上面这些快捷键，那么用起Emacs来，就会像西洋人用筷子一样不酷。（「嘿！把你的手从
 鼠标上拿开！」）刚甩开拐杖，走向健康生活的人，总会不自觉地去扶点什么，这很正常。但你一定要坚
 持锻炼，不要让这种「正常」持续得太久。今后的生活能否轻松愉快，主要就取决于你的「健康」程度。
@@ -369,29 +362,38 @@ AUC\TeX{}是Emacs的一个功能模块，为\LaTeX{}编程提供了巨大的便�
 
 在Emacs窗口的最下方，也就是 mini buffer 里，这时应该会有提示，让你输入文件名。输
 入\texttt{simple.tex}, 然后按 \LKeyCtrlX{j}。如果这时 mini buffer 里有如下提示：
+
 \begin{itemize}
 \item[] \texttt{Master file: (default this file) ...}
 \end{itemize}
+
 直接按 \Cj{} 就可以了。知道了吧, \Cj{} 就是我们的\Enter{}（回车）键。如果你的手正放在「标准
 键盘」上，那么，左手小指向左一偏，按到的正是\Ctrl{}键（\Caps{}{\scriptsize (CapsLock)}被我
 们改造成\Ctrl{}了）。右手食指下不正是\LKey{j}键吗？怎么样，比\Enter{}更方便吧。
 
 现在，可以向 \texttt{simple.tex}文件里写东西了，\Cc \Ce{}，e代表environment。“环境”到底是什么
 呢？意会吧，用用就明白了。在 mini buffer 里会有提示，
+
 \begin{itemize}
 \item[] \texttt{Environment type: (default document)}
 \end{itemize}
+
 这是在问你是不是要写一篇document（文章）啊？你当然该用\Cj{}来告诉它「是」。这时，mini buffer 又会提示，
+
 \begin{itemize}
 \item[] \texttt{Document class: (default article)}
 \end{itemize}
+
 这是在问你是不是要写一篇 article 类型的文章啊？除了 article，通常还有 book, report, letter
 可供选择。我们现在碰巧就是要写个短小的 article，所以，按\Cj{}确认就好。这时， mini buffer 继续提示，
+
 \begin{itemize}
 \item[] \texttt{Options:}
 \end{itemize}
+
 这是在问你是否有什么特殊选项啊？用\Cj{}来告诉它说「不需要」。现在，你的 \texttt{simple.tex}
 文件里应该有如下几行东西了：
+
 \begin{minted}[fontsize=\small,baselinestretch=1,
   linenos=true,numbersep=3pt,
   frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
@@ -408,8 +410,8 @@ AUC\TeX{}是Emacs的一个功能模块，为\LaTeX{}编程提供了巨大的便�
 这时，光标停在 \verb|\begin{document}|与 \verb|\end{document}|之间，等待你的输入。百分号
 （\verb|%|）后面显然都是注释。
 
-在第\ref{sec:hello}节里，你已经会写 \texttt{Hello, world!}了。现在，我们要写点像模像样的东西。
-偷懒起见，我直接套{\tiny (\pinyin{chao1})}用{\tiny (\pinyin{xi2})} Andrew
+在第\ref{sec:hello}节里，你已经会写 \texttt{Hello, world!}了。现在，我们要写点像模像样的东
+西。偷懒起见，我直接套{\tiny (\pinyin{chao1})}用{\tiny (\pinyin{xi2})} Andrew
 Roberts 写的
 \texttt{simple.tex}\footnote{\url{http://en.wikibooks.org/wiki/LaTeX/simple.tex}}\cite{simple}
 。我们把注意力集中在用Emacs写文章的过程上。
@@ -418,11 +420,14 @@ Roberts 写的
 
 先确保你的光标在 \verb|\begin{document}| 和 \verb|\end{document}| 之间，也就是文章的
 第4行。然后按\Cc \Cm{}，这时 mini buffer 里会有如下提示：
+
 \begin{itemize}
 \item[] \verb|Macro (default ref): \|
 \end{itemize}
+
 这是系统在等待你输入一个 \texttt{Macro}，说白了就是“命令”。输入：\texttt{title}，\Cj{}，这时
 你的文章会变成下面这样：
+
 \begin{minted}[fontsize=\small,baselinestretch=1,
   linenos=true,numbersep=3pt,
   frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
@@ -435,8 +440,10 @@ Roberts 写的
   \title{|} 
   \end{document}           % 文章的结束
 \end{minted}
+
 这时，光标停在 \verb|\title{}| 的花括号里。不用说你也知道，该输入文章的标题了。那么就给它
 一个标题：
+
 \begin{minted}[fontsize=\small,baselinestretch=1,
   linenos=true,numbersep=3pt,
   frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
@@ -449,6 +456,7 @@ Roberts 写的
   \title{How to Structure a \LaTeX{} Document} 
   \end{document}           % 文章的结束
 \end{minted}
+
 发现了吗？凡是以反斜杠开头的都是命令（\texttt{Macro}）， 比如 \verb|\LaTeX{}|，它的唯一作用
 就是把 \texttt{LaTeX} 这五个字母输出成一副怪样子，\LaTeX{}。
 
@@ -457,9 +465,11 @@ Roberts 写的
 出的新窗口中，列出了近百个 Macro. 还好，我们并不需要记住这么多。最常用的也就三、五个而已。
 
 mini buffer 里又会有提示：
+
 \begin{itemize}
 \item[] \verb|Macro (default title): \|
 \end{itemize}
+
 Emacs会把我们上次输入的Macro，也就是title，做为默认值提示出来。不用管它，输入：
 \texttt{author} \Cj{}。然后在 \verb|\author{}| 的花括号里输入作者的名字。当然，也可以把自己
 的通信地址、email写在里面。就像下面这样：
@@ -485,10 +495,12 @@ Emacs会把我们上次输入的Macro，也就是title，做为默认值提示�
 \end{minted}
 
 注意，\verb|\\|代表“强制换行”。现在，新起一行，加上日期：
+
 \begin{enumerate}
 \item \Cc\Cm{} date \Cj
 \item \Cc\Cm{} today \Cj
 \end{enumerate}
+
 其实，如果没有 \verb|\date{\today}| 这一句，系统会自动把今天的日期添加上的。而
 且 \verb|\date{}|里面的日期你可以随意写，不一定非要是当天的日期。title, author, date 一般被
 叫做文章的 top matter（开头那点事）。
@@ -519,10 +531,12 @@ Emacs会把我们上次输入的Macro，也就是title，做为默认值提示�
 \end{minted}
 
 好奇的话，现在可以编译一下，看看PDF文件的效果：
+
 \begin{enumerate}
 \item 编译：\Cc\Cc\Cj
 \item 查看：\Cc\Cv
 \end{enumerate}
+
 这时，一个PDF文件应该显示在屏幕上了。效果还满意吧？保持你的好奇心。在下面的操作中，你随时可
 以编译一下看看效果。
 
@@ -535,9 +549,11 @@ Emacs会把我们上次输入的Macro，也就是title，做为默认值提示�
 好了，回到Emacs。现在你的光标应该停在 \verb|\maketitle| 的下面一行。我们开始写「摘要」部
 分。\Cc\Ce{}，开始一个新的“环境”\footnote{如果你好奇心强，想知道总共有哪些“环境”的话，现在
   可以按\Tab{}键。}。mini buffer 里提示：
+
 \begin{itemize}
 \item[] \texttt{Environment type: (default itemize)}
 \end{itemize}
+
 这是在问你要开始哪个环境啊？默认是开始 itemize 环境，因为它是最常用的环境。但我们现在要写的是“摘要”，告诉它：
 abstract \Cj{}。abstract 就是“摘要”的意思。科技论文都是要有摘要的嘛。于是，你的文章变成了这样:
 
@@ -581,6 +597,7 @@ abstract \Cj{}。abstract 就是“摘要”的意思。科技论文都是要有
 \end{minted}
 
 看看效果：
+
 \begin{center}
   \fbox{\includegraphics[width=.45\textwidth]{abstract}}
 \end{center}
@@ -592,18 +609,24 @@ abstract \Cj{}。abstract 就是“摘要”的意思。科技论文都是要有
 
 好，按\Cn{}把光标移到 \verb|\end{abstract}| 的下一行。然后，\Cc\Cs{}，让我们开始文章的第一节。
 s 代表 section, “节”的意思。mini buffer 提示：
+
 \begin{itemize}
 \item[] \texttt{Level: (default section) }
 \end{itemize}
+
 显然是在问你，要不要起一个新 section 啊？没错，我就是要起一个新的章节，于是直接\Cj{}。
 mini buffer 又提示：
+
 \begin{itemize}
 \item[] \texttt{Title:}
 \end{itemize}
+
 也就是问你，章节标题是……？那就给它个标题吧，就叫“Introduction”。\Cj{}之后， mini buffer 继续提示：
+
 \begin{itemize}
 \item[] \texttt{Label: sec:introduction}
 \end{itemize}
+
 这是在问你，要不要给这个新章节打个标签，比如 \texttt{sec:introduction}, 以后也许要索引到它呢？
 这个暂时无关紧要，\Cj{}就行了。于是，文中又有了下面的第5、6两行。
 
@@ -706,21 +729,28 @@ mini buffer 又提示：
 \item paragraph
 \item subparagraph
 \end{enumerate}
+
 其中的chapter，只有在 book 和 report 中才能使用，而 article 只能用 section 以下的东西。
 
 现在我们就来增加一个 subsubsection。不出所料的话，光标现在应该在第34行。那么
 就\Cc\Cs{}，mini buffer 提示：
+
 \begin{itemize}
 \item[] \texttt{Level: (default subsection)}
 \end{itemize}
+
 当然输入：subsubsection \Cj{}。mini buffer 提示：
+
 \begin{itemize}
 \item[] Title:
 \end{itemize}
+
 输入：Article Information \Cj。mini buffer 提示：
+
 \begin{itemize}
 \item[] \texttt{Label: sec:article-information}
 \end{itemize}
+
 似曾相识吧？敲\Cj{}，于是，文章中又有了如下两行：
 
 \begin{minted}[fontsize=\small,baselinestretch=1,
@@ -738,9 +768,11 @@ mini buffer 又提示：
 \subsection{什么是环境}
 
 现在，我们来添加一个 environment。\Cc\Ce{}，mini buffer 提示：
+
 \begin{itemize}
 \item[] \texttt{Environment type: (default abstract)}
 \end{itemize}
+
 我们当然不再需要 abstract 了，现在我们要的是 itemize ，也就是“不带序号的列表”。那么当然输
 入：itemize \Cj{}。于是看到：
 
@@ -756,9 +788,11 @@ mini buffer 又提示：
 \end{minted}
 
 光标停在 \verb|\item| 的后面。非常好，这正是我想要的。于是直接输入如下文字：
+
 \begin{itemize}
 \item[] \verb'\verb|\title{}| --- The title of the article.'
 \end{itemize}
+
 输入之后，\MEnter{}，也就是，左手拇指按住\LKeyAlt{}键，同时右手小指去敲\Enter{}。你会看到
 这样的效果：
 
@@ -786,9 +820,11 @@ verbatim 一词的缩写，就是“原样引用”的意思。好奇的话，�
 \end{center}
 
 好，继续输入：
+
 \begin{itemize}
 \item[] \verb'\verb|\date| --- The date. Use:'
 \end{itemize}
+
 得到：
 
 \begin{minted}[fontsize=\small,baselinestretch=1,
@@ -842,6 +878,7 @@ verbatim 一词的缩写，就是“原样引用”的意思。好奇的话，�
 \end{minted}
 
 编译之后的效果应该和下面这张图差不多。
+
 \begin{center}
   \fbox{\includegraphics[width=.5\textwidth]{env3-crop}}
 \end{center}
@@ -879,6 +916,7 @@ verbatim 一词的缩写，就是“原样引用”的意思。好奇的话，�
 \end{minted}
 
 显示效果：
+
 \begin{center}
   \fbox{\includegraphics[width=.6\textwidth]{env4}}
 \end{center}
@@ -889,7 +927,7 @@ verbatim 一词的缩写，就是“原样引用”的意思。好奇的话，�
 \begin{table}[!htbp]
   \centering
   \caption{常用快捷键}\label{tab:keys}
-  \begin{tabu*}to .5\textwidth {X[r]|X[l]}
+  \begin{tabu*}to .5\textwidth {X[r,-1]|X[l,-1]}
     \hline
     \rowfont[c]{\bfseries}快捷键&功用\\\hline
     \Cj{}&换行带缩进\\
@@ -901,10 +939,12 @@ verbatim 一词的缩写，就是“原样引用”的意思。好奇的话，�
 \end{table}
 
 好，趁热打铁，再起一个小节，
+
 \begin{enumerate}
 \item \Cc\Cs{} subsection \Cj
 \item Sectioning Commands \Cj\Cj
 \end{enumerate}
+
 再添加一些文字，得到：
 
 \begin{minted}[fontsize=\small,baselinestretch=1,
@@ -937,9 +977,11 @@ verbatim 一词的缩写，就是“原样引用”的意思。好奇的话，�
 \subsection{制作表格}
 
 在这一小节，我们来尝试一下表格的输入。先起一个新“环境”，center，自然是“居中”的意思 ：
+
 \begin{enumerate}
 \item[] \Cc\Ce center \Cj
 \end{enumerate}
+
 得到：
 
 \begin{minted}[fontsize=\small,baselinestretch=1,
@@ -968,22 +1010,30 @@ verbatim 一词的缩写，就是“原样引用”的意思。好奇的话，�
 \end{minted}
 
 在center环境里面，我们添加一个 tabular（表格）环境：
+
 \begin{enumerate}
 \item[] \Cc\Ce{} tabular \Cj
 \end{enumerate}
+
 这时你会看到这样的提示：
+
 \begin{enumerate}
 \item[] \texttt{(Optional) Position:}
 \end{enumerate}
+
 Optional是可有可无的意思，也就是说，你如果在意表格的位置（Position），那么就提供位置信息；
 如果不在意，那么就不用管它。现在我们连「位置」意味着什么都不清楚，自然就不必管它了。直接 \Cj{}，又看到提示了：
+
 \begin{enumerate}
 \item[] \texttt{Format:}
 \end{enumerate}
+
 这是问你，表格的格式，比如该有几列？每列之间要不要有竖线分割？等等。我的答案是这样：
+
 \begin{enumerate}
 \item[] \texttt{|l|l|}
 \end{enumerate}
+
 也就是：竖线（|），小写L（l），竖线（|），小写L（l），竖线（|）。小写L代表 left，也就是“左对齐”的
 意思。那么，你应该恍然大悟了，不就是……竖线-左对齐-竖线-左对齐-竖线嘛。那么，举一反三，除了
 小写L，我们还会见到r（右对齐）和c（居中）。现在 \Cj{}，得到如下结果：
@@ -1016,13 +1066,17 @@ Optional是可有可无的意思，也就是说，你如果在意表格的位置
 \end{minted}
 
 现在我们开始画表格，先画一条横线：
+
 \begin{enumerate}
 \item[] \verb'\hline' \Cj
 \end{enumerate}
+
 所谓 \verb'\hline' ，顾名思义，就是 horizontal line。画完横线，开始第一行，
+
 \begin{enumerate}
 \item[] \verb'Command & Level \\ \hline' \Cj
 \end{enumerate}
+
 那个 \verb'&' 就是两列之间的分隔符，``\verb'\\'''我们见过，表示强制换行。照猫画虎，把所有的
 行都加上，得到如下结果：
 
@@ -1115,9 +1169,11 @@ Optional是可有可无的意思，也就是说，你如果在意表格的位置
 \end{minted}
 
 现在编译一下，看看效果：
+
 \begin{center}
   \fbox{\includegraphics[width=.9\textwidth]{env6-crop-1}}
 \end{center}
+
 \begin{center}
   \fbox{\includegraphics[width=.9\textwidth]{env6-crop-2}}
 \end{center}
@@ -1126,26 +1182,34 @@ Optional是可有可无的意思，也就是说，你如果在意表格的位置
 \subsection{引用参考文献}
 
 现在我们讲讲“参考文献”。其实还是个environment，叫thebibliography。试试吧，
+
 \begin{enumerate}
 \item[] \Cc\Ce{} thebibliography \Cj
 \end{enumerate}
+
 mini buffer 提示：
+
 \begin{enumerate}
 \item[] \texttt{Label for BibItem: 99}
 \end{enumerate}
+
 这是问你，在引用参考文献时，采用两个字符宽的标签是否合适？你知道, 参考文献在文章中被引用到
 的时候，不都是以 [1],[2]...[99] 这样的形式出现吗？所谓“两个字符的宽度”，也就是说方括号里的
 数字不超过两个，也就是说你的文章中最多可以有 [1]...[99] 99个文献索引。这对于一篇普通的文章
 来说肯定是足够多了。
 
 按\Cj{}，mini buffer 提示：
+
 \begin{enumerate}
 \item[] \texttt{(Optional) Bibitem label:}
 \end{enumerate}
+
 这是问你，要不要给每个参考文献条目加个标签？不理它, 按\Cj{}， mini buffer 提示：
+
 \begin{enumerate}
 \item[] \texttt{Add key (default none):}
 \end{enumerate}
+
 这是必须要理的。所谓 key ，实际上就是一条参考文献的“标识号”，它是和前面我们见到
 的 \verb'\cite{}' 命令配合使用的。在引用一条参考文献时，就必然要通过它的标识号来唯一地找到
 它。比如 \verb'\cite{lamport94}' 就是要从参考文献列表中找到 \texttt{lamport94}所对应的那一条。
@@ -1182,6 +1246,7 @@ mini buffer 提示：
 \end{minted}
 
 再加一条：
+
 \begin{enumerate}
 \item \MEnter{} \Cj{} simple \Cj
 \item \texttt{Andrew Roberts,} \Cj
@@ -1189,6 +1254,7 @@ mini buffer 提示：
 \item \texttt{Wikibooks,}
 \item \texttt{2003.}
 \end{enumerate}
+
 于是得到：
 
 \begin{minted}[fontsize=\small,baselinestretch=1,
@@ -1216,15 +1282,18 @@ mini buffer 提示：
 后它的样子，其实很简单，就是个``\texttt{[1]}''，在第1节的第2行。
 一篇像模像样的科技论文到此就算是大功告成了。\texttt{simple.tex}的完整文件可以通过下面这个链
 接找到：
+
 \begin{itemize}
 \item \url{https://en.wikibooks.org/wiki/LaTeX/simple.tex}
 \end{itemize}
 
 \section{小结}
+
 本章我们利用Andrew Roberts的\texttt{simple.tex}了解了一下\LaTeX{}中最常用的命令和环境，同时
 也熟悉了一下Emacs的基本键盘操作，在此做个小结。
 
 \LaTeX{}最常用到的命令和环境：
+
 \begin{center}
   \begin{tabu*}{|l|l|l|}
     \hline \verb'\title{}'&\verb'\author{}'&\verb'\date{}'\\\hline
@@ -1288,6 +1357,7 @@ mini buffer 提示：
 文，hmm...，同志仍需努力。
 
 在后续章节里，我们将简要介绍如下一些内容：
+
 \begin{enumerate}
 \item 如何插入图片
 \item 如何写数学公式
@@ -1322,6 +1392,7 @@ mini buffer 提示：
 \end{minted}
 
 怎么样，能看明白吗？插入图片用到了三个新命令：
+
 \begin{enumerate}
 \item \verb'\usepackage{graphicx}', 这是在说「我要用到一个名字叫 graphicx 的package(宏
   包)」。这很类似于我们C编程时常用的 \verb'#include<stdio.h>'。\verb'\includegraphics{}'就
@@ -1345,6 +1416,7 @@ mini buffer 提示：
   \item 宽度是5cm，也可以是相对宽度，比如 \verb'[width=.5\textwidth]' 就表示宽度等于0.5倍的行宽。
   \end{enumerate}
 \end{enumerate}
+
 如果你希望图片“居中”摆放，那自然是要用到 center 了：
 
 \begin{minted}[fontsize=\small,baselinestretch=1,
@@ -1366,6 +1438,7 @@ mini buffer 提示：
 \end{minted}
 
 编译后的效果大致就是这样，居中，5cm宽。
+
 \begin{center}
   \includegraphics[width=5cm]{tux}
 \end{center}
@@ -1380,31 +1453,44 @@ environment，叫figure。
 \begin{enumerate}
 \item[] \texttt{(Optional) Float position:}
 \end{enumerate}
+
 这是在问你图片放在那里比较好啊？是靠上？还是靠下？还是懒得操心？如果没概念，那还是让LaTeX
 来决定吧，\Cj{}， mini buffer 提示：
+
 \begin{enumerate}
 \item[] \texttt{Caption:}
 \end{enumerate}
+
 这是在提示你输入图片的说明文字。那么输入：
+
 \begin{enumerate}
 \item[] \texttt{Linux logo}
 \end{enumerate}
+
 mini buffer 提示：
+
 \begin{enumerate}
 \item[] \texttt{Center? (y or n):} 
 \end{enumerate}
+
 当然选：
+
 \begin{enumerate}
 \item[] \texttt{y}
 \end{enumerate}
+
 mini buffer 提示：
+
 \begin{enumerate}
 \item[] \texttt{Label: fig:}
 \end{enumerate}
+
 这是要你给图片打个标签，以后方便索引到它。那么就给个标签：
+
 \begin{enumerate}
 \item[] \texttt{linux-logo}
 \end{enumerate}
+
 于是得到：
 
 \begin{minted}[fontsize=\small,baselinestretch=1,
@@ -1537,6 +1623,7 @@ Figure~\ref{fig:linux-logo} is the famous Linux Tux!
 \end{minted}
 
 上述代码就可以生成如下的效果，不仅数字是正确的，而且它们都是hyperlink，用鼠标点一下试试。
+
 \begin{enumerate}
 \item 本文的第\ref{cha:pre-requisite}章介绍了一个简单、高效的工作环境；
 \item 在表\ref{tab:keys}中列出了几个最常用的快捷键；
@@ -1547,24 +1634,30 @@ Figure~\ref{fig:linux-logo} is the famous Linux Tux!
 
 插入标签和索引也是有快捷键的。\Cc\biolinumKeyGlyph{parenleft}就是要插入标签，mini
 buffer提示：
+
 \begin{enumerate}
 \item[] \texttt{Label: cha:}
 \end{enumerate}
+
 如果你不是要插入章标签，那么可以把\texttt{cha}改成其它你认为合适的字符。通常Emacs会根据光
 标所在的环境给出不同的提示，如果光标在
+
 \begin{itemize}
 \item Figure里，它就提示\texttt{fig:}；
 \item Table里，它就提示\texttt{tab:}；
 \item 正文中其它什么地方，它就提示 \texttt{cha:}或者 \texttt{sec:}。
 \end{itemize}
+
 现在，在提示下输入一个简短而好记的标签名称，以便后面可以轻松找到它。
 
 要插入索引（\verb'\ref{}'）的话，敲 \Cc\biolinumKeyGlyph{parenright}，mini buffer 提示：
+
 \begin{itemize}
 \item[] \texttt{SELECT A REFERENCE FORMAT}
 \item[] \verb'[^M]  \ref'
 \item[] \verb'[p]   \pageref' 
 \end{itemize}
+
 这是让你选择索引格式，如果想索引某页的话，就选\texttt{[p]}。其它任何情况，都选择
 \verb'[^M]'，也就是直接回车，\Enter{}。根据你的选择，Emacs会弹出新的buffer，方便你找到要引
 用的标签。
@@ -1587,6 +1680,7 @@ buffer提示：
 \end{minted}
 
 结果是这样：
+
 \begin{itemize}
 \item[] This is a simple math example: $c^2=a^2+b^2$
 \end{itemize}
@@ -1595,6 +1689,7 @@ buffer提示：
 如果想让数学公式独占一行的话，就用双美元符号（\verb'$$'），比如，
 $$(1+x)^n=\sum_{k=0}^n\binom{n}{k}x^k$$
 就是\verb'$$(1+x)^n=\sum_{k=0}^n\binom{n}{k}x^k$$'的输出结果。还不难看懂吧？
+
 \begin{itemize}
 \item \verb'\sum' $\Rightarrow\sum$
 \item \verb'\binom{n}{k}' $\Rightarrow\binom{n}{k}$
@@ -1750,6 +1845,7 @@ minted宏包提供了丰富的命令，可以支持数十种编程语言，后�
   Sans CJK是Google提供的开源字体；
 \item[34-37] 这四行用于在文章中间变换字体，如果你没这个需求，就不必管它。
   举几个例子，
+
   \begin{itemize}
   \item \{\verb'\CJKfamily{kai}'楷体\} $\Rightarrow$ {\CJKfamily{kai}楷体}
   \item \{\verb'\CJKfontspec{FZGuLi-S12S}'方正古隶简体\} $\Rightarrow$
@@ -1757,6 +1853,7 @@ minted宏包提供了丰富的命令，可以支持数十种编程语言，后�
   \item \{\verb'\CJKfontspec{FZXingKai-S04S}'方正行楷简体\} $\Rightarrow$
     {\CJKfontspec{FZXingKai-S04S}方正行楷简体}
   \end{itemize}
+
   还不错吧？但前提是你的系统里要已经装上了这些字体才行。
 \item[39] 这一行用于调整字间距离。比如，
   \begin{itemize}
@@ -1854,6 +1951,7 @@ Class文件\footnote{也就是后缀为\texttt{.cls}的文件，也就是我们�
 \end{onehalfspace}
 
 装好之后，重新加载Emacs的配置文件。很简单，在Emacs窗口里，敲
+
 \begin{itemize}
 \item[] \Mx{} \texttt{load-file} \Cj{} \verb'~/.emacs' \Cj{}
 \end{itemize}
@@ -1906,6 +2004,7 @@ rulecolor=\color{lightgray},]{latex}{tutorial.bib}
 \paragraph*{怎样使用这个文件？}
 
 很简单，三件事：
+
 \begin{enumerate}
 \item 第一件事不用做，因为在我们的论文模板文件（\texttt{swfcthesis.cls}）里已经做了。在模板
   文件里有如下一行：
@@ -1932,6 +2031,7 @@ rulecolor=\color{lightgray},]{latex}{tutorial.bib}
 \section{小结}
 
 在此我们简单回顾一下，要写出漂亮的毕业论文所应具备的必要条件：
+
 \begin{enumerate}
 \item 一套高效的工作环境
   \begin{enumerate}
@@ -1946,6 +2046,7 @@ rulecolor=\color{lightgray},]{latex}{tutorial.bib}
 
 只要具备了以上条件，轻松地写出一份漂亮、规范的毕业论文应该不成问题了。
 先到这里吧。以后如果有时间，我会继续介绍一下
+
 \begin{enumerate}
 \item 如何用\LaTeX{} Beamer做出漂亮的演示幻灯片；
 \item 如何用Emacs org-mode快速生成PDF文件。
@@ -1960,14 +2061,13 @@ rulecolor=\color{lightgray},]{latex}{tutorial.bib}
   {\Huge \fontspec{Purisa}Happy \TeX{}ing!}
 \end{flushright}
 
-%%% 正文部分到此结束。下面是『参考文献』、『指导教师简介』、『鸣谢』、『附录』
+%%% 正文部分到此结束。下面是参考文献、指导教师简介、鸣谢、附录
 \Appendix{} % 不要动这一行！
 \printbibliography[heading={bibintoc},title={参考文献}]\label{p:ref} % 输出参考文献     
 \advisorinfopage{}                 % 输出指导教师简介
 \acknowledgmentspage{}             % 输出鸣谢
 
-%%% 下面是附录部分。
-
+% 附录章节
 \chapter{与排版论文相关的软件清单}\footnotetext{
   这份清单是用如下命令获得的：
   \texttt{aptitude search '\~{}i keyword' >> pkg-list}。
@@ -2033,7 +2133,7 @@ rulecolor=\color{lightgray},]{latex}{tutorial.bib}
 \item fcitx-ui-classic - Flexible Input Method Framework - Classic user interface
 \end{enumerate}
 
-\chapter{中文article模板} %附录一
+\chapter{中文article模板}
 \label{app:article}
 
 \inputminted[fontsize=\small,baselinestretch=1,
@@ -2041,7 +2141,7 @@ linenos=true,numbersep=3pt,
 frame=leftline,framesep=10pt,
 rulecolor=\color{lightgray},]{latex}{article.tex}
 
-\chapter{毕业论文模板} %附录二
+\chapter{毕业论文模板}
 \label{app:thesis}
 
 \inputminted[fontsize=\small,baselinestretch=1,
