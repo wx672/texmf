@@ -8,7 +8,7 @@
 \RequirePackage{graphicx}
 \RequirePackage[ % showframe,
 paperwidth=195mm,paperheight=270mm,
-top=2cm,bottom=2cm,
+top=2cm,bottom=1cm,
 left=2cm,right=2cm
 ]{geometry}
 
@@ -71,11 +71,11 @@ left=2cm,right=2cm
       \vskip 10ex
       \textbf{选}\par{}\textbf{题}\par{}\textbf{的}\par{}\textbf{目}\par{}\textbf{的}\par{}
       \textbf{及}\par{}\textbf{意}\par{}\textbf{义}\vskip 10ex\,
-      &\SWFCField@Prjwhy{}\\\tabucline-
+      &\vskip 1ex\SWFCField@Prjwhy{}\\\tabucline-
       \vskip 10ex
       \textbf{学}\par{}\textbf{生}\par{}\textbf{任}\par{}\textbf{务}\par{}\textbf{及}\par{}
       \textbf{要}\par{}\textbf{求}\vskip 10ex\,
-      &\SWFCField@Prjwhat{}\\\tabucline-
+      &\vskip 1ex\SWFCField@Prjwhat{}\\\tabucline-
     \end{tabu}
   }
     \clearpage
@@ -91,20 +91,19 @@ left=2cm,right=2cm
     \begin{tabu}{|X[c,-1]|X|X[c,-1]|X|}
       \textbf{任务下达}\par{}\textbf{日期}&&
       \textbf{学生应送交毕业}\par{}\textbf{论文（设计）日期}&\\\tabucline-
-    \end{tabu}\vskip -1pt
-    \tabulinesep=3pt
-    \begin{tabu}{|X[-1,c]|X|X[c,-1]|X|}
-      \textbf{指导教师}\par{}\textbf{签字}&\SWFCField@Signature{}&
-      \textbf{接受任务}\par{}\textbf{学生签字}&\SWFCField@StudSignature{}\\
-      &
-      \begin{tabu}{X[r]@{}}
-      \SWFCField@Year{}\textbf{年}\SWFCField@Month{}\textbf{月}\SWFCField@Date{}\textbf{日}  
+    \end{tabu}\vskip -1pt\tabulinesep=2pt
+    \begin{tabu}{|X[-1,c]|X|X[-1,c]|X|}
+      &\SWFCField@Signature{}&&\SWFCField@StudSignature{}\\[-5ex]
+      \textbf{指导教师}\par{}\textbf{签字}&&\textbf{接受任务}\par{}\textbf{学生签字}&\\
+      &\begin{tabu}{X[r]@{}}
+        \SWFCField@Year{}\textbf{年}\SWFCField@Month{}\textbf{月}\SWFCField@Date{}\textbf{日}  
       \end{tabu}&&
       \begin{tabu}{X[r]@{}}
         \SWFCField@Year{}\textbf{年}\SWFCField@Month{}\textbf{月}\SWFCField@Date{}\textbf{日}
       \end{tabu}\\\tabucline-
-      \textbf{教研室}\par{}\textbf{审核}&\textbf{审核意见：}\par{}\textbf{签字：}&
-      \textbf{学院（部）}\par{}\textbf{审核：}&\textbf{审核意见：}\par{}\textbf{签字（盖章）：}\\[5pt]
+      &\textbf{审核意见、签字：}&&\textbf{审核意见、签章：}\\
+      \textbf{教研室}\par{}\textbf{审核}&&
+      \textbf{学院（部）}\par{}\textbf{审核：}&\\[3ex]
       &\begin{tabu}{X[r]@{}}
         \SWFCField@Year{}\textbf{年}\SWFCField@Month{}\textbf{月}\SWFCField@Date{}\textbf{日}
       \end{tabu}&&
