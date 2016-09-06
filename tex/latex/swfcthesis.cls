@@ -261,63 +261,27 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \setlength{\parindent}{2em}
 
 % Initialize the variables to their default values
-\Title{金庸笔下武功详解}
-\Author{周伯通}
-\Docname{本科毕业（设计）论文}
-\Advisor{王重阳}
-\AdvisorTitle{祖\hspace{1em}师}
+\Title{}
+\Author{}
+\Docname{}
+\Advisor{}
+\AdvisorTitle{}
 
-\AdvisorInfo{王重陽\footnote{参见维基百科-王重阳}（1113年1月13日－1170年），
-  原名中孚，字允卿，又名世雄，字德威，入道后改名喆，字知明，道号重阳子，故称王重阳。
-  北宋末京兆咸阳（今陕西咸阳）大魏村人。中國道教分支全真道的始創人，
-  后被尊为道教的北五祖之一。他有七位出名的弟子，在道教历史上称为北七真。}
+\AdvisorInfo{}
 
-\Month{六}
-\Year{一二三七}
-\Univ{中华武林大学}
-\School{全真玄门正宗学院}
-\Subject{打架斗殴专业}
-
-\Abstract{中國武術\footnote{参见维基百科 - 中国武术}
-  是中國传统文化的重要一環。兩廣人稱為功夫，民國初期簡稱為國術
-  （後為中央國術館正式採用之名稱）；被視為中國文化之精粹，故又稱國粹。
-  由於歷史發展和地域分佈關係，衍生出不同門派。
-  中國武術主要內容包括搏擊技巧、格鬥手法、攻防策略和武器使用等技術。
-  當中又分為理論和實踐兩個範疇。從實踐中帶來了有關體育、健身、和中國
-  武術獨有之氣功、及養生等重要功能。理論中帶來了不少前人之經驗和拳譜記錄。
-  因此，它体现中华民族对攻防技击及策略上的理解。加上經驗上積累，
-  以自立、自強、健體養生為目標的自我運作，
-  練習套路时顯示出身體動作之優美姿態。
-  中國武術往往帶有思想冶鍊的文化特徵及人文哲學的特色、意義，
-  對現今中國的大眾文化有著深遠影響\cite{wushucn}。} 
-
-\Keywords{金庸，武术，一陽指，双手互搏，空明拳，七傷拳，吸星大法，
-  葵花宝典，九陰真經，九陽真經，天山六陽掌，天羅地網勢，蛤蟆功，倚天屠龍功，
-  弹指神通，先天功，打狗棒法，全真剑法，摧心掌，降龍十八掌，六脈神劍，
-  火焰刀，黯然銷魂掌，龍爪擒拿手，兰花拂穴手，龍象般若掌，劈空掌，
-  玉女素心剑法，北冥神功，碧海潮生曲}
-
-\Acknowledgments{感谢师兄王重阳传我全真玄门正宗功夫，感谢段皇爷不杀之恩，
-  感谢刘贵妃不怨旧恶，感谢桃花岛主黄老邪助我练就空明拳和双手互搏之术，
-  感谢郭靖兄弟让我看《九阴真经》，感谢小龙女教我驭蜂之术。}
+\Month{}
+\Year{}
+\Univ{}
+\School{}
+\Subject{}
+\Abstract{} 
+\Keywords{}
+\Acknowledgments{}
 
 % The followings are for the English Abstract.
-\enTitle{Jin Yong's Chinese Martial Arts Illustrated}
-\enAuthor{Zhou Botong}
-\enUniv{Chinese Kungfu University}
-\enSchool{School of Taoism}
-\enAbstract{Chinese martial
-  arts\footnote{Wikipedia - Chinese martial arts}, also referred to by
-  the Mandarin Chinese term wushu and popularly as kung fu, are a number
-  of fighting styles that have developed over the centuries in China.
-  These fighting styles are often classified according to common traits,
-  identified as "families", "sects" or "schools" of martial arts.
-  Examples of such traits include physical exercises involving animal
-  mimicry, or training methods inspired by Chinese philosophies,
-  religions and legends. Styles which focus on qi manipulation are
-  labeled as internal, while others concentrate on improving muscle and
-  cardiovascular fitness and are labeled external. Geographical
-  association, as in northern and southern, is another popular method
-  of categorization\cite{wushu}.}
-
-\enKeywords{Jin Yong, Chinese martial arts, Kungfu}
+\enTitle{}
+\enAuthor{}
+\enUniv{}
+\enSchool{}
+\enAbstract{}
+\enKeywords{}
