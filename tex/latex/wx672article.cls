@@ -12,10 +12,10 @@
 
 \RequirePackage[font=footnotesize,labelfont=bf]{caption}
 
-\RequirePackage[skins]{tcolorbox}
-\tcbsetforeverylayer{colframe=black!5,coltitle=black,boxrule=.5pt,fonttitle=\bfseries,colback=white}
+% \RequirePackage[skins]{tcolorbox}
+% \tcbsetforeverylayer{colframe=black!5,coltitle=black,boxrule=.5pt,fonttitle=\bfseries,colback=white}
 
-\RequirePackage{multicol,rotating,soul,indentfirst,tabu}
+\RequirePackage{multicol,rotating,soul,indentfirst,tabu,longtabu}
 \setul{1.5pt}{.4pt}% 1.5pt below contents
 
 \RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
@@ -37,7 +37,6 @@
 \setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
 \setCJKsansfont{Noto Sans CJK SC Regular}
 \setCJKmonofont{Noto Sans Mono CJK SC Regular}
-
 \setCJKfamilyfont{hei}{Adobe Heiti Std}
 \setCJKfamilyfont{song}{Adobe Song Std}
 \setCJKfamilyfont{kai}{Adobe Kaiti Std} % e.g. \CJKfamily{kai}
