@@ -40,7 +40,7 @@
 \setCJKfamilyfont{hei}{Adobe Heiti Std}
 \setCJKfamilyfont{song}{Adobe Song Std}
 \setCJKfamilyfont{kai}{Adobe Kaiti Std} % e.g. \CJKfamily{kai}
-\newCJKfontfamily\quotefont{Adobt Kaiti Std}
+\newCJKfontfamily\quotefont{Adobe Kaiti Std}
 
 \RequirePackage{hyperref}
 \hypersetup{%
