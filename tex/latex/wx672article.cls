@@ -15,7 +15,7 @@
 % \RequirePackage[skins]{tcolorbox}
 % \tcbsetforeverylayer{colframe=black!5,coltitle=black,boxrule=.5pt,fonttitle=\bfseries,colback=white}
 
-\RequirePackage{multicol,rotating,soul,indentfirst,tabu,longtabu}
+\RequirePackage{multicol,rotating,soul,indentfirst,tabu}
 \setul{1.5pt}{.4pt}% 1.5pt below contents
 
 \RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
@@ -42,6 +42,7 @@
 \setCJKfamilyfont{kai}{Adobe Kaiti Std} % e.g. \CJKfamily{kai}
 \newCJKfontfamily\quotefont{Adobe Kaiti Std}
 
+\RequirePackage{xcolor} % must before hyperref
 \RequirePackage{hyperref}
 \hypersetup{%
   bookmarksnumbered,pdfpagelabels=true,plainpages=false,
@@ -53,14 +54,13 @@
   urlbordercolor=blue,
   % linkcolor=black,citecolor=black,urlcolor=blue
 }
-\RequirePackage{xcolor}
 
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
 
 \RequirePackage{parskip}
-\RequirePackage{indentfirst}
-\setlength{\parindent}{2em}
+% \RequirePackage{indentfirst}
+% \setlength{\parindent}{2em}
 \RequirePackage{setspace}
 
 \RequirePackage[backend=biber,url=false,hyperref=true,
