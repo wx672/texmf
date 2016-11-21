@@ -18,6 +18,9 @@
                 left=3cm, right=3cm,
                 ]{geometry}
 
+\RequirePackage{tikz}
+\usetikzlibrary{backgrounds,positioning,fit}
+                
 %\renewcommand\normalsize{\fontsize{10pt}{12pt}\selectfont} % The LaTeX Companion, A.4.9
 \defaultfontfeatures{Mapping=tex-text}
 \setmainfont{Liberation Serif}
@@ -100,11 +103,17 @@
         \SWFCField@Suggestion{}\\
       \end{tabu}\\\tabucline-
     \end{tabu}
+    % \vskip -7pt
+    % \tabulinesep=0pt
+    % \begin{tabu}{X[.232]X[c]cX}
+    %   &\SWFCField@TeacherName{}&&\\% \TeacherName{\includegraphics[height=3em]{../signature}}
+    % \end{tabu}
     \vskip -1pt
     \tabulinesep=2mm
     \begin{tabu}{|X[.232,c,m]|X[c]|c|X[c]|}
       填报人&\SWFCField@TeacherName{}&职称&\SWFCField@TeacherTitle{}\\\tabucline-
     \end{tabu}\vskip -1pt
+    \tabulinesep=2mm
     \begin{tabu}{|X[l]X[r]|}
       填报日期：\SWFCField@Date{}&（以上为授课教师填写）\\\tabucline-
     \end{tabu}\vskip -1pt
@@ -115,6 +124,15 @@
     注：本表复制有效
   }
 }
+
+\newcommand{\Sign}[3]{
+  \begin{tikzpicture}[overlay]
+    \node [xshift=#1,yshift=#2] at (current page.center) {
+        \includegraphics[scale=.1]{#3}
+    };
+  \end{tikzpicture}
+}
+
 
 \pagestyle{empty}
 
