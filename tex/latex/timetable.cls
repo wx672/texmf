@@ -15,15 +15,10 @@
 \setCJKfamilyfont{hei}{Adobe Heiti Std}
 \setCJKfamilyfont{song}{Adobe Song Std}
 \setCJKfamilyfont{kai}{Adobt Kaiti Std} % e.g. \CJKfamily{kai}
-\setCJKfamilyfont{xingkai}{FZXingKai-S04S} % e.g. \CJKfamily{kai}
+\setCJKfamilyfont{xingkai}{FZXingKai-S04S}
 \newCJKfontfamily\quotefont{Adobt Kaiti Std}
 
-\usetikzlibrary{calc,positioning,
-  arrows,shapes,patterns,
-  decorations.pathmorphing,
-  backgrounds, fit,
-  trees,
-}
+\usetikzlibrary{calc,positioning}
 
 \newcommand{\Term}[1]{\gdef\TT@Term{#1}}
 \newcommand{\Teacher}[1]{\gdef\TT@Teacher{#1}}
@@ -35,29 +30,27 @@
 \tikzset{%
   help lines/.style={very thin,dotted},%
   day/.style={draw, rectangle, anchor=south west, fill=gray!20,%
-    minimum width=\daywidth, minimum height=1cm, node font=\bfseries\Large},
+    minimum width=\daywidth, minimum height=1cm, node font=\bfseries\Large},%
   class/.style={rectangle, anchor=north west, rounded corners=10pt,%
     minimum width=\daywidth, minimum height=5/3*\hourlength,%
-    text centered, text width=\daywidth},
+    text centered, text width=\daywidth},%
   lecture/.style={class, fill=red!30},%
   lab/.style={class, fill=Green!20}%
 }%
 
 \newenvironment{timetable}
 {%
-  \begin{tikzpicture}[remember picture,%overlay,%
+  \begin{tikzpicture}[%
     x=\daywidth, y=-\hourlength,%
     node distance=0cm, outer sep=0pt, inner sep=1pt,%
     ]%
 
     % draw grids
-    \draw[help lines] (1,8) grid[xstep=\daywidth,ystep=2*\hourlength] (6,23);
+    \draw[help lines] (1,8) grid[xstep=\daywidth,ystep=2*\hourlength] (6,23);%
 
     % Draw time ticks
-    \foreach \h in {8,9,...,23} \draw [ultra thin] (1,\h) -- ++(-5pt,0); % Hours
-    \foreach \hh in {8.5,9.5,...,22.5} \draw [ultra thin] (1,\hh) --
-    ++(-3pt,0); % Half hours
-    %\foreach \hl in {8,9,...,23} \draw [ultra thin,dotted] (1,\hl) -- ++(5,0); % Hour line
+    \foreach \h in {8,9,...,23} \draw [ultra thin] (1,\h) -- ++(-5pt,0);% Hours
+    \foreach \hh in {8.5,9.5,...,22.5} \draw [ultra thin] (1,\hh) -- ++(-3pt,0);% Half hours
 
     \foreach \h/\htext in {%
       8/{08:00},9/{09:00},10/{10:00},11/{11:00},12/{12:00},13/{13:00},14/{14:00},15/{15:00},%
