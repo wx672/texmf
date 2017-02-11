@@ -36,12 +36,11 @@
   help lines/.style={very thin,dotted},%
   day/.style={draw, rectangle, anchor=south west, fill=gray!20,%
     minimum width=\daywidth, minimum height=1cm, node font=\bfseries\Large},
-  lecture/.style={rectangle, anchor=north west, fill=red!30, rounded corners=10pt,%
+  class/.style={rectangle, anchor=north west, rounded corners=10pt,%
     minimum width=\daywidth, minimum height=5/3*\hourlength,%
-    text centered, text width=\daywidth},%
-  lab/.style={rectangle, anchor=north west, fill=Green!20, rounded corners=10pt,%
-    minimum width=\daywidth, minimum height=5/3*\hourlength,%
-    text centered, text width=\daywidth}%
+    text centered, text width=\daywidth},
+  lecture/.style={class, fill=red!30},%
+  lab/.style={class, fill=Green!20}%
 }%
 
 \newenvironment{timetable}
