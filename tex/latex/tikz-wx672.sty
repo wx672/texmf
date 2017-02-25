@@ -31,18 +31,18 @@
 \RequirePackage{tikz-penciline}
 
 \usetikzlibrary{%
-  external,%
+  % external,%
   calc,positioning,%
   arrows,shapes,patterns,quotes,%
   decorations.pathmorphing,%
   backgrounds, fit,%
-  trees,%
+  mindmap,trees,%
 }%
 
-\tikzexternalize[figure list=false, prefix=figs/]
-\tikzset{external/up to date check=diff}
-\tikzset{external/system call={xelatex \tikzexternalcheckshellescape%
-    -interaction=batchmode -jobname "\image" "\texsource"}}
+% \tikzexternalize[figure list=false, prefix=figs/]
+% \tikzset{external/up to date check=diff}
+% \tikzset{external/system call={xelatex \tikzexternalcheckshellescape%
+%     -interaction=batchmode -jobname "\image" "\texsource"}}
 
 \tikzset{%
   help lines/.style = {ultra thin,dotted},%
