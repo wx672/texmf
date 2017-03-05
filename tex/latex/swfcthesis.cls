@@ -3,10 +3,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfcthesis}%[TeX Live 2016/Debian SWFU Theses and Dissertations]
 
-\DeclareOption{noacknowlegments}{% Allow opt-out on acknowledgments
-  \renewcommand{\acknowledgmentspage}{}
-}
-
 % pass unknown options to book
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
@@ -83,7 +79,6 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   urlbordercolor=blue,       % external links
   %linkcolor=black,citecolor=black,urlcolor=blue
 }
-
 
 % before xunicode!
 \RequirePackage{amsmath,amsfonts,amssymb,latexsym,marvosym,pifont}
