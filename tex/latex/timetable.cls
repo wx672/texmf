@@ -22,7 +22,17 @@
 
 \newcommand{\Term}[1]{\gdef\TT@Term{#1}}
 \newcommand{\Teacher}[1]{\gdef\TT@Teacher{#1}}
-\newcommand{\class}[5]{\node[#1] at (#2) {#3\\{\scriptsize #4}\\{\small #5}};}
+
+%%%
+% #1 - (optional)
+% #2 - lecture/lab/office
+% #3 - (day,time)
+% #4 - course name
+% #5 - weeks
+% #6 - room
+\newcommand{\class}[6][5/3]{%
+  \node[#2,minimum height=#1*\hourlength] at (#3) {#4\\{\scriptsize #5}\\{\small #6}};%
+}%
 
 \newcommand{\daywidth}{5cm}%
 \newcommand{\hourlength}{1cm}%
@@ -32,10 +42,11 @@
   day/.style={draw, rectangle, anchor=south west, fill=gray!20,%
     minimum width=\daywidth, minimum height=1cm, node font=\bfseries\Large},%
   class/.style={rectangle, anchor=north west, rounded corners=10pt,%
-    minimum width=\daywidth, minimum height=5/3*\hourlength,%
+    minimum width=\daywidth,% minimum height=5/3*\hourlength,%
     text centered, text width=\daywidth},%
   lecture/.style={class, fill=red!30},%
-  lab/.style={class, fill=Green!20}%
+  lab/.style={class, fill=Green!20},%
+  office/.style={class, fill=gray!30}%
 }%
 
 \newenvironment{timetable}
