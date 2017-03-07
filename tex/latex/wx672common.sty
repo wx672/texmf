@@ -44,26 +44,18 @@
 \newfontfamily\dejavu{DejaVu Sans Mono}
 \newCJKfontfamily\quotefont{Adobe Kaiti Std}
 
-\RequirePackage[svgnames]{xcolor} % must before hyperref
-\RequirePackage{hyperref}
-\hypersetup{%
-  bookmarksnumbered,pdfpagelabels=true,plainpages=false,
-  pdfborderstyle={/S/U/W .5},% border style will be underline of width .5pt 
-  colorlinks=false,
-  linkbordercolor=red,       % color of internal links
-  citebordercolor=blue,     % color of links to bibliography
-  filebordercolor=magenta,   % color of file links
-  urlbordercolor=blue,
-  % linkcolor=black,citecolor=black,urlcolor=blue
-}
+\RequirePackage{xcolor} % must before hyperref
+\definecolor{Green}{cmyk}{1,0,1,.4}
 
-\RequirePackage{fancyhdr}
-\pagestyle{fancy}
+\RequirePackage{hyperref}
 
 \RequirePackage{parskip}
 \setlength{\parindent}{2em}
 
 \RequirePackage{setspace}
+
+\RequirePackage{enumitem} % \setlist
+\setlist{nosep} % kills all vertical spacing
 
 \RequirePackage[backend=biber,url=false,hyperref=true,sorting=none,doi=false,isbn=false]{biblatex}
 
@@ -72,7 +64,24 @@
 \DeclareFieldFormat{title}{\usebibmacro{string+url}{\mkbibemph{#1}}}
 \DeclareFieldFormat[article]{title}{\usebibmacro{string+url}{\mkbibquote{#1}}}
 
+% supercite
+\DeclareCiteCommand{\supercite}[\mkbibsuperscript]
+{\iffieldundef{prenote}
+  {}
+  {\BibliographyWarning{Ignoring prenote argument}}%
+  \iffieldundef{postnote}
+  {}
+  {\BibliographyWarning{Ignoring postnote argument}}}
+{\usebibmacro{citeindex}%
+  \bibopenbracket\usebibmacro{cite}\bibclosebracket}
+{\supercitedelim}
+{}
+\let\cite=\supercite
+
 \RequirePackage[bottom]{footmisc} % stick footnote at bottom of page
+
+\RequirePackage{minted} % minted has to be loaded at last!!!
+\usemintedstyle{bw}
 
 \DeclareOption{cn}{
   \renewcommand{\refname}{参考文献} % article.cls
@@ -97,9 +106,6 @@
 \newcommand\bad{\MyEmoji ☹}
 \newcommand\danger{\MyEmoji ☠}
 \newcommand\pointright{\MyEmoji ☞}
-
-\RequirePackage{minted} % minted has to be loaded at last!!!
-\usemintedstyle{bw}
 
 \renewcommand{\theFancyVerbLine}{
   \textcolor{lightgray}{\scriptsize \arabic{FancyVerbLine}}}

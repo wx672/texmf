@@ -3,23 +3,4 @@
 
 \LoadClass[a4paper,10pt]{article}
 
-% in beamerarticle package, there is a \RequirePackage[override]{xcolor}.
-% this clashes with [svgnames]
-\RequirePackage[noxcolor]{beamerarticle}
-
-\RequirePackage[top=2cm,bottom=2cm,left=3cm,right=2cm,
-nomarginpar,headheight=15pt, % to avoid "headheight too small"
-%showframe,showcrop,
-]{geometry}
-
-\RequirePackage{tikz-wx672}
-
-\RequirePackage{wx672common}
-
-\RequirePackage[breakable,skins]{tcolorbox}
-\tcbsetforeverylayer{colframe=black!10,coltitle=black,boxrule=.5pt,fonttitle=\bfseries,colback=white}
-
-\RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{} % to make centering minted works
-
-\renewcommand{\refname}{} % article.cls
-
+\RequirePackage{wx672h}
