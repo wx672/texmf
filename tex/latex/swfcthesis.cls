@@ -20,7 +20,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 
 % graphicx
 \RequirePackage[xetex]{graphicx} % before xltxtra
-\graphicspath{{./figs/}{../figs/}{./}{../}} %mind the trailing “/”
+\graphicspath{{./figs/}{../figs/}{./img/}{../img/}{./}{../}} %mind the trailing “/”
 
 % titlesec
 \RequirePackage{titlesec} % \titleformat, \titlespacing
