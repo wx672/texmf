@@ -1,15 +1,15 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{wx672b}
+\ProvidesPackage{wx672b}
 
-\DeclareOption{12pt}{\PassOptionsToPackage{\CurrentOption}{beamer}}
-\DeclareOption{ignorenonframetext}{\PassOptionsToPackage{\CurrentOption}{beamer}}
-\DeclareOption{compress}{\PassOptionsToPackage{\CurrentOption}{beamer}}
+% \DeclareOption{12pt}{\PassOptionsToPackage{\CurrentOption}{beamer}}
+% \DeclareOption{ignorenonframetext}{\PassOptionsToPackage{\CurrentOption}{beamer}}
+% \DeclareOption{compress}{\PassOptionsToPackage{\CurrentOption}{beamer}}
 
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{beamer}}
+% \DeclareOption*{\PassOptionsToClass{\CurrentOption}{beamer}}
 
-\ExecuteOptions{12pt,ignorenonframetext,compress}
+% \ExecuteOptions{12pt,ignorenonframetext,compress}
 
-\ProcessOptions\relax
+% \ProcessOptions\relax
 
 \RequirePackage{tikz-wx672}
 
@@ -32,4 +32,4 @@
 \setbeamercolor{block body}{bg=Gray!4}
 \setbeamercolor{alerted text}{fg=blue}
 \setbeamercolor{section in toc}{fg=Green,bg=Gray!6}
-\setbeamercovered{transparent}
+%\setbeamercovered{transparent}
