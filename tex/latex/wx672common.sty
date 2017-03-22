@@ -53,25 +53,31 @@
 
 \RequirePackage{setspace}
 
-\RequirePackage[backend=biber,url=false,hyperref=true,sorting=none,doi=false,isbn=false]{biblatex}
+\RequirePackage[backend=biber,url=true,hyperref=true,
+style=caspervector,utf8,sorting=centy,
+doi=false,isbn=false]{biblatex}
+
+\renewcommand*{\bibfont}{\small} % 11pt
+\DeclareFieldFormat*{year}{#1}
 
 \newbibmacro{string+url}[1]{%
   \iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}}
 \DeclareFieldFormat{title}{\usebibmacro{string+url}{\mkbibemph{#1}}}
 \DeclareFieldFormat[article]{title}{\usebibmacro{string+url}{\mkbibquote{#1}}}
 
+%%%%% caspervector provides \supercite already.
 % supercite
-\DeclareCiteCommand{\supercite}[\mkbibsuperscript]
-{\iffieldundef{prenote}
-  {}
-  {\BibliographyWarning{Ignoring prenote argument}}%
-  \iffieldundef{postnote}
-  {}
-  {\BibliographyWarning{Ignoring postnote argument}}}
-{\usebibmacro{citeindex}%
-  \bibopenbracket\usebibmacro{cite}\bibclosebracket}
-{\supercitedelim}
-{}
+% \DeclareCiteCommand{\supercite}[\mkbibsuperscript]
+% {\iffieldundef{prenote}
+%   {}
+%   {\BibliographyWarning{Ignoring prenote argument}}%
+%   \iffieldundef{postnote}
+%   {}
+%   {\BibliographyWarning{Ignoring postnote argument}}}
+% {\usebibmacro{citeindex}%
+%   \bibopenbracket\usebibmacro{cite}\bibclosebracket}
+% {\supercitedelim}
+% {}
 \let\cite=\supercite
 
 \RequirePackage[bottom]{footmisc} % stick footnote at bottom of page

@@ -44,21 +44,24 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage{enumitem} % \setlist
 \setlist{nosep} % kills all vertical spacing
 
-\RequirePackage[backend=biber,url=false,hyperref=true,
-    doi=false,isbn=false]{biblatex}
-\renewcommand*{\bibfont}{\small} % 11pt
+\RequirePackage[backend=biber,url=true,hyperref=true,
+    doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
 
-\DeclareCiteCommand{\supercite}[\mkbibsuperscript]
-{\iffieldundef{prenote}
-  {}
-  {\BibliographyWarning{Ignoring prenote argument}}%
-  \iffieldundef{postnote}
-  {}
-  {\BibliographyWarning{Ignoring postnote argument}}}
-{\usebibmacro{citeindex}%
-  \bibopenbracket\usebibmacro{cite}\bibclosebracket}
-{\supercitedelim}
-{}
+\renewcommand*{\bibfont}{\small} % 11pt
+\DeclareFieldFormat*{year}{#1}
+
+%%%% caspervector provides \supercite already.
+% \DeclareCiteCommand{\supercite}[\mkbibsuperscript]
+% {\iffieldundef{prenote}
+%   {}
+%   {\BibliographyWarning{Ignoring prenote argument}}%
+%   \iffieldundef{postnote}
+%   {}
+%   {\BibliographyWarning{Ignoring postnote argument}}}
+% {\usebibmacro{citeindex}%
+%   \bibopenbracket\usebibmacro{cite}\bibclosebracket}
+% {\supercitedelim}
+% {}
 \let\cite=\supercite
 
 % caption
