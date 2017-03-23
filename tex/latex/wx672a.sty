@@ -24,3 +24,9 @@
   urlbordercolor=blue,
   % linkcolor=black,citecolor=black,urlcolor=blue
 }
+
+\DeclareOption{cn}{
+  \renewcommand{\refname}{参考文献} % article.cls
+  \renewcommand{\abstractname}{摘\hspace{1em}要}
+}
+\ProcessOptions\relax

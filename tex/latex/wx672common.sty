@@ -12,9 +12,12 @@
 
 \RequirePackage[font=footnotesize,labelfont=bf]{caption}
 
-\RequirePackage{multicol,rotating,soul,tabu,varwidth}
-\setul{1.5pt}{.4pt}% 1.5pt below contents
-\setulcolor{gray}
+\RequirePackage{multicol,rotating,tabu,varwidth,ulem,etoolbox,longtable,comment}
+
+%%%% use ulem instead since it can work with xeCJK
+% \RequirePackage{soul}
+% \setul{1.5pt}{.4pt}% 1.5pt below contents
+% \setulcolor{gray}
 
 \RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
 \defaultfontfeatures{Mapping=tex-text}
@@ -22,15 +25,17 @@
 \setmainfont{DejaVu Serif}
 
 \RequirePackage{xeCJK}
-\xeCJKDeclarePunctStyle{ mine }
+\xeCJKDeclarePunctStyle{ condensed }
 {
-  min-bound-to-kerning    = true,
-  kerning-margin-minimum  = .2em,
+  min-bound-to-kerning    = true,%控制相邻两标点之间的空白宽度。
+  kerning-margin-minimum  = .2em,%相邻两个标点之间的最小空白宽度。
 }
-\xeCJKsetup{PunctStyle=mine}
+\xeCJKsetup{PunctStyle=condensed}
 \xeCJKsetwidth{“”《》、（）}{1.2ex}
 \xeCJKsetkern{：}{（}{1ex}
 \xeCJKsetkern{；}{（}{1ex}
+\xeCJKsetkern{。}{“}{1ex}
+\xeCJKsetkern{。}{《}{1.5ex}
 
 \setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
 \setCJKsansfont{Noto Sans CJK SC Regular}
@@ -44,21 +49,50 @@
 \newfontfamily\dejavu{DejaVu Sans Mono}
 \newCJKfontfamily\quotefont{Adobe Kaiti Std}
 
+\newcommand{\ziju}[1]{\renewcommand{\CJKglue}{\hskip #1}}
+
+\renewcommand{\uline}[1]{\CJKunderline-[depth=0.2em,format=\color{black}]{#1}}
+\renewcommand{\uwave}[1]{\CJKunderwave-[depth=0.2em,format=\color{black}]{#1}}
+\newcommand{\udot}[1]{\CJKunderdot[depth=0.2em,format=\color{black}]{#1}}
+
+% adjust the spaces between numbers and Chinese characters
+\xeCJKsetup{xCJKecglue=\hskip 0pt plus 0.08\baselineskip}
+
+% add dotted line for chapters in toc
+\makeatletter
+\renewcommand*\l@chapter{\@dottedtocline{1}{0em}{1.5em}}
+\makeatother
+
 \RequirePackage{xcolor} % must before hyperref
 \definecolor{Green}{cmyk}{1,0,1,.4}
 
-\RequirePackage{hyperref}
+\RequirePackage[xetex,bookmarksnumbered,pdfpagelabels=true,plainpages=false,colorlinks=true,
+linkcolor=black,citecolor=black,urlcolor=blue]{hyperref}
 
-\RequirePackage{parskip}
+\RequirePackage{parskip} % not sure if this is needed
 
-\RequirePackage{setspace}
+\RequirePackage[onehalfspacing]{setspace}
+\renewcommand{\doublespacing}{\setstretch{1.6}}
+\renewcommand{\singlespacing}{\setstretch{1.2}}
+\renewcommand{\onehalfspacing}{\setstretch{1.4}}
 
+\setlength{\parindent}{2em}
+
+\overfullrule=2cm % for easy finding the overfull lines
+
+% fixing overfull in list-of-figures.
+%http://tex.stackexchange.com/questions/127643/fix-formatting-errors-of-page-number-99-in-table-of-contents
+\makeatletter
+\renewcommand*\@pnumwidth{2em}
+\makeatother
+
+%%%%% biblatex %%%%%
 \RequirePackage[backend=biber,url=true,hyperref=true,
-style=caspervector,utf8,sorting=centy,
+style=caspervector,utf8,sorting=centy,% for chinese
 doi=false,isbn=false]{biblatex}
 
 \renewcommand*{\bibfont}{\small} % 11pt
-\DeclareFieldFormat*{year}{#1}
+\DeclareFieldFormat*{year}{#1} % adjust caspervector to show year in non-bold style.
 
 \newbibmacro{string+url}[1]{%
   \iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}}
@@ -80,17 +114,14 @@ doi=false,isbn=false]{biblatex}
 % {}
 \let\cite=\supercite
 
+%%%%% end biblatex %%%%%
+
 \RequirePackage[bottom]{footmisc} % stick footnote at bottom of page
 
-\RequirePackage{minted} % minted has to be loaded at last!!!
-\usemintedstyle{bw}
-
 \DeclareOption{cn}{
-  \renewcommand{\refname}{参考文献} % article.cls
   \renewcommand{\contentsname}{目\hspace{1em}录}
   \renewcommand{\listfigurename}{插图目录}
   \renewcommand{\listtablename}{表格目录}
-  \renewcommand{\abstractname}{摘\hspace{1em}要}
   \renewcommand{\figurename}{图}
   \renewcommand{\tablename}{表}
   \renewcommand{\appendixname}{附\hspace{1em}录}
@@ -109,6 +140,10 @@ doi=false,isbn=false]{biblatex}
 \newcommand\danger{\MyEmoji ☠}
 \newcommand\pointright{\MyEmoji ☞}
 
+%%%%% minted %%%%%
+\RequirePackage{minted} % minted has to be loaded at last!!!
+\usemintedstyle{bw}
+
 \renewcommand{\theFancyVerbLine}{
   \textcolor{lightgray}{\scriptsize \arabic{FancyVerbLine}}}
 \newminted{gas}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
@@ -118,6 +153,8 @@ doi=false,isbn=false]{biblatex}
 \newminted{python}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
   frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
 \newcommand{\codec}[1]{\mintinline{c}|#1|}
+
+%%%%% end minted %%%%%
 
 \newcommand{\cfbox}[2]{%
   \colorlet{currentcolor}{.}%
