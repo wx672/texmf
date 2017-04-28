@@ -27,6 +27,9 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \titleformat{\chapter}{\centering\LARGE\bfseries}{\thechapter}{1em}{}
 \titlespacing{\chapter}{0pt}{*0}{*4}
 
+% add dotted line for chapters in toc
+% \renewcommand*\l@chapter{\@dottedtocline{1}{0em}{1.5em}}
+
 \RequirePackage[bottom]{footmisc} % stick footnote at bottom of page
 
 % fancyhdr
@@ -174,25 +177,25 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \newcommand{\SWFCtitlepage}{% Title page layout
   \thispagestyle{empty}
   \begin{center}
-    \makebox[14.7em][s]{{\huge\SWFCField@Univ}}\\[5mm]
-    \makebox[25.75em][s]{\Huge\textbf{\SWFCField@Docname}}\\[5mm]
-    \makebox[12em][s]{\hspace{.5em}\LARGE（\SWFCField@Year\,届）}\\[60pt]
+    \makebox[14.7em][s]{{\huge\SWFCField@Univ{}}}\\[5mm]
+    \makebox[25.75em][s]{\Huge\textbf{\SWFCField@Docname{}}}\\[5mm]
+    \makebox[12em][s]{\hspace{.5em}\LARGE（\SWFCField@Year{}\,届）}\\[60pt]
     \begin{minipage}{.8\linewidth}
       \begin{Large}
         \extrarowsep=^8mm
         \extrarowsep=_-7pt
         \begin{tabu}spread\textwidth{@{}X[r]X[3.3,c]@{}}
-          \textbf{题\hspace{2em}目：}&\SWFCField@Title\\\tabucline{2-2}
-          \textbf{分院系部：} &\SWFCField@School\\\tabucline{2-2}
-          \textbf{专\hspace{2em}业：}&\SWFCField@Subject\\\tabucline{2-2}
-          \textbf{姓\hspace{2em}名：}&\SWFCField@Author\\\tabucline{2-2}
-          \textbf{导师姓名：} &\SWFCField@Advisor\\\tabucline{2-2}
-          \textbf{导师职称：} &\SWFCField@AdvisorTitle\\\tabucline{2-2}
+          \textbf{题\hspace{2em}目：}&\SWFCField@Title{}\\\tabucline{2-2}
+          \textbf{分院系部：} &\SWFCField@School{}\\\tabucline{2-2}
+          \textbf{专\hspace{2em}业：}&\SWFCField@Subject{}\\\tabucline{2-2}
+          \textbf{姓\hspace{2em}名：}&\SWFCField@Author{}\\\tabucline{2-2}
+          \textbf{导师姓名：} &\SWFCField@Advisor{}\\\tabucline{2-2}
+          \textbf{导师职称：} &\SWFCField@AdvisorTitle{}\\\tabucline{2-2}
         \end{tabu}
       \end{Large}
     \end{minipage}
     \vfill
-    {\Large\textbf{\SWFCField@Year\ 年\ \SWFCField@Month\ 月}}\\[1cm]
+    {\Large\textbf{\SWFCField@Year{}\ 年\ \SWFCField@Month{}\ 月}}\\[1cm]
   \end{center}
   \clearpage
 }
@@ -201,14 +204,14 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \providecommand\pdfbookmark[3][]{} \pdfbookmark[0]{摘要}{bm:cnAbstract}
   \thispagestyle{empty}
   \begin{center}
-    {\singlespacing \Large{\textbf{\SWFCField@Title}}}\\[5mm]
-    \large{\SWFCField@Author}\\
-    \large{（\SWFCField@Univ\,\SWFCField@School，云南\,昆明\,650224）}
+    {\singlespacing \Large{\textbf{\SWFCField@Title{}}}}\\[5mm]
+    \large{\SWFCField@Author{}}\\
+    \large{（\SWFCField@Univ{}\,\SWFCField@School{}，云南\,昆明\,650224）}
   \end{center}
   \vskip 3ex
-  \noindent \textbf{摘\hspace{1em}要：}~\SWFCField@Abstract
+  \noindent \textbf{摘\hspace{1em}要：}~\SWFCField@Abstract{}
   \vskip 2ex
-  \noindent \textbf{关键词：}~\SWFCField@Keywords
+  \noindent \textbf{关键词：}~\SWFCField@Keywords{}
   \clearpage
 }
 
@@ -217,15 +220,15 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \pdfbookmark[0]{Abstract}{bm:Abstract}
   \thispagestyle{empty}
   \begin{center}
-    {\singlespacing {\Large\textbf{\SWFCField@enTitle}}}\\[5mm]
-    {\large\SWFCField@enAuthor}\\[3mm]
-    {\singlespacing {\large\SWFCField@enSchool\\\SWFCField@enUniv\\%
+    {\singlespacing {\Large\textbf{\SWFCField@enTitle{}}}}\\[5mm]
+    {\large\SWFCField@enAuthor{}}\\[3mm]
+    {\singlespacing {\large\SWFCField@enSchool{}\\\SWFCField@enUniv{}\\%
         Kunming 650224, Yunnan, China}}
   \end{center}
   \vskip 2em
-  \noindent\textbf{Abstract: }~\SWFCField@enAbstract
+  \noindent\textbf{Abstract: }~\SWFCField@enAbstract{}
   \vskip 1em
-  \noindent\textbf{Key words: }~\SWFCField@enKeywords
+  \noindent\textbf{Key words: }~\SWFCField@enKeywords{}
   \clearpage
 }
 
@@ -233,14 +236,14 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \phantomsection
   \addcontentsline{toc}{chapter}{致\hspace{1em}谢}
   \chapter*{致\hspace{1em}谢}
-  \SWFCField@Acknowledgments
+  \SWFCField@Acknowledgments{}
 }
 
 \newcommand{\advisorinfopage}{% Advisor info page
   \phantomsection
   \addcontentsline{toc}{chapter}{指导教师简介}
   \chapter*{指导教师简介}
-  \SWFCField@AdvisorInfo
+  \SWFCField@AdvisorInfo{}
   \clearpage
 }
 

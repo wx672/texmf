@@ -223,7 +223,8 @@
 至于如何安装、配置好这样一个工作环境……如果你是本校的学生，那么当然可以直截找我帮忙。如果你
 不是本校的学生，那么……我曾经写过一个比较潦草
 的\href{http://cs2.swfu.edu.cn/~wx672/lecture_notes/linux/install.html}{《Debian安装指
-  导》}\cite{install}，虽然有点旧了，但应该还是能对你有点帮助的。
+  导》}\footnote{\url{http://cs2.swfu.edu.cn/~wx672/lecture_notes/linux/install.html}}，虽
+然有点旧了，但应该还是能对你有点帮助的。
 
 
 \chapter{快速上手}
@@ -413,8 +414,8 @@ AUC\TeX{}是Emacs的一个功能模块，为\LaTeX{}编程提供了巨大的便�
 在第\ref{sec:hello}节里，你已经会写 \texttt{Hello, world!}了。现在，我们要写点像模像样的东
 西。偷懒起见，我直接\xpinyin{套}{chao1}\xpinyin{用}{xi2}Andrew
 Roberts 写的
-\texttt{simple.tex}\footnote{\url{http://en.wikibooks.org/wiki/LaTeX/simple.tex}}\cite{simple}
-。我们把注意力集中在用Emacs写文章的过程上。
+\texttt{simple.tex}\footnote{\url{http://en.wikibooks.org/wiki/LaTeX/simple.tex}}。我们把注
+意力集中在用Emacs写文章的过程上。
 
 \subsection{Top matter}
 
@@ -1394,8 +1395,8 @@ mini buffer 提示：
 怎么样，能看明白吗？插入图片用到了三个新命令：
 
 \begin{enumerate}
-\item \verb'\usepackage{graphicx}', 这是在说「我要用到一个名字叫 graphicx 的package(宏
-  包)」。这很类似于我们C编程时常用的 \verb'#include<stdio.h>'。\verb'\includegraphics{}'就
+\item \verb'\usepackage{graphicx}', 这是在说「我要用到一个名字叫 graphicx 的package(宏包)」。
+  这很类似于我们C编程时常用的 \verb'#include<stdio.h>'。\texttt{\textbackslash{}include-graphics\{\}}就
   是这个宏包提供的命令之一。想详细了解 graphicx的话，你可以打开一个命令终端，敲命
   令：\texttt{texdoc graphicx}。\texttt{texdoc}是TeXLive提供的专门用来看各种宏包手册的小工
   具。你可以通过\texttt{texdoc -h}命令来粗略了解它的用法。

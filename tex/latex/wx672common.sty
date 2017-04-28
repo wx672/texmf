@@ -58,11 +58,6 @@
 % adjust the spaces between numbers and Chinese characters
 \xeCJKsetup{xCJKecglue=\hskip 0pt plus 0.08\baselineskip}
 
-% add dotted line for chapters in toc
-\makeatletter
-\renewcommand*\l@chapter{\@dottedtocline{1}{0em}{1.5em}}
-\makeatother
-
 \RequirePackage{xcolor} % must before hyperref
 \definecolor{Green}{cmyk}{1,0,1,.4}
 
@@ -78,7 +73,7 @@ linkcolor=black,citecolor=black,urlcolor=blue]{hyperref}
 
 \setlength{\parindent}{2em}
 
-\overfullrule=2cm % for easy finding the overfull lines
+%\overfullrule=2cm % for easy finding the overfull lines
 
 % fixing overfull in list-of-figures.
 %http://tex.stackexchange.com/questions/127643/fix-formatting-errors-of-page-number-99-in-table-of-contents
@@ -118,6 +113,22 @@ doi=false,isbn=false]{biblatex}
 
 \RequirePackage[bottom]{footmisc} % stick footnote at bottom of page
 
+%%%%% minted %%%%%
+\RequirePackage{minted} % minted has to be loaded at last!!!
+\usemintedstyle{bw}
+
+\renewcommand{\theFancyVerbLine}{
+  \textcolor{lightgray}{\scriptsize \arabic{FancyVerbLine}}}
+\newminted{gas}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
+  frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
+\newminted{c}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
+  frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
+\newminted{python}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
+  frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
+\newcommand{\codec}[1]{\mintinline{c}|#1|}
+
+%%%%% end minted %%%%%
+
 \DeclareOption{cn}{
   \renewcommand{\contentsname}{目\hspace{1em}录}
   \renewcommand{\listfigurename}{插图目录}
@@ -139,22 +150,6 @@ doi=false,isbn=false]{biblatex}
 \newcommand\bad{\MyEmoji ☹}
 \newcommand\danger{\MyEmoji ☠}
 \newcommand\pointright{\MyEmoji ☞}
-
-%%%%% minted %%%%%
-\RequirePackage{minted} % minted has to be loaded at last!!!
-\usemintedstyle{bw}
-
-\renewcommand{\theFancyVerbLine}{
-  \textcolor{lightgray}{\scriptsize \arabic{FancyVerbLine}}}
-\newminted{gas}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
-  frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
-\newminted{c}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
-  frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
-\newminted{python}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
-  frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
-\newcommand{\codec}[1]{\mintinline{c}|#1|}
-
-%%%%% end minted %%%%%
 
 \newcommand{\cfbox}[2]{%
   \colorlet{currentcolor}{.}%
