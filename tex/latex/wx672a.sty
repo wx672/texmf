@@ -4,6 +4,13 @@
 \RequirePackage[margin=3cm,headheight=15pt]{geometry}
 
 \RequirePackage{wx672common}
+\RequirePackage{wx672fonts}
+\RequirePackage{wx672cjk}
+\RequirePackage{wx672bib}
+
+\setsansfont{DejaVu Sans}
+\setmainfont{DejaVu Serif}
+
 
 \RequirePackage{enumitem} % \setlist % conflict with beamer
 \setlist{nosep} % kills all vertical spacing
@@ -11,10 +18,24 @@
 \RequirePackage{indentfirst}
 \setlength{\parindent}{2em}
 
+\RequirePackage[bottom]{footmisc} % stick footnote at bottom of page
+
+\RequirePackage{parskip} % not sure if this is needed
+
+\RequirePackage[onehalfspacing]{setspace}% 
+\renewcommand{\doublespacing}{\setstretch{1.6}}
+\renewcommand{\singlespacing}{\setstretch{1.2}}
+\renewcommand{\onehalfspacing}{\setstretch{1.4}}
+
+% \overfullrule=2cm % for easy finding the overfull lines
+
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
 
+\RequirePackage{hyperref}
+
 \hypersetup{%
+  xetex,
   bookmarksnumbered,pdfpagelabels=true,plainpages=false,
   pdfborderstyle={/S/U/W .5},% border style will be underline of width .5pt 
   colorlinks=false,
