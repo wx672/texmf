@@ -1,0 +1,24 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{wx672tikz}
+
+% \RequirePackage{wx672fonts}
+% \RequirePackage{wx672cjk}
+
+%\setmainfont{Humor Sans}
+
+\RequirePackage{tikz}
+\RequirePackage{tikz-penciline}
+
+\usetikzlibrary{%
+  % external,%
+  calc,positioning,%
+  arrows,shapes,patterns,quotes,%
+  decorations.pathmorphing,%
+  backgrounds, fit,%
+  mindmap,trees,%
+}%
+
+\tikzset{%
+  help lines/.style = {ultra thin,dotted},%
+  xy/.style = {font=\dejavu\tiny,inner sep=1pt}
+}
