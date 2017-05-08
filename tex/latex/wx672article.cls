@@ -4,3 +4,4 @@
 \LoadClass[12pt,a4paper]{article}
 
 \RequirePackage{wx672a}
+

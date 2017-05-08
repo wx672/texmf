@@ -10,12 +10,23 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 %showframe,showcrop,
 ]{geometry}
 
-%\RequirePackage{tikz-wx672}
-
 \RequirePackage{wx672common}
 \RequirePackage{wx672fonts}
-\RequirePackage{wx672cjk}
 \RequirePackage{wx672bib}
+
+\RequirePackage{hyperref}
+
+\hypersetup{%
+  xetex,
+  bookmarksnumbered,pdfpagelabels=true,plainpages=false,
+  pdfborderstyle={/S/U/W .5},% border style will be underline of width .5pt 
+  colorlinks=false,
+  linkbordercolor=red,       % color of internal links
+  citebordercolor=blue,     % color of links to bibliography
+  filebordercolor=magenta,   % color of file links
+  urlbordercolor=blue,
+  % linkcolor=black,citecolor=black,urlcolor=blue
+}
 
 \RequirePackage[breakable,skins]{tcolorbox}
 \tcbsetforeverylayer{colframe=black!10,coltitle=black,boxrule=.5pt,fonttitle=\bfseries,colback=white}

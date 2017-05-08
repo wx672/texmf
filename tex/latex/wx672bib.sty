@@ -6,19 +6,26 @@
 % without this, the Chinese in bib files will cause compiling error.
 \RequirePackage[utf8]{inputenc}
 %%%%% biblatex %%%%%
-\RequirePackage[backend=biber,hyperref=true,url=false,%
+\RequirePackage[backend=biber,%
+date=edtf,seconds=true,% to suppress compile warnings
+doi=false,isbn=false,url=false,eprint=false,%
 style=caspervector,utf8,sorting=centy,% for chinese ("language = {chinese}" in bib file)
-doi=false,isbn=false]{biblatex}
+]{biblatex}
 
 \renewcommand*{\bibfont}{\small} % 11pt
-\DeclareFieldFormat*{year}{#1} % adjust caspervector to show year in non-bold style.
 
+\DeclareFieldFormat*{year}{#1} % adjust caspervector to show year in non-bold style.
+\DeclareFieldFormat*{url}{}% suppress url. it's a temp workaround until caspervector fix
+                           % its bug
+% https://tex.stackexchange.com/questions/23832/biblatex-make-title-hyperlink-to-doi-url-if-available
 \newbibmacro{string+url}[1]{%
   \iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}}
+
 \DeclareFieldFormat{title}{\usebibmacro{string+url}{\mkbibemph{#1}}}
-\DeclareFieldFormat[article]{title}{\usebibmacro{string+url}{\mkbibquote{#1}}}
+%\DeclareFieldFormat[article]{title}{\usebibmacro{string+url}{\mkbibquote{#1}}}
 
 %%%%% caspervector provides \supercite already.
+%%%%% keep the following for a safe backup.
 % supercite
 % \DeclareCiteCommand{\supercite}[\mkbibsuperscript]
 % {\iffieldundef{prenote}

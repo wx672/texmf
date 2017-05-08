@@ -6,10 +6,6 @@
 \RequirePackage{graphicx}
 \graphicspath{{./figs/}{../figs/}{./img/}{./}{../}} %note that the trailing “/” is required
 
-% \RequirePackage{wx672fonts}
-% \RequirePackage{wx672cjk}
-% \RequirePackage{wx672bib}
-
 \RequirePackage[font=footnotesize,labelfont=bf]{caption}
 
 \RequirePackage{multicol,rotating,tabu,varwidth,ulem,etoolbox,longtable,comment}
@@ -37,14 +33,6 @@
 \newcommand{\codec}[1]{\mintinline{c}|#1|}
 
 %%%%% end minted %%%%%
-
-% use C-x 8 RET to input utf8 symbols
-\newfontfamily\MyEmoji{Symbola}
-\newcommand\Symbol[1]{\MyEmoji #1}
-\newcommand\good{\MyEmoji ☺}
-\newcommand\bad{\MyEmoji ☹}
-\newcommand\danger{\MyEmoji ☠}
-\newcommand\pointright{\MyEmoji ☞}
 
 \newcommand{\cfbox}[2]{%
   \colorlet{currentcolor}{.}%

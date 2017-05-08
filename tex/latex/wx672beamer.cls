@@ -4,3 +4,4 @@
 \LoadClass[10pt,ignorenonframetext,compress,xcolor={svgnames,table}]{beamer}
 
 \RequirePackage{wx672b}
+

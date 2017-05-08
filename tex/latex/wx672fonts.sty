@@ -10,7 +10,17 @@
 \RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
 \defaultfontfeatures{Mapping=tex-text}
 
+\setsansfont{DejaVu Sans}
+\setmainfont{DejaVu Serif}
+
 \newfontfamily\humor{Humor Sans}
 \newfontfamily\purisa{Purisa}
 \newfontfamily\dejavu{DejaVu Sans Mono}
 
+% use C-x 8 RET to input utf8 symbols
+\newfontfamily\MyEmoji{Symbola}
+\newcommand\Symbol[1]{\MyEmoji #1}
+\newcommand\good{\MyEmoji ☺}
+\newcommand\bad{\MyEmoji ☹}
+\newcommand\danger{\MyEmoji ☠}
+\newcommand\pointright{\MyEmoji ☞}

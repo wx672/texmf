@@ -14,17 +14,12 @@
 %\RequirePackage{tikz-wx672}
 \RequirePackage{wx672common}
 \RequirePackage{wx672fonts}
-\RequirePackage{wx672cjk}
 \RequirePackage{wx672bib}
 
-\setsansfont{DejaVu Sans}
-\setmainfont{DejaVu Serif}
+\RequirePackage{hyperref} % preferably after biblatex
 
-\RequirePackage{hyperref}
-
-\hypersetup{%
-  xetex,
-  bookmarksnumbered,pdfpagelabels=true,plainpages=false,
+\hypersetup{%xetex,  
+  bookmarksnumbered,plainpages=false,%pdfpagelabels=true,
   pdfborderstyle={/S/U/W .5},% border style will be underline of width .5pt 
   colorlinks=true,
   linkcolor=blue,citecolor=blue,urlcolor=blue,
