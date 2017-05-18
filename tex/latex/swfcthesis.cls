@@ -1,7 +1,7 @@
 % The swfcthesis class is for producing senior year theses and dissertations
 % that meet the SWFU requirements.
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{swfcthesis}%[TeX Live 2016/Debian SWFU Theses and Dissertations]
+\ProvidesClass{swfcthesis}%[TeX Live 2016/Debian]
 
 % pass unknown options to book
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
@@ -15,6 +15,7 @@
 nomarginpar,headheight=15pt, % to avoid "headheight too small"
 %showframe,showcrop,
 ]{geometry}
+
 \RequirePackage{indentfirst}
 \RequirePackage{tabu,longtable,multicol,multirow,array}
 
@@ -47,11 +48,16 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage{enumitem} % \setlist
 \setlist{nosep} % kills all vertical spacing
 
-\RequirePackage[backend=biber,url=true,hyperref=true,
-    doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
+\RequirePackage[backend=biber,%
+url=false,hyperref=true,%
+date=edtf,seconds=true,% to suppress compile warnings
+doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
 
 \renewcommand*{\bibfont}{\small} % 11pt
 \DeclareFieldFormat*{year}{#1}
+\DeclareFieldFormat*{url}{}% suppress url. it's a temp workaround until caspervector fix
+                           % its bug. But there is an extra period at the end of the
+                           % entry. TODO!
 
 %%%% caspervector provides \supercite already.
 % \DeclareCiteCommand{\supercite}[\mkbibsuperscript]
@@ -111,9 +117,11 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
 \setCJKsansfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
 \setCJKmonofont{Noto Sans Mono CJK SC Regular}
-\setCJKfamilyfont{hei}{Adobe Heiti Std}
-\setCJKfamilyfont{song}{Adobe Song Std}
-\newCJKfontfamily\quotefont{Adobt Kaiti Std}
+
+\newCJKfontfamily\hei{Adobe Heiti Std} % \hei{Hello, world!}
+\newCJKfontfamily\song{Adobe Song Std}
+\newCJKfontfamily\kai{Adobe Kaiti Std}
+\newCJKfontfamily\quotefont{Adobe Kaiti Std}
 
 \XeTeXlinebreaklocale "zh"
 \XeTeXlinebreakskip = 0pt plus 1pt
@@ -155,6 +163,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \newcommand{\Title}[1]{\gdef\SWFCField@Title{#1}}
 \newcommand{\enTitle}[1]{\gdef\SWFCField@enTitle{#1}}
 \newcommand{\Author}[1]{\gdef\SWFCField@Author{#1}}
+%\newcommand{\Authorid}[1]{\gdef\SWFCField@Authorid{#1}}
 \newcommand{\enAuthor}[1]{\gdef\SWFCField@enAuthor{#1}}
 \newcommand{\Docname}[1]{\gdef\SWFCField@Docname{#1}}
 \newcommand{\Degree}[1]{\gdef\SWFCField@Degree{#1}}
@@ -188,6 +197,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
           \textbf{题\hspace{2em}目：}&\SWFCField@Title{}\\\tabucline{2-2}
           \textbf{分院系部：} &\SWFCField@School{}\\\tabucline{2-2}
           \textbf{专\hspace{2em}业：}&\SWFCField@Subject{}\\\tabucline{2-2}
+%          \textbf{学\hspace{2em}号：}&\SWFCField@Authorid{}\\\tabucline{2-2}
           \textbf{姓\hspace{2em}名：}&\SWFCField@Author{}\\\tabucline{2-2}
           \textbf{导师姓名：} &\SWFCField@Advisor{}\\\tabucline{2-2}
           \textbf{导师职称：} &\SWFCField@AdvisorTitle{}\\\tabucline{2-2}
@@ -259,11 +269,24 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \renewcommand{\listingscaption}{程序} % used by minted
 \renewcommand{\listoflistingscaption}{程序目录}
 
+\renewcommand{\theFancyVerbLine}{
+  \textcolor{lightgray}{\scriptsize \arabic{FancyVerbLine}}}
+\newminted{gas}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
+  frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
+\newminted{nasm}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
+  frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
+\newminted{c}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
+  frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
+\newminted{python}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
+  frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
+\newcommand{\codec}[1]{\mintinline{c}|#1|}
+
 \setlength{\parindent}{2em}
 
 % Initialize the variables to their default values
 \Title{}
 \Author{}
+%\Authorid{}
 \Docname{}
 \Advisor{}
 \AdvisorTitle{}

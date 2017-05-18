@@ -7,9 +7,12 @@
 %\RequirePackage{calc,ifthen}
 \RequirePackage{array}
 \RequirePackage{tabu}
-\RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
-\RequirePackage{xeCJK}
+
+\RequirePackage{wx672fonts}
+\RequirePackage{wx672cjk}
+
 \RequirePackage{graphicx}
+
 \RequirePackage[%showframe,nomarginpar,
 		paperwidth=195mm,paperheight=270mm,
 		top=3cm,bottom=2cm,
@@ -17,19 +20,6 @@
 		]{geometry}
 
 %\renewcommand\normalsize{\fontsize{10pt}{12pt}\selectfont} % The LaTeX Companion, A.4.9
-\defaultfontfeatures{Mapping=tex-text}
-\setmainfont{Liberation Serif}
-\setsansfont{Liberation Sans}
-
-\setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
-\setCJKsansfont{Noto Sans CJK SC Regular}
-\setCJKfamilyfont{hei}{Adobe Heiti Std}
-\setCJKfamilyfont{song}{Adobe Song Std}
-
-%%% make long title looks nicer
-%\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-
-%\renewcommand{\arraystretch}{1.5} % make table row higher
 
 % Declare some variables to hold the text fields for the preliminary pages
 \newcommand{\Univ}[1]{\gdef\SWFCField@Univ{#1}} % 西南林业大学

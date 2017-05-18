@@ -12,20 +12,24 @@ top=2cm,bottom=1cm,
 left=2cm,right=2cm
 ]{geometry}
 
-\RequirePackage{marvosym,amssymb}
-\RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
-\RequirePackage{xeCJK}
+\RequirePackage{wx672fonts}
+\RequirePackage{wx672cjk}
+\RequirePackage{wx672bib}
 
-\defaultfontfeatures{Mapping=tex-text}
-\setmainfont{Liberation Serif}
-\setsansfont{Liberation Sans}
-\setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
-\setCJKsansfont{Noto Sans CJK SC Regular}
-\setCJKfamilyfont{hei}{Adobe Heiti Std}
-\setCJKfamilyfont{song}{Adobe Song Std}
 
-\RequirePackage[backend=biber,url=false,hyperref=false,
-    doi=false,isbn=false]{biblatex}
+\RequirePackage{xcolor}
+\RequirePackage{hyperref}
+
+\hypersetup{%
+  pdfborderstyle={/S/U/W .5},% border style will be underline of width .5pt 
+  colorlinks=false,
+  linkbordercolor=red,       % color of internal links
+  citebordercolor=blue,     % color of links to bibliography
+  filebordercolor=magenta,   % color of file links
+  urlbordercolor=blue,
+  % linkcolor=black,citecolor=black,urlcolor=blue
+}
+
 
 % Declare some variables to hold the text fields for the preliminary pages
 \newcommand{\Univ}[1]{\gdef\SWFCField@Univ{#1}} % 西南林业大学
@@ -120,17 +124,8 @@ left=2cm,right=2cm
   \end{tabu}
 }
 
-\newfontfamily\MyEmoji{Symbola}
-\newcommand\Symbol[1]{\MyEmoji #1}
-\newcommand\good{\MyEmoji ☺}
-\newcommand\bad{\MyEmoji ☹}
-\newcommand\danger{\MyEmoji ☠}
-\newcommand\pointright{\MyEmoji ☞}
-\newcommand\checked{\MyEmoji ☑}
-\newcommand\unchecked{\MyEmoji ☐}
-
 \Univ{西南林业大学}
-\Signature{\hspace{4em}}
+\Signature{\sig{王晓林}}
 \StudSignature{\hspace{4em}}
 \Prjtitle{}
 \Studclass{}

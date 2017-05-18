@@ -20,11 +20,13 @@
 
 %%%%% minted %%%%%
 \RequirePackage[cache=false]{minted} % minted has to be loaded at last!!!
-\usemintedstyle{bw}
+%\usemintedstyle{bw}
 
 \renewcommand{\theFancyVerbLine}{
   \textcolor{lightgray}{\scriptsize \arabic{FancyVerbLine}}}
 \newminted{gas}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
+  frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
+\newminted{nasm}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
   frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
 \newminted{c}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
   frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }

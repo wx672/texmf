@@ -3,7 +3,7 @@
 
 \RequirePackage{ifxetex} % This class can only be processed with XeTeX
 
-\RequirePackage{latexsym,pifont,units,amsmath,amsfonts,amssymb,marvosym,mathtools}
+\RequirePackage{fontawesome,latexsym,pifont,units,amsmath,amsfonts,amssymb,marvosym,mathtools}
 
 \RequirePackage[tt=false]{libertine} % keyboard symbol
 
@@ -13,9 +13,11 @@
 \setsansfont{DejaVu Sans}
 \setmainfont{DejaVu Serif}
 
-\newfontfamily\humor{Humor Sans}
+\newfontfamily\humor{Humor Sans}% \humor{hello, world!}
 \newfontfamily\purisa{Purisa}
 \newfontfamily\dejavu{DejaVu Sans Mono}
+%\newfontfamily\unifont{Unifont} % ugly, use Symbola instead
+\newfontfamily\emoji{Symbola}
 
 % use C-x 8 RET to input utf8 symbols
 \newfontfamily\MyEmoji{Symbola}
@@ -24,3 +26,8 @@
 \newcommand\bad{\MyEmoji ☹}
 \newcommand\danger{\MyEmoji ☠}
 \newcommand\pointright{\MyEmoji ☞}
+\newcommand\checked{\MyEmoji ☑}
+\newcommand\unchecked{\MyEmoji ☐}
+
+\newcommand\linux{\faLinux} % fontawesome
+\newcommand\wechat{\faWechat}

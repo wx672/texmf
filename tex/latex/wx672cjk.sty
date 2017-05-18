@@ -19,12 +19,12 @@
 \setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
 \setCJKsansfont{Noto Sans CJK SC Regular}
 \setCJKmonofont{Noto Sans Mono CJK SC Regular}
-\setCJKfamilyfont{hei}{Adobe Heiti Std}
-\setCJKfamilyfont{song}{Adobe Song Std}
-\setCJKfamilyfont{kai}{Adobe Kaiti Std} % e.g. \CJKfamily{kai}
-\setCJKfamilyfont{sig}{Signature}
 
+\newCJKfontfamily\hei{Adobe Heiti Std} % \hei{Hello, world!}
+\newCJKfontfamily\song{Adobe Song Std}
+\newCJKfontfamily\kai{Adobe Kaiti Std}
 \newCJKfontfamily\quotefont{Adobe Kaiti Std}
+\newCJKfontfamily\sig{signature}
 
 \newcommand{\ziju}[1]{\renewcommand{\CJKglue}{\hskip #1}}
 \RequirePackage{ulem}

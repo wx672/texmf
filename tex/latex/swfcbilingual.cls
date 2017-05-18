@@ -7,23 +7,15 @@
 %\RequirePackage{calc,ifthen}
 \RequirePackage{array}
 \RequirePackage{tabu}
-\RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
-\RequirePackage{xeCJK}
+
+\RequirePackage{wx672fonts} %fontspec,xunicode are loaded here.
+\RequirePackage{wx672cjk}
 
 \RequirePackage[ % showframe,
  paperwidth=210mm,paperheight=297mm,
  top=2cm,bottom=2cm,
  left=1.5cm,right=1.5cm
  ]{geometry}
-
-\defaultfontfeatures{Mapping=tex-text}
-\setmainfont{Liberation Serif}
-\setsansfont{Liberation Sans}
-
-\setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
-\setCJKsansfont{Noto Sans CJK SC Regular}
-\setCJKfamilyfont{hei}{Adobe Heiti Std}
-\setCJKfamilyfont{song}{Adobe Song Std}
 
 %%% array related. make long title looks nicer
 %\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}

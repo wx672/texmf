@@ -10,23 +10,12 @@
 \RequirePackage{tabu}
 \RequirePackage{graphicx}
 
-% \RequirePackage{latexsym}%,amsmath,amsfonts,amssymb}
-\RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
-\RequirePackage{xeCJK}
+\RequirePackage{wx672fonts}
+\RequirePackage{wx672cjk}
 
 \RequirePackage[%showframe,
 paperwidth=210mm,paperheight=297mm,
 margin=2.5cm]{geometry}
-
-%\renewcommand\normalsize{\fontsize{10pt}{12pt}\selectfont} % The LaTeX Companion, A.4.9
-\defaultfontfeatures{Mapping=tex-text}
-\setmainfont{Liberation Serif}
-\setsansfont{Liberation Sans}
-
-\setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
-\setCJKsansfont{Noto Sans CJK SC Regular}
-\setCJKfamilyfont{hei}{Adobe Heiti Std}
-\setCJKfamilyfont{song}{Adobe Song Std}
 
 %%% array related. make long title looks nicer
 %\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
@@ -40,7 +29,8 @@ margin=2.5cm]{geometry}
 \newcommand{\Term}[1]{\gdef\SWFCField@Term{#1}} % 学年度
 \newcommand{\Theory}[1]{\gdef\SWFCField@Theory{#1}} % 讲课学时
 \newcommand{\Lab}[1]{\gdef\SWFCField@Lab{#1}} % 实验学时
-\newcommand{\Signature}[1]{\gdef\SWFCField@Signature{\hspace{6ex}\includegraphics[scale=.15]{#1}}} % 任课教师签名
+%\newcommand{\Signature}[1]{\gdef\SWFCField@Signature{\hspace{6ex}\includegraphics[scale=.15]{#1}}}
+\newcommand{\Signature}[1]{\gdef\SWFCField@Signature{#1}} % 任课教师签名
 \newcommand{\Lecturea}[1]{\gdef\SWFCField@Lecturea{#1}} % 课程内容
 \newcommand{\Lectureb}[1]{\gdef\SWFCField@Lectureb{#1}} % 课程内容
 \newcommand{\Lecturec}[1]{\gdef\SWFCField@Lecturec{#1}} % 课程内容
@@ -109,7 +99,7 @@ margin=2.5cm]{geometry}
 
 \Term{2015-2016-02}  
 \Coursetitle{操作系统原理}
-\Signature{}
+\Signature{\LARGE\sig{王晓林}}
 \Theory{48}
 \Lab{16}
 \Lecturea{}

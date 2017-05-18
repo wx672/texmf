@@ -15,19 +15,8 @@ top=25mm,bottom=20mm,
 left=30mm,right=30mm
 ]{geometry}
 
-% \RequirePackage{latexsym}%,amsmath,amsfonts,amssymb}
-\RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
-\RequirePackage{xeCJK}
-
-%\renewcommand\normalsize{\fontsize{10pt}{12pt}\selectfont} % The LaTeX Companion, A.4.9
-\defaultfontfeatures{Mapping=tex-text}
-\setmainfont{Liberation Serif}
-\setsansfont{Liberation Sans}
-
-\setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
-\setCJKsansfont{Noto Sans CJK SC Regular}
-\setCJKfamilyfont{hei}{Adobe Heiti Std}
-\setCJKfamilyfont{song}{Adobe Song Std}
+\RequirePackage{wx672fonts}
+\RequirePackage{wx672cjk}
 
 %%% array related. make long title looks nicer
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
@@ -138,9 +127,9 @@ left=30mm,right=30mm
 }
 
 \Univ{西南林业大学}
-\Signature{\hspace{4em}}
-\AdvisorTitle{}
-\AdvisorName{}
+\Signature{\sig{王晓林}}
+\AdvisorTitle{讲师}
+\AdvisorName{王晓林}
 \Prjtitle{}
 \Prjclass{} % 科研 设计 调查 其它
 \Prjattri{} % 自选题 计划任务 横向任务 其它

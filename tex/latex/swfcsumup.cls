@@ -8,9 +8,7 @@
 \RequirePackage{calc,ifthen}
 \RequirePackage{array}
 \RequirePackage{tabu}
-\RequirePackage{amsmath,amsfonts,marvosym}%,amssymb} % \Box{}
-\RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
-\RequirePackage{xeCJK}
+
 \RequirePackage{graphicx}
 \RequirePackage[% showframe,
                 paperwidth=195mm, paperheight=270mm,
@@ -21,15 +19,8 @@
 \RequirePackage{tikz}
 \usetikzlibrary{backgrounds,positioning,fit}
                 
-%\renewcommand\normalsize{\fontsize{10pt}{12pt}\selectfont} % The LaTeX Companion, A.4.9
-\defaultfontfeatures{Mapping=tex-text}
-\setmainfont{Liberation Serif}
-\setsansfont{Liberation Sans}
-
-\setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
-\setCJKsansfont{Noto Sans CJK SC Regular}
-\setCJKfamilyfont{hei}{Adobe Heiti Std}
-\setCJKfamilyfont{song}{Adobe Song Std}
+\RequirePackage{wx672fonts}
+\RequirePackage{wx672cjk}
 
 %%% make long title looks nicer
 %\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
@@ -70,7 +61,7 @@
   \item
   \end{itemize}
 }
-\TeacherName{王晓林}\TeacherTitle{讲师}
+\TeacherName{{\large \sig{王晓林}}}\TeacherTitle{讲师}
 
 \newcommand{\YES}{{\Large \Checkedbox{}}是\quad$\Box$否}
 \newcommand{\NO}{$\Box$是\quad{\Large \Checkedbox{}}否}
@@ -125,18 +116,8 @@
   }
 }
 
-\newcommand{\Sign}[3]{
-  \begin{tikzpicture}[overlay]
-    \node [xshift=#1,yshift=#2] at (current page.center) {
-        \includegraphics[scale=.1]{#3}
-    };
-  \end{tikzpicture}
-}
-
-
 \pagestyle{empty}
 
-% \Signature{\hspace{4em}}
 \Term{}\Coursetitle{}
 \Totaltime{}\Labtime{}\Practicetime{}
 \School{}\Class{}\Studnum{}

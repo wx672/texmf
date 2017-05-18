@@ -30,37 +30,28 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage{enumitem} % \setlist
 \setlist{nosep} % kills all vertical spacing
 
-\RequirePackage[backend=biber,url=false,hyperref=false,
-    doi=false,isbn=false]{biblatex}
+\RequirePackage{wx672fonts}
+\RequirePackage{wx672cjk}
+\RequirePackage{wx672bib}
 
-% before xunicode!
-\RequirePackage{amsmath,amsfonts,amssymb,latexsym,marvosym,pifont}
-\RequirePackage[tt=false]{libertine} % keyboard symbol
+\RequirePackage{xcolor}
+\RequirePackage{hyperref}
 
-\RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
-\RequirePackage[CJKmath=true,AutoFakeSlant=true]{xeCJK} % slant header
+\hypersetup{%
+  pdfborderstyle={/S/U/W .5},% border style will be underline of width .5pt 
+  colorlinks=false,
+  linkbordercolor=red,       % color of internal links
+  citebordercolor=blue,     % color of links to bibliography
+  filebordercolor=magenta,   % color of file links
+  urlbordercolor=blue,
+  % linkcolor=black,citecolor=black,urlcolor=blue
+}
 
 % \singlespacing, \onehalfspacing, \doublespacing
 \RequirePackage[doublespacing]{setspace}
 \renewcommand{\doublespacing}{\setstretch{1.6}}
 
-\defaultfontfeatures{Mapping=tex-text}
-\setmainfont{Liberation Serif}
-\setsansfont{Liberation Sans}
-\setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
-\setCJKsansfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
-\setCJKmonofont{Noto Sans Mono CJK SC Regular}
-\setCJKfamilyfont{hei}{Adobe Heiti Std}
-\setCJKfamilyfont{song}{Adobe Song Std}
-\newCJKfontfamily\quotefont{Adobt Kaiti Std}
-
-\XeTeXlinebreaklocale "zh"
-\XeTeXlinebreakskip = 0pt plus 1pt
-
 \pagestyle{empty}
-
-% not used. use \makebox instead.
-\newcommand{\ziju}[1]{\renewcommand{\CJKglue}{\hskip #1}}
 
 % Variables to hold the text fields for the preliminary pages
 \newcommand{\Title}[1]{\gdef\SWFCField@Title{#1}}
@@ -169,7 +160,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
     6.& 完成该研究已具备的条件\par \vskip 1ex\SWFCField@Partsix\\\tabucline-
     &指导教师意见\\[2ex]
     &\hspace{3em}{\Large \SWFCField@AdvisorComment}\\[-1ex]
-    &\hfill 签名：\makebox[7em][s]{\SWFCField@AdvisorSig}\\
+    &\hfill 签名：\makebox[7em]{\SWFCField@AdvisorSig}\\
     &\hfill\SWFCField@Year 年 \SWFCField@Month 月 \SWFCField@Date 日\\\tabucline-
   \end{longtabu}
   \vskip -13pt
@@ -207,9 +198,9 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \Studid{20111156888}
 \Docname{本科毕业论文（设计）开题报告}
 \Advisor{我自己}
-\AdvisorSig{}
+\AdvisorSig{\LARGE\sig{王晓林}}
 \AdvisorTitle{讲师}
-\AdvisorAge{46}
+\AdvisorAge{48}
 \AdvisorGender{男}
 \AdvisorDegree{硕士}
 \AdvisorWhere{计算机与信息学院}

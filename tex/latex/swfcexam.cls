@@ -25,9 +25,7 @@
 \RequirePackage{lastpage,changepage} % for 'page n of m'; \ifoddpage
 \RequirePackage{dashrule} % \dashfill
 \RequirePackage{amsmath,amsfonts,amssymb}
-\RequirePackage{xltxtra} % fontspec,xunicode are loaded here.
 \RequirePackage{fancybox} % for \fancyput
-\RequirePackage[AutoFakeSlant=true]{xeCJK}
 \RequirePackage{tabu}
 \RequirePackage{multicol,varwidth,marvosym,soul}
 \RequirePackage{setspace} % \singlespacing, \onehalfspacing, \doublespacing
@@ -41,16 +39,8 @@
 \newcommand{\code}[1]{\texttt{#1}}
 
 %%% fonts
-%\renewcommand\normalsize{\fontsize{10pt}{12pt}\selectfont} % The LaTeX Companion, A.4.9
-\defaultfontfeatures{Mapping=tex-text}
-\setmainfont{Liberation Serif}
-\setsansfont{Liberation Sans}
-
-\setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
-\setCJKsansfont{Noto Sans CJK SC Regular}
-\setCJKmonofont{Noto Sans Mono CJK SC Regular}
-\setCJKfamilyfont{hei}{Adobe Heiti Std}
-\setCJKfamilyfont{song}{Adobe Song Std}
+\RequirePackage{wx672fonts}
+\RequirePackage{wx672cjk}
 
 \newlength{\bindingfieldlength}
 \setlength{\bindingfieldlength}{1in}
@@ -144,6 +134,6 @@
 \Term{2015}{2016}{2}
 \Course{操作系统原理}{开卷[A]}
 %\Lecturer{\hspace{20mm}}
-\Lecturer{{\CJKfontspec{FZShuTi}{\large 王晓林}}}
+\Lecturer{王晓林}
 
 \Answer{操作系统原理}{[A]卷}

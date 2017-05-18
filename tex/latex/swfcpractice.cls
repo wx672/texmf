@@ -10,23 +10,12 @@
 \RequirePackage{tabu}
 \RequirePackage{graphicx}
 
-% \RequirePackage{latexsym}%,amsmath,amsfonts,amssymb}
-\RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
-\RequirePackage{xeCJK}
-
 \RequirePackage[%showframe,
 paperwidth=210mm,paperheight=297mm,
 margin=2.5cm]{geometry}
 
-%\renewcommand\normalsize{\fontsize{10pt}{12pt}\selectfont} % The LaTeX Companion, A.4.9
-\defaultfontfeatures{Mapping=tex-text}
-\setmainfont{Liberation Serif}
-\setsansfont{Liberation Sans}
-
-\setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
-\setCJKsansfont{Noto Sans CJK SC Regular}
-\setCJKfamilyfont{hei}{Adobe Heiti Std}
-\setCJKfamilyfont{song}{Adobe Song Std}
+\RequirePackage{wx672fonts}
+\RequirePackage{wx672cjk}
 
 %%% array related. make long title looks nicer
 %\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
