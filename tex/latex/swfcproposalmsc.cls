@@ -65,6 +65,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \newcommand{\Titlext}[1]{\gdef\SWFCField@Titlext{#1}} % 论文题目2
 \newcommand{\Studid}[1]{\gdef\SWFCField@Studid{#1}} % 学号
 \newcommand{\Author}[1]{\gdef\SWFCField@Author{#1}} % 姓名
+\newcommand{\Gender}[1]{\gdef\SWFCField@Gender{#1}} % 姓名
 \newcommand{\Subject}[1]{\gdef\SWFCField@Subject{#1}} % 学科专业
 \newcommand{\Research}[1]{\gdef\SWFCField@Research{#1}} % 研究方向
 \newcommand{\Advisor}[1]{\gdef\SWFCField@Advisor{#1}} % 导师姓名
@@ -304,15 +305,15 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
     {\Large\textbf{西南林业大学研究生开题报告专家评议书}}
   \end{center}
   \extrarowsep=^6pt_5pt
-  \begin{tabu}{|c|X|c|X|c|X|c|X|}
+  \begin{tabu}{|c|X[8,c]|c|X[4,c]|c|X[c]|c|X[4,c]|}
     \tabucline-
-    学号&&姓名&&性别&&导师&\\\tabucline-
+    学号&\SWFCField@Studid&姓名&\SWFCField@Author&性别&\SWFCField@Gender&导师&\SWFCField@Advisor\\\tabucline-
   \end{tabu}
-  \begin{tabu}{|c|X|c|X|}
-    专业&&攻读学位&\checked{}\,硕士\qquad\unchecked{}博士\\\tabucline-
+  \begin{tabu}{|c|X[c,1.5]|c|X[c]|}
+    专业&\SWFCField@Subject&攻读学位&\checked{}\,硕士\quad\unchecked{}博士\\\tabucline-
   \end{tabu}
-  \begin{tabu}{|c|X|}
-    拟选学位论文题目&\\\tabucline-
+  \begin{tabu}{|c|X[c]|}
+    拟选学位论文题目&\SWFCField@Title\SWFCField@Titlext\\\tabucline-
   \end{tabu}
   \begin{tabu}{|X|c|c|c|c|}
     评价等级（请在相应空格内划\emoji{√}）&优&良&中&差\\\tabucline-
@@ -343,7 +344,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
       工作单位&\\\tabucline-
     \end{tabu}
   \end{tabu}
-  \begin{tabu}{|X[r]@{}|}
+  \begin{tabu}{X[r]@{}}
     \textbf{西南林业大学研究生处制}
   \end{tabu}
   \clearpage
@@ -357,8 +358,8 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 %  \extrarowsep=^8pt_8pt
   \begin{tabu}{|p{4em}|p{6em}|p{4em}|X|}
     \tabucline-
-    姓名&&学科专业& \begin{tabu}{X|c|X} &学院& \end{tabu}\\\tabucline-  
-    研究方向&&拟选题目&\\\tabucline-
+    姓名&\SWFCField@Author&学科专业& \begin{tabu}{X[c,.8]|c|X[c]} \SWFCField@Subject&学院&计信学院 \end{tabu}\\\tabucline-  
+    研究方向&\SWFCField@Research&拟选题目&\SWFCField@Title\SWFCField@Titlext\\\tabucline-
   \end{tabu}
   \vskip -1.7ex
   \begin{longtabu}{|p{4em}|@{}X@{}|}
@@ -444,18 +445,19 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \Title{论文标题}
 \Titlext{很长的标题}
 \Author{罗志兵}
+\Gender{女}
 \Studid{20151111002}
 \Advisor{赵家刚}
 \AdvisorTitle{副教授}
-\Advisortwo{钱家刚}
-\AdvisorTitletwo{教授}
-\Host{孙家刚}
-\Reportdate{2018-06-06}
+\Advisortwo{}
+\AdvisorTitletwo{}
+\Host{}
+\Reportdate{}
 \Date{6}
 \Month{6}
 \Year{2017}
 \Subject{林业信息工程}
-\Research{操作系统}
+\Research{操作系统研发}
 
 \Poneone{% 1.1 选题的理论和实践意义
   \lipsum[1-3]
