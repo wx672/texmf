@@ -5,7 +5,7 @@
 
 % without this, the Chinese in bib files will cause compiling error.
 %\RequirePackage[utf8]{inputenc} % this pkg shouldn't used with xelatex!
-%%%%% biblatex %%%%%
+
 \RequirePackage[backend=biber,%
 style=caspervector,utf8,sorting=centy,% for chinese ("language = {chinese}" in bib file)
 doi=false,isbn=false,eprint=false,url=false,
@@ -23,7 +23,6 @@ doi=false,isbn=false,eprint=false,url=false,
 
 \DeclareFieldFormat*{booktitle}{#1} % remove \mkbibemph and use normal font
 \DeclareFieldFormat*{journaltitle}{#1} % remove \mkbibemph
-\DeclareFieldFormat*{title}{#1} % remove \mkbibemph
 \DeclareFieldFormat*{volume}{#1} % remove \mkbibemph
 \DeclareFieldFormat[inbook, inproceedings, incollection, article]%
         {title}{\bbx@mybibquote{#1}} % remove \mkbibemph
@@ -58,6 +57,3 @@ doi=false,isbn=false,eprint=false,url=false,
 % {\supercitedelim}
 % {}
 \let\cite=\supercite
-
-%%%%% end biblatex %%%%%
-
