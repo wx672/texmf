@@ -24,6 +24,13 @@
 
 % \overfullrule=2cm % for easy finding the overfull lines
 
+% https://tex.stackexchange.com/questions/247185/tcolorbox-theorem-which-isnt-framed-on-the-sides
+\RequirePackage[breakable]{tcolorbox}
+\newtcolorbox{mainbodybox}[1]{breakable,sharp corners,
+  colback=white, coltitle=black,colbacktitle=white,
+  boxrule=.5pt,titlerule=0pt, 
+  fonttitle=\bfseries,title=#1}
+
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
 

@@ -44,10 +44,10 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   % linkcolor=black,citecolor=black,urlcolor=blue
 }
 
+% https://tex.stackexchange.com/questions/247185/tcolorbox-theorem-which-isnt-framed-on-the-sides
 \RequirePackage[breakable]{tcolorbox}
-\newtcolorbox{mainbodybox}[1]{breakable,arc=0mm,
-  colback=white,colframe=black,
-  coltitle=black,colbacktitle=white,
+\newtcolorbox{mainbodybox}[1]{breakable,sharp corners,
+  colback=white,coltitle=black,colbacktitle=white,
   boxrule=.5pt,titlerule=0pt, 
   fonttitle=\bfseries,title=#1}
 
@@ -165,7 +165,8 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 }
 
 \newcommand{\tablebody}{% main part
-  \singlespacing\noindent
+  \singlespacing
+  \noindent
   \extrarowsep=^8pt_8pt
 %  \tabulinesep=^5pt_1ex
   \begin{tabu}to \textwidth{|X[c,m]|}
@@ -205,7 +206,8 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \end{tabu}
 
   \clearpage
-
+  \doublespacing
+  
   \noindent{\Large \textbf{一、立题依据}}
 
   \begin{mainbodybox}{1. 选题的理论和实践意义}
@@ -249,7 +251,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \end{mainbodybox}
 
   \clearpage
-
+  \singlespacing
   \noindent{\Large \textbf{四、导师对开题报告的评价}}
 
   \noindent\begin{tabu}{|@{}X[r]@{}|}
@@ -307,7 +309,8 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \extrarowsep=^6pt_5pt
   \begin{tabu}{|c|X[8,c]|c|X[4,c]|c|X[c]|c|X[4,c]|}
     \tabucline-
-    学号&\SWFCField@Studid&姓名&\SWFCField@Author&性别&\SWFCField@Gender&导师&\SWFCField@Advisor\\\tabucline-
+    学号&\SWFCField@Studid&姓名&\SWFCField@Author&%
+    性别&\SWFCField@Gender&导师&\SWFCField@Advisor\\\tabucline-
   \end{tabu}
   \begin{tabu}{|c|X[c,1.5]|c|X[c]|}
     专业&\SWFCField@Subject&攻读学位&\checked{}\,硕士\quad\unchecked{}博士\\\tabucline-
