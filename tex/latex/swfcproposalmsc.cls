@@ -46,9 +46,9 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 
 \RequirePackage[breakable]{tcolorbox}
 \newtcolorbox{mainbodybox}[1]{breakable,arc=0mm,
-  titlerule=0mm, boxrule=.5pt,
   colback=white,colframe=black,
   coltitle=black,colbacktitle=white,
+  boxrule=.5pt,titlerule=0pt, 
   fonttitle=\bfseries,title=#1}
 
 % \singlespacing, \onehalfspacing, \doublespacing
@@ -175,9 +175,9 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \end{tabu}
   \begin{tabu}to \textwidth{@{}|X[l]|@{}}
     本研究题目为：\\[1ex]
-    \hspace{4em}1. 导师课题的一部分 （\hspace{1em}）；\\[.5ex]
-    \hspace{4em}2. 委培单位的课题 （\hspace{1em}）；\\[.5ex]
-    \hspace{4em}3. 其它（须具体说明）\uline{\hspace{18em}}。\\[.5ex]
+    \hspace{4em}1. 导师课题的一部分\, （\hspace{1em}）；\\[.5ex]
+    \hspace{4em}2. 委培单位的课题\, （\hspace{1em}）；\\[.5ex]
+    \hspace{4em}3. 其它（须具体说明）\,\uline{\hspace{18em}}。\\[.5ex]
     \tabucline-
   \end{tabu}
   \begin{tabu}to \textwidth{|X[c,m]|}
@@ -185,8 +185,8 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
     {\LARGE\textbf{选题分类（{\emoji √}）}}\\[2ex]
    \end{tabu}
   \begin{tabu}to \textwidth{@{}|X[l]X[l]|@{}}
-    1. 基础研究 （\hspace{1em}）&2. 应用研究 （\hspace{1em}）\\[1ex]
-    3. 综合研究 （\hspace{1em}）&4. 其\hspace{2em}他 （\hspace{1em}）\\[1ex]
+    1. 基础研究\, （\hspace{1em}）&2. 应用研究\, （\hspace{1em}）\\[1ex]
+    3. 综合研究\, （\hspace{1em}）&4. 其\hspace{2em}他\, （\hspace{1em}）\\[1ex]
     \tabucline-    
   \end{tabu}
   \begin{tabu}to \textwidth{|X[c,m]|}
@@ -194,13 +194,13 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
     {\LARGE\textbf{选题来源（{\emoji √}）}}\\[2ex]
    \end{tabu}
   \begin{tabu}to \textwidth{@{}|X[l]X[l]|@{}}
-    1. 973、863 项目 （\hspace{1em}）&2. 国家社科规划、基金项目 （\hspace{1em}）\\
-    3. 教育部人文、社会科学研究项目 （\hspace{1em}）&4. 国家自然科学基金项目 （\hspace{1em}）\\
-    5. 中央、国家各部门项目 （\hspace{1em}）&6. 省（自治区、直辖市）项目 （\hspace{1em}）\\
-    7. 国际合作研究项目 （\hspace{1em}）&8. 与港、澳、台合作研究项目 （\hspace{1em}）\\
-    9. 企、事业单位委托项目 （\hspace{1em}）&10. 外资项目 （\hspace{1em}）\\
-    11. 学校自选项目 （\hspace{1em}）&12. 国防项目 （\hspace{1em}）\\
-    13. 非立项 （\hspace{1em}）&14. 其他 （\hspace{1em}）\\
+    1. 973、863 项目\, （\hspace{1em}）&2. 国家社科规划、基金项目\, （\hspace{1em}）\\
+    3. 教育部人文、社会科学研究项目\, （\hspace{1em}）&4. 国家自然科学基金项目\, （\hspace{1em}）\\
+    5. 中央、国家各部门项目\, （\hspace{1em}）&6. 省（自治区、直辖市）项目\, （\hspace{1em}）\\
+    7. 国际合作研究项目\, （\hspace{1em}）&8. 与港、澳、台合作研究项目\, （\hspace{1em}）\\
+    9. 企、事业单位委托项目\, （\hspace{1em}）&10. 外资项目\, （\hspace{1em}）\\
+    11. 学校自选项目\, （\hspace{1em}）&12. 国防项目\, （\hspace{1em}）\\
+    13. 非立项\, （\hspace{1em}）&14. 其他\, （\hspace{1em}）\\
     \tabucline-
   \end{tabu}
 
@@ -255,8 +255,8 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \noindent\begin{tabu}{|@{}X[r]@{}|}
     \tabucline-
     （就硕士生对国外研究现状的了解情况、研究内容、研究方法、预期成果等方面予以评价）\\[25ex]
-    \makebox[20em]{导师签字：}\\
-    年 \makebox[6em]{月}\makebox[2em][l]{日}\\\tabucline-
+    \makebox[15em][l]{导师签字：}\\
+    \makebox[4em][l]{年} \makebox[3em][l]{月}\makebox[3em]{日}\\\tabucline-
   \end{tabu}
   \vskip 1ex
   \noindent{\Large \textbf{五、开题报告小组评议意见}}
@@ -280,7 +280,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
     \tabucline-
     学科对开题报告的意见：&\\[18ex]
     &\makebox[20em][l]{学科负责人签字：}\\
-    &\makebox[4em][l]{年} \makebox[4em][l]{月} \makebox[2em][l]{日}\\\tabucline-
+    &\makebox[4em][l]{年} \makebox[3em][l]{月} \makebox[3em]{日}\\\tabucline-
   \end{tabu}
 
   \vskip 1ex
@@ -291,7 +291,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
     \tabucline-
     学院对开题报告的意见：&\\[18ex]
     &\makebox[20em][l]{主管（副）院长签字：}\\
-    &\makebox[4em][l]{年} \makebox[4em][l]{月} \makebox[2em][l]{日}\\\tabucline-
+    &\makebox[4em][l]{年} \makebox[3em][l]{月} \makebox[3em]{日}\\\tabucline-
   \end{tabu}
   \begin{flushright}
     \textbf{西南林业大学研究生处制}
@@ -363,10 +363,10 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \end{tabu}
   \vskip -1.7ex
   \begin{longtabu}{|p{4em}|@{}X@{}|}
-    评价内容& \begin{tabu}{p{6em}|X[c]|@{}X[c,.15]@{}|X[.15]}
+    评价内容& \begin{tabu}{p{6em}|X[c]|@{}X[c,.15]@{}|X[.1]}
       评价参考&评分标准&参考\par{}分数&
     \end{tabu}\\\tabucline-
-    立\par{}论\par{}依\par{}据& \begin{tabu}{p{6em}|X|@{}X[c,.15]@{}|X[.15]}
+    立\par{}论\par{}依\par{}据& \begin{tabu}{p{6em}|X|@{}X[c,.15]@{}|X[.1]}
                研究意义&有重要科学意义或国民经济建设中的重要科技问题&10&\\\tabucline[on 2pt]{2-3}
                       &对学科发展有促进或有应用前景&8&\\\tabucline[on 2pt]{2-3}
                       &属一般问题&4&\\\tabucline[on 2pt]{2-3}
@@ -384,13 +384,13 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
                       &只了解部分现状，评价分析不够准确&6&\\\tabucline[on 2pt]{2-3}
                       &不了解现状，评价分析不够准确&2&
              \end{tabu}\\\tabucline-
-    研\par{}究\par{}方\par{}案&\begin{tabu}{p{6em}|X|@{}X[c,.15]@{}|X[.15]}
+    研\par{}究\par{}方\par{}案&\begin{tabu}{p{6em}|X|@{}X[c,.15]@{}|X[.1]}
                研究内容和拟&范围合适，重点突出；关键问题选择准确&10&\\\tabucline[on 2pt]{2-3}
                解决的关键问&基本合适，关键问题选择较准确&8&\\\tabucline[on 2pt]{2-3}
                题        &不够合适，只抓住了部分关键问题&4&\\\tabucline[on 2pt]{2-3}
                          &不合适，没有抓住关键问题&2&
                        \end{tabu}\\\tabucline{2-2}
-    研\par{}究\par{}方\par{}案&\begin{tabu}{p{6em}|X|@{}X[c,.15]@{}|X[.15]}\tabucline-
+    研\par{}究\par{}方\par{}案&\begin{tabu}{p{6em}|X|@{}X[c,.15]@{}|X[.1]}\tabucline-
                拟采用的研究&研究方法先进，且有创新，技术路线合理可行&10&\\\tabucline[on 2pt]{2-3}
                方法与技术路&方法可行，对现行方法有所改进，技术路线合理可行&8&\\\tabucline[on 2pt]{2-3}
                线（实验方案）&方法可行性不足或不够恰当，技术路线不够合理&4&\\\tabucline[on 2pt]{2-3}
@@ -400,13 +400,13 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
                          &不够明确或不够恰当&2&\\\tabucline[on 2pt]{2-3}
                          &不明确&1&
              \end{tabu}\\\tabucline-
-    研\par{}究\par{}基\par{}础&\begin{tabu}{p{6em}|X|@{}X[c,.15]@{}|X[.15]}
+    研\par{}究\par{}基\par{}础&\begin{tabu}{p{6em}|X|@{}X[c,.15]@{}|X[.1]}
                与本研究有关&是原有研究工作的进一步深入，实验条件好&10&\\\tabucline[on 2pt]{2-3}
                的研究工作积&有一定相关工作的积累，基础较好，实验条件较好&8&\\\tabucline[on 2pt]{2-3}
                累和实验条件&做过类似工作，基础一般，实验条件不足&4&\\\tabucline[on 2pt]{2-3}
                          &没有这方面的工作基础，实验条件较差&2&
              \end{tabu}\\\tabucline-
-    答\par{}辩\par{}情\par{}况&\begin{tabu}{p{6em}|X|@{}X[c,.15]@{}|X[.15]}
+    答\par{}辩\par{}情\par{}况&\begin{tabu}{p{6em}|X|@{}X[c,.15]@{}|X[.1]}
                对问题的理解&回答准确.精炼，思维敏捷&10&\\\tabucline[on 2pt]{2-3}
                能力和问题回&回答正确，思路比较清晰&8&\\\tabucline[on 2pt]{2-3}
                  答的准确性&回答基本正确，但不精练&4&\\\tabucline[on 2pt]{2-3}
@@ -414,8 +414,8 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
                        \end{tabu}\\\tabucline-
   \end{longtabu}
   \vskip -2ex
-  \begin{tabu}{|@{}X@{}|c|p{2.7em}|}
-    \begin{tabu}{X|X|X|X|X|X|X|X|X}
+  \begin{tabu}{|@{}X@{}|p{1.8em}|p{1.9em}|}
+    \begin{tabu}{X[c]|X[c]|X[c]|X[c]|X[c]|X[c]|X[c]|X[c]|X[c]}
       A&A-&B+&B&B-&C+&C&C-&D\\\tabucline-
       96-100&90-95&85-89&80-84&75-79&70-74&65-69&60-64&0-59
     \end{tabu}&综\par{}合\par{}分&\\\tabucline-
