@@ -48,8 +48,16 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage[breakable]{tcolorbox}
 \newtcolorbox{mainbodybox}[1]{breakable,sharp corners,
   colback=white,coltitle=black,colbacktitle=white,
-  boxrule=.5pt,titlerule=0pt, 
+  boxrule=.5pt,titlerule=0pt,
+  bottom=2ex,
   fonttitle=\bfseries,title=#1}
+
+\newtcolorbox{mainlistbox}[1]{sharp corners,
+  colback=white,coltitle=black,colbacktitle=white,
+  boxrule=.5pt,titlerule=0pt,
+  toptitle=1ex,bottomtitle=3ex,center title,
+  fonttitle=\bfseries,title={\Huge #1}}
+  
 
 % \singlespacing, \onehalfspacing, \doublespacing
 \RequirePackage[doublespacing]{setspace}
@@ -165,45 +173,86 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 }
 
 \newcommand{\tablebody}{% main part
-  \singlespacing
-  \noindent
-  \extrarowsep=^8pt_8pt
-%  \tabulinesep=^5pt_1ex
-  \begin{tabu}to \textwidth{|X[c,m]|}
-    \tabucline-
-    \\[-1ex]
-    {\Huge\textbf{选题基本情况（{\emoji √}）}}\\[2ex]
-  \end{tabu}
-  \begin{tabu}to \textwidth{@{}|X[l]|@{}}
-    本研究题目为：\\[1ex]
-    \hspace{4em}1. 导师课题的一部分\, （\hspace{1em}）；\\[.5ex]
-    \hspace{4em}2. 委培单位的课题\, （\hspace{1em}）；\\[.5ex]
-    \hspace{4em}3. 其它（须具体说明）\,\uline{\hspace{18em}}。\\[.5ex]
-    \tabucline-
-  \end{tabu}
-  \begin{tabu}to \textwidth{|X[c,m]|}
-    \\[-1ex]
-    {\LARGE\textbf{选题分类（{\emoji √}）}}\\[2ex]
-   \end{tabu}
-  \begin{tabu}to \textwidth{@{}|X[l]X[l]|@{}}
-    1. 基础研究\, （\hspace{1em}）&2. 应用研究\, （\hspace{1em}）\\[1ex]
-    3. 综合研究\, （\hspace{1em}）&4. 其\hspace{2em}他\, （\hspace{1em}）\\[1ex]
-    \tabucline-    
-  \end{tabu}
-  \begin{tabu}to \textwidth{|X[c,m]|}
-    \\[-1ex]
-    {\LARGE\textbf{选题来源（{\emoji √}）}}\\[2ex]
-   \end{tabu}
-  \begin{tabu}to \textwidth{@{}|X[l]X[l]|@{}}
-    1. 973、863 项目\, （\hspace{1em}）&2. 国家社科规划、基金项目\, （\hspace{1em}）\\
-    3. 教育部人文、社会科学研究项目\, （\hspace{1em}）&4. 国家自然科学基金项目\, （\hspace{1em}）\\
-    5. 中央、国家各部门项目\, （\hspace{1em}）&6. 省（自治区、直辖市）项目\, （\hspace{1em}）\\
-    7. 国际合作研究项目\, （\hspace{1em}）&8. 与港、澳、台合作研究项目\, （\hspace{1em}）\\
-    9. 企、事业单位委托项目\, （\hspace{1em}）&10. 外资项目\, （\hspace{1em}）\\
-    11. 学校自选项目\, （\hspace{1em}）&12. 国防项目\, （\hspace{1em}）\\
-    13. 非立项\, （\hspace{1em}）&14. 其他\, （\hspace{1em}）\\
-    \tabucline-
-  \end{tabu}
+%  \singlespacing
+  \begin{mainlistbox}{选题基本情况（{\emoji √}）}
+    本研究题目为：
+    \begin{enumerate}[itemsep=3ex]
+    \item 导师课题的一部分\, （\hspace{1em}）；
+    \item 委培单位的课题\, （\hspace{1em}）；
+    \item 其它（须具体说明）\,\uline{\hspace{18em}}。
+    \end{enumerate}
+  \end{mainlistbox}
+  \vskip -1.2ex  
+  \begin{mainlistbox}{选题分类（{\emoji √}）}
+    \begin{multicols}{2}
+      \begin{enumerate}[itemsep=3ex]
+      \item 基础研究\, （\hspace{1em}）
+      \item 应用研究\, （\hspace{1em}）
+      \item 综合研究\, （\hspace{1em}）
+      \item 其\hspace{2em}他\, （\hspace{1em}）
+      \end{enumerate}
+    \end{multicols}
+  \end{mainlistbox}
+  \vskip -1.2ex
+  \begin{mainlistbox}{选题来源（{\emoji √}）}
+    \begin{multicols}{2}
+      \begin{enumerate}[itemsep=3ex]
+      \item 973、863 项目\, （\hspace{1em}）
+      \item 国家社科规划、基金项目\, （\hspace{1em}）
+      \item 教育部人文、社会科学研究项目\, （\hspace{1em}）
+      \item 国家自然科学基金项目\, （\hspace{1em}）
+      \item 中央、国家各部门项目\, （\hspace{1em}）
+      \item 省（自治区、直辖市）项目\, （\hspace{1em}）
+      \item 国际合作研究项目\, （\hspace{1em}）
+      \item 与港、澳、台合作研究项目\, （\hspace{1em}）
+      \item 企、事业单位委托项目\, （\hspace{1em}）
+      \item 外资项目\, （\hspace{1em}）
+      \item 学校自选项目\, （\hspace{1em}）
+      \item 国防项目\, （\hspace{1em}）
+      \item 非立项\, （\hspace{1em}）
+      \item 其他\, （\hspace{1em}）
+      \end{enumerate}
+    \end{multicols}
+  \end{mainlistbox}
+  
+%   \noindent
+%   \extrarowsep=^8pt_8pt
+% %  \tabulinesep=^5pt_1ex
+%   \begin{tabu}to \textwidth{|X[c,m]|}
+%     \tabucline-
+%     \\[-1ex]
+%     {\Huge\textbf{选题基本情况（{\emoji √}）}}\\[2ex]
+%   \end{tabu}
+%   \begin{tabu}to \textwidth{@{}|X[l]|@{}}
+%     本研究题目为：\\[1ex]
+%     \hspace{4em}1. 导师课题的一部分\, （\hspace{1em}）；\\[.5ex]
+%     \hspace{4em}2. 委培单位的课题\, （\hspace{1em}）；\\[.5ex]
+%     \hspace{4em}3. 其它（须具体说明）\,\uline{\hspace{18em}}。\\[.5ex]
+%     \tabucline-
+%   \end{tabu}
+%   \begin{tabu}to \textwidth{|X[c,m]|}
+%     \\[-1ex]
+  %   {\LARGE\textbf{选题分类（{\emoji √}）}}\\[2ex]
+  %  \end{tabu}
+  % \begin{tabu}to \textwidth{@{}|X[l]X[l]|@{}}
+  %   1. 基础研究\, （\hspace{1em}）&2. 应用研究\, （\hspace{1em}）\\[1ex]
+  %   3. 综合研究\, （\hspace{1em}）&4. 其\hspace{2em}他\, （\hspace{1em}）\\[1ex]
+  %   \tabucline-    
+  % \end{tabu}
+  % \begin{tabu}to \textwidth{|X[c,m]|}
+  %   \\[-1ex]
+  %   {\LARGE\textbf{选题来源（{\emoji √}）}}\\[2ex]
+  %  \end{tabu}
+  % \begin{tabu}to \textwidth{@{}|X[l]X[l]|@{}}
+  %   1. 973、863 项目\, （\hspace{1em}）&2. 国家社科规划、基金项目\, （\hspace{1em}）\\
+  %   3. 教育部人文、社会科学研究项目\, （\hspace{1em}）&4. 国家自然科学基金项目\, （\hspace{1em}）\\
+  %   5. 中央、国家各部门项目\, （\hspace{1em}）&6. 省（自治区、直辖市）项目\, （\hspace{1em}）\\
+  %   7. 国际合作研究项目\, （\hspace{1em}）&8. 与港、澳、台合作研究项目\, （\hspace{1em}）\\
+  %   9. 企、事业单位委托项目\, （\hspace{1em}）&10. 外资项目\, （\hspace{1em}）\\
+  %   11. 学校自选项目\, （\hspace{1em}）&12. 国防项目\, （\hspace{1em}）\\
+  %   13. 非立项\, （\hspace{1em}）&14. 其他\, （\hspace{1em}）\\
+  %   \tabucline-
+  % \end{tabu}
 
   \clearpage
   \doublespacing
@@ -213,7 +262,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \begin{mainbodybox}{1. 选题的理论和实践意义}
     \SWFCField@Poneone
   \end{mainbodybox}
-
+  \vskip -1.2ex
   \begin{mainbodybox}{2. 文献综述（国内外本研究领域的发展现状、趋势及问题等，并附参考文献）}
     \SWFCField@Ponetwo
   \end{mainbodybox}
@@ -223,15 +272,15 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \begin{mainbodybox}{1. 研究内容、研究目标及拟解决的关键问题}
     \SWFCField@Ptwoone
   \end{mainbodybox}
-
+  \vskip -1.2ex
   \begin{mainbodybox}{2. 拟采用的研究方法、技术路线、实验方案及可行性分析}
     \SWFCField@Ptwotwo
   \end{mainbodybox}
-
+  \vskip -1.2ex
   \begin{mainbodybox}{3. 本研究的特色与创新之处}
     \SWFCField@Ptwothree
   \end{mainbodybox}
-  
+  \vskip -1.2ex
   \begin{mainbodybox}{4. 研究计划及预期研究结果}
     \SWFCField@Ptwofour
   \end{mainbodybox}
@@ -241,11 +290,11 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \begin{mainbodybox}{1. 已参加过的相关研究工作和已取得的研究工作进展}
     \SWFCField@Pthreeone
   \end{mainbodybox}
-  
+  \vskip -1.2ex
   \begin{mainbodybox}{2. 已具备的实验条件，尚缺少的实验条件和拟解决的途径}
     \SWFCField@Pthreetwo
   \end{mainbodybox}
-  
+  \vskip -1.2ex
   \begin{mainbodybox}{3. 研究经费预算和经费落实情况}
     \SWFCField@Pthreethree
   \end{mainbodybox}
@@ -262,6 +311,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \end{tabu}
   \vskip 1ex
   \noindent{\Large \textbf{五、开题报告小组评议意见}}
+  \extrarowsep=^8pt_8pt%  \tabulinesep=^5pt_1ex
 
   \noindent\begin{tabu}to \textwidth {|c|X[2,c,m]|X[1.5,c,m]|X[5,c,m]|X[2,c,m]|}
     \tabucline-

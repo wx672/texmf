@@ -28,8 +28,12 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   % linkcolor=black,citecolor=black,urlcolor=blue
 }
 
-\RequirePackage[breakable,skins]{tcolorbox}
-\tcbsetforeverylayer{colframe=black!10,coltitle=black,boxrule=.5pt,fonttitle=\bfseries,colback=white}
+% https://tex.stackexchange.com/questions/247185/tcolorbox-theorem-which-isnt-framed-on-the-sides
+\RequirePackage[breakable]{tcolorbox}
+\newtcolorbox{mainbodybox}[1]{breakable,sharp corners,
+  colback=white, coltitle=black,colbacktitle=white,
+  boxrule=.5pt,titlerule=0pt, 
+  fonttitle=\bfseries,title=#1}
 
 \RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{} % to make centering minted works
 
