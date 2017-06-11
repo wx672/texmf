@@ -25,7 +25,10 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage{lipsum}
 
 \RequirePackage{enumitem} % \setlist
-\setlist{nosep} % kills all vertical spacing
+%\setlist{nosep} % kills all vertical spacing
+
+\RequirePackage{tasks}
+\settasks{style={enumerate},label-align=right,label-width={2em}}
 
 \RequirePackage{wx672fonts}
 \RequirePackage{wx672cjk}
@@ -96,18 +99,6 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \newcommand{\Pthreetwo}[1]{\gdef\SWFCField@Pthreetwo{#1}}
 \newcommand{\Pthreethree}[1]{\gdef\SWFCField@Pthreethree{#1}}
 
-% \newcommand{\Projfrom}[1]{\gdef\SWFCField@Projfrom{#1}}
-% \newcommand{\Docname}[1]{\gdef\SWFCField@Docname{#1}}
-% \newcommand{\AdvisorSig}[1]{\gdef\SWFCField@AdvisorSig{#1}}
-% \newcommand{\AdvisorGender}[1]{\gdef\SWFCField@AdvisorGender{#1}}
-% \newcommand{\AdvisorAge}[1]{\gdef\SWFCField@AdvisorAge{#1}}
-% \newcommand{\AdvisorDegree}[1]{\gdef\SWFCField@AdvisorDegree{#1}}
-% \newcommand{\AdvisorWhere}[1]{\gdef\SWFCField@AdvisorWhere{#1}}
-% \newcommand{\AdvisorComment}[1]{\gdef\SWFCField@AdvisorComment{#1}}
-% \newcommand{\Univ}[1]{\gdef\SWFCField@Univ{#1}}
-
-% \newcommand{\Grade}[1]{\gdef\SWFCField@Grade{#1}}
-
 \newcommand{\SWFCtitlepage}{% Title page layout
   \thispagestyle{empty}
   \begin{center}
@@ -143,7 +134,6 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \textbf{填表日期：}\SWFCField@Year\,\textbf{年}\,%
   \SWFCField@Month\,\textbf{月}\,\SWFCField@Date\,\textbf{日}
   \end{large}
-  % {\Large\textbf{教\,务\,处\,制}}\\[1cm]
 \end{center}
 \clearpage
 }
@@ -173,10 +163,9 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 }
 
 \newcommand{\tablebody}{% main part
-%  \singlespacing
   \begin{mainlistbox}{选题基本情况（{\emoji √}）}
     本研究题目为：
-    \begin{enumerate}[itemsep=3ex]
+    \begin{enumerate}[itemsep=2ex]
     \item 导师课题的一部分\, （\hspace{1em}）；
     \item 委培单位的课题\, （\hspace{1em}）；
     \item 其它（须具体说明）\,\uline{\hspace{18em}}。
@@ -184,78 +173,46 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \end{mainlistbox}
   \vskip -1.2ex  
   \begin{mainlistbox}{选题分类（{\emoji √}）}
-    \begin{multicols}{2}
-      \begin{enumerate}[itemsep=3ex]
-      \item 基础研究\, （\hspace{1em}）
-      \item 应用研究\, （\hspace{1em}）
-      \item 综合研究\, （\hspace{1em}）
-      \item 其\hspace{2em}他\, （\hspace{1em}）
-      \end{enumerate}
-    \end{multicols}
+    \begin{tasks}(2)
+      \task 基础研究\, （\hspace{1em}）
+      \task 应用研究\, （\hspace{1em}）
+      \task 综合研究\, （\hspace{1em}）
+      \task 其\hspace{2em}他\, （\hspace{1em}）
+    \end{tasks}
+    % \begin{multicols}{2}
+    %   \begin{enumerate}[itemsep=2ex]
+    %   \item 基础研究\, （\hspace{1em}）
+    %   \item 应用研究\, （\hspace{1em}）
+    %   \item 综合研究\, （\hspace{1em}）
+    %   \item 其\hspace{2em}他\, （\hspace{1em}）
+    %   \end{enumerate}
+    % \end{multicols}
   \end{mainlistbox}
   \vskip -1.2ex
   \begin{mainlistbox}{选题来源（{\emoji √}）}
-    \begin{multicols}{2}
-      \begin{enumerate}[itemsep=3ex]
-      \item 973、863 项目\, （\hspace{1em}）
-      \item 国家社科规划、基金项目\, （\hspace{1em}）
-      \item 教育部人文、社会科学研究项目\, （\hspace{1em}）
-      \item 国家自然科学基金项目\, （\hspace{1em}）
-      \item 中央、国家各部门项目\, （\hspace{1em}）
-      \item 省（自治区、直辖市）项目\, （\hspace{1em}）
-      \item 国际合作研究项目\, （\hspace{1em}）
-      \item 与港、澳、台合作研究项目\, （\hspace{1em}）
-      \item 企、事业单位委托项目\, （\hspace{1em}）
-      \item 外资项目\, （\hspace{1em}）
-      \item 学校自选项目\, （\hspace{1em}）
-      \item 国防项目\, （\hspace{1em}）
-      \item 非立项\, （\hspace{1em}）
-      \item 其他\, （\hspace{1em}）
-      \end{enumerate}
-    \end{multicols}
+    % \begin{multicols}{2}
+    %   \begin{enumerate}[itemsep=2ex]
+    \begin{tasks}(2)
+      \task 973、863 项目\, （\hspace{1em}）
+      \task 国家社科规划、基金项目\, （\hspace{1em}）
+      \task 教育部人文、社科研究项目\, （\hspace{1em}）
+      \task 国家自然科学基金项目\, （\hspace{1em}）
+      \task 中央、国家各部门项目\, （\hspace{1em}）
+      \task 省（自治区、直辖市）项目\, （\hspace{1em}）
+      \task 国际合作研究项目\, （\hspace{1em}）
+      \task 与港、澳、台合作研究项目\, （\hspace{1em}）
+      \task 企、事业单位委托项目\, （\hspace{1em}）
+      \task 外资项目\, （\hspace{1em}）
+      \task 学校自选项目\, （\hspace{1em}）
+      \task 国防项目\, （\hspace{1em}）
+      \task 非立项\, （\hspace{1em}）
+      \task 其他\, （\hspace{1em}）
+    \end{tasks}
+    %   \end{enumerate}
+    % \end{multicols}
   \end{mainlistbox}
-  
-%   \noindent
-%   \extrarowsep=^8pt_8pt
-% %  \tabulinesep=^5pt_1ex
-%   \begin{tabu}to \textwidth{|X[c,m]|}
-%     \tabucline-
-%     \\[-1ex]
-%     {\Huge\textbf{选题基本情况（{\emoji √}）}}\\[2ex]
-%   \end{tabu}
-%   \begin{tabu}to \textwidth{@{}|X[l]|@{}}
-%     本研究题目为：\\[1ex]
-%     \hspace{4em}1. 导师课题的一部分\, （\hspace{1em}）；\\[.5ex]
-%     \hspace{4em}2. 委培单位的课题\, （\hspace{1em}）；\\[.5ex]
-%     \hspace{4em}3. 其它（须具体说明）\,\uline{\hspace{18em}}。\\[.5ex]
-%     \tabucline-
-%   \end{tabu}
-%   \begin{tabu}to \textwidth{|X[c,m]|}
-%     \\[-1ex]
-  %   {\LARGE\textbf{选题分类（{\emoji √}）}}\\[2ex]
-  %  \end{tabu}
-  % \begin{tabu}to \textwidth{@{}|X[l]X[l]|@{}}
-  %   1. 基础研究\, （\hspace{1em}）&2. 应用研究\, （\hspace{1em}）\\[1ex]
-  %   3. 综合研究\, （\hspace{1em}）&4. 其\hspace{2em}他\, （\hspace{1em}）\\[1ex]
-  %   \tabucline-    
-  % \end{tabu}
-  % \begin{tabu}to \textwidth{|X[c,m]|}
-  %   \\[-1ex]
-  %   {\LARGE\textbf{选题来源（{\emoji √}）}}\\[2ex]
-  %  \end{tabu}
-  % \begin{tabu}to \textwidth{@{}|X[l]X[l]|@{}}
-  %   1. 973、863 项目\, （\hspace{1em}）&2. 国家社科规划、基金项目\, （\hspace{1em}）\\
-  %   3. 教育部人文、社会科学研究项目\, （\hspace{1em}）&4. 国家自然科学基金项目\, （\hspace{1em}）\\
-  %   5. 中央、国家各部门项目\, （\hspace{1em}）&6. 省（自治区、直辖市）项目\, （\hspace{1em}）\\
-  %   7. 国际合作研究项目\, （\hspace{1em}）&8. 与港、澳、台合作研究项目\, （\hspace{1em}）\\
-  %   9. 企、事业单位委托项目\, （\hspace{1em}）&10. 外资项目\, （\hspace{1em}）\\
-  %   11. 学校自选项目\, （\hspace{1em}）&12. 国防项目\, （\hspace{1em}）\\
-  %   13. 非立项\, （\hspace{1em}）&14. 其他\, （\hspace{1em}）\\
-  %   \tabucline-
-  % \end{tabu}
 
   \clearpage
-  \doublespacing
   
   \noindent{\Large \textbf{一、立题依据}}
 
@@ -306,7 +263,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \noindent\begin{tabu}{|@{}X[r]@{}|}
     \tabucline-
     （就硕士生对国外研究现状的了解情况、研究内容、研究方法、预期成果等方面予以评价）\\[25ex]
-    \makebox[15em][l]{导师签字：}\\
+    \makebox[15em][l]{导师签字：}\\[2ex]
     \makebox[4em][l]{年} \makebox[3em][l]{月}\makebox[3em]{日}\\\tabucline-
   \end{tabu}
   \vskip 1ex
@@ -382,18 +339,18 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \begin{tabu}{|@{}X[l]@{}|}
     \hspace{1ex}\textbf{专家综合评价意见与建议：}\\[6ex]\tabucline-
     \hspace{1ex}\textbf{专家对开题报告的总体评价结果（请划\emoji{√}）}\\\tabucline-
-    \begin{tabu}{|X|X|X|}
+    \begin{tabu}{X|X|X}
       \unchecked{}\, 通过开题&\unchecked{}\, 通过开题，但需修改&\unchecked{}\, 不通过，重新
       开题
     \end{tabu}\\\tabucline-
     \hspace{1ex}评议专家签名：\\
     \makebox[25em][r]{日期：}\\\tabucline-
     \textbf{专家基本信息}\\\tabucline-
-    \begin{tabu}{|r|X|r|X|}
+    \begin{tabu}{r|X|r|X}
       姓名&&职称&\\\tabucline-
       研究方向&&联系电话&\\\tabucline-
     \end{tabu}
-    \begin{tabu}{|r|X|}
+    \begin{tabu}{r|X}
       工作单位&\\\tabucline-
     \end{tabu}
   \end{tabu}
