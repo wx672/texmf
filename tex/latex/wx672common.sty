@@ -25,15 +25,17 @@
 
 \renewcommand{\theFancyVerbLine}{
   \textcolor{lightgray}{\scriptsize \arabic{FancyVerbLine}}}
-\newminted{gas}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
-  frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
-\newminted{nasm}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
-  frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
-\newminted{c}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
-  frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
-\newminted{python}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
-  frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
+
 \newcommand{\codec}[1]{\mintinline{c}|#1|}
+
+\setminted{linenos=true,numbersep=3pt,fontsize=\small,
+  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},xleftmargin=2cm,autogobble=true}
+
+\newminted{c}{}
+\newminted{latex}{}
+\newminted{gas}{}
+\newminted{nasm}{}
+\newminted{python}{}
 
 %%%%% end minted %%%%%
 

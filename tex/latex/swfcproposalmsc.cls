@@ -366,9 +366,10 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
     {\Large \textbf{西南林业大学研究生开题报告考核小组评议书}}
   \end{center}
 %  \extrarowsep=^8pt_8pt
-  \begin{tabu}{|p{4em}|p{6em}|p{4em}|X|}
+  \begin{tabu}{|p{4em}|>{\centering}p{6em}|p{4em}|@{}X[c]@{}|}
     \tabucline-
-    姓名&\SWFCField@Author&学科专业& \begin{tabu}{X[c,.8]|c|X[c]} \SWFCField@Subject&学院&计信学院 \end{tabu}\\\tabucline-  
+    姓名&\SWFCField@Author&学科专业&%
+    \begin{tabu}{X[c,.8]|c|X[c]} \SWFCField@Subject&学院&计信学院 \end{tabu}\\\tabucline-  
     研究方向&\SWFCField@Research&拟选题目&\SWFCField@Title\SWFCField@Titlext\\\tabucline-
   \end{tabu}
   \vskip -1.7ex
