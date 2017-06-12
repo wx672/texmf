@@ -27,7 +27,7 @@
 \RequirePackage{amsmath,amsfonts,amssymb}
 \RequirePackage{fancybox} % for \fancyput
 \RequirePackage{tabu}
-\RequirePackage{multicol,varwidth,marvosym,soul}
+\RequirePackage{multicol,varwidth,marvosym,soul,tasks}
 \RequirePackage{setspace} % \singlespacing, \onehalfspacing, \doublespacing
 
 \RequirePackage{fancyhdr}

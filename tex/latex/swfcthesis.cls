@@ -89,27 +89,48 @@ doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
   citebordercolor=cyan,      % links to bibliography
   filebordercolor=magenta,   % file links
   urlbordercolor=blue,       % external links
-  %linkcolor=black,citecolor=black,urlcolor=blue
 }
 
 % before xunicode!
 \RequirePackage{amsmath,amsfonts,amssymb,latexsym,marvosym,pifont}
 \RequirePackage[tt=false]{libertine} % keyboard symbol
+\newcommand{\Ca}{\LKeyCtrlX{a}}      % mainly for the tutorial doc
+\newcommand{\Cb}{\LKeyCtrlX{b}}
+\newcommand{\Cc}{\LKeyCtrlX{c}}
+\newcommand{\Cd}{\LKeyCtrlX{d}}
+\newcommand{\Ce}{\LKeyCtrlX{e}}
+\newcommand{\Cf}{\LKeyCtrlX{f}}
+\newcommand{\Cg}{\LKeyCtrlX{g}}
+\newcommand{\Ch}{\LKeyCtrlX{h}}
+\newcommand{\Ci}{\LKeyCtrlX{i}}
+\newcommand{\Cj}{\LKeyCtrlX{j}}
+\newcommand{\Ck}{\LKeyCtrlX{k}}
+\newcommand{\Cl}{\LKeyCtrlX{l}}
+\newcommand{\Cm}{\LKeyCtrlX{m}}
+\newcommand{\Cn}{\LKeyCtrlX{n}}
+\newcommand{\Cp}{\LKeyCtrlX{p}}
+\newcommand{\Cs}{\LKeyCtrlX{s}}
+\newcommand{\Cv}{\LKeyCtrlX{v}}
+\newcommand{\Cx}{\LKeyCtrlX{x}}
+\newcommand{\Cy}{\LKeyCtrlX{y}}
+\newcommand{\Cslash}{\LKeyCtrl{}+\biolinumKeyGlyph{slash}}
+\newcommand{\Se}{\LKeyWin{}+\LKey{e}}
+\newcommand{\Md}{\LKeyAltX{d}}
+\newcommand{\Mv}{\LKeyAltX{v}}
+\newcommand{\Mx}{\LKeyAltX{x}}
+\newcommand{\MEnter}{\LKeyAlt{}+\LKeyEnter{}}
+\newcommand{\Tab}{\LKeyTab{}}
+\newcommand{\Enter}{\LKeyEnter{}}
+\newcommand{\Caps}{\LKeyCapsLock{}}
+\newcommand{\Ctrl}{\LKeyCtrl{}}
 
 \RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
 \RequirePackage[CJKmath=true,AutoFakeSlant=true]{xeCJK} % slant header
+\RequirePackage{xpinyin}
 
 % \singlespacing, \onehalfspacing, \doublespacing
 \RequirePackage[doublespacing]{setspace}
 \renewcommand{\doublespacing}{\setstretch{1.6}}
-
-%%% Obsolete! setspace package is perfered to setting baselinestretch directly.
-% \newcommand{\normalspace}
-%     {\par\renewcommand{\baselinestretch}{1}\small\normalsize\par}
-% \newcommand{\singlespace}
-%     {\par\renewcommand{\baselinestretch}{1.2}\small\normalsize\par}
-% \newcommand{\doublespace}% 30 lines per page
-%     {\par\renewcommand{\baselinestretch}{1.6}\small\normalsize\par}
 
 \defaultfontfeatures{Mapping=tex-text}
 \setmainfont{Liberation Serif}
@@ -152,7 +173,6 @@ doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
 % not used. use \makebox instead.
 \newcommand{\ziju}[1]{\renewcommand{\CJKglue}{\hskip #1}}
 
-%\renewcommand{\bibname}{参考文献} % only for bibtex. Obsolete!
 \renewcommand{\contentsname}{目\hspace{1em}录}
 \renewcommand{\listfigurename}{插图目录}
 \renewcommand{\listtablename}{表格目录}
@@ -266,20 +286,23 @@ doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
 
 \RequirePackage{minted} % minted has to be loaded at last!!!
 \usemintedstyle{bw}
+
 \renewcommand{\listingscaption}{程序} % used by minted
 \renewcommand{\listoflistingscaption}{程序目录}
 
 \renewcommand{\theFancyVerbLine}{
   \textcolor{lightgray}{\scriptsize \arabic{FancyVerbLine}}}
-\newminted{gas}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
-  frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
-\newminted{nasm}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
-  frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
-\newminted{c}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
-  frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
-\newminted{python}{ linenos=true,numbersep=2pt,fontsize=\footnotesize,
-  frame=leftline,framesep=3pt,rulecolor=\color{lightgray}, xleftmargin=10pt }
+
 \newcommand{\codec}[1]{\mintinline{c}|#1|}
+
+\setminted{linenos=true,numbersep=3pt,fontsize=\small,
+  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},xleftmargin=2cm,autogobble=true}
+
+\newminted{c}{}
+\newminted{latex}{}
+\newminted{gas}{}
+\newminted{nasm}{}
+\newminted{python}{}
 
 \setlength{\parindent}{2em}
 

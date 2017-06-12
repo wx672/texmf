@@ -1,51 +1,6 @@
 \documentclass{swfcthesis}
 
-\usepackage{xpinyin}
-
-\hypersetup{xetex,breaklinks=true,
-  pdfinfo={
-    Title={怎样用\LaTeX{}排版毕业论文},
-    Author={王晓林},
-    Keywords={latex, tutorial, 西南林业大学, 本科毕业论文模板, 教程, swfu},
-  },
-}
-
-\setCJKfamilyfont{hei}{Adobe Heiti Std}
-\setCJKfamilyfont{song}{Adobe Song Std}
-\setCJKfamilyfont{kai}{Adobe Kaiti Std} % e.g. \CJKfamily{kai}
-\newCJKfontfamily\cjkquotefont{Adobe Kaiti Std}
-
 \addbibresource{tutorial.bib}
-
-\newcommand{\Ca}{\LKeyCtrlX{a}}
-\newcommand{\Cb}{\LKeyCtrlX{b}}
-\newcommand{\Cc}{\LKeyCtrlX{c}}
-\newcommand{\Cd}{\LKeyCtrlX{d}}
-\newcommand{\Ce}{\LKeyCtrlX{e}}
-\newcommand{\Cf}{\LKeyCtrlX{f}}
-\newcommand{\Cg}{\LKeyCtrlX{g}}
-\newcommand{\Ch}{\LKeyCtrlX{h}}
-\newcommand{\Ci}{\LKeyCtrlX{i}}
-\newcommand{\Cj}{\LKeyCtrlX{j}}
-\newcommand{\Ck}{\LKeyCtrlX{k}}
-\newcommand{\Cl}{\LKeyCtrlX{l}}
-\newcommand{\Cm}{\LKeyCtrlX{m}}
-\newcommand{\Cn}{\LKeyCtrlX{n}}
-\newcommand{\Cp}{\LKeyCtrlX{p}}
-\newcommand{\Cs}{\LKeyCtrlX{s}}
-\newcommand{\Cv}{\LKeyCtrlX{v}}
-\newcommand{\Cx}{\LKeyCtrlX{x}}
-\newcommand{\Cy}{\LKeyCtrlX{y}}
-\newcommand{\Cslash}{\LKeyCtrl{}+\biolinumKeyGlyph{slash}}
-\newcommand{\Se}{\LKeyWin{}+\LKey{e}}
-\newcommand{\Md}{\LKeyAltX{d}}
-\newcommand{\Mv}{\LKeyAltX{v}}
-\newcommand{\Mx}{\LKeyAltX{x}}
-\newcommand{\MEnter}{\LKeyAlt{}+\LKeyEnter{}}
-\newcommand{\Tab}{\LKeyTab{}}
-\newcommand{\Enter}{\LKeyEnter{}}
-\newcommand{\Caps}{\LKeyCapsLock{}}
-\newcommand{\Ctrl}{\LKeyCtrl{}}
 
 \begin{document}
 
@@ -250,19 +205,14 @@
   实，后面你会发现，\Cj{}带自动缩进，比按\Enter{}更方便；
 \item 现在可以向你打开的空文件里写东西了；
 
-  \begin{minted}[fontsize=\small,baselinestretch=1,
-    linenos=true,numbersep=3pt,
-    frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-    xleftmargin=2cm,%,xrightmargin=4cm,
-    gobble=2,
-    ]{c}
+  \begin{ccode}
     #include <stdio.h>
     int main()
     {
       printf ("Hello, world!\n");
       return 0;
     }
-  \end{minted}
+  \end{ccode}
 
 \item 存盘：\Cx \Cs{}；
 \item 编译：\texttt{gcc hello.c}；
@@ -279,17 +229,12 @@
 \item \Cx{} \Cf{}，\texttt{hello.tex}，开始编辑；
 \item 写入文件内容；
 
-  \begin{minted}[fontsize=\small,baselinestretch=1,
-    linenos=true,numbersep=3pt,
-    frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-    xleftmargin=2cm,%xrightmargin=4cm,
-    gobble=2
-    ]{latex}
+  \begin{latexcode}
     \documentclass{article}
     \begin{document}
       Hello, world!
     \end{document}
-  \end{minted}
+  \end{latexcode}
 
 \item 存盘：\Cx \Cs{}；
 \item 编译：\texttt{xelatex hello.tex}；
@@ -395,18 +340,13 @@ AUC\TeX{}是Emacs的一个功能模块，为\LaTeX{}编程提供了巨大的便�
 这是在问你是否有什么特殊选项啊？用\Cj{}来告诉它说「不需要」。现在，你的 \texttt{simple.tex}
 文件里应该有如下几行东西了：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \documentclass{article}  % documentclass可以是
                            % article, book, report, letter...
   \begin{document}         % 文章的开始
   | 
   \end{document}           % 文章的结束
-\end{minted}
+\end{latexcode}
 
 这时，光标停在 \verb|\begin{document}|与 \verb|\end{document}|之间，等待你的输入。百分号
 （\verb|%|）后面显然都是注释。
@@ -429,34 +369,24 @@ Roberts 写的
 这是系统在等待你输入一个 \texttt{Macro}，说白了就是“命令”。输入：\texttt{title}，\Cj{}，这时
 你的文章会变成下面这样：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \documentclass{article}  % documentclass可以是
                            % article, book, report, letter...
   \begin{document}         % 文章的开始
   \title{|} 
   \end{document}           % 文章的结束
-\end{minted}
+\end{latexcode}
 
 这时，光标停在 \verb|\title{}| 的花括号里。不用说你也知道，该输入文章的标题了。那么就给它
 一个标题：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \documentclass{article}  % documentclass可以是
                            % article, book, report, letter...
   \begin{document}         % 文章的开始
   \title{How to Structure a \LaTeX{} Document} 
   \end{document}           % 文章的结束
-\end{minted}
+\end{latexcode}
 
 发现了吗？凡是以反斜杠开头的都是命令（\texttt{Macro}）， 比如 \verb|\LaTeX{}|，它的唯一作用
 就是把 \texttt{LaTeX} 这五个字母输出成一副怪样子，\LaTeX{}。
@@ -475,12 +405,7 @@ Emacs会把我们上次输入的Macro，也就是title，做为默认值提示�
 \texttt{author} \Cj{}。然后在 \verb|\author{}| 的花括号里输入作者的名字。当然，也可以把自己
 的通信地址、email写在里面。就像下面这样：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \documentclass{article}  % documentclass可以是
                            % article, book, report, letter...
   \begin{document}         % 文章的开始
@@ -493,7 +418,7 @@ Emacs会把我们上次输入的Macro，也就是title，做为默认值提示�
     LS2 1HE\\
     \emph{andyr@comp.leeds.ac.uk}}
   \end{document}           % 文章的结束
-\end{minted}
+\end{latexcode}
 
 注意，\verb|\\|代表“强制换行”。现在，新起一行，加上日期：
 
@@ -509,12 +434,7 @@ Emacs会把我们上次输入的Macro，也就是title，做为默认值提示�
 再新起一行，写 \verb|\maketitle| \Cj{}。\verb|\maketitle| 自然是要排版top matter了。换句
 话说，不要标题的话可以省略掉这个命令。现在文章变成了这样：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \documentclass{article}  % documentclass可以是
                            % article, book, report, letter...
   \begin{document}         % 文章的开始
@@ -529,7 +449,7 @@ Emacs会把我们上次输入的Macro，也就是title，做为默认值提示�
   \date{\today}
   \maketitle
   \end{document}           % 文章的结束
-\end{minted}
+\end{latexcode}
 
 好奇的话，现在可以编译一下，看看PDF文件的效果：
 
@@ -558,12 +478,7 @@ Emacs会把我们上次输入的Macro，也就是title，做为默认值提示�
 这是在问你要开始哪个环境啊？默认是开始 itemize 环境，因为它是最常用的环境。但我们现在要写的是“摘要”，告诉它：
 abstract \Cj{}。abstract 就是“摘要”的意思。科技论文都是要有摘要的嘛。于是，你的文章变成了这样:
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   % 此处略去十数行
  
   \maketitle
@@ -572,16 +487,11 @@ abstract \Cj{}。abstract 就是“摘要”的意思。科技论文都是要有
     |
   \end{abstract}
   \end{document}           % 文章的结束
-\end{minted}
+\end{latexcode}
 
 光标停在 \verb|\begin{abstract}| 和 \verb|\end{abstract}| 之间(第6行)。好，现在往摘要部分里填点东西:
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   % 此处略去十数行
  
   \maketitle
@@ -595,7 +505,7 @@ abstract \Cj{}。abstract 就是“摘要”的意思。科技论文都是要有
     all the relevant information.
   \end{abstract}
   \end{document}           % 文章的结束
-\end{minted}
+\end{latexcode}
 
 看看效果：
 
@@ -631,28 +541,18 @@ mini buffer 又提示：
 这是在问你，要不要给这个新章节打个标签，比如 \texttt{sec:introduction}, 以后也许要索引到它呢？
 这个暂时无关紧要，\Cj{}就行了。于是，文中又有了下面的第5、6两行。
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   % 此处略去十数行
 
   \end{abstract}
 
   \section{Introduction}
   \label{sec:introduction}
-\end{minted}
+\end{latexcode}
 
 给这一节添加内容：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   % 此处略去十数行
 
   \end{abstract}
@@ -668,18 +568,13 @@ mini buffer 又提示：
   justified text, text formatting etc., is all there, and
   you would be surprised when you see just how little markup
   was required to get this output.
-\end{minted}
+\end{latexcode}
 
 注意到了吗？在这一节里有一个新命令 \verb|\cite{}|, 这是在引用一个参考文献。先不管它，后面再说。
 
 如法炮制，再添加几个章节：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   % 此处略去十数行
 
   \end{abstract}
@@ -714,7 +609,7 @@ mini buffer 又提示：
   \emph{top matter}.
 
   |
-\end{minted}
+\end{latexcode}
 
 注意到 \verb|\emph{}| 了吗？它代表 emphasize ，“强调”。英文习惯用斜体字来表示强调的东西，那
 么 \verb|\emph{hello, world}| 自然就是把 hello, world 排版成 \emph{hello, world} 了。
@@ -754,15 +649,10 @@ mini buffer 又提示：
 
 似曾相识吧？敲\Cj{}，于是，文章中又有了如下两行：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \subsubsection{Article Information}
   \label{sec:article-information}
-\end{minted}
+\end{latexcode}
 
 也就是说，我们有了一个 subsubsection。
 
@@ -777,16 +667,11 @@ mini buffer 又提示：
 我们当然不再需要 abstract 了，现在我们要的是 itemize ，也就是“不带序号的列表”。那么当然输
 入：itemize \Cj{}。于是看到：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \begin{itemize}
   \item |
   \end{itemize}
-\end{minted}
+\end{latexcode}
 
 光标停在 \verb|\item| 的后面。非常好，这正是我想要的。于是直接输入如下文字：
 
@@ -797,17 +682,12 @@ mini buffer 又提示：
 输入之后，\MEnter{}，也就是，左手拇指按住\LKeyAlt{}键，同时右手小指去敲\Enter{}。你会看到
 这样的效果：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \begin{itemize}
   \item \verb|\title{}| --- The title of the article.
   \item 
   \end{itemize}
-\end{minted}
+\end{latexcode}
 
 也就是说，不仅换了行，而且自动有了 \verb|\item|等待你输入新的东西。
 
@@ -828,27 +708,17 @@ verbatim 一词的缩写，就是“原样引用”的意思。好奇的话，�
 
 得到：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \begin{itemize}
   \item \verb|\title{}| --- The title of the article.
   \item \verb|\date| --- The date. Use: 
   \end{itemize}
-\end{minted}
+\end{latexcode}
 
 没什么好说的。现在我们要在 itemize 环境里面再套一个 itemize 。光标现在应该在第3行的最后。
 敲：\Cc\Ce\Cj{}，于是得到：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \begin{itemize}
   \item \verb|\title{}| --- The title of the article.
   \item \verb|\date| --- The date. Use:
@@ -857,16 +727,11 @@ verbatim 一词的缩写，就是“原样引用”的意思。好奇的话，�
     \end{itemize}
 
   \end{itemize}
-\end{minted}
+\end{latexcode}
 
 简单吧？不用说了，你肯定知道下面这些是怎么来的了吧。
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \begin{itemize}
   \item \verb|\title{}| --- The title of the article.
   \item \verb|\date| --- The date. Use:
@@ -876,7 +741,7 @@ verbatim 一词的缩写，就是“原样引用”的意思。好奇的话，�
     \item \verb|\date{}| --- for no date.
     \end{itemize}
   \end{itemize}
-\end{minted}
+\end{latexcode}
 
 编译之后的效果应该和下面这张图差不多。
 
@@ -887,12 +752,7 @@ verbatim 一词的缩写，就是“原样引用”的意思。好奇的话，�
 好了，请你现在照猫画虎，再来一个 subsubsection，标题叫 Author Information。模仿上面的东西，
 来得到下面的东西：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \subsubsection{Author Information}
   \label{sec:author-information}
   
@@ -914,7 +774,7 @@ verbatim 一词的缩写，就是“原样引用”的意思。好奇的话，�
   \item \texttt{email} --- The author's email address.
   \item \texttt{urladdr} --- The URL for the author's web page.
   \end{itemize}
-\end{minted}
+\end{latexcode}
 
 显示效果：
 
@@ -948,12 +808,7 @@ verbatim 一词的缩写，就是“原样引用”的意思。好奇的话，�
 
 再添加一些文字，得到：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   % 此处略去数十行
  
   \subsection{Sectioning Commands}
@@ -967,7 +822,7 @@ verbatim 一词的缩写，就是“原样引用”的意思。好奇的话，�
   % A simple table. The center environment is first set up,
   % otherwise the table is left aligned.  The tabular environment
   % is what tells Latex that the data within is data for the table.
-\end{minted}
+\end{latexcode}
 
 % 再看看效果：
 % \begin{center}
@@ -985,12 +840,7 @@ verbatim 一词的缩写，就是“原样引用”的意思。好奇的话，�
 
 得到：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   % 此处略去数十行
  
   \subsection{Sectioning Commands}
@@ -1008,7 +858,7 @@ verbatim 一词的缩写，就是“原样引用”的意思。好奇的话，�
   \begin{center}
     
   \end{center}
-\end{minted}
+\end{latexcode}
 
 在center环境里面，我们添加一个 tabular（表格）环境：
 
@@ -1039,12 +889,7 @@ Optional是可有可无的意思，也就是说，你如果在意表格的位置
 意思。那么，你应该恍然大悟了，不就是……竖线-左对齐-竖线-左对齐-竖线嘛。那么，举一反三，除了
 小写L，我们还会见到r（右对齐）和c（居中）。现在 \Cj{}，得到如下结果：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   % 此处略去数十行
  
   \subsection{Sectioning Commands}
@@ -1064,7 +909,7 @@ Optional是可有可无的意思，也就是说，你如果在意表格的位置
       &
     \end{tabular}
   \end{center}
-\end{minted}
+\end{latexcode}
 
 现在我们开始画表格，先画一条横线：
 
@@ -1081,12 +926,7 @@ Optional是可有可无的意思，也就是说，你如果在意表格的位置
 那个 \verb'&' 就是两列之间的分隔符，``\verb'\\'''我们见过，表示强制换行。照猫画虎，把所有的
 行都加上，得到如下结果：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   % 此处略去数十行
  
   \subsection{Sectioning Commands}
@@ -1115,7 +955,7 @@ Optional是可有可无的意思，也就是说，你如果在意表格的位置
       \hline
     \end{tabular}
   \end{center}
-\end{minted}
+\end{latexcode}
 
 这张表格的效果应该就是下面这样:
 
@@ -1138,12 +978,7 @@ Optional是可有可无的意思，也就是说，你如果在意表格的位置
 
 好了，表格画完了。再添加点文字：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   % 此处略去数十行
  
   \begin{center}
@@ -1167,7 +1002,7 @@ Optional是可有可无的意思，也就是说，你如果在意表格的位置
   If you don't want sections number, then add an asterisk (*)
   after the section command, but before the first curly
   brace, e.g., \verb|section*{A Title Without Numbers}|.
-\end{minted}
+\end{latexcode}
 
 现在编译一下，看看效果：
 
@@ -1217,25 +1052,15 @@ mini buffer 提示：
 没明白？那么我们先给它一个 key ，等会儿编译一下，看看效果就明白了。输入：\texttt{lamport94}
 \Cj{}，得到如下效果：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \begin{thebibliography}{99}
   \bibitem{lamport94}
   \end{thebibliography}
-\end{minted}
+\end{latexcode}%
 
 现在只需要把参考文献写进去就行了：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \begin{thebibliography}{99}
   \bibitem{lamport94}
     Leslie Lamport,
@@ -1244,7 +1069,7 @@ mini buffer 提示：
     2nd Edition,
     1994.
   \end{thebibliography}
-\end{minted}
+\end{latexcode}
 
 再加一条：
 
@@ -1258,12 +1083,7 @@ mini buffer 提示：
 
 于是得到：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \begin{thebibliography}{99}
   \bibitem{lamport94}
     Leslie Lamport,
@@ -1277,7 +1097,7 @@ mini buffer 提示：
     Wikibooks,
     2003.
   \end{thebibliography}
-\end{minted}
+\end{latexcode}
 
 编译一下，看看结果吧。还记得前面我们遇到过的 \verb'\cite{}'命令吗？回去看看，加上参考文献之
 后它的样子，其实很简单，就是个``\texttt{[1]}''，在第1节的第2行。
@@ -1376,12 +1196,7 @@ mini buffer 提示：
 
 \section{插入图片}
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \documentclass{article}
   
   \usepackage{graphicx}
@@ -1390,7 +1205,7 @@ mini buffer 提示：
   \begin{document}
   \includegraphics[width=5cm]{tux}
   \end{document}
-\end{minted}
+\end{latexcode}
 
 怎么样，能看明白吗？插入图片用到了三个新命令：
 
@@ -1420,12 +1235,7 @@ mini buffer 提示：
 
 如果你希望图片“居中”摆放，那自然是要用到 center 了：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \documentclass{article}
   
   \usepackage{graphicx}
@@ -1436,7 +1246,7 @@ mini buffer 提示：
     \includegraphics[width=5cm]{tux}
   \end{center}
   \end{document}
-\end{minted}
+\end{latexcode}
 
 编译后的效果大致就是这样，居中，5cm宽。
 
@@ -1494,12 +1304,7 @@ mini buffer 提示：
 
 于是得到：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \documentclass{article}
   
   \usepackage{graphicx}
@@ -1513,16 +1318,11 @@ mini buffer 提示：
     \label{fig:linux-logo}
   \end{figure}
   \end{document}
-\end{minted}
+\end{latexcode}
 
 现在你建立了一个完美的图片环境，别忘了把图片放进去。当然放在第9行：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \documentclass{article}
   
   \usepackage{graphicx}
@@ -1536,7 +1336,7 @@ mini buffer 提示：
     \label{fig:linux-logo}
   \end{figure}
   \end{document}
-\end{minted}
+\end{latexcode}
 
 编译后的效果如图\ref{fig:linux-logo}所示。
 
@@ -1545,12 +1345,7 @@ mini buffer 提示：
 
 \verb'\label{}'到底怎么用？来看下面的例子就明白了。
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \documentclass{article}
   
   \usepackage{graphicx}
@@ -1567,7 +1362,7 @@ mini buffer 提示：
   Figure~\ref{fig:linux-logo} is the famous Linux Tux!
   图\ref{fig:linux-logo}所示就是大名鼎鼎的Linux吉祥物！
   \end{document}
-\end{minted}
+\end{latexcode}
 
 编译一下，看看效果吧。
 
@@ -1584,12 +1379,7 @@ Figure~\ref{fig:linux-logo} is the famous Linux Tux!
 \verb'\label{}' 和 \verb'\ref{}' 总是配合使用的，一个用来打标签，另一个用来找到它。而且这
 两个命令可以被用在任何你需要的地方，非常方便。比如，
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
 
   % 本文的第一章标题
   \chapter{工欲善其事，必先利其器}
@@ -1621,7 +1411,7 @@ Figure~\ref{fig:linux-logo} is the famous Linux Tux!
   \item 在表~\ref{tab:keys}中列出了几个最常用的快捷键； % 索引某表
   \item 在第~\pageref{p:keys}页列出了更多的快捷键。    % 索引某页
   \end{enumerate}
-\end{minted}
+\end{latexcode}
 
 上述代码就可以生成如下的效果，不仅数字是正确的，而且它们都是hyperlink，用鼠标点一下试试。
 
@@ -1668,17 +1458,12 @@ buffer提示：
 
 举个简单的例子吧：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \documentclass{article}
   \begin{document}
   This is a simple math example: $c^2=a^2+b^2$
   \end{document}
-\end{minted}
+\end{latexcode}
 
 结果是这样：
 
@@ -1723,7 +1508,7 @@ $$(1+x)^n=\sum_{k=0}^n\binom{n}{k}x^k$$
 \begin{minipage}[t]{.45\linewidth}
   效果：
   \vspace{4.6em}
-  \begin{minted}[baselinestretch=1,xleftmargin=-2em]{c}
+  \begin{minted}[baselinestretch=1,xleftmargin=0em]{c}
     #include <stdio.h>
     int main()
     {
@@ -1747,12 +1532,7 @@ $$(1+x)^n=\sum_{k=0}^n\binom{n}{k}x^k$$
   
 怎么？程序太长，拷贝进来太麻烦？那么可以这样：
     
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \documentclass{article}
   \usepackage{minted}
   \begin{document}
@@ -1760,7 +1540,7 @@ $$(1+x)^n=\sum_{k=0}^n\binom{n}{k}x^k$$
   \inputminted{c}{hello.c}
   
   \end{document}
-\end{minted}
+\end{latexcode}
 
 简单吧？\texttt{hello.c} 当然要和你的 \TeX{} 文件在同一个目录下，否则你要指明详细路径。
 
@@ -1783,17 +1563,12 @@ minted宏包提供了丰富的命令，可以支持数十种编程语言，后�
 附录[\ref{app:article}]中列出了这一\texttt{article}模板的全部内容。在这里我们简单解释一下其中
 和中文相关的几行。
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,firstnumber=17,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \usepackage{xltxtra} %fontspec,xunicode are loaded here.
   \defaultfontfeatures{Mapping=tex-text}
   \setsansfont{DejaVu Sans}
   \setmainfont{DejaVu Serif}
-\end{minted}
+\end{latexcode}
 
 \begin{enumerate}\setcounter{enumi}{16}
 \item \verb'\usepackage{xltxtra}'。我们用的\LaTeX{} Engine，或者说我们用来编
@@ -1809,12 +1584,7 @@ minted宏包提供了丰富的命令，可以支持数十种编程语言，后�
 
 如果只是写英文文章的话，有上面这几行就够了。如果要写中文，那么就要加上下面这些：
 
-\begin{minted}[fontsize=\small,baselinestretch=1,
-  linenos=true,numbersep=3pt,firstnumber=21,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},
-  xleftmargin=2cm,%xrightmargin=4cm,
-  gobble=2
-  ]{latex}
+\begin{latexcode}
   \usepackage{xeCJK}
   \xeCJKDeclarePunctStyle{ mine }
   {
@@ -1834,7 +1604,7 @@ minted宏包提供了丰富的命令，可以支持数十种编程语言，后�
   \newCJKfontfamily\quotefont{Adobe Kaiti Std}
   
   \newcommand{\ziju}[1]{\renewcommand{\CJKglue}{\hskip #1}}
-\end{minted}
+\end{latexcode}
 
 \begin{enumerate}\setcounter{enumi}{20}
 \item \verb'\usepackage{xeCJK}'。xeCJK是一个\XeLaTeX{}宏包，用于排版中日韩（CJK）文字。
@@ -1986,10 +1756,7 @@ Class文件\footnote{也就是后缀为\texttt{.cls}的文件，也就是我们�
 所以，我们有必要来认识一种更专业而高效的解决方案。我们一遍都不用抄，相应的书目就能变成我们参
 考文献的条目。简而言之，我们准备一个专门的\texttt{bib}文件，它的格式大致是下面这样：
 
-\inputminted[fontsize=\small,baselinestretch=1,
-linenos=true,numbersep=3pt,
-frame=leftline,framesep=10pt,
-rulecolor=\color{lightgray},]{latex}{tutorial.bib}
+\inputminted[xleftmargin=.5cm]{latex}{tutorial.bib}
 
 能看出点意思吗？这个小文件的内容就是本教程所引用到的所有书目。在后面第\pageref{p:ref}页的
 参考文献部分里，你看到的就是这个文件的内容。
