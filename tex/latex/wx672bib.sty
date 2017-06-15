@@ -57,3 +57,16 @@ doi=false,isbn=false,eprint=false,url=false,
 % {\supercitedelim}
 % {}
 \let\cite=\supercite
+
+% citetitle (for handouts)
+% https://tex.stackexchange.com/questions/284207/how-to-cite-the-title-and-the-year-in-the-same-command
+\DeclareCiteCommand{\citetitle}
+{\boolfalse{citetracker} \boolfalse{pagetracker}}
+{\ifciteindex{\indexfield{indextitle}}{}
+  % \setunit{\addspace}%
+  \printtext[brackets]{%
+    \usebibmacro{prenote}\printfield[citetitle]{labeltitle}\usebibmacro{postnote}
+  }
+}
+{\multicitedelim}
+{}
