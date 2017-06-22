@@ -216,43 +216,43 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   
   \noindent{\Large \textbf{一、立题依据}}
 
-  \begin{mainbodybox}{1. 选题的理论和实践意义}
+  \begin{mainbodybox}{1.\, 选题的理论和实践意义}
     \SWFCField@Poneone
   \end{mainbodybox}
   \vskip -1.2ex
-  \begin{mainbodybox}{2. 文献综述（国内外本研究领域的发展现状、趋势及问题等，并附参考文献）}
+  \begin{mainbodybox}{2.\, 文献综述（国内外本研究领域的发展现状、趋势及问题等，并附参考文献）}
     \SWFCField@Ponetwo
   \end{mainbodybox}
 
   \noindent{\Large \textbf{二、研究方案}}
   
-  \begin{mainbodybox}{1. 研究内容、研究目标及拟解决的关键问题}
+  \begin{mainbodybox}{1.\, 研究内容、研究目标及拟解决的关键问题}
     \SWFCField@Ptwoone
   \end{mainbodybox}
   \vskip -1.2ex
-  \begin{mainbodybox}{2. 拟采用的研究方法、技术路线、实验方案及可行性分析}
+  \begin{mainbodybox}{2.\, 拟采用的研究方法、技术路线、实验方案及可行性分析}
     \SWFCField@Ptwotwo
   \end{mainbodybox}
   \vskip -1.2ex
-  \begin{mainbodybox}{3. 本研究的特色与创新之处}
+  \begin{mainbodybox}{3.\, 本研究的特色与创新之处}
     \SWFCField@Ptwothree
   \end{mainbodybox}
   \vskip -1.2ex
-  \begin{mainbodybox}{4. 研究计划及预期研究结果}
+  \begin{mainbodybox}{4.\, 研究计划及预期研究结果}
     \SWFCField@Ptwofour
   \end{mainbodybox}
 
   \noindent{\Large \textbf{三、研究基础}}
 
-  \begin{mainbodybox}{1. 已参加过的相关研究工作和已取得的研究工作进展}
+  \begin{mainbodybox}{1.\, 已参加过的相关研究工作和已取得的研究工作进展}
     \SWFCField@Pthreeone
   \end{mainbodybox}
   \vskip -1.2ex
-  \begin{mainbodybox}{2. 已具备的实验条件，尚缺少的实验条件和拟解决的途径}
+  \begin{mainbodybox}{2.\, 已具备的实验条件，尚缺少的实验条件和拟解决的途径}
     \SWFCField@Pthreetwo
   \end{mainbodybox}
   \vskip -1.2ex
-  \begin{mainbodybox}{3. 研究经费预算和经费落实情况}
+  \begin{mainbodybox}{3.\, 研究经费预算和经费落实情况}
     \SWFCField@Pthreethree
   \end{mainbodybox}
 

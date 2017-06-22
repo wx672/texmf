@@ -30,9 +30,7 @@ left=2cm,right=2cm
   % linkcolor=black,citecolor=black,urlcolor=blue
 }
 
-
 % Declare some variables to hold the text fields for the preliminary pages
-\newcommand{\Univ}[1]{\gdef\SWFCField@Univ{#1}} % 西南林业大学
 \newcommand{\Prjtitle}[1]{\gdef\SWFCField@Prjtitle{#1}} % 论文标题
 \newcommand{\Signature}[1]{\gdef\SWFCField@Signature{#1}} % 指导教师签名
 \newcommand{\StudSignature}[1]{\gdef\SWFCField@StudSignature{#1}} % 指导教师签名
@@ -43,15 +41,15 @@ left=2cm,right=2cm
 \newcommand{\Prjwhat}[1]{\gdef\SWFCField@Prjwhat{#1}} % 学生任务及要求
 \newcommand{\Prjwhen}[1]{\gdef\SWFCField@Prjwhen{#1}} % 进度安排
 \newcommand{\Prjbib}[1]{\gdef\SWFCField@Prjbib{#1}} % 参考文献
-\newcommand{\Gyear}[1]{\gdef\SWFCField@Gyear{#1}}
-\newcommand{\Year}[1]{\gdef\SWFCField@Year{#1}}
+\newcommand{\Gyear}[1]{\gdef\SWFCField@Gyear{#1}} % 毕业年份
+\newcommand{\Year}[1]{\gdef\SWFCField@Year{#1}} % 填表年、月、日
 \newcommand{\Month}[1]{\gdef\SWFCField@Month{#1}}
 \newcommand{\Date}[1]{\gdef\SWFCField@Date{#1}}
 
 \newcommand{\makeform}{
   \pagestyle{empty}
   {\centering
-    {\bfseries\large\SWFCField@Univ\SWFCField@Gyear{}届毕业论文（设计）任务书}\\[3ex]
+    {\bfseries\large 西南林业大学\SWFCField@Gyear{}届毕业论文（设计）任务书}\\[3ex]
     \tabulinesep=3pt
     \begin{tabu}{|X[c,m,-1]|X[c]|}
       \tabucline-
@@ -124,7 +122,6 @@ left=2cm,right=2cm
   \end{tabu}
 }
 
-\Univ{西南林业大学}
 \Signature{\sig{王晓林}}
 \StudSignature{\hspace{4em}}
 \Prjtitle{}
