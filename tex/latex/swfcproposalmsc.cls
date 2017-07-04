@@ -88,6 +88,8 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \newcommand{\Year}[1]{\gdef\SWFCField@Year{#1}}  % 填表年
 \newcommand{\Month}[1]{\gdef\SWFCField@Month{#1}}% 填表月
 \newcommand{\Date}[1]{\gdef\SWFCField@Date{#1}}  % 填表日
+\newcommand{\Prjfrom}[1]{\gdef\SWFCField@Prjfrom{#1}} % 本研究题目为“其它”
+\newcommand{\Tutorcomments}[1]{\gdef\SWFCField@Tutorcomments{#1}} % 导师对开题报告的评价
 
 \newcommand{\Poneone}[1]{\gdef\SWFCField@Poneone{#1}}
 \newcommand{\Ponetwo}[1]{\gdef\SWFCField@Ponetwo{#1}}
@@ -168,13 +170,13 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
     \begin{enumerate}[itemsep=2ex]
     \item 导师课题的一部分\, （\hspace{1em}）；
     \item 委培单位的课题\, （\hspace{1em}）；
-    \item 其它（须具体说明）\,\uline{\hspace{18em}}。
+    \item 其它（须具体说明）\,\underline{\hspace{1ex}{\kai\SWFCField@Prjfrom{}}\hspace{1ex}}。
     \end{enumerate}
   \end{mainlistbox}
   \vskip -1.2ex  
   \begin{mainlistbox}{选题分类（{\emoji √}）}
     \begin{tasks}(2)
-      \task 基础研究\, （\hspace{1em}）
+      \task 基础研究\, （{\emoji √}）
       \task 应用研究\, （\hspace{1em}）
       \task 综合研究\, （\hspace{1em}）
       \task 其\hspace{2em}他\, （\hspace{1em}）
@@ -206,7 +208,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
       \task 学校自选项目\, （\hspace{1em}）
       \task 国防项目\, （\hspace{1em}）
       \task 非立项\, （\hspace{1em}）
-      \task 其他\, （\hspace{1em}）
+      \task 其他\, （{\emoji √}）
     \end{tasks}
     %   \end{enumerate}
     % \end{multicols}
@@ -260,11 +262,12 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \singlespacing
   \noindent{\Large \textbf{四、导师对开题报告的评价}}
 
-  \noindent\begin{tabu}{|@{}X[r]@{}|}
+  \noindent\begin{tabu}{|@{}X[l]@{}|}
     \tabucline-
-    （就硕士生对国外研究现状的了解情况、研究内容、研究方法、预期成果等方面予以评价）\\[25ex]
-    \makebox[15em][l]{导师签字：}\\[2ex]
-    \makebox[4em][l]{年} \makebox[3em][l]{月}\makebox[3em]{日}\\\tabucline-
+    （就硕士生对国外研究现状的了解情况、研究内容、研究方法、预期成果等方面予以评价）\\[2ex]
+    {\LARGE\handwriting \SWFCField@Tutorcomments{}}\\[2ex]
+    \makebox[30em][r]{导师签字：}\\[2ex]
+    \makebox[29em][r]{年} \makebox[4em][r]{月}\makebox[4em][r]{日}\\\tabucline-
   \end{tabu}
   \vskip 1ex
   \noindent{\Large \textbf{五、开题报告小组评议意见}}
@@ -469,6 +472,9 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \Year{2017}
 \Subject{林业信息工程}
 \Research{操作系统研发}
+\Prjfrom{操作系统研究}
+\Tutorcomments{就硕士生对国外研究现状的了解情况、研究内容、研究方法、预期成果等方面予以高
+  度评价。同意开题。}
 
 \Poneone{% 1.1 选题的理论和实践意义
   \lipsum[1-3]
