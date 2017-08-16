@@ -16,8 +16,8 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 %showframe,%showcrop,
 ]{geometry}
 
-% \RequirePackage[xetex]{graphicx} % before xltxtra
-% \graphicspath{{./figs/}{../figs/}{./}{../}} %mind the trailing “/”
+\RequirePackage[xetex]{graphicx} % before xltxtra
+\graphicspath{{./figs/}{../figs/}{./}{../}} %mind the trailing “/”
 
 \RequirePackage{indentfirst}
 \RequirePackage{tabu,longtable,multicol,multirow,array}
@@ -90,6 +90,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \newcommand{\Date}[1]{\gdef\SWFCField@Date{#1}}  % 填表日
 \newcommand{\Prjfrom}[1]{\gdef\SWFCField@Prjfrom{#1}} % 本研究题目为“其它”
 \newcommand{\Tutorcomments}[1]{\gdef\SWFCField@Tutorcomments{#1}} % 导师对开题报告的评价
+\newcommand{\Tutorsig}[1]{\gdef\SWFCField@Tutorsig{#1}} % 导师签名
 
 \newcommand{\Poneone}[1]{\gdef\SWFCField@Poneone{#1}}
 \newcommand{\Ponetwo}[1]{\gdef\SWFCField@Ponetwo{#1}}
@@ -265,8 +266,8 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \noindent\begin{tabu}{|@{}X[l]@{}|}
     \tabucline-
     （就硕士生对国外研究现状的了解情况、研究内容、研究方法、预期成果等方面予以评价）\\[2ex]
-    {\LARGE\handwriting \SWFCField@Tutorcomments{}}\\[2ex]
-    \makebox[30em][r]{导师签字：}\\[2ex]
+    {\LARGE\SWFCField@Tutorcomments{}}\\[2ex]
+    \makebox[30em][r]{导师签字：}{\LARGE\SWFCField@Tutorsig{}}\\[2ex]
     \makebox[29em][r]{年} \makebox[4em][r]{月}\makebox[4em][r]{日}\\\tabucline-
   \end{tabu}
   \vskip 1ex
@@ -475,6 +476,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \Prjfrom{操作系统研究}
 \Tutorcomments{就硕士生对国外研究现状的了解情况、研究内容、研究方法、预期成果等方面予以高
   度评价。同意开题。}
+\Tutorsig{}
 
 \Poneone{% 1.1 选题的理论和实践意义
   \lipsum[1-3]
