@@ -39,13 +39,14 @@
 
 \tikzset{%
   help lines/.style={very thin,dotted},%
-  day/.style={draw, rectangle, anchor=south west, fill=gray!20,%
-    minimum width=\daywidth, minimum height=1cm, node font=\bfseries\Large},%
+  day/.style={rectangle, anchor=south west, fill=gray!20,%
+    minimum width=\daywidth, minimum height=2ex, node font=\bfseries\Large},%
   class/.style={rectangle, anchor=north west, rounded corners=10pt,%
     minimum width=\daywidth,% minimum height=5/3*\hourlength,%
     text centered, text width=\daywidth},%
   lecture/.style={class, fill=red!30},%
   lab/.style={class, fill=Green!20},%
+  lecturelab/.style={class, left color=red!30,right color=Green!20},
   office/.style={class, fill=gray!30}%
 }%
 
