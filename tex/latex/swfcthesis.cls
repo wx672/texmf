@@ -269,7 +269,8 @@ doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
 
 \newminted{c}{}
 \newminted{shell}{}
-\newminted{latex}{}%
+\newminted{latex}{}
+\newminted{bibtex}{}
 \newminted{gas}{}
 \newminted{nasm}{}
 \newminted{python}{}
