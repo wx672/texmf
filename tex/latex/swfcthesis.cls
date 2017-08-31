@@ -1,7 +1,7 @@
 % The swfcthesis class is for producing senior year theses and dissertations
 % that meet the SWFU requirements.
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{swfcthesis}%[TeX Live 2016/Debian]
+\ProvidesClass{swfcthesis}
 
 % pass unknown options to book
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
@@ -16,12 +16,13 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 %showframe,showcrop,
 ]{geometry}
 
+\RequirePackage{etoolbox}
 \RequirePackage{indentfirst}
 \RequirePackage{tabu,longtable,multicol,multirow,array}
 
 % graphicx
 \RequirePackage[xetex]{graphicx} % before xltxtra
-\graphicspath{{./figs/}{../figs/}{./img/}{../img/}{./}{../}} %mind the trailing “/”
+\graphicspath{{./figs/}{../figs/}{./img/}{../img/}{./pics/}{../pics/}{./}{../}} %mind the trailing “/”
 
 % titlesec
 \RequirePackage{titlesec} % \titleformat, \titlespacing
@@ -93,40 +94,9 @@ doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
 
 % before xunicode!
 \RequirePackage{amsmath,amsfonts,amssymb,latexsym,marvosym,pifont}
-\RequirePackage[tt=false]{libertine} % keyboard symbol
-\newcommand{\Ca}{\LKeyCtrlX{a}}      % mainly for the tutorial doc
-\newcommand{\Cb}{\LKeyCtrlX{b}}
-\newcommand{\Cc}{\LKeyCtrlX{c}}
-\newcommand{\Cd}{\LKeyCtrlX{d}}
-\newcommand{\Ce}{\LKeyCtrlX{e}}
-\newcommand{\Cf}{\LKeyCtrlX{f}}
-\newcommand{\Cg}{\LKeyCtrlX{g}}
-\newcommand{\Ch}{\LKeyCtrlX{h}}
-\newcommand{\Ci}{\LKeyCtrlX{i}}
-\newcommand{\Cj}{\LKeyCtrlX{j}}
-\newcommand{\Ck}{\LKeyCtrlX{k}}
-\newcommand{\Cl}{\LKeyCtrlX{l}}
-\newcommand{\Cm}{\LKeyCtrlX{m}}
-\newcommand{\Cn}{\LKeyCtrlX{n}}
-\newcommand{\Cp}{\LKeyCtrlX{p}}
-\newcommand{\Cs}{\LKeyCtrlX{s}}
-\newcommand{\Cv}{\LKeyCtrlX{v}}
-\newcommand{\Cx}{\LKeyCtrlX{x}}
-\newcommand{\Cy}{\LKeyCtrlX{y}}
-\newcommand{\Cslash}{\LKeyCtrl{}+\biolinumKeyGlyph{slash}}
-\newcommand{\Se}{\LKeyWin{}+\LKey{e}}
-\newcommand{\Md}{\LKeyAltX{d}}
-\newcommand{\Mv}{\LKeyAltX{v}}
-\newcommand{\Mx}{\LKeyAltX{x}}
-\newcommand{\MEnter}{\LKeyAlt{}+\LKeyEnter{}}
-\newcommand{\Tab}{\LKeyTab{}}
-\newcommand{\Enter}{\LKeyEnter{}}
-\newcommand{\Caps}{\LKeyCapsLock{}}
-\newcommand{\Ctrl}{\LKeyCtrl{}}
 
 \RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
 \RequirePackage[CJKmath=true,AutoFakeSlant=true]{xeCJK} % slant header
-\RequirePackage{xpinyin}
 
 % \singlespacing, \onehalfspacing, \doublespacing
 \RequirePackage[doublespacing]{setspace}
@@ -149,7 +119,7 @@ doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
 
 \pagenumbering{arabic}
 \renewcommand{\headrulewidth}{.4pt}
-\urlstyle{rm}
+\urlstyle{tt} % url.sty
 \raggedbottom
 
 \pagestyle{fancy}
@@ -183,9 +153,9 @@ doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
 \newcommand{\Title}[1]{\gdef\SWFCField@Title{#1}}
 \newcommand{\enTitle}[1]{\gdef\SWFCField@enTitle{#1}}
 \newcommand{\Author}[1]{\gdef\SWFCField@Author{#1}}
-%\newcommand{\Authorid}[1]{\gdef\SWFCField@Authorid{#1}}
+%\newcommand{\Authorid}[1]{\gdef\SWFCField@Authorid{#1}} % 学号
 \newcommand{\enAuthor}[1]{\gdef\SWFCField@enAuthor{#1}}
-\newcommand{\Docname}[1]{\gdef\SWFCField@Docname{#1}}
+%\newcommand{\Docname}[1]{\gdef\SWFCField@Docname{#1}}
 \newcommand{\Degree}[1]{\gdef\SWFCField@Degree{#1}}
 \newcommand{\Advisor}[1]{\gdef\SWFCField@Advisor{#1}}
 \newcommand{\AdvisorTitle}[1]{\gdef\SWFCField@AdvisorTitle{#1}}
@@ -197,17 +167,17 @@ doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
 \newcommand{\Keywords}[1]{\gdef\SWFCField@Keywords{#1}}
 \newcommand{\enKeywords}[1]{\gdef\SWFCField@enKeywords{#1}}
 \newcommand{\Acknowledgments}[1]{\gdef\SWFCField@Acknowledgments{#1}}
-\newcommand{\School}[1]{\gdef\SWFCField@School{#1}}
-\newcommand{\enSchool}[1]{\gdef\SWFCField@enSchool{#1}}
-\newcommand{\Univ}[1]{\gdef\SWFCField@Univ{#1}}
-\newcommand{\enUniv}[1]{\gdef\SWFCField@enUniv{#1}}
+% \newcommand{\School}[1]{\gdef\SWFCField@School{#1}}
+% \newcommand{\enSchool}[1]{\gdef\SWFCField@enSchool{#1}}
+% \newcommand{\Univ}[1]{\gdef\SWFCField@Univ{#1}}
+% \newcommand{\enUniv}[1]{\gdef\SWFCField@enUniv{#1}}
 \newcommand{\Subject}[1]{\gdef\SWFCField@Subject{#1}}
 
 \newcommand{\SWFCtitlepage}{% Title page layout
   \thispagestyle{empty}
   \begin{center}
-    \makebox[14.7em][s]{{\huge\SWFCField@Univ{}}}\\[5mm]
-    \makebox[25.75em][s]{\Huge\textbf{\SWFCField@Docname{}}}\\[5mm]
+    \makebox[14.7em][s]{{\huge 西南林业大学}}\\[5mm] % \SWFCField@Univ{}
+    \makebox[25.75em][s]{\Huge\textbf{本科毕业（设计）论文}}\\[5mm] %\SWFCField@Docname{}
     \makebox[12em][s]{\hspace{.5em}\LARGE（\SWFCField@Year{}\,届）}\\[60pt]
     \begin{minipage}{.8\linewidth}
       \begin{Large}
@@ -215,7 +185,7 @@ doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
         \extrarowsep=_-7pt
         \begin{tabu}spread\textwidth{@{}X[r]X[3.3,c]@{}}
           \textbf{题\hspace{2em}目：}&\SWFCField@Title{}\\\tabucline{2-2}
-          \textbf{分院系部：} &\SWFCField@School{}\\\tabucline{2-2}
+          \textbf{分院系部：} &大数据与智能工程学院\\\tabucline{2-2} % \SWFCField@School{}
           \textbf{专\hspace{2em}业：}&\SWFCField@Subject{}\\\tabucline{2-2}
 %          \textbf{学\hspace{2em}号：}&\SWFCField@Authorid{}\\\tabucline{2-2}
           \textbf{姓\hspace{2em}名：}&\SWFCField@Author{}\\\tabucline{2-2}
@@ -236,7 +206,7 @@ doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
   \begin{center}
     {\singlespacing \Large{\textbf{\SWFCField@Title{}}}}\\[5mm]
     \large{\SWFCField@Author{}}\\
-    \large{（\SWFCField@Univ{}\,\SWFCField@School{}，云南\,昆明\,650224）}
+    \large{（西南林业大学\, 大数据与智能工程学院，云南\,昆明\,650224）} % \SWFCField@Univ{} \SWFCField@School{}
   \end{center}
   \vskip 3ex
   \noindent \textbf{摘\hspace{1em}要：}~\SWFCField@Abstract{}
@@ -252,8 +222,7 @@ doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
   \begin{center}
     {\singlespacing {\Large\textbf{\SWFCField@enTitle{}}}}\\[5mm]
     {\large\SWFCField@enAuthor{}}\\[3mm]
-    {\singlespacing {\large\SWFCField@enSchool{}\\\SWFCField@enUniv{}\\%
-        Kunming 650224, Yunnan, China}}
+    {\singlespacing {\large School of Big Data and Intelligence Engineering\\Southwest Forestry University\\Kunming 650224, Yunnan, China}}% \SWFCField@enSchool{} \SWFCField@enUniv{}
   \end{center}
   \vskip 2em
   \noindent\textbf{Abstract: }~\SWFCField@enAbstract{}
@@ -299,7 +268,7 @@ doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
   frame=leftline,framesep=10pt,rulecolor=\color{lightgray},xleftmargin=2cm,autogobble=true}
 
 \newminted{c}{}
-\newminted{latex}{}
+\newminted{latex}{}%
 \newminted{gas}{}
 \newminted{nasm}{}
 \newminted{python}{}
@@ -307,10 +276,9 @@ doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
 \setlength{\parindent}{2em}
 
 % Initialize the variables to their default values
+%\Authorid{} % \Docname{} % \Univ{} % \School{} % \enUniv{} % \enSchool{}
 \Title{}
 \Author{}
-%\Authorid{}
-\Docname{}
 \Advisor{}
 \AdvisorTitle{}
 
@@ -318,8 +286,6 @@ doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
 
 \Month{}
 \Year{}
-\Univ{}
-\School{}
 \Subject{}
 \Abstract{} 
 \Keywords{}
@@ -328,7 +294,5 @@ doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
 % The followings are for the English Abstract.
 \enTitle{}
 \enAuthor{}
-\enUniv{}
-\enSchool{}
 \enAbstract{}
 \enKeywords{}
