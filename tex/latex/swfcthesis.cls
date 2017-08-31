@@ -268,6 +268,7 @@ doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
   frame=leftline,framesep=10pt,rulecolor=\color{lightgray},xleftmargin=2cm,autogobble=true}
 
 \newminted{c}{}
+\newminted{shell}{}
 \newminted{latex}{}%
 \newminted{gas}{}
 \newminted{nasm}{}
