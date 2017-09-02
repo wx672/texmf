@@ -22,7 +22,11 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 
 % graphicx
 \RequirePackage[xetex]{graphicx} % before xltxtra
-\graphicspath{{./figs/}{../figs/}{./img/}{../img/}{./pics/}{../pics/}{./}{../}} %mind the trailing “/”
+\graphicspath{%
+  {./figs/}{../figs/}%
+  {./img/}{../img/}%
+  {./pics/}{../pics/}%
+  {./}{../}} %mind the trailing “/”
 
 % titlesec
 \RequirePackage{titlesec} % \titleformat, \titlespacing
@@ -49,31 +53,6 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage{enumitem} % \setlist
 \setlist{nosep} % kills all vertical spacing
 
-\RequirePackage[backend=biber,%
-url=false,hyperref=true,%
-date=edtf,seconds=true,% to suppress compile warnings
-doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
-
-\renewcommand*{\bibfont}{\small} % 11pt
-\DeclareFieldFormat*{year}{#1}
-\DeclareFieldFormat*{url}{}% suppress url. it's a temp workaround until caspervector fix
-                           % its bug. But there is an extra period at the end of the
-                           % entry. TODO!
-
-%%%% caspervector provides \supercite already.
-% \DeclareCiteCommand{\supercite}[\mkbibsuperscript]
-% {\iffieldundef{prenote}
-%   {}
-%   {\BibliographyWarning{Ignoring prenote argument}}%
-%   \iffieldundef{postnote}
-%   {}
-%   {\BibliographyWarning{Ignoring postnote argument}}}
-% {\usebibmacro{citeindex}%
-%   \bibopenbracket\usebibmacro{cite}\bibclosebracket}
-% {\supercitedelim}
-% {}
-\let\cite=\supercite
-
 % caption
 \RequirePackage{caption} % \captionsetup
 \RequirePackage{subcaption}
@@ -92,8 +71,11 @@ doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
   urlbordercolor=blue,       % external links
 }
 
+% Buggy! Must before loading biblatex!
+\RequirePackage[tt=false]{libertine} % keyboard symbol for my tutorial.
+
 % before xunicode!
-\RequirePackage{amsmath,amsfonts,amssymb,latexsym,marvosym,pifont}
+\RequirePackage{amsmath,amsfonts,amssymb,marvosym,pifont}
 
 \RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
 \RequirePackage[CJKmath=true,AutoFakeSlant=true]{xeCJK} % slant header
@@ -101,6 +83,30 @@ doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
 % \singlespacing, \onehalfspacing, \doublespacing
 \RequirePackage[doublespacing]{setspace}
 \renewcommand{\doublespacing}{\setstretch{1.6}}
+
+\RequirePackage[backend=biber,%
+style=chem-angew,sorting=none,
+%style=caspervector,sorting=centy,utf8,
+url=false,hyperref=true, doi=false,isbn=false,
+date=edtf,seconds=true,% to suppress compile warnings
+]{biblatex}
+
+\renewcommand*{\bibfont}{\small} % 11pt
+
+\DeclareFieldFormat*{year}{#1}
+\DeclareFieldFormat*{url}{}% suppress url. it's a temp workaround until caspervector fix
+                           % its bug. But there is an extra period at the end of the
+                           % entry. TODO!
+
+%%%% caspervector provides \supercite already.
+% \DeclareCiteCommand{\supercite}[\mkbibsuperscript]{%
+%   \iffieldundef{prenote}{}{\BibliographyWarning{Ignoring prenote argument}}%
+%   \iffieldundef{postnote}{}{\BibliographyWarning{Ignoring postnote argument}}%
+% }%
+% {\mkbibbrackets{\usebibmacro{citeindex}\usebibmacro{cite}\usebibmacro{postnote}}}%
+% {\supercitedelim}{}%
+
+\let\cite=\supercite
 
 \defaultfontfeatures{Mapping=tex-text}
 \setmainfont{Liberation Serif}
@@ -265,7 +271,7 @@ doi=false,isbn=false,style=caspervector,utf8,sorting=centy]{biblatex}
 \newcommand{\codec}[1]{\mintinline{c}|#1|}
 
 \setminted{linenos=true,numbersep=3pt,fontsize=\small,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},xleftmargin=2cm,autogobble=true}
+  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},autogobble=true}%xleftmargin=2cm,
 
 \newminted{c}{}
 \newminted{shell}{}
