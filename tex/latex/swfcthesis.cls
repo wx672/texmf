@@ -1,5 +1,5 @@
-% The swfcthesis class is for producing senior year theses and dissertations
-% that meet the SWFU requirements.
+% The swfcthesis class is for producing senior year theses
+% and dissertations that meet the SWFU requirements.
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfcthesis}
 
@@ -23,10 +23,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 % graphicx
 \RequirePackage[xetex]{graphicx} % before xltxtra
 \graphicspath{% mind the trailing “/”
-  {./figs/}{../figs/}%
-  {./img/}{../img/}%
-  {./pics/}{../pics/}%
-  {./}{../}}
+  {./figs/}{../figs/}{./img/}{../img/}{./pics/}{../pics/}{./}{../}}
 
 % titlesec
 \RequirePackage{titlesec} % \titleformat, \titlespacing
@@ -43,12 +40,12 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \fancyhf{}
 \fancyfoot[C]{\fontsize{8}{8}\selectfont -- \thepage\ --}
 \fancyhead[C]{\slshape \leftmark}
-% \fancypagestyle{plain}{%
-%   \fancyhf{} % clear all header and footer fields
-%   \fancyfoot[C]{\fontsize{8}{8}\selectfont -- \thepage\ --}
-%   \renewcommand{\headrulewidth}{0pt}
-%   \renewcommand{\footrulewidth}{0pt}
-% }
+
+\fancypagestyle{plain}{% for the 1st page of each chapter
+  \fancyhf{}%
+  \fancyfoot[C]{\fontsize{8}{8}\selectfont -- \thepage\ --}
+  \renewcommand{\headrulewidth}{0pt}
+}
 
 \RequirePackage{enumitem} % \setlist
 \setlist{nosep} % kills all vertical spacing
@@ -84,7 +81,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage[doublespacing]{setspace}
 \renewcommand{\doublespacing}{\setstretch{1.6}}
 
-\RequirePackage[backend=biber,%
+\RequirePackage[backend=biber,
 style=chem-angew,sorting=none,
 %style=caspervector,sorting=centy,utf8,
 url=false,hyperref=true,doi=false,isbn=false,
@@ -94,9 +91,7 @@ date=edtf,seconds=true,% to suppress compile warnings
 \renewcommand*{\bibfont}{\small} % 11pt
 
 %\DeclareFieldFormat*{year}{#1}
-%\DeclareFieldFormat*{url}{}% suppress url. it's a temp workaround until caspervector fix
-                           % its bug. But there is an extra period at the end of the
-                           % entry. TODO!
+%\DeclareFieldFormat*{url}{}% suppress url for caspervector to workaround its bug
 
 %%%% chem-angew/caspervector provides \supercite already.
 % \DeclareCiteCommand{\supercite}[\mkbibsuperscript]{%
@@ -133,12 +128,11 @@ date=edtf,seconds=true,% to suppress compile warnings
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter \ \ #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection \ \ #1}}
 \newcommand{\Appendix}[1]{%
-  \renewcommand{\chaptermark}[1]%
-      {\markboth{附录\ \thechapter \ \ #1}{}}
+  \renewcommand{\chaptermark}[1]{%
+    \markboth{附录\ \thechapter \ \ #1}{}}
   \titleformat{\chapter}%
-      {\centering\LARGE\bfseries}{附录\ \thechapter}{1em}{}
-  \appendix
-}
+  {\centering\LARGE\bfseries}{附录\ \thechapter}{1em}{}
+  \appendix}
 
 % set caption label style to, e.g. 3-2.
 \renewcommand{\thefigure}{\thechapter{}-\arabic{figure}}
@@ -182,8 +176,8 @@ date=edtf,seconds=true,% to suppress compile warnings
 \newcommand{\SWFCtitlepage}{% Title page layout
   \thispagestyle{empty}
   \begin{center}
-    \makebox[14.7em][s]{{\huge 西南林业大学}}\\[5mm] % \SWFCField@Univ{}
-    \makebox[25.75em][s]{\Huge\textbf{本科毕业（设计）论文}}\\[5mm] %\SWFCField@Docname{}
+    \makebox[14.7em][s]{{\huge 西南林业大学}}\\[5mm]
+    \makebox[25.75em][s]{\Huge\textbf{本科毕业（设计）论文}}\\[5mm]
     \makebox[12em][s]{\hspace{.5em}\LARGE（\SWFCField@Year{}\,届）}\\[60pt]
     \begin{minipage}{.8\linewidth}
       \begin{Large}
@@ -191,7 +185,7 @@ date=edtf,seconds=true,% to suppress compile warnings
         \extrarowsep=_-7pt
         \begin{tabu}spread\textwidth{@{}X[r]X[3.3,c]@{}}
           \textbf{题\hspace{2em}目：}&\SWFCField@Title{}\\\tabucline{2-2}
-          \textbf{分院系部：} &大数据与智能工程学院\\\tabucline{2-2} % \SWFCField@School{}
+          \textbf{分院系部：} &大数据与智能工程学院\\\tabucline{2-2}
           \textbf{专\hspace{2em}业：}&\SWFCField@Subject{}\\\tabucline{2-2}
           % \textbf{学\hspace{2em}号：}&\SWFCField@Authorid{}\\\tabucline{2-2}
           \textbf{姓\hspace{2em}名：}&\SWFCField@Author{}\\\tabucline{2-2}
@@ -211,7 +205,7 @@ date=edtf,seconds=true,% to suppress compile warnings
   \thispagestyle{empty}
   \begin{center}
     {\singlespacing \Large{\textbf{\SWFCField@Title{}}}}\\[5mm]
-    \large{\SWFCField@Author{}}\\ % \SWFCField@Univ{} \SWFCField@School{}
+    \large{\SWFCField@Author{}}\\
     \large{（西南林业大学\, 大数据与智能工程学院，云南\,昆明\,650224）}
   \end{center}
   \vskip 3ex
@@ -230,7 +224,7 @@ date=edtf,seconds=true,% to suppress compile warnings
     {\large\SWFCField@enAuthor{}}\\[3mm]
     {\singlespacing {\large School of Big Data and Intelligence Engineering\\
         Southwest Forestry University\\
-        Kunming 650224, Yunnan, China}}% \SWFCField@enSchool{} \SWFCField@enUniv{}
+        Kunming 650224, Yunnan, China}}
   \end{center}
   \vskip 2em
   \noindent\textbf{Abstract: }~\SWFCField@enAbstract{}
@@ -293,9 +287,7 @@ date=edtf,seconds=true,% to suppress compile warnings
 \Author{}
 \Advisor{}
 \AdvisorTitle{}
-
 \AdvisorInfo{}
-
 \Month{}
 \Year{}
 \Subject{}
