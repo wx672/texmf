@@ -22,11 +22,11 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 
 % graphicx
 \RequirePackage[xetex]{graphicx} % before xltxtra
-\graphicspath{%
+\graphicspath{% mind the trailing “/”
   {./figs/}{../figs/}%
   {./img/}{../img/}%
   {./pics/}{../pics/}%
-  {./}{../}} %mind the trailing “/”
+  {./}{../}}
 
 % titlesec
 \RequirePackage{titlesec} % \titleformat, \titlespacing
@@ -40,15 +40,15 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 
 % fancyhdr
 \RequirePackage{fancyhdr}
-\fancypagestyle{plain}{%
-  \fancyhf{} % clear all header and footer fields
-  \fancyfoot[C]{\fontsize{8}{8}\selectfont -- \thepage\ --}
-  \renewcommand{\headrulewidth}{0pt}
-  \renewcommand{\footrulewidth}{0pt}
-}
 \fancyhf{}
 \fancyfoot[C]{\fontsize{8}{8}\selectfont -- \thepage\ --}
 \fancyhead[C]{\slshape \leftmark}
+% \fancypagestyle{plain}{%
+%   \fancyhf{} % clear all header and footer fields
+%   \fancyfoot[C]{\fontsize{8}{8}\selectfont -- \thepage\ --}
+%   \renewcommand{\headrulewidth}{0pt}
+%   \renewcommand{\footrulewidth}{0pt}
+% }
 
 \RequirePackage{enumitem} % \setlist
 \setlist{nosep} % kills all vertical spacing
@@ -87,18 +87,18 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage[backend=biber,%
 style=chem-angew,sorting=none,
 %style=caspervector,sorting=centy,utf8,
-url=false,hyperref=true, doi=false,isbn=false,
+url=false,hyperref=true,doi=false,isbn=false,
 date=edtf,seconds=true,% to suppress compile warnings
 ]{biblatex}
 
 \renewcommand*{\bibfont}{\small} % 11pt
 
-\DeclareFieldFormat*{year}{#1}
-\DeclareFieldFormat*{url}{}% suppress url. it's a temp workaround until caspervector fix
+%\DeclareFieldFormat*{year}{#1}
+%\DeclareFieldFormat*{url}{}% suppress url. it's a temp workaround until caspervector fix
                            % its bug. But there is an extra period at the end of the
                            % entry. TODO!
 
-%%%% caspervector provides \supercite already.
+%%%% chem-angew/caspervector provides \supercite already.
 % \DeclareCiteCommand{\supercite}[\mkbibsuperscript]{%
 %   \iffieldundef{prenote}{}{\BibliographyWarning{Ignoring prenote argument}}%
 %   \iffieldundef{postnote}{}{\BibliographyWarning{Ignoring postnote argument}}%
@@ -193,7 +193,7 @@ date=edtf,seconds=true,% to suppress compile warnings
           \textbf{题\hspace{2em}目：}&\SWFCField@Title{}\\\tabucline{2-2}
           \textbf{分院系部：} &大数据与智能工程学院\\\tabucline{2-2} % \SWFCField@School{}
           \textbf{专\hspace{2em}业：}&\SWFCField@Subject{}\\\tabucline{2-2}
-%          \textbf{学\hspace{2em}号：}&\SWFCField@Authorid{}\\\tabucline{2-2}
+          % \textbf{学\hspace{2em}号：}&\SWFCField@Authorid{}\\\tabucline{2-2}
           \textbf{姓\hspace{2em}名：}&\SWFCField@Author{}\\\tabucline{2-2}
           \textbf{导师姓名：} &\SWFCField@Advisor{}\\\tabucline{2-2}
           \textbf{导师职称：} &\SWFCField@AdvisorTitle{}\\\tabucline{2-2}
@@ -211,8 +211,8 @@ date=edtf,seconds=true,% to suppress compile warnings
   \thispagestyle{empty}
   \begin{center}
     {\singlespacing \Large{\textbf{\SWFCField@Title{}}}}\\[5mm]
-    \large{\SWFCField@Author{}}\\
-    \large{（西南林业大学\, 大数据与智能工程学院，云南\,昆明\,650224）} % \SWFCField@Univ{} \SWFCField@School{}
+    \large{\SWFCField@Author{}}\\ % \SWFCField@Univ{} \SWFCField@School{}
+    \large{（西南林业大学\, 大数据与智能工程学院，云南\,昆明\,650224）}
   \end{center}
   \vskip 3ex
   \noindent \textbf{摘\hspace{1em}要：}~\SWFCField@Abstract{}
@@ -228,7 +228,9 @@ date=edtf,seconds=true,% to suppress compile warnings
   \begin{center}
     {\singlespacing {\Large\textbf{\SWFCField@enTitle{}}}}\\[5mm]
     {\large\SWFCField@enAuthor{}}\\[3mm]
-    {\singlespacing {\large School of Big Data and Intelligence Engineering\\Southwest Forestry University\\Kunming 650224, Yunnan, China}}% \SWFCField@enSchool{} \SWFCField@enUniv{}
+    {\singlespacing {\large School of Big Data and Intelligence Engineering\\
+        Southwest Forestry University\\
+        Kunming 650224, Yunnan, China}}% \SWFCField@enSchool{} \SWFCField@enUniv{}
   \end{center}
   \vskip 2em
   \noindent\textbf{Abstract: }~\SWFCField@enAbstract{}
@@ -270,8 +272,10 @@ date=edtf,seconds=true,% to suppress compile warnings
 
 \newcommand{\codec}[1]{\mintinline{c}|#1|}
 
-\setminted{linenos=true,numbersep=3pt,fontsize=\small,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},autogobble=true}%xleftmargin=2cm,
+\setminted{%
+  linenos=true,numbersep=3pt,fontsize=\small,
+  frame=leftline,framesep=10pt,%xleftmargin=2cm,
+  rulecolor=\color{lightgray},autogobble=true}
 
 \newminted{c}{}
 \newminted{shell}{}
@@ -284,7 +288,7 @@ date=edtf,seconds=true,% to suppress compile warnings
 \setlength{\parindent}{2em}
 
 % Initialize the variables to their default values
-%\Authorid{} % \Docname{} % \Univ{} % \School{} % \enUniv{} % \enSchool{}
+% \Authorid{}\Docname{}\Univ{}\School{}\enUniv{}\enSchool{}
 \Title{}
 \Author{}
 \Advisor{}
