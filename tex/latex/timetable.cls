@@ -58,15 +58,15 @@
     ]%
 
     % draw grids
-    \draw[help lines] (1,8) grid[xstep=\daywidth,ystep=2*\hourlength] (6,23);%
+    \draw[help lines] (1,8) grid[xstep=\daywidth,ystep=2*\hourlength] (6,22);%
 
     % Draw time ticks
-    \foreach \h in {8,9,...,23} \draw [ultra thin] (1,\h) -- ++(-5pt,0);% Hours
-    \foreach \hh in {8.5,9.5,...,22.5} \draw [ultra thin] (1,\hh) -- ++(-3pt,0);% Half hours
+    \foreach \h in {8,9,...,22} \draw [ultra thin] (1,\h) -- ++(-5pt,0);% Hours
+    \foreach \hh in {8.5,9.5,...,21.5} \draw [ultra thin] (1,\hh) -- ++(-3pt,0);% Half hours
 
     \foreach \h/\htext in {%
       8/{08:00},9/{09:00},10/{10:00},11/{11:00},12/{12:00},13/{13:00},14/{14:00},15/{15:00},%
-      16/{16:00},17/{17:00},18/{18:00},19/{19:00},20/{20:00},21/{21:00},22/{22:00},23/{23:00}%
+      16/{16:00},17/{17:00},18/{18:00},19/{19:00},20/{20:00},21/{21:00},22/{22:00}%,23/{23:00}%
     } \draw [ultra thin] (1,\h) -- ++(-3pt,0) node[left=3pt,font=\scriptsize] {\htext};%
 
     % Header line (week days)

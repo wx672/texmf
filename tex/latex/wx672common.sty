@@ -28,14 +28,20 @@
 
 \newcommand{\codec}[1]{\mintinline{c}|#1|}
 
-\setminted{linenos=true,numbersep=3pt,fontsize=\small,
-  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},xleftmargin=2cm,autogobble=true}
+\setminted{linenos=true,numbersep=3pt,fontsize=\small,%,xleftmargin=2cm
+  frame=leftline,framesep=10pt,rulecolor=\color{lightgray},autogobble=true}
 
 \newminted{c}{}
+\newminted{shell}{}
 \newminted{latex}{}
+\newminted{bibtex}{}
 \newminted{gas}{}
 \newminted{nasm}{}
 \newminted{python}{}
+
+\newenvironment{codeblock}[1] % e.g. \begin{codeblock}{.7} ... \end{codeblock}
+{\begin{center}\begin{minipage}{#1\textwidth}\begin{singlespace}}
+{\end{singlespace}\end{minipage}\end{center}}
 
 %%%%% end minted %%%%%
 
