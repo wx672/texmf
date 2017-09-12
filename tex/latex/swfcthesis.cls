@@ -19,6 +19,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage{etoolbox}
 \RequirePackage{indentfirst}
 \RequirePackage{tabu,longtable,multicol,multirow,array}
+\RequirePackage{ulem}
 
 % graphicx
 \RequirePackage[xetex]{graphicx} % before xltxtra
@@ -84,7 +85,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage[backend=biber,
 style=chem-angew,sorting=none,
 %style=caspervector,sorting=centy,utf8,
-url=false,hyperref=true,doi=false,isbn=false,
+hyperref=true,doi=false,isbn=false,%url=false,
 date=edtf,seconds=true,% to suppress compile warnings
 ]{biblatex}
 
@@ -102,6 +103,13 @@ date=edtf,seconds=true,% to suppress compile warnings
 % {\supercitedelim}{}%
 
 \let\cite=\supercite
+
+% https://tex.stackexchange.com/questions/23832/biblatex-make-title-hyperlink-to-doi-url-if-available
+\newbibmacro{string+url}[1]{%
+  \iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}}
+
+\DeclareFieldFormat{title}{\usebibmacro{string+url}{\mkbibemph{#1}}}
+%\DeclareFieldFormat[article]{title}{\usebibmacro{string+url}{\mkbibquote{#1}}}
 
 \defaultfontfeatures{Mapping=tex-text}
 \setmainfont{Liberation Serif}

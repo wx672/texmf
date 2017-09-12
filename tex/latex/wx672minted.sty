@@ -1,0 +1,25 @@
+% for typesetting standalone source code blocks
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{wx672minted}
+
+\RequirePackage[cache=false]{minted}
+%\usemintedstyle{bw}
+
+\renewcommand{\theFancyVerbLine}{
+  \textcolor{lightgray}{\scriptsize \arabic{FancyVerbLine}}}
+
+\newcommand{\codec}[1]{\mintinline{c}|#1|}
+
+\setminted{fontsize=\small,xleftmargin=1em,
+  linenos=true,numbersep=1pt,%
+  frame=leftline,framesep=5pt,%
+  rulecolor=\color{lightgray},autogobble=true}
+
+\newminted{c}{}
+\newminted{shell}{}
+\newminted{latex}{}
+\newminted{bibtex}{}
+\newminted{gas}{}
+\newminted{nasm}{}
+\newminted{python}{}
+\newminted{pascal}{}
