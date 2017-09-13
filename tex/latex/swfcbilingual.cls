@@ -1,15 +1,28 @@
+% The swfcbilingual class is for preparing bilingual lecturing application form used at SWFU
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfcbilingual}%[TeX Live 2016/Debian SWFU bilingual lecturing application form]
 
 \LoadClass[a4paper]{article}
 
-% The swfcbilingual class is for preparing bilingual lecturing application form used at SWFU
-%\RequirePackage{calc,ifthen}
 \RequirePackage{array}
 \RequirePackage{tabu}
+%\RequirePackage{xcolor}
+\RequirePackage{hyperref}
+\hypersetup{%
+  pdfborder={0 0 0},
+  % colorlinks=false,
+  % linkbordercolor={0 0 0},
+  % urlbordercolor={0 0 0},
+  % urlcolor={0 0 0},
+  % linkcolor={0 0 0},
+  % citecolor={0 0 0},
+  % filebordercolor={0 0 0},   % color of file links
+  % citebordercolor={0 0 0},     % color of links to bibliography
+}
 
 \RequirePackage{wx672fonts} %fontspec,xunicode are loaded here.
 \RequirePackage{wx672cjk}
+\RequirePackage{wx672bib}
 
 \RequirePackage[ % showframe,
  paperwidth=210mm,paperheight=297mm,
@@ -59,10 +72,10 @@
       \end{tabu} \\\tabucline-
       课程信息 &
       \tabulinesep=1mm
-      \begin{tabu}{X[-1,r]|X[c]|X[-1,r]|X[1.5,c]|X[-1,r]|X[2.5,c]@{}}
+      \begin{tabu}{X[-1,r,m]|X[c,m]|X[-1,r,m]|X[1.5,c,m]|X[-1,r,m]|X[2.5,c,m]@{}}
         学期&\SWFCField@Term{}&开课学院&\SWFCField@Schooltwo{}&课程名称&\SWFCField@Course{}\\\tabucline-
         外语语种&\SWFCField@Language{}&课程班级&\multicolumn{3}{c}{\SWFCField@Class{}}\\\tabucline-
-        使用教材&\multicolumn{5}{c}{\SWFCField@Textbook{}}\\\tabucline-
+        使用教材&\multicolumn{5}{c}{\,\SWFCField@Textbook{}}\\\tabucline-
         自编讲义&\multicolumn{5}{c}{\SWFCField@Owntext{}}\\
       \end{tabu} \\\tabucline-
     \end{tabu}\vskip -1pt
@@ -78,24 +91,24 @@
   }
 }
 
-\Name{王晓林}
-\Gender{男}
+\Name{\kai{王晓林}}
+\Gender{\kai{男}}
 \Dayofbirth{1969-03}
-\Diploma{研究生}
-\Degree{硕士}
-\Title{讲师}
+\Diploma{\kai{研究生}}
+\Degree{\kai{硕士}}
+\Title{\kai{讲师}}
 \Phone{13577067397}
-\Admin{无}
-\School{计算机与信息学院}
-\Language{英语}
-\Schooltwo{计信学院}
-\Bilingual{十年双语教学经验}
-\Award{无}
+\Admin{\kai{无}}
+\School{\kai{大数据与智能工程学院}}
+\Language{\kai{英语}}
+\Schooltwo{\kai{大数据与智能工程学院}}
+\Bilingual{\kai{十年双语教学经验}}
+\Award{\kai{无}}
+\Owntext{\kai{否}}
+\Research{\kai{无}}
 
-\Subject{计算机科学与技术}
+\Subject{\kai{计算机科学与技术}}
 \Term{151601}
-\Course{Linux应用基础}
-\Class{计科14（网络方向）}
+\Course{\kai{Linux应用基础}}
+\Class{\kai{计科14（网络方向）}}
 \Textbook{Advanced Bash-scripting Guide}
-\Owntext{否}
-\Research{无}
