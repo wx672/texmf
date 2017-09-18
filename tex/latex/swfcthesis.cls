@@ -114,14 +114,16 @@ date=edtf,seconds=true,% to suppress compile warnings
 \defaultfontfeatures{Mapping=tex-text}
 \setmainfont{Liberation Serif}
 \setsansfont{Liberation Sans}
-\setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
-\setCJKsansfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
-\setCJKmonofont{Noto Sans Mono CJK SC Regular}
+% \setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
+% \setCJKsansfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
+\setCJKmainfont{Noto Serif CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
+\setCJKmonofont{Noto Sans Mono CJK SC}
 
-\newCJKfontfamily\hei{Adobe Heiti Std} % \hei{Hello, world!}
-\newCJKfontfamily\song{Adobe Song Std}
-\newCJKfontfamily\kai{Adobe Kaiti Std}
-\newCJKfontfamily\quotefont{Adobe Kaiti Std}
+\newCJKfontfamily\hei{WenQuanYi Micro Hei} % \hei{Hello, world!}
+\newCJKfontfamily\song{AR PL UMing CN}
+\newCJKfontfamily\kai{AR PL UKai CN}
+\newCJKfontfamily\quotefont{AR PL UKai CN}
 
 \XeTeXlinebreaklocale "zh"
 \XeTeXlinebreakskip = 0pt plus 1pt

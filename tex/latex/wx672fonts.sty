@@ -5,6 +5,32 @@
 
 \RequirePackage{fontawesome,latexsym,pifont,units,amsmath,amsfonts,amssymb,marvosym,mathtools}
 
+\RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
+\defaultfontfeatures{Mapping=tex-text}
+
+\setsansfont{DejaVu Sans}
+\setmainfont{DejaVu Serif}
+
+\newfontfamily\humor{Humor Sans}% \humor{hello, world!}
+\newfontfamily\purisa{Purisa}
+\newfontfamily\dejavu{DejaVu Sans Mono}
+\newfontfamily\emoji{Symbola}% {\emoji ☺}
+
+% use C-x 8 RET to input utf8 symbols
+
+\newcommand\Symbol[1]{\emoji #1}
+\newcommand\good{\emoji ☺}
+\newcommand\bad{\emoji ☹}
+\newcommand\danger{\emoji ☠}
+\newcommand\pointright{\emoji ☞}
+\newcommand\checked{\emoji ☑}
+\newcommand\unchecked{\emoji ☐}
+
+\newcommand\linux{\faLinux} % fontawesome
+\newcommand\wechat{\faWechat}
+
+\newfontfamily\emj{EmojiOne}% {\emj ☺}
+
 \RequirePackage[tt=false]{libertine} % keyboard symbol
 \newcommand{\Ca}{\LKeyCtrlX{a}}      % mainly for the tutorial doc
 \newcommand{\Cb}{\LKeyCtrlX{b}}
@@ -35,29 +61,3 @@
 \newcommand{\Enter}{\LKeyEnter{}}
 \newcommand{\Caps}{\LKeyCapsLock{}}
 \newcommand{\Ctrl}{\LKeyCtrl{}}
-
-\RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
-\defaultfontfeatures{Mapping=tex-text}
-
-\setsansfont{DejaVu Sans}
-\setmainfont{DejaVu Serif}
-
-\newfontfamily\humor{Humor Sans}% \humor{hello, world!}
-\newfontfamily\purisa{Purisa}
-\newfontfamily\dejavu{DejaVu Sans Mono}
-\newfontfamily\emoji{Symbola}% {\emoji ☺}
-
-% use C-x 8 RET to input utf8 symbols
-\newfontfamily\MyEmoji{Symbola}
-\newcommand\Symbol[1]{\MyEmoji #1}
-\newcommand\good{\MyEmoji ☺}
-\newcommand\bad{\MyEmoji ☹}
-\newcommand\danger{\MyEmoji ☠}
-\newcommand\pointright{\MyEmoji ☞}
-\newcommand\checked{\MyEmoji ☑}
-\newcommand\unchecked{\MyEmoji ☐}
-
-\newcommand\linux{\faLinux} % fontawesome
-\newcommand\wechat{\faWechat}
-
-\newfontfamily\emj{EmojiOne}% {\emj ☺}
