@@ -1,0 +1,21 @@
+% for typesetting standalone source code blocks
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{wx672hyperref}
+
+% https://tex.stackexchange.com/questions/49788/hyperref-url-long-url-with-dashes-wont-break
+\PassOptionsToPackage{hyphens}{url}
+\RequirePackage{hyperref}
+% https://tex.stackexchange.com/questions/54946/how-to-break-long-url-in-an-item
+\def\UrlBreaks{\do\/\do-} % break long url
+
+\hypersetup{%
+  breaklinks=true,
+  bookmarksnumbered,pdfpagelabels=true,plainpages=false,
+  pdfborderstyle={/S/U/W .5},% border style will be underline of width .5pt 
+  colorlinks=false,
+  linkbordercolor=red,       % color of internal links
+  citebordercolor=blue,     % color of links to bibliography
+  filebordercolor=magenta,   % color of file links
+  urlbordercolor=blue,
+  % linkcolor=black,citecolor=black,urlcolor=blue
+}
