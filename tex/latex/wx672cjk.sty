@@ -16,16 +16,18 @@
 \xeCJKsetkern{。}{“}{1ex}
 \xeCJKsetkern{。}{《}{1.5ex}
 
-\setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
-\setCJKsansfont{Noto Sans CJK SC Regular}
-\setCJKmonofont{Noto Sans Mono CJK SC Regular}
+\setCJKmainfont{Noto Serif CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
+\setCJKmonofont{Noto Sans Mono CJK SC}
 
-\newCJKfontfamily\hei{Adobe Heiti Std} % \hei{Hello, world!}
-\newCJKfontfamily\song{Adobe Song Std}
-\newCJKfontfamily\kai{Adobe Kaiti Std}
-\newCJKfontfamily\quotefont{Adobe Kaiti Std}
+\newCJKfontfamily\hei{WenQuanYi Micro Hei} % \hei{Hello, world!}
+\newCJKfontfamily\song{AR PL UMing CN}
+\newCJKfontfamily\kai{AR PL UKai CN}
+\newCJKfontfamily\quotefont{AR PL UKai CN}
 \newCJKfontfamily\sig{signature}
-\newCJKfontfamily\handwriting{FZYingBiXingShu-S16S}
+
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
 
 \newcommand{\ziju}[1]{\renewcommand{\CJKglue}{\hskip #1}}
 \RequirePackage{ulem}

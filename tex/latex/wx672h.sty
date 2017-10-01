@@ -12,22 +12,11 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 
 \RequirePackage{wx672common}
 \RequirePackage{wx672fonts}
-\RequirePackage{wx672bib}
+\RequirePackage{wx672cjk}
 \RequirePackage{wx672tikz}
-
-\RequirePackage{hyperref}
-
-\hypersetup{%
-  xetex,
-  bookmarksnumbered,pdfpagelabels=true,plainpages=false,
-  pdfborderstyle={/S/U/W .5},% border style will be underline of width .5pt 
-  colorlinks=false,
-  linkbordercolor=red,       % color of internal links
-  citebordercolor=blue,     % color of links to bibliography
-  filebordercolor=magenta,   % color of file links
-  urlbordercolor=blue,
-  % linkcolor=black,citecolor=black,urlcolor=blue
-}
+\RequirePackage{wx672hyperref}
+\RequirePackage{wx672bib}
+\RequirePackage{wx672minted}
 
 % https://tex.stackexchange.com/questions/247185/tcolorbox-theorem-which-isnt-framed-on-the-sides
 \RequirePackage[breakable]{tcolorbox}
@@ -36,8 +25,11 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   boxrule=.5pt,titlerule=0pt, 
   fonttitle=\bfseries,title=#1}
 
+
 \RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{} % to make centering minted works
 
 \renewcommand{\refname}{} % article.cls
 
+% defined in wx672common
 \renewcommand{\Navy}[1]{\textcolor{black}{#1}}
+\renewcommand{\code}[1]{\emph{\texttt{#1}}}

@@ -1,6 +1,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfcexam}%[TeX Live 2016/Debian SWFC exam paper]
 
+\RequirePackage{ifxetex} % This class can only be processed with XeTeX
+
 \DeclareOption{a3}{
   \PassOptionsToPackage{a3paper,landscape,twocolumn,columnsep=3cm,top=2cm,bottom=20mm,left=4cm,right=2cm}{geometry}
 }
@@ -19,7 +21,7 @@
 
 \RequirePackage{calc,ifthen}
 \RequirePackage{geometry}
-\RequirePackage[xetex]{graphicx}
+\RequirePackage{graphicx}
 \graphicspath{{./figs/}{../figs/}{./}{../}} %note that the trailing “/” is required
 
 \RequirePackage{lastpage,changepage} % for 'page n of m'; \ifoddpage
@@ -33,7 +35,7 @@
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhead{} \fancyfoot{}
-\cfoot{第 \thepage\ 页，共 \pageref{LastPage}\ 页}
+\cfoot{第\,\thepage\,页，共\,\pageref{LastPage}\,页}
 \renewcommand{\headrulewidth}{0pt}
 
 \newcommand{\code}[1]{\texttt{#1}}
@@ -46,7 +48,7 @@
 \setlength{\bindingfieldlength}{1in}
 
 % Declare some variables to hold the text fields
-\newcommand{\Term}[3]{\gdef\SWFCField@Term{$#1\sim{}#2$\ 学年第$#3$\ 学期}}
+\newcommand{\Term}[3]{\gdef\SWFCField@Term{#1\,$\sim{}$#2\,学年第\,#3\,学期}}
 \newcommand{\Course}[2]{\gdef\SWFCField@Course{《#1》试题（#2）}}
 \newcommand{\Lecturer}[1]{\gdef\SWFCField@Lecturer{#1}}
 \newcommand{\Answer}[2]{\gdef\SWFCField@Answer{《#1》（#2）}}
@@ -100,7 +102,7 @@
 \newcommand{\SWFCheader}{
   \vspace*{1ex}
   \begin{center}
-    {\LARGE\mbox{\textbf{西南林业大学\ \SWFCField@Term}}}\\[3mm]
+    {\LARGE\mbox{\textbf{西南林业大学\,\SWFCField@Term}}}\\[3mm]
     {\LARGE\mbox{\textbf{\SWFCField@Course}}}\\[5mm]
     \begin{tabu}to .9\columnwidth {|c|X[c]|X[c]|X[c]|X[c]|X[c]|X[c]|X[c]|X[c]|X[c]|X[c]|X[c,2]|}
       \tabucline-
@@ -111,7 +113,7 @@
       人& & & & & & & & & & & \\\tabucline-
     \end{tabu}
     \vskip 2em
-    \underline{{\Large 请直接在卷子上作答，不要另用答题纸}}
+    \underline{{\Large 直接卷上作答，不要另用答题纸}}
   \end{center}
   \vspace{3mm}
 }
@@ -125,15 +127,15 @@
   }
 }
 
-\RequirePackage{minted}
+\RequirePackage{wx672minted}
 \usemintedstyle{bw}
 
 \onehalfspacing
 
-% Initialize the variables to their default values
-\Term{2015}{2016}{2}
+% Initial defaults
+\Term{2017}{2018}{1}
 \Course{操作系统原理}{开卷[A]}
 %\Lecturer{\hspace{20mm}}
-\Lecturer{王晓林}
+\Lecturer{\sig{王晓林}}
 
 \Answer{操作系统原理}{[A]卷}
