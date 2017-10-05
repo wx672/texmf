@@ -1,33 +1,29 @@
+% common beamer setup
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{wx672b}
 
-% \DeclareOption{12pt}{\PassOptionsToPackage{\CurrentOption}{beamer}}
-% \DeclareOption{ignorenonframetext}{\PassOptionsToPackage{\CurrentOption}{beamer}}
-% \DeclareOption{compress}{\PassOptionsToPackage{\CurrentOption}{beamer}}
-
-% \DeclareOption*{\PassOptionsToClass{\CurrentOption}{beamer}}
-
-% \ExecuteOptions{12pt,ignorenonframetext,compress}
-
-% \ProcessOptions\relax
-
-%\RequirePackage{tikz-wx672}
 \RequirePackage{wx672common}
 \RequirePackage{wx672fonts}
 \RequirePackage{wx672bib}
 
-\RequirePackage{hyperref} % preferably after biblatex
+%%% xcolor, hyperref, pgf are loaded by beamer already. pass opts to it in
+%%% wx672beamer.cls.
 
-\hypersetup{%xetex,  
-  bookmarksnumbered,plainpages=false,%pdfpagelabels=true,
-  pdfborderstyle={/S/U/W .5},% border style will be underline of width .5pt 
-  colorlinks=true,
-  linkcolor=blue,citecolor=blue,urlcolor=blue,
-  % linkbordercolor=red,       % color of internal links
-  % citebordercolor=blue,     % color of links to bibliography
-  %filebordercolor=magenta,   % color of file links
-  %urlbordercolor=blue,
-}
+%\RequirePackage[svgnames]{xcolor} % must before hyperref
+%\definecolor{Green}{cmyk}{1,0,1,.4}
+
+% \RequirePackage{wx672hyperref} % preferably after biblatex
+
+% \hypersetup{%xetex,  
+%   bookmarksnumbered,plainpages=false,%pdfpagelabels=true,
+%   pdfborderstyle={/S/U/W .5},% border style will be underline of width .5pt 
+%   colorlinks=true,
+%   linkcolor=blue,citecolor=blue,urlcolor=blue,
+%   % linkbordercolor=red,       % color of internal links
+%   % citebordercolor=blue,     % color of links to bibliography
+%   %filebordercolor=magenta,   % color of file links
+%   %urlbordercolor=blue,
+% }
 
 \usetheme{default}
 \setbeamertemplate{footline}[frame number]

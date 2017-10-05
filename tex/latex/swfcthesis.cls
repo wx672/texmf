@@ -114,8 +114,8 @@ date=edtf,seconds=true,% to suppress compile warnings
 \defaultfontfeatures{Mapping=tex-text}
 \setmainfont{Liberation Serif}
 \setsansfont{Liberation Sans}
-% \setCJKmainfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
-% \setCJKsansfont[BoldFont={Adobe Heiti Std}]{Adobe Song Std}
+\setmonofont{Noto Mono}
+
 \setCJKmainfont{Noto Serif CJK SC}
 \setCJKsansfont{Noto Sans CJK SC}
 \setCJKmonofont{Noto Sans Mono CJK SC}

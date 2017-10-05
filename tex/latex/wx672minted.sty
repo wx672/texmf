@@ -8,10 +8,12 @@
 \renewcommand{\theFancyVerbLine}{
   \textcolor{lightgray}{\scriptsize \arabic{FancyVerbLine}}}
 
-\setminted{fontsize=\small,xleftmargin=1em,
+\setminted{fontsize=\small,xleftmargin=1em,breaklines=true,
   linenos=true,numbersep=1pt,%
   frame=leftline,framesep=5pt,%
   rulecolor=\color{lightgray},autogobble=true}
+
+\setmintedinline{breaklines=true}
 
 \newminted{c}{}
 \newminted{shell}{}

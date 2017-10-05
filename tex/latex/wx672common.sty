@@ -11,14 +11,6 @@
 
 \RequirePackage{multicol,rotating,tabu,varwidth,ulem,etoolbox,longtable,comment}
 
-%%%% use ulem instead since it can work with xeCJK
-% \RequirePackage{soul}
-% \setul{1.5pt}{.4pt}% 1.5pt below contents
-% \setulcolor{gray}
-
-\RequirePackage{xcolor} % must before hyperref
-\definecolor{Green}{cmyk}{1,0,1,.4}
-
 \newenvironment{codeblock}[1] % e.g. \begin{codeblock}{.7} ... \end{codeblock}
 {\begin{center}\begin{minipage}{#1\textwidth}\begin{singlespace}}
 {\end{singlespace}\end{minipage}\end{center}}

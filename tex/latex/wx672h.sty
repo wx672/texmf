@@ -1,12 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{wx672h}
 
-% in beamerarticle package, there is a \RequirePackage[override]{xcolor}.
-% this clashes with [svgnames]
-\RequirePackage[noxcolor]{beamerarticle}
+\RequirePackage{beamerarticle}% xcolor loaded here, possible clashes
 
-\RequirePackage[top=2cm,bottom=2cm,left=3cm,right=2cm,
-nomarginpar,headheight=15pt, % to avoid "headheight too small"
+\RequirePackage[top=2cm,bottom=2cm,left=3cm,right=2cm,%
+nomarginpar,headheight=15pt,% to avoid "headheight too small"
 %showframe,showcrop,
 ]{geometry}
 
@@ -25,10 +23,16 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   boxrule=.5pt,titlerule=0pt, 
   fonttitle=\bfseries,title=#1}
 
-
 \RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{} % to make centering minted works
 
 \renewcommand{\refname}{} % article.cls
+\renewcommand{\contentsname}{Contents}
+\renewcommand{\listfigurename}{Figures}
+\renewcommand{\listtablename}{Tables}
+\renewcommand{\figurename}{Fig.}
+\renewcommand{\tablename}{Tbl.}
+\renewcommand{\appendixname}{App.}
+\renewcommand{\indexname}{Idx.}
 
 % defined in wx672common
 \renewcommand{\Navy}[1]{\textcolor{black}{#1}}
