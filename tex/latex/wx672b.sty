@@ -4,26 +4,13 @@
 
 \RequirePackage{wx672common}
 \RequirePackage{wx672fonts}
+\RequirePackage{wx672cjk}
 \RequirePackage{wx672bib}
+\RequirePackage{wx672tikz}
+\RequirePackage{wx672minted}
 
 %%% xcolor, hyperref, pgf are loaded by beamer already. pass opts to it in
 %%% wx672beamer.cls.
-
-%\RequirePackage[svgnames]{xcolor} % must before hyperref
-%\definecolor{Green}{cmyk}{1,0,1,.4}
-
-% \RequirePackage{wx672hyperref} % preferably after biblatex
-
-% \hypersetup{%xetex,  
-%   bookmarksnumbered,plainpages=false,%pdfpagelabels=true,
-%   pdfborderstyle={/S/U/W .5},% border style will be underline of width .5pt 
-%   colorlinks=true,
-%   linkcolor=blue,citecolor=blue,urlcolor=blue,
-%   % linkbordercolor=red,       % color of internal links
-%   % citebordercolor=blue,     % color of links to bibliography
-%   %filebordercolor=magenta,   % color of file links
-%   %urlbordercolor=blue,
-% }
 
 \usetheme{default}
 \setbeamertemplate{footline}[frame number]
@@ -36,3 +23,23 @@
 \setbeamercolor{alerted text}{fg=blue}
 \setbeamercolor{section in toc}{fg=Green,bg=Gray!6}
 %\setbeamercovered{transparent}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill\centering
+  \begin{beamercolorbox}[center]{structure}%\usebeamerfont{title}
+    {\LARGE\insertsectionhead}%\par
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+% \AtBeginSubsection[]{
+%   \begin{frame}
+%   \vfill\centering
+%   \begin{beamercolorbox}[center]{structure}%\usebeamerfont{title}
+%     {\large\insertsubsectionhead}%\par
+%   \end{beamercolorbox}
+%   \vfill
+%   \end{frame}
+% }

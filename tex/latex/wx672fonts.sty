@@ -10,27 +10,40 @@
 
 \setmainfont{Liberation Serif}
 \setsansfont{Liberation Sans}
-%\setmonofont{Noto Mono}
+%\setmonofont{DejaVu Sans Mono} % no good for {\ttfamily }
 
 \newfontfamily\humor{Humor Sans}% \humor{hello, world!}
 \newfontfamily\purisa{Purisa}
-%\newfontfamily\mono{Noto Mono}
+\newfontfamily\quivira{Quivira} % large unicode coverage
+\newfontfamily\utfart{DejaVu Sans Mono}
+\newfontfamily\uart{DejaVu Sans Mono}
 \newfontfamily\emoji{Symbola}% {\emoji ☺}
+\newfontfamily\emj{EmojiOne}% {\emj ☺}
+
+\newcommand{\verbatimfont}[1]{\def\verbatim@font{#1}}%
 
 % use C-x 8 RET to input utf8 symbols
+% C-x 8 C-h for more
 
 \newcommand\Symbol[1]{\emoji #1}
-\newcommand\good{\emoji ☺}
-\newcommand\bad{\emoji ☹}
-\newcommand\danger{\emoji ☠}
-\newcommand\pointright{\emoji ☞}
-\newcommand\checked{\emoji ☑}
-\newcommand\unchecked{\emoji ☐}
-
+\newcommand\okay{\emoji 😐}
+\newcommand\good{\uart ☺}% 👍
+\newcommand\bad{\uart ☹}% 👎
+\newcommand\danger{\uart ☠}
+\newcommand\caution{\uart ☡}
+\newcommand\pointright{\uart ☞}
+\newcommand\pointleft{\uart ☜}
+\newcommand\unchecked{\uart □}
+\newcommand\uncheckedbox{\uart □}
+\newcommand\Checked{\uart ✔}
+\newcommand\RedCross{\textcolor{red}{\uart ✘}}
+\newcommand\checked{\quivira 🗹}
+\newcommand\checkedbox{\quivira 🗹}
+\newcommand\crossedbox{\quivira 🗷}
+\newcommand\ellipis{\uart …}
 \newcommand\linux{\faLinux} % fontawesome
 \newcommand\wechat{\faWechat}
 
-\newfontfamily\emj{EmojiOne}% {\emj ☺}
 
 \RequirePackage[tt=false]{libertine} % keyboard symbol
 \newcommand{\Ca}{\LKeyCtrlX{a}}      % mainly for the tutorial doc

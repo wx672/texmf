@@ -9,7 +9,7 @@
 
 \LoadClass[a4paper,12pt,oneside]{book}
 
-\RequirePackage{ifxetex} % This class can only be processed with XeTeX
+\RequirePackage{ifxetex} % This class is for XeTeX only
 
 \RequirePackage[top=3cm,bottom=2.5cm,left=3cm,right=2.5cm,
 nomarginpar,headheight=15pt, % to avoid "headheight too small"
@@ -45,8 +45,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \fancypagestyle{plain}{% for the 1st page of each chapter
   \fancyhf{}%
   \fancyfoot[C]{\fontsize{8}{8}\selectfont -- \thepage\ --}
-  \renewcommand{\headrulewidth}{0pt}
-}
+  \renewcommand{\headrulewidth}{0pt}}
 
 \RequirePackage{enumitem} % \setlist
 \setlist{nosep} % kills all vertical spacing
@@ -60,7 +59,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 
 \RequirePackage{hyperref}
 \hypersetup{%
-  bookmarksnumbered,pdfpagelabels=true,plainpages=false,breaklinks=true,
+  bookmarksnumbered, pdfpagelabels=true, plainpages=false, breaklinks=true,
   colorlinks=false,
   pdfborderstyle={/S/U/W .3},% border style will be underline of width .3pt 
   linkbordercolor=red,       % internal links
@@ -84,7 +83,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 
 \RequirePackage[backend=biber,
 style=chem-angew,sorting=none,
-%style=caspervector,sorting=centy,utf8,
+%style=caspervector,sorting=centy,utf8, % caspervector is buggy!
 hyperref=true,doi=false,isbn=false,%url=false,
 date=edtf,seconds=true,% to suppress compile warnings
 ]{biblatex}
@@ -99,7 +98,7 @@ date=edtf,seconds=true,% to suppress compile warnings
 %   \iffieldundef{prenote}{}{\BibliographyWarning{Ignoring prenote argument}}%
 %   \iffieldundef{postnote}{}{\BibliographyWarning{Ignoring postnote argument}}%
 % }%
-% {\mkbibbrackets{\usebibmacro{citeindex}\usebibmacro{cite}\usebibmacro{postnote}}}%
+% {\mkbibbrackets{\usebibmacro{citeindex} \usebibmacro{cite} \usebibmacro{postnote}}}%
 % {\supercitedelim}{}%
 
 \let\cite=\supercite
@@ -109,19 +108,19 @@ date=edtf,seconds=true,% to suppress compile warnings
   \iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}}
 
 \DeclareFieldFormat{title}{\usebibmacro{string+url}{\mkbibemph{#1}}}
-%\DeclareFieldFormat[article]{title}{\usebibmacro{string+url}{\mkbibquote{#1}}}
 
 \defaultfontfeatures{Mapping=tex-text}
+% Liberation fonts is a drop-in replacement for Microsoft Times, Arial and Courier fonts
 \setmainfont{Liberation Serif}
 \setsansfont{Liberation Sans}
-\setmonofont{Noto Mono}
+\setmonofont{Liberation Mono}
 
 \setCJKmainfont{Noto Serif CJK SC}
 \setCJKsansfont{Noto Sans CJK SC}
 \setCJKmonofont{Noto Sans Mono CJK SC}
 
-\newCJKfontfamily\hei{WenQuanYi Micro Hei} % \hei{Hello, world!}
-\newCJKfontfamily\song{AR PL UMing CN}
+\newCJKfontfamily\hei{Noto Sans CJK SC Bold} % \hei{Hello, world!}
+\newCJKfontfamily\song{Noto Serif CJK SC}
 \newCJKfontfamily\kai{AR PL UKai CN}
 \newCJKfontfamily\quotefont{AR PL UKai CN}
 
@@ -279,7 +278,7 @@ date=edtf,seconds=true,% to suppress compile warnings
 \setminted{%
   linenos=true,numbersep=3pt,fontsize=\small,
   frame=leftline,framesep=10pt,%xleftmargin=2cm,
-  rulecolor=\color{lightgray},autogobble=true}
+  rulecolor=\color{lightgray},autogobble=true,breaklines=true,}
 
 \newminted{c}{}
 \newminted{shell}{}

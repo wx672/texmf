@@ -15,6 +15,19 @@ nomarginpar,headheight=15pt,% to avoid "headheight too small"
 \RequirePackage{wx672hyperref}
 \RequirePackage{wx672bib}
 \RequirePackage{wx672minted}
+\usemintedstyle{bw}
+%\RequirePackage{todonotes} % use fixme instead
+\RequirePackage{fixme}
+\fxsetup{
+  margin=false,
+  status=draft,
+  author=TODO,
+  inline=true,
+  marginclue=true,
+  theme=color
+}
+
+%\definecolor{fxnote}{rgb}{0.8000,0.0000,0.0000}
 
 % https://tex.stackexchange.com/questions/247185/tcolorbox-theorem-which-isnt-framed-on-the-sides
 \RequirePackage[breakable]{tcolorbox}
@@ -22,6 +35,10 @@ nomarginpar,headheight=15pt,% to avoid "headheight too small"
   colback=white, coltitle=black,colbacktitle=white,
   boxrule=.5pt,titlerule=0pt, 
   fonttitle=\bfseries,title=#1}
+
+\addtolength{\oddsidemargin}{-15pt}
+\addtolength{\marginparsep}{5pt}
+\newcommand{\Marginpar}[1]{\marginpar{\raggedright{\footnotesize \emph{#1}}}}
 
 \RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{} % to make centering minted works
 
@@ -37,3 +54,5 @@ nomarginpar,headheight=15pt,% to avoid "headheight too small"
 % defined in wx672common
 \renewcommand{\Navy}[1]{\textcolor{black}{#1}}
 \renewcommand{\code}[1]{\emph{\texttt{#1}}}
+
+\graphicspath{{./figs/bw/}{../figs/bw/}{./figs/}{../figs/}} %note that the trailing “/” is required

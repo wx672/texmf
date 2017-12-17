@@ -13,7 +13,7 @@
 \RequirePackage[% showframe,
                 paperwidth=195mm, paperheight=270mm,
 		top=2cm, bottom=2cm,
-                left=3cm, right=3cm,
+                left=2.5cm, right=2.5cm,
                 ]{geometry}
 
 \RequirePackage{tikz}
@@ -47,21 +47,13 @@
 \newcommand{\TeacherTitle}[1]{\gdef\SWFCField@TeacherTitle{#1}} % 职称
 \newcommand{\Date}[1]{\gdef\SWFCField@Date{#1}}
 
-\Sumup{% 课程教学小结
-  \begin{itemize}
-  \item
-  \item
-  \item
-  \end{itemize}
-}  
-\Suggestion{% 今后改革设想
-  \begin{itemize}
-  \item
-  \item
-  \item
-  \end{itemize}
+\newcommand{\Signit}[3]{%\Sign{-8cm}{-8.7cm}{../signature}
+\begin{tikzpicture}[overlay,remember picture]%
+    \node [xshift=#1,yshift=#2] at (current page.center) {%
+        \includegraphics[scale=.1]{#3}%
+    };%
+\end{tikzpicture}%
 }
-\TeacherName{{\large \sig{王晓林}}}\TeacherTitle{讲师}
 
 \newcommand{\YES}{{\Large \Checkedbox{}}是\quad$\Box$否}
 \newcommand{\NO}{$\Box$是\quad{\Large \Checkedbox{}}否}
@@ -94,11 +86,6 @@
         \SWFCField@Suggestion{}\\
       \end{tabu}\\\tabucline-
     \end{tabu}
-    % \vskip -7pt
-    % \tabulinesep=0pt
-    % \begin{tabu}{X[.232]X[c]cX}
-    %   &\SWFCField@TeacherName{}&&\\% \TeacherName{\includegraphics[height=3em]{../signature}}
-    % \end{tabu}
     \vskip -1pt
     \tabulinesep=2mm
     \begin{tabu}{|X[.232,c,m]|X[c]|c|X[c]|}
@@ -116,11 +103,27 @@
   }
 }
 
-\pagestyle{empty}
+\Sumup{% 课程教学小结
+  \begin{itemize}
+  \item
+  \item
+  \item
+  \end{itemize}
+}  
+\Suggestion{% 今后改革设想
+  \begin{itemize}
+  \item
+  \item
+  \item
+  \end{itemize}
+}
 
 \Term{}\Coursetitle{}
 \Totaltime{}\Labtime{}\Practicetime{}
-\School{}\Class{}\Studnum{}
-\Multimedia{}\Bilingual{}\Examtype{}
+\Class{}\Studnum{}
 \Textbook{}\Publishtime{}
+\TeacherName{}\TeacherTitle{讲师}
+\School{大数据与智能工程学院}
+\Multimedia{\YES}\Bilingual{\YES}\Examtype{开卷机试}
 
+\pagestyle{empty}

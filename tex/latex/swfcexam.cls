@@ -3,13 +3,13 @@
 
 \RequirePackage{ifxetex} % This class can only be processed with XeTeX
 
-\DeclareOption{a3}{
-  \PassOptionsToPackage{a3paper,landscape,twocolumn,columnsep=3cm,top=2cm,bottom=20mm,left=4cm,right=2cm}{geometry}
-}
+\DeclareOption{a3}{%
+  \PassOptionsToPackage{a3paper,landscape,twocolumn,%
+    columnsep=3cm,top=2cm,bottom=20mm,left=4cm,right=2cm}{geometry}}
 
-\DeclareOption{a4}{
-  \PassOptionsToPackage{onecolumn,paperwidth=195mm,paperheight=270mm,top=2cm,bottom=15mm,left=25mm,right=15mm}{geometry}
-}
+\DeclareOption{a4}{%
+  \PassOptionsToPackage{onecolumn,paperwidth=195mm,paperheight=270mm,%
+    top=2cm,bottom=15mm,left=25mm,right=15mm}{geometry}}
 
 \DeclareOption*{
   \PassOptionsToClass{\CurrentOption}{article}
@@ -22,7 +22,7 @@
 \RequirePackage{calc,ifthen}
 \RequirePackage{geometry}
 \RequirePackage{graphicx}
-\graphicspath{{./figs/}{../figs/}{./}{../}} %note that the trailing “/” is required
+\graphicspath{{./figs/}{./}} %note that the trailing “/” is required
 
 \RequirePackage{lastpage,changepage} % for 'page n of m'; \ifoddpage
 \RequirePackage{dashrule} % \dashfill
@@ -55,9 +55,9 @@
 
 \newsavebox{\swfcbindingbox}
 
-\newcommand{\SWFCbinding}{
-  \sbox{\swfcbindingbox}{
-    \parbox{\textheight}{
+\newcommand{\SWFCbinding}{%
+  \sbox{\swfcbindingbox}{%
+    \parbox{\textheight}{%
       {\centering
         \makebox[\textheight][s]{
           \mbox{姓名\underline{\hspace{\bindingfieldlength}}}
@@ -68,11 +68,9 @@
         \mbox{请在所附答题纸上空出密封位置。并填写姓名、学号、班级、任课教师}\\[3mm]
         \hdashrule[.5ex][x]{.41\textheight}{.1pt}{2mm}密封线以下, 不得加注任何标记%
         \hdashrule[.5ex]{.41\textheight}{.1pt}{2mm}
-      }
-    }
-  }
+      }}}
   \ifthenelse{\boolean{@twocolumn}}
-  { \fancyput(-.5in,-10in){\rotatebox{90}{\usebox{\swfcbindingbox}}} } % then
+  {\fancyput(-.5in,-10in){\rotatebox{90}{\usebox{\swfcbindingbox}}}} % then
   {} % else
 }
 
