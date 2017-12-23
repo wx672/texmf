@@ -1,13 +1,20 @@
 \documentclass{swfcbilingual}
 
-\begin{document}
+\addbibresource{os.bib}
+
 \Subject{计算机科学与技术}
 \Term{161701}
 \Course{Linux应用基础}
 \Class{计科15}
-\Textbook{Advanced Bash-scripting Guide}
+\Textbook{\nocite{cooper10bash}\printbibliography[heading=none]{}}
 \Owntext{否}
 \Research{十年Linux应用教学经验}
 
+\begin{document}
 \makeform
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
