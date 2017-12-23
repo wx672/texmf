@@ -27,6 +27,9 @@ nomarginpar,headheight=15pt,% to avoid "headheight too small"
   theme=color
 }
 
+\RequirePackage{enumitem} % \setlist
+\setlist{nosep} % kills all vertical spacing
+
 %\definecolor{fxnote}{rgb}{0.8000,0.0000,0.0000}
 
 % https://tex.stackexchange.com/questions/247185/tcolorbox-theorem-which-isnt-framed-on-the-sides
@@ -56,3 +59,5 @@ nomarginpar,headheight=15pt,% to avoid "headheight too small"
 \renewcommand{\code}[1]{\emph{\texttt{#1}}}
 
 \graphicspath{{./figs/bw/}{../figs/bw/}{./figs/}{../figs/}} %note that the trailing “/” is required
+
+\setcounter{tocdepth}{2}
