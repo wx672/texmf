@@ -57,58 +57,60 @@
 \newcommand{\Bilingual}[1]{\gdef\SWFCField@Bilingual{#1}} % 外语水平及双语教学经历
 \newcommand{\Award}[1]{\gdef\SWFCField@Award{#1}} % 获奖情况
 
-\newcommand{\makeform}{
-  \pagestyle{empty}
+\newcommand{\makeform}{\pagestyle{empty}  
   {\centering
-    {\textbf {\LARGE 西南林业大学双语教学课程申请表}}\\[4ex]
-    \begin{tabu}{|X[-1,c,m]|@{}X[c,m]@{}|}\tabucline-
-      \hspace{.5em}申请人基本\makebox[.5em]{}\par 信息 &
+    {\textbf {\LARGE\hei 西南林业大学双语教学课程申请表}}\\[4ex]
+    \begin{tabu}{|X[.137,c,m]|@{}X[c,m]@{}|}\tabucline-
+      申请人基本\par 信息 &
       \tabulinesep=1mm
-      \begin{tabu}{X[-1,r]|X[.8,c]|X[-1,r]|X[.5,c]|X[-1,r]|X[2.5,c]@{}}
-        姓名&\SWFCField@Name{}&性别&\SWFCField@Gender{}&出生年月&\SWFCField@Dayofbirth{}\\\tabucline-
-        学历&\SWFCField@Diploma{}&专业技术职务&\SWFCField@Title{}&电话&\SWFCField@Phone{}\\\tabucline-
-        学位&\SWFCField@Degree{}&行政职务&\SWFCField@Admin{}&学科专业&\SWFCField@Subject{}\\\tabucline-
-        所在学院&\multicolumn{5}{c}{\SWFCField@School{}}\\
+      \begin{tabu}{r|X[.8,c]|r|X[.5,c]|r|X[2.5,c]@{}}
+        姓名&{\kai\SWFCField@Name}&性别&{\kai\SWFCField@Gender}&
+        出生年月&\SWFCField@Dayofbirth\\\tabucline-
+        学历&{\kai\SWFCField@Diploma}&专业技术职务&{\kai\SWFCField@Title}&
+        电话&\SWFCField@Phone\\\tabucline-
+        学位&{\kai\SWFCField@Degree}&行政职务&{\kai\SWFCField@Admin}&
+        学科专业&{\kai\SWFCField@Subject}\\\tabucline-
+        所在学院&\multicolumn{5}{c}{\kai\SWFCField@School}\\
       \end{tabu} \\\tabucline-
       课程信息 &
       \tabulinesep=1mm
-      \begin{tabu}{X[-1,r,m]|X[c,m]|X[-1,r,m]|X[1.5,c,m]|X[-1,r,m]|X[2.5,c,m]@{}}
-        学期&\SWFCField@Term{}&开课学院&\SWFCField@Schooltwo{}&课程名称&\SWFCField@Course{}\\\tabucline-
-        外语语种&\SWFCField@Language{}&课程班级&\multicolumn{3}{c}{\SWFCField@Class{}}\\\tabucline-
-        使用教材&\multicolumn{5}{c}{\,\SWFCField@Textbook{}}\\\tabucline-
-        自编讲义&\multicolumn{5}{c}{\SWFCField@Owntext{}}\\
+      \begin{tabu}{r|X[c,m]|r|X[1.5,c,m]|r|X[2.5,c,m]@{}}
+        学期&\SWFCField@Term&开课学院&{\kai\SWFCField@Schooltwo}&
+        课程名称&{\kai\SWFCField@Course}\\\tabucline-
+        外语语种&{\kai\SWFCField@Language}&
+        课程班级&\multicolumn{3}{c}{\kai\SWFCField@Class}\\\tabucline-
+        使用教材&\multicolumn{5}{c}{\,\SWFCField@Textbook}\\\tabucline-
+        自编讲义&\multicolumn{5}{c}{\kai\SWFCField@Owntext}\\
       \end{tabu} \\\tabucline-
     \end{tabu}\vskip -1pt
     \tabulinesep=7ex
     \begin{tabu}{|X[-1,c,m]|X[c,m]|}
-      学术研究&\SWFCField@Research{}\\\tabucline-
-      外语水平及\par 双语教学经历 & \SWFCField@Bilingual{}\\\tabucline-
-      获奖情况 & \SWFCField@Award{}\\\tabucline-
+      学术研究&{\kai\SWFCField@Research}\\\tabucline-
+      外语水平及\par 双语教学经历 & {\kai\SWFCField@Bilingual}\\\tabucline-
+      获奖情况 & {\kai\SWFCField@Award}\\\tabucline-
       教研室审核\par 意见 & \\\tabucline-
       教学院（部）\par 审核意见 & \\\tabucline-
       教务处审核\par 意见 & \\\tabucline-
-    \end{tabu}
-  }
-}
+    \end{tabu}}}
 
-\Name{\kai{王晓林}}
-\Gender{\kai{男}}
+\Name{王晓林}
+\Gender{男}
 \Dayofbirth{1969-03}
-\Diploma{\kai{研究生}}
-\Degree{\kai{硕士}}
-\Title{\kai{讲师}}
+\Diploma{研究生}
+\Degree{硕士}
+\Title{讲师}
 \Phone{13577067397}
-\Admin{\kai{无}}
-\School{\kai{大数据与智能工程学院}}
-\Language{\kai{英语}}
-\Schooltwo{\kai{大数据与智能工程学院}}
-\Bilingual{\kai{十年双语教学经验}}
-\Award{\kai{无}}
-\Owntext{\kai{否}}
-\Research{\kai{无}}
+\Admin{无}
+\School{大数据与智能工程学院}
+\Language{英语}
+\Schooltwo{大数据与智能工程学院}
+\Bilingual{十年双语教学经验}
+\Award{无}
+\Owntext{否}
+\Research{无}
 
-\Subject{\kai{计算机科学与技术}}
+\Subject{计算机科学与技术}
 \Term{151601}
-\Course{\kai{Linux应用基础}}
-\Class{\kai{计科14（网络方向）}}
+\Course{Linux应用基础}
+\Class{计科14（网络方向）}
 \Textbook{Advanced Bash-scripting Guide}

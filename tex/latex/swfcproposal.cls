@@ -3,10 +3,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfcproposal}%[TeX Live 2016/Debian SWFU Theses Proposal]
 
-% \DeclareOption{noacknowlegments}{% Allow opt-out on acknowledgments
-%   \renewcommand{\acknowledgmentspage}{}
-% }
-
 % pass unknown options to book
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{aritcle}}
 \ProcessOptions\relax
@@ -15,13 +11,12 @@
 
 \RequirePackage{ifxetex} % This class can only be processed with XeTeX
 
-%\RequirePackage[margin=2.5cm]{geometry}
 \RequirePackage[top=3cm,bottom=2.5cm,left=3cm,right=2.5cm,
 nomarginpar,headheight=15pt, % to avoid "headheight too small"
 %showframe,showcrop,
 ]{geometry}
 
-\RequirePackage[xetex]{graphicx} % before xltxtra
+\RequirePackage{graphicx} % before xltxtra
 \graphicspath{{./figs/}{../figs/}{./}{../}} %mind the trailing “/”
 
 \RequirePackage{indentfirst}
@@ -35,21 +30,21 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage{wx672bib}
 
 \RequirePackage{xcolor}
-\RequirePackage{hyperref}
-
-\hypersetup{%
-  pdfborderstyle={/S/U/W .5},% border style will be underline of width .5pt 
-  colorlinks=false,
-  linkbordercolor=red,       % color of internal links
-  citebordercolor=blue,     % color of links to bibliography
-  filebordercolor=magenta,   % color of file links
-  urlbordercolor=blue,
-  % linkcolor=black,citecolor=black,urlcolor=blue
-}
+\RequirePackage{wx672hyperref}
 
 % \singlespacing, \onehalfspacing, \doublespacing
 \RequirePackage[doublespacing]{setspace}
 \renewcommand{\doublespacing}{\setstretch{1.6}}
+
+% \RequirePackage[many]{tcolorbox}
+% \newtcolorbox{mainbodybox}[1]{breakable,sharp corners,
+%   colback=white,colbacktitle=white,coltitle=black,
+%   boxrule=.5pt,titlerule=0pt,bottom=2ex,
+%   fonttitle=\bfseries,title=#1}
+
+\RequirePackage{framed}
+
+\setlength{\parindent}{2em}
 
 \pagestyle{empty}
 
@@ -84,13 +79,14 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \newcommand{\SWFCtitlepage}{% Title page layout
   \thispagestyle{empty}
   \begin{center}
-    \makebox[14.7em][s]{{\Large\textbf{\SWFCField@Univ}}}\\[5mm]
-    \makebox[20em][s]{\Large\textbf{\SWFCField@Docname}}\\[5mm]
+    % \makebox[14.7em][s]{{\Large\textbf{\SWFCField@Univ}}}\\[5mm]
+    % \makebox[20em][s]{\Large\textbf{\SWFCField@Docname}}\\[5mm]
+    \makebox[14.7em][s]{\Large\hei 西南林业大学}\\[5mm]
+    \makebox[20em][s]{\Large\hei 本科毕业论文（设计）开题报告}\\[5mm]
     \vskip 2cm
     \begin{large}
     \begin{minipage}{1.0\linewidth}
-        \extrarowsep=^8mm
-        \extrarowsep=_-7pt
+        \extrarowsep=^8mm_-7pt
         \begin{tabu}spread\textwidth{@{}rX[c]@{}}
           论\,文\,题\,目：&\SWFCField@Title\\\tabucline{2-2}
           &\SWFCField@Titlext\\\tabucline{2-2}
@@ -101,11 +97,12 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
         \begin{center}
         \extrarowsep=^8mm_-7pt
         \begin{tabu}spread\textwidth{@{}rX[c]@{}}
+%       \begin{tabu}spread\textwidth{@{}X[j]X[c]@{}}
           专\hspace{1em}业\hspace{1em}名\hspace{1em}称：&\SWFCField@Subject\\\tabucline{2-2}
           年\hspace{5em}级：&\SWFCField@Grade\\\tabucline{2-2}
           学\hspace{1em}生\hspace{1em}学\hspace{1em}号：&\SWFCField@Studid\\\tabucline{2-2}
           学\hspace{1em}生\hspace{1em}姓\hspace{1em}名：&\SWFCField@Author\\\tabucline{2-2}
-          指导教师(职称)：&\SWFCField@Advisor{}（\SWFCField@AdvisorTitle）
+          指导教师（职称）：&\SWFCField@Advisor{}（\SWFCField@AdvisorTitle）
           \\\tabucline{2-2}
           &\\\tabucline{2-2}
           填\hspace{1em}表\hspace{1em}时\hspace{1em}间：&\SWFCField@Year\ 年\ \SWFCField@Month\ 月\ \SWFCField@Date\ 日\\\tabucline{2-2}
@@ -137,50 +134,120 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \newcommand{\tablebody}{% main part
   \singlespacing\noindent
   \extrarowsep=_8pt^8pt
-  \begin{tabu}{|X[.1,c,m]|@{}X[1.5,m]@{}|}
-    \tabucline-
-    指导\par 教师\par 基本\par 情况&
+  \begin{tabu}{|X[.1,c,m]|@{}X[1.5,m]@{}|}\tabucline-
+    指导教师基本情况&
     \begin{tabu}{c|X[.1,c,m]|X[.1,c,m]|X[.25,c,m]|X[.35,c,m]|c}
-      指导教师姓名&性\par 别&年\par 龄&学历或\par 学位&专业技术\par 职务或职称&工作单位\\\tabucline-
+      指导教师姓名&性别&年龄&学历或\par 学位&专业技术\par 职务或职称&工作单位\\[2pt]\tabucline-
       \SWFCField@Advisor&\SWFCField@AdvisorGender&\SWFCField@AdvisorAge&
       \SWFCField@AdvisorDegree&\SWFCField@AdvisorTitle&\SWFCField@AdvisorWhere\\\tabucline-
       &&&&&\\
     \end{tabu}\\\tabucline-
-    课题\par 来源&\ 1. 导师课题的一部分；2. 其他（须具体说明）
-    \underline{\,\SWFCField@Projfrom\,}。\\\tabucline-
+    课题来源&\quad 1. 导师课题的一部分；2. 其他（须具体说明）
+    \underline{\quad\SWFCField@Projfrom\quad}。\\%\tabucline-
   \end{tabu}
-  \vskip -12pt
-  \tabulinesep=_1ex
-  \begin{longtabu}{|r@{\ }X|}
-    1.& 该研究的目的、意义\par \vskip 1ex\SWFCField@Partone\\\tabucline-
-    2.& 国内外研究现状及发展趋势\par \vskip 1ex\SWFCField@Parttwo\\\tabucline-
-    3.& 主要参考文献\par \SWFCField@Partthree\\\tabucline-
-    4.& 该研究的主要内容，重点解决的问题，预期结果或成果\par\vskip 1ex \SWFCField@Partfour\\\tabucline-
-    5.& 拟采取的研究方法或实验方法，步骤，可能出现的技术问题及解决办法\par\vskip 1ex \SWFCField@Partfive\\\tabucline-
-    6.& 完成该研究已具备的条件\par \vskip 1ex\SWFCField@Partsix\\\tabucline-
-    &指导教师意见\\[2ex]
-    &\hspace{3em}{\Large \SWFCField@AdvisorComment}\\[-1ex]
-    &\hfill 签名：\makebox[7em]{\SWFCField@AdvisorSig}\\
-    &\hfill\SWFCField@Year 年 \SWFCField@Month 月 \SWFCField@Date 日\\\tabucline-
-  \end{longtabu}
-  \vskip -13pt
+  \vspace{-.9em}
+  \begin{framed}
+    \noindent{}1.\, 该研究的目的、意义\par\vspace{2ex} 
+    \SWFCField@Partone
+  \end{framed}
+  \vspace{-2.4em}
+  \begin{framed}
+    \noindent{}2.\, 国内外研究现状及发展趋势\par\vspace{2ex}
+    \SWFCField@Parttwo
+  \end{framed}
+  \vspace{-2.4em}
+  \begin{framed}
+    \noindent{}3.\, 主要参考文献
+    \SWFCField@Partthree
+  \end{framed}
+  \vspace{-2.4em}
+  \begin{framed}
+    \noindent{}4.\, 该研究的主要内容，重点解决的问题，预期结果或成果\par\vspace{2ex}
+    \SWFCField@Partfour
+  \end{framed}
+  \vspace{-2.4em}
+  \begin{framed}
+    \noindent{}5.\, 拟采取的研究方法或实验方法，步骤，可能出现的技术问题及解决办法\par\vspace{2ex}
+    \SWFCField@Partfive
+  \end{framed}
+  \vspace{-2.4em}
+  \begin{framed}
+    \noindent{}6.\, 完成该研究已具备的条件\par\vspace{2ex}
+    \SWFCField@Partsix
+  \end{framed}
+  \vspace{-2.4em}
+  \begin{framed}
+    \noindent{}指导教师意见\par\vspace{2ex}
+    \hspace{3em}{\Large\SWFCField@AdvisorComment}\par
+    \hfill{}签名：\makebox[7em]{\SWFCField@AdvisorSig}\par\vspace{2ex}
+    \hfill%
+    \makebox[4em]{\SWFCField@Year{}}年
+    \makebox[2em]{\SWFCField@Month{}}月
+    \makebox[2em]{\SWFCField@Date{}}日
+  \end{framed}
+  % \vspace{-.9em}
+  % \vskip -.8ex
+  % \begin{mainbodybox}{1.\, 该研究的目的、意义}
+  %   \SWFCField@Partone
+  % \end{mainbodybox}
+  % \vskip -1.4ex
+  % \begin{mainbodybox}{2.\, 国内外研究现状及发展趋势}
+  %   \SWFCField@Parttwo
+  % \end{mainbodybox}
+  % \vskip -1.4ex
+  % \begin{mainbodybox}{3.\, 主要参考文献}
+  %   \SWFCField@Partthree
+  % \end{mainbodybox}
+  % \vskip -1.4ex
+  % \begin{mainbodybox}{4.\, 该研究的主要内容，重点解决的问题，预期结果或成果}
+  %   \SWFCField@Partfour
+  % \end{mainbodybox}
+  % \vskip -1.4ex
+  % \begin{mainbodybox}{5.\, 拟采取的研究方法或实验方法，步骤，可能出现的技术问题及解决办法}
+  %   \SWFCField@Partfive
+  % \end{mainbodybox}
+  % \vskip -1.4ex
+  % \begin{mainbodybox}{6.\, 完成该研究已具备的条件}
+  %   \SWFCField@Partsix
+  % \end{mainbodybox}
+  % \vskip -1.4ex
+  % \begin{mainbodybox}{指导教师意见}
+  %   \hspace{3em}{\Large\SWFCField@AdvisorComment}\par
+  %   \hfill{}签名：\makebox[7em]{\SWFCField@AdvisorSig}\par\vskip 2ex
+  %   \hfill%
+  %   \makebox[4em]{\SWFCField@Year{}}年
+  %   \makebox[2em]{\SWFCField@Month{}}月
+  %   \makebox[2em]{\SWFCField@Date{}}日
+  % \end{mainbodybox}
+  % \tabulinesep=_1ex
+  % \begin{longtabu}{|r@{\ }X|}
+  %   1.& 该研究的目的、意义\par\vskip 1ex\SWFCField@Partone\\\tabucline-
+  %   2.& 国内外研究现状及发展趋势\par\vskip 1ex\SWFCField@Parttwo\\\tabucline-
+  %   3.& 主要参考文献\par\vskip 1ex\SWFCField@Partthree\\\tabucline-
+  %   4.& 该研究的主要内容，重点解决的问题，预期结果或成果\par\vskip 1ex\SWFCField@Partfour\\\tabucline-
+  %   5.& 拟采取的研究方法或实验方法，步骤，可能出现的技术问题及解决办法\par\vskip 1ex
+  %   \SWFCField@Partfive\\\tabucline-
+  %   6.& 完成该研究已具备的条件\par\vskip 1ex\SWFCField@Partsix\\\tabucline-
+  %   &指导教师意见\\[2ex]
+  %   &\hspace{3em}{\Large\SWFCField@AdvisorComment}\\[-1ex]
+  %   &\hfill 签名：\makebox[7em]{\SWFCField@AdvisorSig}\\
+  %   &\hfill\SWFCField@Year 年 \SWFCField@Month 月 \SWFCField@Date 日\\\tabucline-
+  % \end{longtabu}
+  \vspace{-.9em}
   \extrarowsep=_17pt
   \noindent
-  \begin{tabu}{|X[c]|X[15]|X[c]|X[15]|}
-    教\par 研\par 室\par 意\par 见&
-    \begin{tabu}{l}
-      \\[2ex]
+  \begin{tabu}{|p{1em}|X[15]|p{1em}|X[15]|}
+    教研室意见&
+    \begin{tabu}{l}\\[2ex]      
       教研室负责人：\\[-2ex]
       时间：\hspace{4em}年\hspace{2em}月\hspace{2em}日\\[-3ex]
     \end{tabu}
-    &教\par 学\par 院\par 系\par 部\par 意\par 见&
-    \begin{tabu}{l}
-      \\[2ex]
+    &教学院系部意见&
+    \begin{tabu}{l}\\[2ex]
       教学院系部负责人：\\[-2ex]
       时间：\hspace{4em}年\hspace{2em}月\hspace{2em}日\\[-3ex]
     \end{tabu}\\\tabucline-    
-  \end{tabu}
-}
+  \end{tabu}}
 
 \newcommand{\makeproposal}{% preliminary pages
   \SWFCtitlepage
