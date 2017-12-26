@@ -145,95 +145,62 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
     课题来源&\quad 1. 导师课题的一部分；2. 其他（须具体说明）
     \underline{\quad\SWFCField@Projfrom\quad}。\\%\tabucline-
   \end{tabu}
-  \vspace{-.9em}
-  \begin{framed}
-    \noindent{}1.\, 该研究的目的、意义\par\vspace{2ex} 
-    \SWFCField@Partone
-  \end{framed}
-  \vspace{-2.4em}
-  \begin{framed}
-    \noindent{}2.\, 国内外研究现状及发展趋势\par\vspace{2ex}
-    \SWFCField@Parttwo
-  \end{framed}
-  \vspace{-2.4em}
-  \begin{framed}
-    \noindent{}3.\, 主要参考文献
-    \SWFCField@Partthree
-  \end{framed}
-  \vspace{-2.4em}
-  \begin{framed}
-    \noindent{}4.\, 该研究的主要内容，重点解决的问题，预期结果或成果\par\vspace{2ex}
-    \SWFCField@Partfour
-  \end{framed}
-  \vspace{-2.4em}
-  \begin{framed}
-    \noindent{}5.\, 拟采取的研究方法或实验方法，步骤，可能出现的技术问题及解决办法\par\vspace{2ex}
-    \SWFCField@Partfive
-  \end{framed}
-  \vspace{-2.4em}
-  \begin{framed}
-    \noindent{}6.\, 完成该研究已具备的条件\par\vspace{2ex}
-    \SWFCField@Partsix
-  \end{framed}
-  \vspace{-2.4em}
-  \begin{framed}
-    \noindent{}指导教师意见\par\vspace{2ex}
-    \hspace{3em}{\Large\SWFCField@AdvisorComment}\par
-    \hfill{}签名：\makebox[7em]{\SWFCField@AdvisorSig}\par\vspace{2ex}
-    \hfill%
-    \makebox[4em]{\SWFCField@Year{}}年
-    \makebox[2em]{\SWFCField@Month{}}月
-    \makebox[2em]{\SWFCField@Date{}}日
-  \end{framed}
   % \vspace{-.9em}
-  % \vskip -.8ex
-  % \begin{mainbodybox}{1.\, 该研究的目的、意义}
+  % \begin{framed}
+  %   \noindent{}1.\, 该研究的目的、意义\par\vspace{2ex} 
   %   \SWFCField@Partone
-  % \end{mainbodybox}
-  % \vskip -1.4ex
-  % \begin{mainbodybox}{2.\, 国内外研究现状及发展趋势}
+  % \end{framed}
+  % \vspace{-2.4em}
+  % \begin{framed}
+  %   \noindent{}2.\, 国内外研究现状及发展趋势\par\vspace{2ex}
   %   \SWFCField@Parttwo
-  % \end{mainbodybox}
-  % \vskip -1.4ex
-  % \begin{mainbodybox}{3.\, 主要参考文献}
+  % \end{framed}
+  % \vspace{-2.4em}
+  % \begin{framed}
+  %   \noindent{}3.\, 主要参考文献
   %   \SWFCField@Partthree
-  % \end{mainbodybox}
-  % \vskip -1.4ex
-  % \begin{mainbodybox}{4.\, 该研究的主要内容，重点解决的问题，预期结果或成果}
+  % \end{framed}
+  % \vspace{-2.4em}
+  % \begin{framed}
+  %   \noindent{}4.\, 该研究的主要内容，重点解决的问题，预期结果或成果\par\vspace{2ex}
   %   \SWFCField@Partfour
-  % \end{mainbodybox}
-  % \vskip -1.4ex
-  % \begin{mainbodybox}{5.\, 拟采取的研究方法或实验方法，步骤，可能出现的技术问题及解决办法}
+  % \end{framed}
+  % \vspace{-2.4em}
+  % \begin{framed}
+  %   \noindent{}5.\, 拟采取的研究方法或实验方法，步骤，可能出现的技术问题及解决办法\par\vspace{2ex}
   %   \SWFCField@Partfive
-  % \end{mainbodybox}
-  % \vskip -1.4ex
-  % \begin{mainbodybox}{6.\, 完成该研究已具备的条件}
+  % \end{framed}
+  % \vspace{-2.4em}
+  % \begin{framed}
+  %   \noindent{}6.\, 完成该研究已具备的条件\par\vspace{2ex}
   %   \SWFCField@Partsix
-  % \end{mainbodybox}
-  % \vskip -1.4ex
-  % \begin{mainbodybox}{指导教师意见}
+  % \end{framed}
+  % \vspace{-2.4em}
+  % \begin{framed}
+  %   \noindent{}指导教师意见\par\vspace{2ex}
   %   \hspace{3em}{\Large\SWFCField@AdvisorComment}\par
-  %   \hfill{}签名：\makebox[7em]{\SWFCField@AdvisorSig}\par\vskip 2ex
+  %   \hfill{}签名：\makebox[7em]{\SWFCField@AdvisorSig}\par\vspace{2ex}
   %   \hfill%
   %   \makebox[4em]{\SWFCField@Year{}}年
   %   \makebox[2em]{\SWFCField@Month{}}月
   %   \makebox[2em]{\SWFCField@Date{}}日
-  % \end{mainbodybox}
-  % \tabulinesep=_1ex
-  % \begin{longtabu}{|r@{\ }X|}
-  %   1.& 该研究的目的、意义\par\vskip 1ex\SWFCField@Partone\\\tabucline-
-  %   2.& 国内外研究现状及发展趋势\par\vskip 1ex\SWFCField@Parttwo\\\tabucline-
-  %   3.& 主要参考文献\par\vskip 1ex\SWFCField@Partthree\\\tabucline-
-  %   4.& 该研究的主要内容，重点解决的问题，预期结果或成果\par\vskip 1ex\SWFCField@Partfour\\\tabucline-
-  %   5.& 拟采取的研究方法或实验方法，步骤，可能出现的技术问题及解决办法\par\vskip 1ex
-  %   \SWFCField@Partfive\\\tabucline-
-  %   6.& 完成该研究已具备的条件\par\vskip 1ex\SWFCField@Partsix\\\tabucline-
-  %   &指导教师意见\\[2ex]
-  %   &\hspace{3em}{\Large\SWFCField@AdvisorComment}\\[-1ex]
-  %   &\hfill 签名：\makebox[7em]{\SWFCField@AdvisorSig}\\
-  %   &\hfill\SWFCField@Year 年 \SWFCField@Month 月 \SWFCField@Date 日\\\tabucline-
-  % \end{longtabu}
-  \vspace{-.9em}
+  % \end{framed}
+  \vspace{-2.4ex}
+  \tabulinesep=_1ex
+  \begin{longtabu}{|r@{\ }X|}\tabucline-\endhead
+    1.& 该研究的目的、意义\par\vskip 1ex\SWFCField@Partone\\\tabucline-
+    2.& 国内外研究现状及发展趋势\par\vskip 1ex\SWFCField@Parttwo\\\tabucline-
+    3.& 主要参考文献\par\vskip 1ex\SWFCField@Partthree\\\tabucline-
+    4.& 该研究的主要内容，重点解决的问题，预期结果或成果\par\vskip 1ex\SWFCField@Partfour\\\tabucline-
+    5.& 拟采取的研究方法或实验方法，步骤，可能出现的技术问题及解决办法\par\vskip 1ex
+    \SWFCField@Partfive\\\tabucline-
+    6.& 完成该研究已具备的条件\par\vskip 1ex\SWFCField@Partsix\\\tabucline-
+    &指导教师意见\\[2ex]
+    &\hspace{3em}{\Large\SWFCField@AdvisorComment}\\[-1ex]
+    &\hfill 签名：\makebox[7em]{\SWFCField@AdvisorSig}\\
+    &\hfill\SWFCField@Year 年 \SWFCField@Month 月 \SWFCField@Date 日\\\tabucline-
+  \end{longtabu}
+  \vspace{-2.4ex}
   \extrarowsep=_17pt
   \noindent
   \begin{tabu}{|p{1em}|X[15]|p{1em}|X[15]|}

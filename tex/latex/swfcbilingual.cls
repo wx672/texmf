@@ -4,6 +4,8 @@
 
 \LoadClass[a4paper]{article}
 
+\RequirePackage{ifxetex} % This class is for XeTeX only
+
 \RequirePackage{array}
 \RequirePackage{tabu}
 %\RequirePackage{xcolor}

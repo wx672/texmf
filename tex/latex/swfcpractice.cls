@@ -5,6 +5,8 @@
 
 \LoadClass[a4paper,12pt]{article}
 
+\RequirePackage{ifxetex} % This class is for XeTeX only
+
 % \RequirePackage{calc,ifthen}
 \RequirePackage{array}
 \RequirePackage{tabu}

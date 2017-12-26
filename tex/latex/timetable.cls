@@ -3,6 +3,8 @@
 
 \LoadClass[tikz,svgnames]{standalone}
 
+\RequirePackage{ifxetex} % This class is for XeTeX only
+
 \RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
 \defaultfontfeatures{Mapping=tex-text}
 \setsansfont{DejaVu Sans}

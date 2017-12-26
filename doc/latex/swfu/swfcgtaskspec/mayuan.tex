@@ -4,7 +4,7 @@
 \Year{\hspace{4em}} %填表年份
 \Month{\hspace{2em}}   % 月
 \Date{\hspace{2em}}   % 日
-\Signature{ \includegraphics[width=.15\textwidth]{signature} }
+\Signature{ \includegraphics[width=.4\linewidth]{../signature} }
 \StudSignature{\hspace{4em}} %学生签名
 \Prjtitle{简单操作系统实现}
 
@@ -45,9 +45,15 @@
 
 \addbibresource{os.bib}
 \Prjbib{ % 参考文献。不要超过6条。
-  \nocite{yuyuan2009orange,intel86,tanenbaum2008modern,web:xv6,in30days}
+  \nocite{tanenbaum2008modern,web:xv6,intel86,in30days,yuyuan2009orange}
   \printbibliography[heading=none]{}
+  参考文献里有中文的话编译会报错，但结果没问题。
 }
 \begin{document}
 \makeform
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

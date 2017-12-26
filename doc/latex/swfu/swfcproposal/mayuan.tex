@@ -12,13 +12,13 @@
 \Studid{20111151025}
 \Docname{本科毕业论文（设计）开题报告}
 \Advisor{王晓林}
-\AdvisorSig{\includegraphics[scale=.1]{signature}}
+\AdvisorSig{\includegraphics[width=2.5cm]{signature}}
 \AdvisorTitle{讲师}
 \AdvisorAge{46}
 \AdvisorGender{男}
 \AdvisorDegree{硕士}
 \AdvisorWhere{计算机与信息学院}
-\AdvisorComment{同意开题。}
+\AdvisorComment{\includegraphics[width=4cm]{agree}}
 
 \Date{20}
 \Month{12}
@@ -41,9 +41,11 @@
 }
 
 \Partthree{% 3. 主要参考文献
-  \nocite{tanenbaum2008modern, silberschatz11essentials, web:xv6}%, yuyuan2009orange,
-  %in30days}
-  \printbibliography[heading=none]}
+  \nocite{tanenbaum2008modern, silberschatz11essentials, web:xv6, yuyuan2009orange,
+    in30days}
+  \printbibliography[heading=none]
+  参考文献里如果有中文，编译会报错，但结果没问题。
+}
 
 \Partfour{% 4. 该研究的主要内容，重点解决的问题，预期结果或成果
   本实验通过对操作系统的简单研究和探索，了解操作系统的原理和实现过程。通过了解操作系统的基本

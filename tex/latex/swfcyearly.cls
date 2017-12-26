@@ -5,11 +5,14 @@
 
 \LoadClass[a4paper,10pt]{article}
 
-\RequirePackage{calc,ifthen}
-\RequirePackage{array}
+\RequirePackage{ifxetex} % This class is for XeTeX only
+
+%\RequirePackage{calc,ifthen}
+%\RequirePackage{array}
 \RequirePackage{tabu}
 
 \RequirePackage{graphicx}
+
 \RequirePackage[% showframe,
 paperwidth=195mm, paperheight=270mm,
 top=2cm, bottom=2cm,
@@ -21,11 +24,6 @@ left=2.5cm, right=2.5cm,
                 
 \RequirePackage{wx672fonts}
 \RequirePackage{wx672cjk}
-
-%%% make long title looks nicer
-%\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-%\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-%\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 %\newcommand{\Formtitle}[1]{\gdef\SWFCField@Formtitle{#1}} % 西南林业大学课程教学小结表
 \newcommand{\Year}[1]{\gdef\SWFCField@Year{#1}} % 年份
@@ -54,12 +52,12 @@ left=2.5cm, right=2.5cm,
   \end{tikzpicture}}
 
 \newcommand{\makeform}{
-  {\centering
-    {\LARGE\hei 西南林业大学教职工\underline{\ \SWFCField@Year\ }年年度考核表}\\[2ex]
-    学院/部门：{\kai\SWFCField@School}\hfill{}填表时间：
-    \SWFCField@Year{}年\SWFCField@Month{}月\SWFCField@Date{}日\\
-    % \tabulinesep=2mm
-    \begin{tabu}{|@{}X[c]@{}|@{}X[c]@{}|}\tabucline-
+  \begin{center}
+    {\LARGE\hei 西南林业大学教职工\underline{\ \SWFCField@Year\ }年年度考核表}
+  \end{center}
+  学院/部门：{\kai\SWFCField@School}\hfill{}填表时间：
+  \SWFCField@Year{}年\SWFCField@Month{}月\SWFCField@Date{}日\\
+  \begin{tabu}{|@{}X[c]@{}|@{}X[c]@{}|}\tabucline-
       \tabulinesep=2mm
       \begin{tabu}{c|X[c]|c}
         姓名&{\kai\SWFCField@Name}&性别\\
@@ -79,22 +77,20 @@ left=2.5cm, right=2.5cm,
         现从事工作&{\kai\SWFCField@Job}\\
       \end{tabu}\\\tabucline-
     \end{tabu} % end of the 3rd raw
-    \vskip -1pt\tabulinesep=2mm
-    \begin{tabu}{|p{1em}|X|}
-      \vskip 4ex 个人总结\par\rotatebox[origin=c]{270}{（}\par{}
-      履行岗位职责情况\par\vskip -1.5ex\hfill{}、\par\vskip 1ex 
-      工作成果等\par\rotatebox[origin=c]{270}{）}
-      &
-      {\footnotesize\kai （字数控制在800字以内）}\par\vskip 65ex
-      \hfill\makebox[16em][l]{本人签字：}\par\vskip 5ex\\\tabucline-
-      所在单位考核意见&\par\vskip 12ex
+    \vspace{-1pt}\tabulinesep=2mm
+    \noindent\begin{tabu}{|p{1em}|X|}
+      \vspace{4ex} 个人总结\par\rotatebox[origin=c]{270}{（}\par{}
+      履行岗位职责情况\par\vspace{-1.5ex}\hfill{}、\par\vspace{1ex}
+      工作成果等\par\rotatebox[origin=c]{270}{）}&
+      {\footnotesize\kai （字数控制在800字以内）}\par\vspace{64ex}
+      \hfill\makebox[16em][l]{本人签字：}\par\vspace{2ex}\\\tabucline-
+      所在单位考核意见&\par\vspace{14ex}
       \hfill\makebox[16em][l]{签章}\par
-      \hfill\makebox[12em][l]{年\quad{}月\quad{}日}\par\vskip 5ex\\\tabucline-
-      学校考核意见&\par\vskip 7ex
+      \hfill\makebox[12em][r]{年\hspace{3em}月\hspace{3em}日}\\\tabucline-
+      学校考核意见&\par\vspace{9ex}
       \hfill\makebox[16em][l]{签章}\par
-      \hfill\makebox[12em][l]{年\quad{}月\quad{}日}\par\vskip 5ex\\\tabucline-
-    \end{tabu}
-  }}
+      \hfill\makebox[12em][r]{年\hspace{3em}月\hspace{3em}日}\\\tabucline-
+    \end{tabu}}
 
 \School{大数据与智能工程学院}
 \Name{王晓林}\Gender{男}\Birth{1969-03}

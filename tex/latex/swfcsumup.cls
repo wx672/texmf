@@ -5,6 +5,8 @@
 
 \LoadClass[a4paper,10pt]{article}
 
+\RequirePackage{ifxetex} % This class is for XeTeX only
+
 \RequirePackage{calc,ifthen}
 \RequirePackage{array}
 \RequirePackage{tabu}
@@ -22,12 +24,6 @@
 \RequirePackage{wx672fonts}
 \RequirePackage{wx672cjk}
 
-%%% make long title looks nicer
-%\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-%\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-%\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-
-%\newcommand{\Formtitle}[1]{\gdef\SWFCField@Formtitle{#1}} % 西南林业大学课程教学小结表
 \newcommand{\Term}[1]{\gdef\SWFCField@Term{#1}} % 授课学期
 \newcommand{\Coursetitle}[1]{\gdef\SWFCField@Coursetitle{#1}} % 课程名称
 \newcommand{\Totaltime}[1]{\gdef\SWFCField@Totaltime{#1}} % 总学时
@@ -47,20 +43,19 @@
 \newcommand{\TeacherTitle}[1]{\gdef\SWFCField@TeacherTitle{#1}} % 职称
 \newcommand{\Date}[1]{\gdef\SWFCField@Date{#1}}
 
-\newcommand{\Signit}[3]{%\Sign{-8cm}{-8.7cm}{../signature}
+\newcommand{\Signit}[3]{%\Signit{-3cm}{-6.2cm}{../signature}
 \begin{tikzpicture}[overlay,remember picture]%
-    \node [xshift=#1,yshift=#2] at (current page.center) {%
-        \includegraphics[scale=.1]{#3}%
-    };%
-\end{tikzpicture}%
-}
+  \node [xshift=#1,yshift=#2] at (current page.center) {%
+    \includegraphics[scale=.1]{#3}%
+  };%
+\end{tikzpicture}}
 
 \newcommand{\YES}{{\Large \Checkedbox{}}是\quad$\Box$否}
 \newcommand{\NO}{$\Box$是\quad{\Large \Checkedbox{}}否}
 
 \newcommand{\makeform}{
   {\centering
-    {\LARGE 西南林业大学课程教学小结表}\\[2ex]
+    {\LARGE\hei 西南林业大学课程教学小结表}\\[2ex]
     \tabulinesep=2mm
     \begin{tabu}{|c|c|c|c|c|X[c]|}
       \tabucline-
@@ -74,34 +69,29 @@
       所用教材&\multicolumn{3}{c|}{\SWFCField@Textbook{}}&
       出版时间&\SWFCField@Publishtime{}\\\tabucline-
     \end{tabu}
-    \vskip -1pt
-    \tabulinesep=5ex
+    \vspace{-1pt} \tabulinesep=0pt
     \begin{tabu}{|X[.1,c,m]|X|}
-      课程\par\vskip 4ex 教学\par\vskip 4ex 总结&
-      \begin{tabu}[c]{X}
-        \SWFCField@Sumup{}\\
-      \end{tabu}\\\tabucline-      
-      今后\par\vskip 4ex 改革\par\vskip 4ex 设想&
-      \begin{tabu}[c]{X}
-        \SWFCField@Suggestion{}\\
+      \vspace{1cm}课程\par\vspace{4ex}教学\par\vspace{4ex}总结\par\vspace{3cm}&
+      \begin{minipage}{1.0\linewidth}
+        \SWFCField@Sumup{}
+      \end{minipage}\\\tabucline-      
+      \vspace{1cm}今后\par\vspace{4ex}改革\par\vspace{4ex}设想\par\vspace{3cm}&
+      \begin{minipage}{1.0\linewidth}
+        \SWFCField@Suggestion{}
+      \end{minipage}\\\tabucline-
+      填报人&\tabulinesep=2mm
+      \begin{tabu}{X[c]|c|X[c]}%\SWFCField@TeacherName{}
+        &职称&\SWFCField@TeacherTitle{}\\
       \end{tabu}\\\tabucline-
     \end{tabu}
-    \vskip -1pt
-    \tabulinesep=2mm
-    \begin{tabu}{|X[.232,c,m]|X[c]|c|X[c]|}
-      填报人&\SWFCField@TeacherName{}&职称&\SWFCField@TeacherTitle{}\\\tabucline-
-    \end{tabu}\vskip -1pt
-    \tabulinesep=2mm
-    \begin{tabu}{|X[l]X[r]|}
-      填报日期：\SWFCField@Date{}&（以上为授课教师填写）\\\tabucline-
-    \end{tabu}\vskip -1pt
-    \begin{tabu}{|XX|}
-      教研室负责人审阅意见：&\\[5ex]
-      &签名：\hspace{8em}年\hspace{2em}月\hspace{2em}日\\\tabucline-
+    \vspace{-1pt} \tabulinesep=2mm
+    \begin{tabu}{|X|}
+      填报日期：\SWFCField@Date\hfill{}（以上为授课教师填写）\\\tabucline-
+      教研室负责人审阅意见：\\[5ex]
+      \hfill{}\makebox[10em][l]{签名：}
+      \makebox[5em][r]{年}\makebox[3em][r]{月}\makebox[3em][r]{日}\\\tabucline-
     \end{tabu}
-    注：本表复制有效
-  }
-}
+    注：本表复制有效}}
 
 \Sumup{% 课程教学小结
   \begin{itemize}
@@ -117,6 +107,8 @@
   \item
   \end{itemize}
 }
+
+\setlength{\parindent}{2em}
 
 \Term{}\Coursetitle{}
 \Totaltime{}\Labtime{}\Practicetime{}

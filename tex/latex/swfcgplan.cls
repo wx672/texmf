@@ -5,9 +5,11 @@
 
 \LoadClass[a4paper,12pt]{article}
 
+\RequirePackage{ifxetex} % This class is for XeTeX only
+
 %\RequirePackage{calc,ifthen}
 \RequirePackage{array}
-\RequirePackage{tabu}
+\RequirePackage{tabu,longtable}
 \RequirePackage{graphicx}
 \RequirePackage[ % showframe,
 paperwidth=195mm,paperheight=270mm,
@@ -26,7 +28,7 @@ left=30mm,right=30mm
 %\renewcommand{\arraystretch}{1.5} % make table row higher
 
 % Declare some variables to hold the text fields for the preliminary pages
-\newcommand{\Univ}[1]{\gdef\SWFCField@Univ{#1}} % 西南林业大学
+%\newcommand{\Univ}[1]{\gdef\SWFCField@Univ{#1}} % 西南林业大学
 \newcommand{\Prjtitle}[1]{\gdef\SWFCField@Prjtitle{#1}} % 论文标题
 \newcommand{\Prjclass}[1]{\gdef\SWFCField@Prjclass{#1}} % 课题类别
 \newcommand{\Prjattri}[1]{\gdef\SWFCField@Prjattri{#1}} % 课题性质
@@ -58,75 +60,52 @@ left=30mm,right=30mm
 \newcommand{\Month}[1]{\gdef\SWFCField@Month{#1}}
 \newcommand{\Date}[1]{\gdef\SWFCField@Date{#1}}
 
-\newcommand{\makeform}{
-  \pagestyle{empty}
+\newcommand{\makeform}{\pagestyle{empty}
   {\centering
-    {\Large\SWFCField@Univ\SWFCField@Year{}届本科毕业生\\[3pt]
-      毕业论文（设计）毕业实习指导计划表}\\[3ex]
-    \begin{tabu}{X[r]@{}}
-      （本表由指导教师填写）\\\tabucline-
-    \end{tabu}\vskip -1pt
-    \tabulinesep=2mm
-    \begin{tabu}{|c|X[c]|}
-      论文（设计）题目&\SWFCField@Prjtitle{}\\\tabucline-
-    \end{tabu}\vskip -1pt
-    \begin{tabu}{|c|X[c]|c|X[c]|}
-      类别 &\SWFCField@Prjclass{}&性质&\SWFCField@Prjattri{} \\\tabucline-
-      指导教师&\SWFCField@AdvisorName{}&职称&\SWFCField@AdvisorTitle{} \\\tabucline-
-    \end{tabu}\vskip -1pt
-    \begin{tabu}{|c|c|X[c]|}
-      学生班级&学生姓名&主要完成工作\\\tabucline-
-      \SWFCField@Studclassa{}&\SWFCField@Studnamea{}&\SWFCField@Studdtaska{}\\\tabucline-
-      \SWFCField@Studclassb{}&\SWFCField@Studnameb{}&\SWFCField@Studdtaskb{}\\\tabucline-
-      \SWFCField@Studclassc{}&\SWFCField@Studnamec{}&\SWFCField@Studdtaskc{}\\\tabucline-
-      \SWFCField@Studclassd{}&\SWFCField@Studnamed{}&\SWFCField@Studdtaskd{}\\\tabucline-
-      \SWFCField@Studclasse{}&\SWFCField@Studnamee{}&\SWFCField@Studdtaske{}\\\tabucline-
-      \SWFCField@Studclassf{}&\SWFCField@Studnamef{}&\SWFCField@Studdtaskf{}\\\tabucline-
-    \end{tabu}\vskip -1pt
-    \begin{tabu}{|X[l]|}
-      论文指导工作计划：\\
-    \end{tabu}\vskip -1pt
-    \begin{tabu}{|X[.2]X|}
-      \vspace{10cm}&\SWFCField@Thesisplan{}\\\tabucline-
-    \end{tabu}
-  }
+    {\Large\hei 西南林业大学\SWFCField@Year{}届本科毕业生\\[3pt]
+      毕业论文（设计）毕业实习指导计划表}\\[3ex]}
+  \begin{tabu}{X[r]@{}} （本表由指导教师填写）\\\tabucline- \end{tabu}
+  \vspace{-1pt}\tabulinesep=2mm
+  \begin{tabu}{|c|X[c]|}
+    论文（设计）题目&\SWFCField@Prjtitle{}\\\tabucline-
+  \end{tabu}\vspace{-1pt}
+  \begin{tabu}{|c|X[c]|c|X[c]|}
+    类别 &\SWFCField@Prjclass{}&性质&\SWFCField@Prjattri{} \\\tabucline-指导教
+    师&\SWFCField@AdvisorName{}&职称&\SWFCField@AdvisorTitle{} \\\tabucline-
+  \end{tabu}\vspace{-1pt}
+  \begin{tabu}{|c|c|X[c]|}
+    学生班级&学生姓名&主要完成工作\\\tabucline-
+    \SWFCField@Studclassa{}&\SWFCField@Studnamea{}&\SWFCField@Studdtaska{}\\\tabucline-
+    \SWFCField@Studclassb{}&\SWFCField@Studnameb{}&\SWFCField@Studdtaskb{}\\\tabucline-
+    \SWFCField@Studclassc{}&\SWFCField@Studnamec{}&\SWFCField@Studdtaskc{}\\\tabucline-
+    \SWFCField@Studclassd{}&\SWFCField@Studnamed{}&\SWFCField@Studdtaskd{}\\\tabucline-
+    \SWFCField@Studclasse{}&\SWFCField@Studnamee{}&\SWFCField@Studdtaske{}\\\tabucline-
+    \SWFCField@Studclassf{}&\SWFCField@Studnamef{}&\SWFCField@Studdtaskf{}\\\tabucline-
+  \end{tabu}\vspace{-1pt}
+  \begin{tabu}{|X[l]|}
+    论文指导工作计划：\\
+    \hspace{4em}\begin{minipage}{.7\linewidth}
+      \SWFCField@Thesisplan{} \end{minipage}\\\tabucline-
+  \end{tabu}
   \clearpage
-  {\centering
-    \tabulinesep=2mm
-    \begin{tabu}{X}
-      续表：\\\tabucline-
-    \end{tabu}\vskip -1pt
-    \begin{tabu}{|X|}
-      毕业实习指导工作计划：\\
-    \end{tabu}\vskip -1pt
-    \begin{tabu}{|X[.2]X|}
-      &\SWFCField@Prjplan{}\\
-    \end{tabu}\vskip -1pt
-    \begin{tabu}{|X[r]|}
-      指导教师：\makebox[8em]{\SWFCField@Signature{}}
-      \hspace{2em}\SWFCField@Startyear{}年
-      \SWFCField@Month{}月
-      \SWFCField@Date{}日\\\tabucline-
-    \end{tabu}\vskip -1pt
-    \begin{tabu}{|X|}
-      教研室主任审查意见：\\[8ex]
-    \end{tabu}\vskip -1pt
-    \begin{tabu}{|X[r]|}
-      签名：\hspace{8em}年\hspace{2em}月\hspace{2em}日\\\tabucline-
-    \end{tabu}\vskip -1pt
-    \begin{tabu}{|X|}
-      分院、系主管意见：\\[8ex]
-    \end{tabu}\vskip -1pt
-    \begin{tabu}{|X[r]|}
-      签名：\hspace{8em}年\hspace{2em}月\hspace{2em}日\\\tabucline-
-    \end{tabu}\vskip -1pt
-    \begin{tabu}{@{}X}
-      注：每项论文（设计）需填写一份；如表栏不够填写，请加附页。\\
-    \end{tabu}
-  }
-}
+  续表：\par
+  \begin{tabu}{|X[l]|}\tabucline-
+    毕业实习指导工作计划：\\
+    \hspace{4em}\begin{minipage}{.7\linewidth} \SWFCField@Prjplan{} \end{minipage}\par
+    \hfill{}指导教师：\makebox[5em]{\SWFCField@Signature{}}
+    \makebox[3em]{\SWFCField@Startyear{}}年\makebox[2em]{\SWFCField@Month{}}月
+    \makebox[2em]{\SWFCField@Date{}}日\\\tabucline-
+    教研室主任审查意见：\\[8ex]
+    \hfill{}签名：\hspace{8em}年\hspace{2em}月\hspace{2em}日\\\tabucline-
+    分院、系主管意见：\\[8ex]
+    \hfill{}签名：\hspace{8em}年\hspace{2em}月\hspace{2em}日\\\tabucline-
+  \end{tabu}
+  \vspace{-1pt}
+  \begin{tabu}{@{}X}
+    注：每项论文（设计）需填写一份；如表栏不够填写，请加附页。\\
+  \end{tabu}}
 
-\Univ{西南林业大学}
+%\Univ{西南林业大学}
 \Signature{\sig{王晓林}}
 \AdvisorTitle{讲师}
 \AdvisorName{王晓林}
@@ -136,33 +115,17 @@ left=30mm,right=30mm
 \Studclassa{}\Studclassb{}\Studclassc{}\Studclassd{}\Studclasse{}\Studclassf{}
 \Studnamea{}\Studnameb{}\Studnamec{}\Studnamed{}\Studnamee{}\Studnamef{}
 \Studtaska{}\Studtaskb{}\Studtaskc{}\Studtaskd{}\Studtaske{}\Studtaskf{}
-\Thesisplan{
+
+\Thesisplan{% 论文指导工作计划内容 
   \begin{itemize}
   \item
   \item
-  \item
-  \item
-  \item
-  \item
-  \item
-  \item
-  \item
-  \item
   \item 
-  \end{itemize}
-}  % 论文指导工作计划内容 
-\Prjplan{
+  \end{itemize}}
+
+\Prjplan{% 毕业实习指导工作计划内容
   \begin{itemize}
   \item
   \item
-  \item
-  \item
-  \item
-  \item
-  \item
-  \item
-  \item
-  \item
   \item 
-  \end{itemize}
-}  % 毕业实习指导工作计划内容
+  \end{itemize}}  
