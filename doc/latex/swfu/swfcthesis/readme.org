@@ -52,11 +52,11 @@
   - 可根据需要增加/删减章节数。当然 [[./sample/sample.tex][=sample.tex=]] 文件中相应的 =\include{}= 命令也要做相应
     的改动。
 - [[file:sample/sample.bib][~sample.bib~]] --- 参考文献
-   - 参考此文件的格式来写参考文献；
-   - 写论文时，
-     1. 将 =\addbibresource{sample.bib}= 放在论文的 =preamble= 里面，也就是
-     	=\begin{document}= 之前。
-     2. 在想要生成参考文献的地方插入命令 =\printbibliography[title=参考文献]= 即可。
+  - 参考此文件的格式来写参考文献；
+  - 写论文时，
+    1. 将 =\addbibresource{sample.bib}= 放在论文的 =preamble= 里面，也就是
+       =\begin{document}= 之前。
+    2. 在想要生成参考文献的地方插入命令 =\printbibliography[title=参考文献]= 即可。
 * 注意事项
   1. 不要随意改动你不理解的东西，以免造成不必要的麻烦。
   2. 建议用 ~Emacs + AucTeX~ 来编辑TeX文件。
