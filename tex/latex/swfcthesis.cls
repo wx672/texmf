@@ -11,9 +11,9 @@
 
 \RequirePackage{ifxetex} % This class is for XeTeX only
 
-\RequirePackage[top=3cm,bottom=2.5cm,left=3cm,right=2.5cm,
+\RequirePackage[%showframe,showcrop,
+top=3cm,bottom=2.5cm,left=3cm,right=2.5cm,
 nomarginpar,headheight=15pt, % to avoid "headheight too small"
-%showframe,showcrop,
 ]{geometry}
 
 \RequirePackage{etoolbox}
@@ -22,7 +22,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage{ulem}
 
 % graphicx
-\RequirePackage[xetex]{graphicx} % before xltxtra
+\RequirePackage{graphicx} % before xltxtra
 \graphicspath{% mind the trailing “/”
   {./figs/}{../figs/}{./img/}{../img/}{./pics/}{../pics/}{./}{../}}
 
@@ -185,21 +185,20 @@ date=edtf,seconds=true,% to suppress compile warnings
 \newcommand{\SWFCtitlepage}{% Title page layout
   \thispagestyle{empty}
   \begin{center}
-    \makebox[14.7em][s]{{\huge 西南林业大学}}\\[5mm]
+    \makebox[14.7em][s]{\huge 西南林业大学}\\[5mm]
     \makebox[25.75em][s]{\Huge\textbf{本科毕业（设计）论文}}\\[5mm]
-    \makebox[12em][s]{\hspace{.5em}\LARGE（\SWFCField@Year{}\,届）}\\[60pt]
+    \makebox[12em][s]{\hspace{.5em}\LARGE（\SWFCField@Year{}届）}\\[60pt]
     \begin{minipage}{.8\linewidth}
       \begin{Large}
-        \extrarowsep=^8mm
-        \extrarowsep=_-7pt
-        \begin{tabu}spread\textwidth{@{}X[r]X[3.3,c]@{}}
-          \textbf{题\hspace{2em}目：}&\SWFCField@Title{}\\\tabucline{2-2}
+        \extrarowsep=^8mm_-7pt
+        \begin{tabu} spread \textwidth {@{}X[r]X[3.3,c]@{}}
+          \textbf{题\hspace{2em}目：}&\SWFCField@Title\\\tabucline{2-2}
           \textbf{分院系部：} &大数据与智能工程学院\\\tabucline{2-2}
-          \textbf{专\hspace{2em}业：}&\SWFCField@Subject{}\\\tabucline{2-2}
-          % \textbf{学\hspace{2em}号：}&\SWFCField@Authorid{}\\\tabucline{2-2}
-          \textbf{姓\hspace{2em}名：}&\SWFCField@Author{}\\\tabucline{2-2}
-          \textbf{导师姓名：} &\SWFCField@Advisor{}\\\tabucline{2-2}
-          \textbf{导师职称：} &\SWFCField@AdvisorTitle{}\\\tabucline{2-2}
+          \textbf{专\hspace{2em}业：}&\SWFCField@Subject\\\tabucline{2-2}
+          % \textbf{学\hspace{2em}号：}&\SWFCField@Authorid\\\tabucline{2-2}
+          \textbf{姓\hspace{2em}名：}&\SWFCField@Author\\\tabucline{2-2}
+          \textbf{导师姓名：} &\SWFCField@Advisor\\\tabucline{2-2}
+          \textbf{导师职称：} &\SWFCField@AdvisorTitle\\\tabucline{2-2}
         \end{tabu}
       \end{Large}
     \end{minipage}
@@ -213,56 +212,51 @@ date=edtf,seconds=true,% to suppress compile warnings
   \providecommand\pdfbookmark[3][]{} \pdfbookmark[0]{摘要}{bm:cnAbstract}
   \thispagestyle{empty}
   \begin{center}
-    {\singlespacing \Large{\textbf{\SWFCField@Title{}}}}\\[5mm]
-    \large{\SWFCField@Author{}}\\
-    \large{（西南林业大学\, 大数据与智能工程学院，云南\,昆明\,650224）}
+    {\singlespacing\Large\textbf{\SWFCField@Title}}\\[5mm]
+    \large{\SWFCField@Author}\\
+    \large{（西南林业大学\, 大数据与智能工程学院，云南昆明\, 650224）}
   \end{center}
-  \vskip 3ex
-  \noindent \textbf{摘\hspace{1em}要：}~\SWFCField@Abstract{}
-  \vskip 2ex
-  \noindent \textbf{关键词：}~\SWFCField@Keywords{}
-  \clearpage
-}
+  \vspace{3ex}
+  \noindent\textbf{摘\hspace{1em}要：}~\SWFCField@Abstract\par
+  \vspace{2ex}
+  \noindent \textbf{关键词：}~\SWFCField@Keywords
+  \clearpage}
 
 \newcommand{\enabstractpage}{% English abstract page  
   \providecommand\pdfbookmark[3][]{}%
   \pdfbookmark[0]{Abstract}{bm:Abstract}
   \thispagestyle{empty}
   \begin{center}
-    {\singlespacing {\Large\textbf{\SWFCField@enTitle{}}}}\\[5mm]
-    {\large\SWFCField@enAuthor{}}\\[3mm]
+    {\singlespacing\Large\textbf{\SWFCField@enTitle}}\\[5mm]
+    {\large\SWFCField@enAuthor}\\[3mm]
     {\singlespacing {\large School of Big Data and Intelligence Engineering\\
         Southwest Forestry University\\
         Kunming 650224, Yunnan, China}}
   \end{center}
-  \vskip 2em
-  \noindent\textbf{Abstract: }~\SWFCField@enAbstract{}
-  \vskip 1em
-  \noindent\textbf{Key words: }~\SWFCField@enKeywords{}
-  \clearpage
-}
+  \vspace{2em}
+  \noindent\textbf{Abstract: }~\SWFCField@enAbstract\par
+  \vspace{1em}
+  \noindent\textbf{Key words: }~\SWFCField@enKeywords
+  \clearpage}
 
 \newcommand{\acknowledgmentspage}{% Acknowledgments page  
   \phantomsection
   \addcontentsline{toc}{chapter}{致\hspace{1em}谢}
   \chapter*{致\hspace{1em}谢}
-  \SWFCField@Acknowledgments{}
-}
+  \SWFCField@Acknowledgments}
 
 \newcommand{\advisorinfopage}{% Advisor info page
   \phantomsection
   \addcontentsline{toc}{chapter}{指导教师简介}
   \chapter*{指导教师简介}
-  \SWFCField@AdvisorInfo{}
-  \clearpage
-}
+  \SWFCField@AdvisorInfo
+  \clearpage}
 
 \newcommand{\makepreliminarypages}{% preliminary pages
   \SWFCtitlepage
   \doublespacing % global line spacing
   \abstractpage
-  \enabstractpage
-}
+  \enabstractpage}
 
 \RequirePackage{minted} % minted has to be loaded at last!!!
 \usemintedstyle{bw}
