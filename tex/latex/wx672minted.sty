@@ -25,3 +25,9 @@
 \newminted{nasm}{}
 \newminted{python}{}
 \newminted{pascal}{}
+
+\newenvironment{codeblock}[1] % e.g. \begin{codeblock}{.7} ... \end{codeblock}
+{\begin{center}\begin{minipage}{#1\textwidth}\begin{singlespace}}
+{\end{singlespace}\end{minipage}\end{center}}
+
+\RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{} % to make centering minted works

@@ -18,6 +18,7 @@ nomarginpar,headheight=15pt,% to avoid "headheight too small"
 \RequirePackage{wx672bib}
 \RequirePackage{wx672minted}
 \usemintedstyle{bw}
+
 %\RequirePackage{todonotes} % use fixme instead
 \RequirePackage{fixme}
 \fxsetup{
@@ -44,8 +45,6 @@ nomarginpar,headheight=15pt,% to avoid "headheight too small"
 \addtolength{\oddsidemargin}{-15pt}
 \addtolength{\marginparsep}{5pt}
 \newcommand{\Marginpar}[1]{\marginpar{\raggedright{\footnotesize \emph{#1}}}}
-
-\RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{} % to make centering minted works
 
 \renewcommand{\refname}{} % article.cls
 \renewcommand{\contentsname}{Contents}

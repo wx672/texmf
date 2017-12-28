@@ -11,10 +11,6 @@
 
 \RequirePackage{multicol,rotating,tabu,varwidth,ulem,etoolbox,longtable,comment}
 
-\newenvironment{codeblock}[1] % e.g. \begin{codeblock}{.7} ... \end{codeblock}
-{\begin{center}\begin{minipage}{#1\textwidth}\begin{singlespace}}
-{\end{singlespace}\end{minipage}\end{center}}
-
 \newcommand{\cfbox}[2]{%
   \colorlet{currentcolor}{.}%
   {\color{#1}\fbox{\color{currentcolor}#2}}%
