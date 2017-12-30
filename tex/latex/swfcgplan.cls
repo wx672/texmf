@@ -1,13 +1,11 @@
+% 西南林业大学本科毕业生毕业论文（设计）毕业实习指导计划表
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{swfcgplan}%[TeX Live 2016/Debian SWFU graduation planning form]
-
-% The swfcgplan class is for producing planning form used at SWFU
+\ProvidesClass{swfcgplan}
 
 \LoadClass[a4paper,12pt]{article}
 
-\RequirePackage{ifxetex} % This class is for XeTeX only
+\RequirePackage{ifxetex} % XeTeX only
 
-%\RequirePackage{calc,ifthen}
 \RequirePackage{array}
 \RequirePackage{tabu,longtable}
 \RequirePackage{graphicx}
@@ -21,14 +19,13 @@ left=30mm,right=30mm
 \RequirePackage{wx672cjk}
 
 %%% array related. make long title looks nicer
-\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+%\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 %\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 %\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 %\renewcommand{\arraystretch}{1.5} % make table row higher
 
 % Declare some variables to hold the text fields for the preliminary pages
-%\newcommand{\Univ}[1]{\gdef\SWFCField@Univ{#1}} % 西南林业大学
 \newcommand{\Prjtitle}[1]{\gdef\SWFCField@Prjtitle{#1}} % 论文标题
 \newcommand{\Prjclass}[1]{\gdef\SWFCField@Prjclass{#1}} % 课题类别
 \newcommand{\Prjattri}[1]{\gdef\SWFCField@Prjattri{#1}} % 课题性质
@@ -105,8 +102,7 @@ left=30mm,right=30mm
     注：每项论文（设计）需填写一份；如表栏不够填写，请加附页。\\
   \end{tabu}}
 
-%\Univ{西南林业大学}
-\Signature{\sig{王晓林}}
+\Signature{{\sig王晓林}}
 \AdvisorTitle{讲师}
 \AdvisorName{王晓林}
 \Prjtitle{}

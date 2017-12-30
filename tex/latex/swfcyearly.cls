@@ -1,13 +1,11 @@
+% 西南林业大学教职工年年度考核表
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfcyearly}
 
-% The swfcyearly class is for producing yearly work assessment form used at SWFU
-
 \LoadClass[a4paper,10pt]{article}
 
-\RequirePackage{ifxetex} % This class is for XeTeX only
+\RequirePackage{ifxetex} % XeTeX only
 
-%\RequirePackage{calc,ifthen}
 %\RequirePackage{array}
 \RequirePackage{tabu}
 
@@ -25,7 +23,6 @@ left=2.5cm, right=2.5cm,
 \RequirePackage{wx672fonts}
 \RequirePackage{wx672cjk}
 
-%\newcommand{\Formtitle}[1]{\gdef\SWFCField@Formtitle{#1}} % 西南林业大学课程教学小结表
 \newcommand{\Year}[1]{\gdef\SWFCField@Year{#1}} % 年份
 \newcommand{\Month}[1]{\gdef\SWFCField@Month{#1}} % 月份
 \newcommand{\Date}[1]{\gdef\SWFCField@Date{#1}} % 日期

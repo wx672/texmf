@@ -1,11 +1,10 @@
+% 西南林业大学本科毕业论文（设计）实习计划表（本表由毕业生填写）
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfcgplanstud}
 
-% The swfcgplanstud class is for producing student's planning form used at SWFU
-
 \LoadClass[a4paper,12pt]{article}
 
-\RequirePackage{ifxetex} % This class is for XeTeX only
+\RequirePackage{ifxetex} % XeTeX only
 
 \RequirePackage{tabu}
 

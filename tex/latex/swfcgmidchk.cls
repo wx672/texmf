@@ -1,16 +1,19 @@
+% 西南林业大学本科毕业论文（设计）中期检查表
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfcgmidchk}
 
-% The swfcgmidchk class is for producing student's project mid-check form used at SWFU
-
 \LoadClass[a4paper,12pt]{article}
 
-\RequirePackage{ifxetex} % This class is for XeTeX only
+\RequirePackage{ifxetex} % XeTeX only
 
 \RequirePackage{tabu}
 
 \RequirePackage{array}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
+%%% array related. make long title looks nicer
+%\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+%\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+%\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 \RequirePackage[ % showframe,
 paperwidth=195mm,paperheight=270mm,

@@ -1,7 +1,6 @@
-% The swfcproposal class is for producing senior year theses proposal (开题报告) that meet
-% the SWFU requirements.
+% 西南林业大学本科毕业论文（设计）开题报告
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{swfcproposal}%[TeX Live 2016/Debian SWFU Theses Proposal]
+\ProvidesClass{swfcproposal}
 
 % pass unknown options to book
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{aritcle}}
@@ -9,7 +8,7 @@
 
 \LoadClass[a4paper,12pt,oneside]{article}
 
-\RequirePackage{ifxetex} % This class can only be processed with XeTeX
+\RequirePackage{ifxetex} % XeTeX only
 
 \RequirePackage[top=3cm,bottom=2.5cm,left=3cm,right=2.5cm,
 nomarginpar,headheight=15pt, % to avoid "headheight too small"
@@ -36,14 +35,6 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage[doublespacing]{setspace}
 \renewcommand{\doublespacing}{\setstretch{1.6}}
 
-% \RequirePackage[many]{tcolorbox}
-% \newtcolorbox{mainbodybox}[1]{breakable,sharp corners,
-%   colback=white,colbacktitle=white,coltitle=black,
-%   boxrule=.5pt,titlerule=0pt,bottom=2ex,
-%   fonttitle=\bfseries,title=#1}
-
-\RequirePackage{framed}
-
 \setlength{\parindent}{2em}
 
 \pagestyle{empty}
@@ -54,7 +45,6 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \newcommand{\Projfrom}[1]{\gdef\SWFCField@Projfrom{#1}}
 \newcommand{\Author}[1]{\gdef\SWFCField@Author{#1}}
 \newcommand{\Studid}[1]{\gdef\SWFCField@Studid{#1}}
-\newcommand{\Docname}[1]{\gdef\SWFCField@Docname{#1}}
 \newcommand{\Advisor}[1]{\gdef\SWFCField@Advisor{#1}}
 \newcommand{\AdvisorSig}[1]{\gdef\SWFCField@AdvisorSig{#1}}
 \newcommand{\AdvisorTitle}[1]{\gdef\SWFCField@AdvisorTitle{#1}}
@@ -66,7 +56,6 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \newcommand{\Date}[1]{\gdef\SWFCField@Date{#1}}
 \newcommand{\Month}[1]{\gdef\SWFCField@Month{#1}}
 \newcommand{\Year}[1]{\gdef\SWFCField@Year{#1}}
-\newcommand{\Univ}[1]{\gdef\SWFCField@Univ{#1}}
 \newcommand{\Subject}[1]{\gdef\SWFCField@Subject{#1}}
 \newcommand{\Grade}[1]{\gdef\SWFCField@Grade{#1}}
 \newcommand{\Partone}[1]{\gdef\SWFCField@Partone{#1}}
@@ -79,8 +68,6 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \newcommand{\SWFCtitlepage}{% Title page layout
   \thispagestyle{empty}
   \begin{center}
-    % \makebox[14.7em][s]{{\Large\textbf{\SWFCField@Univ}}}\\[5mm]
-    % \makebox[20em][s]{\Large\textbf{\SWFCField@Docname}}\\[5mm]
     \makebox[14.7em][s]{\Large\hei 西南林业大学}\\[5mm]
     \makebox[20em][s]{\Large\hei 本科毕业论文（设计）开题报告}\\[5mm]
     \vskip 2cm
@@ -97,7 +84,6 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
         \begin{center}
         \extrarowsep=^8mm_-7pt
         \begin{tabu}spread\textwidth{@{}rX[c]@{}}
-%       \begin{tabu}spread\textwidth{@{}X[j]X[c]@{}}
           专\hspace{1em}业\hspace{1em}名\hspace{1em}称：&\SWFCField@Subject\\\tabucline{2-2}
           年\hspace{5em}级：&\SWFCField@Grade\\\tabucline{2-2}
           学\hspace{1em}生\hspace{1em}学\hspace{1em}号：&\SWFCField@Studid\\\tabucline{2-2}
@@ -113,8 +99,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
     \vfill
     {\Large\textbf{教\,务\,处\,制}}\\[1cm]
   \end{center}
-  \clearpage
-}
+  \clearpage}
 
 \newcommand{\instructionpage}{% Instruction page
   \begin{center}
@@ -145,46 +130,6 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
     课题来源&\quad 1. 导师课题的一部分；2. 其他（须具体说明）
     \underline{\quad\SWFCField@Projfrom\quad}。\\%\tabucline-
   \end{tabu}
-  % \vspace{-.9em}
-  % \begin{framed}
-  %   \noindent{}1.\, 该研究的目的、意义\par\vspace{2ex} 
-  %   \SWFCField@Partone
-  % \end{framed}
-  % \vspace{-2.4em}
-  % \begin{framed}
-  %   \noindent{}2.\, 国内外研究现状及发展趋势\par\vspace{2ex}
-  %   \SWFCField@Parttwo
-  % \end{framed}
-  % \vspace{-2.4em}
-  % \begin{framed}
-  %   \noindent{}3.\, 主要参考文献
-  %   \SWFCField@Partthree
-  % \end{framed}
-  % \vspace{-2.4em}
-  % \begin{framed}
-  %   \noindent{}4.\, 该研究的主要内容，重点解决的问题，预期结果或成果\par\vspace{2ex}
-  %   \SWFCField@Partfour
-  % \end{framed}
-  % \vspace{-2.4em}
-  % \begin{framed}
-  %   \noindent{}5.\, 拟采取的研究方法或实验方法，步骤，可能出现的技术问题及解决办法\par\vspace{2ex}
-  %   \SWFCField@Partfive
-  % \end{framed}
-  % \vspace{-2.4em}
-  % \begin{framed}
-  %   \noindent{}6.\, 完成该研究已具备的条件\par\vspace{2ex}
-  %   \SWFCField@Partsix
-  % \end{framed}
-  % \vspace{-2.4em}
-  % \begin{framed}
-  %   \noindent{}指导教师意见\par\vspace{2ex}
-  %   \hspace{3em}{\Large\SWFCField@AdvisorComment}\par
-  %   \hfill{}签名：\makebox[7em]{\SWFCField@AdvisorSig}\par\vspace{2ex}
-  %   \hfill%
-  %   \makebox[4em]{\SWFCField@Year{}}年
-  %   \makebox[2em]{\SWFCField@Month{}}月
-  %   \makebox[2em]{\SWFCField@Date{}}日
-  % \end{framed}
   \vspace{-2.4ex}
   \tabulinesep=_1ex
   \begin{longtabu}{|r@{\ }X|}\tabucline-\endhead
@@ -230,7 +175,6 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \Author{王晓林}
 \Grade{2011级}
 \Studid{20111156888}
-\Docname{本科毕业论文（设计）开题报告}
 \Advisor{我自己}
 \AdvisorSig{\LARGE\sig{王晓林}}
 \AdvisorTitle{讲师}
@@ -243,7 +187,6 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \Date{8}
 \Month{11}
 \Year{2014}
-\Univ{西南林业大学}
 \Subject{计算机科学与技术（网络信息工程）}
 
 \Partone{% 1. 该研究的目的、意义

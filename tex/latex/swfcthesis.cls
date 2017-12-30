@@ -1,5 +1,4 @@
-% The swfcthesis class is for producing senior year theses
-% and dissertations that meet the SWFU requirements.
+% 西南林业大学本科毕业（设计）论文
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfcthesis}
 
@@ -9,7 +8,7 @@
 
 \LoadClass[a4paper,12pt,oneside]{book}
 
-\RequirePackage{ifxetex} % This class is for XeTeX only
+\RequirePackage{ifxetex} % XeTeX only
 
 \RequirePackage[%showframe,showcrop,
 top=3cm,bottom=2.5cm,left=3cm,right=2.5cm,
@@ -56,7 +55,6 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \captionsetup{labelsep=quad}
 
 \RequirePackage{xcolor}
-
 \RequirePackage{hyperref}
 \hypersetup{%
   bookmarksnumbered, pdfpagelabels=true, plainpages=false, breaklinks=true,
@@ -83,15 +81,11 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 
 \RequirePackage[backend=biber,
 style=chem-angew,sorting=none,
-%style=caspervector,sorting=centy,utf8, % caspervector is buggy!
 hyperref=true,doi=false,isbn=false,%url=false,
 date=edtf,seconds=true,% to suppress compile warnings
 ]{biblatex}
 
 \renewcommand*{\bibfont}{\small} % 11pt
-
-%\DeclareFieldFormat*{year}{#1}
-%\DeclareFieldFormat*{url}{}% suppress url for caspervector to workaround its bug
 
 %%%% chem-angew/caspervector provides \supercite already.
 % \DeclareCiteCommand{\supercite}[\mkbibsuperscript]{%
@@ -164,7 +158,6 @@ date=edtf,seconds=true,% to suppress compile warnings
 \newcommand{\Author}[1]{\gdef\SWFCField@Author{#1}}
 %\newcommand{\Authorid}[1]{\gdef\SWFCField@Authorid{#1}} % 学号
 \newcommand{\enAuthor}[1]{\gdef\SWFCField@enAuthor{#1}}
-%\newcommand{\Docname}[1]{\gdef\SWFCField@Docname{#1}}
 \newcommand{\Degree}[1]{\gdef\SWFCField@Degree{#1}}
 \newcommand{\Advisor}[1]{\gdef\SWFCField@Advisor{#1}}
 \newcommand{\AdvisorTitle}[1]{\gdef\SWFCField@AdvisorTitle{#1}}
@@ -178,8 +171,6 @@ date=edtf,seconds=true,% to suppress compile warnings
 \newcommand{\Acknowledgments}[1]{\gdef\SWFCField@Acknowledgments{#1}}
 % \newcommand{\School}[1]{\gdef\SWFCField@School{#1}}
 % \newcommand{\enSchool}[1]{\gdef\SWFCField@enSchool{#1}}
-% \newcommand{\Univ}[1]{\gdef\SWFCField@Univ{#1}}
-% \newcommand{\enUniv}[1]{\gdef\SWFCField@enUniv{#1}}
 \newcommand{\Subject}[1]{\gdef\SWFCField@Subject{#1}}
 
 \newcommand{\SWFCtitlepage}{% Title page layout
@@ -285,7 +276,6 @@ date=edtf,seconds=true,% to suppress compile warnings
 \setlength{\parindent}{2em}
 
 % Initialize the variables to their default values
-% \Authorid{}\Docname{}\Univ{}\School{}\enUniv{}\enSchool{}
 \Title{}
 \Author{}
 \Advisor{}

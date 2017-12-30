@@ -1,11 +1,11 @@
+% 西南林业大学毕业论文（设计）任务书
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{swfcgtaskspec}%[TeX Live 2016/Debian SWFU graduation task specification]
+\ProvidesClass{swfcgtaskspec}
 
 \LoadClass[a4paper,12pt]{article}
 
-\RequirePackage{ifxetex} % This class is for XeTeX only
+\RequirePackage{ifxetex} % XeTeX only
 
-%\RequirePackage{array}
 \RequirePackage{tabu,longtable}
 \RequirePackage{graphicx}
 \RequirePackage[ % showframe,

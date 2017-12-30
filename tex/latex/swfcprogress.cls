@@ -1,14 +1,11 @@
+% 西南林业大学教学进程（理论教学）计划表
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{swfcpractice}%[TeX Live 2016/Debian SWFU teaching schedule form]
-
-% The swfcgplan class is for producing planning form used at SWFU
+\ProvidesClass{swfcpractice}
 
 \LoadClass[a4paper,10pt]{article}
 
-\RequirePackage{ifxetex} % This class is for XeTeX only
+\RequirePackage{ifxetex} % XeTeX only
 
-% \RequirePackage{calc,ifthen}
-\RequirePackage{array}
 \RequirePackage{tabu}
 \RequirePackage{graphicx}
 
@@ -16,9 +13,12 @@
 paperwidth=210mm,paperheight=297mm,
 margin=2.5cm]{geometry}
 
+\setlength{\parindent}{0pt}
+
 \RequirePackage{wx672fonts}
 \RequirePackage{wx672cjk}
 
+\RequirePackage{array}
 %%% array related. make long title looks nicer
 %\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 %\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
@@ -27,16 +27,14 @@ margin=2.5cm]{geometry}
 \renewcommand{\arraystretch}{1.5} % make table row higher
 
 % Declare some variables to hold the text fields for the preliminary pages
-%\newcommand{\Univ}[1]{\gdef\SWFCField@Univ{#1}} % 西南林业大学
-%\newcommand{\Formtitle}[1]{\gdef\SWFCField@Formtitle{#1}} % 本科毕业（设计）论文
-%\newcommand{\Formsubtitle}[1]{\gdef\SWFCField@Formsubtitle{#1}} % 指导教师意见 | 评阅意见
-
 \newcommand{\Coursetitle}[1]{\gdef\SWFCField@Coursetitle{#1}} % 课程名称
 \newcommand{\Term}[1]{\gdef\SWFCField@Term{#1}} % 学年度
-\newcommand{\Theory}[1]{\gdef\SWFCField@Theory{#1}} % 讲课学时
-\newcommand{\Lab}[1]{\gdef\SWFCField@Lab{#1}} % 实验学时
-%\newcommand{\Signature}[1]{\gdef\SWFCField@Signature{\hspace{6ex}\includegraphics[scale=.15]{#1}}}
-% 任课教师签名
+\newcommand{\Hours}[1]{\gdef\SWFCField@Hours{#1}} % 讲课、实验学时（标签）
+\newcommand{\Thours}[1]{\gdef\SWFCField@Thours{#1}} % 讲课小时数
+\newcommand{\Lhours}[1]{\gdef\SWFCField@Lhours{#1}} % 实验小时数
+\newcommand{\TLtitle}[1]{\gdef\SWFCField@TLtitle{#1}} % 理论/实验（标题）
+\newcommand{\TLlabel}[1]{\gdef\SWFCField@TLlabel{#1}} % 理论/实验（附注）
+\newcommand{\Chkbox}[1]{\gdef\SWFCField@Chkbox{#1}} % 本科\checked{}专科\unchecked
 \newcommand{\Signature}[1]{\gdef\SWFCField@Signature{#1}} % 任课教师签名
 \newcommand{\Lecturea}[1]{\gdef\SWFCField@Lecturea{#1}} % 课程内容
 \newcommand{\Lectureb}[1]{\gdef\SWFCField@Lectureb{#1}} % 课程内容
@@ -62,113 +60,121 @@ margin=2.5cm]{geometry}
 \newcommand{\Lecturev}[1]{\gdef\SWFCField@Lecturev{#1}} % 课程内容
 \newcommand{\Lecturew}[1]{\gdef\SWFCField@Lecturew{#1}} % 课程内容
 \newcommand{\Lecturex}[1]{\gdef\SWFCField@Lecturex{#1}} % 课程内容
-\newcommand{\Lecturey}[1]{\gdef\SWFCField@Lecturey{#1}} % 课程内容
-\newcommand{\Lecturez}[1]{\gdef\SWFCField@Lecturez{#1}} % 课程内容
-\newcommand{\Lectureza}[1]{\gdef\SWFCField@Lectureza{#1}} % 课程内容
-\newcommand{\Lecturezb}[1]{\gdef\SWFCField@Lecturezb{#1}} % 课程内容
-\newcommand{\Lecturezc}[1]{\gdef\SWFCField@Lecturezc{#1}} % 课程内容
-\newcommand{\Lecturezd}[1]{\gdef\SWFCField@Lecturezd{#1}} % 课程内容
-\newcommand{\Lectureze}[1]{\gdef\SWFCField@Lectureze{#1}} % 课程内容
-\newcommand{\Lecturezf}[1]{\gdef\SWFCField@Lecturezf{#1}} % 课程内容
-\newcommand{\Lecturezg}[1]{\gdef\SWFCField@Lecturezg{#1}} % 课程内容
-\newcommand{\Lecturezh}[1]{\gdef\SWFCField@Lecturezh{#1}} % 课程内容
-\newcommand{\Lecturezi}[1]{\gdef\SWFCField@Lecturezi{#1}} % 课程内容
-\newcommand{\Lecturezj}[1]{\gdef\SWFCField@Lecturezj{#1}} % 课程内容
-\newcommand{\Lecturezk}[1]{\gdef\SWFCField@Lecturezk{#1}} % 课程内容
-\newcommand{\Lecturezl}[1]{\gdef\SWFCField@Lecturezl{#1}} % 课程内容
-\newcommand{\Lecturezm}[1]{\gdef\SWFCField@Lecturezm{#1}} % 课程内容
-\newcommand{\Lecturezn}[1]{\gdef\SWFCField@Lecturezn{#1}} % 课程内容
 
-\newcommand{\makeform}{
-  \pagestyle{empty}
-  {\centering {\LARGE \textbf{西南林业大学教学进程（理论教学）计划表}}\\[3ex] 
-    \begin{tabu}{@{}XXX[r]@{}}
-      学\hspace{.5em}年\hspace{.5em}度：\underline{\SWFCField@Term{}}&&\\
-      课程名称：\underline{\SWFCField@Coursetitle{}}&&\\
-      讲课学时：\underline{\SWFCField@Theory{}}&
-      实验学时：\underline{\SWFCField@Lab{}}&
-      本科\,{\large\Checkedbox{}}\qquad 专科$\Box$
-    \end{tabu}
-    \begin{tabu}{|c|X|c|X|}\hline
-      课次&\centering{课程内容}&课次&\centering{课程内容}\\\hline
-        1&\SWFCField@Lecturea{}&21&\SWFCField@Lectureu{}\\\hline 
-        2&\SWFCField@Lectureb{}&22&\SWFCField@Lecturev{}\\\hline
-        3&\SWFCField@Lecturec{}&23&\SWFCField@Lecturew{}\\\hline
-        4&\SWFCField@Lectured{}&24&\SWFCField@Lecturex{}\\\hline
-        5&\SWFCField@Lecturee{}&25&\SWFCField@Lecturey{}\\\hline
-        6&\SWFCField@Lecturef{}&26&\SWFCField@Lecturez{}\\\hline
-        7&\SWFCField@Lectureg{}&27&\SWFCField@Lectureza{}\\\hline
-        8&\SWFCField@Lectureh{}&28&\SWFCField@Lecturezb{}\\\hline
-        9&\SWFCField@Lecturei{}&29&\SWFCField@Lecturezc{}\\\hline
-       10&\SWFCField@Lecturej{}&30&\SWFCField@Lecturezd{}\\\hline
-       11&\SWFCField@Lecturek{}&31&\SWFCField@Lectureze{}\\\hline
-       12&\SWFCField@Lecturel{}&32&\SWFCField@Lecturezf{}\\\hline
-       13&\SWFCField@Lecturem{}&33&\SWFCField@Lecturezg{}\\\hline
-       14&\SWFCField@Lecturen{}&34&\SWFCField@Lecturezh{}\\\hline
-       15&\SWFCField@Lectureo{}&35&\SWFCField@Lecturezi{}\\\hline
-       16&\SWFCField@Lecturep{}&36&\SWFCField@Lecturezj{}\\\hline
-       17&\SWFCField@Lectureq{}&37&\SWFCField@Lecturezk{}\\\hline
-       18&\SWFCField@Lecturer{}&38&\SWFCField@Lecturezl{}\\\hline
-       19&\SWFCField@Lectures{}&39&\SWFCField@Lecturezm{}\\\hline
-       20&\SWFCField@Lecturet{}&40&\SWFCField@Lecturezn{}\\\hline
-      \tabuphantomline
-    \end{tabu}\vskip -1pt
-    \begin{tabu}{|X|XXX[r]|}
-      任课教师签名：&教研室意见：&&\\[1ex]
-      \SWFCField@Signature{}&&&\\[-5ex]
-      &&教研室负责人签名：&\\
-      &&&年\hspace{3em}月\hspace{3em}日\\\hline
-    \end{tabu}\vskip -1pt
-    \begin{tabu}{@{}lX}
-      注：&1. 本表一式三份，教研室、分院（系、部）、教务科各一份；\\
-      &2. 有实验学时的教师请填写《教学进程（实验）计划表》，一式三份；\\
-      &3. 请在接受教学任务后，于当学期第20周前交回。
-    \end{tabu}
-  }
+\newcommand{\Bigtable}[1]{\gdef\SWFCField@Bigtable{#1}} % 大表
+
+\newcommand{\makeform}{\pagestyle{empty}
+  \begin{center}
+    {\LARGE\hei 西南林业大学教学进程（\SWFCField@TLtitle{}）计划表}
+  \end{center}
+  学\hspace{.5em}年\hspace{.5em}度：\underline{\quad\SWFCField@Term\quad}\par
+  课程名称：\underline{\quad\SWFCField@Coursetitle\quad}\hfill{}\SWFCField@Chkbox\par
+  \SWFCField@Hours\par
+  \SWFCField@Bigtable
+  \vspace{-1pt}
+  \begin{tabu}{|l|X|}
+    任课教师签名：&教研室意见：\\
+    \SWFCField@Signature&\vspace{3ex}
+    \hfill{}\makebox[18em][l]{教研室负责人签名：}\par\vspace{1ex}
+    \hfill{}年\hspace{3em}月\hspace{3em}日\\\tabucline-
+  \end{tabu}\vspace{-1pt}
+  \begin{tabu}{@{}lX}
+    注：&1. 本表一式三份，教研室、分院（系、部）、教务科各一份；\\
+    &2. 有\SWFCField@TLlabel{}学时的教师请填写《教学进程（\SWFCField@TLlabel{}）计划表》，一式三份；\\
+    &3. 请在接受教学任务后，于当学期第20周前交回。
+  \end{tabu}}
+
+\DeclareOption{T}{
+  \Bigtable{\tabulinesep^2mm_2mm
+    \begin{tabu}{|c|X|c|X|}\tabucline-
+      课次&\centering{课程内容}&课次&\centering{课程内容}\\\tabucline-
+      1&\SWFCField@Lecturea&21&\SWFCField@Lectureu\\\tabucline-
+      2&\SWFCField@Lectureb&22&\SWFCField@Lecturev\\\tabucline-
+      3&\SWFCField@Lecturec&23&\SWFCField@Lecturew\\\tabucline-
+      4&\SWFCField@Lectured&24&\SWFCField@Lecturex\\\tabucline-
+      5&\SWFCField@Lecturee&25&\\\tabucline-
+      6&\SWFCField@Lecturef&26&\\\tabucline-
+      7&\SWFCField@Lectureg&27&\\\tabucline-
+      8&\SWFCField@Lectureh&28&\\\tabucline-
+      9&\SWFCField@Lecturei&29&\\\tabucline-
+      10&\SWFCField@Lecturej&30&\\\tabucline-
+      11&\SWFCField@Lecturek&31&\\\tabucline-
+      12&\SWFCField@Lecturel&32&\\\tabucline-
+      13&\SWFCField@Lecturem&33&\\\tabucline-
+      14&\SWFCField@Lecturen&34&\\\tabucline-
+      15&\SWFCField@Lectureo&35&\\\tabucline-
+      16&\SWFCField@Lecturep&36&\\\tabucline-
+      17&\SWFCField@Lectureq&37&\\\tabucline-
+      18&\SWFCField@Lecturer&38&\\\tabucline-
+      19&\SWFCField@Lectures&39&\\\tabucline-
+      20&\SWFCField@Lecturet&40&\\\tabucline-
+    \end{tabu}}
+
+  \TLtitle{理论教学}\TLlabel{实验}%  
+  \Hours{讲课学时：\underline{\quad\SWFCField@Thours\quad}\hspace{8em}%
+    实验学时：\underline{\quad\SWFCField@Lhours\quad}}%
+  \Thours{48}\Lhours{16}%
+  \Chkbox{本科\,\checked\qquad{}专科\unchecked}
 }
+
+\DeclareOption{L}{
+  \Bigtable{\tabulinesep^2mm_2mm
+    \begin{tabu}{|c|X|}\tabucline-
+      课次&\centering{实验内容}\\\tabucline-
+      1&\SWFCField@Lecturea{}\\\tabucline- 
+      2&\SWFCField@Lectureb{}\\\tabucline-
+      3&\SWFCField@Lecturec{}\\\tabucline-
+      4&\SWFCField@Lectured{}\\\tabucline-
+      5&\SWFCField@Lecturee{}\\\tabucline-
+      6&\SWFCField@Lecturef{}\\\tabucline-
+      7&\SWFCField@Lectureg{}\\\tabucline-
+      8&\SWFCField@Lectureh{}\\\tabucline-
+      9&\SWFCField@Lecturei{}\\\tabucline-
+      10&\SWFCField@Lecturej{}\\\tabucline-
+      11&\SWFCField@Lecturek{}\\\tabucline-
+      12&\SWFCField@Lecturel{}\\\tabucline-
+      13&\SWFCField@Lecturem{}\\\tabucline-
+      14&\SWFCField@Lecturen{}\\\tabucline-
+      15&\SWFCField@Lectureo{}\\\tabucline-
+      16&\SWFCField@Lecturep{}\\\tabucline-
+      17&\SWFCField@Lectureq{}\\\tabucline-
+      18&\SWFCField@Lecturer{}\\\tabucline-
+      19&\SWFCField@Lectures{}\\\tabucline-
+      20&\SWFCField@Lecturet{}\\\tabucline-
+    \end{tabu}}
+  
+  \TLtitle{实验教学}\TLlabel{理论教学}%
+  \Hours{} \Thours{} \Lhours{} \Chkbox{}
+}
+
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\ProcessOptions\relax
+\ExecuteOptions{T} % default to T
 
 \Term{2015-2016-02}  
 \Coursetitle{操作系统原理}
-\Signature{{\LARGE \sig{王晓林}}}
-\Theory{48}
-\Lab{16}
-\Lecturea{}
-\Lectureb{}
-\Lecturec{}
-\Lectured{}
-\Lecturee{}
-\Lecturef{}
-\Lectureg{}
-\Lectureh{}
-\Lecturei{}
-\Lecturej{}
-\Lecturek{}
-\Lecturel{}
-\Lecturem{}
-\Lecturen{}
-\Lectureo{}
-\Lecturep{}
-\Lectureq{}
-\Lecturer{}
-\Lectures{}
-\Lecturet{}
-\Lectureu{}
-\Lecturev{}
-\Lecturew{}
-\Lecturex{}
-\Lecturey{}
-\Lecturez{}
-\Lectureza{}
-\Lecturezb{}
-\Lecturezc{}
-\Lecturezd{}
-\Lectureze{}
-\Lecturezf{}
-\Lecturezg{}
-\Lecturezh{}
-\Lecturezi{}
-\Lecturezj{}
-\Lecturezk{}
-\Lecturezl{}
-\Lecturezm{}
-\Lecturezn{}
+\Signature{{\LARGE\sig 王晓林}}
+\Lecturea{What's an OS?}
+\Lectureb{Bootstrapping, Interrupts}
+\Lecturec{System Calls}
+\Lectured{Process}
+\Lecturee{Thread}
+\Lecturef{IPC}
+\Lectureg{Semaphores}
+\Lectureh{Monitors, Message Passing}
+\Lecturei{Classical IPC Problems}
+\Lecturej{CPU Scheduling}
+\Lecturek{CPU Scheduling}
+\Lecturel{Deadlock}
+\Lecturem{Deadlock}
+\Lecturen{Memory Management}
+\Lectureo{Virtual Memory}
+\Lecturep{Paging}
+\Lectureq{Page Replacement Algorithms}
+\Lecturer{Segmentation}
+\Lectures{File System Structure}
+\Lecturet{Files and Directories}
+\Lectureu{Inodes}
+\Lecturev{Inodes}
+\Lecturew{Ext2 File System}
+\Lecturex{Virtual File Systems}

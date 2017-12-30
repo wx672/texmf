@@ -1,10 +1,10 @@
-% The swfcgcomments class is for producing comments form used at SWFU
+% 西南林业大学本科毕业（设计）论文答辩申请表、评阅意见表、指导教师意见表
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{swfcgcomments}%[TeX Live 2016/Debian SWFU graduation comments form]
+\ProvidesClass{swfcgcomments}
 
 \LoadClass[10pt]{article}
 
-\RequirePackage{ifxetex} % This class is for XeTeX only
+\RequirePackage{ifxetex} % XeTeX only
 
 % \RequirePackage{calc,ifthen}
 \RequirePackage{array}
@@ -16,14 +16,12 @@
 \RequirePackage{graphicx}
 
 \RequirePackage[%showframe,nomarginpar,
-		paperwidth=195mm,paperheight=270mm,
-		top=3cm,bottom=2cm,
-		left=2.5cm,right=2.5cm,
-		]{geometry}
+paperwidth=195mm,paperheight=270mm,
+top=3cm,bottom=2cm,
+left=2.5cm,right=2.5cm,
+]{geometry}
 
 % Declare some variables to hold the text fields for the preliminary pages
-%\newcommand{\Univ}[1]{\gdef\SWFCField@Univ{#1}} % 西南林业大学
-%\newcommand{\Formtitle}[1]{\gdef\SWFCField@Formtitle{#1}} % 本科毕业（设计）论文
 \newcommand{\Formsubtitle}[1]{\gdef\SWFCField@Formsubtitle{#1}} % 指导教师意见 | 评阅意见
                                 % | 答辩申请表
 \newcommand{\Prjtitle}[1]{\gdef\SWFCField@Prjtitle{#1}} % 论文标题

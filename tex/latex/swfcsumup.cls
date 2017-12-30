@@ -1,11 +1,10 @@
+% 西南林业大学课程教学小结表
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{swfcsumup}%[TeX Live 2016/Debian SWFU teaching review form]
-
-% The swfcsumup class is for producing termly teaching review form used at SWFU
+\ProvidesClass{swfcsumup}
 
 \LoadClass[a4paper,10pt]{article}
 
-\RequirePackage{ifxetex} % This class is for XeTeX only
+\RequirePackage{ifxetex} % XeTeX only
 
 \RequirePackage{calc,ifthen}
 \RequirePackage{array}
@@ -13,10 +12,10 @@
 
 \RequirePackage{graphicx}
 \RequirePackage[% showframe,
-                paperwidth=195mm, paperheight=270mm,
-		top=2cm, bottom=2cm,
-                left=2.5cm, right=2.5cm,
-                ]{geometry}
+paperwidth=195mm, paperheight=270mm,
+top=2cm, bottom=2cm,
+left=2.5cm, right=2.5cm,
+]{geometry}
 
 \RequirePackage{tikz}
 \usetikzlibrary{backgrounds,positioning,fit}

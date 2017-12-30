@@ -1,5 +1,4 @@
-% The swfcproposal class is for producing MSc theses proposal (开题报告) that meet
-% the SWFU requirements.
+% 西南林业大学学术型硕士生学位论文开题报告
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfcproposalmsc}
 
@@ -8,9 +7,8 @@
 
 \LoadClass[a4paper,12pt]{article}
 
-\RequirePackage{ifxetex} % This class can only be processed with XeTeX
+\RequirePackage{ifxetex} % XeTeX only 
 
-%\RequirePackage[margin=2.5cm]{geometry}
 \RequirePackage[top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm,
 nomarginpar,headheight=15pt, % to avoid "headheight too small"
 %showframe,%showcrop,
@@ -35,17 +33,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage{wx672bib}
 
 \RequirePackage{xcolor}
-\RequirePackage{hyperref}
-
-\hypersetup{%
-  pdfborderstyle={/S/U/W .5},% border style will be underline of width .5pt 
-  colorlinks=false,
-  linkbordercolor=red,       % color of internal links
-  citebordercolor=blue,     % color of links to bibliography
-  filebordercolor=magenta,   % color of file links
-  urlbordercolor=blue,
-  % linkcolor=black,citecolor=black,urlcolor=blue
-}
+\RequirePackage{wx672hyperref}
 
 % https://tex.stackexchange.com/questions/247185/tcolorbox-theorem-which-isnt-framed-on-the-sides
 \RequirePackage[breakable]{tcolorbox}
@@ -182,19 +170,9 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
       \task 综合研究\, （\hspace{1em}）
       \task 其\hspace{2em}他\, （\hspace{1em}）
     \end{tasks}
-    % \begin{multicols}{2}
-    %   \begin{enumerate}[itemsep=2ex]
-    %   \item 基础研究\, （\hspace{1em}）
-    %   \item 应用研究\, （\hspace{1em}）
-    %   \item 综合研究\, （\hspace{1em}）
-    %   \item 其\hspace{2em}他\, （\hspace{1em}）
-    %   \end{enumerate}
-    % \end{multicols}
   \end{mainlistbox}
   \vskip -1.2ex
   \begin{mainlistbox}{选题来源（{\emoji √}）}
-    % \begin{multicols}{2}
-    %   \begin{enumerate}[itemsep=2ex]
     \begin{tasks}(2)
       \task 973、863 项目\, （\hspace{1em}）
       \task 国家社科规划、基金项目\, （\hspace{1em}）
@@ -211,8 +189,6 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
       \task 非立项\, （\hspace{1em}）
       \task 其他\, （{\emoji √}）
     \end{tasks}
-    %   \end{enumerate}
-    % \end{multicols}
   \end{mainlistbox}
 
   \clearpage
@@ -369,7 +345,6 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \begin{center}
     {\Large \textbf{西南林业大学研究生开题报告考核小组评议书}}
   \end{center}
-%  \extrarowsep=^8pt_8pt
   \begin{tabu}{|p{4em}|>{\centering}p{6em}|p{4em}|@{}X[c]@{}|}
     \tabucline-
     姓名&\SWFCField@Author&学科专业&%

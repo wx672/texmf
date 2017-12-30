@@ -1,26 +1,14 @@
-% The swfcbilingual class is for preparing bilingual lecturing application form used at SWFU
+% 西南林业大学双语教学课程申请表
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{swfcbilingual}%[TeX Live 2016/Debian SWFU bilingual lecturing application form]
+\ProvidesClass{swfcbilingual}
 
 \LoadClass[a4paper]{article}
 
-\RequirePackage{ifxetex} % This class is for XeTeX only
+\RequirePackage{ifxetex} % XeTeX only
 
-\RequirePackage{array}
 \RequirePackage{tabu}
 %\RequirePackage{xcolor}
-\RequirePackage{hyperref}
-\hypersetup{%
-  pdfborder={0 0 0},
-  % colorlinks=false,
-  % linkbordercolor={0 0 0},
-  % urlbordercolor={0 0 0},
-  % urlcolor={0 0 0},
-  % linkcolor={0 0 0},
-  % citecolor={0 0 0},
-  % filebordercolor={0 0 0},   % color of file links
-  % citebordercolor={0 0 0},     % color of links to bibliography
-}
+\RequirePackage{wx672hyperref}
 
 \RequirePackage{wx672fonts} %fontspec,xunicode are loaded here.
 \RequirePackage{wx672cjk}
@@ -32,6 +20,7 @@
  left=1.5cm,right=1.5cm
  ]{geometry}
 
+\RequirePackage{array}
 %%% array related. make long title looks nicer
 %\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 %\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}

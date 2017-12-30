@@ -1,7 +1,8 @@
+% 西南林业大学试卷
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfcexam}%[TeX Live 2016/Debian SWFC exam paper]
 
-\RequirePackage{ifxetex} % This class can only be processed with XeTeX
+\RequirePackage{ifxetex} %  XeTeX only
 
 \DeclareOption{a3}{%
   \PassOptionsToPackage{a3paper,landscape,twocolumn,%
@@ -134,6 +135,6 @@
 \Term{2017}{2018}{1}
 \Course{操作系统原理}{开卷[A]}
 %\Lecturer{\hspace{20mm}}
-\Lecturer{\sig{王晓林}}
+\Lecturer{{\sig 王晓林}}
 
 \Answer{操作系统原理}{[A]卷}

@@ -1,7 +1,8 @@
+% Commonly used settings
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{wx672common}
 
-\RequirePackage{ifxetex} % This class can only be processed with XeTeX
+\RequirePackage{ifxetex} % XeTeX only
 
 \RequirePackage{graphicx}
 \graphicspath{{./figs/}{../figs/}{./img/}{./}{../}} %note that the trailing “/” is required
@@ -10,6 +11,13 @@
 \RequirePackage{subcaption}
 
 \RequirePackage{multicol,rotating,tabu,varwidth,ulem,etoolbox,longtable,comment}
+
+\RequirePackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
+% make long title looks nicer
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 \newcommand{\cfbox}[2]{%
   \colorlet{currentcolor}{.}%

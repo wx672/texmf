@@ -1,13 +1,11 @@
+% 西南林业大学实践教学（实习）登记表
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{swfcpractice}%[TeX Live 2016/Debian SWFU practice registration form]
-
-% The swfcgplan class is for producing planning form used at SWFU
+\ProvidesClass{swfcpractice}
 
 \LoadClass[a4paper,12pt]{article}
 
-\RequirePackage{ifxetex} % This class is for XeTeX only
+\RequirePackage{ifxetex} % XeTeX only
 
-% \RequirePackage{calc,ifthen}
 \RequirePackage{array}
 \RequirePackage{tabu}
 \RequirePackage{graphicx}
