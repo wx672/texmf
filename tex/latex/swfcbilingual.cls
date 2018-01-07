@@ -10,7 +10,6 @@
 %\RequirePackage{xcolor}
 \RequirePackage{wx672hyperref}
 
-\RequirePackage{wx672fonts} %fontspec,xunicode are loaded here.
 \RequirePackage{wx672cjk}
 \RequirePackage{wx672bib}
 

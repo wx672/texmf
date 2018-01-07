@@ -69,6 +69,17 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 % Buggy! Must before loading biblatex!
 \RequirePackage[tt=false]{libertine} % keyboard symbol for my tutorial.
 
+\RequirePackage{xkvltxp}
+\RequirePackage{fixme}
+\fxsetup{
+  margin=false,
+  status=draft,
+  author=Fixme,
+  inline=true,
+  marginclue=true,
+  theme=color
+}
+
 % before xunicode!
 \RequirePackage{amsmath,amsfonts,amssymb,marvosym,pifont}
 
@@ -107,7 +118,7 @@ date=edtf,seconds=true,% to suppress compile warnings
 % Liberation fonts is a drop-in replacement for Microsoft Times, Arial and Courier fonts
 \setmainfont{Liberation Serif}
 \setsansfont{Liberation Sans}
-\setmonofont{Liberation Mono}
+%\setmonofont{Liberation Mono}
 
 \setCJKmainfont{Noto Serif CJK SC}
 \setCJKsansfont{Noto Sans CJK SC}

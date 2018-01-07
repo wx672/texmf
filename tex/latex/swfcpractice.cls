@@ -14,7 +14,6 @@
 paperwidth=210mm,paperheight=297mm,
 margin=2.5cm]{geometry}
 
-\RequirePackage{wx672fonts}
 \RequirePackage{wx672cjk}
 
 %%% array related. make long title looks nicer

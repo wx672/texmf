@@ -20,7 +20,6 @@ left=2.5cm, right=2.5cm,
 \RequirePackage{tikz}
 \usetikzlibrary{backgrounds,positioning,fit}
                 
-\RequirePackage{wx672fonts}
 \RequirePackage{wx672cjk}
 
 \newcommand{\Year}[1]{\gdef\SWFCField@Year{#1}} % 年份

@@ -28,7 +28,6 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage{tasks}
 \settasks{style={enumerate},label-align=right,label-width={2em}}
 
-\RequirePackage{wx672fonts}
 \RequirePackage{wx672cjk}
 \RequirePackage{wx672bib}
 

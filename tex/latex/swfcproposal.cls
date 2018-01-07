@@ -24,7 +24,6 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage{enumitem} % \setlist
 \setlist{nosep} % kills all vertical spacing
 
-\RequirePackage{wx672fonts}
 \RequirePackage{wx672cjk}
 \RequirePackage{wx672bib}
 

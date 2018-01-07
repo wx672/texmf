@@ -19,7 +19,6 @@ left=20mm,right=20mm
 
 \setlength{\parindent}{0pt}
 
-\RequirePackage{wx672fonts}
 \RequirePackage{wx672cjk}
 
 \newcommand{\School}[1]{\gdef\SWFCField@School{#1}} % 所属院（系、部）

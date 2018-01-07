@@ -15,7 +15,6 @@ margin=2.5cm]{geometry}
 
 \setlength{\parindent}{0pt}
 
-\RequirePackage{wx672fonts}
 \RequirePackage{wx672cjk}
 
 \RequirePackage{array}

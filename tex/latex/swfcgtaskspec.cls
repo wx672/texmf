@@ -14,7 +14,6 @@ top=2cm,bottom=1cm,
 left=2cm,right=2cm
 ]{geometry}
 
-\RequirePackage{wx672fonts}
 \RequirePackage{wx672cjk}
 \RequirePackage{wx672bib}
 

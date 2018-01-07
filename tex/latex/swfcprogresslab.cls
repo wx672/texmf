@@ -12,7 +12,6 @@
 \RequirePackage{tabu}
 \RequirePackage{graphicx}
 
-\RequirePackage{wx672fonts}
 \RequirePackage{wx672cjk}
 
 \RequirePackage[%showframe,

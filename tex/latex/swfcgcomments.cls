@@ -10,7 +10,6 @@
 \RequirePackage{array}
 \RequirePackage{tabu}
 
-\RequirePackage{wx672fonts}
 \RequirePackage{wx672cjk}
 
 \RequirePackage{graphicx}

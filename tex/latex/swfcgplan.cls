@@ -15,7 +15,6 @@ top=25mm,bottom=20mm,
 left=30mm,right=30mm
 ]{geometry}
 
-\RequirePackage{wx672fonts}
 \RequirePackage{wx672cjk}
 
 %%% array related. make long title looks nicer

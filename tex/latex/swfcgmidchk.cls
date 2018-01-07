@@ -23,7 +23,6 @@ left=20mm,right=20mm
 
 \setlength{\parindent}{0pt}
 
-\RequirePackage{wx672fonts}
 \RequirePackage{wx672cjk}
 
 \newcommand{\Studid}[1]{\gdef\SWFCField@Studid{#1}} % 学生学号

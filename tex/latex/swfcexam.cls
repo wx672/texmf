@@ -41,8 +41,6 @@
 
 \newcommand{\code}[1]{\texttt{#1}}
 
-%%% fonts
-\RequirePackage{wx672fonts}
 \RequirePackage{wx672cjk}
 
 \newlength{\bindingfieldlength}

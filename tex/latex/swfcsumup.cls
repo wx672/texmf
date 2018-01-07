@@ -20,7 +20,6 @@ left=2.5cm, right=2.5cm,
 \RequirePackage{tikz}
 \usetikzlibrary{backgrounds,positioning,fit}
                 
-\RequirePackage{wx672fonts}
 \RequirePackage{wx672cjk}
 
 \newcommand{\Term}[1]{\gdef\SWFCField@Term{#1}} % 授课学期
