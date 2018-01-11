@@ -7,7 +7,10 @@
 
 % the default ctex format is not so welcoming.
 % the ctex font setting is good to use.
-\RequirePackage[zihao=false,scheme=plain,heading=true,punct=kaiming]{ctex}
+\RequirePackage[zihao=false,% -4|5|false
+scheme=plain,% chinese|plain （仅提供中文支持，不中文化版式）
+heading=true,% 中文风格章节标题
+punct=kaiming]{ctex}
 \ctexset{
   contentsname={目\hspace{1em}录},
   listfigurename={插图目录},
