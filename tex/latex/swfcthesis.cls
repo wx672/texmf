@@ -67,7 +67,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 }
 
 % Buggy! Must before loading biblatex!
-\RequirePackage[tt=false]{libertine} % keyboard symbol for my tutorial.
+%\RequirePackage[tt=false]{libertine} % keyboard symbol for my tutorial.
 
 \RequirePackage{xkvltxp}
 \RequirePackage{fixme}
