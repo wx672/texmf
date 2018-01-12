@@ -57,7 +57,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage{xcolor}
 \RequirePackage{hyperref}
 \hypersetup{%
-  bookmarksnumbered, pdfpagelabels=true, plainpages=false, breaklinks=true,
+  bookmarksnumbered, plainpages=false, breaklinks=true,
   colorlinks=false,
   pdfborderstyle={/S/U/W .3},% border style will be underline of width .3pt 
   linkbordercolor=red,       % internal links
@@ -93,7 +93,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage[backend=biber,
 style=chem-angew,sorting=none,
 hyperref=true,doi=false,isbn=false,%url=false,
-date=edtf,seconds=true,% to suppress compile warnings
+date=iso,seconds=true,% to suppress compile warnings
 ]{biblatex}
 
 \renewcommand*{\bibfont}{\small} % 11pt
@@ -135,17 +135,16 @@ date=edtf,seconds=true,% to suppress compile warnings
 \pagenumbering{arabic}
 \renewcommand{\headrulewidth}{.4pt}
 \urlstyle{tt} % url.sty
-\raggedbottom
+\raggedbottom{}
 
 \pagestyle{fancy}
 % Must go after the first call of \pagestyle{fancy} !!!
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter \ \ #1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection \ \ #1}}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\quad #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\quad #1}}
+
 \newcommand{\Appendix}[1]{%
-  \renewcommand{\chaptermark}[1]{%
-    \markboth{附录\ \thechapter \ \ #1}{}}
-  \titleformat{\chapter}%
-  {\centering\LARGE\bfseries}{附录\ \thechapter}{1em}{}
+  \renewcommand{\chaptermark}[1]{\markboth{附录\,\thechapter\quad #1}{}}%
+  \titleformat{\chapter}{\centering\LARGE\bfseries}{附录\,\thechapter}{1em}{}
   \appendix}
 
 % set caption label style to, e.g. 3-2.
@@ -207,8 +206,7 @@ date=edtf,seconds=true,% to suppress compile warnings
     \vfill
     {\Large\textbf{\SWFCField@Year{}\ 年\ \SWFCField@Month{}\ 月}}\\[1cm]
   \end{center}
-  \clearpage
-}
+  \clearpage}
 
 \newcommand{\abstractpage}{% Abstract page
   \providecommand\pdfbookmark[3][]{} \pdfbookmark[0]{摘要}{bm:cnAbstract}
@@ -242,22 +240,22 @@ date=edtf,seconds=true,% to suppress compile warnings
   \clearpage}
 
 \newcommand{\acknowledgmentspage}{% Acknowledgments page  
-  \phantomsection
+  \phantomsection{}
   \addcontentsline{toc}{chapter}{致\hspace{1em}谢}
   \chapter*{致\hspace{1em}谢}
   \SWFCField@Acknowledgments}
 
 \newcommand{\advisorinfopage}{% Advisor info page
-  \phantomsection
+  \phantomsection{}
   \addcontentsline{toc}{chapter}{指导教师简介}
   \chapter*{指导教师简介}
   \SWFCField@AdvisorInfo
   \clearpage}
 
 \newcommand{\makepreliminarypages}{% preliminary pages
-  \SWFCtitlepage
-  \doublespacing % global line spacing
-  \abstractpage
+  \SWFCtitlepage{}
+  \doublespacing{} % global line spacing
+  \abstractpage{}
   \enabstractpage}
 
 \RequirePackage{minted} % minted has to be loaded at last!!!
@@ -267,40 +265,23 @@ date=edtf,seconds=true,% to suppress compile warnings
 \renewcommand{\listoflistingscaption}{程序目录}
 
 \renewcommand{\theFancyVerbLine}{
-  \textcolor{lightgray}{\scriptsize \arabic{FancyVerbLine}}}
+  \textcolor{lightgray}{\scriptsize\arabic{FancyVerbLine}}}
 
 \newcommand{\codec}[1]{\mintinline{c}|#1|}
 
 \setminted{%
   linenos=true,numbersep=3pt,fontsize=\small,
   frame=leftline,framesep=10pt,%xleftmargin=2cm,
-  rulecolor=\color{lightgray},autogobble=true,breaklines=true,}
+  rulecolor=\color{lightgray},autogobble=true,breaklines=true}
 
-\newminted{c}{}
-\newminted{shell}{}
-\newminted{latex}{}
-\newminted{bibtex}{}
-\newminted{gas}{}
-\newminted{nasm}{}
-\newminted{python}{}
+\newminted{c}{} \newminted{shell}{} \newminted{latex}{} \newminted{bibtex}{}
+\newminted{gas}{} \newminted{nasm}{} \newminted{python}{}
+
+% Initial defaults
+\Title{} \Author{} \Advisor{} \AdvisorTitle{} \AdvisorInfo{} \Month{} \Year{} \Subject{}
+\Abstract{} \Keywords{} \Acknowledgments{}
+
+% For the English Abstract.
+\enTitle{} \enAuthor{} \enAbstract{} \enKeywords{}
 
 \setlength{\parindent}{2em}
-
-% Initialize the variables to their default values
-\Title{}
-\Author{}
-\Advisor{}
-\AdvisorTitle{}
-\AdvisorInfo{}
-\Month{}
-\Year{}
-\Subject{}
-\Abstract{} 
-\Keywords{}
-\Acknowledgments{}
-
-% The followings are for the English Abstract.
-\enTitle{}
-\enAuthor{}
-\enAbstract{}
-\enKeywords{}
