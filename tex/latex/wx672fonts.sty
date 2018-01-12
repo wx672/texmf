@@ -8,22 +8,24 @@
 \RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
 \defaultfontfeatures{Mapping=tex-text}
 
+% Liberation fonts is a drop-in replacement for Microsoft Times, Arial and Courier fonts
 \setmainfont{Liberation Serif}
 \setsansfont{Liberation Sans}
 %\setmonofont{DejaVu Sans Mono} % no good for {\ttfamily }
 
 \newfontfamily\humor{Humor Sans}% \humor{hello, world!}
 \newfontfamily\purisa{Purisa}
-\newfontfamily\quivira{Quivira} % large unicode coverage
 \newfontfamily\utfart{DejaVu Sans Mono}
 \newfontfamily\uart{DejaVu Sans Mono}
 \newfontfamily\emoji{Symbola}% {\emoji ☺}
 \newfontfamily\emj{Symbola}% {\emj ☺}
+%\newfontfamily\quivira{Quivira} % large unicode coverage, but not come with Debian
 
 \newcommand{\verbatimfont}[1]{\def\verbatim@font{#1}}%
 
 % use C-x 8 RET to input utf8 symbols
 % C-x 8 C-h for more
+% M-x describe-char
 
 \newcommand\Symbol[1]{\emoji #1}
 \newcommand\okay{\emoji 😐}
@@ -33,13 +35,13 @@
 \newcommand\caution{\uart ☡}
 \newcommand\pointright{\uart ☞}
 \newcommand\pointleft{\uart ☜}
-\newcommand\unchecked{\uart □}
+\newcommand\unchecked{\uart □}%ballot box
 \newcommand\uncheckedbox{\uart □}
 \newcommand\Checked{\uart ✔}
 \newcommand\RedCross{\textcolor{red}{\uart ✘}}
-\newcommand\checked{\quivira 🗹}
-\newcommand\checkedbox{\quivira 🗹}
-\newcommand\crossedbox{\quivira 🗷}
+\newcommand\checked{\emoji 🗹} %
+\newcommand\checkedbox{\emoji 🗹} %
+\newcommand\crossedbox{\emoji 🗷}
 \newcommand\ellipis{\uart …}
 \newcommand\linux{\faLinux} % fontawesome
 \newcommand\wechat{\faWechat}
