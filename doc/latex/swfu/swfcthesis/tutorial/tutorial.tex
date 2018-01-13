@@ -85,12 +85,12 @@
   This short tutorial shows you how to write an undergraduate dissertation in \LaTeX{}. It
   can also serve as a perfect template for your dissertation\footnote{The class file used
     for this thesis, and the \texttt{tex} source of this file can be found at
-    \url{http://cs2.swfu.edu.cn/~wx672/swfcthesis/}.}.}
+    \url{https://github.com/wx672/texmf/tree/master/doc/latex/swfu/swfcthesis}.}.}
 
 \enKeywords{\LaTeX{}, \TeX{}, tutorial, dissertation template, SWFU} % 英文关键字
 
 %%% 排版封面、中英文摘要
-\makepreliminarypages
+\makepreliminarypages{}
 
 %%% 排版目录、插图目录、表格目录
 \frontmatter
@@ -99,9 +99,9 @@
 \listoftables  % 可以没有
 
 %%% 论文主体部分由此开始
-\mainmatter
+\mainmatter{}
 
-\chapter{工欲善其事，必先利其器} % 第一章标题
+\chapter{工欲善其事，必先利其器}% 第一章标题
 \label{cha:pre-requisite}
 
 用\LaTeX{}撰写毕业论文是一件赏心乐事，前提是你得会。网上关于\LaTeX{}的入门教程很多，下面这
@@ -127,8 +127,8 @@
   的运行速度更多的是取决于内存是否充足；
 \item[操作系统：]Debian
   GNU/Linux\footnote{\url{https://en.wikipedia.org/wiki/Debian}}的Sid版。为什么不用MS
-  Windows\footnote{\url{https://en.wikipedia.org/wiki/Microsoft_Windows}}？ 因为~... 当然不是
-  它不好，而是我缺乏足够的耐心。我的Debian Sid从来不考验我的耐心；
+  Windows\footnote{\url{https://en.wikipedia.org/wiki/Microsoft_Windows}}？ 因为~\ldots 当
+  然不是它不好，而是我缺乏足够的耐心。我的Debian系统从来不考验我的耐心；
 \item[桌面环境：]不需要。有个window manager就足够了。Sawfish window
   manager\footnote{\url{https://en.wikipedia.org/wiki/Sawfish_(window_manager)}}，界面足够
   的简单，功能足够的丰富，配置足够的容易。而且它
@@ -146,30 +146,33 @@
   除了窗口管理器，显然你还需要几个“窗口”。下面这三个恐怕是必须有的，
 
   \begin{itemize}
-  \item Web浏览器，我用google-chrome；
-  \item PDF阅读工具，我用zathura；
-  \item 终端，我用xterm；
+  \item Web浏览器，我用chromium；
+  \item PDF阅读工具，我用Emacs的pdf-tools插件。在Emacs里，可以在一个buffer里写tex，在另一
+    个buffer里看PDF。还可以很方便地在两个buffer中对应的位置跳来跳去；
+  \item 终端，我用xterm。
   \end{itemize}
 
 \item[\LaTeX{}套件：]TeXLive\footnote{\url{https://en.wikipedia.org/wiki/TeX_Live}}，它完备
-  而庞大，我们只需要其中很少的一些软件包就够了；
-\item[中文字体：] 思源字体\footnote{\url{https://github.com/adobe-fonts}}很不错。你当然也可
-  以选用Windows字体，只要从你的Windows系统里拷贝过来就行了。这也许是你人生中唯一需
-  要Windows的时候；
+  而庞大，但我们只需要其中很少的一些软件包就够了；
+\item[中文字体：]Noto字体\footnote{\url{https://en.wikipedia.org/wiki/Noto_fonts}}很不错。
+  你当然也可以选用Windows字体，只要从你的Windows系统里拷贝过来就行了。这也许是你人生中唯一需要Windows的时候；
 \item[编辑器：]Emacs + \auctex\footnote{\url{https://en.wikipedia.org/wiki/AUCTeX}} +
-  Yasnippet\footnote{\url{https://www.emacswiki.org/emacs/Yasnippet}}；
+  Yasnippet\footnote{\url{https://www.emacswiki.org/emacs/Yasnippet}} +
+  pdf-tools\footnote{\url{https://github.com/politza/pdf-tools}}；
 
   \begin{itemize}
   \item Emacs，世界上最强大的编辑器。\cite{emacs}作为计科专业的学生，如果你不熟悉它的使用，
     怎么好意思写毕业论文呢？
-  \item AUC\TeX{}是一个历史悠久而强大的Emacs插件，它为我们编辑\LaTeX{}文件提供了丰富的快捷
+  \item \auctex{}是一个历史悠久而强大的Emacs插件，它为我们编辑\LaTeX{}文件提供了丰富的快捷
     键操作；\cite{auctex}
   \item Yasnippet也是Emacs插件，它的功用就是为\Tab{}键施加魔法。\cite{yasnippet}有了它，期
     待奇迹出现的时候，你只要左手小指在\Tab{}键上轻轻一按……当然，你得先学会写魔咒（snippets）
     才行\,\Frowny{}。\label{p:yasnippet}
+  \item pdf-tools, 前面已经提过了。即使不写tex，单纯地为了阅读PDF文件，pdf-tools也是目
+    前我认为最好用的阅读器，因为除了阅读，你还可以标注PDF。    
   \end{itemize}
 
-  简而言之，有了上面两个插件，Emacs就成了一个强大的\LaTeX{}排版IDE\footnote{集成开发环境（Integrated
+  简而言之，有了上面几个插件，Emacs就成了一个强大的\LaTeX{}排版IDE\footnote{集成开发环境（Integrated
     Development Environment）。}。有了它，写起论文来，就像领导说套话一样顺滑流畅。
 \end{description}
 
@@ -179,19 +182,14 @@
 本教程也将以此为基础，逐步展开。
 
 至于如何安装、配置好这样一个工作环境……如果你是本校的学生，那么当然可以直截找我帮忙。如果找
-不到我，那么你可以参考一下我曾经写过的一个比较潦草
-的
-\href{http://htmlpreview.github.io/?https://github.com/wx672/lecture-notes/blob/master/linux/tutorials/install/install.html}{
-  《Debian安装指
-  导》
-}\footnote{\url{http://htmlpreview.github.io/?https://github.com/wx672/lecture-notes/blob/master/linux/tutorials/install/install.html}}
-，也许有点过时，但应该还是能对你有点帮助的。
-
+不到我，那么你可以参考一下我曾经写过的一个比较潦草的%
+\href{http://htmlpreview.github.io/?https://github.com/wx672/lecture-notes/blob/master/linux/tutorials/install/install.html}{《Debian安装指导》}%
+\footnote{\url{http://htmlpreview.github.io/?https://github.com/wx672/lecture-notes/blob/master/linux/tutorials/install/install.html}}，也许有点过时，但应该还是能对你有点帮助的。
 
 \chapter{快速上手}
 
 \LaTeX{}很强大，但对于初学者来说，你不必关心它有多强大，因为最为常用的命令和环境不过就是那么几
-个。而且你也不必手工输入这些命令，只要你用Emacs+AUC\TeX{}，几个简单的快捷键就足以满足你的基本
+个。而且你也不必手工输入这些命令，只要你用Emacs+\auctex{}，几个简单的快捷键就足以满足你的基本
 需求了。对于格式复杂的需求，通常你只要套用模版就可以解决问题了。所以，大家只要把Emacs用熟，
 一切迎刃而解。
 
@@ -261,7 +259,7 @@
 被 VC/eclipse/MS-Word 搞得头昏脑胀呢？ 简单而强大，本就是计科专业学生和非专业学生应有的不
 同。
 
-如果你对Emacs操作还很陌生，那么现在就打开Emacs，\Ch{} \LKey{t}，重温一下那些基本操
+如果你对Emacs操作还很陌生，那么现在就打开Emacs，\Ch\LKey{t}，重温一下那些基本操
 作吧。
 
 \subsection{什么是 \Cx\Cf？}
@@ -280,22 +278,22 @@
 \item 现在左手小指可以放开了。
 \end{enumerate}
 
-这就是\Cx \Cf{}，最常用的Emacs快捷键之一，作用是要求打开一个文
+这就是\Cx\Cf{}，最常用的Emacs快捷键之一，作用是要求打开一个文
 件\footnote{如果你要打开的文件不存在，那么Emacs会认为你要写一个新文件。}，f代表file 。那么，
 告诉我
 
 \begin{itemize}
-\item 什么是 \LKeyCtrlX{x} \LKeyCtrlX{s}?
-\item 什么是 \LKeyCtrlX{x} \LKey{2}? 什么是\LKeyCtrlX{x} \LKey{3}? 什么是\LKeyCtrlX{x}
-  \LKey{0}? 什么是\LKeyCtrlX{x} \LKey{1}? 什么是\LKeyCtrlX{x} \LKey{o}?
-\item 什么是\LKeyCtrlX{x} \LKey{h}? 什么是\LKeyCtrlX{w}?
-\item 什么是 \LKeyCtrlX{g}?
-\item 什么是\LKeyCtrlX{j}? 什么是 \LKeyCtrlX{i}?
+\item 什么是 \Cx \Cs?
+\item 什么是 \Cx \LKey{2}? 什么是\Cx \LKey{3}? 什么是\Cx
+  \LKey{0}? 什么是\Cx \LKey{1}? 什么是\Cx \LKey{o}?
+\item 什么是\Cx \LKey{h}? 什么是\Cw{}?
+\item 什么是 \Cg{}?
+\item 什么是\Cj{}? 什么是 \Ci{}?
   % \item 什么是 \LKeyCtrlX{/}?
-\item 什么是 \LKeyCtrlX{k}? 什么是 \LKeyCtrlX{y}?
-\item 什么是\LKeyCtrlX{d}? 什么是 \LKeyAltX{d}?% (M 代表 Meta 键, 也就是 Alt 键)
-\item 什么是 \LKeyCtrlX{a}? 什么是\LKeyCtrlX{e}? 什么是\LKeyCtrlX{f}? 什么是\LKeyCtrlX{b}?
-  什么是\LKeyCtrlX{n}? 什么是\LKeyCtrlX{p}?
+\item 什么是 \Ck{}? 什么是 \Cy{}?
+\item 什么是\Cd{}? 什么是 \Cd{}?% (M 代表 Meta 键, 也就是 Alt 键)
+\item 什么是 \Ca{}? 什么是\Ce{}? 什么是\Cf{}? 什么是\Cb{}?
+  什么是\Cn{}? 什么是\Cp{}?
 \end{itemize}
 
 如果你还不熟悉上面这些快捷键，那么用起Emacs来，就会像西洋人用筷子一样不酷。（「嘿！把你的手从
@@ -306,14 +304,14 @@
 
 \section{生活可以更轻松}
 
-AUC\TeX{}是Emacs的一个功能模块，为\LaTeX{}编程提供了巨大的便利。有了它，你的\LaTeX{}生活可以
+\auctex{}是Emacs的一个功能模块，为\LaTeX{}编程提供了巨大的便利。有了它，你的\LaTeX{}生活可以
 像 \texttt{Hello, world!}一样简单。现在就跟着我，手把手地领略一下简单的乐趣吧。
 
-一切当然是从\LKeyWin{}+\LKey{e}，打开Emacs开始。然后，\LKeyCtrlX{x} \LKeyCtrlX{f}，让我们开
+一切当然是从\LKeyWin{}+\LKey{e}，打开Emacs开始。然后，\Cx \Cf，让我们开
 始编辑一个新文件，就叫 \texttt{simple.tex}吧。
 
 在Emacs窗口的最下方，也就是 mini buffer 里，这时应该会有提示，让你输入文件名。输
-入\texttt{simple.tex}, 然后按 \LKeyCtrlX{j}。如果这时 mini buffer 里有如下提示：
+入\texttt{simple.tex}, 然后按 \Cj{}。如果这时 mini buffer 里有如下提示：
 
 \begin{itemize}
 \item[] \texttt{Master file: (default this file) ...}
@@ -323,7 +321,7 @@ AUC\TeX{}是Emacs的一个功能模块，为\LaTeX{}编程提供了巨大的便�
 键盘」上，那么，左手小指向左一偏，按到的正是\Ctrl{}键（\Caps{}{\scriptsize (CapsLock)}被我
 们改造成\Ctrl{}了）。右手食指下不正是\LKey{j}键吗？怎么样，比\Enter{}更方便吧。
 
-现在，可以向 \texttt{simple.tex}文件里写东西了，\Cc \Ce{}，e代表environment。“环境”到底是什么
+现在，可以向 \texttt{simple.tex}文件里写东西了，\Cc\Ce{}，e代表environment。“环境”到底是什么
 呢？意会吧，用用就明白了。在 mini buffer 里会有提示，
 
 \begin{itemize}
@@ -358,8 +356,7 @@ AUC\TeX{}是Emacs的一个功能模块，为\LaTeX{}编程提供了巨大的便�
 （\verb|%|）后面显然都是注释。
 
 在第\ref{sec:hello}节里，你已经会写 \texttt{Hello, world!}了。现在，我们要写点像模像样的东
-西。偷懒起见，我直接\xpinyin{套}{chao1}\xpinyin{用}{xi2}Andrew
-Roberts 写的
+西。偷懒起见，我直接\xpinyin{套}{chao1}\xpinyin{用}{xi2}Andrew Roberts 写的%
 \texttt{simple.tex}\footnote{\url{http://en.wikibooks.org/wiki/LaTeX/simple.tex}}。我们把注
 意力集中在用Emacs写文章的过程上。
 
@@ -1142,7 +1139,7 @@ xleftmargin=0cm,%xrightmargin=4cm,
 \doublespacing
 
 上例中的\verb|\cite{biblatex}|就是要引用\texttt{myref.bib}中的第一条记录。在编译后输出的
-PDF文件中我们会看到“\textsuperscript{[6]}”。至于为什么是“6”而不是“1”或者其它什么数字，这取
+PDF文件中我们会看到“\cite{biblatex}”。至于为什么是“6”而不是“1”或者其它什么数字，这取
 决于生成参考文献时的排序选择，我们暂时不用关心它。
 
 在\texttt{.tex}文件中要做的第三件事情是，在参考文献应该出现的地方加上如下一行：
@@ -1339,7 +1336,7 @@ $biber = 'biber --debug %O %S';
   \end{itemize}
 \end{onehalfspace}
 \vskip 2ex
-最基本的AUC\TeX{}快捷键（大多以\Cc{}开头）
+最基本的\auctex{}快捷键（大多以\Cc{}开头）
 
 \begin{onehalfspace}
   \begin{center}
@@ -2016,7 +2013,7 @@ sudo apt install yasnippet yasnippet-snippets
   \begin{enumerate}
   \item Debian sid；
   \item \TeX{}Live；
-  \item Emacs+AUC\TeX{}+Yasnippet；
+  \item Emacs+\auctex{}+Yasnippet；
   \item Truetype中文字体。
   \end{enumerate}
 \item 对Emacs基础快捷键的熟练使用；
@@ -2086,7 +2083,7 @@ sudo apt install yasnippet yasnippet-snippets
 \vspace{2ex}
 
 注意，这是一个不完全的软件包列表。但是，在安装这些软件包时，其它一些被依赖的软件包会被自动
-安装上。另外，Emacs的很多插件，比如AUCTeX, pdf-tools等，可以通过Emacs的插件管理模块来安装、
+安装上。另外，Emacs的很多插件，比如\auctex{}, pdf-tools等，可以通过Emacs的插件管理模块来安装、
 更新，在此没有列出。
 
 \chapter{中文article模板}

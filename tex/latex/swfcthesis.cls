@@ -93,20 +93,11 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage[backend=biber,
 style=chem-angew,sorting=none,
 hyperref=true,doi=false,isbn=false,%url=false,
-date=iso,seconds=true,% to suppress compile warnings
+date=iso,%seconds=true,% to suppress compile warnings
 ]{biblatex}
 
 \renewcommand*{\bibfont}{\small} % 11pt
-
-%%%% chem-angew/caspervector provides \supercite already.
-% \DeclareCiteCommand{\supercite}[\mkbibsuperscript]{%
-%   \iffieldundef{prenote}{}{\BibliographyWarning{Ignoring prenote argument}}%
-%   \iffieldundef{postnote}{}{\BibliographyWarning{Ignoring postnote argument}}%
-% }%
-% {\mkbibbrackets{\usebibmacro{citeindex} \usebibmacro{cite} \usebibmacro{postnote}}}%
-% {\supercitedelim}{}%
-
-\let\cite=\supercite
+\let\cite=\supercite%
 
 % https://tex.stackexchange.com/questions/23832/biblatex-make-title-hyperlink-to-doi-url-if-available
 \newbibmacro{string+url}[1]{%

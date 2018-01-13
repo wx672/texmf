@@ -1,8 +1,14 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{wx672tut}
 
-\RequirePackage[tt=false]{libertine} % keyboard symbol
-\newcommand{\Ca}{\LKeyCtrlX{a}}      % mainly for the tutorial doc
+\RequirePackage{ifxetex} % This class is for XeTeX only
+\RequirePackage{xpinyin}
+\RequirePackage{hologo}
+
+% https://tex.stackexchange.com/questions/76470/superscripts-with-xelatex-footnotes-natbib
+% https://tex.stackexchange.com/questions/83969/linuxlibertine-destroys-biblatexs-supercite
+\RequirePackage{biolinum} % Don't use libertine. It conflicts with xltxtra
+\newcommand{\Ca}{\LKeyCtrlX{a}}
 \newcommand{\Cb}{\LKeyCtrlX{b}}
 \newcommand{\Cc}{\LKeyCtrlX{c}}
 \newcommand{\Cd}{\LKeyCtrlX{d}}
@@ -19,8 +25,10 @@
 \newcommand{\Cp}{\LKeyCtrlX{p}}
 \newcommand{\Cs}{\LKeyCtrlX{s}}
 \newcommand{\Cv}{\LKeyCtrlX{v}}
+\newcommand{\Cw}{\LKeyCtrlX{w}}
 \newcommand{\Cx}{\LKeyCtrlX{x}}
 \newcommand{\Cy}{\LKeyCtrlX{y}}
+\newcommand{\Cz}{\LKeyCtrlX{z}}
 \newcommand{\Cslash}{\LKeyCtrl{}+\biolinumKeyGlyph{slash}}
 \newcommand{\Se}{\LKeyWin{}+\LKey{e}}
 \newcommand{\Md}{\LKeyAltX{d}}
@@ -32,11 +40,6 @@
 \newcommand{\Caps}{\LKeyCapsLock{}}
 \newcommand{\Ctrl}{\LKeyCtrl{}}
 
-\RequirePackage{ifxetex} % This class is for XeTeX only
-
-\RequirePackage{xpinyin}
-
-\RequirePackage{hologo}
 \newcommand{\latex}{\LaTeX{}}
 \newcommand{\bibtex}{\hologo{BibTeX}}
 \newcommand{\biblatex}{\texttt{biblatex}}
@@ -46,4 +49,4 @@
 {\vspace{-1ex}\begin{center}\begin{minipage}{#1\textwidth}\begin{singlespace}}
 {\end{singlespace}\end{minipage}\end{center}}
 
-\RequirePackage{filecontents}
+%\RequirePackage{filecontents}
