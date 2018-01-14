@@ -155,6 +155,10 @@
 \item[\LaTeX{}套件：]TeXLive\footnote{\url{https://en.wikipedia.org/wiki/TeX_Live}}，它完备
   而庞大，但我们只需要其中很少的一些软件包就够了；
 \item[中文字体：]Noto字体\footnote{\url{https://en.wikipedia.org/wiki/Noto_fonts}}很不错。
+  它是Google推出的开源字体。Debian库里自带，装上就好。所谓“Noto”就是No tofu的意思，也就是
+  说Noto字体的终极目标是消灭所有的豆腐块（缺字）。Noto有专门的CJK字体包，只是尚缺楷体。%
+  楷体我用Debian库里自带的arphic-ukai，它是台湾文鼎科技%
+  \footnote{\url{https://en.wikipedia.org/wiki/Arphic_Technology}}推出的开源字体。
   你当然也可以选用Windows字体，只要从你的Windows系统里拷贝过来就行了。这也许是你人生中唯一需要Windows的时候；
 \item[编辑器：]Emacs + \auctex\footnote{\url{https://en.wikipedia.org/wiki/AUCTeX}} +
   Yasnippet\footnote{\url{https://www.emacswiki.org/emacs/Yasnippet}} +
@@ -167,7 +171,8 @@
     键操作；\cite{auctex}
   \item Yasnippet也是Emacs插件，它的功用就是为\Tab{}键施加魔法。\cite{yasnippet}有了它，期
     待奇迹出现的时候，你只要左手小指在\Tab{}键上轻轻一按……当然，你得先学会写魔咒（snippets）
-    才行\,\Frowny{}。\label{p:yasnippet}
+    才行\,\Frowny{}。\label{p:yasnippet}放松，snippets都是很简单的小东西，去看看
+    \texttt{.emacs.d/snippets/latex-mode/}目录里的东西，我担保你能无师自通。
   \item pdf-tools, 前面已经提过了。即使不写tex，单纯地为了阅读PDF文件，pdf-tools也是目
     前我认为最好用的阅读器，因为除了阅读，你还可以标注PDF。    
   \end{itemize}
@@ -176,7 +181,7 @@
     Development Environment）。}。有了它，写起论文来，就像领导说套话一样顺滑流畅。
 \end{description}
 
-附录[\ref{app:pkg}]中列出了我的Debian系统上安装的与写论文相关的所有软件包，当然，清单里的
+附录\ref{app:pkg}中列出了我的Debian系统上安装的与写论文相关的所有软件包，当然，清单里的
 东西并非都是必需。其实，除了中文字体之外，其它的一切，你都可以根据自己的偏好来选择。如果你
 打算用英文写论文的话，那么连中文字体都可以省略了。不管怎么说，上面提到的都是我个人的偏好，
 本教程也将以此为基础，逐步展开。
@@ -794,7 +799,7 @@ verbatim 一词的缩写，就是“原样引用”的意思。好奇的话，�
   \fbox{\includegraphics[width=.6\textwidth]{env4}}
 \end{center}
 
-怎么样，不太困难吧？ 目前为止，我们用到的无非是表[~\ref{tab:keys}]中列出的这几个快捷键操作
+怎么样，不太困难吧？ 目前为止，我们用到的无非是表~\ref{tab:keys}中列出的这几个快捷键操作
 而已：
 
 \begin{table}[!htbp]
@@ -1755,7 +1760,7 @@ minted宏包提供了丰富的命令，可以支持数十种编程语言，后�
 亮中文文章所需要的一切。光标就停在 \verb'\title{}' 的花括号里，那么就开始用中文填空
 吧。Happy \TeX{}ing!
 
-附录[\ref{app:article}]中列出了这一\texttt{article}模板的全部内容。在这里我们简单解释一下其中
+附录\ref{app:article}中列出了这一\texttt{article}模板的全部内容。在这里我们简单解释一下其中
 和中文相关的几行。
 
 \begin{codeblock}{.9}
@@ -1870,7 +1875,7 @@ Class文件\footnote{也就是后缀为\texttt{.cls}的文件，也就是我们�
   以利
   用 \texttt{\textbackslash{}newcommand\{\}}和 \texttt{\textbackslash{}renewcommand\{\}}来
   定义自己的命令。但对于初学者来说，你暂时还不必操心这个，class文件所提供的命令应该足以应付
-  你目前的需求了。}，所以，我们当然要对这些命令有个基本的了解。附录[\ref{app:class}]中就
+  你目前的需求了。}，所以，我们当然要对这些命令有个基本的了解。附录\ref{app:class}中就
 是\texttt{swfcthesis.cls}文件的全部内容。我们在此做个简要介绍。简而言
 之，\texttt{swfcthesis.cls}提供了如下一些基本命令：
 
@@ -1929,7 +1934,7 @@ sudo apt install yasnippet yasnippet-snippets
 跟着本教程写论文的前提条件就是，Emacs必须工作正常，如果发现问题必须及时处理，不能将就。尤其
 是在入门阶段，不要指望用一个别扭的Emacs来顺畅地写出完美的论文。
 
-附录[\ref{app:thesis}]中列出了完整的毕业论文框架，也就是你在键入\texttt{thesis} \Tab{}后应
+附录\ref{app:thesis}中列出了完整的毕业论文框架，也就是你在键入\texttt{thesis} \Tab{}后应
 该看到的东西。如果奇迹没有发生，那么就要操心一下你的Emacs配置了。
 
 假设你的Emacs环境良好，按\Tab{}键之后，本来空荡荡的Emacs buffer里现在有了一个论文框架，而且
@@ -1966,7 +1971,7 @@ sudo apt install yasnippet yasnippet-snippets
 \item 用\texttt{latexmk}来编译\texttt{.tex}文件.
 \end{enumerate}
 
-附录[\ref{app:bib}]中列出了本文所用到的\texttt{.bib}文件（\texttt{tutorial.bib}）。
+附录\ref{app:bib}中列出了本文所用到的\texttt{.bib}文件（\texttt{tutorial.bib}）。
 你可以对照着第\pageref{p:ref}页的参考文献部分看看，找找感觉。
 
 \paragraph*{这个文件是怎么来的？}
