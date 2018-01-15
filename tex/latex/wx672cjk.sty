@@ -32,10 +32,13 @@
 \XeTeXlinebreakskip = 0pt plus 1pt
 
 \newcommand{\ziju}[1]{\renewcommand{\CJKglue}{\hskip #1}}
-\RequirePackage{ulem}
-\renewcommand{\uline}[1]{\CJKunderline-[depth=0.2em,format=\color{black}]{#1}}
-\renewcommand{\uwave}[1]{\CJKunderwave-[depth=0.2em,format=\color{black}]{#1}}
-\newcommand{\udot}[1]{\CJKunderdot[depth=0.2em,format=\color{black}]{#1}}
+
+%%% ulem courses 'extra }' error in swfcproposal.cls if the 'title' contents Chinese in
+%%% the bib file.
+% \RequirePackage{ulem}
+% \renewcommand{\uline}[1]{\CJKunderline-[depth=0.2em,format=\color{black}]{#1}}
+% \renewcommand{\uwave}[1]{\CJKunderwave-[depth=0.2em,format=\color{black}]{#1}}
+% \newcommand{\udot}[1]{\CJKunderdot[depth=0.2em,format=\color{black}]{#1}}
 
 % adjust the spaces between numbers and Chinese characters
 \xeCJKsetup{xCJKecglue=\hskip 0pt plus 0.08\baselineskip}

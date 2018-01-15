@@ -16,19 +16,19 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 ]{geometry}
 
 \RequirePackage{graphicx} % before xltxtra
-\graphicspath{{./figs/}{../figs/}{./}{../}} %mind the trailing “/”
+\graphicspath{{./figs/}{./}{../}} %mind the trailing “/”
 
 \RequirePackage{indentfirst}
 \RequirePackage{tabu,longtable,multicol,multirow,array}
+\tabuDisableCommands{\def\autocite{}}
 
 \RequirePackage{enumitem} % \setlist
 \setlist{nosep} % kills all vertical spacing
 
 \RequirePackage{wx672cjk}
-\RequirePackage{wx672bib}
-
 \RequirePackage{xcolor}
 \RequirePackage{wx672hyperref}
+\RequirePackage{wx672bib}
 
 % \singlespacing, \onehalfspacing, \doublespacing
 \RequirePackage[doublespacing]{setspace}
@@ -72,15 +72,15 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
     \vskip 2cm
     \begin{large}
     \begin{minipage}{1.0\linewidth}
-        \extrarowsep=^8mm_-7pt
-        \begin{tabu}spread\textwidth{@{}rX[c]@{}}
-          论\,文\,题\,目：&\SWFCField@Title\\\tabucline{2-2}
-          &\SWFCField@Titlext\\\tabucline{2-2}
-        \end{tabu}
+      \extrarowsep=^8mm_-7pt
+      \begin{tabu}spread\textwidth{@{}rX[c]@{}}
+        论\,文\,题\,目：&\SWFCField@Title\\\tabucline{2-2}
+        &\SWFCField@Titlext\\\tabucline{2-2}
+      \end{tabu}
     \end{minipage}
     \vskip 1cm
     \begin{minipage}{.8\linewidth}
-        \begin{center}
+      \begin{center}
         \extrarowsep=^8mm_-7pt
         \begin{tabu}spread\textwidth{@{}rX[c]@{}}
           专\hspace{1em}业\hspace{1em}名\hspace{1em}称：&\SWFCField@Subject\\\tabucline{2-2}
@@ -90,15 +90,16 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
           指导教师（职称）：&\SWFCField@Advisor{}（\SWFCField@AdvisorTitle）
           \\\tabucline{2-2}
           &\\\tabucline{2-2}
-          填\hspace{1em}表\hspace{1em}时\hspace{1em}间：&\SWFCField@Year\ 年\ \SWFCField@Month\ 月\ \SWFCField@Date\ 日\\\tabucline{2-2}
+          填\hspace{1em}表\hspace{1em}时\hspace{1em}间：&
+          \SWFCField@Year\ 年\ \SWFCField@Month\ 月\ \SWFCField@Date\ 日\\\tabucline{2-2}
         \end{tabu}
-        \end{center}
+      \end{center}
     \end{minipage}
   \end{large}
-    \vfill
-    {\Large\textbf{教\,务\,处\,制}}\\[1cm]
-  \end{center}
-  \clearpage}
+  \vfill
+  {\Large\textbf{教\,务\,处\,制}}\\[1cm]
+\end{center}
+\clearpage}
 
 \newcommand{\instructionpage}{% Instruction page
   \begin{center}
@@ -112,8 +113,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
     行加页。
   \item[三、] 开题报告需在第八学期开学之前完成。
   \end{itemize}
-  \clearpage
-}
+  \clearpage}
 
 \newcommand{\tablebody}{% main part
   \singlespacing\noindent
@@ -129,9 +129,8 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
     课题来源&\quad 1. 导师课题的一部分；2. 其他（须具体说明）
     \underline{\quad\SWFCField@Projfrom\quad}。\\%\tabucline-
   \end{tabu}
-  \vspace{-2.4ex}
-  \tabulinesep=_1ex
-  \begin{longtabu}{|r@{\ }X|}\tabucline-\endhead
+  \vspace{-2.4ex}\tabulinesep=_1ex
+  \begin{longtabu}{|r@{\ }X|}\tabucline-\endhead{}
     1.& 该研究的目的、意义\par\vskip 1ex\SWFCField@Partone\\\tabucline-
     2.& 国内外研究现状及发展趋势\par\vskip 1ex\SWFCField@Parttwo\\\tabucline-
     3.& 主要参考文献\par\vskip 1ex\SWFCField@Partthree\\\tabucline-
@@ -144,8 +143,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
     &\hfill 签名：\makebox[7em]{\SWFCField@AdvisorSig}\\
     &\hfill\SWFCField@Year 年 \SWFCField@Month 月 \SWFCField@Date 日\\\tabucline-
   \end{longtabu}
-  \vspace{-2.4ex}
-  \extrarowsep=_17pt
+  \vspace{-2.4ex}\extrarowsep=_17pt
   \noindent
   \begin{tabu}{|p{1em}|X[15]|p{1em}|X[15]|}
     教研室意见&
@@ -161,11 +159,10 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \end{tabu}}
 
 \newcommand{\makeproposal}{% preliminary pages
-  \SWFCtitlepage
-  \doublespacing % global line spacing
-  \instructionpage
-  \tablebody
-}
+  \SWFCtitlepage{}
+  \doublespacing% global line spacing
+  \instructionpage{}
+  \tablebody{}}
 
 % Initialize the variables to their default values
 \Title{开题报告\LaTeX{}模板的制作}
@@ -190,8 +187,8 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 
 \Partone{% 1. 该研究的目的、意义
   深入理解操作系统原理，对课本上的一些难以琢磨的概念进行实践，为以后做有关操作系统的
-  研究打下扎实的基础。
-}
+  研究打下扎实的基础。}
+
 \Parttwo{% 2. 国内外研究现状及发展趋势
   操作系统是管理计算机硬件与软件资源的计算机程序，同时也是计算机系统的核心与基石。
   操作系统主要处理内存管理与配置，决定系统资源供需的优先次序，控制输入输出设备，操作网络与
@@ -199,36 +196,29 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   现了系统，应用软件和用户之间交流的一个接口。
   
   操作系统是计算机系统中最核心最底层的软件，对操作系统的学习关系到对整个系统的运作机制的全面
-  理解，一方面能够学系操作系统的经典内容，另一方面又能够了解和跟踪最前沿的新技术和研究成果。
-}
+  理解，一方面能够学系操作系统的经典内容，另一方面又能够了解和跟踪最前沿的新技术和研究成果。}
 
-%
 \Partthree{% 3. 主要参考文献
-  For example:
-  
-  \texttt{\textbackslash{}addbibresource\{os.bib\}}
-  
-  \texttt{\textbackslash{}nocite\{wangshuang03,yuyuan2009orange,}
+  \nocite{tanenbaum2008modern, silberschatz11essentials, web:xv6, yuyuan2009orange,
+    in30days}
+  \printbibliography[heading=none]
+  参考文献条目的标题（title）中如果有中文，编译会报错，但结果没问题。
+  Disabling ulem solves this problem.}
 
-  \hspace{4em}\texttt{intel86,zouhengming09,mos,tanenbaum2008modern\}}
-  
-  \texttt{\textbackslash{}printbibliography[heading=none]\{\}}
-}
 \Partfour{% 4. 该研究的主要内容，重点解决的问题，预期结果或成果
   本实验通过对操作系统的简单研究和探索，了解操作系统的原理和实现过程。通过了解操作系统的基本
   概念，包括系统的启动、进程及进程间通信、消息传递、调度算法、输入/输出、设备驱动程序、死锁、
   存储器管理、页面调度算法、文件系统设计、安全机制等。另外，对相应的硬件设备也进行了一些简单
   的了解。在此基础上，立足实践，开发出一个简单的操作系统，用以理解由启动到运行，并执行用户输
-  入命令的过程。通过探究操作系统开发的细节问题，更深刻的理解操作系统的核心原理。
-}
+  入命令的过程。通过探究操作系统开发的细节问题，更深刻的理解操作系统的核心原理。}
+
 \Partfive{% 5. 拟采取的研究方法或实验方法，步骤，可能出现的技术问题及解决办法
   主要参考《OrangeS：一个操作系统的实现》和《30天自制操作系统》一步步学习，立足实践，
-  开发出一个简单的操作系统。
-}
+  开发出一个简单的操作系统。}
+
 \Partsix{% 6. 完成该研究已具备的条件
   \begin{itemize}
   \item 对操作系统概念的了解
   \item C与汇编的编程基础
   \item 硬件条件已具备
-  \end{itemize}
-}
+  \end{itemize}}

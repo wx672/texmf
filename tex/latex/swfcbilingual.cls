@@ -7,7 +7,7 @@
 \RequirePackage{ifxetex} % XeTeX only
 
 \RequirePackage{tabu}
-%\RequirePackage{xcolor}
+\RequirePackage{xcolor}
 \RequirePackage{wx672hyperref}
 
 \RequirePackage{wx672cjk}

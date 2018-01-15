@@ -10,51 +10,19 @@
 style=chem-angew,sorting=none,
 %style=caspervector,sorting=centy,utf8,
 hyperref=true,doi=false,isbn=false,%url=false,
-date=edtf,seconds=true,% to suppress compile warnings
+date=iso,%seconds=true,% to suppress compile warnings
 ]{biblatex}
-
-%\DeclareFieldFormat*{year}{#1}
-%\DeclareFieldFormat*{url}{}% suppress url for caspervector to workaround its bug
-
-%%%% chem-angew/caspervector provides \supercite already.
-% \DeclareCiteCommand{\supercite}[\mkbibsuperscript]{%
-%   \iffieldundef{prenote}{}{\BibliographyWarning{Ignoring prenote argument}}%
-%   \iffieldundef{postnote}{}{\BibliographyWarning{Ignoring postnote argument}}%
-% }%
-% {\mkbibbrackets{\usebibmacro{citeindex}\usebibmacro{cite}\usebibmacro{postnote}}}%
-% {\supercitedelim}{}%
 
 \let\cite=\supercite
 \renewcommand*{\bibfont}{\small} % 11pt
-
-%%%%% tweaking caspervector
-%% Cons: caspervector seems ignore "url=false".
-%%       (have to remove url from .bib or .bbl file)
-%% Pros: it provides supercite, and its sorting=centy is useful.
-%%
-
-% \ExecuteBibliographyOptions{url=false,seconds=true,alldates=edtf}% to suppress compile warnings
-
-% \renewcommand*\bbx@cnperiod{．} % use "fullwidth full stop" punctuation (U+FF0E) instead of "。"
-
-% \DeclareFieldFormat*{booktitle}{#1} % remove \mkbibemph and use normal font
-% \DeclareFieldFormat*{journaltitle}{#1} % remove \mkbibemph
-% \DeclareFieldFormat*{volume}{#1} % remove \mkbibemph
-% \DeclareFieldFormat[inbook, inproceedings, incollection, article]%
-%         {title}{\bbx@mybibquote{#1}} % remove \mkbibemph
-% \DeclareFieldFormat*{year}{#1} % remove bold sytle for "year"
-
-% \DeclareFieldFormat*{url}{}% suppress url. it's a temp workaround until caspervector fix
-                           % its bug. But there is an extra period at the end of the
-                           % entry. TODO!
-%%%%%   end tweaking caspervector
 
 % https://tex.stackexchange.com/questions/23832/biblatex-make-title-hyperlink-to-doi-url-if-available
 \newbibmacro{string+url}[1]{%
   \iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}}
 
 \DeclareFieldFormat{title}{\usebibmacro{string+url}{\mkbibemph{#1}}}
-%\DeclareFieldFormat[article]{title}{\usebibmacro{string+url}{\mkbibquote{#1}}}
+
+% \DeclareFieldFormat[article]{title}{\usebibmacro{string+url}{\mkbibquote{#1}}}
 
 % citetitle (for handouts)
 % https://tex.stackexchange.com/questions/284207/how-to-cite-the-title-and-the-year-in-the-same-command
