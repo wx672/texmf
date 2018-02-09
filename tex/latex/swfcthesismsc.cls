@@ -241,7 +241,7 @@ date=iso,%seconds=true,% to suppress compile warnings
       论文答辩日期&\textbf{\SWFCField@DateB}\\\tabucline{2-2}\tabucline{4-4}
     \end{tabu}
 
-    \begin{tabu}to .8\linewidth {lX[l]}
+    \begin{tabu}to .8\linewidth {lX[c]}
       学位授予单位和日期&\textbf{西南林业大学}\\\tabucline{2-2}
       答辩委员会主席&\textbf{\SWFCField@Chairman}\\\tabucline{2-2}
     \end{tabu}
@@ -347,6 +347,14 @@ date=iso,%seconds=true,% to suppress compile warnings
   \doublespacing{} % global line spacing
   \abstractpage{}
   \enabstractpage}
+
+\RequirePackage[firstpage]{draftwatermark}
+\SetWatermarkAngle{0}
+% \SetWatermarkColor{red!10}
+\SetWatermarkScale{1.5}
+\SetWatermarkHorCenter{.45\paperwidth}
+\SetWatermarkVerCenter{.15\paperheight}
+\SetWatermarkText{\includegraphics{thesisheading}}
 
 \RequirePackage{minted} % minted has to be loaded at last!!!
 \usemintedstyle{bw}
