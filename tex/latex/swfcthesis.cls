@@ -22,7 +22,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 
 % graphicx
 \RequirePackage{graphicx} % before xltxtra
-\graphicspath{% mind the trailing “/”
+\graphicspath{% mind the trailing "/"
   {./figs/}{../figs/}{./img/}{../img/}{./pics/}{../pics/}{./}{../}}
 
 % titlesec
@@ -39,7 +39,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage{fancyhdr}
 \fancyhf{}
 \fancyfoot[C]{\fontsize{8}{8}\selectfont -- \thepage\ --}
-\fancyhead[C]{\slshape \leftmark}
+\fancyhead[C]{\slshape\leftmark}
 
 \fancypagestyle{plain}{% for the 1st page of each chapter
   \fancyhf{}%
@@ -65,9 +65,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   filebordercolor=magenta,   % file links
   urlbordercolor=blue,       % external links
 }
-
-% Buggy! Must before loading biblatex!
-%\RequirePackage[tt=false]{libertine} % keyboard symbol for my tutorial.
+\def\UrlBreaks{\do\/\do-} % break long url
 
 \RequirePackage{xkvltxp}
 \RequirePackage{fixme}
@@ -84,7 +82,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage{amsmath,amsfonts,amssymb,marvosym,pifont}
 
 \RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
-\RequirePackage[CJKmath=true,AutoFakeSlant=true]{xeCJK} % slant header
+\RequirePackage[CJKmath=true,AutoFakeSlant=true,PunctStyle=kaiming]{xeCJK} % slant header
 
 % \singlespacing, \onehalfspacing, \doublespacing
 \RequirePackage[doublespacing]{setspace}
@@ -159,7 +157,7 @@ date=iso,%seconds=true,% to suppress compile warnings
 \newcommand{\Author}[1]{\gdef\SWFCField@Author{#1}}
 %\newcommand{\Authorid}[1]{\gdef\SWFCField@Authorid{#1}} % 学号
 \newcommand{\enAuthor}[1]{\gdef\SWFCField@enAuthor{#1}}
-\newcommand{\Degree}[1]{\gdef\SWFCField@Degree{#1}}
+%\newcommand{\Degree}[1]{\gdef\SWFCField@Degree{#1}}
 \newcommand{\Advisor}[1]{\gdef\SWFCField@Advisor{#1}}
 \newcommand{\AdvisorTitle}[1]{\gdef\SWFCField@AdvisorTitle{#1}}
 \newcommand{\AdvisorInfo}[1]{\gdef\SWFCField@AdvisorInfo{#1}}
@@ -178,7 +176,7 @@ date=iso,%seconds=true,% to suppress compile warnings
   \thispagestyle{empty}
   \begin{center}
     \makebox[14.7em][s]{\huge 西南林业大学}\\[5mm]
-    \makebox[25.75em][s]{\Huge\textbf{本科毕业（设计）论文}}\\[5mm]
+    \makebox[25.75em][s]{\Huge\textbf{本科毕业\hspace{-1em}（设计）\hspace{-1em}论文}}\\[5mm]
     \makebox[12em][s]{\hspace{.5em}\LARGE（\SWFCField@Year{}届）}\\[60pt]
     \begin{minipage}{.8\linewidth}
       \begin{Large}
@@ -274,5 +272,17 @@ date=iso,%seconds=true,% to suppress compile warnings
 
 % For the English Abstract.
 \enTitle{} \enAuthor{} \enAbstract{} \enKeywords{}
+
+%% looks no good. need to adjust \ziju{}
+% \DeclareOption{B}{ % B - BSc
+%   \Degree{本科}}
+
+% \DeclareOption{M}{ % M - MSc
+%   \Degree{硕士研究生}}
+
+% \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
+% \ProcessOptions\relax
+
+% \ExecuteOptions{B} % default to B
 
 \setlength{\parindent}{2em}
