@@ -38,12 +38,12 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 % fancyhdr
 \RequirePackage{fancyhdr}
 \fancyhf{}
-\fancyfoot[C]{\fontsize{8}{8}\selectfont -- \thepage\ --}
-\fancyhead[C]{\slshape\leftmark}
+\fancyfoot[C]{\fontsize{8}{8}\selectfont\thepage}
+\fancyhead[C]{\leftmark}
 
 \fancypagestyle{plain}{% for the 1st page of each chapter
   \fancyhf{}%
-  \fancyfoot[C]{\fontsize{8}{8}\selectfont -- \thepage\ --}
+  \fancyfoot[C]{\fontsize{8}{8}\selectfont\thepage}
   \renewcommand{\headrulewidth}{0pt}}
 
 \RequirePackage{enumitem} % \setlist
@@ -185,9 +185,9 @@ date=iso,%seconds=true,% to suppress compile warnings
 \newcommand{\SWFCtitlepage}{% Title page layout
   \thispagestyle{empty}
   \begin{center}
-    \vspace*{15ex}
-    \tikz \node [scale=3,font=\bfseries] {硕士学位论文};\\[2ex]% {\Huge \textbf{硕士学位论文}}\\[2ex]
-    {\large \textbf{MASTER THESIS}}\\[15ex]
+    \vspace*{20ex}
+    \tikz \node [scale=3,font=\bfseries] {硕士学位论文};\\[0ex]% {\Huge \textbf{硕士学位论文}}\\[2ex]
+    {\large \textbf{MASTER THESIS}}\\[12ex]
 
     \extrarowsep=^3mm_-2mm
     \begin{large}
@@ -208,32 +208,31 @@ date=iso,%seconds=true,% to suppress compile warnings
   \begin{center}
     \vspace*{-7ex}
     \begin{footnotesize}
-    \begin{tabu}{rX[c]rX[c]}
-      分类号&&密级&\\\tabucline{2-2}\tabucline{4-4}
-      UDC&&&\\\tabucline{2-2}
-    \end{tabu}
+      \begin{tabu}{rX[c]rX[c]}
+        分类号&&密级&\\\tabucline{2-2}\tabucline{4-4}
+        UDC&&&\\\tabucline{2-2}
+      \end{tabu}
     \end{footnotesize}
-    \vspace{5ex}
-    \tikz\node [scale=2.7,font=\bfseries] {\makebox[7em][s]{学位论文}};\\[2ex]
-    \begin{tabu}to .9\linewidth {X[c]}
-      {\Large \textbf{\SWFCField@Title}}\\\tabucline-
-    \end{tabu}
-
-    \begin{tabu}to .2\linewidth {X[c]}
-      \textbf{\SWFCField@Author}\\\tabucline-
-    \end{tabu}
+  
+    \vspace{6ex}
+    \tikz\node [scale=2.7,font=\bfseries] {\makebox[7em][s]{学位论文}};\\[4ex]
+    % https://tex.stackexchange.com/questions/89980/change-lineskip-to-fill-the-available-space
+    \begin{minipage}[c][4em][s]{.8\linewidth}
+      %https://tex.stackexchange.com/questions/74151/interline-spacing
+      \lineskip=2pt \lineskiplimit=\maxdimen \baselineskip=-1pt
+      \centering \bfseries\LARGE \uline{\SWFCField@Title}
+    \end{minipage}\\[4ex]
+    \begin{minipage}{.15\linewidth}
+      \centering {\bfseries\large \uline{\SWFCField@Author}}
+    \end{minipage}\\[10ex]
     
-    \vspace{10ex}
-
     \begin{tabu}to .8\linewidth {rX[c]X[c]}
       指导教师&\textbf{\SWFCField@Advisor}&\texttt{\SWFCField@AdvisorTitle}\\\tabucline{2-3}
       &\textbf{西南林业大学}&\textbf{昆明}\\\tabucline{2-3}
       &&\\\tabucline{2-3}
       &&\\\tabucline{2-3}
-    \end{tabu}
+    \end{tabu}\\[10ex]    
 
-    \vspace{10ex}
-    
     \begin{tabu}to .8\linewidth {rX[c]rX[c]}
       申请学位级别&\textbf{硕士}&%
       学科专业&\textbf{\SWFCField@Subject}\\\tabucline{2-2}\tabucline{4-4}%
@@ -252,9 +251,7 @@ date=iso,%seconds=true,% to suppress compile warnings
     {\Large \textbf{\SWFCField@enTitle}}\\[25ex]
     \begin{large}
       \textbf{A Master Thesis Submitted to}\\[-1ex]
-      \textbf{Southwest Forestry University}
-      
-      \vspace{5ex}
+      \textbf{Southwest Forestry University}\\[5ex]
       
     \begin{tabu}to .8\linewidth {rX[c]}
       Major:&\textbf{\SWFCField@enSubject}\\\tabucline{2-2}
@@ -269,7 +266,7 @@ date=iso,%seconds=true,% to suppress compile warnings
   \thispagestyle{empty}
   \vspace*{1ex}
   \begin{center}
-    {\large 独创性声明}
+    {\large \textbf{独创性声明}}
   \end{center}
   本人声明所呈交的学位论文是本人在导师指导下进行的研究工作及取得的研究成果。据我所知，除了
   文中特别加以标注和致谢的地方外，论文中不包含其他人已经发表或撰写过的研究成果，也不包含为
@@ -282,7 +279,7 @@ date=iso,%seconds=true,% to suppress compile warnings
   \end{flushright}
   \vspace{8ex}
   \begin{center}
-    {\large 论文使用授权}
+    {\large \textbf{论文使用授权}}
   \end{center}
   本学位论文作者完全了解并同意西南林业大学有关保留、使用学位论文的规定，学校有权保留并向国
   家有关部门或机构送交论文的复印件和磁盘，允许论文被查阅和借阅。本人授权西南林业大学可以将
@@ -291,10 +288,9 @@ date=iso,%seconds=true,% to suppress compile warnings
 
 （保密的学位论文在解密后应遵守此规定）
 
+\vspace{3ex}
 \begin{flushright}
-  作者签名：\underline{\hspace{8em}}\quad{}导师签名：\underline{\hspace{8em}}%
-
-  \vspace{2ex}  
+  作者签名：\underline{\hspace{8em}}\quad{}导师签名：\underline{\hspace{8em}}\\[2ex]
   日期：\quad\SWFCField@Year{}年\SWFCField@Month{}月\SWFCField@DateC{}日
 \end{flushright}
 \clearpage}
