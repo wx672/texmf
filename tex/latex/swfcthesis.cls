@@ -183,10 +183,7 @@ date=iso,seconds=true,% to suppress compile warnings
         \extrarowsep=^8mm_-7pt
         \begin{tabu} spread \textwidth {@{}X[r]X[3.3,c]@{}}
           \textbf{题\hspace{2em}目：}&%
-          \makebox[0pt][t]{%
-            \parbox[t]{15em}{\centering\textbf{\SWFCField@Title}}}%
-          \rule[-.5ex]{15em}{1pt}\par
-          \rule{15em}{1pt}\\
+          \parbox[t]{15em}{\centering\SWFCField@Title}\\\tabucline{2-2}%
           \textbf{分院系部：} &大数据与智能工程学院\\\tabucline{2-2}
           \textbf{专\hspace{2em}业：}&\SWFCField@Subject\\\tabucline{2-2}
           % \textbf{学\hspace{2em}号：}&\SWFCField@Authorid\\\tabucline{2-2}

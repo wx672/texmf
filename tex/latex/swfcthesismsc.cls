@@ -194,7 +194,9 @@ date=iso,seconds=true,% to suppress compile warnings
       \begin{tabu} to .85\textwidth {rX[3.3,c]}%
         \textbf{论文题目}&%
         \makebox[0pt][t]{%
-          \parbox[t]{20em}{\centering\textbf{\SWFCField@Title}}}%
+          \begin{minipage}[t]{20em}
+            \centering\parbox[t]{18em}{\centering\textbf{\SWFCField@Title}}
+          \end{minipage}}%
         \rule[-.5ex]{20em}{.1pt}\par
         \rule[-.2ex]{20em}{.1pt}\\
       \end{tabu}
@@ -263,8 +265,10 @@ date=iso,seconds=true,% to suppress compile warnings
       Author:&\textbf{\SWFCField@enAuthor}\\\tabucline{2-2}
       Advisor:&\textbf{\SWFCField@enAdvisor}\\\tabucline{2-2}
       School:&%
-        \makebox[0pt][t]{%
-          \parbox[t]{20em}{\centering\textbf{School of Big Data and Intelligence Engineering}}}%
+      \makebox[0pt][t]{%
+        \begin{minipage}[t]{20em}
+          \centering\parbox[t]{18em}{\centering\textbf{School of Big Data and Intelligence Engineering}}
+        \end{minipage}}%
         \rule[-.6ex]{20em}{.1pt}\par
         \rule{20em}{.1pt}\\
     \end{tabu}
