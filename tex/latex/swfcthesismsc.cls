@@ -185,9 +185,9 @@ date=iso,seconds=true,% to suppress compile warnings
 \newcommand{\SWFCtitlepage}{% Title page layout
   \thispagestyle{empty}
   \begin{center}
-    \vspace*{20ex}
+    \vspace*{25ex}
     \tikz \node [scale=3,font=\bfseries] {硕士学位论文};\\[0ex]% {\Huge \textbf{硕士学位论文}}\\[2ex]
-    {\large \textbf{MASTER THESIS}}\\[12ex]
+    {\large \textbf{MASTER THESIS}}\\[20ex]
 
     \extrarowsep=^3mm_-2mm
     \begin{large}
@@ -221,23 +221,23 @@ date=iso,seconds=true,% to suppress compile warnings
     \end{footnotesize}
   
     \vspace{6ex}
-    \tikz\node [scale=2.7,font=\bfseries] {\makebox[7em][s]{学位论文}};\\[4ex]
+    \tikz\node [scale=2.7,font=\bfseries] {\makebox[7em][s]{学位论文}};\\[10ex]
     % https://tex.stackexchange.com/questions/89980/change-lineskip-to-fill-the-available-space
     \begin{minipage}[c][4em][s]{.8\linewidth}
       %https://tex.stackexchange.com/questions/74151/interline-spacing
       \lineskip=2pt \lineskiplimit=\maxdimen \baselineskip=-1pt
       \centering \bfseries\LARGE \uline{\SWFCField@Title}
-    \end{minipage}\\[4ex]
+    \end{minipage}\\[3ex]
     \begin{minipage}{.15\linewidth}
       \centering {\bfseries\large \uline{\SWFCField@Author}}
-    \end{minipage}\\[10ex]
+    \end{minipage}\\[19ex]
     
     \begin{tabu}to .8\linewidth {rX[c]X[c]}
       指导教师&\textbf{\SWFCField@Advisor}&\texttt{\SWFCField@AdvisorTitle}\\\tabucline{2-3}
       &\textbf{西南林业大学}&\textbf{昆明}\\\tabucline{2-3}
       &&\\\tabucline{2-3}
       &&\\\tabucline{2-3}
-    \end{tabu}\\[10ex]    
+    \end{tabu}\\[8ex]    
 
     \begin{tabu}to .8\linewidth {rX[c]rX[c]}
       申请学位级别&\textbf{硕士}&%
@@ -383,9 +383,12 @@ date=iso,seconds=true,% to suppress compile warnings
 \newminted{c}{} \newminted{shell}{} \newminted{latex}{} \newminted{bibtex}{}
 \newminted{gas}{} \newminted{nasm}{} \newminted{python}{}
 
-\newenvironment{codeblock}[1][.8]% e.g. \begin{codeblock}[.8] ... \end{codeblock}
-{\begin{center}\begin{minipage}{#1\textwidth}\begin{singlespace}}
+\newenvironment{codeblock}[1][.8]% e.g. \begin{codeblock} ... \end{codeblock}
+{\begin{center}\begin{minipage}{#1\textwidth}\begin{singlespace}}%
 {\end{singlespace}\end{minipage}\end{center}}
+
+% code listing cross pages
+\newenvironment{longlisting}{\captionsetup{type=listing}}{}
 
 % Initial defaults
 \Title{} \enTitle{}%

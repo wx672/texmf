@@ -267,8 +267,11 @@ date=iso,seconds=true,% to suppress compile warnings
 \newminted{c}{} \newminted{shell}{} \newminted{latex}{} \newminted{bibtex}{}
 \newminted{gas}{} \newminted{nasm}{} \newminted{python}{}
 
-\newenvironment{codeblock}[1][.8]% e.g. \begin{codeblock}[.8] ... \end{codeblock}
-{\begin{center}\begin{minipage}{#1\textwidth}\begin{singlespace}}
+% code listing cross pages
+\newenvironment{longlisting}{\captionsetup{type=listing}}{}
+
+\newenvironment{codeblock}[1][.8]% e.g. \begin{codeblock} ... \end{codeblock}
+{\begin{center}\begin{minipage}{#1\textwidth}\begin{singlespace}}%
 {\end{singlespace}\end{minipage}\end{center}}
 
 % Initial defaults
