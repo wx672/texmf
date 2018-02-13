@@ -169,8 +169,8 @@
     怎么好意思写毕业论文呢？
   \item \auctex{}是一个历史悠久而强大的Emacs插件，它为我们编辑\LaTeX{}文件提供了丰富的快捷
     键操作；\cite{auctex}
-  \item Yasnippet也是Emacs插件，它的功用就是为\Tab{}键施加魔法。\cite{yasnippet}有了它，期
-    待奇迹出现的时候，你只要左手小指在\Tab{}键上轻轻一按……当然，你得先学会写魔咒（snippets）
+  \item Yasnippet也是Emacs的插件，它的功用就是为{\Tab}键施加魔法。\cite{yasnippet}有了它，期
+    待奇迹出现的时候，你只要左手小指在{\Tab}键上轻轻一按……当然，你得先学会写魔咒（snippets）
     才行\,\Frowny{}。\label{p:yasnippet}放松，snippets都是很简单的小东西，去看看
     \texttt{.emacs.d/snippets/latex-mode/}目录里的东西，我担保你能无师自通。
   \item pdf-tools, 前面已经提过了。即使不写tex，单纯地为了阅读PDF文件，pdf-tools也是目
@@ -264,7 +264,7 @@
 被 VC/eclipse/MS-Word 搞得头昏脑胀呢？ 简单而强大，本就是计科专业学生和非专业学生应有的不
 同。
 
-如果你对Emacs操作还很陌生，那么现在就打开Emacs，\Ch\LKey{t}，重温一下那些基本操
+如果你对Emacs操作还很陌生，那么现在就打开Emacs，\Ch{}{\kbd t}，重温一下那些基本操
 作吧。
 
 \subsection{什么是 \Cx\Cf？}
@@ -278,8 +278,8 @@
 \item 先把你的双手在标准键盘上放好。然后，
 \item 左手小指稍向左移，按在\Caps{}(CapsLock)键上\footnote{如果你的系统配置和我一
     样，那么\Caps{}就是\Ctrl{}键。}，按住别放开，
-\item 左手无名指稍向下移，在\LKey{x}键上轻按一下就放开，这就是\Cx{}。 
-\item 小指按在\Caps{}上别放开，左手食指在\LKey{f}键上轻按一下就放开，这就是\Cf{}。
+\item 左手无名指稍向下移，在{\kbd x}键上轻按一下就放开，这就是\Cx{}。 
+\item 小指按在\Caps{}上别放开，左手食指在{\kbd f}键上轻按一下就放开，这就是\Cf{}。
 \item 现在左手小指可以放开了。
 \end{enumerate}
 
@@ -289,9 +289,9 @@
 
 \begin{itemize}
 \item 什么是 \Cx \Cs?
-\item 什么是 \Cx \LKey{2}? 什么是\Cx \LKey{3}? 什么是\Cx
-  \LKey{0}? 什么是\Cx \LKey{1}? 什么是\Cx \LKey{o}?
-\item 什么是\Cx \LKey{h}? 什么是\Cw{}?
+\item 什么是 \Cx {\kbd 2}? 什么是\Cx {\kbd 3}? 什么是\Cx
+  {\kbd 0}? 什么是\Cx {\kbd 1}? 什么是\Cx {\kbd o}?
+\item 什么是\Cx {\kbd h}? 什么是\Cw{}?
 \item 什么是 \Cg{}?
 \item 什么是\Cj{}? 什么是 \Ci{}?
   % \item 什么是 \LKeyCtrlX{/}?
@@ -312,7 +312,7 @@
 \auctex{}是Emacs的一个功能模块，为\LaTeX{}编程提供了巨大的便利。有了它，你的\LaTeX{}生活可以
 像 \texttt{Hello, world!}一样简单。现在就跟着我，手把手地领略一下简单的乐趣吧。
 
-一切当然是从\LKeyWin{}+\LKey{e}，打开Emacs开始。然后，\Cx \Cf，让我们开
+一切当然是从\Se{}，打开Emacs开始。然后，\Cx \Cf，让我们开
 始编辑一个新文件，就叫 \texttt{simple.tex}吧。
 
 在Emacs窗口的最下方，也就是 mini buffer 里，这时应该会有提示，让你输入文件名。输
@@ -324,7 +324,7 @@
 
 直接按 \Cj{} 就可以了。知道了吧, \Cj{} 就是我们的\Enter{}（回车）键。如果你的手正放在「标准
 键盘」上，那么，左手小指向左一偏，按到的正是\Ctrl{}键（\Caps{}{\scriptsize (CapsLock)}被我
-们改造成\Ctrl{}了）。右手食指下不正是\LKey{j}键吗？怎么样，比\Enter{}更方便吧。
+们改造成\Ctrl{}了）。右手食指下不正是{\kbd j}键吗？怎么样，比\Enter{}更方便吧。
 
 现在，可以向 \texttt{simple.tex}文件里写东西了，\Cc\Ce{}，e代表environment。“环境”到底是什么
 呢？意会吧，用用就明白了。在 mini buffer 里会有提示，
@@ -403,7 +403,7 @@
 就是把 \texttt{LaTeX} 这五个字母输出成一副怪样子，\LaTeX{}。
 
 好了，在 title 下新起一行。然后\Cm{}。你肯定知道 \Cm{}是干什么用的了吧，就是要输入一
-个 Macro。也许你会好奇，想知道总共有多少 Macro? 那么现在可以按一下\Tab{}键。看到了吗？在弹
+个 Macro。也许你会好奇，想知道总共有多少 Macro? 那么现在可以按一下{\Tab}键。看到了吗？在弹
 出的新窗口中，列出了近百个 Macro. 还好，我们并不需要记住这么多。最常用的也就三、五个而已。
 
 mini buffer 里又会有提示：
@@ -480,7 +480,7 @@ Emacs会把我们上次输入的Macro，也就是title，做为默认值提示�
 
 好了，回到Emacs。现在你的光标应该停在 \verb|\maketitle| 的下面一行。我们开始写「摘要」部
 分。\Cc\Ce{}，开始一个新的“环境”\footnote{如果你好奇心强，想知道总共有哪些“环境”的话，现在
-  可以按\Tab{}键。}。mini buffer 里提示：
+  可以按{\Tab}键。}。mini buffer 里提示：
 
 \begin{itemize}
 \item[] \texttt{Environment type: (default itemize)}
@@ -690,7 +690,7 @@ mini buffer 又提示：
 \item[] \verb'\verb|\title{}| --- The title of the article.'
 \end{itemize}
 
-输入之后，\MEnter{}，也就是，左手拇指按住\LKeyAlt{}键，同时右手小指去敲\Enter{}。你会看到
+输入之后，\MEnter{}，也就是，左手拇指按住{\kbd }键，同时右手小指去敲\Enter{}。你会看到
 这样的效果：
 \begin{codeblock}[.9]
 \begin{latexcode}
@@ -1310,11 +1310,11 @@ $biber = 'biber --debug %O %S';
     \begin{tabu}{rl}\hline
       打开文件：&\Cx\Cf{}\\
       存盘：&\Cx\Cs{}\\
-      关掉文件：&\Cx\LKey{k}\\
+      关掉文件：&\Cx{\kbd k}\\
     \end{tabu}
   \item[] \textbf{编辑操作：}
     \begin{tabular}{rlrl}\hline
-      终止命令：&\Cg{}&设置标记：&\Ctrl{}\LKeySpace{}\\
+      终止命令：&\Cg{}&设置标记：&{\kbd }+{\kbd }\\
       换行缩进：&\Cj{}&缩进：&\Ci{}\\
       取消操作：&\Cslash{}&删除字符：&\Cd{}\\
       剪切：&\Ck{}&粘贴：&\Cy{}\\\hline
@@ -1328,15 +1328,15 @@ $biber = 'biber --debug %O %S';
     \end{tabular}
   \item[] \textbf{窗口操作：}
     \begin{tabular}{rlrl}\hline
-      横分：&\Cx\LKey{2}&纵分：&\Cx\LKey{3}\\
-      \hspace{1em}保留我：&\Cx\LKey{1}&关掉我：&\Cx\LKey{0}\\
-      切换：&\Cx\LKey{o}&&\\\hline
+      横分：&\Cx{}{\kbd 2}&纵分：&\Cx{}{\kbd 3}\\
+      \hspace{1em}保留我：&\Cx{}{\kbd 1}&关掉我：&\Cx{}{\kbd 0}\\
+      切换：&\Cx{}{\kbd o}&&\\\hline
     \end{tabular}
   \item[] \textbf{寻求帮助：}
     \begin{tabular}{rlrl}
-      教程：&\Ch\LKey{t}&info：&\Ch\LKey{i}\\
-      \hspace{1em}快捷键：&\Ch\LKey{k}&\hspace{1em}函数：&\Ch\LKey{f}\\
-      变量：&\Ch\LKey{v}&&\\\hline
+      教程：&\Ch{}{\kbd t}&info：&\Ch{}{\kbd i}\\
+      \hspace{1em}快捷键：&\Ch{}{\kbd k}&\hspace{1em}函数：&\Ch{}{\kbd f}\\
+      变量：&\Ch{}{\kbd v}&&\\\hline
     \end{tabular}
   \end{itemize}
 \end{onehalfspace}
@@ -1619,7 +1619,7 @@ mini buffer 提示：
 
 \subsubsection*{快捷地插入标签和索引}
 
-插入标签和索引也是有快捷键的。\Cc\biolinumKeyGlyph{parenleft}就是要插入标签，mini
+插入标签和索引也是有快捷键的。\Cc{}{\kbd \{}就是要插入标签，mini
 buffer提示：
 
 \begin{enumerate}
@@ -1637,7 +1637,7 @@ buffer提示：
 
 现在，在提示下输入一个简短而好记的标签名称，以便后面可以轻松找到它。
 
-要插入索引（\verb'\ref{}'）的话，敲 \Cc\biolinumKeyGlyph{parenright}，mini buffer 提示：
+要插入索引（\verb'\ref{}'）的话，敲 \Cc{}{\kbd \}}，mini buffer 提示：
 
 \begin{itemize}
 \item[] \texttt{SELECT A REFERENCE FORMAT}
@@ -1756,7 +1756,7 @@ minted宏包提供了丰富的命令，可以支持数十种编程语言，后�
 用的是fcitx\footnote{\url{https://fcitx-im.org/wiki/Fcitx}}，还不错，挺好用的。
 
 现在，打开一个全新的\texttt{tex}文件，比如\texttt{hello.tex}，在里面写\texttt{article}，然
-后敲\Tab{}（TAB）键，一个现成的\LaTeX{}文件模板立时会展现在你的面前。这个模版里有你写一篇漂
+后敲{\Tab}（TAB）键，一个现成的\LaTeX{}文件模板立时会展现在你的面前。这个模版里有你写一篇漂
 亮中文文章所需要的一切。光标就停在 \verb'\title{}' 的花括号里，那么就开始用中文填空
 吧。Happy \TeX{}ing!
 
@@ -1910,11 +1910,11 @@ Class文件\footnote{也就是后缀为\texttt{.cls}的文件，也就是我们�
 
 具体如何来用这些命令呢？简而言之，\Cx\Cf{}，输入一个崭新的文件名，\Cj{}。现在，面对空无一字
 的Emacs窗口，你有生以来最重要的一篇文章就要开篇了，你在思考什么？其实什么都不用想，直接
-敲 \texttt{thesis} \Tab{}（Tab），一个论文框架就呈现在你的眼前了，你要做的就是用你前面学到的
+敲 \texttt{thesis} {\Tab}（Tab），一个论文框架就呈现在你的眼前了，你要做的就是用你前面学到的
 那些\LaTeX{}命令来填空。
 
-在本文开始的时候（第\pageref{p:yasnippet}页），我们提到过“\Tab{}大法”是\texttt{yasnippet}的
-贡献。所以，你在期待\Tab{}键能带来奇迹之前，必须先确保你的系统里已经装好了
+在本文开始的时候（第\pageref{p:yasnippet}页），我们提到过“{\Tab}大法”是\texttt{yasnippet}的
+贡献。所以，你在期待{\Tab}键能带来奇迹之前，必须先确保你的系统里已经装好了
 \texttt{yasnippet}。如果还没装上，那么就执行下面的命令\cite{aptitude}：
 
 \begin{codeblock}
@@ -1934,14 +1934,14 @@ sudo apt install yasnippet yasnippet-snippets
 跟着本教程写论文的前提条件就是，Emacs必须工作正常，如果发现问题必须及时处理，不能将就。尤其
 是在入门阶段，不要指望用一个别扭的Emacs来顺畅地写出完美的论文。
 
-附录\ref{app:thesis}中列出了完整的毕业论文框架，也就是你在键入\texttt{thesis} \Tab{}后应
+附录\ref{app:thesis}中列出了完整的毕业论文框架，也就是你在键入\texttt{thesis} {\Tab}后应
 该看到的东西。如果奇迹没有发生，那么就要操心一下你的Emacs配置了。
 
-假设你的Emacs环境良好，按\Tab{}键之后，本来空荡荡的Emacs buffer里现在有了一个论文框架，而且
+假设你的Emacs环境良好，按{\Tab}键之后，本来空荡荡的Emacs buffer里现在有了一个论文框架，而且
 光标就停在你要填空的第一个位置，也就是 \verb'\Title{论文标题}'的花括号里。这时，你只要键入
 任何文字（通常应该是你自己的论文标题），（感谢\texttt{yasnippet}）花括号里的“论文标题”四字
-就会被自动替换掉。写好了论文标题，还是按\Tab{}键，光标会自动跳到下一个你需要填空的位置。如
-此一直\Tab{}下去，直到光标不再跳开了，那就是你该写论文第一章内容的时候了。
+就会被自动替换掉。写好了论文标题，还是按{\Tab}键，光标会自动跳到下一个你需要填空的位置。如
+此一直{\Tab}下去，直到光标不再跳开了，那就是你该写论文第一章内容的时候了。
 
 论文框架里有足够多的注释，再加上你在前几章学到的本领，我相信写出一个规范、漂亮的毕业论文应该是手
 到擒来的事情了。
@@ -2044,12 +2044,8 @@ sudo apt install yasnippet yasnippet-snippets
 
 %%% 正文部分到此结束。下面是参考文献、指导教师简介、鸣谢、附录
 \Appendix{} % 不要动这一行！
-\printbibliography[heading={bibintoc},title={参考文献}]\label{p:ref} % 输出参考文献
-\label{page:bib}
-\advisorinfopage{}                 % 输出指导教师简介
-\acknowledgmentspage{}             % 输出鸣谢
+\maketailpages{} % 参考文献、指导教师简介、鸣谢
 
-\singlespacing
 % 附录章节
 \chapter{与排版论文相关的软件清单}\footnotetext{
   这份清单是用如下命令获得的：

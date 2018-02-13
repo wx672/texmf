@@ -5,7 +5,7 @@
 \RequirePackage{ifxetex} % This class is for XeTeX only
 
 \RequirePackage{wx672common}
-\RequirePackage{wx672cjk}
+\RequirePackage{wx672fonts}
 \RequirePackage{wx672bib}
 \RequirePackage{wx672tikz}
 \RequirePackage{wx672minted}
@@ -23,6 +23,15 @@
 \setbeamercolor{block body}{bg=Gray!4}
 \setbeamercolor{alerted text}{fg=blue}
 \setbeamercolor{section in toc}{fg=Green,bg=Gray!6}
+\setbeamertemplate{section page}{%
+  \begin{beamercolorbox}[center]{structure}
+    {\LARGE\insertsection}
+  \end{beamercolorbox}}
+\setbeamertemplate{subsection page}{%
+  \begin{beamercolorbox}[center]{structure}
+    {\LARGE\insertsubsection}
+  \end{beamercolorbox}}
+
 %\setbeamercovered{transparent}
 
 % \AtBeginSection[]{

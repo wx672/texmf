@@ -68,13 +68,15 @@ left=2.5cm, right=2.5cm,
       出版时间&\SWFCField@Publishtime{}\\\tabucline-
     \end{tabu}
     \vspace{-1pt} \tabulinesep=0pt
-    \begin{tabu}{|X[.1,c,m]|X|}
-      \vspace{1cm}课程\par\vspace{4ex}教学\par\vspace{4ex}总结\par\vspace{3cm}&
-      \begin{minipage}{1.0\linewidth}
+    \begin{tabu}{|X[.1,c]|X|}
+      课程\par\vspace{4ex}教学\par\vspace{4ex}总结\par\vspace{1cm}&
+      \begin{minipage}{\columnwidth}
+        \vspace*{3ex}
         \SWFCField@Sumup{}
-      \end{minipage}\\\tabucline-      
+      \end{minipage}\\\tabucline-%
       \vspace{1cm}今后\par\vspace{4ex}改革\par\vspace{4ex}设想\par\vspace{3cm}&
-      \begin{minipage}{1.0\linewidth}
+      \begin{minipage}{.7\columnwidth}
+        \vspace{3ex}
         \SWFCField@Suggestion{}
       \end{minipage}\\\tabucline-
       填报人&\tabulinesep=2mm
@@ -84,7 +86,7 @@ left=2.5cm, right=2.5cm,
     \end{tabu}
     \vspace{-1pt} \tabulinesep=2mm
     \begin{tabu}{|X|}
-      填报日期：\SWFCField@Date\hfill{}（以上为授课教师填写）\\\tabucline-
+      填报日期：\quad\SWFCField@Date\hfill{}（以上为授课教师填写）\\\tabucline-
       教研室负责人审阅意见：\\[5ex]
       \hfill{}\makebox[10em][l]{签名：}
       \makebox[5em][r]{年}\makebox[3em][r]{月}\makebox[3em][r]{日}\\\tabucline-

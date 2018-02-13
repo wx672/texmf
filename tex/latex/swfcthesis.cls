@@ -29,6 +29,8 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage{titlesec} % \titleformat, \titlespacing
 \titleformat{\chapter}{\centering\LARGE\bfseries}{\thechapter}{1em}{}
 \titlespacing{\chapter}{0pt}{*0}{*4}
+%\setcounter{secnumdepth}{4}
+%\setcounter{tocdepth}{3}
 
 % add dotted line for chapters in toc
 % \renewcommand*\l@chapter{\@dottedtocline{1}{0em}{1.5em}}
@@ -54,7 +56,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage{subcaption}
 \captionsetup{labelsep=quad}
 
-\RequirePackage{xcolor}
+\RequirePackage{xcolor}% [monochrome]
 \RequirePackage{hyperref}
 \hypersetup{%
   bookmarksnumbered, plainpages=false, breaklinks=true,
@@ -183,7 +185,13 @@ date=iso,seconds=true,% to suppress compile warnings
         \extrarowsep=^8mm_-7pt
         \begin{tabu} spread \textwidth {@{}X[r]X[3.3,c]@{}}
           \textbf{题\hspace{2em}目：}&%
-          \parbox[t]{15em}{\centering\SWFCField@Title}\\\tabucline{2-2}%
+          \makebox[0pt][t]{%
+            \begin{minipage}[t]{15em}
+              \centering\parbox[t]{14em}{\centering\SWFCField@Title}
+            \end{minipage}}%
+          \rule[-.5ex]{15em}{.1pt}\par
+          \rule[-.1ex]{15em}{.1pt}\\
+          % \parbox[t]{15em}{\centering\SWFCField@Title}\\\tabucline{2-2}%
           \textbf{分院系部：} &大数据与智能工程学院\\\tabucline{2-2}
           \textbf{专\hspace{2em}业：}&\SWFCField@Subject\\\tabucline{2-2}
           % \textbf{学\hspace{2em}号：}&\SWFCField@Authorid\\\tabucline{2-2}
@@ -219,7 +227,7 @@ date=iso,seconds=true,% to suppress compile warnings
   \begin{center}
     {\singlespacing\Large\textbf{\SWFCField@enTitle}}\\[5mm]
     {\large\SWFCField@enAuthor}\\[3mm]
-    {\singlespacing {\large School of Big Data and Intelligence Engineering\\
+    {\singlespacing {\large College of Big Data and Intelligence Engineering\\
         Southwest Forestry University\\
         Kunming 650224, Yunnan, China}}
   \end{center}
@@ -229,18 +237,21 @@ date=iso,seconds=true,% to suppress compile warnings
   \noindent\textbf{Key words: }~\SWFCField@enKeywords
   \clearpage}
 
-\newcommand{\acknowledgmentspage}{% Acknowledgments page  
-  \phantomsection{}
-  \addcontentsline{toc}{chapter}{致\hspace{1em}谢}
-  \chapter*{致\hspace{1em}谢}
-  \SWFCField@Acknowledgments}
-
 \newcommand{\advisorinfopage}{% Advisor info page
   \phantomsection{}
   \addcontentsline{toc}{chapter}{指导教师简介}
   \chapter*{指导教师简介}
-  \SWFCField@AdvisorInfo
-  \clearpage}
+  \begin{doublespace}
+    \SWFCField@AdvisorInfo
+  \end{doublespace}\clearpage}
+
+\newcommand{\acknowledgmentspage}{% Acknowledgments page  
+  \phantomsection{}
+  \addcontentsline{toc}{chapter}{致\hspace{1em}谢}
+  \chapter*{致\hspace{1em}谢}
+  \begin{doublespace}
+    \SWFCField@Acknowledgments
+  \end{doublespace}\clearpage}
 
 \newcommand{\makepreliminarypages}{% preliminary pages
   \SWFCtitlepage{}
@@ -248,16 +259,26 @@ date=iso,seconds=true,% to suppress compile warnings
   \abstractpage{}
   \enabstractpage}
 
-\RequirePackage{minted} % minted has to be loaded at last!!!
+\newcommand{\maketailpages}{% tail pages
+  \singlespacing{}
+  \printbibliography[heading={bibintoc},title={参考文献}]\label{p:ref} % 参考文献
+  \label{page:bib}
+  \doublespacing{}
+  \advisorinfopage{}                 % 指导教师简介
+  \acknowledgmentspage{}             % 鸣谢
+  \singlespacing}
+
+\RequirePackage[chapter]{minted} % minted has to be loaded at last!!!
 \usemintedstyle{bw}
 
 \renewcommand{\listingscaption}{程序} % used by minted
 \renewcommand{\listoflistingscaption}{程序目录}
+\renewcommand{\thelisting}{\thechapter{}-\arabic{listing}}
 
 \renewcommand{\theFancyVerbLine}{
   \textcolor{lightgray}{\scriptsize\arabic{FancyVerbLine}}}
 
-\newcommand{\codec}[1]{\mintinline{c}|#1|}
+\newcommand{\cinline}[1]{\mintinline{c}|#1|}
 
 \setminted{%
   linenos=true,numbersep=3pt,fontsize=\small,
@@ -267,12 +288,14 @@ date=iso,seconds=true,% to suppress compile warnings
 \newminted{c}{} \newminted{shell}{} \newminted{latex}{} \newminted{bibtex}{}
 \newminted{gas}{} \newminted{nasm}{} \newminted{python}{}
 
+\newmint[csingle]{c}{linenos=false,frame=topline,framesep=3pt,}
+
 % code listing cross pages
 \newenvironment{longlisting}{\captionsetup{type=listing}}{}
 
-\newenvironment{codeblock}[1][.8]% e.g. \begin{codeblock} ... \end{codeblock}
-{\begin{center}\begin{minipage}{#1\textwidth}\begin{singlespace}}%
-{\end{singlespace}\end{minipage}\end{center}}
+\newenvironment{codeblock}[1][.8]{% e.g. \begin{codeblock} ... \end{codeblock}
+  \begin{center}\begin{minipage}{#1\textwidth}\begin{singlespace}}%
+      {\end{singlespace}\end{minipage}\end{center}}
 
 % Initial defaults
 \Title{} \Author{} \Advisor{} \AdvisorTitle{} \AdvisorInfo{} \Month{} \Year{} \Subject{}

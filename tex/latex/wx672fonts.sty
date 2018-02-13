@@ -2,8 +2,10 @@
 \ProvidesPackage{wx672fonts}
 
 \RequirePackage{ifxetex} % This class can only be processed with XeTeX
+\RequirePackage{etoolbox}
+\newtoggle{logocolor}
 
-\RequirePackage{fontawesome,latexsym,pifont,units,amsmath,amsfonts,amssymb,marvosym,mathtools}
+\RequirePackage{latexsym,pifont,units,amsmath,amsfonts,amssymb,marvosym,mathtools}
 
 \RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
 \defaultfontfeatures{Mapping=tex-text}
@@ -11,37 +13,146 @@
 % Liberation fonts is a drop-in replacement for Microsoft Times, Arial and Courier fonts
 \setmainfont{Liberation Serif}
 \setsansfont{Liberation Sans}
-%\setmonofont{DejaVu Sans Mono} % no good for {\ttfamily }
 
 \newfontfamily\humor{Humor Sans}% \humor{hello, world!}
 \newfontfamily\purisa{Purisa}
-\newfontfamily\utfart{DejaVu Sans Mono}
-\newfontfamily\uart{DejaVu Sans Mono}
-\newfontfamily\emoji{Symbola}% {\emoji ☺}
-\newfontfamily\emj{Symbola}% {\emj ☺}
+% \newfontfamily\US{USStarsNStripes}
+% \newfontfamily\USS{LMS Star Spangled}
+% \newfontfamily\UK{LMS God Save The Queen}
+\newfontfamily\kbd{Linux Biolinum Keyboard O}
 %\newfontfamily\quivira{Quivira} % large unicode coverage, but not come with Debian
 
 \newcommand{\verbatimfont}[1]{\def\verbatim@font{#1}}%
 
+%%% For utf8 symbols
 % use C-x 8 RET to input utf8 symbols
 % C-x 8 C-h for more
 % M-x describe-char
 
+\newfontfamily\dejavu{DejaVu Sans Mono}
+%{\dejavu ➔ ➜ ➤ ✉ ⚓ ☭ ❂ …}
+\newcommand\good{\dejavu ☺}% 👍
+\newcommand\bad{\dejavu ☹}% 👎
+\newcommand\danger{\dejavu ☠}
+\newcommand\caution{\dejavu ☡}
+\newcommand\pointright{\dejavu ☞} % ☞
+\newcommand\pointleft{\dejavu ☜} % ☜
+\newcommand\unchecked{\dejavu □}%ballot box
+\newcommand\uncheckedbox{\dejavu □} % ❏
+\newcommand\Checked{\dejavu ✔}% ✓
+\newcommand\RedCross{\textcolor{red}{\dejavu ✘}}% ✗
+\newcommand\checked{\large\dejavu ☑} %🗹
+\newcommand\checkedbox{\dejavu ☑} % 🗹
+\newcommand\crossedbox{\dejavu 🗷} % ☒
+\newcommand\ellipis{\dejavu …}
+
+\newfontfamily\nerd{DejaVu Sans Mono Nerd Font Complete}%
+% {\nerd %
+%             %
+%      %
+%            %
+%                    %
+% }
+\newcommand\linux{\nerd } % u+f17c
+\newcommand\gnu{\nerd }
+\newcommand\debian[1][true]{%
+  \settoggle{logocolor}{#1}%
+  \iftoggle{logocolor}{\textcolor{red}{\nerd }}{{\nerd }}}
+
+\newcommand\ubuntu[1][true]{%
+  \settoggle{logocolor}{#1}%
+  \iftoggle{logocolor}{\textcolor{orange}{\nerd }}{{\nerd }}}% 
+
+\newcommand\redhat{\nerd }
+\newcommand\fedora[1][true]{%
+  \settoggle{logocolor}{#1}%
+  \iftoggle{logocolor}{\textcolor{DarkBlue}{\nerd }}{{\nerd }}}% 
+
+\newcommand\android[1][true]{%
+  \settoggle{logocolor}{#1}%
+  \iftoggle{logocolor}{\textcolor{Green}{\nerd }}{{\nerd }}}
+
+\newcommand\pie{\nerd }
+%\newcommand\win{\textcolor{SkyBlue}{\nerd }}%   
+
+\newcommand\win[1][true]{%
+  \settoggle{logocolor}{#1}%
+  \iftoggle{logocolor}{\textcolor{SkyBlue}{\nerd }}{{\nerd }}}
+
+\newcommand\apple[1][true]{%
+  \settoggle{logocolor}{#1}%
+  \iftoggle{logocolor}{\textcolor{gray}{\nerd }}{{\nerd }}}
+
+\newcommand\linuxmint{\nerd }
+\newcommand\centos{\nerd }
+
+\newcommand\chrome[1][true]{%
+  \settoggle{logocolor}{#1}%
+  \iftoggle{logocolor}{\textcolor{DarkBlue}{\nerd }}{{\nerd }}}
+
+\newcommand\firefox{\nerd }
+\newcommand\ie[1][true]{%
+  \settoggle{logocolor}{#1}%
+  \iftoggle{logocolor}{\textcolor{SkyBlue}{\nerd }}{{\nerd }}}
+
+\newcommand\baidu[1][true]{%
+  \settoggle{logocolor}{#1}%
+  \iftoggle{logocolor}{\textcolor{DarkBlue}{\nerd }}{{\nerd }}}
+
+\newcommand\googleg[1][true]{%
+  \settoggle{logocolor}{#1}%
+  \iftoggle{logocolor}{\textcolor{SteelBlue}{\nerd }}{{\nerd }}}
+
+\newfontfamily\fa{FontAwesome} % (#xf000, #xf2e0) covered by nerd font
+% {\fa }
+
+\newfontfamily\symbola{Symbola} % (#x1f000, #x1f9e6)
+\newfontfamily\emoji{Symbola}% {\emoji ☺}
+\newfontfamily\emj{Symbola}% {\emj ☺}
+%{\symbola 𐇐 👍 👎 ☛}
 \newcommand\Symbol[1]{\emoji #1}
-\newcommand\okay{\emoji 😐}
-\newcommand\good{\uart ☺}% 👍
-\newcommand\bad{\uart ☹}% 👎
-\newcommand\danger{\uart ☠}
-\newcommand\caution{\uart ☡}
-\newcommand\pointright{\uart ☞}
-\newcommand\pointleft{\uart ☜}
-\newcommand\unchecked{\uart □}%ballot box
-\newcommand\uncheckedbox{\uart □}
-\newcommand\Checked{\uart ✔}
-\newcommand\RedCross{\textcolor{red}{\uart ✘}}
-\newcommand\checked{\emoji 🗹} %
-\newcommand\checkedbox{\emoji 🗹} %
-\newcommand\crossedbox{\emoji 🗷}
-\newcommand\ellipis{\uart …}
-\newcommand\linux{\faLinux} % fontawesome
-\newcommand\wechat{\faWechat}
+\newcommand\openbook{\symbola 🕮}
+\newcommand\okay{\symbola 😐}
+\newcommand\pright{\symbola ☛}
+
+\RequirePackage[CJKmath=true,AutoFakeSlant=true,PunctStyle=kaiming]{xeCJK} % slant header
+\DeclareOption{cjk}{%
+  \setCJKmainfont{Noto Serif CJK SC}
+  \setCJKsansfont{Noto Sans CJK SC}
+  \setCJKmonofont{Noto Sans Mono CJK SC}
+
+  \newCJKfontfamily\hei{Noto Serif CJK SC Bold} % \hei{Hello, world!}
+  \newCJKfontfamily\song{Noto Serif CJK SC}
+  \newCJKfontfamily\kai{AR PL UKai CN}
+  \newCJKfontfamily\quotefont{AR PL UKai CN}
+
+  % https://nablux.net/tgp/weblog/2013/03/22/how-typeset-japanese-using-xelatex/
+  % vertical typesetting
+  \setCJKfamilyfont{cjk-vert}[Script=CJK,RawFeature=vertical]{FZGuLi-S12S}
+
+  \newCJKfontfamily\sig{signature}
+
+  \XeTeXlinebreaklocale "zh"
+  \XeTeXlinebreakskip = 0pt plus 1pt
+
+  % adjust the spaces between numbers and Chinese characters
+  \xeCJKsetup{xCJKecglue=\hskip 0pt plus 0.08\baselineskip}
+
+  \newcommand{\ziju}[1]{\renewcommand{\CJKglue}{\hskip #1}}
+
+  \renewcommand{\contentsname}{目\hspace{1em}录}
+  \renewcommand{\listfigurename}{插图目录}
+  \renewcommand{\listtablename}{表格目录}
+  \renewcommand{\figurename}{图}
+  \renewcommand{\tablename}{表}
+  \renewcommand{\appendixname}{附\hspace{1em}录}
+  \renewcommand{\indexname}{索\hspace{1em}引}
+  % \renewcommand{\listingscaption}{程序} % have to load minted first
+  % \renewcommand{\listoflistingscaption}{程序目录}% have to load minted first
+  % \renewcommand{\today}{\number\year 年\number\month 月\number\day 日}
+}
+
+%\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\ProcessOptions\relax
+
+%\ExecuteOptions{C} % default to C
