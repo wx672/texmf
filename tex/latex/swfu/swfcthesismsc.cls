@@ -96,10 +96,10 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
   tikzmark,%
 }%
 
-\RequirePackage[backend=biber,
-style=chem-angew,sorting=none,articletitle=true,
-hyperref=true,doi=false,isbn=false,%url=false,
-date=iso,seconds=true,% to suppress compile warnings
+\RequirePackage[backend=biber,style=gb7714-2015,
+% style=chem-angew,sorting=none,articletitle=true,
+% hyperref=true,doi=false,isbn=false,%url=false,
+% date=iso,seconds=true,% to suppress compile warnings
 ]{biblatex}
 
 \renewcommand*{\bibfont}{\small} % 11pt

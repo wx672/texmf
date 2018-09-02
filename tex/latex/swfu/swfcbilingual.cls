@@ -50,10 +50,10 @@
 \newcommand{\makeform}{\pagestyle{empty}  
   {\centering
     {\textbf {\LARGE\hei 西南林业大学双语教学课程申请表}}\\[4ex]
-    \begin{tabu}{|X[.137,c,m]|@{}X[c,m]@{}|}\tabucline-
-      申请人基本\par 信息 &
+    \begin{tabu}{|X[.137,c]|@{}X[c]@{}|}\tabucline-
+      \vspace*{2ex}申请人基本\par 信息 &
       \tabulinesep=1mm
-      \begin{tabu}{r|X[.8,c]|r|X[.5,c]|r|X[2.5,c]@{}}
+      \begin{tabu}{r|X[-1,c]|r|X[-1,c]|r|X[c]@{}}
         姓名&{\kai\SWFCField@Name}&性别&{\kai\SWFCField@Gender}&
         出生年月&\SWFCField@Dayofbirth\\\tabucline-
         学历&{\kai\SWFCField@Diploma}&专业技术职务&{\kai\SWFCField@Title}&
@@ -62,9 +62,9 @@
         学科专业&{\kai\SWFCField@Subject}\\\tabucline-
         所在学院&\multicolumn{5}{c}{\kai\SWFCField@School}\\
       \end{tabu} \\\tabucline-
-      课程信息 &
+      \vspace*{4ex}课程信息 &
       \tabulinesep=1mm
-      \begin{tabu}{r|X[c,m]|r|X[1.5,c,m]|r|X[2.5,c,m]@{}}
+      \begin{tabu}{r|X[-1,c]|r|X[-1,c]|r|X[,c]@{}}
         学期&\SWFCField@Term&开课学院&{\kai\SWFCField@Schooltwo}&
         课程名称&{\kai\SWFCField@Course}\\\tabucline-
         外语语种&{\kai\SWFCField@Language}&
@@ -85,7 +85,7 @@
 
 \Name{王晓林}
 \Gender{男}
-\Dayofbirth{1969-03}
+\Dayofbirth{1969 -- 03}
 \Diploma{研究生}
 \Degree{硕士}
 \Title{讲师}
