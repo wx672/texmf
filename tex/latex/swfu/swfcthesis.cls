@@ -2,11 +2,11 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfcthesis}
 
-% pass unknown options to book
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
+% pass unknown options to ctexbook
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions\relax
 
-\LoadClass[a4paper,12pt,oneside]{book}
+\LoadClass[scheme=chinese,zihao=-4]{ctexbook}
 
 \RequirePackage{ifxetex} % XeTeX only
 
@@ -17,20 +17,24 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 
 \RequirePackage{etoolbox}
 \RequirePackage{indentfirst}
-\RequirePackage{tabu,longtable,multicol,multirow,array}
+\RequirePackage{tabu,longtable,multicol,multirow,array,booktabs}
 \RequirePackage{ulem}
+\RequirePackage{enumitem} % \setlist
+\setlist{nosep} % kills all vertical spacing
+
 
 % graphicx
-\RequirePackage{graphicx} % before xltxtra
+\RequirePackage{graphicx}
 \graphicspath{% mind the trailing "/"
   {./figs/}{../figs/}{./img/}{../img/}{./pics/}{../pics/}{./}{../}}
 
 % titlesec
-\RequirePackage{titlesec} % \titleformat, \titlespacing
-\titleformat{\chapter}{\centering\LARGE\bfseries}{\thechapter}{1em}{}
-\titlespacing{\chapter}{0pt}{*0}{*4}
-%\setcounter{secnumdepth}{4}
-%\setcounter{tocdepth}{3}
+% \RequirePackage{titlesec} % \titleformat, \titlespacing
+% \titleformat{\chapter}{\centering\LARGE\bfseries}{\thechapter}{1em}{}
+% \titlespacing{\chapter}{0pt}{*0}{*4}
+
+% \setcounter{secnumdepth}{4}
+% \setcounter{tocdepth}{3}
 
 % add dotted line for chapters in toc
 % \renewcommand*\l@chapter{\@dottedtocline{1}{0em}{1.5em}}
@@ -47,9 +51,6 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \fancyhf{}%
   \fancyfoot[C]{\fontsize{8}{8}\selectfont -- \thepage\ --}
   \renewcommand{\headrulewidth}{0pt}}
-
-\RequirePackage{enumitem} % \setlist
-\setlist{nosep} % kills all vertical spacing
 
 % caption
 \RequirePackage{caption} % \captionsetup

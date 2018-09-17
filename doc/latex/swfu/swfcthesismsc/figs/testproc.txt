@@ -1,0 +1,28 @@
+$ testproc
+Parent has forked 61 procs
+proc[] is full now,cannot fork any more
+
+Child pid=4 is exiting
+Child pid=5 is exiting
+Child pid=6 is exiting
+......
+Child pid=24 is exiting
+......
+Child pid=63 is exiting
+Child pid=64 is exiting
+proc[] is still full after procs eixted,forked failed again
+waited Child pid=4
+waited Child pid=5
+waited Child pid=6
+......
+waited Child pid=34
+waited Child pid=35
+fork succeeded with a new proc 65
+parent exited and all left children was passed to initproc
+zombie!
+zombie!
+......
+zombie!
+Child proc=65 exited
+zombie!
+

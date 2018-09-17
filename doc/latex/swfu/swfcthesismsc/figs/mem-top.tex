@@ -1,0 +1,37 @@
+\documentclass[varwidth,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+┌─────────────────────────┐
+│    Memory Management    │
+└┬───┬───┬───┬────────────┘
+ │   │   │   │  
+┌┴┐ ┌┴┐ ┌┴┐ ┌┴┐  ┌───────────────┐
+│P│ │F│ │D│ │A├──┤ Copy on Write │
+│a│ │r│ │e│ │l│  └───────────────┘ 
+│g│ │e│ │a│ │l│
+│i│ │e│ │l│ │o│  ┌────────┐
+│n│ │ │ │l│ │c├──┤ exec() │
+│g│ │L│ │o│ │a│  └────────┘
+└─┘ │i│ │c│ │t│ 
+    │s│ │a│ │i│  ┌────────┐
+    │t│ │t│ │o├──┤ sbrk() │
+    └─┘ │i│ │n│  └────────┘       
+        │o│ └─┘ 
+        │n│     
+        └─┘                
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

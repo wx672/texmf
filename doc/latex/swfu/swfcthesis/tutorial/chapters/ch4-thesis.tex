@@ -1,0 +1,185 @@
+\chapter{完美的毕业论文}
+\label{cha:thesis}
+
+写毕业论文，像结婚一样，是一生一次的大事情。潦草而失败的论文，就像失败的婚姻，总要一次次地
+返工，在痛苦中煎熬，直到你遇见ta，带你摆脱迷茫、痛苦，登上幸福的彼岸\footnote{我说的当然
+  是\LaTeX{}。}。
+
+\begin{itemize}
+\item[] 写普通文章要用 \verb'\documentclass{article}'；
+\item[] 写报告要用 \verb'\documentclass{report}'；
+\item[] 写书要用 \verb'\documentclass{book}'；
+\item[] 写信要用 \verb'\documentclass{letter}'；
+\item[] 那么写毕业论文自然要用毕业论文模版了：\verb'\documentclass{swfuthesis}'。
+\end{itemize}
+
+如此关系人生的大事情，当然要为它专门建立一个目录吧。目录建好了，把论文模板 \texttt{swfuthesis.cls} 文件拷贝
+进去。然后就可以用它来写你的论文了。
+
+\section{Class文件}
+\label{sec:class}
+
+Class文件\footnote{也就是后缀为\texttt{.cls}的文件，也就是我们常说的模板文件。}，它决定了你
+的文章样式，比如说，纸张尺寸、页边距、行距、字距、字体、标题样式等等在class文件中都做了设
+置。除此之外，我们在写\texttt{tex}文件的过程中用到的命令（Macro）也都是class文件提供的。
+
+这里有一个值得注意的概念，排版这件事情，是由排版软件根据你（在文章中提供）的命令来进行的。
+只要你的命令正确，文章的格式就必然是正确的。这就是排版软件和字处理软件（比如MS-Word）的区
+别所在。利用字处理软件来写文章，你不得不既操心文章的内容，也操心文章的格式。而利用排版软件，
+比如\LaTeX{}来写文章，你只需要关心文章的内容，而格式的事情，排版软件会根据你的命令来替你完
+成。所以，你输入的命令必须正确、合法、合情理才行。
+
+排版软件只能理解class文件中提供的命令\footnote{我说谎了，实际上，在\texttt{tex}文件中，你可
+  以利
+  用 \texttt{\textbackslash{}newcommand\{\}}和 \texttt{\textbackslash{}renewcommand\{\}}来
+  定义自己的命令。但对于初学者来说，你暂时还不必操心这个，class文件所提供的命令应该足以应付
+  你目前的需求了。}，所以，我们当然要对这些命令有个基本的了解。附录\ref{app:class}中就
+是\texttt{swfuthesis.cls}文件的全部内容。我们在此做个简要介绍。简而言
+之，\texttt{swfuthesis.cls}提供了如下一些基本命令：
+\begin{singlespace}
+  \begin{multicols}{2}
+    \begin{enumerate}
+    \item \verb'\title{论文标题}'
+    \item \verb'\author{作者}'
+    \item \verb'\enTitle{论文标题}'
+    \item \verb'\enAuthor{作者}'
+    \item \verb'\Advisor{指导教师姓名}'
+    \item \verb'\AdvisorTitle{指导教师职称}'
+    \item \verb'\Month{这里填月份}'
+    \item \verb'\Year{这里填年份}'
+    \item \verb'\Subject{这里填专业}'
+    \item \verb'\maketitle'：用于生成封面
+    \item \verb'\makebib'：用于生成参考文献
+    \end{enumerate}
+  \end{multicols}
+\end{singlespace}
+和如下一些环境：
+\begin{singlespace}
+  \begin{multicols}{2}
+    \begin{enumerate}
+    \item \verb'abstract'：中文摘要
+    \item \verb'keyword'：中文关键词
+    \item \verb'EAbstract'：英文摘要
+    \item \verb'EKeyword'：英文关键词
+    \item \verb'advisorInfo'：指导教师简介
+    \item \verb'acknowledgment'：致谢
+    \end{enumerate}
+  \end{multicols}
+\end{singlespace}
+\section{模板的使用}
+
+具体如何使用这些命令呢？简而言之，\Cx\Cf{}，输入一个崭新的文件名，\Cj{}。现在，面对空无一字
+的Emacs窗口，你有生以来最重要的一篇文章就要开篇了，你在思考什么？其实什么都不用想，直接
+敲 \texttt{thesis} {\Tab}（Tab），一个论文框架就呈现在你的眼前了，你要做的就是用你前面学到的
+那些\LaTeX{}命令来填空。
+
+在本文开始的时候（第\pageref{p:yasnippet}页），我们提到过“{\Tab}大法”是\texttt{yasnippet}的
+贡献。所以，你在期待{\Tab}键能带来奇迹之前，必须先确保你的系统里已经装好了
+\texttt{yasnippet}。如果还没装上，那么就执行下面的命令\cite{aptitude}：
+
+\begin{codeblock}
+  \begin{shellcode}
+sudo apt update && sudo apt upgrade
+sudo apt install yasnippet yasnippet-snippets
+  \end{shellcode}
+\end{codeblock}
+
+装好之后，重新加载Emacs的配置文件。很简单，在Emacs窗口里，敲
+
+\begin{itemize}
+\item[] \Mx{} \texttt{load-file} \Cj{} \verb'~/.emacs' \Cj{}
+\end{itemize}
+
+跟着本教程写论文的前提条件就是，Emacs必须工作正常，如果发现问题必须及时处理，不能将就。尤其
+是在入门阶段，不要指望用一个别扭的Emacs来顺畅地写出完美的论文。
+
+附录\ref{app:thesis}中列出了完整的毕业论文框架，也就是你在键入\texttt{thesis} {\Tab}后应
+该看到的东西。如果奇迹没有发生，那么就要操心一下你的Emacs配置了。
+
+假设你的Emacs环境良好，按{\Tab}键之后，本来空荡荡的Emacs buffer里现在有了一个论文框架，而且
+光标就停在你要填空的第一个位置，也就是 \verb'\title{论文标题}'的花括号里。这时，你只要键入
+任何文字（通常应该是你自己的论文标题），（感谢\texttt{yasnippet}）花括号里的“论文标题”四字
+就会被自动替换掉。写好了论文标题，还是按{\Tab}键，光标会自动跳到下一个你需要填空的位置。如
+此一直{\Tab}下去，直到光标不再跳开了，那就是你该写论文第一章内容的时候了。
+
+论文框架里有足够多的注释，再加上你在前几章学到的本领，我相信写出一个规范、漂亮的毕业论文应该是手
+到擒来的事情了。
+
+\section{生成参考文献}
+
+在第\ref{sec:ref}节中我们已经介绍过如何处理参考文献。大致步骤：
+\begin{enumerate}
+\item 准备好一个\texttt{.bib}文件（假设名字叫\texttt{myref.bib}）；
+\item 在\texttt{.tex}文件中做三件事：
+  \begin{enumerate}
+  \item 在\texttt{preamble}中加一句 \verb|\addbibresource{myref.bib}|；
+  \item 在正文中适当的地方利用\verb|\cite{}|命令引用\texttt{myref.bib}文件中的参考文献条目；
+  \item 在文章的结尾部分加一句\verb|\printbibliography{}|；
+  \end{enumerate}
+\item 用\texttt{latexmk}来编译\texttt{.tex}文件.
+\end{enumerate}
+
+附录\ref{app:bib}中列出了本文所用到的\texttt{.bib}文件（\texttt{tutorial.bib}）。
+你可以对照着第\pageref{p:ref}页的参考文献部分看看，找找感觉。
+
+\paragraph*{这个文件是怎么来的？}
+
+当然可以手写。\texttt{bib}文件的格式清晰易懂，照猫画虎地手写并不困难。但生活可以更轻松，如
+果你引用的书籍、资料不是太冷门，那么通常只要google一下「书名 bibtex」，就可以找到相应
+的\texttt{bib}条目了。有时你甚至可以从网上下载到现成的bib文件，比如全
+套RFC\footnote{Request for
+  Comments. \url{https://en.wikipedia.org/wiki/Request_for_Comments}}的\texttt{bib}文件。
+
+\paragraph*{怎样使用这个文件？}
+
+很简单，三件事：
+
+\begin{enumerate}
+\item 第一件事不用做，因为在我们的论文模板文件（\texttt{swfuthesis.cls}）里已经做了。在模板
+  文件里有如下一行：\par            \hspace{4em}\verb|\RequirePackage[backend=biber,style=gb7714-2015]{biblatex}|\par
+  也就是说，帮我们排版参考文献的是\texttt{biblatex}宏包；
+\item 在\texttt{tex}文件（你的论文）的preamble部分，也就是在\verb|\begin{document}|之前，加
+    上如下一行：\par\hspace{4em}\verb|\addbibresource{tutorial.bib}|\par
+    很显然，这是在告诉\texttt{biblatex}从当前目录下的\texttt{tutorial.bib}文件里去读取参考
+    文献信息。
+  \item 这件事也不用做了，因为在论文的框架文件（\texttt{tex}文件）里已经做好了。
+    在\texttt{tex}文件的\texttt{appendix}（附录）部分，你能看到如下一行：\par
+    \hspace{4em}\verb|\makebib|\par{}这就是要求排版输出参考文献。
+  \end{enumerate}
+
+\section{小结}
+
+在此我们简单回顾一下，要写出漂亮的毕业论文所应具备的必要条件：
+
+\begin{enumerate}
+\item 一套高效的工作环境
+  \begin{enumerate}
+  \item Debian sid；
+  \item \TeX{}Live；
+  \item Emacs+\auctex{}+Yasnippet；
+  \end{enumerate}
+\item 对Emacs基础快捷键的熟练使用；
+\item \LaTeX{}的基础知识；
+\end{enumerate}
+
+只要具备了以上条件，轻松地写出一份漂亮、规范的毕业论文应该不成问题了。
+先到这里吧。以后如果有时间，我会继续介绍一下
+
+\begin{enumerate}
+\item 如何用\LaTeX{} Beamer做出漂亮的演示幻灯片；
+\item 如何用Emacs org-mode快速生成PDF文件。
+\end{enumerate}
+
+另外，配合本教程，我制作了一个简单的小视频，\texttt{tutorial.mkv}，它应该和本文放在同一个
+目录下\footnote{\url{http://cs2.swfu.edu.cn/~wx672/swfcthesis/tutorial/}}。
+
+关于本文的任何疑问和建议，欢迎反馈到\texttt{wx672ster@gmail.com}。
+
+\begin{flushright}
+  {\Huge \fontspec{Purisa}Happy \TeX{}ing!}
+\end{flushright}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../tutctex"
+%%% End:

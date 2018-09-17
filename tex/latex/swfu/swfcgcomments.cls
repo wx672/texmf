@@ -2,16 +2,12 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfcgcomments}
 
-\LoadClass[10pt]{article}
+\LoadClass[scheme=plain]{ctexart}
 
 \RequirePackage{ifxetex} % XeTeX only
 
 % \RequirePackage{calc,ifthen}
-\RequirePackage{array}
-\RequirePackage{tabu}
-
-\RequirePackage{wx672cjk}
-
+\RequirePackage{tabu,array}
 \RequirePackage{graphicx}
 
 \RequirePackage[%showframe,nomarginpar,
@@ -23,14 +19,14 @@ left=2.5cm,right=2.5cm,
 % Declare some variables to hold the text fields for the preliminary pages
 \newcommand{\Formsubtitle}[1]{\gdef\SWFCField@Formsubtitle{#1}} % 指导教师意见 | 评阅意见
                                 % | 答辩申请表
-\newcommand{\Prjtitle}[1]{\gdef\SWFCField@Prjtitle{#1}} % 论文标题
+\newcommand{\Prjtitle}[1]{\gdef\SWFCField@Prjtitle{\kaishu #1}} % 论文标题
 \newcommand{\Studid}[1]{\gdef\SWFCField@Studid{#1}} % 学号
-\newcommand{\Studname}[1]{\gdef\SWFCField@Studname{#1}} % 学生姓名
-\newcommand{\Studsbj}[1]{\gdef\SWFCField@Studsbj{#1}} % 学生专业
-\newcommand{\Studclass}[1]{\gdef\SWFCField@Studclass{#1}} % 学生班级
+\newcommand{\Studname}[1]{\gdef\SWFCField@Studname{\kaishu #1}} % 学生姓名
+\newcommand{\Studsbj}[1]{\gdef\SWFCField@Studsbj{\kaishu #1}} % 学生专业
+\newcommand{\Studclass}[1]{\gdef\SWFCField@Studclass{\kaishu #1}} % 学生班级
 \newcommand{\Studmark}[1]{\gdef\SWFCField@Studmark{#1}} % 评分
-\newcommand{\Advisorname}[1]{\gdef\SWFCField@Advisorname{#1}} % 指导教师姓名
-\newcommand{\Advisortitle}[1]{\gdef\SWFCField@Advisortitle{#1}} % 指导教师职称
+\newcommand{\Advisorname}[1]{\gdef\SWFCField@Advisorname{\kaishu #1}} % 指导教师姓名
+\newcommand{\Advisortitle}[1]{\gdef\SWFCField@Advisortitle{\kaishu #1}} % 指导教师职称
 \newcommand{\Signature}[1]{\gdef\SWFCField@Signature{#1}} % 教师签名
 \newcommand{\Commenterlabel}[1]{\gdef\SWFCField@Commenterlabel{#1}} % 指导教师 | 评阅人 | 申请人
 \newcommand{\Commentslabel}[1]{\gdef\SWFCField@Commentslabel{#1}} % 评语： | 指导教师评审意见：
@@ -38,20 +34,20 @@ left=2.5cm,right=2.5cm,
 \newcommand{\Year}[1]{\gdef\SWFCField@Year{#1}}
 \newcommand{\Month}[1]{\gdef\SWFCField@Month{#1}}
 \newcommand{\Date}[1]{\gdef\SWFCField@Date{#1}}
-\newcommand{\Comments}[1]{\gdef\SWFCField@Comments{#1}} % 意见正文
+\newcommand{\Comments}[1]{\gdef\SWFCField@Comments{\kaishu #1}} % 意见正文
 \newcommand{\Hinttitle}[1]{\gdef\SWFCField@Hinttitle{#1}} % 提示部分的标题
 \newcommand{\Hinttext}[1]{\gdef\SWFCField@Hinttext{#1}} % 提示部分的内容
 
 \newcommand{\makeform}{\pagestyle{empty}
   {\centering
-    {\LARGE\hei 西南林业大学本科毕业（设计）论文\SWFCField@Formsubtitle}\\[3ex]
+    {\LARGE\heiti 西南林业大学本科毕业（设计）论文\SWFCField@Formsubtitle}\\[3ex]
     \tabulinesep=2mm
     \begin{tabu}{|c|X[l,1.2]|X[c,.6]|X[l,1.2]|}
       \tabucline-
-      论文（设计）题目& \multicolumn{3}{c|}{\kai\SWFCField@Prjtitle{}} \\\tabucline-
-      学生学号&\SWFCField@Studid&学生姓名&{\kai\SWFCField@Studname}\\\tabucline-
-      学生专业&{\kai\SWFCField@Studsbj}&班\hspace{2em}级&{\kai\SWFCField@Studclass}\\\tabucline-
-      指导教师姓名&{\kai\SWFCField@Advisorname}&职\hspace{2em}称&{\kai\SWFCField@Advisortitle}\\\tabucline-
+      论文（设计）题目& \multicolumn{3}{c|}{\SWFCField@Prjtitle{}} \\\tabucline-
+      学生学号&\SWFCField@Studid&学生姓名&{\SWFCField@Studname}\\\tabucline-
+      学生专业&{\SWFCField@Studsbj}&班\hspace{2em}级&{\SWFCField@Studclass}\\\tabucline-
+      指导教师姓名&{\SWFCField@Advisorname}&职\hspace{2em}称&{\SWFCField@Advisortitle}\\\tabucline-
     \end{tabu}
     \vspace{-1pt}
     \begin{tabu}{|X[c]|}

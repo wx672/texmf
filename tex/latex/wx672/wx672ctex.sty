@@ -1,29 +1,14 @@
-% still a lot to consider
-
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{wx672ctex}
 
-\RequirePackage{ifxetex} % This class can only be processed with XeTeX
+\RequirePackage{wx672fonts}
 
-% the default ctex format is not so welcoming.
-% the ctex font setting is good to use.
-\RequirePackage[zihao=false,% -4|5|false
-scheme=plain,% chinese|plain （仅提供中文支持，不中文化版式）
-heading=true,% 中文风格章节标题
-punct=kaiming]{ctex}
+\RequirePackage{ctex}
 \ctexset{
-  contentsname={目\hspace{1em}录},
-  listfigurename={插图目录},
-  listtablename={表格目录},
-  figurename={图},
-  tablename={表},
-  abstractname={摘\hspace{1em}要},
-  appendixname={附\hspace{1em}录},
-  indexname={索\hspace{1em}引},
-  bibname={参考文献},
-  % refname={参考文献},
- % algorithmname={算法},
-  %proofname={证明}  
+  scheme=plain,% chinese|plain （仅提供中文支持，不中文化版式）
+  zihao=false,% -4|5|false
+%  heading=true,% 中文风格章节标题
+  punct=kaiming
 }
 
 \newCJKfontfamily\sig{signature}

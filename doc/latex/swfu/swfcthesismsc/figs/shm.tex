@@ -1,0 +1,27 @@
+\documentclass[varwidth=50em,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+\usepackage{fancyvrb,xcolor}
+
+\begin{document}
+\begin{verbatim}
+      Process 1                                              Process 2
+4G┌──────────────┐                Physical               ┌──────────────┐4G
+  │              │                 memory                │              │
+  │ Kernel space │            ┌──────────────┐MAX        │ Kernel space │
+  │              │            │              │           │              │
+  │              │            │              │           │              │
+2G├──────────────┤        ┌──>│░░░░░░░░░░░░░░├──┐        ├──────────────┤2G
+  │  User space  │        │   │              │  │        │  User space  │
+  │              │        │   │              │  └───────>│░░░░░░░░░░░░░░│
+  │░░░░░░░░░░░░░░├────────┘   │              │  shmat(i) │              │
+  │              │ shmget(i)  └──────────────┘0          │              │
+ 0└──────────────┘                                       └──────────────┘0
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

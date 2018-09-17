@@ -1,0 +1,37 @@
+\documentclass[tikz,svgnames]{standalone}
+
+\usepackage{wx672tikz} % wx672fonts loaded here
+
+\begin{document}
+
+\begin{tikzpicture}[list/.style={rectangle split allocate boxes=20,%
+    rectangle split, rectangle split parts=20,%
+    draw, anchor=center}]
+  \node (kstack) [list,%
+  label={[anchor=east]north west:{\texttt{cpu->ts.esp0}}},%
+  label={[anchor=east]south west:{\texttt{p->kstack}}} 
+  ]%
+  {ss \nodepart{two}esp \nodepart{three}eflags \nodepart{four}cs
+    \nodepart{five}eip \nodepart{six}error code \nodepart{seven}trap \# \nodepart{eight}ds
+    \nodepart{nine}es \nodepart{ten}fs \nodepart{eleven}gs \nodepart{twelve}eax
+    \nodepart{thirteen}ecx \nodepart{fourteen}edx \nodepart{fifteen}ebx
+    \nodepart{sixteen}oesp \nodepart{seventeen}ebp \nodepart{eighteen}esi
+    \nodepart{nineteen}edi \nodepart{twenty}%
+    \begin{tabular}{c}
+      (empty)\\[1ex]
+    \end{tabular}};
+
+  \node (esp) [left=2ex of kstack.nineteen split west] {esp} edge [->,draw]
+  (kstack.nineteen split west);
+
+  \node (n) [inner sep=0pt,right=2ex of kstack.text split east,align=left,font=\footnotesize]%
+  {only presented on\\privilege change};
+  
+  \draw [decoration=brace,decorate]%
+  ($(kstack.north east) +(2pt,0)$) -- ($(kstack.two split east)+(2pt,0)$);
+\end{tikzpicture}
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

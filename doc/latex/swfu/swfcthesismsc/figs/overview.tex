@@ -1,0 +1,84 @@
+\documentclass[tikz,svgnames]{standalone}
+
+\usepackage{wx672tikz} % wx672fonts loaded here
+
+\begin{document}
+
+\begin{tikzpicture}[%
+  every node/.style = {thick,align=center},%
+  hw/.style = {draw,minimum width=10cm},%
+  dev/.style = {draw,minimum width=0cm},%
+  inproc/.style = {draw,minimum width=3cm},%
+  arrow/.style = {<->,>=stealth}]
+
+  \node (hw) [hw] {Hardware};%
+  \node (hwctrl) [hw,above=of hw] {Hardware control} edge [arrow] (hw);%
+  \node (drv) [draw,above=5mm of hwctrl.north west,anchor=south west,minimum width=4cm]%
+  {Device drivers};%
+  \node (chr) [dev,above=0pt of drv.north west,anchor=south west,minimum width=2cm] {Character\\devices};%
+  \node (blk) [dev,above=0pt of drv.north east,anchor=south east,minimum width=2cm]%
+  {Block\\devices};%
+  \node (buf) [draw,above=5mm of blk.north east,anchor=south east,minimum width=2cm] {Buffer\\cache};%
+
+  \node (fs) [draw,above=5mm of buf.north east, anchor=south east,xshift=5mm,%
+  minimum height=3cm,minimum width=4.5cm,%
+  label={above,yshift=-4ex:{File subsystem}}] {};%
+  \node (vfs)  [draw,below=7ex of fs.north,anchor=north,minimum width=3.5cm] {VFS};%
+  \node (nfs)  [draw,below=3ex of vfs.south west,anchor=north west,scale=.6] {NFS};%
+  \node (more) [draw,right=3mm of nfs,scale=.8] {$\cdots$};%
+  \node (ext2) [draw,right=3mm of more,scale=.6] {Ext2};%
+  \node (vfat) [draw,right=3mm of ext2,scale=.6] {VFAT};%
+
+  \draw [arrow]  (nfs.north)-- ++ (0,5mm);%
+  \draw [arrow] (more.north)-- ++ (0,5mm);%
+  \draw [arrow] (ext2.north)-- ++ (0,5mm);%
+  \draw [arrow] (vfat.north)-- ++ (0,5mm);%
+  
+  \node (proc) [draw,right=of fs.north east,anchor=north west,%
+  minimum height=5.5cm,minimum width=4.5cm,%
+  label={above,yshift=-6ex,align=center:{Process control\\subsystem}}] {};%
+  \node (ipc) [inproc,below=9ex of proc.north, anchor=north] {Inter-process\\communication};%
+  \node (sched) [inproc,below=2mm of ipc] {Scheduler};%
+  \node (mm) [inproc,below=2mm of sched] {Memory\\management};%
+
+  \begin{scope}[on background layer]
+    \node [fill=black!5,fit=(proc) (ipc) (sched) (mm)]{};
+  \end{scope}
+  
+  \node (syscall) [draw,above=7.7cm of hwctrl.north,anchor=south,%
+  minimum width=8cm] {System call interface};%
+  \node (lib) [draw,above=of syscall.north east,anchor=south east,minimum width=4cm]%
+  {Libraries};%
+
+  \draw [dashed,ultra thin] ($(hw.north west) + (0,5mm)$)--%
+  node [above,at start,anchor=south west,scale=.6] {Kernel level}%
+  node [below,at start,anchor=north west,scale=.6]{Hardware level}%
+  ($(hw.north east) + (0,5mm)$);%
+
+  \draw [dashed,ultra thin] ($(syscall.north west) + (-1cm,5mm)$)--%
+  node [above,at start,anchor=south west,scale=.6] {User level}%
+  node [below,at start,anchor=north west,scale=.6]{Kernel level}%
+  ($(syscall.north east) + (1cm,5mm)$);%
+
+  \node (user) [above=of lib.north west,anchor=east] {User programs};%
+
+  \draw [arrow] (user.south east)--(lib.north);%
+  \draw [arrow] (user.south)-- node [rotate=90,above,scale=.6] {trap} (user |- syscall.north);%
+  \draw [arrow] (lib.south)--node [rotate=90,above,scale=.6] {trap} (lib |- syscall.north);%
+  \draw [arrow] (fs.north) -- (fs |- syscall.south);%
+  \draw [arrow] (proc.north) -- (proc |- syscall.south);%
+  \draw [arrow] (ext2.south) -- (ext2 |- buf.north);%
+  \draw [arrow] (vfat.south) -- (vfat |- buf.north);%
+  \draw [arrow] (buf.south) -- (buf |- blk.north);%
+  \draw [arrow] (nfs.south) -- (nfs |- chr.north);%
+  \draw [arrow] (drv.south) -- (drv |- hwctrl.north);%
+  \draw [arrow] (proc.south) -- (proc |- hwctrl.north);%
+  \draw [arrow] (fs.east) -- (fs -| proc.west);%
+\end{tikzpicture}
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

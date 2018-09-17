@@ -1,0 +1,24 @@
+\documentclass[tikz,svgnames]{standalone}
+
+\usepackage{wx672tikz} % wx672fonts loaded here
+
+\begin{document}
+
+\tikzstyle{proc} = [rectangle,draw,text width=7em]
+
+\begin{tikzpicture}[align=center, thick, auto, node distance=6mm] %
+  \node (one) [proc,label={Child}] {Close open files};%
+  \node (two) [proc,below=of one] {Wake up parent} edge [<-] (one);%
+  \node (three) [proc,below=of two] {Pass abandoned children to \texttt{init}} edge [<-] (two);%
+  \node (four) [proc,below=of three] {Set zombie\\call \texttt{sched()}} edge [<-]
+  (three);
+
+  \node (p1) [proc,label={Parent},right=of one] {Free kstack};%
+  \node (p2) [proc,below=of p1] {Free\\ address space} edge [<-] (p1);%
+  \node (p3) [proc,below=of p2] {Free \texttt{proc[i]}} edge [<-] (p2);
+\end{tikzpicture}
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

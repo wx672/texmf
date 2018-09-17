@@ -1,11 +1,9 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{wx672fonts}
 
-\RequirePackage{ifxetex} % This class can only be processed with XeTeX
-\RequirePackage{etoolbox}
-\newtoggle{logocolor}
+\RequirePackage{etoolbox,units}
 
-\RequirePackage{latexsym,pifont,units,amsmath,amsfonts,amssymb,marvosym,mathtools}
+\RequirePackage{latexsym,pifont,amsmath,amsfonts,amssymb,marvosym,mathtools}
 
 \RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
 \defaultfontfeatures{Mapping=tex-text}
@@ -14,13 +12,14 @@
 \setmainfont{Liberation Serif}
 \setsansfont{Liberation Sans}
 
+% special looking fonts
 \newfontfamily\humor{Humor Sans}% \humor{hello, world!}
 \newfontfamily\purisa{Purisa}
+\newfontfamily\kbd{Linux Biolinum Keyboard O}
+% \newfontfamily\quivira{Quivira} % large unicode coverage, but not come with Debian
 % \newfontfamily\US{USStarsNStripes}
 % \newfontfamily\USS{LMS Star Spangled}
 % \newfontfamily\UK{LMS God Save The Queen}
-\newfontfamily\kbd{Linux Biolinum Keyboard O}
-%\newfontfamily\quivira{Quivira} % large unicode coverage, but not come with Debian
 
 \newcommand{\verbatimfont}[1]{\def\verbatim@font{#1}}%
 
@@ -55,6 +54,8 @@
 % }
 \newcommand\linux{\nerd } % u+f17c
 \newcommand\gnu{\nerd }
+
+\newtoggle{logocolor}
 \newcommand\debian[1][true]{%
   \settoggle{logocolor}{#1}%
   \iftoggle{logocolor}{\textcolor{red}{\nerd }}{{\nerd }}}
@@ -114,45 +115,3 @@
 \newcommand\openbook{\symbola 🕮}
 \newcommand\okay{\symbola 😐}
 \newcommand\pright{\symbola ☛}
-
-\RequirePackage[CJKmath=true,AutoFakeSlant=true,PunctStyle=kaiming]{xeCJK} % slant header
-\DeclareOption{cjk}{%
-  \setCJKmainfont{Noto Serif CJK SC}
-  \setCJKsansfont{Noto Sans CJK SC}
-  \setCJKmonofont{Noto Sans Mono CJK SC}
-
-  \newCJKfontfamily\hei{Noto Serif CJK SC Bold} % \hei{Hello, world!}
-  \newCJKfontfamily\song{Noto Serif CJK SC}
-  \newCJKfontfamily\kai{AR PL UKai CN}
-  \newCJKfontfamily\quotefont{AR PL UKai CN}
-
-  % https://nablux.net/tgp/weblog/2013/03/22/how-typeset-japanese-using-xelatex/
-  % vertical typesetting
-  \setCJKfamilyfont{cjk-vert}[Script=CJK,RawFeature=vertical]{FZGuLi-S12S}
-
-  \newCJKfontfamily\sig{signature}
-
-  \XeTeXlinebreaklocale "zh"
-  \XeTeXlinebreakskip = 0pt plus 1pt
-
-  % adjust the spaces between numbers and Chinese characters
-  \xeCJKsetup{xCJKecglue=\hskip 0pt plus 0.08\baselineskip}
-
-  \newcommand{\ziju}[1]{\renewcommand{\CJKglue}{\hskip #1}}
-
-  \renewcommand{\contentsname}{目\hspace{1em}录}
-  \renewcommand{\listfigurename}{插图目录}
-  \renewcommand{\listtablename}{表格目录}
-  \renewcommand{\figurename}{图}
-  \renewcommand{\tablename}{表}
-  \renewcommand{\appendixname}{附\hspace{1em}录}
-  \renewcommand{\indexname}{索\hspace{1em}引}
-  % \renewcommand{\listingscaption}{程序} % have to load minted first
-  % \renewcommand{\listoflistingscaption}{程序目录}% have to load minted first
-  % \renewcommand{\today}{\number\year 年\number\month 月\number\day 日}
-}
-
-%\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
-\ProcessOptions\relax
-
-%\ExecuteOptions{C} % default to C

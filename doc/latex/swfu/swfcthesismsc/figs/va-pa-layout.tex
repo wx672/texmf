@@ -1,0 +1,40 @@
+\documentclass[varwidth=50em,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+                 Virtual
+           4G┌─────────────┬──.
+             │   Device    │   ╲
+             │   memory    │    ╲
+   0xFE000000├─────────────┼─.   ╲
+             │             │  ╲   ╲
+             │    Free     │   ╲   ╲
+             │   memory    │    ╲   ╲
+             │             │     ╲   ╲
+          end├─────────────┤      ╲   ╲
+             │ Kernel data ├───.   ╲   ╲       Physical
+             │ Kernel text ├─.  ╲   ╲   ◝──>┌─────────────┐
+        2G+1M├─────────────┤  ╲  ╲   ╲      │   Device    │
+             │             │   ╲  ╲   ╲     │   memory    │
+KERNBASE (2G)├─────────────┼─.  ╲  ╲   ◝───>├─────────────┤PHYSTOP
+             │   Program   │  ╲  ╲  ╲       │             │
+             │    data     │   ╲  ╲  ╲      │    Free     │
+             │     &       │    ╲  ╲  ╲     │   memory    │
+             │    heap     │     ╲  ╲  ╲    │             │
+             ├─────────────┤      ╲  ╲  ╲   ├─────────────┤
+             │  User stack │       ╲  ╲  ◝─>│ Kernel data │
+             ├─────────────┤        ╲  ◝───>│ Kernel text │
+             │  User data  │         ╲      ├─────────────┤1M
+             ├─────────────┤          ╲     │     I/O     │
+             │  User text  │           ╲    │    space    │
+            0└─────────────┘            ◝──>└─────────────┘0
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

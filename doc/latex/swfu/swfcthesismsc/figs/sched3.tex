@@ -1,0 +1,18 @@
+\documentclass[varwidth=50em,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+    Pi                 Scheduler               Pi's Parent
+┌────────┐ context  ┌───────────────┐ context  ┌────────┐
+│ exit() ├─────────>│ Choose a proc ├─────────>│ wait() │
+└────────┘ switch   └───────────────┘ switch   └────────┘
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,24 @@
+\documentclass[varwidth=40em,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+      ┌──────┐                           ┌──────┐
+      │Proc A│                           │Proc B│
+      └──┬───┘                           └───↑──┘
+         │                                   │    user space
+════ save│ ══════════════════════════ restore│ ═══════════════
+         │                                   │    kernel space
+      ┌──↓───┐ swtch  ┌─────────┐ swtch  ┌───┴──┐
+      │kstack├───────>│ kstack  ├───────>│kstack│
+      │  A   │        │scheduler│        │  B   │
+      └──────┘        └─────────┘        └──────┘
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

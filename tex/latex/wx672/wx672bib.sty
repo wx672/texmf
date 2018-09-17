@@ -6,20 +6,17 @@
 % without this, the Chinese in bib files will cause compiling error.
 %\RequirePackage[utf8]{inputenc} % this pkg shouldn't used with xelatex!
 
-\RequirePackage[backend=biber,
-style=chem-angew,sorting=none,
-%style=caspervector,sorting=centy,utf8,
-hyperref=true,doi=false,isbn=false,%url=false,
-date=iso,seconds=true]{biblatex}
+\RequirePackage[backend=biber,style=gb7714-2015,
+hyperref=true,doi=false,isbn=false,url=false,
+]{biblatex}
 
-\let\cite=\supercite
-\renewcommand*{\bibfont}{\small} % 11pt
+%\renewcommand*{\bibfont}{\small} % 11pt
 
 % https://tex.stackexchange.com/questions/23832/biblatex-make-title-hyperlink-to-doi-url-if-available
-\newbibmacro{string+url}[1]{%
-  \iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}}
+% \newbibmacro{string+url}[1]{%
+%   \iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}}
 
-\DeclareFieldFormat{title}{\usebibmacro{string+url}{\mkbibemph{#1}}}
+% \DeclareFieldFormat{title}{\usebibmacro{string+url}{\mkbibemph{#1}}}
 
 % \DeclareFieldFormat[article]{title}{\usebibmacro{string+url}{\mkbibquote{#1}}}
 

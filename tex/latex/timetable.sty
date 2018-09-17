@@ -3,9 +3,9 @@
 
 \RequirePackage{ifxetex} % This class is for XeTeX only
 
-\RequirePackage{wx672cjk}
+\RequirePackage[scheme=plain]{ctex}
 
-\usetikzlibrary{calc,positioning,patterns}
+\usetikzlibrary{calc,positioning,patterns,chains}
 
 \newcommand{\Term}[1]{\gdef\TT@Term{#1}}
 \newcommand{\Teacher}[1]{\gdef\TT@Teacher{#1}}
@@ -24,23 +24,23 @@
 \newcommand{\daywidth}{5cm}%
 \newcommand{\hourlength}{1cm}%
 
-\tikzset{
-  help lines/.style={very thin,dotted},
-  day/.style={rectangle, anchor=south west, fill=gray!20,
-    minimum width=\daywidth, minimum height=2ex, node font=\bfseries\Large},
-  class/.style={rectangle, anchor=north west, rounded corners=10pt,
-    minimum width=\daywidth,% minimum height=5/3*\hourlength,
-    text centered, text width=\daywidth},
-  lecture/.style={class, fill=red!30},
-  lab/.style={class, fill=Green!20},
-  lecturelab/.style={class, left color=red!30,right color=Green!20},
-  office/.style={class, fill=gray!30},
-  done/.style={class,pattern color=black!50,pattern=north east lines}
+\tikzset{%
+  help lines/.style={very thin,dotted},%
+  day/.style={on chain,rectangle, fill=gray!20,%
+    minimum width=\daywidth, minimum height=2ex, node font=\bfseries\Large},%
+  class/.style={rectangle, anchor=north west, rounded corners=10pt,%
+    minimum width=.99*\daywidth,% minimum height=5/3*\hourlength,
+    align=center, text width=.99*\daywidth},%
+  lecture/.style={class, fill=red!30},%
+  lab/.style={class, fill=Green!20},%
+  lecturelab/.style={class, left color=red!30,right color=Green!20},%
+  office/.style={class, fill=gray!30},%
+  done/.style={class,pattern color=black!50,pattern=north east lines}%
 }%
 
 \newenvironment{timetable}
 {%
-  \begin{tikzpicture}[%
+  \begin{tikzpicture}[start chain,%
     x=\daywidth, y=-\hourlength,%
     node distance=0cm, outer sep=0pt, inner sep=1pt,%
     ]%
@@ -58,14 +58,11 @@
     } \draw [ultra thin] (1,\h) -- ++(-3pt,0) node[left=3pt,font=\scriptsize] {\htext};%
 
     % Header line (week days)
-    \node[day] (monday) at (1,8) {Monday};%
-    \node[day] (tuesday) [right = of monday] {Tuesday};%
-    \node[day] (wednesday) [right = of tuesday] {Wednesday};%
-    \node[day] (thursday) [right = of wednesday] {Thursday};%
-    \node[day] (friday) [right = of thursday] {Friday};%
-
-    \node [above=of monday.north west,anchor=south west,align=left] {Semester: \TT@Term};%
-    \node [above=of friday.north east,anchor=south east,align=right] {\TT@Teacher};%
+    \node[day, anchor=south west] at (1,8) {Monday};%
+    \node[day, label={85:{Semester: \TT@Term}}] {Tuesday};%
+    \node[day, label={12:{\TT@Teacher}}] {Wednesday};%
+    \node[day] {Thursday};%
+    \node[day] (fri) {Friday};%
   }{%
   \end{tikzpicture}%
 }%

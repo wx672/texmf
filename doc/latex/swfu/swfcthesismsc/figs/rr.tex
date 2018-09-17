@@ -1,0 +1,24 @@
+\documentclass[tikz,svgnames]{standalone}
+
+\usepackage{wx672tikz} % wx672fonts loaded here
+
+\begin{document}
+\begin{tikzpicture} [%
+      every node/.style = {circle,minimum width=28pt},
+      every pin/.style = {minimum size=0pt, pin distance=1mm, inner sep=1pt,%
+        pin edge={gray!50,thick,dashed}}]%
+  
+  {[start chain=circle placed {at =(\tikzchaincount*45:1.7)}]
+    \foreach \n in {1,...,8} \node (N\n) [on chain,fill=gray!10] {};
+  }
+  
+  \foreach \angle/\label in {0/$P_2$, 45/$P_1$, 90/$P_0$,135/$P_n$,180/$\ldots$,225/$P_5$,270/$P_4$,315/$P_3$}%
+  \node (N\angle) at (\angle:1.7) {\LARGE\label};%
+
+  \node [pin=90:{CPU}] at (90:1.7) {};%
+\end{tikzpicture}
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -6,7 +6,7 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{aritcle}}
 \ProcessOptions\relax
 
-\LoadClass[a4paper,12pt,oneside]{article}
+\LoadClass[scheme=plain]{ctexart}
 
 \RequirePackage{ifxetex} % XeTeX only
 
@@ -20,13 +20,11 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 
 \RequirePackage{indentfirst}
 \RequirePackage{tabu,longtable,multicol,multirow,array}
-\tabuDisableCommands{\def\autocite{}}
+%\tabuDisableCommands{\def\autocite{}}
 
 \RequirePackage{enumitem} % \setlist
 \setlist{nosep} % kills all vertical spacing
 
-\RequirePackage{wx672cjk}
-\RequirePackage{xcolor}
 \RequirePackage{wx672hyperref}
 \RequirePackage{wx672bib}
 
@@ -67,8 +65,8 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \newcommand{\SWFCtitlepage}{% Title page layout
   \thispagestyle{empty}
   \begin{center}
-    \makebox[14.7em][s]{\Large\hei 西南林业大学}\\[5mm]
-    \makebox[20em][s]{\Large\hei 本科毕业论文（设计）开题报告}\\[5mm]
+    \makebox[14.7em][s]{\Large\heiti 西南林业大学}\\[5mm]
+    \makebox[20em][s]{\Large\heiti 本科毕业论文（设计）开题报告}\\[5mm]
     \vskip 2cm
     \begin{large}
     \begin{minipage}{1.0\linewidth}
@@ -117,11 +115,12 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 
 \newcommand{\tablebody}{% main part
   \singlespacing\noindent
-  \extrarowsep=_8pt^8pt
-  \begin{tabu}{|X[.1,c,m]|@{}X[1.5,m]@{}|}\tabucline-
-    指导教师基本情况&
-    \begin{tabu}{c|X[.1,c,m]|X[.1,c,m]|X[.25,c,m]|X[.35,c,m]|c}
-      指导教师姓名&性别&年龄&学历或\par 学位&专业技术\par 职务或职称&工作单位\\[2pt]\tabucline-
+%  \extrarowsep=_8pt^8pt
+  \extrarowsep=^2pt
+  \begin{tabu}{|X[-1,c]|@{}X[m]@{}|}\tabucline-
+    指导\par{}教师\par{}基本\par{}情况%
+    & \begin{tabu}{c|c|c|X[-1,c]|X[-1,c]|c}
+      指导教师姓名&性别&年龄&学历或\par{}学位&专业技术\par{}职务或职称&工作单位\\[2pt]\tabucline-
       \SWFCField@Advisor&\SWFCField@AdvisorGender&\SWFCField@AdvisorAge&
       \SWFCField@AdvisorDegree&\SWFCField@AdvisorTitle&\SWFCField@AdvisorWhere\\\tabucline-
       &&&&&\\
@@ -129,7 +128,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
     课题来源&\quad 1. 导师课题的一部分；2. 其他（须具体说明）
     \underline{\quad\SWFCField@Projfrom\quad}。\\%\tabucline-
   \end{tabu}
-  \vspace{-2.4ex}\tabulinesep=_1ex
+  \vspace{-2.8ex}\tabulinesep=_1ex
   \begin{longtabu}{|r@{\ }X|}\tabucline-\endhead{}
     1.& 该研究的目的、意义\par\vskip 1ex\SWFCField@Partone\\\tabucline-
     2.& 国内外研究现状及发展趋势\par\vskip 1ex\SWFCField@Parttwo\\\tabucline-
@@ -138,12 +137,15 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
     5.& 拟采取的研究方法或实验方法，步骤，可能出现的技术问题及解决办法\par\vskip 1ex
     \SWFCField@Partfive\\\tabucline-
     6.& 完成该研究已具备的条件\par\vskip 1ex\SWFCField@Partsix\\\tabucline-
-    &指导教师意见\\[2ex]
+  \end{longtabu}
+  \noindent
+  \begin{tabu}{|r@{\ }X|}\tabucline-
+  &指导教师意见\\[2ex]
     &\hspace{3em}{\Large\SWFCField@AdvisorComment}\\[-1ex]
     &\hfill 签名：\makebox[7em]{\SWFCField@AdvisorSig}\\
     &\hfill\SWFCField@Year 年 \SWFCField@Month 月 \SWFCField@Date 日\\\tabucline-
-  \end{longtabu}
-  \vspace{-2.4ex}\extrarowsep=_17pt
+  \end{tabu}
+  \extrarowsep=_17pt
   \noindent
   \begin{tabu}{|p{1em}|X[15]|p{1em}|X[15]|}
     教研室意见&

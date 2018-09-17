@@ -1,1 +1,1 @@
-../../../../../tex/latex/swfcthesis.cls
+../../../../../tex/latex/swfu/swfcthesis.cls

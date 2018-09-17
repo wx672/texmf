@@ -2,11 +2,10 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfcyearly}
 
-\LoadClass[a4paper,10pt]{article}
+\LoadClass[scheme=plain]{ctexart}
 
 \RequirePackage{ifxetex} % XeTeX only
 
-%\RequirePackage{array}
 \RequirePackage{tabu}
 
 \RequirePackage{graphicx}
@@ -20,20 +19,18 @@ left=2.5cm, right=2.5cm,
 \RequirePackage{tikz}
 \usetikzlibrary{backgrounds,positioning,fit}
                 
-\RequirePackage{wx672cjk}
-
 \newcommand{\Year}[1]{\gdef\SWFCField@Year{#1}} % 年份
 \newcommand{\Month}[1]{\gdef\SWFCField@Month{#1}} % 月份
 \newcommand{\Date}[1]{\gdef\SWFCField@Date{#1}} % 日期
-\newcommand{\School}[1]{\gdef\SWFCField@School{#1}} % 学院/部门
-\newcommand{\Name}[1]{\gdef\SWFCField@Name{#1}} % 姓名
+\newcommand{\School}[1]{\gdef\SWFCField@School{\kaishu #1}} % 学院/部门
+\newcommand{\Name}[1]{\gdef\SWFCField@Name{\kaishu #1}} % 姓名
 %\newcommand{\Sign}[1]{\gdef\SWFCField@Sign{#1}} % 本人签字
-\newcommand{\Gender}[1]{\gdef\SWFCField@Gender{#1}} % 性别
-\newcommand{\Birth}[1]{\gdef\SWFCField@Birth{#1}} % 出生年月
-\newcommand{\Political}[1]{\gdef\SWFCField@Political{#1}} % 政治面貌
-\newcommand{\Title}[1]{\gdef\SWFCField@Title{#1}} % 职务/职称
-\newcommand{\Degree}[1]{\gdef\SWFCField@Degree{#1}} % 文化程度
-\newcommand{\Job}[1]{\gdef\SWFCField@Job{#1}} % 现从事工作
+\newcommand{\Gender}[1]{\gdef\SWFCField@Gender{\kaishu #1}} % 性别
+\newcommand{\Birth}[1]{\gdef\SWFCField@Birth{\kaishu #1}} % 出生年月
+\newcommand{\Political}[1]{\gdef\SWFCField@Political{\kaishu #1}} % 政治面貌
+\newcommand{\Title}[1]{\gdef\SWFCField@Title{\kaishu #1}} % 职务/职称
+\newcommand{\Degree}[1]{\gdef\SWFCField@Degree{\kaishu #1}} % 文化程度
+\newcommand{\Job}[1]{\gdef\SWFCField@Job{\kaishu #1}} % 现从事工作
 
 \newcommand{\Signit}[3]{%\Signit{5cm}{-2cm}{../signature}
   \begin{tikzpicture}[overlay,remember picture]%
@@ -44,33 +41,33 @@ left=2.5cm, right=2.5cm,
 \newcommand{\Sumup}[4]{%\Sumup{.4cm}{4cm}{.1}{./text}
   \begin{tikzpicture}[overlay,remember picture]%
     \node [xshift=#1,yshift=#2] at (current page.center) {%
-      \includegraphics[scale=#3]{#4}};    
+      \includegraphics[scale=#3]{#4}};
   \end{tikzpicture}}
 
 \newcommand{\makeform}{
   \begin{center}
-    {\LARGE\hei 西南林业大学教职工\underline{\ \SWFCField@Year\ }年年度考核表}
+    {\LARGE\heiti 西南林业大学教职工\underline{\ \SWFCField@Year\ }年年度考核表}
   \end{center}
-  学院/部门：{\kai\SWFCField@School}\hfill{}填表时间：
+  学院/部门：{\SWFCField@School}\hfill{}填表时间：
   \SWFCField@Year{}年\SWFCField@Month{}月\SWFCField@Date{}日\\
   \begin{tabu}{|@{}X[c]@{}|@{}X[c]@{}|}\tabucline-
       \tabulinesep=2mm
       \begin{tabu}{c|X[c]|c}
-        姓名&{\kai\SWFCField@Name}&性别\\
+        姓名&{\SWFCField@Name}&性别\\
       \end{tabu}&
       \tabulinesep=2mm
       \begin{tabu}{X[c]|c|X[c]}
-        {\kai\SWFCField@Gender}&出生年月&{\kai\SWFCField@Birth}\\
+        {\SWFCField@Gender}&出生年月&{\SWFCField@Birth}\\
       \end{tabu}\\\tabucline- % end of the first raw
       \tabulinesep=2mm
       \begin{tabu}{c|X[c]@{}}
-        政治面貌&{\kai\SWFCField@Political}\\\tabucline-
-        文化程度&{\kai\SWFCField@Degree}\\
+        政治面貌&{\SWFCField@Political}\\\tabucline-
+        文化程度&{\SWFCField@Degree}\\
       \end{tabu}&
       \tabulinesep=2mm
       \begin{tabu}{c|X[c]}
-        职称/职务&{\kai\SWFCField@Title}\\\tabucline-
-        现从事工作&{\kai\SWFCField@Job}\\
+        职称/职务&{\SWFCField@Title}\\\tabucline-
+        现从事工作&{\SWFCField@Job}\\
       \end{tabu}\\\tabucline-
     \end{tabu} % end of the 3rd raw
     \vspace{-1pt}\tabulinesep=2mm
@@ -78,7 +75,7 @@ left=2.5cm, right=2.5cm,
       \vspace{4ex} 个人总结\par\rotatebox[origin=c]{270}{（}\par{}
       履行岗位职责情况\par\vspace{-1.5ex}\hfill{}、\par\vspace{1ex}
       工作成果等\par\rotatebox[origin=c]{270}{）}&
-      {\footnotesize\kai （字数控制在800字以内）}\par\vspace{64ex}
+      {\footnotesize\kaishu （字数控制在800字以内）}\par\vspace{64ex}
       \hfill\makebox[16em][l]{本人签字：}\par\vspace{2ex}\\\tabucline-
       所在单位考核意见&\par\vspace{14ex}
       \hfill\makebox[16em][l]{签章}\par

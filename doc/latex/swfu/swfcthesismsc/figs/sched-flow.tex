@@ -1,0 +1,29 @@
+\documentclass[tikz,svgnames]{standalone}
+
+\usepackage{wx672tikz} % wx672fonts loaded here
+
+\begin{document}
+
+\tikzstyle{proc} = [rectangle,draw]
+\tikzstyle{decision} = [shape aspect=2,diamond,draw]
+
+\begin{tikzpicture}[align=center, thick, auto] %
+  \node (traverse) [proc] {Traverse \texttt{proc[]}};%
+
+  \node (isrunnable) [decision,below=of traverse]
+  {\texttt{P[i]}\\runnable?} edge [<-] (traverse);%
+
+  \draw [->] (isrunnable.east) to node [auto] {N}
+  ($(isrunnable.east) + (2em,0)$) |- (traverse.east);%
+
+  \node (pi) [proc,below=of isrunnable] {\texttt{P[i]} running}
+  edge [<-] node {Y} node [swap,font=\scriptsize] {\texttt{swtch()}} (isrunnable);%
+  
+  \node (done) [decision,below=of pi] {\texttt{IRQ 0}/Block/Done?} edge [<-] (pi);%
+
+  \draw [->] (done.west) to node [font=\scriptsize] {\texttt{swtch()}} node [swap] {Y} ($(done.west)+(-2em,0)$) |- (traverse);%
+
+  \draw [->] (done.east) to node {N} ($(done.east)+(2em,0)$) |- (pi);
+  
+\end{tikzpicture}
+\end{document}

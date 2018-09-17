@@ -1,0 +1,48 @@
+\documentclass[varwidth,crop]{standalone}
+
+\usepackage{wx672cjk}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+cpu─>ts.esp0 ──>┌─────────┐ ┬
+                ├   ss    ┤   特权级
+                ├   esp   ┤   切换时  
+                ├─────────┤ ┴
+                │ eflags  │ 
+                ├─────────┤
+                ├   cs    ┤
+                ├   eip   ┤
+                ├─────────┤
+                │ err code│
+                ├─────────┤
+                │ trapno  │
+                ├─────────┤
+                ├   ds    ┤
+                ├   es    ┤
+                ├   fs    ┤
+                ├   gs    ┤
+                ├─────────┤
+                ├   eax   ┤
+                ├   ecx   ┤
+                ├   edx   ┤
+                ├   ebx   ┤
+                ├─────────┤
+                │  oesp   │
+                ├─────────┤
+                │   ebp   │
+                ├─────────┤
+                │   esi   │
+                ├─────────┤
+                │   edi   │
+         esp ──>├─────────┤
+                │ (empty) │
+                │         │
+   p─>kstack ──>└─────────┘
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX─master: t
+%%% End:

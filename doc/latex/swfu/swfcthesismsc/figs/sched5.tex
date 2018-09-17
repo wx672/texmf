@@ -1,0 +1,25 @@
+\documentclass[varwidth,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+                      Scheduler
+                     ┌──────────┐
+                     │┌────────┐│
+ Process             ││ wait() ││
+┌────────┐  context  │└────────┘│
+│ exit() ├──────────>│    ↓     │
+└────────┘  switch   │┌────────┐│
+                     ││ Choose ││
+                     ││ a proc ││
+                     │└────────┘│
+                     └──────────┘
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

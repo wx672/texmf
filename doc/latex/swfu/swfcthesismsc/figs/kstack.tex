@@ -1,0 +1,38 @@
+\documentclass[varwidth,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+ top of new stack ──>┌─────────┐
+                     │   esp   │
+                     ├─────────┤
+                     │   ...   │
+                     ├─────────┤
+                     │   eip   │
+                     ├─────────┤
+                     │   ...   │
+                     ├─────────┤
+                     │   edi   │
+            p─>tf ──>├─────────┤
+                     │ trapret │
+forkret return to ──>├─────────┤
+                     │   eip   │
+                     ├─────────┤
+                     │   ...   │
+                     ├─────────┤
+                     │   edi   │
+       p─>context ──>├─────────┤
+                     │         │
+                     │ (empty) │
+                     │         │
+        p─>kstack ──>└─────────┘
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX─master: t
+%%% TeX-master: t
+%%% End:

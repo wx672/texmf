@@ -2,7 +2,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfcgtaskspec}
 
-\LoadClass[a4paper,12pt]{article}
+\LoadClass[scheme=plain]{ctexart}
 
 \RequirePackage{ifxetex} % XeTeX only
 
@@ -14,22 +14,23 @@ top=2cm,bottom=1cm,
 left=2cm,right=2cm
 ]{geometry}
 
-\RequirePackage{wx672cjk}
 \RequirePackage{wx672bib}
-
-\RequirePackage{xcolor}
 \RequirePackage{wx672hyperref}
 
+\newfontfamily\dejavu{DejaVu Sans Mono}
+\newcommand\unchecked{\dejavu □}%ballot box
+\newcommand\checked{\large\dejavu ☑} %🗹
+
 % Declare some variables to hold the text fields for the preliminary pages
-\newcommand{\Prjtitle}[1]{\gdef\SWFCField@Prjtitle{#1}} % 论文标题
+\newcommand{\Prjtitle}[1]{\gdef\SWFCField@Prjtitle{\kaishu #1}} % 论文标题
 \newcommand{\Signature}[1]{\gdef\SWFCField@Signature{#1}} % 指导教师签名
-\newcommand{\StudSignature}[1]{\gdef\SWFCField@StudSignature{#1}} % 指导教师签名
-\newcommand{\Studname}[1]{\gdef\SWFCField@Studname{#1}} % 学生姓名
-\newcommand{\Studid}[1]{\gdef\SWFCField@Studid{#1}} % 学生姓名
-\newcommand{\Studclass}[1]{\gdef\SWFCField@Studclass{#1}} % 学生班级
-\newcommand{\Prjwhy}[1]{\gdef\SWFCField@Prjwhy{#1}} % 选题的目的及意义
-\newcommand{\Prjwhat}[1]{\gdef\SWFCField@Prjwhat{#1}} % 学生任务及要求
-\newcommand{\Prjwhen}[1]{\gdef\SWFCField@Prjwhen{#1}} % 进度安排
+\newcommand{\StudSignature}[1]{\gdef\SWFCField@StudSignature{#1}} % 学生教师签名
+\newcommand{\Studname}[1]{\gdef\SWFCField@Studname{\kaishu #1}} % 学生姓名
+\newcommand{\Studid}[1]{\gdef\SWFCField@Studid{#1}} % 学生学号
+\newcommand{\Studclass}[1]{\gdef\SWFCField@Studclass{\kaishu #1}} % 学生班级
+\newcommand{\Prjwhy}[1]{\gdef\SWFCField@Prjwhy{\kaishu #1}} % 选题的目的及意义
+\newcommand{\Prjwhat}[1]{\gdef\SWFCField@Prjwhat{\kaishu #1}} % 学生任务及要求
+\newcommand{\Prjwhen}[1]{\gdef\SWFCField@Prjwhen{\kaishu #1}} % 进度安排
 \newcommand{\Prjbib}[1]{\gdef\SWFCField@Prjbib{#1}} % 参考文献
 \newcommand{\Gyear}[1]{\gdef\SWFCField@Gyear{#1}} % 毕业年份
 \newcommand{\Year}[1]{\gdef\SWFCField@Year{#1}} % 填表年、月、日
@@ -38,26 +39,25 @@ left=2cm,right=2cm
 
 \newcommand{\makeform}{\pagestyle{empty}
   {\centering
-    {\hei\large 西南林业大学\SWFCField@Gyear{}届毕业论文（设计）任务书}\\[3ex]
+    {\heiti\large 西南林业大学\SWFCField@Gyear{}届毕业论文（设计）任务书}\\[3ex]
     \tabulinesep=3pt
     \begin{tabu}{|X[c,m,-1]|X[c]|}
       \tabucline-
-      \textbf{论文（设计）}\par{}\textbf{题目}&\SWFCField@Prjtitle\\\tabucline-
+      \textbf{论文（设计）题目}&\SWFCField@Prjtitle\\\tabucline-
     \end{tabu}\vspace{-1pt}
     \begin{tabu}{|c|X[c]|c|X[c]|c|X[c]|}
       \textbf{学生姓名}&\SWFCField@Studname&
       \textbf{学号}&\SWFCField@Studid&
       \textbf{专业班级}&\SWFCField@Studclass\\\tabucline-
     \end{tabu}\vspace{-1pt}
-    \begin{tabu}{|c|X[m]|c|X[c,m]|}
+    \begin{tabu}{|X[-1,m]|X|X[-1,m]|X[c]|}
       \textbf{题目来源}&\tabulinesep=0pt
       \begin{tabu}{@{}X@{}}
-        $\Box{}$科研\quad{}$\Box$社会实践\\
-        $\Box{}$大学生创新创业项目\\
-        {\large \Checkedbox{}}其它
+        \unchecked{}大学生创新创业项目\\
+        \unchecked{}科研\quad\unchecked{}社会实践\quad{}{\large\checked}其它
       \end{tabu}&
-      \textbf{题目类别}&$\Box{}$论文\qquad{\large \Checkedbox{}}设计\\
-    \end{tabu}\vspace{-2.4ex}
+      \textbf{题目类别}&\unchecked{}论文\qquad{\large\checked}设计\\
+    \end{tabu}\vspace{-2.8ex}
     \begin{longtabu}{|p{1em}|X|}\tabucline-\endhead
       \vspace{10ex}
       \textbf{选题的目的及意义}\par\vspace{10ex}&\vspace{1ex}\SWFCField@Prjwhy\\\tabucline-

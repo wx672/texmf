@@ -1,0 +1,43 @@
+\documentclass[tikz]{standalone}
+
+\usepackage{wx672cjk}
+\usepackage{wx672tikz}
+
+\begin{document}
+\begin{tikzpicture}[auto,%
+  my node/.style={ellipse,draw,inner sep=1pt,node distance=.5cm},%
+  edge node/.style={inner sep=1pt,font=\tiny},%
+  every edge/.style={thick,draw},%
+  >=latex]
+  
+  \node (ready) [my node] {Runnable};%
+
+  \node (embryo) [my node, above left=of ready] {Embryo} edge [->, bend left] (ready);
+
+  \node (zombie) [my node, above right=of ready] {Zombie};% edge [<-, bend right] (running);
+  
+  \node (blocked) [my node] [below left=of ready] {Sleeping}%
+  edge [->, thick,bend left] node (n4) [edge node] {4} (ready.west);
+  
+  \node (running) [my node] [below right=of ready] {Running}%
+  edge [<-, thick,bend right] node (n1) [edge node,swap] {1} (ready.east)%
+  edge [->, thick,bend  left] node (n2) [edge node] {2} (ready)%
+  edge [->, thick,bend  left] node (n3) [edge node] {3} (blocked)
+  edge [->, thick,bend right] (zombie);
+  
+  % \node [below right=.5cm of zombie,yshift=.5cm,align=left,font=\tiny,inner sep=0pt] {%
+  %   \begin{minipage}{3.2cm}
+  %     \begin{enumerate}
+  %     \item 被调度器选中，开始运行；
+  %     \item 运行到时，发生时钟中断；
+  %     \item 中断发生；
+  %     \item 中断处理完成，进入就绪状态。
+  %     \end{enumerate}
+  %   \end{minipage}};
+\end{tikzpicture}  
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

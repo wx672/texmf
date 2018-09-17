@@ -2,15 +2,14 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfcsumup}
 
-\LoadClass[a4paper,10pt]{article}
+\LoadClass[scheme=plain]{ctexart}
 
 \RequirePackage{ifxetex} % XeTeX only
 
 \RequirePackage{calc,ifthen}
-\RequirePackage{array}
-\RequirePackage{tabu}
-
+\RequirePackage{tabu,array}
 \RequirePackage{graphicx}
+
 \RequirePackage[% showframe,
 paperwidth=195mm, paperheight=270mm,
 top=2cm, bottom=2cm,
@@ -20,26 +19,24 @@ left=2.5cm, right=2.5cm,
 \RequirePackage{tikz}
 \usetikzlibrary{backgrounds,positioning,fit}
                 
-\RequirePackage{wx672cjk}
-
 \newcommand{\Term}[1]{\gdef\SWFCField@Term{#1}} % 授课学期
-\newcommand{\Coursetitle}[1]{\gdef\SWFCField@Coursetitle{#1}} % 课程名称
+\newcommand{\Coursetitle}[1]{\gdef\SWFCField@Coursetitle{\kaishu #1}} % 课程名称
 \newcommand{\Totaltime}[1]{\gdef\SWFCField@Totaltime{#1}} % 总学时
 \newcommand{\Labtime}[1]{\gdef\SWFCField@Labtime{#1}} % 实验学时
 \newcommand{\Practicetime}[1]{\gdef\SWFCField@Practicetime{#1}} % 实习天数
-\newcommand{\School}[1]{\gdef\SWFCField@School{#1}} % 开课院系
-\newcommand{\Class}[1]{\gdef\SWFCField@Class{#1}} % 授课班级
+\newcommand{\School}[1]{\gdef\SWFCField@School{\kaishu #1}} % 开课院系
+\newcommand{\Class}[1]{\gdef\SWFCField@Class{\kaishu #1}} % 授课班级
 \newcommand{\Studnum}[1]{\gdef\SWFCField@Studnum{#1}} % 学生人数
-\newcommand{\Multimedia}[1]{\gdef\SWFCField@Multimedia{#1}} % 多媒体教学
-\newcommand{\Bilingual}[1]{\gdef\SWFCField@Bilingual{#1}} % 双语教学
-\newcommand{\Examtype}[1]{\gdef\SWFCField@Examtype{#1}} % 考核方式
+\newcommand{\Multimedia}[1]{\gdef\SWFCField@Multimedia{\kaishu #1}} % 多媒体教学
+\newcommand{\Bilingual}[1]{\gdef\SWFCField@Bilingual{\kaishu #1}} % 双语教学
+\newcommand{\Examtype}[1]{\gdef\SWFCField@Examtype{\kaishu #1}} % 考核方式
 \newcommand{\Textbook}[1]{\gdef\SWFCField@Textbook{#1}} % 所用教材
 \newcommand{\Publishtime}[1]{\gdef\SWFCField@Publishtime{#1}} % 出版时间
-\newcommand{\Sumup}[1]{\gdef\SWFCField@Sumup{#1}} % 课程教学总结
-\newcommand{\Suggestion}[1]{\gdef\SWFCField@Suggestion{#1}} % 今后改革设想
-\newcommand{\TeacherName}[1]{\gdef\SWFCField@TeacherName{#1}} % 教师姓名
-\newcommand{\TeacherTitle}[1]{\gdef\SWFCField@TeacherTitle{#1}} % 职称
-\newcommand{\Date}[1]{\gdef\SWFCField@Date{#1}}
+\newcommand{\Sumup}[1]{\gdef\SWFCField@Sumup{\kaishu #1}} % 课程教学总结
+\newcommand{\Suggestion}[1]{\gdef\SWFCField@Suggestion{\kaishu #1}} % 今后改革设想
+\newcommand{\TeacherName}[1]{\gdef\SWFCField@TeacherName{\kaishu #1}} % 教师姓名
+\newcommand{\TeacherTitle}[1]{\gdef\SWFCField@TeacherTitle{\kaishu #1}} % 职称
+\newcommand{\Date}[1]{\gdef\SWFCField@Date{\kaishu #1}}
 
 \newcommand{\Signit}[3]{%\Signit{-3cm}{-6.2cm}{../signature}
 \begin{tikzpicture}[overlay,remember picture]%
@@ -48,20 +45,24 @@ left=2.5cm, right=2.5cm,
   };%
 \end{tikzpicture}}
 
-\newcommand{\YES}{{\Large \Checkedbox{}}是\quad$\Box$否}
-\newcommand{\NO}{$\Box$是\quad{\Large \Checkedbox{}}否}
+\newfontfamily\dejavu{DejaVu Sans Mono}
+\newcommand\unchecked{\dejavu □}%ballot box
+\newcommand\checked{\large\dejavu ☑} %🗹
+
+\newcommand{\YES}{{\Large\checked}是\quad\unchecked{}否}
+\newcommand{\NO}{\unchecked{}是\quad{\Large\checked}否}
 
 \newcommand{\makeform}{
   {\centering
-    {\LARGE\hei 西南林业大学课程教学小结表}\\[2ex]
+    {\LARGE\heiti 西南林业大学课程教学小结表}\\[2ex]
     \tabulinesep=2mm
     \begin{tabu}{|c|c|c|c|c|X[c]|}
       \tabucline-
       授课学期&\SWFCField@Term{}&课程名称&\multicolumn{3}{c|}{\SWFCField@Coursetitle{}}\\\tabucline-
       总\hspace{.5em}学\hspace{.5em}时&\SWFCField@Totaltime{}&实验学时&\SWFCField@Labtime{}&
-      实习天数&\SWFCField@Practicetime\\\tabucline-
+      实习天数&\SWFCField@Practicetime{}{\kaishu 周}\\\tabucline-
       开课院系&\SWFCField@School{}&授课班级&\SWFCField@Class{}&
-      学生人数&\SWFCField@Studnum{}\\\tabucline-
+      学生人数&\SWFCField@Studnum{}{\kaishu 人}\\\tabucline-
       多媒体教学&\SWFCField@Multimedia{}&双语教学&\SWFCField@Bilingual{}&
       考核方式&\SWFCField@Examtype{}\\\tabucline-
       所用教材&\multicolumn{3}{c|}{\SWFCField@Textbook{}}&

@@ -1,0 +1,43 @@
+\documentclass[varwidth=51em,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+ 0xFFFFFFFF ┌────────┐          ┌────────┐ MAX      ┌────────┐ 0xFFFFFFFF
+            │ Kernel │          │ Heap B │<─┐       │ Kernel │
+            │        ├────┐     ├────────┤  │    ┌──┤        │
+PAGE_OFFSET ├────────┤    │     ├────────┤  │    │  ├────────┤ PAGE_OFFSET
+            │ stack A│──┐ │  ┌─>│ Heap A │  │ ┌──│──┤ stack B│
+            │        │  │ │  │  ├────────┤  │ │  │  │        │
+            │        │  │ │  │  ├────────┤  │ │  │  │        │
+            │        │  │ │  │  │ Stack B│<─│─┘  │  │        │
+            │ Heap A ├──│─│──┘  ├────────┤  └────│──┤ Heap B │
+            ├────────┤  │ │     ├────────┤       │  ├────────┤
+            │ Data A ├─┐└─│────>│ Stack A│   ┌───│──┤ Data B │
+            ├────────┤ │  │     ├────────┤   │   │  ├────────┤
+            │ Code A ├─│──│──┐  │ Code B │<──│───│──┤ Code B │
+ 0x00000000 └────────┘ │  │  │  ├────────┤   │   │  └────────┘ 0x00000000
+             Proc A    │  │  │  ├────────┤   │   │   Proc B
+             virtual   └──│──│─>│ Data A │   │   │   virtual
+             address      │  │  ├────────┤   │   │   address
+             space        │  │  ├────────┤   │   │   space
+                          │  │  │ Data B │<──┘   │
+                          │  │  ├────────┤       │
+                          │  │  ├────────┤       │
+                          │  └─>│ Code A │       │
+                          │     ├────────┤       │
+                          │     ├────────┤       │
+                          └────>│        │<──────┘
+                                │ Kernel │
+                                └────────┘ 0x00000000
+                                 Physical
+                                  memory
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
