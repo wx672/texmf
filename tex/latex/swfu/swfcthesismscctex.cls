@@ -239,8 +239,8 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
     成果，也不包含为获得西南林业大学或其它教育机构的学位或证书而使用过的材料。与我一同工作
     的同志对本研究所做的任何贡献均已在论文中作了明确的说明并表示谢意。
     \begin{flushright}
-      作者签名：\underline{\hspace{8em}}\qquad{}%
-      日期：\quad\SWFCField@Year{}年\SWFCField@Month{}月\SWFCField@DateC{}日
+      作者签名：\underline{\hspace{7em}}\qquad{}%
+      日期：\SWFCField@Year{}年\SWFCField@Month{}月\SWFCField@DateC{}日
     \end{flushright}
   \end{large}
 
@@ -258,8 +258,8 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 
     \vspace{3ex}
     \begin{flushright}
-      作者签名：\underline{\hspace{8em}}\quad{}导师签名：\underline{\hspace{8em}}\\[2ex]
-      日期：\quad\SWFCField@Year{}年\SWFCField@Month{}月\SWFCField@DateC{}日
+      作者签名：\underline{\hspace{7em}}\quad{}导师签名：\underline{\hspace{8em}}\\[2ex]
+      日期：\SWFCField@Year{}年\SWFCField@Month{}月\SWFCField@DateC{}日
     \end{flushright}
   \end{large}
 \clearpage\shipout\null}

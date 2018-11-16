@@ -41,15 +41,18 @@
 
 \newcommand{\code}[1]{\texttt{#1}}
 
-\RequirePackage{wx672cjk}
+\RequirePackage{wx672ctex}
 
 \newlength{\bindingfieldlength}
 \setlength{\bindingfieldlength}{1in}
 
 % Declare some variables to hold the text fields
 \newcommand{\Term}[3]{\gdef\SWFCField@Term{#1\,$\sim{}$#2\,学年第\,#3\,学期}}
-\newcommand{\Course}[2]{\gdef\SWFCField@Course{《#1》试题（#2）}}
+\newcommand{\Course}[2]{\gdef\SWFCField@Course{《#1》试题（#2卷）}}
 \newcommand{\Lecturer}[1]{\gdef\SWFCField@Lecturer{#1}}
+\newcommand{\Group}[1]{\gdef\SWFCField@Group{#1}} % 考试班级
+\newcommand{\EXtype}[1]{\gdef\SWFCField@EXtype{考试形式：\,#1}} % 开卷、闭卷
+\newcommand{\EXtime}[1]{\gdef\SWFCField@EXtime{考试时间：\,#1}} % 120分钟
 \newcommand{\Answer}[2]{\gdef\SWFCField@Answer{《#1》（#2）}}
 
 \newsavebox{\swfcbindingbox}
@@ -100,7 +103,8 @@
   \vspace*{1ex}
   \begin{center}
     {\LARGE\mbox{\textbf{西南林业大学\,\SWFCField@Term}}}\\[3mm]
-    {\LARGE\mbox{\textbf{\SWFCField@Course}}}\\[5mm]
+    {\LARGE\mbox{\textbf{\SWFCField@Course}}}\\[3mm]
+    {\large\mbox{\textbf{\SWFCField@Group\qquad\SWFCField@EXtype\qquad\SWFCField@EXtime}}}\\[1mm]
     \begin{tabu}to .9\columnwidth {|c|X[c]|X[c]|X[c]|X[c]|X[c]|X[c]|X[c]|X[c]|X[c]|X[c]|X[c,2]|}
       \tabucline-
       题号&一&二&三&四&五&六&七&八&九&十&总分\\\tabucline-
@@ -131,8 +135,11 @@
 
 % Initial defaults
 \Term{2017}{2018}{1}
-\Course{操作系统原理}{开卷[A]}
+\Course{操作系统原理}{A}
 %\Lecturer{\hspace{20mm}}
 \Lecturer{{\sig 王晓林}}
 
 \Answer{操作系统原理}{[A]卷}
+\Group{电子信息工程2015级}
+\EXtype{闭卷}
+\EXtime{120分钟}
