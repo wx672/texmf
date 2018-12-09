@@ -1,38 +1,41 @@
-\documentclass[C]{swfcgcomments}
-% C - Commenter（评阅人）； 默认是[C]
+\documentclass{swfucomments}
+% C - Commenter（评阅人）(default)；
 % A - Advisor（指导教师）;
 % S - Student (申请人)
 
-\Prjtitle{毕业论文评阅表的\LaTeX{}模板开发} % 论文标题
-\Studclass{计科88}     % 班级
-\Studid{20881152888}    % 学号
-\Studsbj{计算机科学与技术} % 专业
-\Studname{艾学习}        % 学生姓名
-\Studmark{100} % 评分
-\Year{2014} % 年
-\Month{5}   % 月
-\Date{22}   % 日
-\Signature{\includegraphics[width=6em]{signature}} % Optional
+\pgfkeys{
+  C,% C or A or S
+  Prjtitle       = 毕业论文评阅表的\LaTeX{}模板开发,      
+  Studid         = 20881152888,
+  Studname       = 艾学习,
+  Studsbj        = 计算机科学与技术,
+  Studclass      = 计科88,
+  Studmark       = 100,
+  Advisorname, 
+  Advisortitle,  
+  Signature      = {\includegraphics[width=6em]{signature}},
+  Year           = 2019,
+  Month          = 5,
+  Date           = 22,
+  Comments       = very good,}
 
-% \Comments{ % [评阅人]意见
+% Comments       = {% [评阅人]意见
 %   \begin{enumerate}
-%   \item 恰当，没意义。% 论文选题是否恰当，有何意义？
-%   \item 完整，认真，不通顺。% 论文结构是否完整，写作是否认真，文字是否通顺？
-%   \item 设计高超，方法神奇，结果意外，创新性惊人 % 对论文质量的评价（设计、结果、方法、创新性等）？ 
-%   \item 体制问题。 % 存在的主要问题？
-%   \item 革命。 % 建议？ 
-%   \end{enumerate}
-% }
-
-% \Comments{ % [指导教师]意见
+%   \item 恰当，意义重大。% 论文选题是否恰当，有何意义？
+%   \item 完整，认真，通顺。% 论文结构是否完整，写作是否认真，文字是否通顺？
+%   \item 设计高超，方法神奇，结果意外，创新性惊人 % 对论文质量的评价（设计、结果、方法、创新性等）？
+%   \item 没问题。 % 存在的主要问题？
+%   \item 发奖。 % 建议？
+%   \end{enumerate}},
+  
+% Comments = {% [指导教师]意见
 %   \begin{enumerate}
 %   \item 正常，正常。 % 工作量和工作态度？
 %   \item 爱抄。 % 独立查阅资料和综合利用信息的能力？
 %   \item 会抄，只会抄。 % 技能与分析、解决问题的能力？
 %   \item 设计精妙，方法神奇，结果奇怪，创新性惊人。 % 对论文质量的评价（设计、结果、方法、创新性等）？
 %   \item 申请专利。% 建议？ 
-%   \end{enumerate}
-% }
+%   \end{enumerate}},
 
 \begin{document}
 \makeform

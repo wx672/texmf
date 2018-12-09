@@ -1,39 +1,40 @@
-\documentclass{swfcgplan}
+\documentclass{swfuplan}
 
-\Startyear{2014} % 毕业设计起始年份
-\Year{2015} % 毕业年份
-\Month{11}   % 月
-\Date{20}   % 日
-\Signature{ \includegraphics[width=.1\textwidth]{../signature} }
-\AdvisorName{王晓林}
-\AdvisorTitle{讲师}
-\Prjtitle{简单操作系统的实现}
-\Prjclass{设计} % 科研 设计 调查 其它
-\Prjattri{自选题} % 自选题 计划任务 横向任务 其它
-
-\Studclassa{电信11}\Studnamea{马元}\Studtaska{设计与实现}
-
-\Thesisplan{ % 论文指导工作计划内容
-  \begin{itemize}
-  \item[每周] 交一次周报告
-  \item[每两周] 开会讨论一次
-  \item[1 -- 4周] 调研，并确定论文一级目录
-  \item[5 -- 8周] 完成论文的需求分析及总体设计部分
-  \item[8 -- 12周] 编码实现，并完成论文的相应部分
-  \item[12 -- 16周] 测试、完善，并完成论文的相应部分
-  \item[16 -- 20周] 论文终稿
-  \end{itemize}
-}
-\Prjplan{ % 毕业实习指导工作计划内容
-  \begin{itemize}
-  \item[每周] 交一次周报告
-  \item[每两周] 开会讨论一次
-  \item[1 -- 4周] 调研，文献搜集，及背景阅读
-  \item[5 -- 8周] 需求分析及总体设计
-  \item[8 -- 12周] 编码实现
-  \item[12 -- 16周] 测试、完善
-  \item[16 -- 20周] 写论文
-  \end{itemize}
+\pgfkeys{
+  WorkAlone,
+  Prjtitle    ={简单操作系统的实现},
+  Prjclass    ={设计}, % 科研 设计 调查 其它            
+  Prjattri    ={自选题}, % 自选题 计划任务 横向任务 其它
+  Signature   ={ \includegraphics[width=.1\textwidth]{../signature} },
+  AdvisorName =王晓林,
+  AdvisorTitle=讲师,
+  Studclass  ={电信11},
+  Studname   ={马元},
+  Studtask   ={设计与实现},
+  Startyear =2014,% 毕业设计起始年份
+  Year =2015,% 毕业年份
+  Month =11, % 月
+  Date =20, % 日
+  Thesisplan  ={ % 论文指导工作计划内容
+    \begin{itemize}
+    \item[每周] 交一次周报告
+    \item[每两周] 开会讨论一次
+    \item[1 -- 4周] 调研，并确定论文一级目录
+    \item[5 -- 8周] 完成论文的需求分析及总体设计部分
+    \item[8 -- 12周] 编码实现，并完成论文的相应部分
+    \item[12 -- 16周] 测试、完善，并完成论文的相应部分
+    \item[16 -- 20周] 论文终稿
+    \end{itemize}},%
+  Prjplan ={ % 毕业实习指导工作计划内容
+    \begin{itemize}
+    \item[每周] 交一次周报告
+    \item[每两周] 开会讨论一次
+    \item[1 -- 4周] 调研，文献搜集，及背景阅读
+    \item[5 -- 8周] 需求分析及总体设计
+    \item[8 -- 12周] 编码实现
+    \item[12 -- 16周] 测试、完善
+    \item[16 -- 20周] 写论文
+    \end{itemize}},%
 }
 
 \begin{document}

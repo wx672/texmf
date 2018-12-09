@@ -67,7 +67,7 @@ left=2cm,right=2cm
       \textbf{进度安排}\par\vspace{10ex}&\SWFCField@Prjwhen\\\tabucline-
       \vspace{10ex}
       \textbf{参考文献}\par\vspace{10ex}&\SWFCField@Prjbib\\\tabucline-
-    \end{longtabu}\vspace{-2.4ex}
+    \end{longtabu}\vspace{-3ex}
     \tabulinesep=3pt
     \begin{tabu}{|X[c,-1]|X|X[c,-1]|X|}
       \textbf{任务下达}\par\textbf{日期}&&
@@ -88,19 +88,17 @@ left=2cm,right=2cm
       \end{minipage}\\\tabucline-
       \textbf{教研室}\par\textbf{审核}&
       \begin{minipage}{1.0\linewidth}
-        \textbf{审核意见、签字：}
-        \vspace{4em}
+        \textbf{审核意见、签字：}\\[4em]\par
         \hfill\SWFCField@Year{}\textbf{年}\SWFCField@Month{}\textbf{月}\SWFCField@Date{}\textbf{日}
       \end{minipage}
       &\textbf{学院（部）}\par\textbf{审核}&
       \begin{minipage}{1.0\linewidth}
-        \textbf{审核意见、签章：}
-        \vspace{4em}
+        \textbf{审核意见、签章：}\\[4em]\par
         \hfill\SWFCField@Year{}\textbf{年}\SWFCField@Month{}\textbf{月}\SWFCField@Date{}\textbf{日}
       \end{minipage}\\\tabucline-
     \end{tabu}}
   \noindent\tabulinesep=3pt
-  \begin{tabu}{@{}X[-1]X[-1]X}
+  \begin{tabu}{@{}X[-1]@{\quad}X[-1]@{\,}X@{}}
     注：
     &1.&此任务书由指导教师填写，各院（部）审定，在毕业论文（设计）开始前一周内填好并发给学生。\\
     &2.&此任务书双面打印，一式两份。学生一份，另一份随毕业论文（设计）保存。

@@ -12,7 +12,7 @@
 
 * 文件清单
   本模版的最新版本可以从 [[https://github.com/wx672/texmf/tree/master/doc/latex/swfu/swfcthesis/tutorial]] 下载。 模版目录中包含如下内容：
-  - [[./swfcthesis.cls][*swfcthesis.cls*]] --- 是论文模版的class文件，它决定了论文的排版格式；
+  - [[./swfuthesis.cls][*swfuthesis.cls*]] --- 是论文模版的class文件，它决定了论文的排版格式；
   - [[./readme.html][*readme.html*]] --- 本说明文件。
   - [[./tutorial][*tutorial*]] --- 小教程，同时也是一个标准模板。其中，
     - [[file:tutorial/tutorial.tex][*tutorial.tex*]] --- 源文件；
@@ -30,8 +30,8 @@
       - [[./sample/chapters/src.tex][*src.tex*]] --- 插入程序代码示例；
   - [[./example][*example*]] --- 历年毕业论文范例，可供参考；
 * 各文件的使用说明
-** swfcthesis.cls
-   - 通常你不需要改动 [[./swfcthesis.cls][~swfcthesis.cls~]] 文件，将 =\documentclass{swfcthesis}= 做为TeX文件的开始即可。
+** swfuthesis.cls
+   - 通常你不需要改动 [[./swfuthesis.cls][~swfuthesis.cls~]] 文件，将 =\documentclass{swfcthesis}= 做为TeX文件的开始即可。
    - 写论文时，请参照 [[./tutorial/tutorial.tex][~tutorial.tex~]] 文件的开始部分。
 ** tutorial --- 一个可以当模板用的小教程
 - [[file:tutorial/tutorial.tex][*tutorial.tex*]] --- 源文件

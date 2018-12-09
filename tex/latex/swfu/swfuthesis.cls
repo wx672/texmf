@@ -1,6 +1,6 @@
 % 西南林业大学本科毕业（设计）论文
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{swfcthesisctexrep}
+\ProvidesClass{swfuthesis}
 
 % pass unknown options to ctexrep
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexrep}}

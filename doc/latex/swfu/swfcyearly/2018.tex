@@ -1,0 +1,29 @@
+\documentclass{swfuyearly}
+
+\pgfkeys{
+  Year = 2018,     
+  Month,
+  Date,
+  School,
+  Name,
+  Gender,
+  Birth,
+  Political,
+  Title,
+  Degree,
+  Job,
+}
+
+\begin{document}
+\makeform
+% \Sumup{xshift}{yshift}{scale}{text}
+\Sumup{.4cm}{4cm}{.6}{./2018txt}  % 个人总结
+% \Signit{xshift}{yshift}{sig}
+\Signit{5cm}{-2cm}{../signature}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

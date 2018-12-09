@@ -1,10 +1,29 @@
 % 西南林业大学教职工年年度考核表
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{swfcyearly}
-
-\LoadClass[scheme=plain]{ctexart}
+\ProvidesClass{swfuyearly}
 
 \RequirePackage{ifxetex} % XeTeX only
+
+\RequirePackage{pgfkeys,etoolbox,calc}
+
+\pgfkeys{
+  Year/.store in      = \SWFU@Year,      Year =,
+  Month/.store in     = \SWFU@Month,     Month/.default     = 12,
+  Date/.store in      = \SWFU@Date,      Date/.default      = 22,
+  School/.store in    = \SWFU@School,    School/.default    = 大数据与智能工程学院,
+  Name/.store in      = \SWFU@Name,      Name/.default      = 王晓林,
+  Gender/.store in    = \SWFU@Gender,    Gender/.default    = 男,
+  Birth/.store in     = \SWFU@Birth,     Birth/.default     = 1969-03,
+  Political/.store in = \SWFU@Political, Political/.default = 群众,
+  Title/.store in     = \SWFU@Title,     Title/.default     = 讲师,
+  Degree/.store in    = \SWFU@Degree,    Degree/.default    = 硕士,
+  Job/.store in       = \SWFU@Job,       Job/.default       = 教学,
+}
+
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
+\ProcessOptions\relax
+
+\LoadClass[scheme=plain]{ctexart}
 
 \RequirePackage{tabu}
 
@@ -18,24 +37,11 @@ left=2.5cm, right=2.5cm,
 
 \RequirePackage{tikz}
 \usetikzlibrary{backgrounds,positioning,fit}
-                
-\newcommand{\Year}[1]{\gdef\SWFCField@Year{#1}} % 年份
-\newcommand{\Month}[1]{\gdef\SWFCField@Month{#1}} % 月份
-\newcommand{\Date}[1]{\gdef\SWFCField@Date{#1}} % 日期
-\newcommand{\School}[1]{\gdef\SWFCField@School{\kaishu #1}} % 学院/部门
-\newcommand{\Name}[1]{\gdef\SWFCField@Name{\kaishu #1}} % 姓名
-%\newcommand{\Sign}[1]{\gdef\SWFCField@Sign{#1}} % 本人签字
-\newcommand{\Gender}[1]{\gdef\SWFCField@Gender{\kaishu #1}} % 性别
-\newcommand{\Birth}[1]{\gdef\SWFCField@Birth{\kaishu #1}} % 出生年月
-\newcommand{\Political}[1]{\gdef\SWFCField@Political{\kaishu #1}} % 政治面貌
-\newcommand{\Title}[1]{\gdef\SWFCField@Title{\kaishu #1}} % 职务/职称
-\newcommand{\Degree}[1]{\gdef\SWFCField@Degree{\kaishu #1}} % 文化程度
-\newcommand{\Job}[1]{\gdef\SWFCField@Job{\kaishu #1}} % 现从事工作
 
 \newcommand{\Signit}[3]{%\Signit{5cm}{-2cm}{../signature}
   \begin{tikzpicture}[overlay,remember picture]%
     \node [xshift=#1,yshift=#2] at (current page.center) {%
-      \includegraphics[scale=.15]{#3}};
+      \includegraphics[scale=.1]{#3}};
   \end{tikzpicture}}
 
 \newcommand{\Sumup}[4]{%\Sumup{.4cm}{4cm}{.1}{./text}
@@ -46,28 +52,28 @@ left=2.5cm, right=2.5cm,
 
 \newcommand{\makeform}{
   \begin{center}
-    {\LARGE\heiti 西南林业大学教职工\underline{\ \SWFCField@Year\ }年年度考核表}
+    {\LARGE\heiti 西南林业大学教职工\underline{\ \SWFU@Year\ }年年度考核表}
   \end{center}
-  学院/部门：{\SWFCField@School}\hfill{}填表时间：
-  \SWFCField@Year{}年\SWFCField@Month{}月\SWFCField@Date{}日\\
+  学院/部门：{\SWFU@School}\hfill{}填表时间：
+  \SWFU@Year{}年\SWFU@Month{}月\SWFU@Date{}日\\
   \begin{tabu}{|@{}X[c]@{}|@{}X[c]@{}|}\tabucline-
       \tabulinesep=2mm
       \begin{tabu}{c|X[c]|c}
-        姓名&{\SWFCField@Name}&性别\\
+        姓名&{\SWFU@Name}&性别\\
       \end{tabu}&
       \tabulinesep=2mm
       \begin{tabu}{X[c]|c|X[c]}
-        {\SWFCField@Gender}&出生年月&{\SWFCField@Birth}\\
+        {\SWFU@Gender}&出生年月&{\SWFU@Birth}\\
       \end{tabu}\\\tabucline- % end of the first raw
       \tabulinesep=2mm
       \begin{tabu}{c|X[c]@{}}
-        政治面貌&{\SWFCField@Political}\\\tabucline-
-        文化程度&{\SWFCField@Degree}\\
+        政治面貌&{\SWFU@Political}\\\tabucline-
+        文化程度&{\SWFU@Degree}\\
       \end{tabu}&
       \tabulinesep=2mm
       \begin{tabu}{c|X[c]}
-        职称/职务&{\SWFCField@Title}\\\tabucline-
-        现从事工作&{\SWFCField@Job}\\
+        职称/职务&{\SWFU@Title}\\\tabucline-
+        现从事工作&{\SWFU@Job}\\
       \end{tabu}\\\tabucline-
     \end{tabu} % end of the 3rd raw
     \vspace{-1pt}\tabulinesep=2mm
@@ -85,15 +91,4 @@ left=2.5cm, right=2.5cm,
       \hfill\makebox[12em][r]{年\hspace{3em}月\hspace{3em}日}\\\tabucline-
     \end{tabu}}
 
-\School{大数据与智能工程学院}
-\Name{王晓林}\Gender{男}\Birth{1969-03}
-\Political{群众}\Title{讲师}
-\Degree{硕士}\Job{教学、科研}
-\Year{2017}\Month{12}\Date{22}
-%\Sumup{0}{0}{.5}{./text}
-%\Signit{0}{0}{../signature}
-
-%\Text{2017年度，
-% 1. 本人认真完成了《操作系统原理》、《Linux应用基础》等课程的教学工作，教学效果良好；
-% 2. 顺利完成了大智学院教学服务器的运行、维护工作。服务器运行稳定，未发生任何事故。}
 \pagestyle{empty}
