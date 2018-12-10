@@ -1,133 +1,130 @@
-\documentclass{swfcthesismscctex}
+\documentclass{swfuthesism}
 
 \addbibresource{os.bib}
 \addbibresource{paper.bib}
 
+\pgfkeys{%
+  Title={操作系统中进程管理与内存管理的设计与实现},%
+  enTitle={DESIGN AND IMPLEMENTATION OF PROCESS AND MEMORY MANAGEMENT IN AN OPERATING
+    SYSTEM},%
+  Author={罗志兵},%
+  enAuthor={LUO Zhibing},%
+  AuthorId={20151111002},%
+  AuthorInfo={罗志兵（1989 ─），女，广西贵港人，本科毕业于西南林业大学计算机与信息科学学院，
+    现为在读硕士研究生，就读于西南林业大学大数据与智能工程学院，所学专业为林业信息工程。曾发表的论文有《基于动态规划的基因双序列比对研究》。},%
+  Advisor={赵家刚},%
+  enAdvisor={ZHAO Jiagang (Associate Professor)},%
+  AdvisorTitle={副教授},%
+  enAdvisorB=,%
+  AdvisorInfo={赵家刚，硕士研究生、副教授，硕士研究生导师，云南省科技项目评审专家，云南省计
+    算机协会理事，主要研究智能数据处理、信息系统开发。主持了多个项目，主编教材3部。
+
+    主讲的课程有《C语言程序设计》、《面向对象程序设计》、《数据结构》、《图形图像程序设计》、
+    《人工智能》、《人工神经网络》、《组件技术》、《离散数学》、《计算机编程导论》。
+
+    \noindent{}•\, 主要学习、工作经历：
+    \begin{itemize}
+    \item[] 1978.9－1980.7，在腾冲师范读书；
+    \item[] 1980.8－1983.8，在腾冲固东中学任教；
+    \item[] 1983.9－1987.7，在云南师大数学系读本科，获理学士学位；
+    \item[] 1987.6－1998.8，在保山师专任计算机教学工作；
+    \item[] 1998.9－2001.6，在云南师大计科系读研究生，获理学硕士学位；
+    \item[] 2001.7－至今，在西南林学院计科系工作。主要从事软件开发的教学工作，培养了众多编
+      程高手。
+    \end{itemize}
+
+    \noindent{}•\, 主要论著和文章：
+    \begin{refsection}
+      \nocite{zjg02,zjg03,zjg07,zjg09,zjg09-2,zjg09-3,zjg09-4,zjg10,zjg11,zjg13}
+      \printbibliography[heading=none]
+    \end{refsection}
+
+    \noindent{}•\, 主持的项目：
+    \begin{enumerate}
+    \item 2003.6－2004.5，西南林学院，``数据结构教学改革研究'';
+    \item 2007.5－2008.12，云南海诚集团，``项目建设工程数据库管理软件''，具有工作流；
+    \item 2008.6－2009.6，昆明市科计局科技项目审批软件，具有工作流；
+    \item 2010.10－2013.10，科学出版社大型教育类网站研发；
+    \item 2013.10－2016.10，云南省委组织部办公邮件系统。
+    \end{enumerate}},%
+  ClsID={TP311},%
+  Month={\hspace{2em}}, Year={\hspace{3em}},%
+  DateA={\hspace{2em}},%提交论文日期
+  DateB={\hspace{2em}},%论文答辩日期
+  DateC={\hspace{2em}},%保密协议签名日期
+  Subject={林业信息工程}, enSubject={Forestry information engineering},%
+  Abstract={操作系统是计算机里运行的最重要的软件，操作系统内核是计算机软件系统的核心，它是
+    外围用户进程与硬件之间的必要接口，提供系统资源管理、程序控制等重要功能。操作系统内核通
+    常包含进程管理、内存管理、文件系统、输入/输出、系统调用等功能模块。
+
+    操作系统内核的研究一直以来都是计算机技术领域研究的重点，而进程管理和内存管理更是研究的
+    重中之重。随着硬件技术的飞速发展，配套软件技术也日新月异。为了最大限度地发挥硬件的威力，
+    现代操作系统研发在提高系统并行处理能力方面也一直做着不懈的努力，以满足用户在一个计算机
+    上能同时运行越来越多任务的需求。同时，近些年来，由于软件规模的增长速度远远大于内存增长
+    的速度，于是，如何解决在有限的内存空间尽可能多地运行进程便成为了操作系统内核研究的另一
+    重要任务。基于以上这两点，本文选择了以进程管理和内存管理两个模块为重点研究内容，探讨如
+    何在CPU数量有限和内存空间有限的情况下，尽可能同时运行多个进程，并且让尽可能多的进程同时
+    并存于内存中的问题。
+ 
+    在进程管理模块中，本文从进程的抽象概念出发，探讨了进程的本质，以及如何创建一个进程等问
+    题。为了保证多个进程能轮流地、公平地使用CPU资源，本文实现了时间片轮转（Round Robin）调
+    度算法。同时，为了解决多进程同时运行时出现的竞争问题，在实验中，本文采用了两种
+    锁：\texttt{spinlock}和\texttt{sleeplock}。\texttt{spinlock}锁用来保护那些短时间就能处
+    理完的共享数据，而\texttt{sleeplock}则用来保护那些需要比较长时间才能处理完的共享数据。
+    本文还提供了通过屏蔽中断和禁止进程在持有锁的情况下进入睡眠状态这两种方法来防止死锁的出
+    现。
+
+    在内存管理方面，通过分页机制实现了对内存的抽象，为进程提供了虚拟地址空间，并通过页表将
+    虚拟地址映射到内存中，为每个进程空间提供了保护。在存储进程的页表时，通过页表分级技术，
+    以两级分页的方式存储页表，从而减少了系统存放页表的内存开销。本文还通过采用将内核映射到
+    每个进程的地址空间中去的方法大大缩小了系统处理系统调用、异常和中断的时间开销。在给用户
+    进程分配用户栈的时候，本文采用了给用户栈额外分配一个空页的方法来防止栈的溢出。在实现虚
+    拟内存的时候，为了减少了系统创建新进程时的内存开销，本文使用了写时复制（copy-on-write）
+    技术。同时，为了减少不必要的内存浪费，本文使用了延迟分配的方法来处理进程运行时的内存分配。最后，本文还为进程间的通信提供了共享内存技术。},%
+  Keywords={操作系统，内核，进程，调度，分页，写时复制，进程间通信，共享内存},%
+  enAbstract={ An operating system is the most important piece of software that runs in a
+    computer system. The operating system kernel is in charge of managing the processes
+    and the memory space as well as other resources within the computer. Kernel
+    development has always been the hot spot of computer science and technology
+    research. Nowadays, with the raising of user demands of running more and more software
+    in one computer simultaneously, modern operating systems have been pushing forward to
+    meet this requirement. More over, the software size is growing much faster than the
+    speed of RAM growing. So, how to run more processes at the same time and how to store
+    more processes in the memory has become the key point of kernel development. Based on
+    the above reasons, this paper was decided to choose process management and memory
+    management to be the research topic instead of a whole OS kernel.
+
+    In the process management module, this paper was started from discussing the abstract
+    concept of a process, followed by further discussion on process creation and
+    running. In order to schedule the processes in the system in a fair way, this paper
+    adapted the round-robin algorithm to share the CPU among the processes within the
+    system. To avoid the race condition caused by multiple processes sharing shared
+    resources, two kinds of locks are introduced, a spinlock for protecting the short-term
+    processing of shared data, and a sleeplock for protecting the long-term processing of
+    shared data. Methods for preventing deadlocks are also presented by disabling
+    interrupts and not allowing a process turns to sleep while holding a lock. In the
+    memory management module, the virtual memory concept is implemented as an abstraction
+    of physical memory to user porgrams. With this abstraction, processes can have their
+    own private address space protected from each other. Besides, kernel is mapped into
+    every process address space to reduce context switch time when dealing with traps. To
+    reduce the page table size, two-level paging scheme is adapted, so as to save a lot of
+    physical memory space. To solve the stack overflow problem this paper uses a method
+    that allocates an unmapped page right below the user stack to keep stack from
+    overflowing. When forking processes, the copy-on-write technique is implemented to map
+    parent pages into children processes' address space to save lots of memory space. When
+    dealing with the processes' runtime memory allocation, this paper uses the lazy
+    allocation technique to save unnecessary spaces. At latst, shared memory is
+    implemented to support inter-process communication.},%
+  enKeywords={operating system, kernel, process, scheduling, paging, copy-on-write,
+    lazy-allocation, IPC},%
+  Acknowledgments={本课题和论文的完成得到了许多老师和同学的支持和帮助，在这里，我将给予他们
+    最衷心的感谢。在这里，特别感谢我的导师，赵家刚老师的悉心指导和帮助，使得该论文能如期完
+    成。从选择研究方向到确定具体的实施方案,从论文的初稿到最后的审定，无不花费了他大量的心血
+    和精力。 赵老师的博学多才，和他在科研学术方面的认真、严谨、求实、创新的态度， 以及开拓进取的工作作风都让我收益匪浅。},%
+  Chairman=,}
+
 \begin{document}
 
-\Title{操作系统中进程管理与内存管理的设计与实现}%
-\enTitle{DESIGN AND IMPLEMENTATION OF PROCESS AND MEMORY MANAGEMENT IN AN OPERATING
-  SYSTEM}%
-\Author{罗志兵}\enAuthor{LUO Zhibing}%
-\AuthorId{20151111002} \AuthorInfo{罗志兵（1989 ─），女，广西贵港人，本科毕业于西南林业大学
-  计算机与信息科学学院，现为在读硕士研究生，就读于西南林业大学大数据与智能工程学院，所学专
-  业为林业信息工程。曾发表的论文有《基于动态规划的基因双序列比对研究》。}%
-\Advisor{赵家刚}\enAdvisor{ZHAO Jiagang (Associate Professor)} \AdvisorTitle{副教
-  授}\enAdvisorB{}%
-\AdvisorInfo{%
-  赵家刚，硕士研究生、副教授，硕士研究生导师，云南省科技项目评审专家，云南省计算机协会理事，
-  主要研究智能数据处理、信息系统开发。主持了多个项目，主编教材3部。
-
-  主讲的课程有《C语言程序设计》、《面向对象程序设计》、《数据结构》、《图形图像程序设计》、
-  《人工智能》、《人工神经网络》、《组件技术》、《离散数学》、《计算机编程导论》。
-
-  \noindent{}•\, 主要学习、工作经历：
-  \begin{itemize}
-  \item[] 1978.9－1980.7，在腾冲师范读书；
-  \item[] 1980.8－1983.8，在腾冲固东中学任教；
-  \item[] 1983.9－1987.7，在云南师大数学系读本科，获理学士学位；
-  \item[] 1987.6－1998.8，在保山师专任计算机教学工作；
-  \item[] 1998.9－2001.6，在云南师大计科系读研究生，获理学硕士学位；
-  \item[] 2001.7－至今，在西南林学院计科系工作。主要从事软件开发的教学工作，培养了众多编程高
-    手。
-  \end{itemize}
-
-  \noindent{}•\, 主要论著和文章：
-  \begin{refsection}
-    \nocite{zjg02,zjg03,zjg07,zjg09,zjg09-2,zjg09-3,zjg09-4,zjg10,zjg11,zjg13}
-    \printbibliography[heading=none] 
-  \end{refsection}
-
-  \noindent{}•\, 主持的项目：
-\begin{enumerate}
-\item 2003.6－2004.5，西南林学院，``数据结构教学改革研究'';
-\item 2007.5－2008.12，云南海诚集团，``项目建设工程数据库管理软件''，具有工作流；
-\item 2008.6－2009.6，昆明市科计局科技项目审批软件，具有工作流；
-\item 2010.10－2013.10，科学出版社大型教育类网站研发；
-\item 2013.10－2016.10，云南省委组织部办公邮件系统。
-\end{enumerate}}%
-
-\ClsID{TP311}
-\Month{\hspace{2em}}\Year{\hspace{3em}}%
-\DateA{\hspace{2em}}%提交论文日期
-\DateB{\hspace{2em}}%论文答辩日期
-\DateC{\hspace{2em}}%保密协议签名日期
-\Subject{林业信息工程}\enSubject{Forestry information engineering}%
-\Abstract{%
-  操作系统是计算机里运行的最重要的软件，操作系统内核是计算机软件系统的核心，它是外围用户进
-  程与硬件之间的必要接口，提供系统资源管理、程序控制等重要功能。操作系统内核通常包含进程管
-  理、内存管理、文件系统、输入/输出、系统调用等功能模块。
-
-  操作系统内核的研究一直以来都是计算机技术领域研究的重点，而进程管理和内存管理更是研究的重
-  中之重。随着硬件技术的飞速发展，配套软件技术也日新月异。为了最大限度地发挥硬件的威力，现
-  代操作系统研发在提高系统并行处理能力方面也一直做着不懈的努力，以满足用户在一个计算机上能
-  同时运行越来越多任务的需求。同时，近些年来，由于软件规模的增长速度远远大于内存增长的速
-  度，于是，如何解决在有限的内存空间尽可能多地运行进程便成为了操作系统内核研究的另一重要任
-  务。基于以上这两点，本文选择了以进程管理和内存管理两个模块为重点研究内容，探讨如何在CPU数
-  量有限和内存空间有限的情况下，尽可能同时运行多个进程，并且让尽可能多的进程同时并存于内存
-  中的问题。
- 
-  在进程管理模块中，本文从进程的抽象概念出发，探讨了进程的本质，以及如何创建一个进程等问
-  题。为了保证多个进程能轮流地、公平地使用CPU资源，本文实现了时间片轮转（Round Robin）调度
-  算法。同时，为了解决多进程同时运行时出现的竞争问题，在实验中，本文采用了两种
-  锁：\texttt{spinlock}和\texttt{sleeplock}。\texttt{spinlock}锁用来保护那些短时间就能处理
-  完的共享数据，而\texttt{sleeplock}则用来保护那些需要比较长时间才能处理完的共享数据。本文
-  还提供了通过屏蔽中断和禁止进程在持有锁的情况下进入睡眠状态这两种方法来防止死锁的出现。
-
-  在内存管理方面，通过分页机制实现了对内存的抽象，为进程提供了虚拟地址空间，并通过页表将虚
-  拟地址映射到内存中，为每个进程空间提供了保护。在存储进程的页表时，通过页表分级技术，以两级
-  分页的方式存储页表，从而减少了系统存放页表的内存开销。本文还通过采用将内核映射到每个进程
-  的地址空间中去的方法大大缩小了系统处理系统调用、异常和中断的时间开销。在给用户进程分配用
-  户栈的时候，本文采用了给用户栈额外分配一个空页的方法来防止栈的溢出。在实现虚拟内存的时候，
-  为了减少了系统创建新进程时的内存开销，本文使用了写时复制（copy-on-write）技术。同时，为了
-  减少不必要的内存浪费，本文使用了延迟分配的方法来处理进程运行时的内存分配。最后，本文还为
-  进程间的通信提供了共享内存技术。}%
-
-\Keywords{操作系统，内核，进程，调度，分页，写时复制，进程间通信，共享内存}%
-
-\enAbstract{%
-  An operating system is the most important piece of software that runs in a computer
-  system. The operating system kernel is in charge of managing the processes and the
-  memory space as well as other resources within the computer. Kernel development has
-  always been the hot spot of computer science and technology research. Nowadays, with the
-  raising of user demands of running more and more software in one computer
-  simultaneously, modern operating systems have been pushing forward to meet this
-  requirement. More over, the software size is growing much faster than the speed of RAM
-  growing. So, how to run more processes at the same time and how to store more processes
-  in the memory has become the key point of kernel development. Based on the above
-  reasons, this paper was decided to choose process management and memory management to be
-  the research topic instead of a whole OS kernel.
-
-  In the process management module, this paper was started from discussing the abstract
-  concept of a process, followed by further discussion on process creation and running. In
-  order to schedule the processes in the system in a fair way, this paper adapted the
-  round-robin algorithm to share the CPU among the processes within the system. To avoid
-  the race condition caused by multiple processes sharing shared resources, two kinds of
-  locks are introduced, a spinlock for protecting the short-term processing of shared data,
-  and a sleeplock for protecting the long-term processing of shared data. Methods for
-  preventing deadlocks are also presented by disabling interrupts and not allowing a
-  process turns to sleep while holding a lock. In the memory management module, the
-  virtual memory concept is implemented as an abstraction of physical memory to user
-  porgrams. With this abstraction, processes can have their own private address space
-  protected from each other. Besides, kernel is mapped into every process address space to
-  reduce context switch time when dealing with traps. To reduce the page table size,
-  two-level paging scheme is adapted, so as to save a lot of physical memory space. To
-  solve the stack overflow problem this paper uses a method that allocates an unmapped
-  page right below the user stack to keep stack from overflowing. When forking processes,
-  the copy-on-write technique is implemented to map parent pages into children processes'
-  address space to save lots of memory space. When dealing with the processes' runtime
-  memory allocation, this paper uses the lazy allocation technique to save unnecessary
-  spaces. At latst, shared memory is implemented to support inter-process communication.}%
-
-\enKeywords{operating system, kernel, process, scheduling, paging, copy-on-write,
-  lazy-allocation, IPC}%
-
-\Acknowledgments{%
-  本课题和论文的完成得到了许多老师和同学的支持和帮助，在这里，我将给予他们最衷心的感谢。在
-  这里，特别感谢我的导师，赵家刚老师的悉心指导和帮助，使得该论文能如期完成。从选择研究方向
-  到确定具体的实施方案,从论文的初稿到最后的审定，无不花费了他大量的心血和精力。 赵老师的博
-  学多才，和他在科研学术方面的认真、严谨、求实、创新的态度， 以及开拓进取的工作作风都让我收益匪浅。}%
-\Chairman{}
 
 %%% 下面六行不要动！
 \frontmatter          
