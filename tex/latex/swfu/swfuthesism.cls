@@ -1,6 +1,31 @@
 % 西南林业大学硕士学位论文
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{swfcthesismscctex}
+\ProvidesClass{swfuthesism}
+
+\RequirePackage{ifxetex} % XeTeX only
+
+\RequirePackage{pgfkeys}
+
+\pgfkeys{
+  Title/.store in           = \@title,           % 论文题目             
+  enTitle/.store in         = \SWFU@enTitle,     % 论文题目（英文）     
+  Author/.store in          = \@author,          % 作者姓名             
+  enAuthor/.store in        = \SWFU@enAuthor,    % 作者姓名（英文）     
+  AuthorId/.store in        = \SWFU@AuthorId,    % 学号                 
+  Advisor/.store in         = \SWFU@Advisor,     % 指导教师             
+  enAdvisor/.store in       = \SWFU@enAdvisor,   % 指导教师（英文）     
+  enAdvisorB/.store in      = \SWFU@enAdvisorB,  % 指导教师B（英文）    
+  AdvisorTitle/.store in    = \SWFU@AdvisorTitle,% 指导教师职称         
+  ClsID/.store in           = \SWFU@ClsID,       % 分类号               
+  DateA/.store in           = \SWFU@DateA, DateA/.default={\hspace{2em}},% 提交论文日期         
+  DateB/.store in           = \SWFU@DateB, DateB/.default={\hspace{2em}},% 论文答辩日期         
+  DateC/.store in           = \SWFU@DateC, DateC/.default={\hspace{2em}},% 独创性声明页上的日期 
+  Year/.store in            = \SWFU@Year,   Year/.default={\hspace{3em}},% 年
+  Month/.store in           = \SWFU@Month, Month/.default={\hspace{2em}},% 月
+  Chairman/.store in        = \SWFU@Chairman, % 答辩委员会主席       
+  Subject/.store in         = \SWFU@Subject,  % 学科专业             
+  enSubject/.store in       = \SWFU@enSubject,% 学科专业（英文）       
+}
 
 % pass unknown options to ctexbook
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
@@ -8,14 +33,12 @@
 
 \LoadClass[a4paper,openany,scheme=chinese,zihao=-4]{ctexbook}
 
-\RequirePackage{ifxetex} % XeTeX only
-
 \RequirePackage[%showframe,%
 margin=3cm,%
 nomarginpar,headheight=15pt% to avoid "headheight too small"
 ]{geometry}
 
-\RequirePackage{etoolbox,units,xkvltxp,emptypage}
+\RequirePackage{etoolbox,units,emptypage}%xkvltxp,
 \RequirePackage{varwidth,ulem,rotating,float,comment}
 \RequirePackage{indentfirst}
 \RequirePackage{booktabs,tabu,longtable,multicol,multirow,array}
@@ -102,37 +125,7 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
   \appendix\singlespacing}
 
 
-%%%%% Variables to hold the text fields for the preliminary pages
-\newcommand{\Title}[1]{\gdef\SWFCField@Title{#1}} % 论文题目
-\newcommand{\enTitle}[1]{\gdef\SWFCField@enTitle{#1}} % 论文题目（英文）
-\newcommand{\Author}[1]{\gdef\SWFCField@Author{#1}} % 作者姓名
-\newcommand{\AuthorInfo}[1]{\gdef\SWFCField@AuthorInfo{#1}} % 个人简介
-\newcommand{\AuthorId}[1]{\gdef\SWFCField@AuthorId{#1}} % 学号
-\newcommand{\enAuthor}[1]{\gdef\SWFCField@enAuthor{#1}} % 作者姓名（英文）
-\newcommand{\Advisor}[1]{\gdef\SWFCField@Advisor{#1}} % 指导教师
-\newcommand{\enAdvisor}[1]{\gdef\SWFCField@enAdvisor{#1}} % 指导教师（英文）
-\newcommand{\enAdvisorB}[1]{\gdef\SWFCField@enAdvisorB{#1}} % 指导教师B（英文）
-\newcommand{\AdvisorTitle}[1]{\gdef\SWFCField@AdvisorTitle{#1}} % 指导教师职称
-\newcommand{\AdvisorInfo}[1]{\gdef\SWFCField@AdvisorInfo{#1}} % 导师简介
-% \newcommand{\Degree}[1]{\gdef\SWFCField@Degree{#1}} % 申请学位级别（硕士）
-\newcommand{\ClsID}[1]{\gdef\SWFCField@ClsID{#1}} % 分类号
-\newcommand{\DateA}[1]{\gdef\SWFCField@DateA{#1}} % 提交论文日期
-\newcommand{\DateB}[1]{\gdef\SWFCField@DateB{#1}} % 论文答辩日期
-\newcommand{\DateC}[1]{\gdef\SWFCField@DateC{#1}} % 独创性声明页上的日期
-\newcommand{\Month}[1]{\gdef\SWFCField@Month{#1}}
-\newcommand{\Year}[1]{\gdef\SWFCField@Year{#1}}
-\newcommand{\Abstract}[1]{\gdef\SWFCField@Abstract{#1}}
-\newcommand{\enAbstract}[1]{\gdef\SWFCField@enAbstract{#1}}
-\newcommand{\Keywords}[1]{\gdef\SWFCField@Keywords{#1}}
-\newcommand{\enKeywords}[1]{\gdef\SWFCField@enKeywords{#1}}
-\newcommand{\Acknowledgments}[1]{\gdef\SWFCField@Acknowledgments{#1}}
-\newcommand{\Chairman}[1]{\gdef\SWFCField@Chairman{#1}} % 答辩委员会主席
-\newcommand{\Subject}[1]{\gdef\SWFCField@Subject{#1}} % 学科专业
-\newcommand{\enSubject}[1]{\gdef\SWFCField@enSubject{#1}} % 学科专业（英文）
-% \newcommand{\School}[1]{\gdef\SWFCField@School{#1}}
-% \newcommand{\enSchool}[1]{\gdef\SWFCField@enSchool{#1}}
-
-\newcommand{\SWFCtitlepage}{% Title page layout
+\renewcommand{\maketitle}{% Title page layout
   \thispagestyle{empty}
     \begin{tikzpicture}%[remember picture,overlay]
       \node (logo) at (current page.north) [yshift=-4.2cm]%
@@ -147,17 +140,17 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
       {\Large \textbf{论文题目}}&%
       \makebox[0pt][t]{%
         \begin{minipage}[t]{27em}
-          \centering\parbox[t]{26em}{\centering\textbf{\Large\SWFCField@Title}}
+          \centering\parbox[t]{26em}{\centering\textbf{\Large\@title}}
         \end{minipage}}%
       \rule[-.5ex]{27em}{.1pt}\par
       \rule[-.1ex]{27em}{.1pt}\\
     \end{tabu}\\[3ex]
     \begin{Large}
       \begin{tabu} to .75\textwidth {@{}rX[3.3,c]@{}}%
-        \textbf{学科专业}&\textbf{\SWFCField@Subject}\\[-2pt]\tabucline{2-2}%
-        \textbf{学\hspace{2em}号}&\textbf{\SWFCField@AuthorId}\\[-2pt]\tabucline{2-2}%
-        \textbf{作者姓名}&\textbf{\SWFCField@Author}\\[-2pt]\tabucline{2-2}%
-        \textbf{指导教师} &\textbf{\SWFCField@Advisor\hspace{1ex}（\SWFCField@AdvisorTitle）}\\[-2pt]\tabucline{2-2}%
+        \textbf{学科专业}&\textbf{\SWFU@Subject}\\[-2pt]\tabucline{2-2}%
+        \textbf{学\hspace{2em}号}&\textbf{\SWFU@AuthorId}\\[-2pt]\tabucline{2-2}%
+        \textbf{作者姓名}&\textbf{\@author}\\[-2pt]\tabucline{2-2}%
+        \textbf{指导教师} &\textbf{\SWFU@Advisor\hspace{1ex}（\SWFU@AdvisorTitle）}\\[-2pt]\tabucline{2-2}%
       \end{tabu}
     \end{Large}
   \end{center}
@@ -168,7 +161,7 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
     \vspace*{-7ex}
     \begin{footnotesize}
       \begin{tabu}{rX[l]rX[c]}
-        分类号&\SWFCField@ClsID&密级&\\[-2pt]\cmidrule{2-2}\cmidrule{4-4}
+        分类号&\SWFU@ClsID&密级&\\[-2pt]\cmidrule{2-2}\cmidrule{4-4}
         UDC&&&\\\tabucline{2-2}
       \end{tabu}
     \end{footnotesize}
@@ -179,14 +172,14 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
     \begin{minipage}[c][4em][s]{.8\linewidth}
       %https://tex.stackexchange.com/questions/74151/interline-spacing
       \lineskip=6pt \lineskiplimit=\maxdimen %\baselineskip=-3pt
-      \centering \bfseries\LARGE \uline{\SWFCField@Title}
+      \centering \bfseries\LARGE \uline{\@title}
     \end{minipage}\\[3ex]
     \begin{minipage}{.15\linewidth}
-      \centering {\bfseries\large \uline{\SWFCField@Author}}
+      \centering {\bfseries\large \uline{\@author}}
     \end{minipage}\\[19ex]
     
     \begin{tabu}to .8\linewidth {rX[c]X[c]}
-      指导教师&\textbf{\SWFCField@Advisor}&\textbf{\SWFCField@AdvisorTitle}\\\tabucline{2-3}
+      指导教师&\textbf{\SWFU@Advisor}&\textbf{\SWFU@AdvisorTitle}\\\tabucline{2-3}
       &\textbf{西南林业大学}&\textbf{昆明}\\\tabucline{2-3}
       &&\\\tabucline{2-3}
       &&\\\tabucline{2-3}
@@ -194,29 +187,29 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 
     \begin{tabu}to .8\linewidth {rX[c]rX[c]}
       申请学位级别&\textbf{硕士}&%
-      学科专业&\textbf{\SWFCField@Subject}\\[-2pt]\cmidrule{2-2}\cmidrule{4-4}%
-      提交论文日期&\textbf{\SWFCField@DateA}&%
-      论文答辩日期&\textbf{\SWFCField@DateB}\\[-2pt]\cmidrule{2-2}\cmidrule{4-4}%
+      学科专业&\textbf{\SWFU@Subject}\\[-2pt]\cmidrule{2-2}\cmidrule{4-4}%
+      提交论文日期&\textbf{\SWFU@DateA}&%
+      论文答辩日期&\textbf{\SWFU@DateB}\\[-2pt]\cmidrule{2-2}\cmidrule{4-4}%
     \end{tabu}
 
     \begin{tabu}to .8\linewidth {lX[c]}
       学位授予单位和日期&\textbf{西南林业大学}\\\tabucline{2-2}
-      答辩委员会主席&\textbf{\SWFCField@Chairman}\\\tabucline{2-2}
+      答辩委员会主席&\textbf{\SWFU@Chairman}\\\tabucline{2-2}
     \end{tabu}
   \end{center}  
   \clearpage\shipout\null
   \thispagestyle{empty}
   \begin{center}
     \vspace*{15ex}
-    {\Large \textbf{\SWFCField@enTitle}}\\[25ex]
+    {\Large \textbf{\SWFU@enTitle}}\\[25ex]
     \begin{large}
       \textbf{A Master Thesis Submitted to}\\[-1ex]
       \textbf{Southwest Forestry University}\\[15ex]
       
     \begin{tabu}to .8\linewidth {rX[c]@{}}
-      Major:&\textbf{\SWFCField@enSubject}\\\tabucline{2-2}
-      Author:&\textbf{\SWFCField@enAuthor}\\\tabucline{2-2}
-      Advisor:&\textbf{\SWFCField@enAdvisor}\\\tabucline{2-2}
+      Major:&\textbf{\SWFU@enSubject}\\\tabucline{2-2}
+      Author:&\textbf{\SWFU@enAuthor}\\\tabucline{2-2}
+      Advisor:&\textbf{\SWFU@enAdvisor}\\\tabucline{2-2}
       School:&%
       \makebox[0pt][t]{%
         \begin{minipage}[t]{19em}
@@ -240,7 +233,7 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
     的同志对本研究所做的任何贡献均已在论文中作了明确的说明并表示谢意。
     \begin{flushright}
       作者签名：\underline{\hspace{7em}}\qquad{}%
-      日期：\SWFCField@Year{}年\SWFCField@Month{}月\SWFCField@DateC{}日
+      日期：\SWFU@Year{}年\SWFU@Month{}月\SWFU@DateC{}日
     \end{flushright}
   \end{large}
 
@@ -259,73 +252,61 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
     \vspace{3ex}
     \begin{flushright}
       作者签名：\underline{\hspace{7em}}\quad{}导师签名：\underline{\hspace{8em}}\\[2ex]
-      日期：\SWFCField@Year{}年\SWFCField@Month{}月\SWFCField@DateC{}日
+      日期：\SWFU@Year{}年\SWFU@Month{}月\SWFU@DateC{}日
     \end{flushright}
   \end{large}
 \clearpage\shipout\null}
 
-\newcommand{\abstractpage}{% Abstract page
-  \providecommand\pdfbookmark[3][]{} \pdfbookmark[0]{摘要}{bm:cnAbstract}
-  \thispagestyle{plain}
+\newenvironment{abstract}{%
+  \providecommand\pdfbookmark[3][]{}\pdfbookmark[0]{摘要}{bm:cnAbstract}%
+  \thispagestyle{plain}\phantomsection{}%
   \pagenumbering{roman}
   \begin{center}
     {\large\textbf{摘\hspace{1em}要}}
-  \end{center}
-  \hspace{2em}\SWFCField@Abstract\par
-  \vspace{2ex}
-  \noindent \textbf{关键字：}~\SWFCField@Keywords
-  \clearpage
-}
+  \end{center}}{}
 
-\newcommand{\enabstractpage}{% English abstract page  
-  \providecommand\pdfbookmark[3][]{}%
-  \pdfbookmark[0]{Abstract}{bm:Abstract}
-  \thispagestyle{plain}
+\newenvironment{keyword}{%
+  \vskip 2ex\noindent\textbf{关键字：}}{\pagebreak}
+
+\newenvironment{EAbstract}{%
+  \providecommand\pdfbookmark[3][]{}\pdfbookmark[0]{Abstract}{bm:Abstract}%
+  \thispagestyle{plain}\phantomsection{}%
   \begin{center}
     {\large \textbf{ABSTRACT}}
-  \end{center}
-  \hspace{2em}\SWFCField@enAbstract\par
-  \vspace{1em}
-  \noindent\textbf{Key words: }~\SWFCField@enKeywords
-  \clearpage
-}
+  \end{center}}{}
 
-\newcommand{\authorinfopage}{% Author info page
-  \phantomsection{}
-  \addcontentsline{toc}{chapter}{个人简介}
-  \chapter*{个人简介}
-  \SWFCField@AuthorInfo
-}
+\newenvironment{EKeyword}{%
+  \vskip 2ex\noindent\textbf{Key words: }}{\pagebreak}
 
-\newcommand{\advisorinfopage}{% Advisor info page
-  \phantomsection{}
-  \addcontentsline{toc}{chapter}{导师简介}
-  \chapter*{导师简介}
-  \SWFCField@AdvisorInfo
-}
+\newenvironment{authorInfo}{% 个人简介
+  \phantomsection{}%
+  \addcontentsline{toc}{chapter}{个人简介}%
+  \chapter*{个人简介}%
+  \vskip 2em\begin{doublespace}}%
+  {\end{doublespace}\pagebreak}
 
-\newcommand{\acknowledgmentspage}{% Acknowledgments page  
-  \phantomsection{}
-  \addcontentsline{toc}{chapter}{致\hspace{1em}谢}
-  \chapter*{致\hspace{1em}谢}
-  \SWFCField@Acknowledgments}
+\newenvironment{advisorInfo}{% 导师简介
+  \phantomsection{}%
+  \addcontentsline{toc}{chapter}{导师简介}%
+  \chapter*{导师简介}%
+  \vskip 2em\begin{doublespace}}%
+  {\end{doublespace}\pagebreak}
 
-\newcommand{\makepreliminarypages}{% preliminary pages
-  \SWFCtitlepage{}
-  \doublespacing{} % global line spacing
-  \abstractpage{}
-  \enabstractpage}
+\newenvironment{acknowledgment}{% 致谢
+  \phantomsection{}%
+  \addcontentsline{toc}{chapter}{致\hspace{1em}谢}%
+  \chapter*{致\hspace{1em}谢}%
+  \vskip 2em\begin{doublespace}}%
+  {\end{doublespace}\pagebreak\singlespacing}
 
-\newcommand{\maketailpages}[1]{% tail pages
-  \doublespacing
-  \authorinfopage{} % 个人简介
-  \advisorinfopage{} % 导师简介
-  \begin{refsection}
-    \nocite{#1} \printbibliography[heading={bibintoc},title={获得成果目录}] % 个人论文清单
-  \end{refsection}
-  \acknowledgmentspage{} % 鸣谢
-}
+\newcommand{\makebib}{%
+  \printbibliography[heading={bibintoc},title={参考文献}]\label{p:ref}\pagebreak}
 
+\newcommand{\publication}[1]{%
+  \nocite{#1}%
+  \printbibliography[heading={bibintoc},title={获得成果目录}]\label{p:ref}\pagebreak}
+
+%%%%% minted
 \RequirePackage[chapter]{minted} % minted has to be loaded at last!!!
 \usemintedstyle{bw}
 
@@ -380,7 +361,7 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
       {\end{singlespace}\end{minipage}\end{center}}
 
 % code listing cross pages
-\newenvironment{longlisting}{\captionsetup{type=listing}}{}
+\newenvironment{longlisting}{\captionsetup{type=listing}\begin{singlespace}}{\end{singlespace}}
 
 
 %%%%% ctex
@@ -390,20 +371,6 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
   chapter/number = {\thechapter},
 }
 
-
-%%%%% Initial defaults
-\Title{} \enTitle{}%
-\Author{} \enAuthor{} \AuthorInfo{} \AuthorId{}%
-\Advisor{} \enAdvisor{} \AdvisorTitle{} \AdvisorInfo{} \enAdvisorB{}%
-\Year{\hspace{3em}}\Month{\hspace{2em}}%
-\DateA{\hspace{2em}}%提交论文日期
-\DateB{\hspace{2em}}%论文答辩日期
-\DateC{\hspace{2em}}%保密协议签名日期
-\Subject{} \enSubject{}%
-\Abstract{} \enAbstract{} \Keywords{} \enKeywords{}%
-\Acknowledgments{}
-\Chairman{}
-\ClsID{}
 \setlength{\parindent}{2em}
 % \setcounter{tocdepth}{1}
 \setcounter{secnumdepth}{3}

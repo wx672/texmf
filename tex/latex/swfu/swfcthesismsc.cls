@@ -186,7 +186,7 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
   \thispagestyle{empty}
     \begin{tikzpicture}%[remember picture,overlay]
       \node (logo) at (current page.north) [yshift=-4.2cm]%
-      {\includegraphics[width=.8\textwidth]{swfulogo-tw}};
+      {\includegraphics[width=.8\textwidth]{swfulogo}};
       \node (h1) [below=2.3cm of logo,xshift=7mm,scale=3.4,font=\bfseries,align=center] {硕士学位论文};
       \node (h2) [below=4mm of h1,scale=1.3,font=\bfseries] {MASTER THESIS};
     \end{tikzpicture}

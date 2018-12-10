@@ -2,6 +2,22 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfuthesis}
 
+\RequirePackage{ifxetex} % XeTeX only
+
+\RequirePackage{pgfkeys}
+
+\pgfkeys{%
+  Author/.store in       = \@author,%
+  Title/.store in        = \@title,%
+  enTitle/.store in      = \SWFU@enTitle, %
+  enAuthor/.store in     = \SWFU@enAuthor, %
+  Advisor/.store in      = \SWFU@Advisor, %
+  AdvisorTitle/.store in = \SWFU@AdvisorTitle,%
+  Month/.store in        = \SWFU@Month, %
+  Year/.store in         = \SWFU@Year, %
+  Subject/.store in      = \SWFU@Subject, %  
+}
+
 % pass unknown options to ctexrep
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexrep}}
 \ProcessOptions\relax
@@ -14,9 +30,6 @@
   chapter/number = {\thechapter},%
 }
 
-\RequirePackage{ifxetex} % XeTeX only
-
-
 %%%%% geometry
 \RequirePackage[%showframe,showcrop,
 top=3cm,bottom=2.5cm,left=3cm,right=2.5cm,
@@ -25,7 +38,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 
 
 %%%%% misc
-\RequirePackage{etoolbox,xkvltxp}
+%\RequirePackage{etoolbox,xkvltxp}
 \RequirePackage{indentfirst}
 \RequirePackage{tabu,longtable,multicol,multirow,array,booktabs}
 \RequirePackage{ulem}
@@ -144,22 +157,12 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
       {\end{singlespace}\end{minipage}\end{center}}
 
 
-%%%%% Variables to hold the text fields for the preliminary pages
-%\newcommand{\Authorid}[1]{\gdef\swfu@Authorid{#1}} % 学号
-\newcommand{\enTitle}[1]{\gdef\swfu@enTitle{#1}}
-\newcommand{\enAuthor}[1]{\gdef\swfu@enAuthor{#1}}
-\newcommand{\Advisor}[1]{\gdef\swfu@Advisor{#1}}
-\newcommand{\AdvisorTitle}[1]{\gdef\swfu@AdvisorTitle{#1}}
-\newcommand{\Month}[1]{\gdef\swfu@Month{#1}}
-\newcommand{\Year}[1]{\gdef\swfu@Year{#1}}
-\newcommand{\Subject}[1]{\gdef\swfu@Subject{#1}}
-
 \renewcommand{\maketitle}{% Title page layout
   \begin{titlepage}
     \begin{center}
       \makebox[14.7em][s]{\huge 西南林业大学}\\[5mm]%
       \makebox[25.75em][s]{\Huge\textbf{本科毕业\hspace{-.5ex}（设计）\hspace{-.5ex}论文}}\\[5mm]%
-      \makebox[12em][s]{\hspace{.5em}\LARGE（\swfu@Year{}届）}\\[60pt]%
+      \makebox[12em][s]{\hspace{.5em}\LARGE（\SWFU@Year{}届）}\\[60pt]%
       \begin{minipage}{.8\linewidth}
         \begin{Large}
           \extrarowsep=^8mm_-7pt%
@@ -170,18 +173,16 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
               \end{minipage}}%
             \rule[-.5ex]{15em}{.1pt}\par%
             \rule[-.1ex]{15em}{.1pt}\\
-            % \parbox[t]{15em}{\centering\@title}\\\tabucline{2-2}%
             \textbf{分院系部：} &大数据与智能工程学院\\\tabucline{2-2}%
-            \textbf{专\hspace{2em}业：}&\swfu@Subject\\\tabucline{2-2}%
-            % \textbf{学\hspace{2em}号：}&\swfu@Authorid\\\tabucline{2-2}
+            \textbf{专\hspace{2em}业：}&\SWFU@Subject\\\tabucline{2-2}%
             \textbf{姓\hspace{2em}名：}&\@author\\\tabucline{2-2}%
-            \textbf{导师姓名：} &\swfu@Advisor\\\tabucline{2-2}%
-            \textbf{导师职称：} &\swfu@AdvisorTitle\\\tabucline{2-2}
+            \textbf{导师姓名：} &\SWFU@Advisor\\\tabucline{2-2}%
+            \textbf{导师职称：} &\SWFU@AdvisorTitle\\\tabucline{2-2}
           \end{tabu}
         \end{Large}
       \end{minipage}
       \vfill
-      {\Large\textbf{\swfu@Year{}\ 年\ \swfu@Month{}\ 月}}\\[1cm]
+      {\Large\textbf{\SWFU@Year{}\ 年\ \SWFU@Month{}\ 月}}\\[1cm]
     \end{center}
   \end{titlepage}
   \pagenumbering{roman}%
@@ -205,8 +206,8 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \newenvironment{EAbstract}{%
   \thispagestyle{plain}\phantomsection{}%
   \begin{center}
-    {\singlespacing\Large\textbf{\swfu@enTitle}}\\[5mm]%
-    {\large\swfu@enAuthor}\\[3mm]%
+    {\singlespacing\Large\textbf{\SWFU@enTitle}}\\[5mm]%
+    {\large\SWFU@enAuthor}\\[3mm]%
     {\singlespacing {\large College of Big Data and Intelligence Engineering\\%
         Southwest Forestry University\\%
         Kunming 650224, Yunnan, China}}%
@@ -235,10 +236,6 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \chapter*{致\hspace{1em}谢}%
   \vskip 2em\begin{doublespace}%
   }{\end{doublespace}\pagebreak\singlespacing}
-
-
-%%%%% Initial defaults
-\Advisor{} \AdvisorTitle{} \Month{} \Year{} \Subject{} \enTitle{} \enAuthor{}
 
 
 %%%%% misc
