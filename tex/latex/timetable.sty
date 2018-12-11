@@ -3,34 +3,33 @@
 
 \RequirePackage{ifxetex} % This class is for XeTeX only
 
+\RequirePackage{pgfkeys}
+
+\pgfkeys{
+  Term/.store in       = \TT@Term,%
+  Teacher/.store in    = \TT@Teacher,%
+  Daywidth/.store in   = \TT@Daywidth, Daywidth = 5cm,%
+  Hourlength/.store in = \TT@Hourlength, Hourlength = 1cm,%
+}
+
 \RequirePackage[scheme=plain]{ctex}
 
 \usetikzlibrary{calc,positioning,patterns,chains}
 
-\newcommand{\Term}[1]{\gdef\TT@Term{#1}}
-\newcommand{\Teacher}[1]{\gdef\TT@Teacher{#1}}
-
 %%%
-% #1 - (optional)
-% #2 - lecture/lab/office
-% #3 - (day,time)
-% #4 - course name
-% #5 - weeks
-% #6 - room
+% #1 - (optional)          #3 - (day,time)   #5 - weeks
+% #2 - lecture/lab/office  #4 - course name  #6 - room%           
+% 
 \newcommand{\class}[6][5/3]{%
-  \node[#2,minimum height=#1*\hourlength] at (#3) {#4\\{\scriptsize #5}\\{\small #6}};%
+  \node[#2,minimum height=#1*\TT@Hourlength] at (#3) {#4\\{\scriptsize #5}\\{\small #6}};%
 }%
-
-\newcommand{\daywidth}{5cm}%
-\newcommand{\hourlength}{1cm}%
 
 \tikzset{%
   help lines/.style={very thin,dotted},%
-  day/.style={on chain,rectangle, fill=gray!20,%
-    minimum width=\daywidth, minimum height=2ex, node font=\bfseries\Large},%
+  day/.style={on chain,rectangle, fill=gray!20, node font=\bfseries\Large,%
+    minimum width=\TT@Daywidth, minimum height=2ex},%
   class/.style={rectangle, anchor=north west, rounded corners=10pt,%
-    minimum width=.99*\daywidth,% minimum height=5/3*\hourlength,
-    align=center, text width=.99*\daywidth},%
+    minimum width=.99*\TT@Daywidth, align=center, text width=.99*\TT@Daywidth},%
   lecture/.style={class, fill=red!30},%
   lab/.style={class, fill=Green!20},%
   lecturelab/.style={class, left color=red!30,right color=Green!20},%
@@ -41,12 +40,11 @@
 \newenvironment{timetable}
 {%
   \begin{tikzpicture}[start chain,%
-    x=\daywidth, y=-\hourlength,%
-    node distance=0cm, outer sep=0pt, inner sep=1pt,%
-    ]%
+    x=\TT@Daywidth, y=-\TT@Hourlength,%
+    node distance=0cm, outer sep=0pt, inner sep=1pt]%
 
     % draw grids
-    \draw[help lines] (1,8) grid[xstep=\daywidth,ystep=2*\hourlength] (6,22);%
+    \draw[help lines] (1,8) grid[xstep=\TT@Daywidth,ystep=2*\TT@Hourlength] (6,22);%
 
     % Draw time ticks
     \foreach \h in {8,9,...,22} \draw [ultra thin] (1,\h) -- ++(-5pt,0);% Hours
@@ -63,7 +61,4 @@
     \node[day, label={12:{\TT@Teacher}}] {Wednesday};%
     \node[day] {Thursday};%
     \node[day] (fri) {Friday};%
-  }{%
-  \end{tikzpicture}%
-}%
-
+  }{\end{tikzpicture}}%

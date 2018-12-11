@@ -7,50 +7,51 @@
 \RequirePackage{pgfkeys}
 
 \pgfkeys{
-  Name/.store in       = \SWFU@Name,       
-  Gender/.store in     = \SWFU@Gender,     
-  Dayofbirth/.store in = \SWFU@Dayofbirth, 
-  Diploma/.store in    = \SWFU@Diploma,    
-  Degree/.store in     = \SWFU@Degree,     
-  Title/.store in      = \SWFU@Title,      
-  Phone/.store in      = \SWFU@Phone,      
-  Admin/.store in      = \SWFU@Admin,      
-  Subject/.store in    = \SWFU@Subject,    
-  School/.store in     = \SWFU@School,     
-  Term/.store in       = \SWFU@Term, Term=,%学期
-  Schooltwo/.store in  = \SWFU@Schooltwo,  
-  Course/.store in     = \SWFU@Course, Course=,%课程名称
-  Language/.store in   = \SWFU@Language,   
-  Class/.store in      = \SWFU@Class, Class=,%班级
-  Textbook/.store in   = \SWFU@Textbook, Textbook=,%教材
-  Owntext/.store in    = \SWFU@Owntext,    
-  Research/.store in   = \SWFU@Research,   
-  Experience/.store in = \SWFU@Experience, 
-  Award/.store in      = \SWFU@Award,      
+  Name/.store in       = \SWFU@Name,%
+  Gender/.store in     = \SWFU@Gender,%
+  Dayofbirth/.store in = \SWFU@Dayofbirth,%
+  Diploma/.store in    = \SWFU@Diploma,%
+  Degree/.store in     = \SWFU@Degree,%
+  Title/.store in      = \SWFU@Title,%
+  Phone/.store in      = \SWFU@Phone,%
+  Admin/.store in      = \SWFU@Admin,%
+  Subject/.store in    = \SWFU@Subject,%
+  School/.store in     = \SWFU@School,%
+  Schooltwo/.store in  = \SWFU@Schooltwo,%
+  Language/.store in   = \SWFU@Language,%
+  Owntext/.store in    = \SWFU@Owntext,%
+  Research/.store in   = \SWFU@Research,%
+  Experience/.store in = \SWFU@Experience,%
+  Award/.store in      = \SWFU@Award,%
+  Term/.store in       = \SWFU@Term,     %学期
+  Course/.store in     = \SWFU@Course,   %课程名称
+  Class/.store in      = \SWFU@Class,    %班级
+  Textbook/.store in   = \SWFU@Textbook, %教材
   Default/.style       = {%
-    Name=王晓林,                
-    Gender=男,                  
-    Dayofbirth=1969-03,         
-    Diploma=研究生, %学历
-    Degree=硕士,    %学位            
-    Title=讲师, %专业技术职务
-    Phone=13577067397,          
-    Admin=无, %行政职务
-    Subject=计算机科学与技术, %学科专业
-    School=大数据与智能工程学院, %所在学院
-    Schooltwo=大数据与智能工程学院, %开课学院
-    Language=英语, %外语语种
-    Owntext=否, %自编讲义资料?
-    Research=无, %学术研究
-    Experience=十余年双语教学经验, %外语水平及双语教学经历
-    Award=无, %获奖情况
+    Name       = {\kaishu 王晓林},%
+    Gender     = {\kaishu 男},%
+    Dayofbirth = 1969-03,%
+    Diploma    = {\kaishu 研究生},                 %学历
+    Degree     = {\kaishu 硕士},                    %学位
+    Title      = {\kaishu 讲师},                     %专业技术职务
+    Phone      = 13577067397,
+    Admin      = {\kaishu 无},                       %行政职务
+    Subject    = {\kaishu 计算机科学与技术},       %学科专业
+    School     = {\kaishu 大数据与智能工程学院},    %所在学院
+    Schooltwo  = {\kaishu 大数据与智能工程学院}, %开课学院
+    Language   = {\kaishu 英语},                  %外语语种
+    Owntext    = {\kaishu 否},                     %自编讲义资料?
+    Research   = {\kaishu 无},                    %学术研究
+    Experience = {\kaishu 十余年双语教学经验},  %外语水平及双语教学经历
+    Award      = {\kaishu 无},                       %获奖情况
   }}
 
 \LoadClass[scheme=plain]{ctexart}
 
-\RequirePackage{tabu,array}
-\RequirePackage{wx672hyperref}
-\RequirePackage{wx672bib}
+\RequirePackage{tabu,array,tabularx}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
+
+\RequirePackage{wx672hyperref, wx672bib}
 \renewcommand*{\bibfont}{\scriptsize}
 
 \RequirePackage[ % showframe,
@@ -62,7 +63,7 @@ left=1.5cm,right=1.5cm
 \newcommand{\makeform}{\pagestyle{empty}  
   {\centering
     {\textbf {\LARGE\heiti 西南林业大学双语教学课程申请表}}\\[4ex]
-    \begin{tabu}{|X[.137,c]|@{}X[c]@{}|}\tabucline-
+    \begin{tabu}{|X[.137,c]|@{}X[c]@{}|}\tabucline-%
       \vspace*{2ex}申请人基本\par 信息 &
       \tabulinesep=1mm
       \begin{tabu}{r|X[-1,c]|r|X[-1,c]|r|X[c]@{}}
