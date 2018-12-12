@@ -1,8 +1,8 @@
 \chapter{快速上手}
 
-\LaTeX{}很强大，但对于初学者来说，你不必关心它有多强大，因为最为常用的命令和环境不过就是那么几
-个。而且你也不必手工输入这些命令，只要你用Emacs+\auctex{}，几个简单的快捷键就足以满足你的基本
-需求了。对于格式复杂的需求，通常你只要套用模版就可以解决问题了。所以，大家只要把Emacs用熟，
+\LaTeX{}很强大，但对于初学者来说，你不必关心它有多强大，因为最为常用的命令和环境不过寥寥数
+个而已。而且Emacs+\auctex{}提供了丰富的快捷键，稍加练习之后，你就再也不用去手工敲命令了。
+对于格式复杂的需求，通常你只要套用模版就可以解决问题了。所以，大家只要把Emacs用熟，
 一切迎刃而解。
 
 \section{用LaTeX写文章就是在编程}
@@ -16,10 +16,10 @@
 \begin{enumerate}
 \item \Se{}，如果你的系统配置和我的一样，那么只要按下\Se{}键，Emacs窗口就
   出现在你面前了，而且（感谢Sawfish）是全屏的；
-\item \Cx\Cf{}，开始编辑一个新文件。这时，在Emacs窗口的最下面（也就是 mini buffer 里）写
-  上你要编辑的文件的名字，也就是\texttt{hello.c}，然后按\Enter{}（回车键），或者\Cj{}，其
+\item \Cx\Cf{}，开始编辑一个新文件。这时，在Emacs窗口的最下面（也就是 mini buffer 里）有提
+  示，输入你要编辑的文件的名字，也就是\texttt{hello.c}，然后按\Enter{}（回车键），或者\Cj{}，其
   实，后面你会发现，\Cj{}带自动缩进，比按\Enter{}更方便；
-\item 现在可以向你打开的空文件里写东西了；
+\item 现在可以在打开的空文件里写东西了：
   \begin{codeblock}[.7]
 \begin{ccode}
     #include <stdio.h>
@@ -57,7 +57,7 @@
 \item 看结果：\texttt{xpdf hello.pdf}
 \end{enumerate}
 
-怎么样？ \texttt{hello.c}和\texttt{hello.tex}的编辑过程没什么分别吧。只要把Emacs用熟练，触
+怎么样？ \texttt{hello.c}和\texttt{hello.tex}的编辑过程没什么分别吧。只要把Emacs用熟，触
 类旁通，不管写什么程序，都是这么个过程。你
 
 \begin{itemize}
@@ -68,8 +68,7 @@
 \end{itemize}
 
 一句话，“Everything Emacs”，你可以省下大量不必要的学习时间。人生苦短，何必让你的生活
-被 VC/eclipse/MS-Word 搞得头昏脑胀呢？ 简单而强大，本就是计科专业学生和非专业学生应有的不
-同。
+被 VC/eclipse/MS-Word 搞得头昏脑胀呢？ 简单而强大，就是计科专业和非专业学生所应有的不同。
 
 如果你对Emacs操作还很陌生，那么现在就打开Emacs，\Ch{}{\kbd t}，重温一下那些基本操
 作吧。
@@ -85,8 +84,8 @@
 \item 先把你的双手在标准键盘上放好。然后，
 \item 左手小指稍向左移，按在\Caps{}(CapsLock)键上\footnote{如果你的系统配置和我一
     样，那么\Caps{}就是\Ctrl{}键。}，按住别放开，
-\item 左手无名指稍向下移，在{\kbd x}键上轻按一下就放开，这就是\Cx{}。 
-\item 小指按在\Caps{}上别放开，左手食指在{\kbd f}键上轻按一下就放开，这就是\Cf{}。
+\item 左手无名指稍向下移，在{\kbd x}键上轻按一下就放开，这就是\Cx{}；
+\item 小指按在\Caps{}上别放开，左手食指在{\kbd f}键上轻按一下就放开，这就是\Cf{}；
 \item 现在左手小指可以放开了。
 \end{enumerate}
 
@@ -96,8 +95,8 @@
 
 \begin{itemize}
 \item 什么是 \Cx \Cs?
-\item 什么是 \Cx {\kbd 2}? 什么是\Cx {\kbd 3}? 什么是\Cx
-  {\kbd 0}? 什么是\Cx {\kbd 1}? 什么是\Cx {\kbd o}?
+\item 什么是 \Cx {\kbd 2}? 什么是\Cx {\kbd 3}? 什么是\Cx {\kbd o}? 什么是\Cx {\kbd 0}? 什么
+  是\Cx {\kbd 1}?
 \item 什么是\Cx {\kbd h}? 什么是\Cw{}?
 \item 什么是 \Cg{}?
 \item 什么是\Cj{}? 什么是 \Ci{}?
@@ -119,7 +118,7 @@
 \auctex{}是Emacs的一个功能模块，为\LaTeX{}编程提供了巨大的便利。有了它，你的\LaTeX{}生活可以
 像 \texttt{Hello, world!}一样简单。现在就跟着我，手把手地领略一下简单的乐趣吧。
 
-一切当然是从\Se{}，打开Emacs开始。然后，\Cx \Cf，让我们开
+一切当然是从\Se{}，打开Emacs开始。然后，\Cx\Cf{}，让我们开
 始编辑一个新文件，就叫 \texttt{simple.tex}吧。
 
 在Emacs窗口的最下方，也就是 mini buffer 里，这时应该会有提示，让你输入文件名。输
@@ -287,7 +286,7 @@ Emacs会把我们上次输入的Macro，也就是title，做为默认值提示�
   \end{minipage}\quad
   \begin{minipage}{.4\linewidth}
     \fbox{\includegraphics[width=\textwidth]{abstract}}
-  \caption{文章的起始部分加摘要} \label{fig:abstract}
+  \caption{加上摘要} \label{fig:abstract}
   \end{minipage}
 \end{figure}
 
@@ -337,8 +336,8 @@ abstract \Cj{}。abstract 就是“摘要”的意思。科技论文都是要有
 
 \subsection{怎样分章节}
 
-现在，我们要接着上面的例子，写更多更长的东西了。偷懒起见，文章末尾的 \verb|\end{document}|
-我也不再写出来了。
+现在，我们要接着上面的例子，写更多更长的东西了。偷懒起见，文章末尾
+的 \texttt{\textbackslash{}end\{document\}}我也不再写出来了。
 
 好，按\Cn{}把光标移到 \verb|\end{abstract}| 的下一行。然后，\Cc\Cs{}，让我们开始文章的第一节。
 s 代表 section, “节”的意思。mini buffer 提示：
@@ -433,23 +432,27 @@ mini buffer 又提示：
   |
 \end{latexcode}
 \end{longlisting}
+
 注意到 \verb|\emph{}| 了吗？它代表 emphasize ，“强调”。英文习惯用斜体字来表示强调的东西，那
 么 \verb|\emph{hello, world}| 自然就是把 hello, world 排版成 \emph{hello, world} 了。
 
 注意到 \verb|\subsection{}| 了吗？一会儿，我们还会看到 \verb|\subsubsection|。不用解释吧，
 文章的章节次序是这样：
-\begin{singlespace}
-  \begin{multicols}{3}
-    \begin{enumerate}
-    \item chapter
-    \item section
-    \item subsection
-    \item subsubsection
-    \item paragraph
-    \item subparagraph
-    \end{enumerate}
-  \end{multicols}
-\end{singlespace}
+
+\begin{minipage}{.6\linewidth}
+  \begin{singlespace}
+    \begin{multicols}{3}
+      \begin{enumerate}
+      \item chapter
+      \item section
+      \item subsection
+      \item subsubsection
+      \item paragraph
+      \item subparagraph
+      \end{enumerate}
+    \end{multicols}
+  \end{singlespace}
+\end{minipage}\par\vspace{2ex}
 
 其中的chapter，只有在 book 和 report 中才能使用，而 article 只能用 section 以下的东西。
 
@@ -1059,5 +1062,5 @@ $biber = 'biber --debug %O %S';
 
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "../tutctex"
+%%% TeX-master: "../tutorial"
 %%% End:

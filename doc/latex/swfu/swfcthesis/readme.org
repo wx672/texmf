@@ -12,26 +12,26 @@
 
 * 文件清单
   本模版的最新版本可以从 [[https://github.com/wx672/texmf/tree/master/doc/latex/swfu/swfcthesis/tutorial]] 下载。 模版目录中包含如下内容：
-  - [[./swfuthesis.cls][*swfuthesis.cls*]] --- 是论文模版的class文件，它决定了论文的排版格式；
-  - [[./readme.html][*readme.html*]] --- 本说明文件。
-  - [[./tutorial][*tutorial*]] --- 小教程，同时也是一个标准模板。其中，
-    - [[file:tutorial/tutorial.tex][*tutorial.tex*]] --- 源文件；
-    - [[file:tutorial/tutorial.pdf][*tutorial.pdf*]] --- 编译好的PDF；
-    - [[file:tutorial/tutorial.bib][*tutorial.bib*]] --- 参考文献；
-    - [[./tutorial/tutorial.mkv][*tutorial.mkv*]] --- 20分钟视频教程；
-  - [[file:sample/][*sample*]] --- 完整的论文实例；
-    - [[./sample/sample.tex][*sample.tex*]] --- TeX源文件；
-    - [[./sample/sample.pdf][*sample.pdf*]] --- 编译完成的PDF文件；
-    - [[./sample/sample.bib][*sample.bib*]] --- 参考文献实例；
+  - [[./swfuthesis.cls][*swfuthesis.cls*]] --- 是论文模版的class文件，它决定了论文的排版格式
+  - [[./readme.html][*readme.html*]] --- 本说明文件
+  - [[./tutorial][*tutorial*]] --- 小教程，同时也是一个标准模板。其中包括，
+    - [[file:tutorial/tutorial.tex][*tutorial.tex*]] --- 源文件
+    - [[file:tutorial/tutorial.pdf][*tutorial.pdf*]] --- 编译好的PDF
+    - [[file:tutorial/tutorial.bib][*tutorial.bib*]] --- 参考文献
+    - [[./tutorial/tutorial.mkv][*tutorial.mkv*]] --- 20分钟视频教程
+  - [[file:sample/][*sample*]] --- 完整的论文实例
+    - [[./sample/sample.tex][*sample.tex*]] --- TeX源文件
+    - [[./sample/sample.pdf][*sample.pdf*]] --- 编译完成的PDF文件
+    - [[./sample/sample.bib][*sample.bib*]] --- 参考文献实例
     - [[./sample/chapters][*chapters*]] --- 章节实例。此目录中的每个TeX文件对应论文的一章。其中，
-      - [[./sample/chapters/preamble.tex][*preamble.tex*]] --- 封面、摘要、指导教师、鸣谢……示例；
-      - [[./sample/chapters/dogstick.tex][*dogstick.tex*]] --- 插入图片示例；
-      - [[./sample/chapters/appendix.tex][*appendix.tex*]] --- 插入表格示例；
-      - [[./sample/chapters/src.tex][*src.tex*]] --- 插入程序代码示例；
-  - [[./example][*example*]] --- 历年毕业论文范例，可供参考；
+      - [[./sample/chapters/preamble.tex][*preamble.tex*]] --- 封面、摘要、指导教师、鸣谢……示例
+      - [[./sample/chapters/dogstick.tex][*dogstick.tex*]] --- 插入图片示例
+      - [[./sample/chapters/appendix.tex][*appendix.tex*]] --- 插入表格示例
+      - [[./sample/chapters/src.tex][*src.tex*]] --- 插入程序代码示例
+  - [[./example][*example*]] --- 历年毕业论文范例，可供参考
 * 各文件的使用说明
 ** swfuthesis.cls
-   - 通常你不需要改动 [[./swfuthesis.cls][~swfuthesis.cls~]] 文件，将 =\documentclass{swfcthesis}= 做为TeX文件的开始即可。
+   - 通常你不需要改动 [[./swfuthesis.cls][~swfuthesis.cls~]] 文件，将 =\documentclass{swfuthesis}= 做为TeX文件的开始即可。
    - 写论文时，请参照 [[./tutorial/tutorial.tex][~tutorial.tex~]] 文件的开始部分。
 ** tutorial --- 一个可以当模板用的小教程
 - [[file:tutorial/tutorial.tex][*tutorial.tex*]] --- 源文件
@@ -40,7 +40,7 @@
   : latexmk tutorial
   前提是你安装并配置好了 ~latexmk~ 。你可以参考我的 [[https://github.com/wx672/dotfile/blob/master/dot.latexmkrc][~.latexmkrc~]] 文件。
 
-** sample --- 可以当模板用的小论文
+** sample --- 可以当模板用的小论文                                :noexport:
 - [[file:sample/sample.tex][~sample.tex~]] --- 源文件
   - 写论文时，可以直截修改[[./sample/sample.tex][此文件]]的内容。当然也要根据需要修改 [[./sample/chapters][=chapters=]] 目录中的TeX文件。
   - 修改完毕，用 ~latexmk~ 编译。当然也可以直接用 =xelatex= 编译。以Linux平台为例：
@@ -60,7 +60,4 @@
 * 注意事项
   1. 不要随意改动你不理解的东西，以免造成不必要的麻烦。
   2. 建议用 ~Emacs + AucTeX~ 来编辑TeX文件。
-     - 计信学院D215机房的Linux平台安装了完整的LaTeX和Emacs可供使用；
-     - 计信学院 [[http://cs2.swfu.edu.cn/cs2guide.html][cs2]]/[[http://cs2.swfc.edu.cn/cs3guide.html][cs3]] 服务器上也安装了完整的LaTeX和Emacs可供使用；
-       - 具体使用方法可以参考[[file:tutorial/][教程]]；
   3. 如有任何问题或建议，欢迎 [[mailto:wx672ster@gmail.com][email]] 联系。
