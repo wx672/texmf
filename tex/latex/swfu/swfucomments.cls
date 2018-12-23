@@ -6,26 +6,26 @@
 
 \RequirePackage{pgfkeys,etoolbox,calc}
 
-\pgfkeys{%/SWFU/.cd,
-  Formsubtitle/.store in   = \SWFU@Formsubtitle,   %Formsubtitle  =,%指导教师意见 | 评阅意见 | 答辩申请表
-  Prjtitle/.store in       = \SWFU@Prjtitle,       Prjtitle      =,% 论文标题
-  Studid/.store in         = \SWFU@Studid,         Studid        =,% 学号
-  Studname/.store in       = \SWFU@Studname,       Studname      =,% 学生姓名
-  Studsbj/.store in        = \SWFU@Studsbj,        Studsbj       =,% 学生专业
-  Studclass/.store in      = \SWFU@Studclass,      Studclass     =,% 学生班级
-  Studmark/.store in       = \SWFU@Studmark,       Studmark      =,% 评分
-  Advisorname/.store in    = \SWFU@Advisorname,    Advisorname/.default  = 王晓林,% 指导教师姓名
-  Advisortitle/.store in   = \SWFU@Advisortitle,   Advisortitle/.default = 讲师,% 指导教师职称
-  Signature/.store in      = \SWFU@Signature,      Signature     =,% 教师签名
-  Commenterlabel/.store in = \SWFU@Commenterlabel, %Commenterlabel=,% 指导教师 | 评阅人 | 申请人
-  Commentslabel/.store in  = \SWFU@Commentslabel,  %Commentslabel =,% 评语： | 指导教师评审意见：
-  Marklabel/.store in      = \SWFU@Marklabel,      %Marklabel     =,% 评分 | NULL
-  Year/.store in           = \SWFU@Year,           Year          =,
-  Month/.store in          = \SWFU@Month,          Month         =,
-  Date/.store in           = \SWFU@Date,           Date          =,
-  Comments/.store in       = \SWFU@Comments,       Comments      =,% 意见正文
-  Hinttitle/.store in      = \SWFU@Hinttitle,      %Hinttitle     =,% 提示部分的标题
-  Hinttext/.store in       = \SWFU@Hinttext,       %Hinttext      =,% 提示部分的内容
+\pgfkeys{%
+  Formsubtitle/.store in   = \SWFU@Formsubtitle,   % 指导教师意见 | 评阅意见 | 答辩申请表
+  Prjtitle/.store in       = \SWFU@Prjtitle,       % 论文标题
+  Studid/.store in         = \SWFU@Studid,         % 学号
+  Studname/.store in       = \SWFU@Studname,       % 学生姓名
+  Studsbj/.store in        = \SWFU@Studsbj,        % 学生专业
+  Studclass/.store in      = \SWFU@Studclass,      % 学生班级
+  Studmark/.store in       = \SWFU@Studmark,       % 评分
+  Advisorname/.store in    = \SWFU@Advisorname,    Advisorname = 王晓林,% 指导教师姓名
+  Advisortitle/.store in   = \SWFU@Advisortitle,   Advisortitle = 讲师,  % 指导教师职称
+  Signature/.store in      = \SWFU@Signature,      % 教师签名
+  Commenterlabel/.store in = \SWFU@Commenterlabel, % 指导教师 | 评阅人 | 申请人
+  Commentslabel/.store in  = \SWFU@Commentslabel,  % 评语： | 指导教师评审意见：
+  Marklabel/.store in      = \SWFU@Marklabel,      % 评分 | NULL
+  Year/.store in           = \SWFU@Year,           %
+  Month/.store in          = \SWFU@Month,          %
+  Date/.store in           = \SWFU@Date,           %
+  Comments/.store in       = \SWFU@Comments,       % 意见正文
+  Hinttitle/.store in      = \SWFU@Hinttitle,      % 提示部分的标题
+  Hinttext/.store in       = \SWFU@Hinttext,       % 提示部分的内容
   C/.style = {%评阅意见
     Formsubtitle = 评阅意见,%
     Hinttitle = 评阅时，请参照以下几个方面提出意见,%
@@ -69,6 +69,8 @@
     Commentslabel = 指导教师评审意见：,%
     Marklabel=,}}
 
+\newcommand{\swfusetup}[1]{\pgfkeys{#1}}
+
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
 \ProcessOptions\relax
 
@@ -87,9 +89,9 @@ left=2.5cm,right=2.5cm,
   {\centering
     {\LARGE\heiti 西南林业大学本科毕业（设计）论文\SWFU@Formsubtitle}\\[3ex]
     \tabulinesep=2mm
-    \begin{tabu}{|c|X[l,1.2]|X[c,.6]|X[l,1.2]|}
+    \begin{tabu}{|c|>{\kaishu}X[l,1.2]|c|>{\kaishu}X[l,1.2]|}%X[c,.6]
       \tabucline-
-      论文（设计）题目& \multicolumn{3}{c|}{\SWFU@Prjtitle{}} \\\tabucline-
+      论文（设计）题目& \multicolumn{3}{c|}{\kaishu\SWFU@Prjtitle} \\\tabucline-
       学生学号&\SWFU@Studid&学生姓名&{\SWFU@Studname}\\\tabucline-
       学生专业&{\SWFU@Studsbj}&班\hspace{2em}级&{\SWFU@Studclass}\\\tabucline-
       指导教师姓名&{\SWFU@Advisorname}&职\hspace{2em}称&{\SWFU@Advisortitle}\\\tabucline-
@@ -101,7 +103,7 @@ left=2.5cm,right=2.5cm,
     \end{tabu}
     \begin{tabu}{@{}X}
       \SWFU@Commentslabel{}\\
-      \SWFU@Comments{}\\
+      {\kaishu\SWFU@Comments}\\
       \tabuphantomline
     \end{tabu}}
   \vfill

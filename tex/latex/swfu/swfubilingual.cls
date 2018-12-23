@@ -46,13 +46,17 @@
     Award      = {\kaishu 无},                       %获奖情况
   }}
 
+\newcommand{\swfusetup}[1]{\pgfkeys{#1}}
+
 \LoadClass[scheme=plain]{ctexart}
 
 \RequirePackage{tabu,array,tabularx}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
 
-\RequirePackage{wx672hyperref, wx672bib}
+\RequirePackage[backend=biber,style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false,url=false,doi=false,isbn=false]{biblatex}
 \renewcommand*{\bibfont}{\scriptsize}
+
+\RequirePackage{wx672hyperref}
 
 \RequirePackage[ % showframe,
 paperwidth=210mm,paperheight=297mm,
@@ -82,7 +86,7 @@ left=1.5cm,right=1.5cm
         课程名称&{\SWFU@Course}\\\tabucline-
         外语语种&{\SWFU@Language}&
         课程班级&\multicolumn{3}{c}{\SWFU@Class}\\\tabucline-
-        使用教材&\multicolumn{5}{c}{\SWFU@Textbook}\\\tabucline-
+        使用教材&\multicolumn{5}{l}{\,\SWFU@Textbook}\\\tabucline-
         自编讲义&\multicolumn{5}{c}{\SWFU@Owntext}\\
       \end{tabu} \\\tabucline-
     \end{tabu}\vskip -1pt

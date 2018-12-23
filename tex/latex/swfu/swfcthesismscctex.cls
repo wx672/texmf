@@ -25,7 +25,6 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 
 \RequirePackage{amsmath,amsfonts,amssymb,marvosym,pifont}
 
-
 %%%%% graphicx
 \RequirePackage{graphicx} % before xltxtra
 \graphicspath{% mind the trailing "/"
@@ -83,7 +82,7 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 
 
 %%%%% biblatex
-\RequirePackage[backend=biber,style=gb7714-2015]{biblatex}
+\RequirePackage[backend=biber,style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false,url=false,doi=false,isbn=false]{biblatex}
 
 
 %%%%%
@@ -407,3 +406,4 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 \setlength{\parindent}{2em}
 % \setcounter{tocdepth}{1}
 \setcounter{secnumdepth}{3}
+\setmainfont{Liberation Serif}

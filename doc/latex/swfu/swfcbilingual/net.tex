@@ -1,14 +1,27 @@
-\documentclass{swfcbilingual}
+\documentclass{swfubilingual}
+
+\usepackage{filecontents}
+\begin{filecontents}{net.bib}
+@book{tanenbaum2011computer,
+  title={Computer Networks},
+  author={Tanenbaum, A.S. and Wetherall, D.},
+  isbn=9780132126953,
+  lccn=2010034366,
+  url={https://cs3.swfu.edu.cn/tech/get/PDF/29/Calibre1},
+  year=2011,
+  publisher={Pearson Prentice Hall}
+}
+\end{filecontents}
 
 \addbibresource{net.bib}
 
-\Subject{计算机科学与技术}
-\Term{151602}
-\Course{计算机网络}
-\Class{计科15（网络方向）}
-\Textbook{\nocite{tanenbaum2011computer}\printbibliography[heading=none]{}}
-\Owntext{否}
-\Research{六年网络技术教学经验}
+\swfusetup{
+  Default,
+  Term = 181902,
+  Course = {计算机网络},
+  Class = {计科18},
+  Textbook = {\nocite{tanenbaum2011computer}\printbibliography[heading=none]{}},
+}
 
 \begin{document}
 \makeform

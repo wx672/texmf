@@ -27,6 +27,8 @@
   enSubject/.store in       = \SWFU@enSubject,% 学科专业（英文）       
 }
 
+\newcommand{\swfusetup}[1]{\pgfkeys{#1}}
+
 % pass unknown options to ctexbook
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions\relax
@@ -106,7 +108,7 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 
 
 %%%%% biblatex
-\RequirePackage[backend=biber,style=gb7714-2015]{biblatex}
+\RequirePackage[backend=biber,style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false,url=false,doi=false,isbn=false]{biblatex}
 
 
 %%%%%
@@ -120,31 +122,26 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter\quad #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\quad #1}}
 
-\newcommand{\Appendix}[1]{%
-  \renewcommand{\chaptermark}[1]{\markboth{附录\,\thechapter\quad #1}{}}%
-  \appendix\singlespacing}
-
-
 \renewcommand{\maketitle}{% Title page layout
   \thispagestyle{empty}
-    \begin{tikzpicture}%[remember picture,overlay]
-      \node (logo) at (current page.north) [yshift=-4.2cm]%
-      {\includegraphics[width=.8\textwidth]{swfulogo}};
-      \node (h1) [below=2.3cm of logo,xshift=7mm,scale=3.4,font=\bfseries,align=center] {硕士学位论文};
-      \node (h2) [below=4mm of h1,scale=1.3,font=\bfseries] {MASTER THESIS};
-    \end{tikzpicture}
-  \begin{center}
-    \vspace*{18ex}
-    \extrarowsep=^3mm_-2mm
+  \begin{tikzpicture}%[remember picture,overlay]
+    \node (logo) at (current page.north) [yshift=-4.2cm]%
+    {\includegraphics[width=.8\textwidth]{swfulogo}};%
+    \node (h1) [below=2.3cm of logo,xshift=7mm,scale=3.4,font=\bfseries,align=center] {硕士学位论文};%
+    \node (h2) [below=4mm of h1,scale=1.3,font=\bfseries] {MASTER THESIS};%
+  \end{tikzpicture}%
+  \begin{center}%
+    \vspace*{18ex}%
+    \extrarowsep=^3mm_-2mm%
     \begin{tabu} to \textwidth {@{}X[r]X[3.8,l]}%
       {\Large \textbf{论文题目}}&%
       \makebox[0pt][t]{%
         \begin{minipage}[t]{27em}
           \centering\parbox[t]{26em}{\centering\textbf{\Large\@title}}
         \end{minipage}}%
-      \rule[-.5ex]{27em}{.1pt}\par
-      \rule[-.1ex]{27em}{.1pt}\\
-    \end{tabu}\\[3ex]
+      \rule[-.5ex]{27em}{.1pt}\par%
+      \rule[-.1ex]{27em}{.1pt}\\%
+    \end{tabu}\\[3ex]%
     \begin{Large}
       \begin{tabu} to .75\textwidth {@{}rX[3.3,c]@{}}%
         \textbf{学科专业}&\textbf{\SWFU@Subject}\\[-2pt]\tabucline{2-2}%
@@ -154,9 +151,9 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
       \end{tabu}
     \end{Large}
   \end{center}
-  \clearpage\shipout\null
-  \thispagestyle{empty}
-  \extrarowsep=^3mm_-2mm
+  \clearpage\shipout\null%
+  \thispagestyle{empty}%
+  \extrarowsep=^3mm_-2mm%
   \begin{center}
     \vspace*{-7ex}
     \begin{footnotesize}

@@ -6,7 +6,7 @@
 
 \addbibresource{tutorial.bib}
 
-\pgfkeys{
+\swfusetup{
   Title        ={怎样用\LaTeX{}排版毕业论文}, % 论文标题
   Author       ={王晓林}, % 作者姓名
   enTitle      ={How to write your dissertation with \LaTeX}, % 论文标题（英文）
@@ -21,6 +21,8 @@
 \begin{document}
 
 \maketitle % 封面
+
+\frontmatter
 
 \begin{abstract} % 摘要
   \LaTeX{}\footnote{\url{https://en.wikipedia.org/wiki/LaTeX}}是一种基
@@ -60,19 +62,19 @@
   \LaTeX{}, \TeX{}, dissertation template, SWFU
 \end{EKeyword}
 
+
 \tableofcontents % 目录
 \listoffigures % 图片目录，可以没有
 \listoftables  % 表格目录，可以没有
-\cleardoublepage % without this page number gets wrong
-\pagenumbering{arabic}
+
+\mainmatter
 
 \include{chapters/ch1-pre}
 \include{chapters/ch2-quick}
 \include{chapters/ch3-adv}
 \include{chapters/ch4-thesis}
 
-%%%%% appendix （参考文献、指导教师简介、鸣谢、附录）
-\appendix
+\appendix % 参考文献、指导教师简介、鸣谢、附录
 
 \makebib % 参考文献
 

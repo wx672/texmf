@@ -18,11 +18,13 @@
   Subject/.store in      = \SWFU@Subject, %  
 }
 
+\newcommand{\swfusetup}[1]{\pgfkeys{#1}}
+
 % pass unknown options to ctexrep
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexrep}}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions\relax
 
-\LoadClass[scheme=chinese,zihao=-4]{ctexrep}
+\LoadClass[oneside,scheme=chinese,zihao=-4]{ctexbook}
 
 \ctexset{%
   section/format = \Large\bfseries,%
@@ -109,7 +111,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 
 
 %%%%% biblatex
-\RequirePackage[backend=biber,style=gb7714-2015]{biblatex}
+\RequirePackage[backend=biber,style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false,url=false,doi=false,isbn=false]{biblatex}
 %\renewcommand*{\bibfont}{\small} % 11pt
 
 
@@ -182,13 +184,12 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
         \end{Large}
       \end{minipage}
       \vfill
-      {\Large\textbf{\SWFU@Year{}\ 年\ \SWFU@Month{}\ 月}}\\[1cm]
-    \end{center}
-  \end{titlepage}
-  \pagenumbering{roman}%
+      {\Large\textbf{\SWFU@Year\ 年\ \SWFU@Month\ 月}}\\[1cm]
+    \end{center}%
+  \end{titlepage}%
 }
 
-\renewenvironment{abstract}{%
+\newenvironment{abstract}{%
   \thispagestyle{plain}\phantomsection{}%
   \begin{center}
     {\singlespacing\Large\textbf{\@title}}\\[5mm]%
@@ -196,12 +197,10 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
     \large{（西南林业大学大数据与智能工程学院，云南昆明\, 650224）}
   \end{center}%
   \vspace{3ex}%
-  \noindent\textbf{摘\hspace{1em}要：}}%
-{}
+  \noindent\textbf{摘\hspace{1em}要：}}{}
 
 \newenvironment{keyword}{%
-  \vskip 2ex\noindent\textbf{关键词：}%
-}{\pagebreak}
+  \vskip 2ex\noindent\textbf{关键词：}}{\pagebreak}
 
 \newenvironment{EAbstract}{%
   \thispagestyle{plain}\phantomsection{}%
@@ -213,12 +212,10 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
         Kunming 650224, Yunnan, China}}%
   \end{center}
   \vspace{2em}%
-  \noindent\textbf{Abstract:}}%
-{}
+  \noindent\textbf{Abstract:}}{}
 
 \newenvironment{EKeyword}{%
-  \vskip 2ex\noindent\textbf{Key words: }%
-}{\pagebreak}
+  \vskip 2ex\noindent\textbf{Key words: }}{\pagebreak}
 
 \newcommand{\makebib}{% 参考文献
   \printbibliography[heading={bibintoc},title={参考文献}]\label{p:ref}\pagebreak}
