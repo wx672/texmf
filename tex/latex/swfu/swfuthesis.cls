@@ -15,7 +15,7 @@
   AdvisorTitle/.store in = \SWFU@AdvisorTitle,%
   Month/.store in        = \SWFU@Month, %
   Year/.store in         = \SWFU@Year, %
-  Subject/.store in      = \SWFU@Subject, %  
+  Major/.store in      = \SWFU@Major, %  
 }
 
 \newcommand{\swfusetup}[1]{\pgfkeys{#1}}
@@ -168,18 +168,18 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
       \begin{minipage}{.8\linewidth}
         \begin{Large}
           \extrarowsep=^8mm_-7pt%
-          \begin{tabu} spread \textwidth {@{}X[r]X[3.3,c]@{}} \textbf{题\hspace{2em}目：}&%
-            \makebox[0pt][t]{% wrapable long title
+          \begin{tabu}{@{}>{\bfseries}X[r]X[3.3,c]@{}}%
+            题\qquad{}目：& \makebox[0pt][t]{% wrapable long title
               \begin{minipage}[t]{15em}
                 \centering\parbox[t]{14em}{\centering\@title}
               \end{minipage}}%
             \rule[-.5ex]{15em}{.1pt}\par%
             \rule[-.1ex]{15em}{.1pt}\\
-            \textbf{分院系部：} &大数据与智能工程学院\\\tabucline{2-2}%
-            \textbf{专\hspace{2em}业：}&\SWFU@Subject\\\tabucline{2-2}%
-            \textbf{姓\hspace{2em}名：}&\@author\\\tabucline{2-2}%
-            \textbf{导师姓名：} &\SWFU@Advisor\\\tabucline{2-2}%
-            \textbf{导师职称：} &\SWFU@AdvisorTitle\\\tabucline{2-2}
+            分院系部： &大数据与智能工程学院\\\tabucline{2-2}%
+            专\qquad{}业：&\SWFU@Major\\\tabucline{2-2}%
+            姓\qquad{}名：&\@author\\\tabucline{2-2}%
+            导师姓名： &\SWFU@Advisor\\\tabucline{2-2}%
+            导师职称： &\SWFU@AdvisorTitle\\\tabucline{2-2}
           \end{tabu}
         \end{Large}
       \end{minipage}

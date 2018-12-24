@@ -1,0 +1,145 @@
+\documentclass{swfuthesis}
+
+%\includeonly{chapters/ch2-quick}
+
+\usepackage{wx672tut}
+
+\addbibresource{tutorial.bib}
+
+\swfusetup{
+  Title        ={怎样用\LaTeX{}排版毕业论文}, % 论文标题
+  Author       ={王晓林}, % 作者姓名
+  enTitle      ={How to write your dissertation with \LaTeX}, % 论文标题（英文）
+  enAuthor     ={WANG Xiaolin}, % 作者姓名（英文）
+  Year         ={二〇一八}, 
+  Month        ={六},
+  Major      ={计算机科学与技术专业},
+  Advisor      ={\includegraphics[width=3em]{google-logo}}, % 指导教师姓名
+  AdvisorTitle ={Titleless}, % 指导教师职称
+}
+
+\begin{document}
+
+\maketitle % 封面
+
+\frontmatter
+
+\begin{abstract} % 摘要
+  \LaTeX{}\footnote{\url{https://en.wikipedia.org/wiki/LaTeX}}是一种基
+  于\TeX{}\footnote{\url{https://en.wikipedia.org/wiki/TeX}}的排版系统，由美国电脑学家莱斯
+  利·兰伯特在20世纪80年代初期开发，利用这种格式，即使用户没有排版和程序设计的知识也可以充分
+  发挥由TEX所提供的强大功能，能在几天，甚至几小时内生成很多具有书籍质量的印刷品。对于生成复
+  杂表格和数学公式，这一点表现得尤为突出。因此它非常适用于生成高印刷质量的科技和数学类文档。
+  这个系统同样适用于生成从简单的信件到完整书籍的所有其他种类的文档。\cite{wiki:latexcn}
+
+  本文对如何利用\LaTeX{}来撰写西南林业大学本科毕业论文做一个简要的介绍。读者也可以将本文作
+  为毕业论文模板来使用\footnote{本文所使用的毕业论文模板（\texttt{cls}文件），
+    \texttt{tex}源文件，及其它相关文件都可以在下面的网址找
+    到：\url{https://github.com/wx672/texmf/tree/master/doc/latex/swfu/swfcthesis/tutorial}}。
+\end{abstract}
+
+\begin{keyword} % 关键词
+  \LaTeX{}, 西南林业大学, 本科毕业论文模板, 教程
+\end{keyword}
+
+\begin{EAbstract} % 英文摘要
+  \LaTeX{} is a document preparation system. When writing, the writer uses plain text as
+  opposed to formatted text as users of word processors like Microsoft Word. The writer
+  uses markup tagging conventions to define the general structure of a document (such as
+  article, book, and letter), to stylise text throughout a document (such as bold and
+  italic), and to add citations and cross-references. A \TeX{} distribution such as
+  \TeX{}Live or Mik\TeX{} is used to produce an output file (such as PDF or DVI) suitable
+  for printing or digital distribution. Within the typesetting system, its name is
+  stylised as \LaTeX{}.\cite{wiki:latex}
+
+  This short tutorial shows you how to write an undergraduate dissertation in \LaTeX{}. It
+  can also serve as a perfect template to ease your life\footnote{The class file used
+    for typesetting this thesis, and the \texttt{tex} source of this file can be found at
+    \url{https://github.com/wx672/texmf/tree/master/doc/latex/swfu/swfcthesis}.}.
+\end{EAbstract}
+
+\begin{EKeyword} % 英文关键词
+  \LaTeX{}, \TeX{}, dissertation template, SWFU
+\end{EKeyword}
+
+
+\tableofcontents % 目录
+\listoffigures % 图片目录，可以没有
+\listoftables  % 表格目录，可以没有
+
+\mainmatter
+
+\include{chapters/ch1-pre}
+\include{chapters/ch2-quick}
+\include{chapters/ch3-adv}
+\include{chapters/ch4-thesis}
+
+\appendix % 参考文献、指导教师简介、鸣谢、附录
+
+\makebib % 参考文献
+
+\begin{advisorInfo} % 指导教师简介
+\noindent{}\texttt{{\large \$ dict google}}
+  \begin{singlespace}
+    \noindent{}\texttt{From The Free On-line Dictionary of Computing (05 May 2016) [foldoc]:}
+
+    \begin{quote}
+      {\ttfamily \hspace{-2em}Google
+    
+        <web> The \{web\} \{search engine\} that indexes the greatest number of web pages
+        - over two billion by December 2001 and provides a free service that searches this
+        index in less than a second.
+  
+        The site's name is apparently derived from "\{googol\}", but note the difference
+        in spelling.
+  
+        The "Google" spelling is also used in "The Hitchhikers Guide to the Galaxy" by
+        Douglas Adams, in which one of Deep Thought's designers asks, "And are you not,"
+        said Fook, leaning anxiously foward, "a greater analyst than the Googleplex Star
+        Thinker in the Seventh Galaxy of Light and Ingenuity which can calculate the
+        trajectory of every single dust particle throughout a five-week Dangrabad Beta
+        sand blizzard?"
+      
+        \{(http://google.com/)\}.
+      
+        (2001-12-28) }
+    \end{quote}
+  \end{singlespace}
+\end{advisorInfo}
+
+\begin{acknowledgment} % 致谢
+  感谢美国计算机教授高德纳（Donald Ervin Knuth）编写的功能强大的排版软件\TeX{}。感谢美国计
+  算机科学家莱斯利·兰波特（Leslie Lamport）教授为\TeX{}开发的简单易用的\LaTeX{}宏包。感谢本
+  文作者能有如此多的闲功夫和好心情来饶有兴致地做这样一件不能当饭吃的事情。
+\end{acknowledgment}
+
+%%%%% 附录章节
+\singlespacing
+\include{chapters/ch5-app-sw}
+
+\chapter{中文article模板}
+\label{app:article}
+
+\inputminted{latex}{article.tex}
+
+\chapter{毕业论文模板}
+\label{app:thesis}
+
+\inputminted{latex}{thesis-template.tex}
+
+\chapter{\texttt{swfuthesis.cls}文件}
+\label{app:class}
+
+\inputminted{latex}{swfuthesis.cls}
+
+\chapter{\texttt{tutorial.bib}文件}
+\label{app:bib}
+
+\inputminted{bibtex}{tutorial.bib}
+
+\end{document} % 此行后面不要有任何文字。
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

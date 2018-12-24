@@ -327,8 +327,8 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
   \def\listingscaption{程序}}
 
 \DeclareCaptionOption{bi-second}[]{%
-  \def\tablename{Table}%
-  \def\figurename{Figure}%
+  \def\tablename{Tab.\!}%
+  \def\figurename{Fig.\!}%
   \def\listingscaption{Code}}
 
 %%%%%
