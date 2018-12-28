@@ -5,10 +5,10 @@
 
 \begin{document}
 \begin{verbatim}
-    Pi                  Scheduler              Pi's Parent
-┌────────┐ context  ┌───────────────┐ context  ┌────────┐
-│ exit() ├─────────>│ Choose a proc ├─────────>│ wait() │
-└────────┘ switch   └───────────────┘ switch   └────────┘
+     Pi                    Scheduler              Pi's Parent
+┌───────────┐ context  ┌───────────────┐ context  ┌────────┐
+│ do_exit() ├─────────>│ Choose a proc ├─────────>│ wait() │
+└───────────┘ switch   └───────────────┘ switch   └────────┘
 \end{verbatim}
 \end{document}
 
