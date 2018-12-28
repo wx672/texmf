@@ -1,0 +1,53 @@
+\documentclass[varwidth=70em,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+      do_exit() in Pi                  wait() in Pi's Parent
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┓    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃     ┌─────────────┐       ┃    ┃   ┌───────────────────────┐    ┃
+┃     │ Close files │       ┃    ┃   │ Release address space │    ┃
+┃     └──────┬──────┘       ┃    ┃   └───────────┬───────────┘    ┃
+┃            V              ┃    ┃               V                ┃
+┃ ┌───────────────────────┐ ┃    ┃    ┌─────────────────────┐     ┃
+┃ │ Pass children to init │ ┃    ┃    │ Release page tables │     ┃
+┃ └──────────┬────────────┘ ┃    ┃    └──────────┬──────────┘     ┃
+┃            V              ┃    ┃               V                ┃
+┃    ┌───────────────┐      ┃    ┃    ┌──────────────────────┐    ┃
+┃    │ notify parent │      ┃    ┃    │ Release kernel stack │    ┃
+┃    └───────┬───────┘      ┃    ┃    └──────────┬───────────┘    ┃
+┃            V              ┃    ┃               V                ┃
+┃     ┌─────────────┐       ┃    ┃ ┌────────────────────────────┐ ┃
+┃     │ Mark zombie │       ┃    ┃ │ Release process table slop │ ┃
+┃     └──────┬──────┘       ┃    ┃ └─────────────┬──────────────┘ ┃
+┃            V              ┃    ┃               V                ┃
+┃     ┌─────────────┐       ┃    ┃        ┌─────────────┐         ┃
+┃     │ Release CPU │       ┃    ┃        │ Release PID │         ┃
+┃     └─────────────┘       ┃    ┃        └─────────────┘         ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

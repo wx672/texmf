@@ -1,0 +1,35 @@
+\documentclass[varwidth=45em,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+┌─────────────────────┐                      ┌───────────────┐
+│ Parent calls fork() │─────────────────────>│ Child running │
+└────────┬────────────┘                      └───────┬───────┘
+         V                                           V
+┌─────────────────────┐                   ┌───────────────────────┐
+│ Parent calls wait() │                   │ Child calls do_exit() │
+│ for child           │                   └──────────┬────────────┘
+└────────┬────────────┘                              │
+         V                                           │
+ .────────────────.   No  ┌───────────────────────┐  │
+( is child exited? )─────>│ Parent sleeps/blocked │─>│
+ '───────┬────────'       └───────────────────────┘  │
+         │Yes                                        V
+         V                                 ┌──────────────────┐
+┌─────────────────────┐                    │      Parent      │
+│ Parent reaps zombie │<───────────────────│ wakeup/unblocked │
+└────────┬────────────┘                    └──────────────────┘
+         V
+┌───────────────────────┐
+│ Parent continues work │
+└───────────────────────┘
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "waiting"
+%%% End:

@@ -1,0 +1,47 @@
+\documentclass[varwidth,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+        ┌───────┐
+        │ Start │
+        └───┬───┘
+            V
+ .──────────────────────.  No
+( pre─>state == zombie ? )───┐
+ '──────────┬───────────'    │
+            │Yes             │
+            V                │
+    ┌────────────────┐       │
+    │ Release kstack │       │
+    └───────┬────────┘       │
+            V                │
+   ┌──────────────────┐      │
+   │ Clear the slot   │      │
+   │ in process table │      │
+   └────────┬─────────┘      │
+            V                │
+     ┌────────────┐          │
+     │ Detach pid │          │
+     └──────┬─────┘          │
+            V                │
+ ┌─────────────────────┐     │
+ │ Choose another proc │<────┘
+ └──────────┬──────────┘
+            V
+  ┌────────────────────┐
+  │ Switch to new proc │
+  └─────────┬──────────┘
+            V
+        ┌──────┐
+        │ Done │
+        └──────┘
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

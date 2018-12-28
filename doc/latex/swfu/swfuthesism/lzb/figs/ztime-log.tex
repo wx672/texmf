@@ -1,0 +1,64 @@
+\documentclass[varwidth,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+$ ztime
+
+Test1: With only 1 proc in ready queue when child exited
+56727 freepages in system before forked 
+56659 freepages in system after forked
+pid 4 became a zombie at 431 ticks
+56659 freepages in system after exited
+zombie pid: 4 got reaped at 432 ticks
+56727 freepages in system after waited
+
+Test2: With 10 procs in ready queue when child exited
+pid 5 became a zombie at 844 ticks
+zombie pid: 5 got reaped at 854 ticks
+
+Test2: With 20 procs in ready queue when child exited
+pid 16 became a zombie at 1281 ticks
+zombie pid: 16 got reaped at 1301 ticks
+
+Test2: With 30 procs in ready queue when child exited
+pid 27 became a zombie at 1748 ticks
+zombie pid: 27 got reaped at 1778 ticks
+
+Test2: With 40 procs in ready queue when child exited
+pid 38 became a zombie at 2224 ticks
+zombie pid: 38 got reaped at 2264 ticks
+
+Test2: With 50 procs in ready queue when child exited
+pid 49 became a zombie at 2731 ticks
+zombie pid: 49 got reaped at 2781 ticks
+
+Test2: With 60 procs in ready queue when child exited
+pid 60 became a zombie at 3287 ticks
+zombie pid: 60 got reaped at 3347 ticks
+
+Test2: With 70 procs in ready queue when child exited
+pid 71 became a zombie at 3873 ticks
+zombie pid: 71 got reaped at 3943 ticks
+
+Test2: With 80 procs in ready queue when child exited
+pid 82 became a zombie at 4469 ticks
+zombie pid: 82 got reaped at 4549 ticks
+
+Test2: With 90 procs in ready queue when child exited
+pid 93 became a zombie at 5057 ticks
+zombie pid: 93 got reaped at 5147 ticks
+
+Test2: With 100 procs in ready queue when child exited
+pid 104 became a zombie at 5713 ticks
+zombie pid: 104 got reaped at 5813 ticks
+$ 
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

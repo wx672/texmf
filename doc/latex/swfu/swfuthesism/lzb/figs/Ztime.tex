@@ -1,0 +1,61 @@
+\documentclass[varwidth=80em,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+$ ztime1
+Test1: With only 1 proc in ready queue when child exited
+56729 freepages in system before forked
+56661 freepages in system after forked
+child 4 became zombie at 263 ticks, 6988 us
+zombie 4 got reaped at 263 ticks,9383 us
+56729 freepages in system after exited
+
+Test2: With 10 procs in ready queue when child exited
+child 5 became zombie at 476 ticks, 510 us
+zombie 5 got reaped at 476 ticks,1770 us
+
+Test2: With 20 procs in ready queue when child exited
+child 16 became zombie at 845 ticks, 1237 us
+zombie 16 got reaped at 845 ticks,3693 us
+
+Test2: With 30 procs in ready queue when child exited
+child 27 became zombie at 1273 ticks, 735 us
+zombie 27 got reaped at 1273 ticks,3152 us
+
+Test2: With 40 procs in ready queue when child exited
+child 38 became zombie at 1849 ticks, 2992 us
+zombie 38 got reaped at 1849 ticks,5307 us
+
+Test2: With 50 procs in ready queue when child exited
+child 49 became zombie at 2476 ticks, 433 us
+zombie 49 got reaped at 2476 ticks,2814 us
+
+Test2: With 60 procs in ready queue when child exited
+child 60 became zombie at 3146 ticks, 1012 us
+zombie 60 got reaped at 3146 ticks,3465 us
+
+Test2: With 70 procs in ready queue when child exited
+child 71 became zombie at 4005 ticks, 396 us
+zombie 71 got reaped at 4005 ticks,2941 us
+
+Test2: With 80 procs in ready queue when child exited
+child 82 became zombie at 4868 ticks, 428 us
+zombie 82 got reaped at 4868 ticks,3352 us
+
+Test2: With 90 procs in ready queue when child exited
+child 93 became zombie at 5766 ticks, 645 us
+zombie 93 got reaped at 5766 ticks,3150 us
+
+Test2: With 100 procs in ready queue when child exited
+child 104 became zombie at 6866 ticks, 490 us
+zombie 104 got reaped at 6866 ticks,3092 us
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

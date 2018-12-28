@@ -1,0 +1,57 @@
+\documentclass[varwidth,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+           ┌───────┐
+           │ Start │
+           └───┬───┘
+               V
+           ┌───────┐
+           │ i = 0 │
+           └───┬───┘
+┌─────────────>│
+│              V
+│      .───────────────.   No
+│     ( i < NPDENTRIES? )─────────┐
+│      `───────┬───────'          │
+│              │Yes               │
+│              V                  │
+│      .─────────────────.   Yes  │
+│     ( pgdir[i] == NULL? )─────┐ │
+│      `───────┬─────────'      │ │
+│              │No              │ │
+│              V                │ │
+│        .───────────.   No     │ │
+│       ( PTE_P == 1? )────────>│ │
+│        '─────┬─────'          │ │
+│              │Yes             │ │
+│              V                │ │
+│ ┌──────────────────────────┐  │ │
+│ │ Extract pa from pgdir[i] │  │ │
+│ └────────────┬─────────────┘  │ │
+│              V                │ │
+│        ┌───────────┐          │ │
+│        │ kfree(pa) │          │ │
+│        └─────┬─────┘          │ │
+│              │<───────────────┘ │
+│              V                  │
+│           ┌─────┐               │
+└───────────┤ i++ │               │
+            └─────┘               │
+        ┌──────────────┐          │
+        │ kfree(pgdir) │<─────────┘
+        └──────┬───────┘
+               V
+            ┌─────┐
+            │ End │
+            └─────┘
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

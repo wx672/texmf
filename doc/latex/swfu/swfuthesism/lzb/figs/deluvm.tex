@@ -1,0 +1,50 @@
+\documentclass[varwidth,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+                                   ┌───────┐
+                                   │ Start │
+                                   └───┬───┘
+                                       V
+                                   ┌───────┐
+                                   │ a = 0 │
+                                   └───┬───┘
+      ┌───────────────────────────────>│
+      │                                V
+      │                         .──────────────.   No
+      │                        ( a < KERNBASE ? )───┐
+      │                         `──────┬───────'    │
+      │                                │Yes         │
+      │                                V            │
+      │  ┌────────────┐  No  .───────────────────.  │
+      │<─┤ a moves up │<────( a mapped in pgdir ? ) │
+      │  │ 4M vm      │      `─────────┬─────────'  │
+      │  └────────────┘                │Yes         │
+      │                                V            │
+      │                  No  .───────────────────.  │
+      │                ┌────( a mapped in pgtab ? ) │
+      │                │     `─────────┬─────────'  │
+      │                │               │Yes         │
+      │                │               V            │
+      │                │      ┌──────────────────┐  │
+      │                │      │ Extracts pa from │  │
+      │                │      │ page table entry │  │
+      │                │      └────────┬─────────┘  │
+      │                │               V            │
+┌─────┴──────┐         V          ┌─────────┐       │
+│ a moves up │<───────────────────┤ Free pa │       │
+│ 4K vm      │                    └─────────┘       │
+└────────────┘                                      │
+                                   ┌──────┐         │
+                                   │ Done │<────────┘
+                                   └──────┘
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

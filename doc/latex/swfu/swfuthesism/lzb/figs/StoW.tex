@@ -1,0 +1,41 @@
+\documentclass[varwidth,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+       ┌──────────────────────┐
+       │ 201. Pk calls exit() │
+       └──────────┬───────────┘
+                  V
+     ┌──────────────────────────┐
+     │ 202. Pk becomes a zombie │
+     └────────────┬─────────────┘
+                  V
+ ┌──────────────────────────────────┐
+ │ 203. Context switch to scheduler │
+ └────────────────┬─────────────────┘
+                  V
+┌────────────────────────────────────┐
+│ 204. Scheduler chooses Pk's parent │
+└─────────────────┬──────────────────┘
+                  V
+┌────────────────────────────────────┐
+│ 205. Context switch to Pk's parent │
+└─────────────────┬──────────────────┘
+                  V
+   ┌───────────────────────────────┐
+   │ 206. Pk's parent calls wait() │
+   └──────────────┬────────────────┘
+                  V
+      ┌────────────────────────┐
+      │ 207. Zombie disappears │
+      └────────────────────────┘
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

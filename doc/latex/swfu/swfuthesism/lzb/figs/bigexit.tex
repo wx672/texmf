@@ -1,0 +1,45 @@
+\documentclass[varwidth,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+          ┌───────┐
+          │ Start │
+          └───┬───┘
+              V
+       ┌─────────────┐
+       │ Close files │
+       └──────┬──────┘
+              V
+  ┌───────────────────────┐
+  │ Release address space │
+  └───────────┬───────────┘
+              V
+   ┌─────────────────────┐
+   │ Release page tables │
+   └──────────┬──────────┘
+              V
+   ┌──────────────────────┐
+   │ Release kernel stack │
+   └──────────┬───────────┘
+              V
+┌────────────────────────────┐
+│ Release process table slot │
+└─────────────┬──────────────┘
+              V
+       ┌─────────────┐
+       │ Release PID │
+       └──────┬──────┘
+              V
+       ┌─────────────┐
+       │ Give up CPU │
+       └─────────────┘
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

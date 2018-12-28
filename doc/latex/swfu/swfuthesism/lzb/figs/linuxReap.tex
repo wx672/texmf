@@ -1,0 +1,46 @@
+\documentclass[varwidth,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+┌─────────────────────────┐
+│ 101. Pk calls do_exit() │
+└───────────┬─────────────┘
+            V
+┌──────────────────────────┐
+│ 102. Pk becomes a zombie │
+└───────────┬──────────────┘
+            V
+┌──────────────────────────────────┐
+│ 103. context switch to scheduler │<────────────────┐
+└───────────┬──────────────────────┘                 │
+            V                                        │
+┌────────────────────────────────────────┐           │
+│ 104. scheduler chooses another proc Pi │           │
+└───────────┬────────────────────────────┘           │
+            V                                        │
+┌───────────────────────────┐                        │
+│ 105. context switch to Pi │                        │
+└───────────┬───────────────┘                        │
+            V                                        │
+ .───────────────────────.   No  ┌─────────────────┐ │
+( 106. is Pi Pk's parent? )─────>│ 109. Pi running │─┘
+ '──────────┬────────────'       └─────────────────┘
+            │Yes
+            V
+┌──────────────────────┐
+│ 107. Pi calls wait() │
+└───────────┬──────────┘
+            V
+┌────────────────────────┐
+│ 108. zombie disappears │
+└────────────────────────┘
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

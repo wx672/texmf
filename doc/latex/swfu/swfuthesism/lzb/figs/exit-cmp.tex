@@ -1,0 +1,45 @@
+\documentclass[varwidth=80em,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+      ┌────────────┐                             ┌────────────┐
+      │ 001. Start │                             │ 101. Start │
+      └─────┬──────┘                             └─────┬──────┘
+            V                                          V
+┌───────────────────────┐                  ┌───────────────────────┐
+│ 002. Close open files │                  │ 102. Close open files │
+└───────────┬───────────┘                  └───────────┬───────────┘
+            V                                          V
+  ┌────────────────────┐                 ┌────────────────────────────┐
+  │ 003. Notify parent │                 │ 103. Release address space │
+  └─────────┬──────────┘     Redisign    └─────────────┬──────────────┘
+            V               ──────────>                V
+┌───────────────────────┐                 ┌──────────────────────────┐
+│ 004. Pass abandoned   │                 │ 104. Release page tables │
+│      children to init │                 └────────────┬─────────────┘     
+└───────────┬───────────┘                              V
+            V                            ┌─────────────────────────────┐   
+   ┌──────────────────┐                  │ 105. Release page directory │
+   │ 005. Mark zombie │                  └─────────────┬───────────────┘   
+   └────────┬─────────┘                                V
+            V                                 ┌──────────────────┐         
+   ┌──────────────────┐                       │ 106. Mark zombie │         
+   │ 006. Give up CPU │                       └────────┬─────────┘         
+   └────────┬─────────┘                                V                   
+            V                                 ┌─────────────────┐          
+        ┌──────┐                              │ 107 Give up CPU │
+        │ Done │                              └────────┬────────┘          
+        └──────┘                                       V                   
+                                                    ┌──────┐                
+                                                    │ Done │ 
+                                                    └──────┘                
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

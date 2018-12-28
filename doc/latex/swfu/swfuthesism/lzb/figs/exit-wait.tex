@@ -1,0 +1,44 @@
+\documentclass[varwidth=40em,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+         do_exit()                      exit_wait()
+┌──────────────────────────┐     ┌────────────────────────┐
+│        ┌───────┐         │     │       ┌───────┐        │
+│        │ Start │         │     │       │ Start │        │
+│        └───┬───┘         │     │       └───┬───┘        │
+│            V             │     │           V            │
+│   ┌──────────────────┐   │     │  ┌──────────────────┐  │
+│   │ Close open files │   │     │  │ Close open files │  │
+│   └────────┬─────────┘   │     │  └────────┬─────────┘  │
+│            V             │     │           V            │
+│    ┌────────────────┐    │     │    ┌─────────────┐     │
+│    │ Notify parrent │    │     │    │ Call wait() │     │
+│    └───────┬────────┘    │     │    └──────┬──────┘     │
+│            V             │────>│           V            │
+│  ┌────────────────────┐  │     │    ┌─────────────┐     │
+│  │ Pass child to init │  │     │    │ Give up CPU │     │
+│  └─────────┬──────────┘  │     │    └──────┬──────┘     │
+│            V             │     │           V            │
+│     ┌─────────────┐      │     │       ┌──────┐         │
+│     │ Mark zombie │      │     │       │ Done │         │
+│     └──────┬──────┘      │     │       └──────┘         │
+│            V             │     └────────────────────────┘
+│     ┌─────────────┐      │
+│     │ Give up CPU │      │
+│     └──────┬──────┘      │
+│            V             │
+│        ┌──────┐          │
+│        │ Done │          │
+│        └──────┘          │
+└──────────────────────────┘
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

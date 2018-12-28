@@ -14,7 +14,6 @@
   AuthorId/.store in        = \SWFU@AuthorId,    % 学号                 
   Advisor/.store in         = \SWFU@Advisor,     % 指导教师             
   enAdvisor/.store in       = \SWFU@enAdvisor,   % 指导教师（英文）     
-  enAdvisorB/.store in      = \SWFU@enAdvisorB,  % 指导教师B（英文）    
   AdvisorTitle/.store in    = \SWFU@AdvisorTitle,% 指导教师职称         
   ClsID/.store in           = \SWFU@ClsID,       % 分类号               
   DateA/.store in           = \SWFU@DateA, DateA/.default={\hspace{2em}},% 提交论文日期         
@@ -108,7 +107,7 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 
 
 %%%%% biblatex
-\RequirePackage[backend=biber,style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false,url=false,doi=false,isbn=false]{biblatex}
+\RequirePackage[backend=biber,style=gb7714-2015,gbpub=false,gbtype=true,gbpunctin=false,url=false,doi=false,isbn=false]{biblatex}
 
 
 %%%%%
@@ -260,19 +259,19 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
   \pagenumbering{roman}
   \begin{center}
     {\large\textbf{摘\hspace{1em}要}}
-  \end{center}}{}
+  \end{center}\qquad}{}
 
 \newenvironment{keyword}{%
   \vskip 2ex\noindent\textbf{关键字：}}{\pagebreak}
 
-\newenvironment{EAbstract}{%
+\newenvironment{eabstract}{%
   \providecommand\pdfbookmark[3][]{}\pdfbookmark[0]{Abstract}{bm:Abstract}%
   \thispagestyle{plain}\phantomsection{}%
   \begin{center}
     {\large \textbf{ABSTRACT}}
-  \end{center}}{}
+  \end{center}\qquad}{}
 
-\newenvironment{EKeyword}{%
+\newenvironment{ekeyword}{%
   \vskip 2ex\noindent\textbf{Key words: }}{\pagebreak}
 
 \newenvironment{authorInfo}{% 个人简介
@@ -294,14 +293,20 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
   \addcontentsline{toc}{chapter}{致\hspace{1em}谢}%
   \chapter*{致\hspace{1em}谢}%
   \vskip 2em\begin{doublespace}}%
-  {\end{doublespace}\pagebreak\singlespacing}
+  {\end{doublespace}\pagebreak}
 
 \newcommand{\makebib}{%
-  \printbibliography[heading={bibintoc},title={参考文献}]\label{p:ref}\pagebreak}
+  \begin{singlespace}
+    \printbibliography[heading={bibintoc},title={参考文献}]\label{p:ref}\pagebreak
+  \end{singlespace}}
 
 \newcommand{\publication}[1]{%
-  \nocite{#1}%
-  \printbibliography[heading={bibintoc},title={获得成果目录}]\label{p:ref}\pagebreak}
+  \begin{refsection}
+    \begin{singlespace}
+      \nocite{#1}%
+      \printbibliography[heading={bibintoc},title={获得成果目录}]\label{p:ref}\pagebreak
+    \end{singlespace}
+  \end{refsection}}
 
 %%%%% minted
 \RequirePackage[chapter]{minted} % minted has to be loaded at last!!!
@@ -316,7 +321,7 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 \renewcommand{\thesubfigure}{\thechapter{}-\arabic{subfigure}}
 \renewcommand{\thesubtable}{\thechapter{}-\arabic{subtable}}
 
-\captionsetup{labelsep=quad}
+\captionsetup{labelsep=quad,format=hang}
 
 \captionsetup[bi-first]{bi-first}
 \captionsetup[bi-second]{bi-second}

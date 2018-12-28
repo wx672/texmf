@@ -1,0 +1,41 @@
+\documentclass[varwidth,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+        ┌───────┐
+        │ Start │
+        └───┬───┘
+            V
+   ┌──────────────────┐
+   │ Close open files │
+   └────────┬─────────┘
+            V
+┌───────────────────────┐
+│ Release address space │
+└───────────┬───────────┘
+            V
+ ┌─────────────────────┐
+ │ Release page tables │
+ └──────────┬──────────┘
+            V
+     ┌─────────────┐
+     │ Mark zombie │
+     └──────┬──────┘
+            V     
+     ┌─────────────┐
+     │ Give up CPU │
+     └──────┬──────┘
+            V
+        ┌──────┐
+        │ Done │
+        └──────┘
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

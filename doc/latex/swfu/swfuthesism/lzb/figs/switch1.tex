@@ -1,0 +1,33 @@
+\documentclass[varwidth,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+       ┌───────┐
+       │ Start │
+       └───┬───┘
+           V
+ ┌────────────────────┐
+ │ Save old registers │
+ └─────────┬──────────┘
+           V
+   ┌────────────────┐
+   │ Switch kstacks │
+   └───────┬────────┘
+           V
+┌───────────────────────┐
+│ Restore new registers │
+└──────────┬────────────┘
+           V
+      ┌────────┐
+      │ Return │
+      └────────┘
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

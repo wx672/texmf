@@ -1,0 +1,38 @@
+\documentclass[varwidth,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+        ┌───────┐
+        │ Start │
+        └───┬───┘
+            V
+ .───────────────────────.  No
+( if pre─>state == zombie )───┐
+ '──────────┬────────────'    │
+            │Yes              │
+            V                 │
+     ┌─────────────┐          │
+     │ Call wait() │          │
+     └──────┬──────┘          │
+            V                 │
+ ┌──────────────────────┐     │
+ │ Choose a proc to run │<────┘
+ └──────────┬───────────┘
+            V
+    ┌────────────────┐
+    │ Switch to proc │
+    └───────┬────────┘
+            V
+        ┌──────┐
+        │ Done │
+        └──────┘
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

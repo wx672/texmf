@@ -1,0 +1,41 @@
+\documentclass[varwidth=40em,crop]{standalone}
+
+\usepackage{wx672fonts}
+\setmonofont{DejaVu Sans Mono}
+
+\begin{document}
+\begin{verbatim}
+  ┌─────────────────┐            ┌────────────────┐
+  │ Pk calls exit() │    ┌──────>│ Context switch │
+  └────────┬────────┘    │       │ to scheduler   │
+           │             │       └───────┬────────┘
+           V             │               V                 
+   ┌───────────────┐     │      ┌──────────────────┐       
+   │ exit() closes │     │      │ Scheduler checks │       
+   │ open files    │     │      │ pre─>state       │       
+   └───────┬───────┘     │      └────────┬─────────┘       
+           │             │               V                 
+           V             │   .───────────────────────.   No
+  ┌─────────────────┐    │  (  pre─>state == zombie?  )───┐
+  │ exit() releases │    │   '───────────┬───────────'    │
+  │ address space   │    │               │Yes             │
+  └────────┬────────┘    │               V                │
+           │             │ ┌───────────────────────────┐  │
+           V             │ │ Scheduler calls cleanup() │  │
+  ┌─────────────────┐    │ └─────────────┬─────────────┘  │
+  │ exit() releases │    │               V                │
+  │ page tables and │    │        ┌─────────────┐         │
+  │ page directory  │    │        │ Zombie done │         │
+  └────────┬────────┘    │        └──────┬──────┘         │
+           │             │               │<───────────────┘
+           V             │               V                 
+┌─────────────────────┐  │ ┌────────────────────────────┐  
+│ exit() makes zombie ├──┘ │ Scheduler does its own job │  
+└─────────────────────┘    └────────────────────────────┘  
+\end{verbatim}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

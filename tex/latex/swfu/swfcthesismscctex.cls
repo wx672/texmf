@@ -82,7 +82,7 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 
 
 %%%%% biblatex
-\RequirePackage[backend=biber,style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false,url=false,doi=false,isbn=false]{biblatex}
+\RequirePackage[backend=biber,style=gb7714-2015,gbpub=false,gbtype=true,gbpunctin=false,url=false,doi=false,isbn=false]{biblatex}
 
 
 %%%%%
@@ -337,7 +337,7 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 \renewcommand{\thesubfigure}{\thechapter{}-\arabic{subfigure}}
 \renewcommand{\thesubtable}{\thechapter{}-\arabic{subtable}}
 
-\captionsetup{labelsep=quad}
+\captionsetup{labelsep=quad,format=hang}
 
 \captionsetup[bi-first]{bi-first}
 \captionsetup[bi-second]{bi-second}
