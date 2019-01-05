@@ -39,7 +39,7 @@
       \end{enumerate}},%
     Commenterlabel = {评阅人（签名）：},%
     Commentslabel = {评\hspace{1ex}语：},%
-    Marklabel = {评分：\underline{\makebox[2.5em]{\SWFU@Studmark}}\hfill},},
+    Marklabel = {评分：\underline{\makebox[2.5em]{\purisa\SWFU@Studmark}}\hfill},},
   A/.style = {%指导教师意见
     Formsubtitle = 指导教师意见,
     Hinttitle = 评阅时，请参照以下几个方面提出意见,
@@ -53,7 +53,7 @@
       \end{enumerate}},%
     Commenterlabel = 指导教师（签名）：,%
     Commentslabel = {评\hspace{1ex}语：},%
-    Marklabel = {评分：\underline{\makebox[2.5em]{\SWFU@Studmark}}\hfill}},
+    Marklabel = {评分：\underline{\makebox[2.5em]{\purisa\SWFU@Studmark}}\hfill}},
   S/.style = {%答辩申请表
     Formsubtitle = 答辩申请表,%
     Hinttitle = 指导教师评审意见主要包含以下几个方面,%
@@ -78,6 +78,8 @@
 
 \RequirePackage{tabu,array}
 \RequirePackage{graphicx}
+
+\newfontfamily\purisa{Purisa}
 
 \RequirePackage[%showframe,nomarginpar,
 paperwidth=195mm,paperheight=270mm,
@@ -108,7 +110,7 @@ left=2.5cm,right=2.5cm,
     \end{tabu}}
   \vfill
   \SWFU@Marklabel{}
-  \SWFU@Commenterlabel{}\underline{\makebox[5em]{\SWFU@Signature{}}}\hfill
-  日期：\underline{\makebox[3.5em]{\SWFU@Year{}}}年
-  \underline{\makebox[1.5em]{\SWFU@Month{}}}月
-  \underline{\makebox[2em]{\SWFU@Date{}}}日}
+  \SWFU@Commenterlabel{}\underline{\makebox[5em]{\SWFU@Signature}}\hfill
+  日期：\underline{\makebox[3.5em]{\purisa\SWFU@Year}}年
+  \underline{\makebox[1.5em]{\purisa\SWFU@Month}}月
+  \underline{\makebox[2em]{\purisa\SWFU@Date}}日}

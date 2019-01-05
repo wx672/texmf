@@ -57,6 +57,7 @@ left=2.5cm, right=2.5cm,
 \usetikzlibrary{backgrounds,positioning,fit}
 
 \newCJKfontfamily\sig{signature}
+\newfontfamily\purisa{Purisa}
 
 \newcommand{\Signit}[3]{%\Signit{5cm}{-2cm}{../signature}
   \begin{tikzpicture}[overlay,remember picture]%
@@ -105,12 +106,14 @@ left=2.5cm, right=2.5cm,
     \hfill\makebox[16em][l]{签章}\par
     \hfill\makebox[12em][r]{年\hspace{3em}月\hspace{3em}日}\\\tabucline-
     \begin{minipage}[c]{2em}
-      个人确认考核结果%\vspace{-3ex}
-    \end{minipage}&%\par\vspace{\fill}
+      个人确认考核结果%
+    \end{minipage}&%
     \begin{minipage}[c][6em][b]{.89\columnwidth}
       \hfill\makebox[12em][l]{\SWFU@Sig}\par
-      \hfill\makebox[16em][l]{签章}\par%\quad\raisebox{1ex}{\scalebox{.8}{}}
-      \hfill\makebox[12em][r]{\SWFU@Year{}年\makebox[3em]{\SWFU@Month}月\hspace{3em}日}%
+      \hfill\makebox[16em][l]{签章}\par%
+      \hfill\makebox[12em][r]{{\purisa\SWFU@Year}年%
+        \makebox[3em]{\purisa\SWFU@Month}月%
+        \makebox[3em]{\purisa\SWFU@Date}日}%
     \end{minipage}\\\tabucline-%
     \begin{minipage}{1em}
       学校考核意见
