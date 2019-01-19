@@ -7,7 +7,7 @@
 
 \pgfkeys{
   Term/.store in       = \TT@Term,%
-  Teacher/.store in    = \TT@Teacher,%
+  Teacher/.store in    = \TT@Teacher,  Teacher = {WANG Xiaolin},%
   Daywidth/.store in   = \TT@Daywidth, Daywidth = 5cm,%
   Hourlength/.store in = \TT@Hourlength, Hourlength = 1cm,%
 }
@@ -16,12 +16,10 @@
 
 \usetikzlibrary{calc,positioning,patterns,chains}
 
-%%%
-% #1 - (optional)          #3 - (day,time)   #5 - weeks
-% #2 - lecture/lab/office  #4 - course name  #6 - room%           
-% 
 \newcommand{\class}[6][5/3]{%
-  \node[#2,minimum height=#1*\TT@Hourlength] at (#3) {#4\\{\scriptsize #5}\\{\small #6}};%
+  % #1 - (optional)          #3 - (day,time)   #5 - weeks
+  % #2 - lecture/lab/office  #4 - course name  #6 - room%           
+  \node[#2,minimum height=#1*\TT@Hourlength] at (#3) {#4\\{\scriptsize Weeks: #5}\\{\small #6}};%
 }%
 
 \tikzset{%
@@ -56,9 +54,11 @@
     } \draw [ultra thin] (1,\h) -- ++(-3pt,0) node[left=3pt,font=\scriptsize] {\htext};%
 
     % Header line (week days)
-    \node[day, anchor=south west] at (1,8) {Monday};%
-    \node[day, label={85:{Semester: \TT@Term}}] {Tuesday};%
-    \node[day, label={12:{\TT@Teacher}}] {Wednesday};%
-    \node[day] {Thursday};%
-    \node[day] (fri) {Friday};%
+    \node [day, anchor=south west,%
+    label={above,xshift=4em:{\makebox[22em][l]{Semester: \TT@Term,\quad\TT@Teacher}}}]%
+    at (1,8) {Monday};%
+    \node [day] {Tuesday};%
+    \node [day] {Wednesday};%, label={12:{\TT@Teacher}}
+    \node [day] {Thursday};%
+    \node [day] {Friday};%
   }{\end{tikzpicture}}%
