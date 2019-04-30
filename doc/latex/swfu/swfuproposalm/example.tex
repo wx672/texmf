@@ -1,59 +1,49 @@
-\documentclass{swfcproposalmsc}
+\documentclass{swfuproposalm}
 
-\Title{论文标题}
-\Titlext{很长的标题}
-\Author{罗志兵}
-\Gender{女}
-\Studid{20151111002}
-\Advisor{赵家刚}
-\AdvisorTitle{副教授}
-\Advisortwo{}      % 第二指导教师
-\AdvisorTitletwo{} % 第二指导教师职称
-\Host{}       % 报告主持人
-\Reportdate{} % 报告日期
-\Year{2017}\Month{6}\Date{6} % 填表日期
-\Subject{林业信息工程}  % 专业
-\Research{操作系统研发} % 研究方向
-\Prjfrom{操作系统研究} % 本研究题目为“其它”
-%\Tutorcomments{高度评价。同意开题。高度评价。同意开题。高度评价。同意开题。高度评价。同意开题。} % 导师对开题报告的评价
-
-\Poneone{% 1.1 选题的理论和实践意义
-  \lipsum[1-3]
+\swfusetup{
+  Title = {How To Mess up Everything in Hogwarts},
+  Author = {Harry Potter},
+  Studid = 3.14159265,
+  Gender = Male,
+  Subject = Magic,
+  Research = {Dark Art Defence},
+  Advisor = {Albus Dumbledore},
+  AdvisorTitle = Professor,
+  Advisortwo =,
+  AdvisorTitletwo =,
+  Host =,
+  Reportdate =,
+  Year = 2019,
+  Month = 4,
+  Date = 30,
+  Prjfrom = {No idea},
+  Tutorcomments = {\zhlipsum[1]},%导师对开题报告的评价
+  Tutorsig =,
+  Poneone = {% 1.1 选题的理论和实践意义
+    \lipsum[1-3]
+  },%
+  Ponetwo = {% 3. 主要参考文献
+    \lipsum[4-6]
+    
+    \nocite{wangshuang03,yuyuan2009orange,intel86,zouhengming09,os30days,tanenbaum2008modern}
+    \printbibliography[heading=none]{}},%
+  Ptwoone = {% 2.1 研究内容、研究目标及拟解决的关键问题
+    \zhlipsum[7-10]},%
+  Ptwotwo = {% 2.2 拟采用的研究方法、技术路线、实验方案及可行性分析
+    \zhlipsum[11-15]},%
+  Ptwothree = {% 2.3 本研究的特色与创新之处
+    \zhlipsum[16-18]},%
+  Ptwofour = {% 2.4 研究计划及预期研究结果
+    \zhlipsum[19-25]},%
+  Pthreeone = {% 3.1 已参加过的相关研究工作和已取得的研究工作进展
+    \zhlipsum[26-27]},%
+  Pthreetwo = {% 3.2 已具备的实验条件，尚缺少的实验条件和拟解决的途径
+    \zhlipsum[28-30]},%
+  Pthreethree = {% 3.3 研究经费预算和经费落实情况
+    \zhlipsum[31]},%
 }
 
 \addbibresource{os.bib}
-\Ponetwo{% 3. 主要参考文献
-  \lipsum[4-6]
-  
-  \nocite{wangshuang03,yuyuan2009orange,intel86,zouhengming09,os30days,tanenbaum2008modern}
-  \printbibliography[heading=none]{}
-}
-
-\Ptwoone{% 2.1 研究内容、研究目标及拟解决的关键问题
-  \lipsum[7-10]  
-}
-\Ptwotwo{% 2.2 拟采用的研究方法、技术路线、实验方案及可行性分析
-  \lipsum[11-15]
-}
-
-\Ptwothree{% 2.3 本研究的特色与创新之处
-  \lipsum[16-18]
-}
-
-\Ptwofour{% 2.4 研究计划及预期研究结果
-  \lipsum[19-25]{}
-}
-
-\Pthreeone{% 3.1 已参加过的相关研究工作和已取得的研究工作进展
-  \lipsum[26-27]
-}
-\Pthreetwo{% 3.2 已具备的实验条件，尚缺少的实验条件和拟解决的途径
-  \lipsum[28-30]
-}
-\Pthreethree{% 3.3 研究经费预算和经费落实情况
-  \lipsum[31]
-}
-
 
 \begin{document}
 \makeproposal
