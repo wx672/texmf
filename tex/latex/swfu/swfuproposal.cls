@@ -189,23 +189,18 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   % \extrarowsep=_17pt
   \noindent
   \begin{tabu}{|m{1em}|X[15,m]|m{1em}|X[15,m]|}
-    教研室意见& \begin{tabular}{l}%
-                  教研室负责人：\\%[6ex]
-                  \\
-                  \\
-                  \\
-                  \\
-                  \\
-                  \hspace{5em}时间：\hspace{4em}年\hspace{2em}月\hspace{2em}日\\%[-3ex]
-    \end{tabular} &教学院系部意见& \begin{tabular}{l}%
-                                     教学院系部负责人：\\%[4ex]
-                                     \\
-                                     \\
-                                     \\
-                                     \\
-                                     \\
-\hspace{5em}时间：\hspace{4em}年\hspace{2em}月\hspace{2em}日\\%[-3ex]
-                                   \end{tabular}\\\tabucline-
+    教研室意见&%
+    \begin{tabular}{l}%
+      教研室负责人：\\%[6ex]
+      \vspace*{10ex}\\
+      \hspace{5em}时间：\hspace{4em}年\hspace{2em}月\hspace{2em}日\\%[-3ex]
+    \end{tabular} &%
+    教学院系部意见&%
+    \begin{tabular}{l}%
+      教学院系部负责人：\\%[4ex]
+      \vspace*{10ex}\\
+      \hspace{5em}时间：\hspace{4em}年\hspace{2em}月\hspace{2em}日\\%[-3ex]
+    \end{tabular}\\\tabucline-
   \end{tabu}}
 
 \newcommand{\makeproposal}{% preliminary pages
