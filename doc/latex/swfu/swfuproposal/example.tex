@@ -1,0 +1,109 @@
+\documentclass{swfuproposal}
+\begin{filecontents}{os.bib}
+  @book{tanenbaum2015modern,
+    author	   = {Tanenbaum, Andrew S.},
+    title		   = {Modern Operating Systems},
+    url		   = {https://cs3.swfu.edu.cn/tech/get/PDF/4/Calibre1},
+    year		   = 2015,
+    edition	   = 4,
+    publisher	   = {Prentice Hall Press}
+  }
+  @misc{web:xv6,
+    author	   = {MIT},
+    title		   = {Xv6{,} a simple Unix-like teaching operating system},
+    year		   = 2014
+  }
+  @Misc{intel86,
+    author	   = {Intel},
+    title		   = {INTEL 80386 Programmer's Reference Manual},
+    year		   = 1986,
+  }
+  @book{in30days,
+    title		   = "30天自制操作系统",
+    author	   = "川合秀实",
+    url		   = {https://cs3.swfu.edu.cn/tech/get/PDF/3/Calibre1},
+    year		   = 2012,
+    publisher	   = "人民邮电出版社"
+  }
+  @book{yuyuan2009orange,
+    title		   = "Orange'S：一个操作系统的实现",
+    author	   = "于渊",
+    url		   = {https://cs3.swfu.edu.cn/tech/get/PDF/2/Calibre1},
+    year		   = 2009,
+    publisher	   = "电子工业出版社"
+  }
+\end{filecontents}
+\addbibresource{os.bib}
+
+\title{简单操作系统实现}
+\author{马元}
+
+\swfusetup{%
+  Projfrom = 自选,     
+  Studid = 20111151025,%
+  AdvisorSig = {\includegraphics[width=6em]{../signature}},%
+  Advisor = 王晓林,
+  AdvisorTitle = 讲师,
+  AdvisorGender = 男,
+  AdvisorAge = 46,
+  AdvisorDegree = 硕士,%
+  AdvisorWhere = 计算机与信息学院,%
+  AdvisorComment = {\includegraphics[width=4em]{agree}},%
+  Date = 20,
+  Month = 12,
+  Year = 2014,%
+  Subject = 电子信息工程, %
+  Grade = 2011,%
+  Partone = {% 1. 该研究的目的、意义
+%    \zhlipsum[2-4]
+    深入理解操作系统原理，对课本上的一些难以琢磨的概念进行实践，为以后做有关操作系统的
+    研究打下扎实的基础。
+  },%
+  Parttwo = {%2. 国内外研究现状及发展趋势
+    操作系统是管理计算机硬件与软件资源的计算机程序，同时也是计算机系统的核心与基石。
+    操作系统主要处理内存管理与配置，决定系统资源供需的优先次序，控制输入输出设备，操作网络与
+    管理文件系统等基本事务。此外，操作系统还能协调好各任务使之能正确，有序地执行。操作系统实
+    现了系统，应用软件和用户之间交流的一个接口。
+    
+    操作系统是计算机系统中最核心最底层的软件，对操作系统的学习关系到对整个系统的运作机制的全面
+    理解，一方面能够学系操作系统的经典内容，另一方面又能够了解和跟踪最前沿的新技术和研究成
+    果。
+%    \zhlipsum[5-8]
+  },%
+  Partthree = {%3. 主要参考文献
+    \nocite{tanenbaum2008modern, silberschatz11essentials, web:xv6, yuyuan2009orange,
+      in30days} \printbibliography[heading=none]%
+    % 参考文献条目的标题（title）中如果有中文，编译会报错，但结果没问题。
+    % Disabling ulem solves this problem.
+  },%
+  Partfour = {%4. 该研究的主要内容，重点解决的问题，预期结果或成果
+    本实验通过对操作系统的简单研究和探索，了解操作系统的原理和实现过程。通过了解操作系统的基本
+    概念，包括系统的启动、进程及进程间通信、消息传递、调度算法、输入/输出、设备驱动程序、死锁、
+    存储器管理、页面调度算法、文件系统设计、安全机制等。另外，对相应的硬件设备也进行了一些简单
+    的了解。在此基础上，立足实践，开发出一个简单的操作系统，用以理解由启动到运行，并执行用户输
+    入命令的过程。通过探究操作系统开发的细节问题，更深刻的理解操作系统的核心原理。
+%    \zhlipsum
+  },%
+  Partfive = {%5. 拟采取的研究方法或实验方法，步骤，可能出现的技术问题及解决办法
+    主要参考《OrangeS：一个操作系统的实现》和《30天自制操作系统》一步步学习，立足实践，
+    开发出一个简单的操作系统。
+%    \zhlipsum[10-12]
+  },%
+  Partsix = {%6. 完成该研究已具备的条件
+    \begin{itemize}
+    \item 对操作系统概念的了解
+    \item C与汇编的编程基础
+    \item 硬件条件已具备
+    \end{itemize}
+%    \zhlipsum[40-42]
+  },
+}
+
+\begin{document}
+\makeproposal{}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
