@@ -1,6 +1,6 @@
 % 西南林业大学学术型硕士生学位论文开题报告
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{swfcproposalmsc}
+\ProvidesClass{swfuproposalm}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{aritcle}}
 \ProcessOptions\relax
@@ -8,6 +8,38 @@
 \LoadClass[a4paper,12pt]{article}
 
 \RequirePackage{ifxetex} % XeTeX only 
+
+\pgfkeys{%
+          Title/.store in =\SWFU@Title,           % 论文题目
+         Author/.store in =\SWFU@Author,          % 姓名
+         Studid/.store in =\SWFU@Studid,          % 学号
+         Gender/.store in =\SWFU@Gender,          % 姓名
+        Subject/.store in =\SWFU@Subject,         % 学科专业
+       Research/.store in =\SWFU@Research,        % 研究方向
+        Advisor/.store in =\SWFU@Advisor,         % 导师姓名
+   AdvisorTitle/.store in =\SWFU@AdvisorTitle,    % 职称
+     Advisortwo/.store in =\SWFU@Advisortwo,      % 导师姓名2
+AdvisorTitletwo/.store in =\SWFU@AdvisorTitletwo, % 职称2
+           Host/.store in =\SWFU@Host,            % 报告主持人
+     Reportdate/.store in =\SWFU@Reportdate,      % 报告日期
+           Year/.store in =\SWFU@Year,            % 填表年
+          Month/.store in =\SWFU@Month,           % 填表月
+           Date/.store in =\SWFU@Date,            % 填表日
+        Prjfrom/.store in =\SWFU@Prjfrom,         % 本研究题目为“其它”
+  Tutorcomments/.store in =\SWFU@Tutorcomments,   % 导师对开题报告的评价
+       Tutorsig/.store in =\SWFU@Tutorsig,        % 导师签名
+        Poneone/.store in =\SWFU@Poneone,
+        Ponetwo/.store in =\SWFU@Ponetwo,
+        Ptwoone/.store in =\SWFU@Ptwoone,
+        Ptwotwo/.store in =\SWFU@Ptwotwo,
+      Ptwothree/.store in =\SWFU@Ptwothree,
+       Ptwofour/.store in =\SWFU@Ptwofour,
+      Pthreeone/.store in =\SWFU@Pthreeone,
+      Pthreetwo/.store in =\SWFU@Pthreetwo,
+    Pthreethree/.store in =\SWFU@Pthreethree,
+}
+
+\newcommand{\swfusetup}[1]{\pgfkeys{#1}}
 
 \RequirePackage[top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm,
 nomarginpar,headheight=15pt, % to avoid "headheight too small"
@@ -20,7 +52,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage{indentfirst}
 \RequirePackage{tabu,longtable,multicol,multirow,array}
 
-\RequirePackage{lipsum}
+\RequirePackage{zhlipsum,lipsum}
 
 \RequirePackage{enumitem} % \setlist
 %\setlist{nosep} % kills all vertical spacing
@@ -59,35 +91,35 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \pagestyle{plain}
 
 % Variables to hold the text fields for the preliminary pages
-\newcommand{\Title}[1]{\gdef\SWFCField@Title{#1}} % 论文题目
-\newcommand{\Titlext}[1]{\gdef\SWFCField@Titlext{#1}} % 论文题目2
-\newcommand{\Studid}[1]{\gdef\SWFCField@Studid{#1}} % 学号
-\newcommand{\Author}[1]{\gdef\SWFCField@Author{#1}} % 姓名
-\newcommand{\Gender}[1]{\gdef\SWFCField@Gender{#1}} % 姓名
-\newcommand{\Subject}[1]{\gdef\SWFCField@Subject{#1}} % 学科专业
-\newcommand{\Research}[1]{\gdef\SWFCField@Research{#1}} % 研究方向
-\newcommand{\Advisor}[1]{\gdef\SWFCField@Advisor{#1}} % 导师姓名
-\newcommand{\AdvisorTitle}[1]{\gdef\SWFCField@AdvisorTitle{#1}} % 职称
-\newcommand{\Advisortwo}[1]{\gdef\SWFCField@Advisortwo{#1}} % 导师姓名2
-\newcommand{\AdvisorTitletwo}[1]{\gdef\SWFCField@AdvisorTitletwo{#1}} % 职称2
-\newcommand{\Host}[1]{\gdef\SWFCField@Host{#1}} % 报告主持人
-\newcommand{\Reportdate}[1]{\gdef\SWFCField@Reportdate{#1}} % 报告日期
-\newcommand{\Year}[1]{\gdef\SWFCField@Year{#1}}  % 填表年
-\newcommand{\Month}[1]{\gdef\SWFCField@Month{#1}}% 填表月
-\newcommand{\Date}[1]{\gdef\SWFCField@Date{#1}}  % 填表日
-\newcommand{\Prjfrom}[1]{\gdef\SWFCField@Prjfrom{#1}} % 本研究题目为“其它”
-\newcommand{\Tutorcomments}[1]{\gdef\SWFCField@Tutorcomments{#1}} % 导师对开题报告的评价
-\newcommand{\Tutorsig}[1]{\gdef\SWFCField@Tutorsig{#1}} % 导师签名
+% \newcommand{\Title}[1]{\gdef\SWFCField@Title{#1}} % 论文题目
+% \newcommand{\Titlext}[1]{\gdef\SWFCField@Titlext{#1}} % 论文题目2
+% \newcommand{\Studid}[1]{\gdef\SWFCField@Studid{#1}} % 学号
+% \newcommand{\Author}[1]{\gdef\SWFCField@Author{#1}} % 姓名
+% \newcommand{\Gender}[1]{\gdef\SWFCField@Gender{#1}} % 姓名
+% \newcommand{\Subject}[1]{\gdef\SWFCField@Subject{#1}} % 学科专业
+% \newcommand{\Research}[1]{\gdef\SWFCField@Research{#1}} % 研究方向
+% \newcommand{\Advisor}[1]{\gdef\SWFCField@Advisor{#1}} % 导师姓名
+% \newcommand{\AdvisorTitle}[1]{\gdef\SWFCField@AdvisorTitle{#1}} % 职称
+% \newcommand{\Advisortwo}[1]{\gdef\SWFCField@Advisortwo{#1}} % 导师姓名2
+% \newcommand{\AdvisorTitletwo}[1]{\gdef\SWFCField@AdvisorTitletwo{#1}} % 职称2
+% \newcommand{\Host}[1]{\gdef\SWFCField@Host{#1}} % 报告主持人
+% \newcommand{\Reportdate}[1]{\gdef\SWFCField@Reportdate{#1}} % 报告日期
+% \newcommand{\Year}[1]{\gdef\SWFCField@Year{#1}}  % 填表年
+% \newcommand{\Month}[1]{\gdef\SWFCField@Month{#1}}% 填表月
+% \newcommand{\Date}[1]{\gdef\SWFCField@Date{#1}}  % 填表日
+% \newcommand{\Prjfrom}[1]{\gdef\SWFCField@Prjfrom{#1}} % 本研究题目为“其它”
+% \newcommand{\Tutorcomments}[1]{\gdef\SWFCField@Tutorcomments{#1}} % 导师对开题报告的评价
+% \newcommand{\Tutorsig}[1]{\gdef\SWFCField@Tutorsig{#1}} % 导师签名
 
-\newcommand{\Poneone}[1]{\gdef\SWFCField@Poneone{#1}}
-\newcommand{\Ponetwo}[1]{\gdef\SWFCField@Ponetwo{#1}}
-\newcommand{\Ptwoone}[1]{\gdef\SWFCField@Ptwoone{#1}}
-\newcommand{\Ptwotwo}[1]{\gdef\SWFCField@Ptwotwo{#1}}
-\newcommand{\Ptwothree}[1]{\gdef\SWFCField@Ptwothree{#1}}
-\newcommand{\Ptwofour}[1]{\gdef\SWFCField@Ptwofour{#1}}
-\newcommand{\Pthreeone}[1]{\gdef\SWFCField@Pthreeone{#1}}
-\newcommand{\Pthreetwo}[1]{\gdef\SWFCField@Pthreetwo{#1}}
-\newcommand{\Pthreethree}[1]{\gdef\SWFCField@Pthreethree{#1}}
+% \newcommand{\Poneone}[1]{\gdef\SWFCField@Poneone{#1}}
+% \newcommand{\Ponetwo}[1]{\gdef\SWFCField@Ponetwo{#1}}
+% \newcommand{\Ptwoone}[1]{\gdef\SWFCField@Ptwoone{#1}}
+% \newcommand{\Ptwotwo}[1]{\gdef\SWFCField@Ptwotwo{#1}}
+% \newcommand{\Ptwothree}[1]{\gdef\SWFCField@Ptwothree{#1}}
+% \newcommand{\Ptwofour}[1]{\gdef\SWFCField@Ptwofour{#1}}
+% \newcommand{\Pthreeone}[1]{\gdef\SWFCField@Pthreeone{#1}}
+% \newcommand{\Pthreetwo}[1]{\gdef\SWFCField@Pthreetwo{#1}}
+% \newcommand{\Pthreethree}[1]{\gdef\SWFCField@Pthreethree{#1}}
 
 \newcommand{\SWFCtitlepage}{% Title page layout
   \thispagestyle{empty}
