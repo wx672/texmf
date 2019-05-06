@@ -64,10 +64,7 @@ left=1.5cm,right=1.5cm
 
 \RequirePackage{tabularx}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
-\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % for centering p column
 \newcolumntype{C}{>{\centering\arraybackslash}X}
-
-\renewcommand{\tabularxcolumn}[1]{m{#1}}
 
 \newcommand{\makeform}{%
   \pagestyle{empty}%
@@ -91,8 +88,8 @@ left=1.5cm,right=1.5cm
                    自编讲义&\multicolumn{5}{c}{\SWFU@Owntext}\\
                  \end{tabularx}} \\\hline
     \end{tabularx}\\[-2pt]
-    {\setlength{\extrarowheight}{40pt}
-    \begin{tabularx}{\textwidth}{|M{6em}|@{}C@{}|}
+    {\setlength{\extrarowheight}{35pt}
+    \begin{tabularx}{\textwidth}{|P{6em}|@{}C@{}|}
       学术研究&\SWFU@Research\\[40pt]\hline
       外语水平及\par{}双语教学经历 & \SWFU@Experience\\[40pt]\hline
       获奖情况 & \SWFU@Award\\[40pt]\hline

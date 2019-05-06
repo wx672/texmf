@@ -76,7 +76,6 @@
 
 \LoadClass[scheme=plain]{ctexart}
 
-\RequirePackage{tabu,array}
 \RequirePackage{graphicx}
 
 \newfontfamily\purisa{Purisa}
@@ -87,27 +86,27 @@ top=3cm,bottom=2cm,
 left=2.5cm,right=2.5cm,
 ]{geometry}
 
+\RequirePackage{tabularx}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
 \newcommand{\makeform}{\pagestyle{empty}
   {\centering
     {\LARGE\heiti 西南林业大学本科毕业（设计）论文\SWFU@Formsubtitle}\\[3ex]
-    \tabulinesep=2mm
-    \begin{tabu}{|c|>{\kaishu}X[l,1.2]|c|>{\kaishu}X[l,1.2]|}%X[c,.6]
-      \tabucline-
-      论文（设计）题目& \multicolumn{3}{c|}{\kaishu\SWFU@Prjtitle} \\\tabucline-
-      学生学号&\SWFU@Studid&学生姓名&{\SWFU@Studname}\\\tabucline-
-      学生专业&{\SWFU@Studsbj}&班\hspace{2em}级&{\SWFU@Studclass}\\\tabucline-
-      指导教师姓名&{\SWFU@Advisorname}&职\hspace{2em}称&{\SWFU@Advisortitle}\\\tabucline-
-    \end{tabu}
-    \vspace{-1pt}
-    \begin{tabu}{|X[c]|}
-      {\large \SWFU@Hinttitle{}}\\
-      \begin{minipage}{.65\linewidth}\SWFU@Hinttext{}\end{minipage}\\\tabucline-
-    \end{tabu}
-    \begin{tabu}{@{}X}
-      \SWFU@Commentslabel{}\\
+    {\setlength{\extrarowheight}{3pt}
+    \begin{tabularx}{\textwidth}{|r|>{\kaishu}C|r|>{\kaishu}C|}
+      \hline
+      论文（设计）题目& \multicolumn{3}{c|}{\kaishu\SWFU@Prjtitle} \\\hline
+      学生学号&\SWFU@Studid&学生姓名&\SWFU@Studname\\\hline
+      学生专业&\SWFU@Studsbj&班\qquad{}级&\SWFU@Studclass\\\hline
+      指导教师姓名&\SWFU@Advisorname&职\qquad{}称&\SWFU@Advisortitle\\\hline
+      \multicolumn{4}{|c|}{\large \SWFU@Hinttitle{}}\\[2ex]
+      \multicolumn{4}{|c|}{\begin{minipage}{.65\linewidth}\SWFU@Hinttext\vskip 5pt\end{minipage}}\\\hline      
+    \end{tabularx}}
+    \begin{tabularx}{\textwidth}{@{}X}
+      \SWFU@Commentslabel\\
       {\kaishu\SWFU@Comments}\\
-      \tabuphantomline
-    \end{tabu}}
+    \end{tabularx}}
   \vfill
   \SWFU@Marklabel{}
   \SWFU@Commenterlabel{}\underline{\makebox[5em]{\SWFU@Signature}}\hfill
