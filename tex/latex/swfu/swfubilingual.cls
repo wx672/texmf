@@ -50,10 +50,8 @@
 
 \LoadClass[scheme=plain]{ctexart}
 
-\RequirePackage{tabu,array,tabularx}
-\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
-
-\RequirePackage[backend=biber,style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false,url=false,doi=false,isbn=false]{biblatex}
+\RequirePackage[backend=biber,url=false,doi=false,isbn=false,
+style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false]{biblatex}
 \renewcommand*{\bibfont}{\scriptsize}
 
 \RequirePackage{wx672hyperref}
@@ -64,38 +62,41 @@ top=2cm,bottom=2cm,
 left=1.5cm,right=1.5cm
 ]{geometry}
 
-\newcommand{\makeform}{\pagestyle{empty}  
-  {\centering
-    {\textbf {\LARGE\heiti 西南林业大学双语教学课程申请表}}\\[4ex]
-    \begin{tabu}{|X[.137,c]|@{}X[c]@{}|}\tabucline-%
-      \vspace*{2ex}申请人基本\par 信息 &
-      \tabulinesep=1mm
-      \begin{tabu}{r|X[-1,c]|r|X[-1,c]|r|X[c]@{}}
-        姓名&{\SWFU@Name}&性别&{\SWFU@Gender}&
-        出生年月&\SWFU@Dayofbirth\\\tabucline-
-        学历&{\SWFU@Diploma}&专业技术职务&{\SWFU@Title}&
-        电话&\SWFU@Phone\\\tabucline-
-        学位&{\SWFU@Degree}&行政职务&{\SWFU@Admin}&
-        学科专业&{\SWFU@Subject}\\\tabucline-
-        所在学院&\multicolumn{5}{c}{\SWFU@School}\\
-      \end{tabu} \\\tabucline-
-      \vspace*{4ex}课程信息 &
-      \tabulinesep=1mm
-      \begin{tabu}{r|X[-1,c]|r|X[-1,c]|r|X[,c]@{}}
-        学期&\SWFU@Term&开课学院&{\SWFU@Schooltwo}&
-        课程名称&{\SWFU@Course}\\\tabucline-
-        外语语种&{\SWFU@Language}&
-        课程班级&\multicolumn{3}{c}{\SWFU@Class}\\\tabucline-
-        使用教材&\multicolumn{5}{l}{\,\SWFU@Textbook}\\\tabucline-
-        自编讲义&\multicolumn{5}{c}{\SWFU@Owntext}\\
-      \end{tabu} \\\tabucline-
-    \end{tabu}\vskip -1pt
-    \tabulinesep=7ex
-    \begin{tabu}{|X[-1,c,m]|X[c,m]|}
-      学术研究&{\SWFU@Research}\\\tabucline-
-      外语水平及\par 双语教学经历 & {\SWFU@Experience}\\\tabucline-
-      获奖情况 & {\SWFU@Award}\\\tabucline-
-      教研室审核\par 意见 & \\\tabucline-
-      教学院（部）\par 审核意见 & \\\tabucline-
-      教务处审核\par 意见 & \\\tabucline-
-    \end{tabu}}}
+\RequirePackage{tabularx}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % for centering p column
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
+
+\newcommand{\makeform}{%
+  \pagestyle{empty}%
+  {\centering {\textbf {\LARGE\heiti 西南林业大学双语教学课程申请表}}\\[4ex]
+    \begin{tabularx}{\textwidth}{|P{6em}|@{}C@{}|}\hline%
+      申请人基本\par{}信息 &
+                             
+                             {\setlength{\extrarowheight}{3pt}
+                             \begin{tabularx}{.857\textwidth}{r|c|r|c|r|C@{}}
+                                           姓名&\SWFU@Name&性别&\SWFU@Gender&出生年月&\SWFU@Dayofbirth\\\hline%
+                                           学历&\SWFU@Diploma&专业技术职务&\SWFU@Title&电话&\SWFU@Phone\\\hline%
+                                           学位&\SWFU@Degree&行政职务&\SWFU@Admin&学科专业&\SWFU@Subject\\\hline%
+所在学院&\multicolumn{5}{c}{\SWFU@School}\\
+                                         \end{tabularx}} \\\hline
+      课程信息 &
+                 {\setlength{\extrarowheight}{3pt}
+                 \begin{tabularx}{.857\textwidth}{r|c|r|C|r|C@{}}
+                   学期&\SWFU@Term&开课学院&{\SWFU@Schooltwo}&课程名称&{\kaishu\SWFU@Course}\\\hline
+                   外语语种&{\SWFU@Language}&课程班级&\multicolumn{3}{c}{\kaishu\SWFU@Class}\\\hline
+                   使用教材&\multicolumn{5}{l}{\,\SWFU@Textbook}\\\hline
+                   自编讲义&\multicolumn{5}{c}{\SWFU@Owntext}\\
+                 \end{tabularx}} \\\hline
+    \end{tabularx}\\[-2pt]
+    {\setlength{\extrarowheight}{40pt}
+    \begin{tabularx}{\textwidth}{|M{6em}|@{}C@{}|}
+      学术研究&\SWFU@Research\\[40pt]\hline
+      外语水平及\par{}双语教学经历 & \SWFU@Experience\\[40pt]\hline
+      获奖情况 & \SWFU@Award\\[40pt]\hline
+      教研室审核\par{}意见 & \\[40pt]\hline
+      教学院（部）\par{}审核意见 & \\[40pt]\hline
+      教务处审核\par{}意见 & \\[40pt]\hline
+    \end{tabularx}}}}
