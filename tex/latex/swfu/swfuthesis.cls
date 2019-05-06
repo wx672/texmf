@@ -7,15 +7,15 @@
 \RequirePackage{pgfkeys}
 
 \pgfkeys{%
-  Author/.store in       = \@author,%
-  Title/.store in        = \@title,%
-  enTitle/.store in      = \SWFU@enTitle, %
-  enAuthor/.store in     = \SWFU@enAuthor, %
-  Advisor/.store in      = \SWFU@Advisor, %
-  AdvisorTitle/.store in = \SWFU@AdvisorTitle,%
-  Month/.store in        = \SWFU@Month, %
-  Year/.store in         = \SWFU@Year, %
-  Major/.store in      = \SWFU@Major, %  
+  Author/.store in        = \@author,%
+  Title/.store in         = \@title,%
+  enTitle/.store in       = \SWFU@enTitle, %
+  enAuthor/.store in      = \SWFU@enAuthor, %
+  Advisor/.store in       = \SWFU@Advisor, %
+  AdvisorTitle/.store in  = \SWFU@AdvisorTitle,%
+  Month/.store in         = \SWFU@Month, %
+  Year/.store in          = \SWFU@Year, %
+  Major/.store in         = \SWFU@Major, %  
 }
 
 \newcommand{\swfusetup}[1]{\pgfkeys{#1}}
@@ -38,21 +38,19 @@ top=3cm,bottom=2.5cm,left=3cm,right=2.5cm,
 nomarginpar,headheight=15pt, % to avoid "headheight too small"
 ]{geometry}
 
-
 %%%%% misc
-%\RequirePackage{etoolbox,xkvltxp}
 \RequirePackage{indentfirst}
-\RequirePackage{tabu,longtable,multicol,multirow,array,booktabs}
+\RequirePackage{tabularx,longtable,multicol,multirow,booktabs}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
 \RequirePackage{ulem}
 \RequirePackage[bottom]{footmisc} % stick footnote at bottom of page
 \RequirePackage{enumitem} % \setlist
-
 
 %%%%% graphicx
 \RequirePackage{graphicx}
 \graphicspath{% mind the trailing '/'
   {./figs/}{../figs/}{./img/}{../img/}{./pics/}{../pics/}{./}{../}}
-
 
 %%%%% fancyhdr
 \RequirePackage{fancyhdr}
@@ -73,7 +71,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \hypersetup{%
   bookmarksnumbered, breaklinks=true,%
   colorlinks=false,%
-  pdfborderstyle={/S/U/W .3},% border style will be underline of width .3pt 
+  pdfborderstyle={/S/U/W .3},% underline of width .3pt 
   linkbordercolor=red,       % internal links
   citebordercolor=cyan,      % links to bibliography
   filebordercolor=magenta,   % file links
@@ -81,13 +79,11 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 }
 \def\UrlBreaks{\do\/\do-} % break long url
 
-
 %%%%% fixme
 \RequirePackage{fixme}
 \fxsetup{%
   margin=true, marginclue=false,%
   status=draft, author=Fixme, inline=false, theme=color}
-
 
 %%%%% fonts
 \RequirePackage{amsmath,amsfonts,amssymb,marvosym,pifont}
@@ -96,7 +92,6 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 %%%%% setspace (\singlespacing, \onehalfspacing, \doublespacing)
 \RequirePackage[doublespacing]{setspace}
 \renewcommand{\doublespacing}{\setstretch{1.6}}
-
 
 %%%%% tikz
 \RequirePackage{tikz}
@@ -109,11 +104,11 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   tikzmark,%
 }%
 
-
 %%%%% biblatex
-\RequirePackage[backend=biber,style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false,url=false,doi=false,isbn=false]{biblatex}
+\RequirePackage[backend=biber,%
+style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false,%
+url=false,doi=false,isbn=false]{biblatex}
 %\renewcommand*{\bibfont}{\small} % 11pt
-
 
 %%%%% caption
 \RequirePackage{caption} % \captionsetup
@@ -128,7 +123,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 
 
 %%%%% minted
-\RequirePackage[chapter]{minted} % minted has to be loaded at last!!!
+\RequirePackage[chapter]{minted} % has to be loaded at last!!!
 \usemintedstyle{bw}
 
 \renewcommand{\listingscaption}{程序} % used by minted
@@ -152,7 +147,8 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 
 
 % code listing across pages
-\newenvironment{longlisting}{\captionsetup{type=listing}\begin{singlespace}}{\end{singlespace}}
+\newenvironment{longlisting}{\captionsetup{type=listing}%
+  \begin{singlespace}}{\end{singlespace}}
 
 \newenvironment{codeblock}[1][.8]{% e.g. \begin{codeblock} ... \end{codeblock}
   \begin{center}\begin{minipage}{#1\textwidth}\begin{singlespace}}%
@@ -167,20 +163,20 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
       \makebox[12em][s]{\hspace{.5em}\LARGE（\SWFU@Year{}届）}\\[60pt]%
       \begin{minipage}{.8\linewidth}
         \begin{Large}
-          \extrarowsep=^8mm_-7pt%
-          \begin{tabu}{@{}>{\bfseries}X[r]X[3.3,c]@{}}%
+          {\setlength{\extrarowheight}{20pt}%
+          \begin{tabularx}{\textwidth}{@{}>{\bfseries}rC@{}}%
             题\qquad{}目：& \makebox[0pt][t]{% wrapable long title
               \begin{minipage}[t]{15em}
                 \centering\parbox[t]{14em}{\centering\@title}
               \end{minipage}}%
             \rule[-.5ex]{15em}{.1pt}\par%
             \rule[-.1ex]{15em}{.1pt}\\
-            分院系部： &大数据与智能工程学院\\\tabucline{2-2}%
-            专\qquad{}业：&\SWFU@Major\\\tabucline{2-2}%
-            姓\qquad{}名：&\@author\\\tabucline{2-2}%
-            导师姓名： &\SWFU@Advisor\\\tabucline{2-2}%
-            导师职称： &\SWFU@AdvisorTitle\\\tabucline{2-2}
-          \end{tabu}
+            分院系部： &大数据与智能工程学院\\[-.6ex]\cline{2-2}%
+            专\qquad{}业：&\SWFU@Major\\[-.6ex]\cline{2-2}%
+            姓\qquad{}名：&\@author\\[-.6ex]\cline{2-2}%
+            导师姓名： &\SWFU@Advisor\\[-.6ex]\cline{2-2}%
+            导师职称： &\SWFU@AdvisorTitle\\[-.6ex]\cline{2-2}
+          \end{tabularx}}
         \end{Large}
       \end{minipage}
       \vfill

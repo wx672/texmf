@@ -14,8 +14,8 @@
 
 \pgfkeys{%
   Title/.store in          = \@title,          %论文标题
-  Projfrom/.store in       = \SWFU@Projfrom, Projfrom=自选, %
   Author/.store in         = \@author,         %作者
+  Projfrom/.store in       = \SWFU@Projfrom, Projfrom=自选, %
   Studid/.store in         = \SWFU@Studid,         %学号
   Advisor/.store in        = \SWFU@Advisor, Advisor=王晓林, %指导教师
   AdvisorSig/.store in     = \SWFU@AdvisorSig,     %指导教师签名
