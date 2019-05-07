@@ -1,5 +1,19 @@
 \documentclass{swfusumup}
 
+\usepackage{filecontents}
+
+\begin{filecontents}{os.bib}
+@book{tanenbaum2015modern,
+  author	   = {Tanenbaum, Andrew S.},
+  title		   = {Modern Operating Systems},
+  year		   = 2015,
+  edition	   = 4,
+  publisher	   = {Prentice Hall Press}
+}
+\end{filecontents}
+
+\addbibresource{os.bib}
+
 \swfusetup{
   Term         ={2016-2017-02},
   Coursetitle  ={操作系统原理},
@@ -9,8 +23,7 @@
   Class        =电信14,
   Studnum      =70,
   Examtype     =开卷机试,
-  Textbook     =Modern Operating Systems,
-  Publishtime  =2009,
+  Textbook     ={\nocite{tanenbaum2015modern}\printbibliography[heading=none]}, 
   Date         ={2017-07-24},
   % School       = 大数据与智能工程学院,
   % TeacherName  = 王晓林,

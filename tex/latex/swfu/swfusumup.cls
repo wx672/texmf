@@ -34,10 +34,10 @@
 
 \LoadClass[scheme=plain]{ctexart}
 
-\RequirePackage[backend=biber,style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false,url=false,doi=false,isbn=false]{biblatex}
+\RequirePackage[backend=biber,url=false,doi=false,isbn=false,
+style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false]{biblatex}
 \renewcommand*{\bibfont}{\scriptsize}
 
-\RequirePackage{tabu,array}
 \RequirePackage{graphicx}
 
 \RequirePackage[%showframe,
@@ -63,52 +63,41 @@ left=2.5cm, right=2.5cm,
 \newcommand{\YES}{{\Large\checked}是\quad\unchecked{}否}
 \newcommand{\NO}{\unchecked{}是\quad{\Large\checked}否}
 
+\RequirePackage{tabularx}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % for centering p column
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
 \newcommand{\makeform}{
   {\centering%
     {\LARGE\heiti 西南林业大学课程教学小结表}\\[2ex]%
-    \tabulinesep=2mm%
-    \begin{tabu}{|c|X[c]|c|c|c|c|}%
-      \tabucline-%
-      授课学期&\SWFU@Term{}&课程名称&\multicolumn{3}{c|}{{\kaishu \SWFU@Coursetitle}}\\\tabucline-%
+    {\setlength{\extrarowheight}{3pt}
+    \begin{tabularx}{\textwidth}{|c|C|c|c|c|c|}%
+      \hline%
+      授课学期&\SWFU@Term&课程名称&\multicolumn{3}{c|}{{\kaishu\SWFU@Coursetitle}}\\\hline%
       总\hspace{.5em}学\hspace{.5em}时&\SWFU@Totaltime&实验学时&\SWFU@Labtime&%
-      实习天数&\SWFU@Practicetime\\\tabucline-%
-      开课院系&{\kaishu \SWFU@School}&授课班级&{\kaishu \SWFU@Class}&%
-      学生人数&\SWFU@Studnum\\\tabucline-%
-      多媒体教学&{\kaishu \SWFU@Multimedia}&双语教学&{\kaishu \SWFU@Bilingual}&%
-      考核方式&{\kaishu \SWFU@Examtype}\\\tabucline-%
-      所用教材&\multicolumn{5}{l|}{\,\SWFU@Textbook}\\\tabucline-%
-    \end{tabu}%
-    \vspace{-1pt}%
-    \begin{tabu}{|p{1em}|X[m]|}%X[.1,c]
-      % 课程\par\vspace{4ex}教学\par\vspace{4ex}总结\par&%
-      \begin{minipage}{1em}
-        \vspace{2em}课\par\vspace{1ex}程\par\vspace{1ex}教\par\vspace{1ex}
-        学\par\vspace{1ex}总\par\vspace{1ex}结\vspace{2em}
-      \end{minipage}&%
-      \begin{minipage}{\columnwidth}%
-        {\kaishu \SWFU@Sumup}%
-      \end{minipage}\\\tabucline-%
-      % \vspace{1cm}今后\par\vspace{4ex}改革\par\vspace{4ex}设想\par\vspace{3cm}&%
-      \begin{minipage}{1em}
-        \vspace{2em}今\par\vspace{1ex}后\par\vspace{1ex}改\par\vspace{1ex}
-        革\par\vspace{1ex}设\par\vspace{1ex}想\vspace{2em}
-      \end{minipage}&%
-      \begin{minipage}{.8\columnwidth}%
-        {\kaishu \SWFU@Suggestion}%
-      \end{minipage}\\\tabucline-%
-    \end{tabu}%
-    \vspace{-1pt}%
-    \tabulinesep=2mm%
-    \begin{tabu}{|c|X[c]|c|X[c]|}%
-      填报人&{\kaishu \SWFU@TeacherName}&职称&{\kaishu \SWFU@TeacherTitle}\\\tabucline-%
-    \end{tabu}
-    \vspace{-1pt}%
-    \begin{tabu}{|X|}%
-      填报日期：\quad\SWFU@Date\hfill{}（以上为授课教师填写）\\\tabucline-%
-      教研室负责人审阅意见：\\[5ex]%
-      \hfill{}\makebox[10em][l]{签名：}%
-      \makebox[5em][r]{年}\makebox[3em][r]{月}\makebox[3em][r]{日}\\\tabucline-%
-    \end{tabu}%
+      实习天数&\SWFU@Practicetime\\\hline%
+      开课院系&{\kaishu\SWFU@School}&授课班级&{\kaishu\SWFU@Class}&%
+      学生人数&\SWFU@Studnum\\\hline%
+      多媒体教学&{\kaishu\SWFU@Multimedia}&双语教学&{\kaishu\SWFU@Bilingual}&%
+      考核方式&{\kaishu\SWFU@Examtype}\\\hline%
+      所用教材&\multicolumn{5}{l|}{\,\SWFU@Textbook}\\\hline%&出版时间&\SWFU@Publishtime
+    \end{tabularx}}\\[-1pt]
+  {\setlength{\extrarowheight}{50pt}
+    \begin{tabularx}{\textwidth}{|M{1em}|X|}%
+      课程教学总结& {\kaishu\SWFU@Sumup}\\[20ex]\hline%%
+      今后改革设想& {\kaishu\SWFU@Suggestion}\\[20ex]\hline%
+    \end{tabularx}}\\[-1pt]%
+    {\setlength{\extrarowheight}{3pt}
+    \begin{tabularx}{\textwidth}{|c|C|c|C|}%
+      填报人&{\kaishu\SWFU@TeacherName}&职称&{\kaishu\SWFU@TeacherTitle}\\\hline%
+    \end{tabularx}\\[-1pt]
+    \begin{tabularx}{\textwidth}{|X|}%
+      填报日期：\quad\SWFU@Date\hfill{}（以上为授课教师填写）\\\hline%
+      教研室负责人审阅意见：\\[15ex]%
+      \hfill\makebox[10em][l]{签名：}%
+      \makebox[5em][r]{年}\makebox[3em][r]{月}\makebox[3em][r]{日}\\\hline%
+    \end{tabularx}}\\[1pt]
     注：本表复制有效}}
 
 \setlength{\parindent}{2em}
