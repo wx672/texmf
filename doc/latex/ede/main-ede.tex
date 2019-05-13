@@ -54,9 +54,9 @@ Django\cite{nowamagic, 杨武帅2018基于}是Python中使用率最高的Web框�
 于处理请求，以及一个模版系统。这种层次明晰的框架设计，在实际生产中极大地有利于应用软件的设
 计与开发。
 
-\begin{figure}%[h!]
+\begin{figure}
   \centering
-  \includegraphics [width=.8\columnwidth]{./img/django}      
+  \includegraphics [width=.8\columnwidth]{django}      
   \caption{Django架构总览图}\label{fig:django}
 \end{figure}
 
@@ -64,19 +64,19 @@ Django\cite{nowamagic, 杨武帅2018基于}是Python中使用率最高的Web框�
 
 Django的MTV设计模式（图\ref{fig:mvt}）类似于标准的MVC, 包括四个模块：
 \begin{enumerate}
-\item Models.py用于创建数据库模型，是对数据库的上层封装，大大简化了编码过程中对数据库的增删
+\item \texttt{Models.py}用于创建数据库模型，是对数据库的上层封装，大大简化了编码过程中对数据库的增删
   改查操作，与MVC中的Model功能类似。
-\item Views.py是主要的功能模块，负责业务逻辑处理，与Template进行数据交换，
+\item \texttt{Views.py}是主要的功能模块，负责业务逻辑处理，与Template进行数据交换，
   与MVC中的Control功能类似。
 \item Templates文件夹中的保存的模版文件，用于生成最终HTML页面，与MVC中的View功能类似。
-\item url.py则用于定义整个系统或某个子模块的路由表，指定了URL与views.py的映射关系。
+\item \texttt{url.py}则用于定义整个系统或某个子模块的路由表，指定了URL与\texttt{views.py}的映射关系。
 \end{enumerate}
-urls.py根据用户发起的请求，调用views.py中对应的函数，与数据模型以及模版进行交互，响应用户请
+\texttt{urls.py}根据用户发起的请求，调用\texttt{views.py}中对应的函数，与数据模型以及模版进行交互，响应用户请
 求。
 
-\begin{figure}%[h!]
+\begin{figure}
   \centering
-  \includegraphics [width=.8\columnwidth]{./img/djangoMVT}      
+  \includegraphics [width=.8\columnwidth]{djangoMVT}
   \caption{Django MVT}\label{fig:mvt}
 \end{figure}
 
@@ -102,7 +102,7 @@ MySQL\cite{苟文博2017基于}有着高性能、成本低、可靠性好，在�
 本系统主要开发目的是以班级为单位的留学生个人信息、课程和成绩等信息的管理，增加工作效率，提
 高管理能力。同时让学生可以更便捷地查询自己的成绩，本文吸取了大量相关学生信息管理系统开发的
 经验，采用了B/S架构的设计思想，基于强大开源的Python的Web应用框架 Django进行二次开发，采
-用 MVT 的软件设计模式，即模型 Model，视图 View 和模板 Template。使得维护起来较为方便，高内
+用MVT的软件设计模式，即模型Model，视图View和模板Template。使得维护起来较为方便，高内
 聚低耦合。实现了相对完善的功能，其内容不仅涉及对学生资料进行管理分发，还包括对学生成绩信息，
 考试信息，教师授课，成绩录入，综合评价等等，已投入实际使用，使得留学生管理工作趋于科学化、
 高效化、规范化。
@@ -152,42 +152,51 @@ MySQL\cite{苟文博2017基于}有着高性能、成本低、可靠性好，在�
   修改，且只能录入一次。
 \end{description}
 
-\begin{figure}%[h!]
+\begin{figure}
   \centering
-  \includegraphics [width=.9\columnwidth]{./img/function}      
+  \includegraphics [width=.9\columnwidth]{function}
   \caption{系统功能模块设计图}\label{fig:function}
 \end{figure}
 
 \subsection{数据库连接}
 
 本系统使用Mysql作为后台数据库，首先安装mysqlclient类库，作为django与mysql进行连接驱动，然后
-在setting.py中配置数据库，以下是配置：
+在\texttt{setting.py}中配置数据库，以下是配置：
 
 \begin{minted}{django}
 DATABASES = {
   'default': {
-     'ENGINE': 'django.db.backends.mysql',
-     'NAME': 'studSys',
-     'USER': 'root',
-     'PASSWORD': '123456',
-     'HOST': '127.0.0.1',
-     'PORT': '3306',
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': 'studSys',
+    'USER': 'root',
+    'PASSWORD': '123456',
+    'HOST': '127.0.0.1',
+    'PORT': '3306',
   }
 }
 \end{minted}
 
 还可以设置其他数据库, 如SqlServer, PostgreSQL, 只需修改数据库驱动ENGINE参数即可。配置后使
-用python manager.py dbshell来测试是否连接成功。
-
-根据数据库表结构创建相应的models.py，并将所属app添加入settings.py配置中。编写完成后使
-用python manage.py validate 检查是否存在语法错误，若无语法错误，使用python manage.py
-makemigrations 和 python manage.py migrate 迁移并同步数据库。
+用如下命令来测试是否连接成功。
+\begin{verbatim}
+python manager.py dbshell
+\end{verbatim}
+根据数据库表结构创建相应的\texttt{models.py}，并将所属app添加入\texttt{settings.py}配置中。编写完成后使
+用如下命令检查是否存在语法错误，
+\begin{verbatim}
+python manage.py validate
+\end{verbatim}
+若无语法错误，使用如下命令迁移并同步数据库：
+\begin{verbatim}
+python manage.py makemigrations
+python manage.py migrate 
+\end{verbatim}
 
 \subsection{前后端数据交互}
 
 主要步骤：
 \begin{enumerate}
-\item 按照数据库设计，完成model.py模型文件编写（模型与数据库表一一映射，每个模型都是一个
+\item 按照数据库设计，完成\texttt{model.py}模型文件编写（模型与数据库表一一映射，每个模型都是一个
   Python Class，每个模型类属性都相当于一个字段，model相当于提供一个访问数据库的API）；
 \item 将前端页面构建好，放入templates模版目录中；
 \item 完成url的编写，对应即将使用的视图views文件；
@@ -196,13 +205,13 @@ makemigrations 和 python manage.py migrate 迁移并同步数据库。
 下面以获取学生表数据为例分析代码：
 
 \begin{minted}{django}
-  urls.py:
-  urlpatterns = [
-    url(r'data', std.getData)
-  ]
+urls.py:
+urlpatterns = [
+  url(r'data', std.getData)
+]
 \end{minted}
 
-前端发起查询的Ajax\cite{Liu2017Testing}请求，url路由通过匹配到视图下getData方法
+前端发起查询的Ajax\cite{Liu2017Testing}请求，url路由通过匹配到视图下\texttt{getData()}方法：
 
 \begin{minted}{django}
 views.py:
@@ -228,11 +237,13 @@ def getData(request):
   return JsonResponse(mydata)
 \end{minted}
 
-定义数据长度dlen，使用一个数组jsonData来保存数据。getData方法判断为POST方法后，进行ORM查询
-操作（StudTable.objects.all()）从StudTable表中查询到所有的数据对象，遍历对象依次查询属性，
-以字典的方式保存，再添加到jsonData中（目的是为了与bootstrap table的数据接口一致，代码块
-中mydata即为标准数据接口，带total和rows两个属性，前者为数据长度，后者为实际传输的数据字典）。
-获取到数据后再以json格式传回前端bootstrap table中，即可完成数据填充。
+定义数据长度\texttt{dlen}，使用一个数组\texttt{jsonData}来保存数据。\texttt{getData（）}方
+法判断为POST方法后，进行ORM查询操作
+（\texttt{StudTable.objects.all()}）从\texttt{StudTable}表中查询到所有的数据对象，遍历对象
+依次查询属性，以字典的方式保存，再添加到\texttt{jsonData}中（目的是为了与bootstrap table的
+数据接口一致，代码块中\texttt{mydata}即为标准数据接口，带total和rows两个属性，前者为数据长
+度，后者为实际传输的数据字典）。获取到数据后再以json格式传回前端bootstrap table中，即可完成
+数据填充。
 
 对学生数据的添加、删除、修改等操作的步骤类似，此处不做详细叙述。
 
@@ -260,33 +271,33 @@ def getData(request):
 图\ref{fig:personal}是对学生个人信息进行管理的界面，可以直接通过行内编辑后自动保存新内容，
 图\ref{fig:query}是学生端登录后查询成绩的页面。
 
-\begin{figure}%[h!]
+\begin{figure}
   \centering
-  \includegraphics [width=.8\columnwidth]{./img/login}      
+  \includegraphics [width=.8\columnwidth]{login}
   \caption{登录页面}\label{fig:login}
 \end{figure}
 
-\begin{figure}%[h!]
+\begin{figure}
   \centering
-  \includegraphics [width=.8\columnwidth]{./img/manager}    
+  \includegraphics [width=.8\columnwidth]{manager}
   \caption{管理员界面}\label{fig:admin}
 \end{figure}
 
-\begin{figure}%[h!]
+\begin{figure}
   \centering
-  \includegraphics [width=.8\columnwidth]{./img/search}      
+  \includegraphics [width=.8\columnwidth]{search}
   \caption{管理员成绩管理}\label{fig:result}
 \end{figure}
 
-\begin{figure}%[h!]
+\begin{figure}
   \centering
-  \includegraphics [width=.8\columnwidth]{./img/student}      
+  \includegraphics [width=.8\columnwidth]{student}
   \caption{学生信息管理}\label{fig:personal}
 \end{figure}
 
-\begin{figure}%[h!]
+\begin{figure}
   \centering
-  \includegraphics [width=.8\columnwidth]{./img/queryscore}      
+  \includegraphics [width=.8\columnwidth]{queryscore}
   \caption{学生成绩查询}\label{fig:query}
 \end{figure}
 
