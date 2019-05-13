@@ -39,7 +39,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 ]{geometry}
 
 %%%%% misc
-\RequirePackage{indentfirst}
+%\RequirePackage{indentfirst} % enabled if scheme=chinese
 \RequirePackage{tabularx,longtable,multicol,multirow,booktabs}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 
