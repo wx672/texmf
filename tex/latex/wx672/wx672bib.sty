@@ -3,11 +3,8 @@
 
 \RequirePackage{ifxetex} % This class can only be processed with XeTeX
 
-% without this, the Chinese in bib files will cause compiling error.
-%\RequirePackage[utf8]{inputenc} % this pkg shouldn't used with xelatex!
-
 \RequirePackage[backend=biber,style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false,url=false,doi=false,isbn=false]{biblatex}
-%\renewcommand*{\bibfont}{\small} % 11pt
+\renewcommand*{\bibfont}{\small} % 11pt
 
 % https://tex.stackexchange.com/questions/23832/biblatex-make-title-hyperlink-to-doi-url-if-available
 % \newbibmacro{string+url}[1]{%

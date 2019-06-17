@@ -1,7 +1,8 @@
+% Obsolete! Use wx672ctexart.cls instead.
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{wx672article}
 
-\LoadClass[12pt,a4paper]{article}
+\LoadClass{article}
 
 \DeclareOption{cjk}{%
   \PassOptionsToPackage{\CurrentOption}{wx672fonts}}

@@ -18,12 +18,11 @@ nomarginpar,headheight=15pt,% to avoid "headheight too small"
 \RequirePackage{wx672minted}
 \usemintedstyle{bw}
 
-%\RequirePackage{todonotes} % use fixme instead
 \RequirePackage{fixme}
 \fxsetup{
   margin=false,
   status=draft,
-  author=TODO,
+  author={\dejavu ⚠},
   inline=true,
   marginclue=true,
   theme=color
@@ -31,15 +30,6 @@ nomarginpar,headheight=15pt,% to avoid "headheight too small"
 
 \RequirePackage{enumitem} % \setlist
 \setlist{nosep} % kills all vertical spacing
-
-%\definecolor{fxnote}{rgb}{0.8000,0.0000,0.0000}
-
-% https://tex.stackexchange.com/questions/247185/tcolorbox-theorem-which-isnt-framed-on-the-sides
-\RequirePackage[breakable]{tcolorbox}
-\newtcolorbox{notes}[1]{breakable,sharp corners,
-  colback=white, coltitle=black,colbacktitle=white,
-  boxrule=.5pt,titlerule=0pt, 
-  fonttitle=\bfseries,title=#1}
 
 \addtolength{\oddsidemargin}{-15pt}
 \addtolength{\marginparsep}{5pt}

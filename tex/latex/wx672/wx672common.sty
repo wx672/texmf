@@ -10,19 +10,25 @@
 \RequirePackage[font=footnotesize,labelfont=bf]{caption}
 \RequirePackage{subcaption}
 
-\RequirePackage{multicol,rotating,tabu,varwidth,ulem,etoolbox,longtable,comment,booktabs}
+\RequirePackage{multicol,rotating,varwidth,ulem,etoolbox,comment}
+\RequirePackage{longtable,tabularx,booktabs,array}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % centering p column
+\newcolumntype{R}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{L}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
-\RequirePackage{array}
-\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
-% make long title looks nicer
-\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+%\RequirePackage[onehalfspacing]{setspace}% 
+% \renewcommand{\doublespacing}{\setstretch{1.6}}
+% \renewcommand{\singlespacing}{\setstretch{1.2}}
+% \renewcommand{\onehalfspacing}{\setstretch{1.4}}
+
+\RequirePackage{enumitem}
+\setlist{nosep} % kills all vertical spacing
 
 \newcommand{\cfbox}[2]{%
   \colorlet{currentcolor}{.}%
-  {\color{#1}\fbox{\color{currentcolor}#2}}%
-}
+  {\color{#1}\fbox{\color{currentcolor}#2}}}
+
 \newcommand{\code}[1]{\texttt{\textcolor{violet}{#1}}}
 \newcommand{\Navy}[1]{\textcolor{Navy}{#1}}
 

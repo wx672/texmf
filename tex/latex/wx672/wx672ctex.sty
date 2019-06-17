@@ -1,15 +1,18 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{wx672ctex}
 
-\RequirePackage{ctex}
-\ctexset{
-%  scheme=plain,% chinese|plain （仅提供中文支持，不中文化版式）
-%  zihao=false,% -4|5|false
-%  heading=true,% 中文风格章节标题
-  punct=kaiming
-}
-
+\RequirePackage{wx672common}
 \RequirePackage{wx672fonts}
 
-\newCJKfontfamily\sig{signature}
+\RequirePackage{ctex}
+\ctexset{
+  scheme=plain,  % chinese|plain （仅提供中文支持，不中文化版式）
+  % zihao=false, % -4|5|false
+  % heading=true,% 中文风格章节标题
+  punct=kaiming,
+  section/format = \Large\bfseries,%
+  % chapter/name = {},%
+  % chapter/number = {\thechapter},%
+}
 
+\newCJKfontfamily\sig{signature}

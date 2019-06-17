@@ -1,4 +1,4 @@
-% 西南林业大学实践教学（实习）登记表
+% 西南林业大学实践教学（实习）计划表
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfcpractice}
 

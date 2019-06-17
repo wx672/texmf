@@ -1,10 +1,11 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{wx672handouts}
 
-\LoadClass[a4paper,10pt]{article}
+\LoadClass[scheme=plain,heading=true]{ctexart}
 
-\DeclareOption{cjk}{%
-  \PassOptionsToPackage{\CurrentOption}{wx672fonts}}
-\ProcessOptions\relax
+\ctexset{  
+  punct=kaiming,
+  section/format = \Large\bfseries,%
+}
 
 \RequirePackage{wx672h}

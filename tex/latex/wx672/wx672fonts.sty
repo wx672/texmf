@@ -1,12 +1,32 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{wx672fonts}
 
-\RequirePackage{etoolbox,units}
-
-\RequirePackage{latexsym,pifont,amsmath,amsfonts,amssymb,mathtools,marvosym,fontawesome}% 
+\RequirePackage{etoolbox,units}% \newtoggle
 
 \RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
 \defaultfontfeatures{Mapping=tex-text}
+
+\RequirePackage{xeCJK}
+
+\setCJKmainfont{Noto Serif CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
+\setCJKmonofont{Noto Sans Mono CJK SC}
+\newCJKfontfamily\hei{Noto Serif CJK SC Bold} % \hei{Hello, world!}
+\newCJKfontfamily\song{Noto Serif CJK SC}
+\newCJKfontfamily\kai{AR PL UKai CN}
+\newCJKfontfamily\quotefont{AR PL UKai CN}
+
+% https://nablux.net/tgp/weblog/2013/03/22/how-typeset-japanese-using-xelatex/
+% vertical typesetting
+\setCJKfamilyfont{cjk-vert}[Script=CJK,RawFeature=vertical]{FZGuLi-S12S}
+
+\newCJKfontfamily\sig{signature}
+
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+% adjust the spaces between numbers and Chinese characters
+\xeCJKsetup{xCJKecglue=\hskip 0pt plus 0.08\baselineskip}
 
 % Liberation fonts is a drop-in replacement for Microsoft Times, Arial and Courier fonts
 \setmainfont{Liberation Serif}
@@ -119,3 +139,8 @@
 \newcommand\openbook{\symbola 🕮}
 \newcommand\okay{\symbola 😐}
 \newcommand\pright{\symbola ☛}
+
+\RequirePackage{latexsym,pifont,amsmath,amsfonts,amssymb,mathtools,marvosym,fontawesome}% 
+
+
+

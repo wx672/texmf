@@ -35,13 +35,14 @@
 %%%%% geometry
 \RequirePackage[%showframe,showcrop,
 top=3cm,bottom=2.5cm,left=3cm,right=2.5cm,
-nomarginpar,headheight=15pt, % to avoid "headheight too small"
-]{geometry}
+headsep=6mm,footskip=1mm,headheight=15pt, % to avoid "headheight too small"
+nomarginpar]{geometry}
 
 %%%%% misc
 %\RequirePackage{indentfirst} % enabled if scheme=chinese
 \RequirePackage{tabularx,longtable,multicol,multirow,booktabs}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % centering p column
 
 \RequirePackage{ulem}
 \RequirePackage[bottom]{footmisc} % stick footnote at bottom of page
@@ -88,7 +89,6 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 %%%%% fonts
 \RequirePackage{amsmath,amsfonts,amssymb,marvosym,pifont}
 
-
 %%%%% setspace (\singlespacing, \onehalfspacing, \doublespacing)
 \RequirePackage[doublespacing]{setspace}
 \renewcommand{\doublespacing}{\setstretch{1.6}}
@@ -121,7 +121,6 @@ url=false,doi=false,isbn=false]{biblatex}
 \renewcommand{\thesubfigure}{\thechapter{}-\arabic{subfigure}}
 \renewcommand{\thesubtable}{\thechapter{}-\arabic{subtable}}
 
-
 %%%%% minted
 \RequirePackage[chapter]{minted} % has to be loaded at last!!!
 \usemintedstyle{bw}
@@ -144,7 +143,6 @@ url=false,doi=false,isbn=false]{biblatex}
 \newminted{gas}{} \newminted{nasm}{} \newminted{python}{}
 
 \newmint[csingle]{c}{linenos=false,frame=topline,framesep=3pt,}
-
 
 % code listing across pages
 \newenvironment{longlisting}{\captionsetup{type=listing}%
@@ -215,6 +213,7 @@ url=false,doi=false,isbn=false]{biblatex}
 
 \newcommand{\makebib}{% 参考文献
   \printbibliography[heading={bibintoc},title={参考文献}]\label{p:ref}\pagebreak}
+\renewcommand*{\bibfont}{\small} % 10.5pt
 
 \newenvironment{advisorInfo}{% 指导教师简介
   \thispagestyle{plain}\phantomsection{}%
@@ -229,7 +228,6 @@ url=false,doi=false,isbn=false]{biblatex}
   \chapter*{致\hspace{1em}谢}%
   \vskip 2em\begin{doublespace}%
   }{\end{doublespace}\pagebreak\singlespacing}
-
 
 %%%%% misc
 \renewcommand{\headrulewidth}{.4pt}

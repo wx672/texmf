@@ -98,7 +98,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 
 %%%%% biblatex
 \RequirePackage[backend=biber,style=gb7714-2015]{biblatex}
-%\renewcommand*{\bibfont}{\small} % 11pt
+\renewcommand*{\bibfont}{\small} % 11pt
 
 
 %%%%%% caption
