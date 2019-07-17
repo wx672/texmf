@@ -11,7 +11,9 @@
 \RequirePackage{subcaption}
 
 \RequirePackage{multicol,rotating,varwidth,ulem,etoolbox,comment}
-\RequirePackage{longtable,tabularx,booktabs,array}
+\RequirePackage{longtable,tabularx,booktabs,array,makecell}
+\renewcommand\theadfont{\normalfont\bfseries}%\normalsize
+
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % centering p column
 \newcolumntype{R}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
@@ -22,8 +24,8 @@
 % \renewcommand{\singlespacing}{\setstretch{1.2}}
 % \renewcommand{\onehalfspacing}{\setstretch{1.4}}
 
-\RequirePackage{enumitem}
-\setlist{nosep} % kills all vertical spacing
+% \RequirePackage{enumitem} % not compatible with beamer
+% \setlist{nosep} % kills all vertical spacing
 
 \newcommand{\cfbox}[2]{%
   \colorlet{currentcolor}{.}%

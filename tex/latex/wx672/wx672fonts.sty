@@ -50,22 +50,24 @@
 
 \newfontfamily\dejavu{DejaVu Sans Mono}
 %{\dejavu ➔ ➜ ➤ ✉ ⚓ ☭ ❂ …}
-\newcommand\good{\dejavu ☺}% 👍
-\newcommand\bad{\dejavu ☹}% 👎
-\newcommand\danger{\dejavu ☠}
-\newcommand\caution{\dejavu ☡}
-\newcommand\pointright{\dejavu ☞} % ☞
-\newcommand\pointleft{\dejavu ☜} % ☜
-\newcommand\unchecked{\dejavu □}%ballot box
-\newcommand\uncheckedbox{\dejavu □} % ❏
-\newcommand\Checked{\dejavu ✔}% ✓
+\newcommand\good{{\dejavu ☺}}% 👍
+\newcommand\bad{{\dejavu ☹}}% 👎
+\newcommand\danger{{\dejavu ☠}}
+\newcommand\caution{{\dejavu ☡}}
+\newcommand\pointright{{\dejavu ☞}} % ☞
+\newcommand\pointleft{{\dejavu ☜}} % ☜
+\newcommand\unchecked{{\dejavu □}}%ballot box
+\newcommand\uncheckedbox{{\dejavu □}} % ❏
+\newcommand\Checked{{\dejavu ✔}}% ✓
 \newcommand\RedCross{\textcolor{red}{\dejavu ✘}}% ✗
-\newcommand\checked{\large\dejavu ☑} %🗹
-\newcommand\checkedbox{\dejavu ☑} % 🗹
-\newcommand\crossedbox{\dejavu 🗷} % ☒
-\newcommand\ellipis{\dejavu …}
+\newcommand\checked{{\large\dejavu ☑}} %🗹
+\newcommand\checkedbox{{\dejavu ☑}} % 🗹
+\newcommand\crossedbox{{\dejavu 🗷}} % ☒
+\newcommand\ellipis{{\dejavu …}}
 
 \newfontfamily\nerd{DejaVu Sans Mono Nerd Font Complete}%
+% ~/.local/share/fonts/truetype/nerd-fonts/dejavu
+% fntsample -f 'DejaVu Sans Mono Nerd Font Complete.ttf' -o nerd.pdf
 % {\nerd %
 %             %
 %      %
@@ -79,11 +81,11 @@
 \newtoggle{logocolor}
 \newcommand\debian[1][true]{%
   \settoggle{logocolor}{#1}%
-  \iftoggle{logocolor}{\textcolor{red}{\nerd }}{{\nerd }}}
+  \iftoggle{logocolor}{\textcolor{red}{\nerd }}{{\nerd }}}% e77d
 
 \newcommand\ubuntu[1][true]{%
   \settoggle{logocolor}{#1}%
-  \iftoggle{logocolor}{\textcolor{orange}{\nerd }}{{\nerd }}}% 
+  \iftoggle{logocolor}{\textcolor{orange}{\nerd }}{{\nerd }}}%  e73a/f31b/f31c
 
 \newcommand\redhat{\nerd }
 
@@ -96,15 +98,14 @@
   \iftoggle{logocolor}{\textcolor{Green}{\nerd }}{{\nerd }}}
 
 \newcommand\pie{\nerd }
-%\newcommand\win{\textcolor{SkyBlue}{\nerd }}%   
 
-\newcommand\win[1][true]{%
+\newcommand\win[1][true]{%%   
   \settoggle{logocolor}{#1}%
   \iftoggle{logocolor}{\textcolor{SkyBlue}{\nerd }}{{\nerd }}}
 
 \newcommand\apple[1][true]{%
   \settoggle{logocolor}{#1}%
-  \iftoggle{logocolor}{\textcolor{gray}{\nerd }}{{\nerd }}}
+  \iftoggle{logocolor}{\textcolor{LightGray}{\nerd }}{{\nerd }}}
 
 \newcommand\linuxmint{\nerd }
 
@@ -112,7 +113,7 @@
 
 \newcommand\chrome[1][true]{%
   \settoggle{logocolor}{#1}%
-  \iftoggle{logocolor}{\textcolor{DarkBlue}{\nerd }}{{\nerd }}}
+  \iftoggle{logocolor}{\textcolor{orange}{\nerd }}{{\nerd }}}
 
 \newcommand\firefox{\nerd }
 

@@ -83,14 +83,14 @@ left=2.5cm, right=2.5cm,
       考核方式&{\kaishu\SWFU@Examtype}\\\hline%
       所用教材&\multicolumn{5}{l|}{\,\SWFU@Textbook}\\\hline%&出版时间&\SWFU@Publishtime
     \end{tabularx}}\\[-1pt]
-  {\setlength{\extrarowheight}{50pt}
+  {\setlength{\extrarowheight}{10ex}
     \begin{tabularx}{\textwidth}{|M{1em}|X|}%
-      课程教学总结& {\kaishu\SWFU@Sumup}\\[20ex]\hline%%
+      课程教学总结& {\kaishu\SWFU@Sumup}\\[10ex]\hline%%
       今后改革设想& {\kaishu\SWFU@Suggestion}\\[20ex]\hline%
     \end{tabularx}}\\[-1pt]%
-    {\setlength{\extrarowheight}{3pt}
+    {\setlength{\extrarowheight}{2pt}
     \begin{tabularx}{\textwidth}{|c|C|c|C|}%
-      填报人&{\kaishu\SWFU@TeacherName}&职称&{\kaishu\SWFU@TeacherTitle}\\\hline%
+      填报人&{\kaishu\SWFU@TeacherName}&职称&{\kaishu\SWFU@TeacherTitle}\\[2pt]\hline%
     \end{tabularx}\\[-1pt]
     \begin{tabularx}{\textwidth}{|X|}%
       填报日期：\quad\SWFU@Date\hfill{}（以上为授课教师填写）\\\hline%

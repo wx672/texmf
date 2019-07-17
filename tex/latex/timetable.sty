@@ -8,7 +8,7 @@
 \pgfkeys{
   Term/.store in       = \TT@Term,%
   Teacher/.store in    = \TT@Teacher,  Teacher = {WANG Xiaolin},%
-  Daywidth/.store in   = \TT@Daywidth, Daywidth = 5cm,%
+  Daywidth/.store in   = \TT@Daywidth, Daywidth = 45mm,%
   Hourlength/.store in = \TT@Hourlength, Hourlength = 1cm,%
 }
 
@@ -31,7 +31,7 @@
   lecture/.style={class, fill=red!30},%
   lab/.style={class, fill=Green!20},%
   lecturelab/.style={class, left color=red!30,right color=Green!20},%
-  office/.style={class, fill=gray!30},%
+  office/.style={class, fill=gray!5},%
   done/.style={class,pattern color=black!50,pattern=north east lines}%
 }%
 
@@ -56,9 +56,9 @@
     % Header line (week days)
     \node [day, anchor=south west,%
     label={above,xshift=4em:{\makebox[22em][l]{Semester: \TT@Term,\quad\TT@Teacher}}}]%
-    at (1,8) {Monday};%
-    \node [day] {Tuesday};%
-    \node [day] {Wednesday};%, label={12:{\TT@Teacher}}
-    \node [day] {Thursday};%
-    \node [day] {Friday};%
+    at (1,8) {Mon};%
+    \node [day] {Tue};%
+    \node [day] {Wed};%, label={12:{\TT@Teacher}}
+    \node [day] {Thu};%
+    \node [day] {Fri};%
   }{\end{tikzpicture}}%
