@@ -43,7 +43,13 @@
 
 \LoadClass[scheme=plain]{ctexart}
 
-\RequirePackage{tabu}
+\RequirePackage{tabularx}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % for centering p column
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\renewcommand{\arraystretch}{1.5}
+
+\newcommand{\mkvspace}[2]{\rule{0pt}{#1}\par{}#2\par{}\rule{0pt}{#1}}%\mkvspace{12ex}{text}
 
 \RequirePackage{graphicx}
 
@@ -73,53 +79,38 @@ left=2.5cm, right=2.5cm,
 
 \newcommand{\makeform}{
   \begin{center}
-    {\LARGE\heiti 西南林业大学教职工\,\SWFU@Year\,年年度考核表}
+    \LARGE\heiti 西南林业大学教职工\,\SWFU@Year\,年年度考核表
   \end{center}
-  学院/部门：{\kaishu\SWFU@School}\hfill{}填表时间：
-  {\kaishu\SWFU@Year{}年\SWFU@Month{}月\SWFU@Date{}日}\par
-  \tabulinesep=2mm%
-  \noindent\begin{tabu}{|c|>{\kaishu}X[c]|c|>{\kaishu}X[c]|c|>{\kaishu}X[c]|}
-    \tabucline-
-    姓名&\SWFU@Name&性别&\SWFU@Gender&出生年月&\SWFU@Birth\\\tabucline-
-  \end{tabu}%
-  \vspace{-1pt}%
-  \noindent\begin{tabu}{|c|>{\kaishu}X[c]|c|>{\kaishu}X[c]|}
-    政治面貌&{\SWFU@Political}&职称/职务&{\SWFU@Title}\\\tabucline-
-    文化程度&{\SWFU@Degree}&现从事工作&{\SWFU@Job}\\\tabucline-
-  \end{tabu}
-  \vspace{-1pt}\tabulinesep=2mm
-  \noindent\begin{tabu}{|c|X|}
-    \begin{minipage}{1em}\par\vspace{-20em}
+  学院/部门：{\kaishu\SWFU@School}\hfill{}%
+  填表时间：{\kaishu\SWFU@Year{}年\SWFU@Month{}月\SWFU@Date{}日}\par
+  \noindent\begin{tabularx}{\linewidth}{|c|>{\kaishu}C|c|>{\kaishu}C|c|>{\kaishu}C|}
+    \hline
+    姓名&\SWFU@Name&性别&\SWFU@Gender&出生年月&\SWFU@Birth\\\hline
+  \end{tabularx}\\[-1pt]%
+  \noindent\begin{tabularx}{\linewidth}{|c|>{\kaishu}C|c|>{\kaishu}C|}
+    政治面貌&\SWFU@Political&职称/职务&\SWFU@Title\\\hline
+    文化程度&\SWFU@Degree&现从事工作&\SWFU@Job\\\hline
+  \end{tabularx}\\[-1pt]
+  \noindent\begin{tabularx}{\linewidth}{|P{2em}|X|}
+    \mkvspace{5ex}{%
+      \parbox{1em}{\linespread{1}\centering% 
       个人总结\par\rotatebox[origin=c]{270}{（}\par{}
       履行岗位职责情况\par\vspace{-1.5ex}\hfill{}、\par\vspace{1ex}
-      工作成果等\par\rotatebox[origin=c]{270}{）}
-    \end{minipage}&
-    \par
-    \begin{minipage}[b][25em]{.8\columnwidth}
-      \par\vspace{1em}{\kaishu\SWFU@Sumup}\par\vspace{\fill}
-    \end{minipage}\par
-    \hfill\makebox[16em][l]{\kaishu 本人签字：\SWFU@Sig}\par\vspace*{1ex}\\\tabucline-
-    \begin{minipage}{2em}
-      所在单位考核意见
-    \end{minipage}
-    &\par\vspace{\fill}
-    \hfill\makebox[16em][l]{签章}\par
-    \hfill\makebox[12em][r]{年\hspace{3em}月\hspace{3em}日}\\\tabucline-
-    \begin{minipage}[c]{2em}
-      个人确认考核结果%
-    \end{minipage}&%
-    \begin{minipage}[c][6em][b]{.89\columnwidth}
-      \hfill\makebox[12em][l]{\SWFU@Sig}\par
-      \hfill\makebox[16em][l]{签章}\par%
-      \hfill\makebox[12em][r]{{\purisa\SWFU@Year}年%
-        \makebox[3em]{\purisa\SWFU@Month}月%
-        \makebox[3em]{\purisa\SWFU@Date}日}%
-    \end{minipage}\\\tabucline-%
-    \begin{minipage}{1em}
-      学校考核意见
-    \end{minipage}&\par\vspace{1.2em}    
-    \hfill\makebox[16em][l]{签章}\par
-    \hfill\makebox[12em][r]{年\hspace{3em}月\hspace{3em}日}\\\tabucline-
-  \end{tabu}}
+      工作成果等\par\rotatebox[origin=c]{270}{）}}} &\kaishu\SWFU@Sumup\\[-5em]
+      & \hfill\makebox[16em][l]{本人签字：{\kaishu\SWFU@Sig}}\\\hline
+      \mkvspace{2ex}{所在单位考核意见} &\\[-3em]
+      & \hfill\makebox[16em][l]{签章}\par
+      \hfill\makebox[12em][r]{年\hspace{3em}月\hspace{3em}日}\\\hline
+      \mkvspace{2ex}{个人确认考核结果} &\\[-7em]
+      & \hfill\makebox[12em][l]{\SWFU@Sig}\\
+      & \hfill\makebox[16em][l]{签章}\\[-1ex]
+      & \hfill\makebox[12em][r]{{\purisa\SWFU@Year}年%
+        \makebox[3em]{\purisa\SWFU@Month}月\makebox[3em]{\purisa\SWFU@Date}日}\\\hline%
+      \mkvspace{2ex}{%
+        \parbox{1em}{\linespread{1}\centering%
+          学校考核意见}}&\\[-3em]
+      & \hfill\makebox[16em][l]{签章}\\[-1ex]
+      & \hfill\makebox[12em][r]{年\hspace{3em}月\hspace{3em}日}\\\hline
+  \end{tabularx}}
 
 \pagestyle{empty}

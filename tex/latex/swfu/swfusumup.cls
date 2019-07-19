@@ -67,37 +67,35 @@ left=2.5cm, right=2.5cm,
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % for centering p column
 \newcolumntype{C}{>{\centering\arraybackslash}X}
+\renewcommand{\arraystretch}{1.5}
 
 \newcommand{\makeform}{
   {\centering%
     {\LARGE\heiti 西南林业大学课程教学小结表}\\[2ex]%
-    {\setlength{\extrarowheight}{3pt}
-    \begin{tabularx}{\textwidth}{|c|C|c|c|c|c|}%
+    \begin{tabularx}{\textwidth}{|c|>{\kaishu}C|c|>{\kaishu}c|c|>{\kaishu}c|}%
       \hline%
-      授课学期&\SWFU@Term&课程名称&\multicolumn{3}{c|}{{\kaishu\SWFU@Coursetitle}}\\\hline%
-      总\hspace{.5em}学\hspace{.5em}时&\SWFU@Totaltime&实验学时&\SWFU@Labtime&%
-      实习天数&\SWFU@Practicetime\\\hline%
-      开课院系&{\kaishu\SWFU@School}&授课班级&{\kaishu\SWFU@Class}&%
-      学生人数&\SWFU@Studnum\\\hline%
-      多媒体教学&{\kaishu\SWFU@Multimedia}&双语教学&{\kaishu\SWFU@Bilingual}&%
-      考核方式&{\kaishu\SWFU@Examtype}\\\hline%
+      授课学期&\texttt{\SWFU@Term}&课程名称&\multicolumn{3}{c|}{\kaishu\SWFU@Coursetitle}\\\hline%
+      总\hspace{.5em}学\hspace{.5em}时&\texttt{\SWFU@Totaltime}&实验学时&\texttt{\SWFU@Labtime}&%
+      实习天数&\texttt{\SWFU@Practicetime}\\\hline%
+      开课院系&\SWFU@School&授课班级&\texttt{\SWFU@Class}&%
+      学生人数&\texttt{\SWFU@Studnum}\\\hline%
+      多媒体教学&\SWFU@Multimedia&双语教学&\SWFU@Bilingual&%
+      考核方式&\SWFU@Examtype\\\hline%
       所用教材&\multicolumn{5}{l|}{\,\SWFU@Textbook}\\\hline%&出版时间&\SWFU@Publishtime
-    \end{tabularx}}\\[-1pt]
-  {\setlength{\extrarowheight}{10ex}
-    \begin{tabularx}{\textwidth}{|M{1em}|X|}%
-      课程教学总结& {\kaishu\SWFU@Sumup}\\[10ex]\hline%%
-      今后改革设想& {\kaishu\SWFU@Suggestion}\\[20ex]\hline%
-    \end{tabularx}}\\[-1pt]%
-    {\setlength{\extrarowheight}{2pt}
-    \begin{tabularx}{\textwidth}{|c|C|c|C|}%
-      填报人&{\kaishu\SWFU@TeacherName}&职称&{\kaishu\SWFU@TeacherTitle}\\[2pt]\hline%
+    \end{tabularx}\\[-1pt]
+    \begin{tabularx}{\textwidth}{|P{1em}|>{\kaishu}X|}%
+      \rule{0pt}{12ex}\par{}课程教学总结\par\rule{0pt}{12ex}& \SWFU@Sumup\\\hline%%
+      \rule{0pt}{12ex}\par{}今后改革设想\par\rule{0pt}{12ex}& \SWFU@Suggestion\\\hline%
+    \end{tabularx}\\[-1pt]%
+    \begin{tabularx}{\textwidth}{|c|>{\kaishu}C|c|>{\kaishu}C|}%
+      填报人&\SWFU@TeacherName&职称&\SWFU@TeacherTitle\\\hline%
     \end{tabularx}\\[-1pt]
     \begin{tabularx}{\textwidth}{|X|}%
-      填报日期：\quad\SWFU@Date\hfill{}（以上为授课教师填写）\\\hline%
+      填报日期：\quad\texttt{\SWFU@Date}\hfill{}（以上为授课教师填写）\\\hline%
       教研室负责人审阅意见：\\[15ex]%
       \hfill\makebox[10em][l]{签名：}%
       \makebox[5em][r]{年}\makebox[3em][r]{月}\makebox[3em][r]{日}\\\hline%
-    \end{tabularx}}\\[1pt]
+    \end{tabularx}\\[1pt]
     注：本表复制有效}}
 
 \setlength{\parindent}{2em}

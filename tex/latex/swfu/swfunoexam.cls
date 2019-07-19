@@ -35,22 +35,20 @@ margin=4cm]{geometry}
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % for centering p column
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
 \newcolumntype{C}{>{\centering\arraybackslash}X}
+\renewcommand{\arraystretch}{2}
+
+\newcommand{\mkvspace}[2]{\rule{0pt}{#1}\par{}#2\par{}\rule{0pt}{#1}}%\mkvspace{12ex}{text}
 
 \newcommand{\makeform}{%
   \pagestyle{empty}%
   {\centering {\textbf {\LARGE\heiti 西南林业大学非考试命题表}}\\[4ex]
-    \setlength{\extrarowheight}{10pt}
     \begin{tabularx}{\textwidth}{|M{4em}|C|}\hline%
-      学年学期 & \SWFU@Term\\[1ex]\hline
-      
-      考试科目 & {\kaishu \SWFU@Course}\\[1ex]\hline
-      考核方式& \begin{tabularx}{1.0\linewidth}{C|C|C}
-                  {\kaishu\SWFU@Noexam}&任课教师&{\kaishu\SWFU@Teacher}\\[1ex]
-                \end{tabularx} \\[1ex]\hline
-      考核内容\par{}及要求&{\kaishu
-                           \begin{minipage}{.8\linewidth}
-                             \vspace*{20em}
-                             \SWFU@Details
-                             \vspace*{20em}
-                           \end{minipage}}\\\hline
+      学年学期 & \SWFU@Term\\\hline
+      考试科目 & {\kaishu \SWFU@Course}\\\hline
+      考核方式& {\begin{tabularx}{1.0\linewidth}{C|C|C}
+                  {\kaishu\SWFU@Noexam}&任课教师&{\kaishu\SWFU@Teacher}\\
+                 \end{tabularx}} \\\hline
+      \mkvspace{20em}{考核内容\par{}及要求} & \begin{tabular}{p{.9\linewidth}}
+                                               {\kaishu\SWFU@Details}\\
+                                             \end{tabular}\\\hline
     \end{tabularx}}}
