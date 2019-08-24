@@ -3,13 +3,14 @@
 
 \RequirePackage{ifxetex} % This class is for XeTeX only
 
-\RequirePackage{beamerarticle}% xcolor loaded here, possible clashes
+\RequirePackage[noxcolor]{beamerarticle}% load xcolor later
 
 \RequirePackage[top=2cm,bottom=2cm,left=3cm,right=2cm,%
 nomarginpar,headheight=15pt,% to avoid "headheight too small"
 %showframe,showcrop,
 ]{geometry}
 
+\RequirePackage[svgnames]{xcolor}
 \RequirePackage{wx672common}
 \RequirePackage{wx672fonts}
 \RequirePackage{wx672tikz}
@@ -48,6 +49,6 @@ nomarginpar,headheight=15pt,% to avoid "headheight too small"
 \renewcommand{\Navy}[1]{\textcolor{black}{#1}}
 \renewcommand{\code}[1]{\emph{\texttt{#1}}}
 
-\graphicspath{{./figs/bw/}{../figs/bw/}{./figs/}{../figs/}} %note that the trailing “/” is required
+\graphicspath{{./figs/}{../figs/}} %note that the trailing “/” is required
 
 \setcounter{tocdepth}{2}

@@ -4,8 +4,10 @@
 
 \RequirePackage{ifxetex} % This class is for XeTeX only
 
-\RequirePackage{minted}
+\RequirePackage[newfloat=true]{minted}
 %\usemintedstyle{bw}
+
+\RequirePackage{caption} % \captionsetup
 
 \renewcommand{\theFancyVerbLine}{
   \textcolor{lightgray}{\scriptsize \arabic{FancyVerbLine}}}
@@ -17,8 +19,8 @@
   frame=leftline,framesep=5pt,%
   rulecolor=\color{lightgray},autogobble=true}
 
-\newminted{c}{}
-\newminted{shell}{}
+\newminted{c}{}% \ccode{}
+\newminted{shell}{}% \shellcode{}
 \newminted{latex}{}
 \newminted{bibtex}{}
 \newminted{gas}{}
@@ -26,8 +28,17 @@
 \newminted{python}{}
 \newminted{pascal}{}
 
+\newmintedfile{c}{linenos,breaklines,autogobble}%\cfile{filepath}
+\newmintedfile{shell}{linenos,breaklines,autogobble}%\shellfile{filepath}
+\newmintedfile[mkfile]{makefile}{linenos,breaklines,autogobble}%\mkfile{filepath}
+
+% code listing across pages
+\newenvironment{longlisting}{\captionsetup{type=listing}}{}
+
 \newenvironment{codeblock}[1] % e.g. \begin{codeblock}{.7} ... \end{codeblock}
 {\begin{center}\begin{minipage}{#1\textwidth}\begin{singlespace}}
 {\end{singlespace}\end{minipage}\end{center}}
 
-\RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{} % to make centering minted works
+% no good. 
+%\RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{} % to make centering minted works
+

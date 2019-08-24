@@ -6,7 +6,9 @@
 \RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
 \defaultfontfeatures{Mapping=tex-text}
 
-\RequirePackage{xeCJK}
+%\RequirePackage{xeCJK}
+\RequirePackage{ctex}
+\ctexset{today=old}
 
 \setCJKmainfont{Noto Serif CJK SC}
 \setCJKsansfont{Noto Sans CJK SC}
@@ -52,7 +54,6 @@
 %{\dejavu ➔ ➜ ➤ ✉ ⚓ ☭ ❂ …}
 \newcommand\good{{\dejavu ☺}}% 👍
 \newcommand\bad{{\dejavu ☹}}% 👎
-\newcommand\danger{{\dejavu ☠}}
 \newcommand\caution{{\dejavu ☡}}
 \newcommand\pointright{{\dejavu ☞}} % ☞
 \newcommand\pointleft{{\dejavu ☜}} % ☜
@@ -79,6 +80,11 @@
 \newcommand\gnu{\nerd }
 
 \newtoggle{logocolor}
+
+\newcommand\danger[1][true]{%
+  \settoggle{logocolor}{#1}%
+  \iftoggle{logocolor}{\textcolor{red}{\nerd }}{{\nerd }}}% 1f571🕱 2620☠ e231
+
 \newcommand\debian[1][true]{%
   \settoggle{logocolor}{#1}%
   \iftoggle{logocolor}{\textcolor{red}{\nerd }}{{\nerd }}}% e77d

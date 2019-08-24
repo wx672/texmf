@@ -2,8 +2,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{wx672b}
 
-\RequirePackage{wx672common}
 \RequirePackage{wx672fonts}
+\RequirePackage{wx672common}
 \RequirePackage{wx672bib}
 \RequirePackage{wx672tikz}
 \RequirePackage{wx672minted}
@@ -12,42 +12,31 @@
 %%% wx672beamer.cls.
 
 \usetheme{default}
+\usecolortheme[named=SeaGreen]{structure}
+\setbeamercolor{block title}{bg=Gray!6}
+\setbeamercolor{block body}{bg=Gray!4}
+\setbeamercolor{alerted text}{fg=blue}
+\setbeamercolor{part title}{bg=Gray!6}
+\setbeamercolor{section title}{bg=Gray!6}
+\setbeamercolor{subsection title}{bg=Gray!6}
+
 \setbeamertemplate{footline}[frame number]
 \setbeamertemplate{navigation symbols}{}
 \usenavigationsymbolstemplate{}
 \setbeamertemplate{blocks}[rounded][shadow=false]
-\setbeamercolor{structure}{fg=Green}
-\setbeamercolor{block title}{fg=Green,bg=Gray!6}
-\setbeamercolor{block body}{bg=Gray!4}
-\setbeamercolor{alerted text}{fg=blue}
-\setbeamercolor{section in toc}{fg=Green,bg=Gray!6}
+
 \setbeamertemplate{section page}{%
   \begin{beamercolorbox}[center]{structure}
-    {\LARGE\insertsection}
+    \usebeamerfont{section title}%
+    \insertsectionnumber\quad\insertsection\par
   \end{beamercolorbox}}
+
 \setbeamertemplate{subsection page}{%
-  \begin{beamercolorbox}[center]{structure}
-    {\LARGE\insertsubsection}
+  \begin{beamercolorbox}[center]{structure}%
+    \usebeamerfont{subsection title}%
+    \insertsectionnumber.\insertsubsectionnumber\quad\insertsubsection\par
   \end{beamercolorbox}}
 
+\setbeamersize{text margin right=1em}
+\setbeamersize{text margin left=1em}
 %\setbeamercovered{transparent}
-
-% \AtBeginSection[]{
-%   \begin{frame}
-%   \vfill\centering
-%   \begin{beamercolorbox}[center]{structure}%\usebeamerfont{title}
-%     {\LARGE\insertsectionhead}%\par
-%   \end{beamercolorbox}
-%   \vfill
-%   \end{frame}
-% }
-
-% \AtBeginSubsection[]{
-%   \begin{frame}
-%   \vfill\centering
-%   \begin{beamercolorbox}[center]{structure}%\usebeamerfont{title}
-%     {\large\insertsubsectionhead}%\par
-%   \end{beamercolorbox}
-%   \vfill
-%   \end{frame}
-% }
