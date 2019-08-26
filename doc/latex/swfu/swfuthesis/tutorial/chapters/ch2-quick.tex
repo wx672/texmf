@@ -2,7 +2,7 @@
 
 \LaTeX{}很强大，但对于初学者来说，你不必关心它有多强大，因为最为常用的命令和环境不过寥寥数
 个而已。而且Emacs+\auctex{}提供了丰富的快捷键，稍加练习之后，你就再也不用去手工敲命令了。
-对于格式复杂的需求，通常你只要套用模版就可以解决问题了。所以，大家只要把Emacs用熟，
+对于较复杂的格式需求，通常只要套用模版就可以解决问题了。所以，大家只要把Emacs用熟，
 一切迎刃而解。
 
 \section{用LaTeX写文章就是在编程}
@@ -16,18 +16,18 @@
 \begin{enumerate}
 \item \Se{}，如果你的系统配置和我的一样，那么只要按下\Se{}键，Emacs窗口就
   出现在你面前了，而且（感谢Sawfish）是全屏的；
-\item \Cx\Cf{}，开始编辑一个新文件。这时，在Emacs窗口的最下面（也就是 mini buffer 里）有提
+\item \Cx\Cf{}，开始编辑一个新文件。这时，在Emacs窗口的最下面（也就是mini buffer里）有提
   示，输入你要编辑的文件的名字，也就是\texttt{hello.c}，然后按\Enter{}（回车键），或者\Cj{}，其
   实，后面你会发现，\Cj{}带自动缩进，比按\Enter{}更方便；
 \item 现在可以在打开的空文件里写东西了：
   \begin{codeblock}[.7]
 \begin{ccode}
-    #include <stdio.h>
-    int main()
-    {
-      printf ("Hello, world!\n");
-      return 0;
-    }
+#include <stdio.h>
+int main()
+{
+  printf ("Hello, world!\n");
+  return 0;
+}
 \end{ccode}
   \end{codeblock}
 \item 存盘：\Cx{}\Cs{}
@@ -38,7 +38,7 @@
 \subsection{\texttt{hello.tex}}
 \label{sec:hello.tex}
 
-现在，我们再看看用\LaTeX{}写一个\texttt{hello.tex}文件的过程：
+再看看用\LaTeX{}写一个\texttt{hello.tex}文件的过程：
 
 \begin{enumerate}
 \item \Se{}，打开Emacs；
@@ -46,11 +46,11 @@
 \item 写入文件内容：
   \begin{codeblock}[.7]
     \begin{latexcode}
-      \documentclass{article}
-      \begin{document}
-        Hello, world!
-      \end{document}
-    \end{latexcode}
+\documentclass{article}
+\begin{document}
+Hello, world!
+\end{document}
+\end{latexcode}
   \end{codeblock}
 \item 存盘：\Cx \Cs{}
 \item 编译：\texttt{xelatex hello.tex}
@@ -59,27 +59,21 @@
 
 怎么样？ \texttt{hello.c}和\texttt{hello.tex}的编辑过程没什么分别吧。只要把Emacs用熟，触
 类旁通，不管写什么程序，都是这么个过程。你
-
 \begin{itemize}
 \item 不必学习VC去写C/C++；
 \item 不必学习eclipse去写Java；
 \item 不必学习MS-Word去写报告、幻灯片；
 \item 不必学习……
 \end{itemize}
-
 一句话，“Everything Emacs”，你可以省下大量不必要的学习时间。人生苦短，何必让你的生活
 被 VC/eclipse/MS-Word 搞得头昏脑胀呢？ 简单而强大，就是计科专业和非专业学生所应有的不同。
-
-如果你对Emacs操作还很陌生，那么现在就打开Emacs，\Ch{}{\kbd t}，重温一下那些基本操
-作吧。
+如果你对Emacs操作还很陌生，那么现在就打开Emacs，\Ch{}{\kbd t}，重温一下那些基本操作吧。
 
 \subsection{什么是 \Cx\Cf？}
 
 使用Emacs是可以（而且应该）完全抛开鼠标的。对于初次上手的人，抛开鼠标就像病人抛开拐杖一
 样痛苦。但只有不依赖拐杖的人才是健康的，不是吗？
-
 现在，你终于有了走向健康生活的冲动，那么我们开始吧。简短截说，
-
 \begin{enumerate}
 \item 先把你的双手在标准键盘上放好。然后，
 \item 左手小指稍向左移，按在\Caps{}(CapsLock)键上\footnote{如果你的系统配置和我一
@@ -88,11 +82,9 @@
 \item 小指按在\Caps{}上别放开，左手食指在{\kbd f}键上轻按一下就放开，这就是\Cf{}；
 \item 现在左手小指可以放开了。
 \end{enumerate}
-
 这就是\Cx\Cf{}，最常用的Emacs快捷键之一，作用是要求打开一个文
 件\footnote{如果你要打开的文件不存在，那么Emacs会认为你要写一个新文件。}，f代表file 。那么，
 告诉我
-
 \begin{itemize}
 \item 什么是 \Cx \Cs?
 \item 什么是 \Cx {\kbd 2}? 什么是\Cx {\kbd 3}? 什么是\Cx {\kbd o}? 什么是\Cx {\kbd 0}? 什么
@@ -156,11 +148,11 @@
 文件里应该有如下几行东西了：
 \begin{codeblock}[.9]
 \begin{latexcode}
-  \documentclass{article}  % documentclass可以是
-                           % article, book, report, letter...
-  \begin{document} % 文章的开始
-  | 
-  \end{document}   % 文章的结束
+\documentclass{article}  % documentclass可以是
+                         % article, book, report, letter...
+\begin{document} % 文章的开始
+| 
+\end{document}   % 文章的结束
 \end{latexcode}
 \end{codeblock}
 这时，光标停在 \verb|\begin{document}|与 \verb|\end{document}|之间，等待你的输入。百分号
@@ -280,14 +272,11 @@ Emacs会把我们上次输入的Macro，也就是title，做为默认值提示�
 
 \begin{figure}
   \centering
-  \begin{minipage}{.4\linewidth}
-  \fbox{\includegraphics[width=\textwidth]{topmatter}}
-  \caption{文章的起始部分} \label{fig:topmatter}
-  \end{minipage}\quad
-  \begin{minipage}{.4\linewidth}
-    \fbox{\includegraphics[width=\textwidth]{abstract}}
-  \caption{加上摘要} \label{fig:abstract}
-  \end{minipage}
+  \subcaptionbox{文章的起始部分\label{fig:topmatter}}{
+    \fbox{\includegraphics[width=.4\textwidth]{topmatter}}}\quad
+  \subcaptionbox{加上摘要\label{fig:abstract}}{
+    \fbox{\includegraphics[width=.4\textwidth]{abstract}}}
+  \caption{Top matter}
 \end{figure}
 
 \subsection{怎样写摘要}
@@ -336,7 +325,7 @@ abstract \Cj{}。abstract 就是“摘要”的意思。科技论文都是要有
 
 \subsection{怎样分章节}
 
-现在，我们要接着上面的例子，写更多更长的东西了。偷懒起见，文章末尾
+接着上面的例子，我们来写点更多更长的东西。偷懒起见，文章末尾
 的 \texttt{\textbackslash{}end\{document\}}我也不再写出来了。
 
 好，按\Cn{}把光标移到 \verb|\end{abstract}| 的下一行。然后，\Cc\Cs{}，让我们开始文章的第一节。
@@ -466,7 +455,7 @@ mini buffer 又提示：
 当然输入：subsubsection \Cj{}。mini buffer 提示：
 
 \begin{itemize}
-\item[] Title:
+\item[] \texttt{Title:}
 \end{itemize}
 
 输入：Article Information \Cj。mini buffer 提示：
@@ -521,12 +510,14 @@ mini buffer 又提示：
 
 你一定注意到了 \verb'\verb||' 这个新命令。它的作用和bash命令行的单引号 (\texttt{'}) 是一样的。
 还记得吧，在命令行，单引号里的东西是原样输出的。 \verb'\verb||' 里的东西也一样。 verb 是
-verbatim 一词的缩写，就是“原样引用”的意思。好奇的话，可以编译一下，看看效果。
+verbatim 一词的缩写，就是“原样引用”的意思。好奇的话，可以编译一下，看看效果（图\ref{fig:env}）。
 
-\begin{center}
-  \fbox{\includegraphics[width=.48\textwidth]{env1}}
-  \fbox{\includegraphics[width=.48\textwidth]{env2}}
-\end{center}
+\begin{figure}
+  \centering
+  \subcaptionbox{}{\fbox{\includegraphics[width=.4\textwidth]{env1}}}\quad
+  \subcaptionbox{}{\fbox{\includegraphics[width=.4\textwidth]{env2}}}
+  \caption{输出效果\label{fig:env}}
+\end{figure}
 
 好，继续输入：
 
@@ -575,12 +566,13 @@ verbatim 一词的缩写，就是“原样引用”的意思。好奇的话，�
 \end{latexcode}
 \end{codeblock}
 
-编译之后的效果应该和下面这张图差不多。
-
-\begin{center}
+\begin{figure}
+  \centering
   \fbox{\includegraphics[width=.5\textwidth]{env3-crop}}
-\end{center}
+  \caption{itemize的输出效果\label{fig:itemize}}  
+\end{figure}
 
+编译之后的效果应该和图\ref{fig:itemize}差不多。
 好了，请你现在照猫画虎，再来一个 subsubsection，标题叫 Author Information。模仿上面的东西，
 来得到下面的东西：
 
@@ -610,21 +602,20 @@ verbatim 一词的缩写，就是“原样引用”的意思。好奇的话，�
 \end{latexcode}
 \end{codeblock}
 
-显示效果：
-
-\begin{center}
+\begin{figure}
+  \centering
   \fbox{\includegraphics[width=.6\textwidth]{env4}}
-\end{center}
+  \caption{itemize的输出效果\label{fig:env4}}  
+\end{figure}
 
-怎么样，不太困难吧？ 目前为止，我们用到的无非是表~\ref{tab:keys}中列出的这几个快捷键操作
-而已：
+显示效果如图\ref{fig:env4}所示。怎么样，不太困难吧？ 目前为止，我们用到的无非是
+表~\ref{tab:keys}中列出的这几个快捷键操作而已：
 
 \begin{table}[!htbp]
-  \centering
-  \caption{常用快捷键}\label{tab:keys}
-  \begin{tabular}{r|l}
+  \centering\caption{常用快捷键\label{tab:keys}}  
+  \begin{tabular}{rl}
     \hline
-    \textbf{快捷键}&\textbf{功用}\\\hline
+    \thead{快捷键}&\thead{功用}\\\hline
     \Cj{}&换行带缩进\\
      \Cc\Cm{}&输入Macro\\
      \Cc\Cs{}&新起一个章节\\

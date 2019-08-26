@@ -20,7 +20,7 @@
 
 \newcommand{\swfusetup}[1]{\pgfkeys{#1}}
 
-% pass unknown options to ctexrep
+% pass unknown options to ctexbook
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions\relax
 
@@ -40,7 +40,10 @@ nomarginpar]{geometry}
 
 %%%%% misc
 %\RequirePackage{indentfirst} % enabled if scheme=chinese
-\RequirePackage{tabularx,longtable,multicol,multirow,booktabs}
+\RequirePackage{tabularx,longtable,multicol,multirow,booktabs,makecell}
+\renewcommand\theadfont{\bfseries}%\normalfont
+\renewcommand{\arraystretch}{1.5}
+
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % centering p column
 
@@ -111,15 +114,15 @@ url=false,doi=false,isbn=false]{biblatex}
 %\renewcommand*{\bibfont}{\small} % 11pt
 
 %%%%% caption
-\RequirePackage{caption} % \captionsetup
+\RequirePackage[font=footnotesize,labelfont=bf]{caption} % \captionsetup
 \RequirePackage{subcaption}
-\captionsetup{labelsep=quad}
+\captionsetup{labelsep=quad, format=hang, skip=5pt}
 
 % set caption label style to, e.g. 3-2.
-\renewcommand{\thefigure}{\thechapter{}-\arabic{figure}}
-\renewcommand{\thetable}{\thechapter{}-\arabic{table}}
-\renewcommand{\thesubfigure}{\thechapter{}-\arabic{subfigure}}
-\renewcommand{\thesubtable}{\thechapter{}-\arabic{subtable}}
+% \renewcommand{\thefigure}{\thechapter{}-\arabic{figure}}
+% \renewcommand{\thetable}{\thechapter{}-\arabic{table}}
+% \renewcommand{\thesubfigure}{\thechapter{}-\arabic{subfigure}}
+% \renewcommand{\thesubtable}{\thechapter{}-\arabic{subtable}}
 
 %%%%% minted
 \RequirePackage[chapter]{minted} % has to be loaded at last!!!

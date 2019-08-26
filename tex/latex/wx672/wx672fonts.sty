@@ -3,12 +3,14 @@
 
 \RequirePackage{etoolbox,units}% \newtoggle
 
+%\RequirePackage[svgnames]{xcolor}% Green, SkyBlue...
+
 \RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
 \defaultfontfeatures{Mapping=tex-text}
 
-%\RequirePackage{xeCJK}
-\RequirePackage{ctex}
-\ctexset{today=old}
+\RequirePackage{xeCJK}
+% \RequirePackage{ctex}
+% \ctexset{today=old}
 
 \setCJKmainfont{Noto Serif CJK SC}
 \setCJKsansfont{Noto Sans CJK SC}
@@ -45,6 +47,14 @@
 
 \newcommand{\verbatimfont}[1]{\def\verbatim@font{#1}}%
 
+\newcommand{\range}{{~\symbol{`~}~}}
+\newcommand{\CMD}[1]{\texttt{\textcolor{Green}{\$} #1}}
+\newcommand{\cmd}[1]{\texttt{#1}}
+\newcommand{\unix}{{\fontspec{Purisa}{UNIX}}}
+\newcommand{\emacs}{\includegraphics[width=1.2em]{emacs}}
+\newcommand{\google}{\raisebox{-.2em}{\includegraphics[width=3em]{google}}}
+\newcommand{\moodle}{\includegraphics[width=1em]{moodle}}
+
 %%% For utf8 symbols
 % use C-x 8 RET to input utf8 symbols
 % C-x 8 C-h for more
@@ -52,20 +62,6 @@
 
 \newfontfamily\dejavu{DejaVu Sans Mono}
 %{\dejavu ➔ ➜ ➤ ✉ ⚓ ☭ ❂ …}
-\newcommand\good{{\dejavu ☺}}% 👍
-\newcommand\bad{{\dejavu ☹}}% 👎
-\newcommand\caution{{\dejavu ☡}}
-\newcommand\pointright{{\dejavu ☞}} % ☞
-\newcommand\pointleft{{\dejavu ☜}} % ☜
-\newcommand\unchecked{{\dejavu □}}%ballot box
-\newcommand\uncheckedbox{{\dejavu □}} % ❏
-\newcommand\Checked{{\dejavu ✔}}% ✓
-\newcommand\RedCross{\textcolor{red}{\dejavu ✘}}% ✗
-\newcommand\checked{{\large\dejavu ☑}} %🗹
-\newcommand\checkedbox{{\dejavu ☑}} % 🗹
-\newcommand\crossedbox{{\dejavu 🗷}} % ☒
-\newcommand\ellipis{{\dejavu …}}
-
 \newfontfamily\nerd{DejaVu Sans Mono Nerd Font Complete}%
 % ~/.local/share/fonts/truetype/nerd-fonts/dejavu
 % fntsample -f 'DejaVu Sans Mono Nerd Font Complete.ttf' -o nerd.pdf
@@ -75,9 +71,43 @@
 %            %
 %                    %
 % }
-\newcommand\linux{\nerd } % u+f17c
+\newcommand\correct{{\Large\textcolor{Green}{\nerd ✔}}}
+\newcommand\Checked{{\nerd ✔}}% ✓
+\newcommand\wrong{\textcolor{red}{\nerd ✘}}
+\newcommand\RedCross{\textcolor{red}{\nerd ✘}}
+\newcommand\good{{\nerd }}% 👍☺
+\newcommand\Good{{\textcolor{Green}{\good}}}
+\newcommand\bad{{\nerd }}% 👎☹
+\newcommand\Bad{{\textcolor{red}{\bad}}}
+\newcommand\okay{{\nerd }}
+\newcommand\Okay{{\textcolor{Green}{\okay}}}
+\newcommand\caution{{\nerd ☡}}
+\newcommand\pointright{{\nerd ☞}} % ☞
+\newcommand\pointleft{{\nerd ☜}} % ☜
+\newcommand\unchecked{{\nerd □}}%ballot box
+\newcommand\uncheckedbox{{\nerd □}} % ❏
+\newcommand\checked{{\large\nerd ☑}} %🗹
+\newcommand\checkedbox{{\nerd ☑}} % 🗹
+\newcommand\crossedbox{{\nerd 🗷}} % ☒
+\newcommand\ellipis{{\nerd …}}
 
+\newcommand\linux{\nerd } % u+f17c
 \newcommand\gnu{\nerd }
+\newcommand\GG{\textcolor{SkyBlue}{\nerd }}
+\newcommand\world{\textcolor{SkyBlue}{\nerd }}
+\newcommand\pdf{\textcolor{red}{\nerd }}%
+\newcommand\folder{{\nerd }}%e5fe,e61e,e7a3,f07c
+\newcommand\git{{\nerd }}%f1d2,f1d3
+\newcommand\github{\nerd }
+\newcommand\obook{{\nerd }}%f212,f401,f405
+\newcommand\shell{{\nerd }}%e795
+\newcommand\vim{{\nerd }}
+\newcommand\stackoverflow{{\nerd }}%f16c, e710
+\newcommand\phone{\nerd ﬁ} % 260e☎ fb01ﬁ
+\newcommand\mail{\nerd } %f42f f6ef f6ed faee﫮 faef﫯 f430 
+\newcommand\hw{\nerd } %f8ec f8ea f420 f26d f14b f0e7 e30e e315 e305
+
+% f421,f46e,f536 f1e6 
 
 \newtoggle{logocolor}
 
@@ -87,17 +117,25 @@
 
 \newcommand\debian[1][true]{%
   \settoggle{logocolor}{#1}%
-  \iftoggle{logocolor}{\textcolor{red}{\nerd }}{{\nerd }}}% e77d
+  \iftoggle{logocolor}{\textcolor{red}{\nerd }}{{\nerd }}}% f306
 
 \newcommand\ubuntu[1][true]{%
   \settoggle{logocolor}{#1}%
-  \iftoggle{logocolor}{\textcolor{orange}{\nerd }}{{\nerd }}}%  e73a/f31b/f31c
+  \iftoggle{logocolor}{\textcolor{orange}{\nerd }}{{\nerd }}}%  e73a/f31b/f31c
 
 \newcommand\redhat{\nerd }
 
 \newcommand\fedora[1][true]{%
   \settoggle{logocolor}{#1}%
-  \iftoggle{logocolor}{\textcolor{DarkBlue}{\nerd }}{{\nerd }}}% 
+  \iftoggle{logocolor}{\textcolor{DarkBlue}{\nerd }}{{\nerd }}}% f30a
+
+\newcommand\fedoralight[1][true]{%
+  \settoggle{logocolor}{#1}%
+  \iftoggle{logocolor}{\textcolor{DarkBlue}{\nerd }}{{\nerd }}}% f30b
+
+\newcommand\arch[1][true]{%
+  \settoggle{logocolor}{#1}%
+  \iftoggle{logocolor}{\textcolor{LightBlue}{\nerd }}{{\nerd }}}%  f303
 
 \newcommand\android[1][true]{%
   \settoggle{logocolor}{#1}%
@@ -108,6 +146,8 @@
 \newcommand\win[1][true]{%%   
   \settoggle{logocolor}{#1}%
   \iftoggle{logocolor}{\textcolor{SkyBlue}{\nerd }}{{\nerd }}}
+
+\newcommand\windows{\win}
 
 \newcommand\apple[1][true]{%
   \settoggle{logocolor}{#1}%
@@ -144,7 +184,7 @@
 %{\symbola 𐇐 👍 👎 ☛}
 \newcommand\Symbol[1]{\emoji #1}
 \newcommand\openbook{\symbola 🕮}
-\newcommand\okay{\symbola 😐}
+%\newcommand\okay{\symbola 😐}
 \newcommand\pright{\symbola ☛}
 
 \RequirePackage{latexsym,pifont,amsmath,amsfonts,amssymb,mathtools,marvosym,fontawesome}% 

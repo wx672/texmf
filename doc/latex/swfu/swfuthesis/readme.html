@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="cn">
 <head>
-<!-- 2018-12-12 Wed 09:53 -->
+<!-- 2019-11-26 Tue 13:52 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>《西南林业大学本科毕业论文LaTeX模版》使用说明</title>
 <meta name="generator" content="Org mode">
 <meta name="author" content="王晓林">
-<link rel="stylesheet" href="https://cs2.swfu.edu.cn/org-info-js/org-manual.css" type="text/css">
-<style>code {font-family:Monospace; font-size:90%; background-color: #eee} body {font-size:14pt}</style>
+<link rel="stylesheet" href="https://cs6.swfu.edu.cn/org.css" type="text/css">
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2018 Free Software Foundation, Inc.
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -63,67 +62,54 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org3740257">文件清单</a></li>
-<li><a href="#org8e2ba48">各文件的使用说明</a>
+<li><a href="#orgfc5bf2c">文件清单</a></li>
+<li><a href="#org3e7ff43">各文件的使用说明</a>
 <ul>
-<li><a href="#orga63e2a2">swfuthesis.cls</a></li>
-<li><a href="#org4b153cc">tutorial &#x2014; 一个可以当模板用的小教程</a></li>
+<li><a href="#org7a0a69a">swfuthesis.cls</a></li>
+<li><a href="#org2f9727a">tutorial &#x2014; 一个可以当模板用的小教程</a></li>
 </ul>
 </li>
-<li><a href="#org89a0fa0">注意事项</a></li>
+<li><a href="#org74f5f36">注意事项</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org3740257" class="outline-2">
-<h2 id="org3740257">文件清单</h2>
-<div class="outline-text-2" id="text-org3740257">
+<div id="outline-container-orgfc5bf2c" class="outline-2">
+<h2 id="orgfc5bf2c">文件清单</h2>
+<div class="outline-text-2" id="text-orgfc5bf2c">
 <p>
-本模版的最新版本可以从 <a href="https://github.com/wx672/texmf/tree/master/doc/latex/swfu/swfcthesis/tutorial">https://github.com/wx672/texmf/tree/master/doc/latex/swfu/swfcthesis/tutorial</a> 下载。 模版目录中包含如下内容：
+本模版的最新版本可以从 <a href="https://github.com/wx672/texmf/tree/master/doc/latex/swfu/swfcthesis/tutorial">github</a> 下载。 模版目录中包含如下内容：
 </p>
 <ul class="org-ul">
 <li><a href="./swfuthesis.cls"><b>swfuthesis.cls</b></a> &#x2014; 是论文模版的class文件，它决定了论文的排版格式</li>
 <li><a href="./readme.html"><b>readme.html</b></a> &#x2014; 本说明文件</li>
-<li><a href="./tutorial"><b>tutorial</b></a> &#x2014; 小教程，同时也是一个标准模板。其中包括，
+<li><a href="./tutorial"><b>tutorial</b></a> &#x2014; 小教程，同时也是一个标准模板。其中包括
 <ul class="org-ul">
 <li><a href="tutorial/tutorial.tex"><b>tutorial.tex</b></a> &#x2014; 源文件</li>
 <li><a href="tutorial/tutorial.pdf"><b>tutorial.pdf</b></a> &#x2014; 编译好的PDF</li>
 <li><a href="tutorial/tutorial.bib"><b>tutorial.bib</b></a> &#x2014; 参考文献</li>
 <li><a href="./tutorial/tutorial.mkv"><b>tutorial.mkv</b></a> &#x2014; 20分钟视频教程</li>
 </ul></li>
-<li><a href="sample/"><b>sample</b></a> &#x2014; 完整的论文实例
-<ul class="org-ul">
-<li><a href="./sample/sample.tex"><b>sample.tex</b></a> &#x2014; TeX源文件</li>
-<li><a href="./sample/sample.pdf"><b>sample.pdf</b></a> &#x2014; 编译完成的PDF文件</li>
-<li><a href="./sample/sample.bib"><b>sample.bib</b></a> &#x2014; 参考文献实例</li>
-<li><a href="./sample/chapters"><b>chapters</b></a> &#x2014; 章节实例。此目录中的每个TeX文件对应论文的一章。其中，
-<ul class="org-ul">
-<li><a href="./sample/chapters/preamble.tex"><b>preamble.tex</b></a> &#x2014; 封面、摘要、指导教师、鸣谢……示例</li>
-<li><a href="./sample/chapters/dogstick.tex"><b>dogstick.tex</b></a> &#x2014; 插入图片示例</li>
-<li><a href="./sample/chapters/appendix.tex"><b>appendix.tex</b></a> &#x2014; 插入表格示例</li>
-<li><a href="./sample/chapters/src.tex"><b>src.tex</b></a> &#x2014; 插入程序代码示例</li>
-</ul></li>
-</ul></li>
-<li><a href="./example"><b>example</b></a> &#x2014; 历年毕业论文范例，可供参考</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org8e2ba48" class="outline-2">
-<h2 id="org8e2ba48">各文件的使用说明</h2>
-<div class="outline-text-2" id="text-org8e2ba48">
+
+<div id="outline-container-org3e7ff43" class="outline-2">
+<h2 id="org3e7ff43">各文件的使用说明</h2>
+<div class="outline-text-2" id="text-org3e7ff43">
 </div>
-<div id="outline-container-orga63e2a2" class="outline-3">
-<h3 id="orga63e2a2">swfuthesis.cls</h3>
-<div class="outline-text-3" id="text-orga63e2a2">
+<div id="outline-container-org7a0a69a" class="outline-3">
+<h3 id="org7a0a69a">swfuthesis.cls</h3>
+<div class="outline-text-3" id="text-org7a0a69a">
 <ul class="org-ul">
 <li>通常你不需要改动 <a href="./swfuthesis.cls"><code>swfuthesis.cls</code></a> 文件，将 <code>\documentclass{swfuthesis}</code> 做为TeX文件的开始即可。</li>
 <li>写论文时，请参照 <a href="./tutorial/tutorial.tex"><code>tutorial.tex</code></a> 文件的开始部分。</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4b153cc" class="outline-3">
-<h3 id="org4b153cc">tutorial &#x2014; 一个可以当模板用的小教程</h3>
-<div class="outline-text-3" id="text-org4b153cc">
+<div id="outline-container-org2f9727a" class="outline-3">
+<h3 id="org2f9727a">tutorial &#x2014; 一个可以当模板用的小教程</h3>
+<div class="outline-text-3" id="text-org2f9727a">
 <ul class="org-ul">
 <li><p>
 <a href="tutorial/tutorial.tex"><b>tutorial.tex</b></a> &#x2014; 源文件
@@ -134,8 +120,8 @@ for the JavaScript code in this tag.
 </p>
 <pre class="example">
 latexmk tutorial
-
 </pre>
+
 <p>
 前提是你安装并配置好了 <code>latexmk</code> 。你可以参考我的 <a href="https://github.com/wx672/dotfile/blob/master/dot.latexmkrc"><code>.latexmkrc</code></a> 文件。
 </p></li>
@@ -143,9 +129,11 @@ latexmk tutorial
 </div>
 </div>
 </div>
-<div id="outline-container-org89a0fa0" class="outline-2">
-<h2 id="org89a0fa0">注意事项</h2>
-<div class="outline-text-2" id="text-org89a0fa0">
+
+
+<div id="outline-container-org74f5f36" class="outline-2">
+<h2 id="org74f5f36">注意事项</h2>
+<div class="outline-text-2" id="text-org74f5f36">
 <ol class="org-ol">
 <li>不要随意改动你不理解的东西，以免造成不必要的麻烦。</li>
 <li>建议用 <code>Emacs + AucTeX</code> 来编辑TeX文件。</li>
@@ -156,7 +144,7 @@ latexmk tutorial
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: 王晓林</p>
-<p class="date">Created: 2018-12-12 Wed 09:53</p>
+<p class="date">Created: 2019-11-26 Tue 13:52</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

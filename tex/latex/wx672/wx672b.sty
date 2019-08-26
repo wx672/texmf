@@ -39,4 +39,10 @@
 
 \setbeamersize{text margin right=1em}
 \setbeamersize{text margin left=1em}
-%\setbeamercovered{transparent}
+% \setbeamercovered{transparent}
+
+\newenvironment{iblock}[1] % for images
+{\setbeamercolor{block title}{bg=white}\setbeamercolor{block body}{bg=white}\begin{block}{#1}}
+  {\end{block}}
+
+\renewcommand\emph[1]{{\itshape #1}}

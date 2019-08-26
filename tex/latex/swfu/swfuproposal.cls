@@ -10,12 +10,18 @@
 
 \RequirePackage{ifxetex} % XeTeX only
 \RequirePackage{zhlipsum}
+
+\newfontfamily\nerd{DejaVu Sans Mono Nerd Font Complete}%
+\newcommand\unchecked{{\nerd □}} %ballot box
+\newcommand\checked{{\large\nerd 🗹}} %☑
+
 \RequirePackage{pgfkeys}
 
 \pgfkeys{%
   Title/.store in          = \@title,          %论文标题
   Author/.store in         = \@author,         %作者
   Projfrom/.store in       = \SWFU@Projfrom, Projfrom=自选, %
+  Chk/.store in          = \SWFU@Chk, Chk={\unchecked}, %课题来源打勾
   Studid/.store in         = \SWFU@Studid,         %学号
   Advisor/.store in        = \SWFU@Advisor, Advisor=王晓林, %指导教师
   AdvisorSig/.store in     = \SWFU@AdvisorSig,     %指导教师签名
@@ -49,10 +55,15 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage{graphicx} % before xltxtra
 \graphicspath{{./figs/}{./}{../}} %mind the trailing “/”
 
-\RequirePackage{indentfirst}
-\RequirePackage{tabu,longtable,multicol,multirow,array}
+\RequirePackage{tabularx,longtable,booktabs,makecell,multicol,multirow,array}
+\renewcommand{\arraystretch}{1.5}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % centering m column
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % centering p column
+\newcolumntype{R}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{L}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
-\RequirePackage{enumitem} % \setlist
+\RequirePackage{indentfirst,enumitem} % \setlist
 \setlist{nosep} % kills all vertical spacing
 
 \RequirePackage{wx672hyperref}
@@ -88,40 +99,39 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \begin{center}
     \makebox[14.7em][s]{\Large\heiti 西南林业大学}\\[5mm]
     \makebox[20em][s]{\Large\heiti 本科毕业论文（设计）开题报告}\\[5mm]
-    \vskip 2cm
+    \vskip 3cm
     \begin{large}
     \begin{minipage}{1.0\linewidth}
-      \extrarowsep=^8mm_-7pt
-      \begin{tabu} to \textwidth {@{}rX[l]@{}}
-        论\,文\,题\,目：&%
+      \begin{tabularx}{\textwidth}{@{}rX@{}}
+        论\,文\,题\,目&%
         \makebox[0pt][t]{%
           \begin{minipage}[t]{30em}
-            \centering\parbox[t]{29em}{\centering\textbf{\Large\@title}}
+            \begin{center}
+              \parbox[t]{29em}{\centering\textbf{\Large\@title}}
+            \end{center}
           \end{minipage}}%
-        \rule[-.5ex]{30em}{.1pt}\par%
-        \rule[-.1ex]{30em}{.1pt}\\%
-      \end{tabu}
+        \rule[-1.5ex]{30em}{.1pt}\par%
+        \rule[-1.5ex]{30em}{.1pt}\\%
+      \end{tabularx}
     \end{minipage}
-    \vskip 1cm
+    \vskip 2cm
     \begin{minipage}{.8\linewidth}
       \begin{center}
-        \extrarowsep=^8mm_-7pt
-        \begin{tabu}spread\textwidth{@{}rX[c]@{}}
-          专\hspace{1em}业\hspace{1em}名\hspace{1em}称：&\SWFU@Subject\\\tabucline{2-2}
-          年\hspace{5em}级：&\SWFU@Grade\\\tabucline{2-2}
-          学\hspace{1em}生\hspace{1em}学\hspace{1em}号：&\SWFU@Studid\\\tabucline{2-2}
-          学\hspace{1em}生\hspace{1em}姓\hspace{1em}名：&\@author\\\tabucline{2-2}
-          指导教师（职称）：&\SWFU@Advisor{}（\SWFU@AdvisorTitle）
-          \\\tabucline{2-2}
-          &\\\tabucline{2-2}
-          填\hspace{1em}表\hspace{1em}时\hspace{1em}间：&
-          \SWFU@Year\ 年\ \SWFU@Month\ 月\ \SWFU@Date\ 日\\\tabucline{2-2}
-        \end{tabu}
+        \begin{tabularx}{\textwidth}{@{}rC@{}}
+          专\hspace{1em}业\hspace{1em}名\hspace{1em}称&\SWFU@Subject\\\cline{2-2}
+          年\hspace{5em}级&\SWFU@Grade\\\cline{2-2}
+          学\hspace{1em}生\hspace{1em}姓\hspace{1em}名&\@author\\\cline{2-2}
+          学\hspace{1em}生\hspace{1em}学\hspace{1em}号&\SWFU@Studid\\\cline{2-2}
+          指导教师（职称）&\SWFU@Advisor{}（\SWFU@AdvisorTitle） \\\cline{2-2}
+          &\\\cline{2-2}
+          填\hspace{1em}表\hspace{1em}时\hspace{1em}间&
+          \SWFU@Year{}年\,\SWFU@Month{}月\,\SWFU@Date{}日\\\cline{2-2}
+        \end{tabularx}
       \end{center}
     \end{minipage}
   \end{large}
   \vfill
-  {\Large\textbf{教\,务\,处\,制}}\\[1cm]
+  {\Large\textbf{西南林业大学教务处制}}\\[1cm]
 \end{center}
 \clearpage}
 
@@ -136,24 +146,22 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \item[二、] 开题报告需用计算机打印，一律为 A4 开本，于左侧装订成册。各栏空格不够时，请自
     行加页。
   \item[三、] 开题报告需在第八学期开学之前完成。
+  \item[四、] 开题报告需装入西南林业大学毕业论文（设计）档案袋。
   \end{itemize}
   \clearpage}
 
 \newcommand{\tablebody}{% main part
   \singlespacing\noindent
-%  \extrarowsep=_8pt^8pt
-  \extrarowsep=^2pt
-  \begin{tabu}{|X[-1,c,m]|@{}X[m]@{}|}\tabucline-
+  \begin{tabularx}{\linewidth}{|M{2em}|@{}X@{}|}\hline
     指导教师\par{}基本情况%
-    & \begin{tabu}{c|c|c|X[-1,c,m]|X[-1,c,m]|c}
-      指导教师姓名&性别&年龄&学历或\par{}学位&专业技术\par{}职务或职称&工作单位\\[2pt]\tabucline-
-      \SWFU@Advisor&\SWFU@AdvisorGender&\SWFU@AdvisorAge&
-      \SWFU@AdvisorDegree&\SWFU@AdvisorTitle&\SWFU@AdvisorWhere\\\tabucline-
-      &&&&&\\
-    \end{tabu}\\\tabucline-
-    课题来源&\quad 1. 导师课题的一部分；2. 其他（须具体说明）
-    \underline{\quad\SWFU@Projfrom\quad}。\\%\tabucline-
-  \end{tabu}
+    & {\begin{tabularx}{\linewidth}{c|c|c|c|c|C}
+        指导教师姓名&\makecell*{性\\别}&\makecell*{年\\龄}&\makecell*{学历或\\学位}&\makecell*{专业技术\\职务或职称}&工作单位\\\hline
+        \SWFU@Advisor&\SWFU@AdvisorGender&\SWFU@AdvisorAge&
+        \SWFU@AdvisorDegree&\SWFU@AdvisorTitle&\SWFU@AdvisorWhere\\\hline
+        &&&&&\\
+      \end{tabularx}}\\\hline
+    课题来源&\quad \SWFU@Chk{}科研项目\quad\SWFU@Chk{}社会实践\quad\SWFU@Chk{} 大学生创新创业项目\quad\SWFU@Chk{}其它来源\\
+  \end{tabularx}
   \vskip -1ex
   \begin{mainbodybox}{1.\, 该研究的目的、意义}
     \SWFU@Partone
@@ -180,15 +188,14 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \end{mainbodybox}
   \vspace*{-1ex}
   \noindent
-  \begin{tabu}{|r@{\ }X|}\tabucline-
+  \begin{tabularx}{\linewidth}{|r@{\ }X|}\hline
   &指导教师意见\\[2ex]
     &\hspace{3em}{\Large\SWFU@AdvisorComment}\\[-1ex]
     &\hfill 签名：\makebox[7em]{\SWFU@AdvisorSig}\\
-    &\hfill\SWFU@Year 年 \SWFU@Month 月 \SWFU@Date 日\\\tabucline-
-  \end{tabu}\vspace*{-1pt}
-  % \extrarowsep=_17pt
+    &\hfill\SWFU@Year 年 \SWFU@Month 月 \SWFU@Date 日\\\hline
+  \end{tabularx}\vspace*{-1pt}
   \noindent
-  \begin{tabu}{|m{1em}|X[15,m]|m{1em}|X[15,m]|}
+  \begin{tabularx}{\linewidth}{|m{1em}|X|m{1em}|X|}
     教研室意见&%
     \begin{tabular}{l}%
       教研室负责人：\\%[6ex]
@@ -200,8 +207,8 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
       教学院系部负责人：\\%[4ex]
       \vspace*{10ex}\\
       \hspace{5em}时间：\hspace{4em}年\hspace{2em}月\hspace{2em}日\\%[-3ex]
-    \end{tabular}\\\tabucline-
-  \end{tabu}}
+    \end{tabular}\\\hline
+  \end{tabularx}}
 
 \newcommand{\makeproposal}{% preliminary pages
   \SWFUtitlepage{}

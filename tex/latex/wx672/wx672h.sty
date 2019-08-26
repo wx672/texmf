@@ -52,3 +52,7 @@ nomarginpar,headheight=15pt,% to avoid "headheight too small"
 \graphicspath{{./figs/}{../figs/}} %note that the trailing “/” is required
 
 \setcounter{tocdepth}{2}
+
+\newenvironment{iblock}[1]
+{\setbeamercolor{block title}{bg=white}\setbeamercolor{block body}{bg=white}\begin{block}{#1}}
+  {\end{block}}

@@ -1,11 +1,13 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{wx672ctex}
 
+% Doesn't work! 
+% ERROR: LaTeX3 Error: The key 'ctex/section/format' is unknown and is being ignored.
 
 \RequirePackage[scheme=chinese,zihao=-4]{ctex}% chinese|plain
-\ctexset{  
-  punct=kaiming,
-  section/format = \Large\bfseries,
+\ctexset{%
+  punct=kaiming,%
+  section/format = \Large\bfseries,%
   chapter/name = {},%
   chapter/number = {\thechapter},%
 }

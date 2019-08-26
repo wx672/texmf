@@ -1,0 +1,31 @@
+\documentclass{timetable}
+
+\begin{document}
+\pagecolor{gray!5}
+
+\pgfkeys{
+  Term={2019 -- 2020 -- 02},
+  % Teacher={Wang Xiaolin},
+}
+
+\begin{timetable}
+  % \class{lecture}{1,10}{Computer Networks}{1 -- 8}{A220}  % Mon, 10:00
+  % \class{lecture}{2,14}{Computer Networks}{1,3,5,7}{A434} % Tue, 14:00, odd
+  % \class{lab}{3,10}{Net lab}{2,4,6,8}{D215}               % Wed, 10:00, even
+
+  \class{lecture}{1,14}{OS}{1 -- 16}{A366} % Mon, 14:00
+  \class{lab}{1,16}{OS lab}{1 -- 16}{D312}                % Mon, 16:00
+
+  \class{lecture}{4,10}{LAP}{1 -- 16}{4-603}              % Thu, 10:00
+  \class{lab}{4,16}{LAP lab}{1 -- 16}{D216}               % Thu, 16:00
+
+  % \class[6]{office}{2,10}{Office hours}{1 -- 16}{D225}
+  % \class[2.5]{office}{4,13}{Office hours}{1-8}{D225}
+\end{timetable}
+
+\end{document}
+  
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

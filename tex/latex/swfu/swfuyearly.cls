@@ -65,17 +65,17 @@ left=2.5cm, right=2.5cm,
 \newCJKfontfamily\sig{signature}
 \newfontfamily\purisa{Purisa}
 
-\newcommand{\Signit}[3]{%\Signit{5cm}{-2cm}{../signature}
-  \begin{tikzpicture}[overlay,remember picture]%
-    \node [xshift=#1,yshift=#2] at (current page.center) {%
-      \includegraphics[scale=.1]{#3}};
-  \end{tikzpicture}}
+% \newcommand{\Signit}[3]{%\Signit{5cm}{-2cm}{../signature}
+%   \begin{tikzpicture}[overlay,remember picture]%
+%     \node [xshift=#1,yshift=#2] at (current page.center) {%
+%       \includegraphics[scale=.1]{#3}};
+%   \end{tikzpicture}}
 
-\newcommand{\Sumup}[4]{%\Sumup{.4cm}{4cm}{.1}{./text}
-  \begin{tikzpicture}[overlay,remember picture]%
-    \node [xshift=#1,yshift=#2] at (current page.center) {%
-      \includegraphics[scale=#3]{#4}};
-  \end{tikzpicture}}
+% \newcommand{\Sumup}[4]{%\Sumup{.4cm}{4cm}{.1}{./text}
+%   \begin{tikzpicture}[overlay,remember picture]%
+%     \node [xshift=#1,yshift=#2] at (current page.center) {%
+%       \includegraphics[scale=#3]{#4}};
+%   \end{tikzpicture}}
 
 \newcommand{\makeform}{
   \begin{center}
@@ -97,7 +97,7 @@ left=2.5cm, right=2.5cm,
       个人总结\par\rotatebox[origin=c]{270}{（}\par{}
       履行岗位职责情况\par\vspace{-1.5ex}\hfill{}、\par\vspace{1ex}
       工作成果等\par\rotatebox[origin=c]{270}{）}}} &\kaishu\SWFU@Sumup\\[-5em]
-      & \hfill\makebox[16em][l]{本人签字：{\kaishu\SWFU@Sig}}\\\hline
+      & \hfill\makebox[16em][l]{本人签字：{\SWFU@Sig}}\\\hline
       \mkvspace{2ex}{所在单位考核意见} &\\[-3em]
       & \hfill\makebox[16em][l]{签章}\par
       \hfill\makebox[12em][r]{年\hspace{3em}月\hspace{3em}日}\\\hline

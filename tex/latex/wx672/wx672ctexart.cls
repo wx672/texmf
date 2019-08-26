@@ -6,8 +6,7 @@
 % Do not \RequirePackage{wx672ctex} % conflict with ctexart
 
 \ctexset{  
-  % zihao=false, % -4|5|false
-  %punct=kaiming,
+  % punct=kaiming,
   section/format = \Large\bfseries,
 }
 
