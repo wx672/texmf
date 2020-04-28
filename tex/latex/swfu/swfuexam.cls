@@ -45,7 +45,7 @@
 \RequirePackage{dashrule} % \dashfill
 \RequirePackage{amsmath,amsfonts,amssymb}
 \RequirePackage{fancybox} % for \fancyput
-\RequirePackage{multicol,varwidth,marvosym,soul,tasks}
+\RequirePackage{multicol,varwidth,marvosym,soul,tasks,indentfirst}
 \RequirePackage{setspace} % \singlespacing, \onehalfspacing, \doublespacing
 
 \RequirePackage{tabularx}
@@ -122,5 +122,9 @@
   punct=kaiming,
   section/format = \Large\bfseries,
 }
+
+\newcommand{\blank}[1]{\underline{\hspace{#1}}}
+\newcommand{\blankone}{\underline{\hspace{1em}}}
+\newcommand{\blanksix}{\underline{\hspace{6em}}}
 
 \onehalfspacing

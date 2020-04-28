@@ -7,15 +7,18 @@
 \RequirePackage{pgfkeys}
 
 \pgfkeys{%
-  Author/.store in        = \@author,%
-  Title/.store in         = \@title,%
-  enTitle/.store in       = \SWFU@enTitle, %
-  enAuthor/.store in      = \SWFU@enAuthor, %
-  Advisor/.store in       = \SWFU@Advisor, %
-  AdvisorTitle/.store in  = \SWFU@AdvisorTitle,%
-  Month/.store in         = \SWFU@Month, %
-  Year/.store in          = \SWFU@Year, %
-  Major/.store in         = \SWFU@Major, %  
+  Author/.store in        = \@author, Author = 学生姓名？,% 
+  Title/.store in         = \@title, Title = 题目？,% 
+  ID/.store in            = \SWFU@ID, ID = 学号？,% 
+  Major/.store in         = \SWFU@Major, Major = 专业？,%  
+  enTitle/.store in       = \SWFU@enTitle, enTitle = 英文标题？, %
+  enAuthor/.store in      = \SWFU@enAuthor, enAuthor = 英文学生姓名？,%
+  Advisor/.store in       = \SWFU@Advisor, Advisor = 指导教师姓名（职称）？,%
+  % AdvisorTitle/.store in  = \SWFU@AdvisorTitle,%
+  Reviewer/.store in      = \SWFU@Reviewer, Reviewer = 评阅人姓名（职称）？,%
+  Month/.store in         = \SWFU@Month, Month = ？,%
+  Date/.store in          = \SWFU@Date, Date = ？,%
+  Year/.store in          = \SWFU@Year, Year = ？,%
 }
 
 \newcommand{\swfusetup}[1]{\pgfkeys{#1}}
@@ -34,7 +37,7 @@
 
 %%%%% geometry
 \RequirePackage[%showframe,showcrop,
-top=3cm,bottom=2.5cm,left=3cm,right=2.5cm,
+top=3cm,bottom=2cm,left=3cm,right=2.5cm,
 headsep=6mm,footskip=1mm,headheight=15pt, % to avoid "headheight too small"
 nomarginpar]{geometry}
 
@@ -155,35 +158,59 @@ url=false,doi=false,isbn=false]{biblatex}
   \begin{center}\begin{minipage}{#1\textwidth}\begin{singlespace}}%
       {\end{singlespace}\end{minipage}\end{center}}
 
-
 \renewcommand{\maketitle}{% Title page layout
   \begin{titlepage}
+    \vspace*{1mm}
     \begin{center}
-      \makebox[14.7em][s]{\huge 西南林业大学}\\[5mm]%
-      \makebox[25.75em][s]{\Huge\textbf{本科毕业\hspace{-.5ex}（设计）\hspace{-.5ex}论文}}\\[5mm]%
-      \makebox[12em][s]{\hspace{.5em}\LARGE（\SWFU@Year{}届）}\\[60pt]%
-      \begin{minipage}{.8\linewidth}
-        \begin{Large}
-          {\setlength{\extrarowheight}{20pt}%
-          \begin{tabularx}{\textwidth}{@{}>{\bfseries}rC@{}}%
-            题\qquad{}目：& \makebox[0pt][t]{% wrapable long title
-              \begin{minipage}[t]{15em}
-                \centering\parbox[t]{14em}{\centering\@title}
-              \end{minipage}}%
-            \rule[-.5ex]{15em}{.1pt}\par%
-            \rule[-.1ex]{15em}{.1pt}\\
-            分院系部： &大数据与智能工程学院\\[-.6ex]\cline{2-2}%
-            专\qquad{}业：&\SWFU@Major\\[-.6ex]\cline{2-2}%
-            姓\qquad{}名：&\@author\\[-.6ex]\cline{2-2}%
-            导师姓名： &\SWFU@Advisor\\[-.6ex]\cline{2-2}%
-            导师职称： &\SWFU@AdvisorTitle\\[-.6ex]\cline{2-2}
+      \makebox[17em][s]{\includegraphics[width=17em]{swfulogo-text}}\\[5mm]%
+      \makebox[19em][s]{{\LARGE\heiti 本科毕业论文\hspace{-.5ex}（设计）}}\\[1mm]%
+      \makebox[9em][s]{\hspace{.5em}{\LARGE\heiti（\SWFU@Year{}\,届）}}\\[2mm]%
+      \makebox[8em][s]{\includegraphics[width=8em]{swfulogo-emblem}}\\[1mm]
+      \begin{minipage}{\linewidth}
+        \begin{large}
+            \begin{center}
+              \begin{tabularx}{.88\textwidth}{>{\bfseries}rC}%
+                题\,目&\makebox[0pt][t]{% wrapable long title
+                                 \begin{minipage}[t]{20em}
+                                   \centering\parbox[t]{18em}{\centering\@title}
+                                 \end{minipage}}%
+                                 \rule[-.5ex]{13cm}{.1pt}\par%
+                                 \rule[-.1ex]{13cm}{.1pt}\\
+              \end{tabularx}
+            \end{center}
+          {\setlength{\extrarowheight}{5pt}%
+            \begin{tabularx}{\textwidth}{>{\heiti}r>{\centering\arraybackslash\hsize=1.1\hsize\linewidth=\hsize}X>{\heiti}r>{\hsize=.9\hsize\linewidth=\hsize\centering\arraybackslash}X}
+            学\,院&大数据与智能工程学院%
+            &\hspace{1em}专\,业&\SWFU@Major\\[-.6ex]\cline{2-2}\cline{4-4}%
+            学生姓名&\@author&\hspace{1em}学\,号&\SWFU@ID\\[-.6ex]\cline{2-2}\cline{4-4}%
+            指导教师&\SWFU@Advisor&&\\[-.6ex]\cline{2-4}%
+            评阅人&\SWFU@Reviewer&&\\[-.6ex]\cline{2-4}
           \end{tabularx}}
-        \end{Large}
+        \end{large}
       \end{minipage}
       \vfill
-      {\Large\textbf{\SWFU@Year\ 年\ \SWFU@Month\ 月}}\\[1cm]
+      {\Large\heiti\SWFU@Year\,年\,\SWFU@Month\,月\,\SWFU@Date\,日}\\%[1cm]
     \end{center}%
   \end{titlepage}%
+  \clearpage%\shipout\null
+  \thispagestyle{empty}
+  \begin{center}
+    {\LARGE\heiti 原创性声明}
+  \end{center}
+  \begin{large}
+    \hspace{2em}本人郑重声明，所呈交的学位论文是本人在指导教师指导下进行的研究工作及取得的
+    研究成果，论文成果归西南林业大学所有。尽我所知，除了论文中特别加以标注和致谢的地方外，
+    论文中不包含其他人已经发表或撰写过的研究成果，也不包含为获得 西南林业大学或其他教育机构
+    的学位或证书而使用过的材料。与我共同工作的同志对本研究所作的贡献均已在论文中作了明确的
+    说明。
+
+    申请学位论文与资料若有不实之处，本人承担一切相关责任。
+    \vspace*{1em}
+    \begin{flushright}\heiti
+      作者签名：\underline{\hspace{7em}}\qquad{}%
+      日期：\SWFU@Year{}\,年\,\SWFU@Month{}\,月\,\SWFU@Date{}\,日
+    \end{flushright}
+  \end{large}
 }
 
 \newenvironment{abstract}{%
@@ -191,7 +218,7 @@ url=false,doi=false,isbn=false]{biblatex}
   \begin{center}
     {\singlespacing\Large\textbf{\@title}}\\[5mm]%
     \large{\@author}\par
-    \large{（西南林业大学大数据与智能工程学院，云南昆明\, 650224）}
+    \large{（西南林业大学\,大数据与智能工程学院，云南昆明\, 650224）}
   \end{center}%
   \vspace{3ex}%
   \noindent\textbf{摘\hspace{1em}要：}}{}

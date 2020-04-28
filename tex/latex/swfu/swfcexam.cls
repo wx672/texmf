@@ -1,3 +1,4 @@
+% Obsolete! Please use swfuexam.cls instead.
 % 西南林业大学试卷
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfcexam}%[TeX Live 2016/Debian SWFC exam paper]
@@ -19,6 +20,16 @@
 \ProcessOptions\relax
 
 \LoadClass[12pt]{article}
+\RequirePackage[scheme=chinese,zihao=-4]{ctex}% chinese|plain
+% \ctexset{%
+%   punct=kaiming,%
+%   section/format = \Large\bfseries,%
+%   chapter/name = {},%
+%   chapter/number = {\thechapter},%
+% }
+
+\RequirePackage{wx672common}
+\RequirePackage{wx672fonts}
 
 \RequirePackage{calc,ifthen}
 \RequirePackage{geometry}
@@ -41,7 +52,6 @@
 
 \newcommand{\code}[1]{\texttt{#1}}
 
-\RequirePackage{wx672ctex}
 
 \newlength{\bindingfieldlength}
 \setlength{\bindingfieldlength}{1in}

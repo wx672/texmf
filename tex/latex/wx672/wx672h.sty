@@ -47,7 +47,7 @@ nomarginpar,headheight=15pt,% to avoid "headheight too small"
 
 % defined in wx672common
 \renewcommand{\Navy}[1]{\textcolor{black}{#1}}
-\renewcommand{\code}[1]{\emph{\texttt{#1}}}
+\newcommand\code[1]{{\ttfamily #1}}
 
 \graphicspath{{./figs/}{../figs/}} %note that the trailing “/” is required
 
