@@ -68,7 +68,7 @@ left=1.5cm,right=1.5cm
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \renewcommand{\arraystretch}{1.5}
 
-\newcommand{\mkvspace}[2]{\rule{0pt}{#1}\par{}#2\par{}\rule{0pt}{#1}}%\mkvspace{12ex}{text}
+\newcommand\vfixed[1]{\rule{0pt}{30pt}\par{}#1\par{}\rule{0pt}{30pt}}%\vfixed{text}
 
 \newcommand{\makeform}{%
   \pagestyle{empty}%
@@ -89,10 +89,10 @@ left=1.5cm,right=1.5cm
  \end{tabularx}} \\\hline
     \end{tabularx}\\[-1pt]
     \begin{tabularx}{\textwidth}{|M{6em}|@{}>{\kaishu}C@{}|}
-      \mkvspace{30pt}{学术研究} &\SWFU@Research\\\hline
-      \mkvspace{30pt}{外语水平及\par{}双语教学经历} & \SWFU@Experience\\\hline
-      \mkvspace{30pt}{获奖情况} & \SWFU@Award\\\hline
-      \mkvspace{30pt}{教研室审核\par{}意见} & \\\hline
-      \mkvspace{30pt}{教学院（部）\par{}审核意见} & \\\hline
-      \mkvspace{30pt}{教务处审核\par{}意见} & \\\hline
+      \vfixed{学术研究} &\SWFU@Research\\\hline
+      \vfixed{外语水平及\par{}双语教学经历} & \SWFU@Experience\\\hline
+      \vfixed{获奖情况} & \SWFU@Award\\\hline
+      \vfixed{教研室审核\par{}意见} & \\\hline
+      \vfixed{教学院（部）\par{}审核意见} & \\\hline
+      \vfixed{教务处审核\par{}意见} & \\\hline
     \end{tabularx}}}

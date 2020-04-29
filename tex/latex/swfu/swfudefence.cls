@@ -1,3 +1,4 @@
+% Obsolete! Use swfucomments.cls instead.
 % 西南林业大学本科毕业（设计）论文答辩申请表、评阅意见表、指导教师意见表
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfudefence}

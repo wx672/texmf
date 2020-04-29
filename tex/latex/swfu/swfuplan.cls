@@ -1,3 +1,4 @@
+% Obsolete!
 % 西南林业大学本科毕业生毕业论文（设计）毕业实习指导计划表
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfuplan}

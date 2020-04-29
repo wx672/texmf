@@ -1,6 +1,7 @@
+% Obsolete! Use swfuproposalm instead.
 % 西南林业大学学术型硕士生学位论文开题报告
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{swfuproposalm}
+\ProvidesClass{swfcproposalmsc}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{aritcle}}
 \ProcessOptions\relax

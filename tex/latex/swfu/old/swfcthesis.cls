@@ -1,6 +1,4 @@
-% works well.
-% TODO: try ctexrep
-% https://tex.stackexchange.com/questions/36988/regarding-the-book-report-and-article-document-classes-what-are-the-mai
+% Obsolete! Use swfuthesis.cls instead.
 % 西南林业大学本科毕业（设计）论文
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfcthesis}
@@ -9,41 +7,42 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions\relax
 
-\LoadClass[scheme=chinese,zihao=-4,oneside,openany]{ctexbook}
-
-\ctexset{
-  section/format = \Large\bfseries,
-  chapter/name = {},
-  chapter/number = {\thechapter},
-}
+\LoadClass[scheme=chinese,zihao=-4]{ctexbook}
 
 \RequirePackage{ifxetex} % XeTeX only
 
-
-%%%%% geometry
 \RequirePackage[%showframe,showcrop,
 top=3cm,bottom=2.5cm,left=3cm,right=2.5cm,
 nomarginpar,headheight=15pt, % to avoid "headheight too small"
 ]{geometry}
 
-
-%%%%% misc
-\RequirePackage{etoolbox,xkvltxp}
+\RequirePackage{etoolbox}
 \RequirePackage{indentfirst}
 \RequirePackage{tabu,longtable,multicol,multirow,array,booktabs}
 \RequirePackage{ulem}
-\RequirePackage[bottom]{footmisc} % stick footnote at bottom of page
 \RequirePackage{enumitem} % \setlist
 \setlist{nosep} % kills all vertical spacing
 
 
-%%%%% graphicx
+% graphicx
 \RequirePackage{graphicx}
 \graphicspath{% mind the trailing "/"
   {./figs/}{../figs/}{./img/}{../img/}{./pics/}{../pics/}{./}{../}}
 
+% titlesec
+% \RequirePackage{titlesec} % \titleformat, \titlespacing
+% \titleformat{\chapter}{\centering\LARGE\bfseries}{\thechapter}{1em}{}
+% \titlespacing{\chapter}{0pt}{*0}{*4}
 
-%%%%% fancyhdr
+% \setcounter{secnumdepth}{4}
+% \setcounter{tocdepth}{3}
+
+% add dotted line for chapters in toc
+% \renewcommand*\l@chapter{\@dottedtocline{1}{0em}{1.5em}}
+
+\RequirePackage[bottom]{footmisc} % stick footnote at bottom of page
+
+% fancyhdr
 \RequirePackage{fancyhdr}
 \fancyhf{}
 \fancyfoot[C]{\fontsize{8}{8}\selectfont -- \thepage\ --}
@@ -54,12 +53,15 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \fancyfoot[C]{\fontsize{8}{8}\selectfont -- \thepage\ --}
   \renewcommand{\headrulewidth}{0pt}}
 
+% caption
+\RequirePackage{caption} % \captionsetup
+\RequirePackage{subcaption}
+\captionsetup{labelsep=quad}
 
-%%%%% hyperref
 \RequirePackage{xcolor}% [monochrome]
 \RequirePackage{hyperref}
 \hypersetup{%
-  bookmarksnumbered, breaklinks=true,
+  bookmarksnumbered, plainpages=false, breaklinks=true,
   colorlinks=false,
   pdfborderstyle={/S/U/W .3},% border style will be underline of width .3pt 
   linkbordercolor=red,       % internal links
@@ -69,51 +71,61 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 }
 \def\UrlBreaks{\do\/\do-} % break long url
 
-
-%%%%% fixme
+\RequirePackage{xkvltxp}
 \RequirePackage{fixme}
-\fxsetup{margin=true, marginclue=false, status=draft, author=Fixme, inline=false, theme=color}
+\fxsetup{
+  margin=false,
+  status=draft,
+  author=Fixme,
+  inline=true,
+  marginclue=true,
+  theme=color
+}
 
-
-%%%%% fonts
+% before xunicode!
 \RequirePackage{amsmath,amsfonts,amssymb,marvosym,pifont}
 
+\RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
+\RequirePackage[CJKmath=true,AutoFakeSlant=true,PunctStyle=kaiming]{xeCJK} % slant header
 
-%%%%% setspace (\singlespacing, \onehalfspacing, \doublespacing)
+% \singlespacing, \onehalfspacing, \doublespacing
 \RequirePackage[doublespacing]{setspace}
 \renewcommand{\doublespacing}{\setstretch{1.6}}
 
+\RequirePackage[backend=biber,
+style=chem-angew,sorting=none,
+hyperref=true,doi=false,isbn=false,%url=false,
+date=iso,seconds=true,% to suppress compile warnings
+]{biblatex}
 
-%%%%% tikz
-\RequirePackage{tikz}
-\usetikzlibrary{%
-  calc,positioning,fit,%
-  arrows,shapes,patterns,quotes,%
-  decorations.pathmorphing,%
-  backgrounds,scopes,%
-  mindmap,trees,%
-  tikzmark,%
-}%
-
-
-%%%%% biblatex
-\RequirePackage[backend=biber,style=gb7714-2015]{biblatex}
 \renewcommand*{\bibfont}{\small} % 11pt
+\let\cite=\supercite%
 
+% https://tex.stackexchange.com/questions/23832/biblatex-make-title-hyperlink-to-doi-url-if-available
+\newbibmacro{string+url}[1]{%
+  \iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}}
 
-%%%%%% caption
-\RequirePackage{caption} % \captionsetup
-\RequirePackage{subcaption}
-\captionsetup{labelsep=quad}
+\DeclareFieldFormat{title}{\usebibmacro{string+url}{\mkbibemph{#1}}}
 
-% set caption label style to, e.g. 3-2.
-\renewcommand{\thefigure}{\thechapter{}-\arabic{figure}}
-\renewcommand{\thetable}{\thechapter{}-\arabic{table}}
-\renewcommand{\thesubfigure}{\thechapter{}-\arabic{subfigure}}
-\renewcommand{\thesubtable}{\thechapter{}-\arabic{subtable}}
+\defaultfontfeatures{Mapping=tex-text}
+% Liberation fonts is a drop-in replacement for Microsoft Times, Arial and Courier fonts
+\setmainfont{Liberation Serif}
+\setsansfont{Liberation Sans}
+%\setmonofont{Liberation Mono}
 
+\setCJKmainfont{Noto Serif CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
+\setCJKmonofont{Noto Sans Mono CJK SC}
 
-%%%%% misc
+\newCJKfontfamily\hei{Noto Sans CJK SC Bold} % \hei{Hello, world!}
+\newCJKfontfamily\song{Noto Serif CJK SC}
+\newCJKfontfamily\kai{AR PL UKai CN}
+\newCJKfontfamily\quotefont{AR PL UKai CN}
+
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+\pagenumbering{arabic}
 \renewcommand{\headrulewidth}{.4pt}
 \urlstyle{tt} % url.sty
 \raggedbottom{}
@@ -125,10 +137,25 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 
 \newcommand{\Appendix}[1]{%
   \renewcommand{\chaptermark}[1]{\markboth{附录\,\thechapter\quad #1}{}}%
+  \titleformat{\chapter}{\centering\LARGE\bfseries}{附录\,\thechapter}{1em}{}
   \appendix}
 
+% set caption label style to, e.g. 3-2.
+\renewcommand{\thefigure}{\thechapter{}-\arabic{figure}}
+\renewcommand{\thetable}{\thechapter{}-\arabic{table}}
+\renewcommand{\thesubfigure}{\thechapter{}-\arabic{subfigure}}
+\renewcommand{\thesubtable}{\thechapter{}-\arabic{subtable}}
 
-%%%%% Variables to hold the text fields for the preliminary pages
+% not used. use \makebox instead.
+\newcommand{\ziju}[1]{\renewcommand{\CJKglue}{\hskip #1}}
+
+\renewcommand{\contentsname}{目\hspace{1em}录}
+\renewcommand{\listfigurename}{插图目录}
+\renewcommand{\listtablename}{表格目录}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+
+% Variables to hold the text fields for the preliminary pages
 \newcommand{\Title}[1]{\gdef\SWFCField@Title{#1}}
 \newcommand{\enTitle}[1]{\gdef\SWFCField@enTitle{#1}}
 \newcommand{\Author}[1]{\gdef\SWFCField@Author{#1}}
@@ -153,7 +180,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \thispagestyle{empty}
   \begin{center}
     \makebox[14.7em][s]{\huge 西南林业大学}\\[5mm]
-    \makebox[25.75em][s]{\Huge\textbf{本科毕业\hspace{-.5ex}（设计）\hspace{-.5ex}论文}}\\[5mm]
+    \makebox[25.75em][s]{\Huge\textbf{本科毕业\hspace{-1em}（设计）\hspace{-1em}论文}}\\[5mm]
     \makebox[12em][s]{\hspace{.5em}\LARGE（\SWFCField@Year{}届）}\\[60pt]
     \begin{minipage}{.8\linewidth}
       \begin{Large}
@@ -209,8 +236,8 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \vspace{2em}
   \noindent\textbf{Abstract: }~\SWFCField@enAbstract\par
   \vspace{1em}
-  \noindent\textbf{Key words: }~\SWFCField@enKeywords%
-}
+  \noindent\textbf{Key words: }~\SWFCField@enKeywords
+  \clearpage}
 
 \newcommand{\advisorinfopage}{% Advisor info page
   \phantomsection{}
@@ -237,7 +264,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \newcommand{\maketailpages}{% tail pages
   \singlespacing{}
   \printbibliography[heading={bibintoc},title={参考文献}]\label{p:ref} % 参考文献
-  %\label{page:bib}
+  \label{page:bib}
   \doublespacing{}
   \advisorinfopage{}                 % 指导教师简介
   \acknowledgmentspage{}             % 鸣谢
@@ -272,12 +299,23 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
   \begin{center}\begin{minipage}{#1\textwidth}\begin{singlespace}}%
       {\end{singlespace}\end{minipage}\end{center}}
 
-
-%%%%% Initial defaults
+% Initial defaults
 \Title{} \Author{} \Advisor{} \AdvisorTitle{} \AdvisorInfo{} \Month{} \Year{} \Subject{}
 \Abstract{} \Keywords{} \Acknowledgments{}
+
 % For the English Abstract.
 \enTitle{} \enAuthor{} \enAbstract{} \enKeywords{}
 
-\setlength{\parindent}{2em}
+%% looks no good. need to adjust \ziju{}
+% \DeclareOption{B}{ % B - BSc
+%   \Degree{本科}}
 
+% \DeclareOption{M}{ % M - MSc
+%   \Degree{硕士研究生}}
+
+% \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
+% \ProcessOptions\relax
+
+% \ExecuteOptions{B} % default to B
+
+\setlength{\parindent}{2em}

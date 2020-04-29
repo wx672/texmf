@@ -8,14 +8,14 @@
 
 \pgfkeys{%
   Formsubtitle/.store in   = \SWFU@Formsubtitle,   % 指导教师意见 | 评阅意见 | 答辩申请表
-  Prjtitle/.store in       = \SWFU@Prjtitle,       % 论文标题
+  Prjtitle/.store in       = \SWFU@Prjtitle,       % 论文(设计)题目
   Studid/.store in         = \SWFU@Studid,         % 学号
   Studname/.store in       = \SWFU@Studname,       % 学生姓名
   Studsbj/.store in        = \SWFU@Studsbj,        % 学生专业
-  Studclass/.store in      = \SWFU@Studclass,      % 学生班级
+%  Studclass/.store in      = \SWFU@Studclass,      % 学生班级
   Studmark/.store in       = \SWFU@Studmark,       % 评分
-  Advisorname/.store in    = \SWFU@Advisorname,    Advisorname = 王晓林,% 指导教师姓名
-  Advisortitle/.store in   = \SWFU@Advisortitle,   Advisortitle = 讲师,  % 指导教师职称
+%  Advisorname/.store in    = \SWFU@Advisorname,    Advisorname = 王晓林,% 指导教师姓名
+%  Advisortitle/.store in   = \SWFU@Advisortitle,   Advisortitle = 讲师,  % 指导教师职称
   Signature/.store in      = \SWFU@Signature,      % 教师签名
   Commenterlabel/.store in = \SWFU@Commenterlabel, % 指导教师 | 评阅人 | 申请人
   Commentslabel/.store in  = \SWFU@Commentslabel,  % 评语： | 指导教师评审意见：
@@ -28,7 +28,7 @@
   Hinttext/.store in       = \SWFU@Hinttext,       % 提示部分的内容
   C/.style = {%评阅意见
     Formsubtitle = 评阅意见,%
-    Hinttitle = 评阅时，请参照以下几个方面提出意见,%
+    Hinttitle = 请参照以下几个方面提出意见,%
     Hinttext = {%
       \begin{enumerate}
       \item 论文选题是否恰当，有何意义；
@@ -42,7 +42,7 @@
     Marklabel = {评分：\underline{\makebox[2.5em]{\purisa\SWFU@Studmark}}\hfill},},
   A/.style = {%指导教师意见
     Formsubtitle = 指导教师意见,
-    Hinttitle = 评阅时，请参照以下几个方面提出意见,
+    Hinttitle = 请参照以下几个方面提出意见,
     Hinttext = {%
       \begin{enumerate}
       \item 工作量和工作态度；
@@ -74,7 +74,7 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
 \ProcessOptions\relax
 
-\LoadClass[scheme=plain]{ctexart}
+\LoadClass[zihao=-4,scheme=plain]{ctexart}
 
 \RequirePackage{graphicx}
 
@@ -92,22 +92,24 @@ left=2.5cm,right=2.5cm,
 \renewcommand{\arraystretch}{1.5}
 \newcommand{\makeform}{\pagestyle{empty}
   {\centering
-    {\LARGE\heiti 西南林业大学本科毕业（设计）论文\SWFU@Formsubtitle}\\[3ex]
-    \begin{tabularx}{\textwidth}{|r|>{\kaishu}C|r|>{\kaishu}C|}
-      \hline
-      论文（设计）题目& \multicolumn{3}{c|}{\kaishu\SWFU@Prjtitle} \\\hline
-      学生学号&\texttt{\SWFU@Studid}&学生姓名&\SWFU@Studname\\\hline
-      学生专业&\SWFU@Studsbj&班\qquad{}级&\texttt{\SWFU@Studclass}\\\hline
-      指导教师姓名&\SWFU@Advisorname&职\qquad{}称&\SWFU@Advisortitle\\\hline
-      \multicolumn{4}{|c|}{\large \SWFU@Hinttitle{}}\\[2ex]
-      \multicolumn{4}{|c|}{\begin{minipage}{.65\linewidth}\SWFU@Hinttext\vskip 5pt\end{minipage}}\\\hline      
+    {\large\heiti 西南林业大学本科毕业（设计）论文\SWFU@Formsubtitle}\\[3ex]
+    \begin{tabularx}{\textwidth}{>{\heiti}r>{\centering\arraybackslash\hsize=1.1\hsize\linewidth=\hsize\kaishu}X>{\heiti}r>{\centering\arraybackslash\hsize=.9\hsize\linewidth=\hsize\kaishu}X}
+      论文(设计)题目：& \multicolumn{3}{c}{\kaishu\SWFU@Prjtitle} \\\cline{2-4}
+      学生姓名：&\SWFU@Studname&\quad{}学号：&\texttt{\SWFU@Studid}\\\cline{2-2}\cline{4-4}
+      学院：&大数据与智能工程学院&\quad{}专业：&\SWFU@Studsbj\\\cline{2-2}\cline{4-4}
+      \\\hline
+      \multicolumn{4}{|c|}{\large\SWFU@Hinttitle{}}\\[2ex]
+      \multicolumn{4}{|l|}{\begin{minipage}{.8\linewidth}%
+          \SWFU@Hinttext%
+          \vskip 5pt%
+        \end{minipage}}\\\hline      
     \end{tabularx}
     \begin{tabularx}{\textwidth}{@{}X}
       \SWFU@Commentslabel\\
       {\kaishu\SWFU@Comments}\\
     \end{tabularx}}
   \vfill
-  \SWFU@Marklabel{}
+  \noindent\SWFU@Marklabel{}
   \SWFU@Commenterlabel{}\underline{\makebox[5em]{\SWFU@Signature}}\hfill
   日期：\underline{\makebox[3.5em]{\purisa\SWFU@Year}}年
   \underline{\makebox[1.5em]{\purisa\SWFU@Month}}月

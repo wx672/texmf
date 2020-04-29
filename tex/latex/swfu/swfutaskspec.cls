@@ -9,7 +9,7 @@
 \pgfkeys{%
   Prjtitle/.store in      = \SWFU@Prjtitle,%
   Signature/.store in     = \SWFU@Signature,%
-  StudSignature/.store in = \SWFU@StudSignature,%
+  StudSignature/.store in = \SWFU@StudSignature, StudSignature=,%
   Studname/.store in      = \SWFU@Studname,%
   Studid/.store in        = \SWFU@Studid,%
   Studclass/.store in     = \SWFU@Studclass,%
@@ -97,7 +97,8 @@ left=2cm,right=2cm
           \hfill\SWFU@Year{}年\SWFU@Month{}月\SWFU@Date{}日%
         \end{minipage}&%%
         \parbox{4em}{\centering 接受任务学生签字}& \begin{minipage}[c][6em]{1.0\linewidth}%
-          \par\vspace{\fill}
+          \makebox[7em][r]{\SWFU@StudSignature}\par%
+          % \par\vspace{\fill}
           \hfill\SWFU@Year{}年\SWFU@Month{}月\SWFU@Date{}日%
         \end{minipage}\\\hline%
         \parbox{3em}{\centering 教研室审核}& \begin{minipage}[c][8em]{1.0\linewidth}%

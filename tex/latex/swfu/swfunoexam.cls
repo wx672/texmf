@@ -1,4 +1,4 @@
-% 西南林业大学双语教学课程申请表
+% 西南林业大学非考试命题表
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfunoexam}
 

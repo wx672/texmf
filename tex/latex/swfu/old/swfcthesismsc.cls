@@ -1,12 +1,13 @@
+% Obsolete! Use swfuthesism.cls instead.
 % 西南林业大学硕士学位论文
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{swfcthesismscctex}
+\ProvidesClass{swfcthesismsc}
 
-% pass unknown options to ctexbook
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
+% pass unknown options to book
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
 
-\LoadClass[a4paper,openany,scheme=chinese,zihao=-4]{ctexbook}
+\LoadClass[a4paper,12pt,openany]{book}
 
 \RequirePackage{ifxetex} % XeTeX only
 
@@ -15,23 +16,28 @@ margin=3cm,%
 nomarginpar,headheight=15pt% to avoid "headheight too small"
 ]{geometry}
 
-\RequirePackage{etoolbox,units,xkvltxp,emptypage}
-\RequirePackage{varwidth,ulem,rotating,float,comment}
+\RequirePackage{emptypage}
+\RequirePackage{etoolbox}
 \RequirePackage{indentfirst}
 \RequirePackage{booktabs,tabu,longtable,multicol,multirow,array}
-\RequirePackage[bottom]{footmisc} % stick footnote at bottom of page
-\RequirePackage{enumitem} % \setlist
-\setlist{nosep} % kills all vertical spacing
+\RequirePackage{ulem}
 
-\RequirePackage{amsmath,amsfonts,amssymb,marvosym,pifont}
-
-%%%%% graphicx
+% graphicx
 \RequirePackage{graphicx} % before xltxtra
 \graphicspath{% mind the trailing "/"
-  {./figs/}{../figs/}{./img/}{../img/}{./}}
+  {./figs/}{../figs/}{./img/}{../img/}{./pics/}{../pics/}{./}{../}}
 
+% titlesec
+\RequirePackage{titlesec} % \titleformat, \titlespacing
+\titleformat{\chapter}{\centering\LARGE\bfseries}{\thechapter}{1em}{}
+\titlespacing{\chapter}{0pt}{*0}{*4}
 
-%%%%% fancyhdr
+% add dotted line for chapters in toc
+% \renewcommand*\l@chapter{\@dottedtocline{1}{0em}{1.5em}}
+
+\RequirePackage[bottom]{footmisc} % stick footnote at bottom of page
+
+% fancyhdr
 \RequirePackage{fancyhdr}
 \fancyhf{}
 \fancyfoot[C]{\fontsize{8}{8}\selectfont\thepage}
@@ -43,13 +49,14 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
   \fancyfoot[C]{\fontsize{8}{8}\selectfont\thepage}
   \renewcommand{\headrulewidth}{0pt}}
 
+\RequirePackage{enumitem} % \setlist
+\setlist{nosep} % kills all vertical spacing
 
-%%%%% hyperref
 \RequirePackage{xcolor}
 \RequirePackage{hyperref}
 \hypersetup{%
-  bookmarksnumbered=true,%
-  breaklinks=true, colorlinks=false,%
+  bookmarksnumbered, plainpages=false, breaklinks=true,
+  colorlinks=false,
   pdfborderstyle={/S/U/W .3},% border style will be underline of width .3pt 
   linkbordercolor=red,       % internal links
   citebordercolor=cyan,      % links to bibliography
@@ -58,20 +65,30 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 }
 \def\UrlBreaks{\do\/\do-} % break long url
 
-
-%%%%% fixme
+\RequirePackage{xkvltxp}
 \RequirePackage{fixme}
-\fxsetup{margin=true, marginclue=false, inline=false, status=draft, author=Fixme, theme=color}
+\fxsetup{
+  margin=false,
+  status=draft,
+  author=Fixme,
+  inline=true,
+  marginclue=true,
+  theme=color
+}
 
+% before xunicode!
+\RequirePackage{amsmath,amsfonts,amssymb,marvosym,pifont}
 
-%%%%% setspace (\singlespacing, \onehalfspacing, \doublespacing)
+\RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
+\RequirePackage[CJKmath=true,AutoFakeSlant=true,PunctStyle=kaiming]{xeCJK} % slant header
+
+% \singlespacing, \onehalfspacing, \doublespacing
 \RequirePackage[doublespacing]{setspace}
 \renewcommand{\doublespacing}{\setstretch{1.6}}
 
-
-%%%%% tikz
 \RequirePackage{tikz}
 \usetikzlibrary{%
+  % external,%
   calc,positioning,fit,%
   arrows,shapes,patterns,quotes,%
   decorations.pathmorphing,%
@@ -80,12 +97,38 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
   tikzmark,%
 }%
 
+\RequirePackage[backend=biber,style=gb7714-2015,
+% style=chem-angew,sorting=none,articletitle=true,
+% hyperref=true,doi=false,isbn=false,%url=false,
+% date=iso,seconds=true,% to suppress compile warnings
+]{biblatex}
 
-%%%%% biblatex
-\RequirePackage[backend=biber,style=gb7714-2015,gbpub=false,gbtype=true,gbpunctin=false,url=false,doi=false,isbn=false]{biblatex}
+\renewcommand*{\bibfont}{\small} % 11pt
+\let\cite=\supercite%
 
+% https://tex.stackexchange.com/questions/23832/biblatex-make-title-hyperlink-to-doi-url-if-available
+% \newbibmacro{string+url}[1]{%
+%   \iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}}
 
-%%%%%
+%\DeclareFieldFormat{title}{\usebibmacro{string+url}{\mkbibemph{#1}}}
+
+\defaultfontfeatures{Mapping=tex-text}
+% Liberation fonts is a drop-in replacement for Microsoft Times, Arial and Courier fonts
+\setmainfont{Liberation Serif}
+\setsansfont{Liberation Sans}
+
+\setCJKmainfont{Noto Serif CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
+\setCJKmonofont{Noto Sans Mono CJK SC}
+
+\newCJKfontfamily\hei{Noto Sans CJK SC Bold} % \hei{Hello, world!}
+\newCJKfontfamily\song{Noto Serif CJK SC}
+\newCJKfontfamily\kai{AR PL UKai CN}
+\newCJKfontfamily\quotefont{AR PL UKai CN}
+
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
 \pagenumbering{arabic}
 \renewcommand{\headrulewidth}{.4pt}
 \urlstyle{tt} % url.sty
@@ -98,10 +141,19 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 
 \newcommand{\Appendix}[1]{%
   \renewcommand{\chaptermark}[1]{\markboth{附录\,\thechapter\quad #1}{}}%
+  \titleformat{\chapter}{\centering\LARGE\bfseries}{附录\,\thechapter}{1em}{}
   \appendix\singlespacing}
 
+% not used. use \makebox instead.
+\newcommand{\ziju}[1]{\renewcommand{\CJKglue}{\hskip #1}}
 
-%%%%% Variables to hold the text fields for the preliminary pages
+\renewcommand{\contentsname}{目\hspace{1em}录}
+\renewcommand{\listfigurename}{插图目录}
+\renewcommand{\listtablename}{表格目录}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+
+% Variables to hold the text fields for the preliminary pages
 \newcommand{\Title}[1]{\gdef\SWFCField@Title{#1}} % 论文题目
 \newcommand{\enTitle}[1]{\gdef\SWFCField@enTitle{#1}} % 论文题目（英文）
 \newcommand{\Author}[1]{\gdef\SWFCField@Author{#1}} % 作者姓名
@@ -143,7 +195,7 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
     \vspace*{18ex}
     \extrarowsep=^3mm_-2mm
     \begin{tabu} to \textwidth {@{}X[r]X[3.8,l]}%
-      {\Large \textbf{论文题目}}&%
+      {\LARGE \textbf{论文题目}}&%
       \makebox[0pt][t]{%
         \begin{minipage}[t]{27em}
           \centering\parbox[t]{26em}{\centering\textbf{\Large\SWFCField@Title}}
@@ -238,8 +290,8 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
     成果，也不包含为获得西南林业大学或其它教育机构的学位或证书而使用过的材料。与我一同工作
     的同志对本研究所做的任何贡献均已在论文中作了明确的说明并表示谢意。
     \begin{flushright}
-      作者签名：\underline{\hspace{7em}}\qquad{}%
-      日期：\SWFCField@Year{}年\SWFCField@Month{}月\SWFCField@DateC{}日
+      作者签名：\underline{\hspace{8em}}\qquad{}%
+      日期：\quad\SWFCField@Year{}年\SWFCField@Month{}月\SWFCField@DateC{}日
     \end{flushright}
   \end{large}
 
@@ -257,8 +309,8 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 
     \vspace{3ex}
     \begin{flushright}
-      作者签名：\underline{\hspace{7em}}\quad{}导师签名：\underline{\hspace{8em}}\\[2ex]
-      日期：\SWFCField@Year{}年\SWFCField@Month{}月\SWFCField@DateC{}日
+      作者签名：\underline{\hspace{8em}}\quad{}导师签名：\underline{\hspace{8em}}\\[2ex]
+      日期：\quad\SWFCField@Year{}年\SWFCField@Month{}月\SWFCField@DateC{}日
     \end{flushright}
   \end{large}
 \clearpage\shipout\null}
@@ -328,7 +380,7 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 \RequirePackage[chapter]{minted} % minted has to be loaded at last!!!
 \usemintedstyle{bw}
 
-%%%%% caption
+% caption
 \RequirePackage{caption,bicaption,subcaption} % \captionsetup
 
 % set caption label style to, e.g. 3-2.
@@ -337,7 +389,7 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 \renewcommand{\thesubfigure}{\thechapter{}-\arabic{subfigure}}
 \renewcommand{\thesubtable}{\thechapter{}-\arabic{subtable}}
 
-\captionsetup{labelsep=quad,format=hang}
+\captionsetup{labelsep=quad}
 
 \captionsetup[bi-first]{bi-first}
 \captionsetup[bi-second]{bi-second}
@@ -348,17 +400,22 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
   \def\listingscaption{程序}}
 
 \DeclareCaptionOption{bi-second}[]{%
-  \def\tablename{Tab.\!}%
-  \def\figurename{Fig.\!}%
+  \def\tablename{Table}%
+  \def\figurename{Figure}%
   \def\listingscaption{Code}}
 
-%%%%%
+
+% \captionsetup[figure][bi-first]{name=图}
+% \captionsetup[figure][bi-second]{name=Figure}
+% \captionsetup[table][bi-first]{name=表}
+% \captionsetup[table][bi-second]{name=Table}
+% \captionsetup[listing][bi-first]{name=程序}
+% \captionsetup[listing][bi-second]{name=Code}
+
 \renewcommand{\listingscaption}{程序} % used by minted
 \renewcommand{\listoflistingscaption}{程序目录}
 \renewcommand{\thelisting}{\thechapter{}-\arabic{listing}}
 
-
-%%%%% minted
 \renewcommand{\theFancyVerbLine}{
   \textcolor{lightgray}{\scriptsize\arabic{FancyVerbLine}}}
 
@@ -381,16 +438,7 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 % code listing cross pages
 \newenvironment{longlisting}{\captionsetup{type=listing}}{}
 
-
-%%%%% ctex
-\ctexset{
-  section/format = \Large\bfseries,
-  chapter/name = {},
-  chapter/number = {\thechapter},
-}
-
-
-%%%%% Initial defaults
+% Initial defaults
 \Title{} \enTitle{}%
 \Author{} \enAuthor{} \AuthorInfo{} \AuthorId{}%
 \Advisor{} \enAdvisor{} \AdvisorTitle{} \AdvisorInfo{} \enAdvisorB{}%
@@ -406,4 +454,3 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 \setlength{\parindent}{2em}
 % \setcounter{tocdepth}{1}
 \setcounter{secnumdepth}{3}
-\setmainfont{Liberation Serif}

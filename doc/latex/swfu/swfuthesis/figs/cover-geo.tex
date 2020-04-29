@@ -1,0 +1,60 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{backgrounds}
+\usepackage[scheme=plain]{ctex}
+
+\begin{document}
+\begin{tikzpicture}[inner sep=0,anchor=south west,
+  markline/.style={ultra thin,<->,red},  
+  ]
+  \node (bg) at (0,0) {\includegraphics[width=\paperwidth]{cover-bg}};
+
+  \begin{scope}
+	%%% grid
+	% \draw[help lines,red!10,step=1] (0,0) grid (20,30);%
+	% \foreach \x in {1,2,...,19} { \node at (\x,0) {\x}; }%
+	% \foreach \y in {1,2,...,29} { \node at (0,\y) {\y}; }%
+
+    \draw[markline] (3.1,5) -- (19.55,5) node [inner sep=1pt,midway,above] {文本宽度};
+    \draw[markline] (20,27.45) -- (20,3.1) node [inner sep=1pt,midway,auto,sloped] {文本高度};
+    \draw[red] (19.55,3.1) -- (20.2,3.1);
+    \draw[red] (19.55,27.45) -- (20.2,27.45);
+
+    \draw[markline] (-.5,0) -- (-.5,31.4) node [inner sep=1pt,midway,sloped,auto] {A4 纸高};
+    \draw[red] (-.7,0) --(0,0);
+    \draw[red] (-.7,31.4) --(0,31.4);
+    
+    \draw[markline] (0,31.9) -- (21.6,31.9) node [inner sep=1pt,midway,sloped,auto] {A4 纸
+      宽};
+    \draw[red] (21.6,31.4) --(21.6,32.1);
+    \draw[red] (0,31.4) --(0,32.1);
+    
+    \draw[markline] (0,16) -- (3.1,16)  node [anchor=center,inner sep=1pt,above, midway]{3cm};
+    % \draw[markline] (0,15) -- (.5,15)   node [anchor=center,inner sep=1pt,above, midway,scale=.6]{5mm};
+    \draw[markline] (.5,15) -- (3.1,15) node [anchor=center,inner sep=1pt,above, midway]{2.5cm};
+    \draw[red] (.5,14.8)--(.5,15.2);
+    \draw[markline] (19.55,27.8) -- (21.6,27.8) node[inner sep=1pt,midway]{2cm};
+    \draw[red] (19.55,28) -- (19.55,27.45);
+    \draw[markline] (19.8,0) -- (19.8,3.05) node[inner sep=1pt,midway,right]{3cm};
+    \draw[markline] (18,0) -- (18,2.05) node[inner sep=1pt,midway,right]{2cm};
+    \draw[markline] (5,27.45) -- (5,31.4) node[inner sep=1pt,midway,right]{3cm};
+    \draw[markline] (7,28.45) -- (7,31.4) node[inner sep=1pt,midway,right]{2cm};
+
+    \node[red, inner sep=1pt,align=center,anchor=south] at (11,28.5) {页眉（宋体小5号字，居中）};
+    \node[red, inner sep=1pt,align=center,anchor=south] at (11,2.05) {页脚（宋体小5号字，居中）};
+
+    \node (title) [red,align=left,inner sep=3pt] at (14,19) {小2号黑体字，居中};
+    \draw[red,-] (title) -- (13,17.6);
+
+    \node at (6,6) [red,align=left,text width=30em] {对于校标、校徽，以及封面上除论文题目之外的所有其它文
+      字，学校规范中未给出任何数据，亦未给出PDF格式的模板，只提供了一个.doc文件，用不同的
+      工具打开，会产生不同的效果。跟着感觉走吧。};
+
+    \draw (0,0) rectangle (21.6,31.4);
+  \end{scope}
+\end{tikzpicture}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

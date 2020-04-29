@@ -1,3 +1,4 @@
+% Obsolete! Use swfuproposal instead.
 % 西南林业大学本科毕业论文（设计）开题报告
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfcproposal}
