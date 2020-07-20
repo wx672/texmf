@@ -2,7 +2,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfuyearly}
 
-\RequirePackage{ifxetex} % XeTeX only
+%\RequirePackage{ifxetex} % XeTeX only
 
 \RequirePackage{pgfkeys}
 

@@ -8,7 +8,7 @@
 
 \LoadClass[scheme=plain]{ctexart}
 
-\RequirePackage{ifxetex} % XeTeX only
+%\RequirePackage{ifxetex} % XeTeX only
 \RequirePackage{zhlipsum}
 
 \newfontfamily\nerd{DejaVu Sans Mono Nerd Font Complete}%
@@ -107,7 +107,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
         \makebox[0pt][t]{%
           \begin{minipage}[t]{30em}
             \begin{center}
-              \parbox[t]{29em}{\centering\textbf{\Large\@title}}
+              \parbox[t]{29em}{\centering\bfseries\Large\@title}
             \end{center}
           \end{minipage}}%
         \rule[-1.5ex]{30em}{.1pt}\par%
@@ -131,13 +131,13 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
     \end{minipage}
   \end{large}
   \vfill
-  {\Large\textbf{西南林业大学教务处制}}\\[1cm]
+  {\Large\bfseries 西南林业大学教务处制}\\[1cm]
 \end{center}
 \clearpage}
 
 \newcommand{\instructionpage}{% Instruction page
   \begin{center}
-    {\LARGE\textbf{填\hspace{1em}表\hspace{1em}说\hspace{1em}明}}\\[5mm]
+    {\LARGE\bfseries 填\quad 表\quad 说\quad 明}\\[5mm]
   \end{center}
   \vskip 3ex
   \begin{itemize}

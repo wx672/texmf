@@ -2,7 +2,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfucomments}
 
-\RequirePackage{ifxetex} % XeTeX only
+%\RequirePackage{ifxetex} % XeTeX only
 
 \RequirePackage{pgfkeys,etoolbox,calc}
 
@@ -91,19 +91,24 @@ left=2.5cm,right=2.5cm,
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \renewcommand{\arraystretch}{1.5}
 \newcommand{\makeform}{\pagestyle{empty}
-  {\centering
-    {\large\heiti 西南林业大学本科毕业（设计）论文\SWFU@Formsubtitle}\\[3ex]
-    \begin{tabularx}{\textwidth}{>{\heiti}r>{\centering\arraybackslash\hsize=1.1\hsize\linewidth=\hsize\kaishu}X>{\heiti}r>{\centering\arraybackslash\hsize=.9\hsize\linewidth=\hsize\kaishu}X}
+  \begin{center}
+    \large\heiti 西南林业大学本科毕业（设计）论文\SWFU@Formsubtitle
+  \end{center}
+  \begin{tabularx}{\textwidth}{%
+    @{}>{\heiti}r%
+    @{}>{\centering\arraybackslash\hsize=1.1\hsize\linewidth=\hsize\kaishu}X%
+    @{}>{\heiti}r%
+    @{}>{\centering\arraybackslash\hsize=.9\hsize\linewidth=\hsize\kaishu}X}%
       论文(设计)题目：& \multicolumn{3}{c}{\kaishu\SWFU@Prjtitle} \\\cline{2-4}
       学生姓名：&\SWFU@Studname&\quad{}学号：&\texttt{\SWFU@Studid}\\\cline{2-2}\cline{4-4}
-      学院：&大数据与智能工程学院&\quad{}专业：&\SWFU@Studsbj\\\cline{2-2}\cline{4-4}
-      \\\hline
+      学院：&大数据与智能工程学院&\quad{}专业：&\SWFU@Studsbj\\\cline{2-2}\cline{4-4}\\\hline
       \multicolumn{4}{|c|}{\large\SWFU@Hinttitle{}}\\[2ex]
       \multicolumn{4}{|l|}{\begin{minipage}{.8\linewidth}%
           \SWFU@Hinttext%
           \vskip 5pt%
         \end{minipage}}\\\hline      
     \end{tabularx}
+    {\centering
     \begin{tabularx}{\textwidth}{@{}X}
       \SWFU@Commentslabel\\
       {\kaishu\SWFU@Comments}\\

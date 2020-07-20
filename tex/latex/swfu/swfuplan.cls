@@ -3,7 +3,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfuplan}
 
-\RequirePackage{ifxetex} % XeTeX only
+%\RequirePackage{ifxetex} % XeTeX only
 \RequirePackage{pgfkeys}
 
 \pgfkeys{%

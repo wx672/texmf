@@ -5,32 +5,36 @@
 
 %\RequirePackage[svgnames]{xcolor}% Green, SkyBlue...
 
-\RequirePackage{xltxtra} %fontspec,xunicode are loaded here.
-\defaultfontfeatures{Mapping=tex-text}
+\RequirePackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
 
-\RequirePackage{xeCJK}
-% \RequirePackage{ctex}
-% \ctexset{today=old}
+\RequirePackage{emoji}
 
-\setCJKmainfont{Noto Serif CJK SC}
-\setCJKsansfont{Noto Sans CJK SC}
-\setCJKmonofont{Noto Sans Mono CJK SC}
-\newCJKfontfamily\hei{Noto Serif CJK SC Bold} % \hei{Hello, world!}
-\newCJKfontfamily\song{Noto Serif CJK SC}
-\newCJKfontfamily\kai{AR PL UKai CN}
-\newCJKfontfamily\quotefont{AR PL UKai CN}
+\RequirePackage{ctex}
+\ctexset{today=old}
+
+%%% if don't like ctex defaults
+% \setCJKmainfont{Noto Serif CJK JP}
+% \setCJKsansfont{Noto Sans CJK JP}
+% \setCJKmonofont{Noto Sans Mono CJK JP}
+
+%%% ctex provides \heiti \songti \fangsong \kaishu
+% \newCJKfontfamily\hei{Noto Serif CJK JP Bold} % \hei{Hello, world!}
+% \newCJKfontfamily\song{Noto Serif CJK JP}
+% \newCJKfontfamily\kai{AR PL UKai CN}
+% \newCJKfontfamily\quotefont{AR PL UKai CN}
 
 % https://nablux.net/tgp/weblog/2013/03/22/how-typeset-japanese-using-xelatex/
 % vertical typesetting
-\setCJKfamilyfont{cjk-vert}[Script=CJK,RawFeature=vertical]{FZGuLi-S12S}
+% \setCJKfamilyfont{cjk-vert}[Script=CJK,RawFeature=vertical]{FZGuLi-S12S}
 
 \newCJKfontfamily\sig{signature}
 
-\XeTeXlinebreaklocale "zh"
-\XeTeXlinebreakskip = 0pt plus 1pt
+% \XeTeXlinebreaklocale "zh"
+% \XeTeXlinebreakskip = 0pt plus 1pt
 
-% adjust the spaces between numbers and Chinese characters
-\xeCJKsetup{xCJKecglue=\hskip 0pt plus 0.08\baselineskip}
+% % adjust the spaces between numbers and Chinese characters
+% \xeCJKsetup{xCJKecglue=\hskip 0pt plus 0.08\baselineskip}
 
 % Liberation fonts is a drop-in replacement for Microsoft Times, Arial and Courier fonts
 \setmainfont{Liberation Serif}
@@ -50,31 +54,33 @@
 \newcommand{\range}{{~\symbol{`~}~}}
 \newcommand{\CMD}[1]{\texttt{\textcolor{Green}{\$} #1}}
 \newcommand{\cmd}[1]{\texttt{#1}}
+
 \newcommand{\unix}{{\fontspec{Purisa}{UNIX}}}
 \newcommand{\emacs}{\includegraphics[width=1.2em]{emacs}}
 \newcommand{\google}{\raisebox{-.2em}{\includegraphics[width=3em]{google}}}
 \newcommand{\moodle}{\includegraphics[width=1em]{moodle}}
 
-%%% For utf8 symbols
+%%% utf8 symbols
 % use C-x 8 RET to input utf8 symbols
 % C-x 8 C-h for more
 % M-x describe-char
-
-\newfontfamily\dejavu{DejaVu Sans Mono}
-%{\dejavu ➔ ➜ ➤ ✉ ⚓ ☭ ❂ …}
-\newfontfamily\nerd{DejaVuSansMono Nerd Font}%
-% ~/.local/share/fonts/truetype/nerd-fonts/dejavu
 % fntsample -f 'DejaVu Sans Mono Nerd Font Complete.ttf' -o nerd.pdf
+
+%{\dejavu ➔ ➜ ➤ ✉ ⚓ ☭ ❂ …}
+\newfontfamily\dejavu{DejaVu Sans Mono}
+%\newfontfamily\nerd{DejaVuSansMono Nerd Font} % error with lualatex
+\newfontfamily\nerd{NotoSansMono Nerd Font}%
+
 % {\nerd %
 %             %
 %      %
 %            %
 %                    %
 % }
-\newcommand\correct{{\Large\textcolor{Green}{\nerd ✔}}}
-\newcommand\Checked{{\nerd ✔}}% ✓
-\newcommand\wrong{\textcolor{red}{\nerd ✘}}
-\newcommand\RedCross{\textcolor{red}{\nerd ✘}}
+\newcommand\correct{{\Large\textcolor{Green}{\dejavu ✔}}}
+\newcommand\Checked{{\dejavu ✔}}% ✓
+\newcommand\wrong{\textcolor{red}{\dejavu ✘}}
+\newcommand\RedCross{\textcolor{red}{\dejavu ✘}}
 \newcommand\good{{\nerd }}% 👍☺
 \newcommand\Good{{\textcolor{Green}{\good}}}
 \newcommand\bad{{\nerd }}% 👎☹
@@ -179,10 +185,11 @@
 % {\fa }
 
 \newfontfamily\symbola{Symbola} % (#x1f000, #x1f9e6)
-\newfontfamily\emoji{Symbola}% {\emoji ☺}
 \newfontfamily\emj{Symbola}% {\emj ☺}
+
 %{\symbola 𐇐 👍 👎 ☛}
-\newcommand\Symbol[1]{\emoji #1}
+\newcommand\Symbol[1]{\symbola #1}
+
 \newcommand\openbook{\symbola 🕮}
 %\newcommand\okay{\symbola 😐}
 \newcommand\pright{\symbola ☛}

@@ -2,7 +2,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfubilingual}
 
-\RequirePackage{ifxetex} % XeTeX only
+%\RequirePackage{ifxetex} % XeTeX only
 
 \RequirePackage{pgfkeys}
 
@@ -72,9 +72,11 @@ left=1.5cm,right=1.5cm
 
 \newcommand{\makeform}{%
   \pagestyle{empty}%
-  {\centering {\textbf {\LARGE\heiti 西南林业大学双语教学课程申请表}}\\[4ex]%
-    \begin{tabularx}{\textwidth}{|P{6em}|@{}C@{}|}\hline%
-      申请人基本\par{}信息 & {\begin{tabularx}{.857\textwidth}{r|>{\kaishu}c|r|>{\kaishu}c|r|>{\kaishu}C@{}}%
+  \begin{center}
+    \LARGE\heiti 西南林业大学双语教学课程申请表
+  \end{center}
+  \begin{tabularx}{\textwidth}{|P{6em}|@{}C@{}|}\hline%
+    申请人基本\par{}信息 & {\begin{tabularx}{.857\textwidth}{r|>{\kaishu}c|r|>{\kaishu}c|r|>{\kaishu}C@{}}%
  姓名 & \SWFU@Name & 性别 & \SWFU@Gender & 出生年月 & \texttt{\SWFU@Dayofbirth}\\\hline%
  学历 & \SWFU@Diploma & 专业技术职务 & \SWFU@Title & 电话 & \texttt{\SWFU@Phone}\\\hline%
  学位 & \SWFU@Degree & 行政职务 & \SWFU@Admin & 学科专业 & \SWFU@Subject\\\hline%
@@ -95,4 +97,4 @@ left=1.5cm,right=1.5cm
       \vfixed{教研室审核\par{}意见} & \\\hline
       \vfixed{教学院（部）\par{}审核意见} & \\\hline
       \vfixed{教务处审核\par{}意见} & \\\hline
-    \end{tabularx}}}
+    \end{tabularx}}

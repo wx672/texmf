@@ -1,17 +1,11 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{wx672hyperref}
 
-\RequirePackage{ifxetex} % This class is for XeTeX only
-
-% https://tex.stackexchange.com/questions/49788/hyperref-url-long-url-with-dashes-wont-break
-\PassOptionsToPackage{hyphens}{url}
 \RequirePackage{xcolor}
+
 \RequirePackage{hyperref}
 
-% https://tex.stackexchange.com/questions/54946/how-to-break-long-url-in-an-item
-\def\UrlBreaks{\do\/\do-} % break long url
-
-\hypersetup{%
+\hypersetup{unicode,naturalnames,%
   breaklinks=true,
   bookmarksnumbered,plainpages=false,
   pdfborderstyle={/S/U/W .5},% border style will be underline of width .5pt 
@@ -21,4 +15,16 @@
   filebordercolor=magenta,   % color of file links
   urlbordercolor=blue,
   % linkcolor=black,citecolor=black,
+}
+
+% https://tex.stackexchange.com/questions/49788/hyperref-url-long-url-with-dashes-wont-break
+\PassOptionsToPackage{hyphens}{url}
+
+% https://tex.stackexchange.com/questions/54946/how-to-break-long-url-in-an-item
+\def\UrlBreaks{\do\/\do-} % break long url
+
+% https://tex.stackexchange.com/questions/10555/hyperref-warning-token-not-allowed-in-a-pdf-string
+\pdfstringdefDisableCommands{%
+  \def\\{}%
+  \def\texttt#1{<#1>}%
 }

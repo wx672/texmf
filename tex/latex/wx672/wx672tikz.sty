@@ -1,12 +1,13 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{wx672tikz}
 
-\RequirePackage{ifxetex} % This class is for XeTeX only
+%\RequirePackage{ifxetex} % This class is for XeTeX only
 
 \RequirePackage{tikz}
 \RequirePackage{tikz-penciline}
 
 \usetikzlibrary{%
+  graphs,graphdrawing,% need lualatex
   calc,positioning,fit,%
   chains,arrows.meta,shapes,patterns,quotes,%
   decorations.pathmorphing,%
@@ -14,6 +15,10 @@
   mindmap,trees,%
   tikzmark,%
 }%
+
+\usegdlibrary {layered} % for graph drawing, need lualatex
+
+\pgfplotsset{compat=1.17}
 
 \tikzset{%
   help lines/.style = {ultra thin,dotted},%

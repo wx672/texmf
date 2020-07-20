@@ -3,7 +3,7 @@
 \ProvidesClass{swfusumup}
 
 
-\RequirePackage{ifxetex} % XeTeX only
+%\RequirePackage{ifxetex} % XeTeX only
 
 \RequirePackage{pgfkeys}
 

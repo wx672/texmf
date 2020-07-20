@@ -7,7 +7,7 @@
 
 \LoadClass[a4paper,12pt]{article}
 
-\RequirePackage{ifxetex} % XeTeX only 
+%\RequirePackage{ifxetex} % XeTeX only 
 
 \RequirePackage{pgfkeys}
 

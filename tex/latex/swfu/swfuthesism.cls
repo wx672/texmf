@@ -2,7 +2,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfuthesism}
 
-\RequirePackage{ifxetex} % XeTeX only
+%\RequirePackage{ifxetex} % XeTeX only
 
 \RequirePackage{pgfkeys}
 
@@ -133,10 +133,10 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
     \vspace*{18ex}%
     \extrarowsep=^3mm_-2mm%
     \begin{tabu} to \textwidth {@{}X[r]X[3.8,l]}%
-      {\Large \textbf{论文题目}}&%
+      {\Large\bfseries 论文题目}&%
       \makebox[0pt][t]{%
         \begin{minipage}[t]{27em}
-          \centering\parbox[t]{26em}{\centering\textbf{\Large\@title}}
+          \centering\parbox[t]{26em}{\centering\bfseries\Large\@title}
         \end{minipage}}%
       \rule[-.5ex]{27em}{.1pt}\par%
       \rule[-.1ex]{27em}{.1pt}\\%

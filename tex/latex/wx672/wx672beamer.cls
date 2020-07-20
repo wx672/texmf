@@ -5,7 +5,7 @@
 \ProcessOptions\relax
 
 \LoadClass[ignorenonframetext,compress,xcolor={svgnames,table},%
-hyperref={%
+hyperref={unicode,naturalnames,%
   pdfauthor={WANG Xiaolin},%
   bookmarksnumbered=true,%
   pdfborderstyle={/S/U/W .5},%
@@ -14,3 +14,9 @@ hyperref={%
 ]{beamer}
 
 \RequirePackage{wx672b}
+
+% https://tex.stackexchange.com/questions/10555/hyperref-warning-token-not-allowed-in-a-pdf-string
+\pdfstringdefDisableCommands{%
+  \def\\{}%
+  \def\texttt#1{<#1>}%
+}

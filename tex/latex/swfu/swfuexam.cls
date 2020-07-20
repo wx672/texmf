@@ -2,7 +2,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfuexam}
 
-\RequirePackage{ifxetex} %  XeTeX only
+%\RequirePackage{ifxetex} %  XeTeX only
 
 \DeclareOption{a3}{%
   \PassOptionsToPackage{a3paper,landscape,twocolumn,%

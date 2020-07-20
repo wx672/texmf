@@ -2,7 +2,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfunoexam}
 
-\RequirePackage{ifxetex} % XeTeX only
+%\RequirePackage{ifxetex} % XeTeX only
 
 \RequirePackage{pgfkeys}
 
@@ -41,7 +41,8 @@ margin=4cm]{geometry}
 
 \newcommand{\makeform}{%
   \pagestyle{empty}%
-  {\centering {\textbf {\LARGE\heiti 西南林业大学非考试命题表}}\\[4ex]
+  {\centering
+    {\LARGE\heiti 西南林业大学非考试命题表}\\[4ex]
     \begin{tabularx}{\textwidth}{|M{4em}|C|}\hline%
       学年学期 & \SWFU@Term\\\hline
       考试科目 & {\kaishu \SWFU@Course}\\\hline
