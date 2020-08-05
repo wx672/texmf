@@ -19,7 +19,6 @@
   Month/.store in         = \SWFU@Month, Month = ？,%
   Date/.store in          = \SWFU@Date, Date = ？,%
   Year/.store in          = \SWFU@Year, Year = ？,%
-  Yearcn/.store in          = \SWFU@Yearcn, Yearcn = ？,% 封面汉化数字
 }
 
 \newcommand{\swfusetup}[1]{\pgfkeys{#1}}
@@ -44,7 +43,7 @@
 %%%%% geometry
 \RequirePackage[%showframe,%showcrop,
 a4paper,asymmetric,%
-vmargin=3cm,left=3cm,right=2cm,%上下页边距为3cm，左2.5cm，右2cm，装订边0.5cm
+vmargin=3cm,left=3cm,right=2cm,%上下页边距为3cm，左=(2.5cm + 装订边0.5cm)，右2cm
 headsep=1cm,footskip=1cm,%headheight=15pt, to avoid "headheight too small"
 nomarginpar]{geometry}
 
@@ -186,7 +185,7 @@ url=false,doi=false,isbn=false]{biblatex}
     \begin{center}
       \makebox[17em][s]{\includegraphics[width=17em]{swfulogo-text}}\\[5mm]%
       \makebox[19em][s]{{\LARGE\heiti 本科毕业论文\hspace{-.5ex}（设计）}}\\[1mm]%
-      \makebox[13em][c]{\hspace{.5em}{\LARGE\heiti（\SWFU@Yearcn{}\,届）}}\\[2mm]%
+      \makebox[13em][c]{\hspace{.5em}{\LARGE\heiti（\zhdigits*{\SWFU@Year}\,届）}}\\[2mm]%
       \makebox[8em][s]{\includegraphics[width=8em]{swfulogo-emblem}}\\[1mm]
       \begin{minipage}{\linewidth}
         \begin{large}

@@ -1,32 +1,34 @@
 \documentclass{swfuproposalm}
 
+\usepackage{zhlipsum,lipsum}
+
 \swfusetup{
-  Title = {How To Mess up Everything in Hogwarts},
-  Author = {Harry Potter},
-  Studid = 3.14159265,
-  Gender = Male,
-  Subject = Magic,
-  Research = {Dark Art Defence},
-  Advisor = {Albus Dumbledore},
-  AdvisorTitle = Professor,
-  Advisortwo =,
-  AdvisorTitletwo =,
-  Host =,
-  Reportdate =,
-  Year = 2019,
-  Month = 4,
-  Date = 30,
-  Prjfrom = {No idea},
-  Tutorcomments = {\zhlipsum[1]},%导师对开题报告的评价
-  Tutorsig =,
+  Title = {How To Mess up Everything in Hogwarts}, %题目
+  Author = {Harry Potter}, % 姓名
+  Studid = 3.14159265, % 学号
+  Gender = Male, % 性别（附件2）
+  Subject = Magic, % 学科专业
+  Research = {Dark Art Defence}, % 研究方向
+  Advisor = {Albus Dumbledore}, % 导师姓名
+  AdvisorTitle = Professor, % 导师职称
+  Advisortwo =, %导师2姓名
+  AdvisorTitletwo =, % 导师2职称
+  Host =, % 报告主持人
+  Reportdate =, % 报告日期
+  Year = 2019, % 年
+  Month = 4, % 月
+  Date = 30, % 日
+  Prjfrom = {No idea}, % 选题基本情况中的“其它”
+  Tutorcomments = {\zhlipsum[1-2]},%导师对开题报告的评价
+  Tutorsig =, %导师签名
   Poneone = {% 1.1 选题的理论和实践意义
-    \lipsum[1-3]
+    \zhlipsum[1-3]
   },%
   Ponetwo = {% 3. 主要参考文献
-    \lipsum[4-6]
+    \zhlipsum[4-6]
     
     \nocite{wangshuang03,yuyuan2009orange,intel86,zouhengming09,os30days,tanenbaum2008modern}
-    \printbibliography[heading=none]{}},%
+    \printbibliography[heading=none]{}},% 参考文献
   Ptwoone = {% 2.1 研究内容、研究目标及拟解决的关键问题
     \zhlipsum[7-10]},%
   Ptwotwo = {% 2.2 拟采用的研究方法、技术路线、实验方案及可行性分析

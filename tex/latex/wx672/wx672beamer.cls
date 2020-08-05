@@ -5,6 +5,7 @@
 \ProcessOptions\relax
 
 \LoadClass[ignorenonframetext,compress,xcolor={svgnames,table},%
+aspectratio=169,% 169 for 16:9; 43 for 4:3
 hyperref={unicode,naturalnames,%
   pdfauthor={WANG Xiaolin},%
   bookmarksnumbered=true,%
@@ -16,7 +17,7 @@ hyperref={unicode,naturalnames,%
 \RequirePackage{wx672b}
 
 % https://tex.stackexchange.com/questions/10555/hyperref-warning-token-not-allowed-in-a-pdf-string
-\pdfstringdefDisableCommands{%
-  \def\\{}%
-  \def\texttt#1{<#1>}%
-}
+% \pdfstringdefDisableCommands{%
+%   \def\\{}%
+%   \def\texttt#1{<#1>}%
+% }

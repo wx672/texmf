@@ -3,10 +3,11 @@
 \ProvidesPackage{wx672b}
 
 \RequirePackage{wx672fonts}
+\RequirePackage{wx672nerd}
 \RequirePackage{wx672common}
-\RequirePackage{wx672bib}
 \RequirePackage{wx672tikz}
 \RequirePackage{wx672minted}
+\RequirePackage{wx672bib}
 
 %%% xcolor, hyperref, pgf are loaded by beamer already. pass opts to it in
 %%% wx672beamer.cls.
@@ -37,8 +38,8 @@
     \insertsectionnumber.\insertsubsectionnumber\quad\insertsubsection\par
   \end{beamercolorbox}}
 
-\setbeamersize{text margin right=1em}
-\setbeamersize{text margin left=1em}
+% \setbeamersize{text margin right=1em}
+% \setbeamersize{text margin left=1em}
 % \setbeamercovered{transparent}
 
 \newenvironment{iblock}[1] % for images

@@ -1,8 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{wx672tikz}
 
-%\RequirePackage{ifxetex} % This class is for XeTeX only
-
+\RequirePackage[svgnames,table]{xcolor}
 \RequirePackage{tikz}
 \RequirePackage{tikz-penciline}
 
@@ -16,7 +15,7 @@
   tikzmark,%
 }%
 
-\usegdlibrary {layered} % for graph drawing, need lualatex
+%\usegdlibrary{circular,layered} % for graph drawing, need lualatex
 
 \pgfplotsset{compat=1.17}
 

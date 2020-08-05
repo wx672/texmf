@@ -12,5 +12,6 @@
 
 \RequirePackage{wx672common}
 \RequirePackage{wx672fonts}
+\RequirePackage{wx672nerd}
 
 

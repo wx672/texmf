@@ -2,8 +2,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfunoexam}
 
-%\RequirePackage{ifxetex} % XeTeX only
-
 \RequirePackage{pgfkeys}
 
 \pgfkeys{%

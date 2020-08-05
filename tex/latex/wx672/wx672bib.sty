@@ -1,16 +1,16 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{wx672bib}
 
-%\RequirePackage{ifxetex} % This class can only be processed with XeTeX
+\RequirePackage{wx672hyperref}
 
-\RequirePackage[backend=biber,style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false,url=false,doi=false,isbn=false]{biblatex}
+\RequirePackage[backend=biber, style=gb7714-2015, gbpub=false, gbtype=false,
+gbpunctin=false, url=false, doi=false, isbn=false]{biblatex}
 \renewcommand*{\bibfont}{\small} % 11pt
 
-% https://tex.stackexchange.com/questions/23832/biblatex-make-title-hyperlink-to-doi-url-if-available
-\newbibmacro{string+url}[1]{%
+%https://tex.stackexchange.com/questions/23832/biblatex-make-title-hyperlink-to-doi-url-if-available
+\newbibmacro{title+url}[1]{%
   \iffieldundef{url}{#1}{\href{\thefield{url}}{#1}}}
-\DeclareFieldFormat{title}{\usebibmacro{string+url}{\mkbibemph{#1}}}
-\DeclareFieldFormat[article]{title}{\usebibmacro{string+url}{\mkbibquote{#1}}}
+\DeclareFieldFormat*{title}{\usebibmacro{title+url}{\mkbibemph{#1}}}
 
 % citetitle (for handouts)
 % https://tex.stackexchange.com/questions/284207/how-to-cite-the-title-and-the-year-in-the-same-command
@@ -21,3 +21,8 @@
     \usebibmacro{prenote}\printfield[citetitle]{title}%
     \usebibmacro{postnote}}}%
 {\multicitedelim}{}
+
+% texdoc xurl
+\setcounter{biburllcpenalty}{100}
+\setcounter{biburlucpenalty}{200}
+\setcounter{biburlnumpenalty}{100}

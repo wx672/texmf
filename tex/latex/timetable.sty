@@ -17,7 +17,7 @@
 \usetikzlibrary{calc,positioning,patterns,chains}
 
 \newcommand{\class}[6][5/3]{%
-  % #1 - (optional)          #3 - (day,time)   #5 - weeks
+  % #1 - default to 5/3      #3 - (day,time)   #5 - weeks
   % #2 - lecture/lab/office  #4 - course name  #6 - room%           
   \node[#2,minimum height=#1*\TT@Hourlength] at (#3) {#4\\{\scriptsize Weeks: #5}\\{\small #6}};%
 }%
@@ -26,13 +26,15 @@
   help lines/.style={very thin,dotted},%
   day/.style={on chain,rectangle, fill=gray!20, node font=\bfseries\Large,%
     minimum width=\TT@Daywidth, minimum height=2ex},%
-  class/.style={rectangle, anchor=north west, rounded corners=10pt,%
+  clsfull/.style={rectangle, anchor=north west, rounded corners=10pt,%
     minimum width=.99*\TT@Daywidth, align=center, text width=.99*\TT@Daywidth},%
-  lecture/.style={class, fill=red!30},%
-  lab/.style={class, fill=Green!20},%
-  lecturelab/.style={class, left color=red!30,right color=Green!20},%
-  office/.style={class, fill=gray!5},%
-  done/.style={class,pattern color=black!50,pattern=north east lines}%
+  lecture/.style={fill=red!30},%
+  lab/.style={fill=Green!20},%
+  lecturelab/.style={left color=red!30,right color=Green!20},%
+  clshalf/.style={rectangle, anchor=north west, rounded corners=10pt,%
+    minimum width=.5*\TT@Daywidth, align=center, text width=.5*\TT@Daywidth},%
+  office/.style={fill=gray!5},%
+  done/.style={pattern color=black!50,pattern=north east lines}%
 }%
 
 \newenvironment{timetable}
@@ -41,10 +43,10 @@
     x=\TT@Daywidth, y=-\TT@Hourlength,%
     node distance=0cm, outer sep=0pt, inner sep=1pt]%
 
-    % draw grids
+    % grids
     \draw[help lines] (1,8) grid[xstep=\TT@Daywidth,ystep=2*\TT@Hourlength] (6,22);%
 
-    % Draw time ticks
+    % time ticks
     \foreach \h in {8,9,...,22} \draw [ultra thin] (1,\h) -- ++(-5pt,0);% Hours
     \foreach \hh in {8.5,9.5,...,21.5} \draw [ultra thin] (1,\hh) -- ++(-3pt,0);% Half hours
 

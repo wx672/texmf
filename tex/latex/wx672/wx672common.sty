@@ -8,7 +8,11 @@
 \RequirePackage[font=footnotesize,labelfont=bf]{caption}
 \RequirePackage{subcaption}
 
-\RequirePackage{multicol,rotating,ulem,etoolbox,comment}
+\RequirePackage[normalem]{ulem}% ulem could conflict with lualatex/biblatex
+\RequirePackage{multicol,rotating,etoolbox,comment}
+
+\RequirePackage{amsmath,amsfonts,amssymb}
+
 \RequirePackage{longtable,tabularx,booktabs,array,makecell}
 \renewcommand\theadfont{\normalfont\bfseries}%\normalsize
 

@@ -1,0 +1,34 @@
+\documentclass{timetable}
+
+\begin{document}
+
+\pgfkeys{
+  Term={2020 -- 2021 -- 01},
+  % Teacher={Wang Xiaolin},
+}
+
+\begin{timetable}
+  \class{clsfull,lecture}{1,14}{OS}{1 -- 16}{KA213} % Mon, 14:00
+  \class{clsfull,lecturelab}{5,10}{OS\,/\,lab}{1 -- 16}{KA213 (o)\,/\,J219 (e)}
+  \class{clsfull,lecture}{4,14}{Linux OS}{1 -- 16}{A222}
+  \class{clsfull,lab}{4,16}{Linux OS lab}{1 -- 16}{D312}
+  
+  \class{clshalf,lab}{1,16}{Linux}{1 -- 8}{J219} % Mon, 16:00
+  \class{clshalf,lab}{1.5,16}{Net (A) lab}{9 -- 16}{J219} % Mon, 16:00
+  \class{clshalf,lab}{3,8}{Linux lab}{1 -- 8}{J219} % Wed, 8:00
+  \class{clshalf,lecture}{3.5,8}{Net (A)}{9 -- 16}{4-111} % Wed, 8:00  
+
+  \class{clsfull,lecture}{1,10}{Net (A)}{9 -- 16}{4-503} % Mon, 10:00
+  % \class{clsfull,lecture}{3,8}{Net (A)}{9 -- 16}{D205} % Wed, 8:00
+
+  \class{clsfull,lecture}{3,10}{Net (B)}{9 -- 16}{4-412} % Wed, 8:00
+  \class{clsfull,lecture}{4,8}{Net (B)}{9 -- 16}{4-114} % Thu, 8:00
+  \class{clsfull,lab}{4,10}{Net (B) lab}{9 -- 16}{J219} % Thu, 10:00
+\end{timetable}
+
+\end{document}
+  
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

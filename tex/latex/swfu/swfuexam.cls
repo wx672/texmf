@@ -2,15 +2,13 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfuexam}
 
-%\RequirePackage{ifxetex} %  XeTeX only
-
 \DeclareOption{a3}{%
   \PassOptionsToPackage{a3paper,landscape,twocolumn,%
-    columnsep=3cm,top=2cm,bottom=20mm,left=4cm,right=2cm}{geometry}}
+    columnsep=3cm,vmargin=20mm,left=4cm,right=2cm}{geometry}}
 
 \DeclareOption{a4}{%
   \PassOptionsToPackage{onecolumn,paperwidth=195mm,paperheight=270mm,%
-    top=2cm,bottom=15mm,left=25mm,right=15mm}{geometry}}
+    vmargin=20mm,left=25mm,right=15mm}{geometry}}
 
 \DeclareOption*{
   \PassOptionsToClass{\CurrentOption}{ctexart}
@@ -45,7 +43,7 @@
 \RequirePackage{dashrule} % \dashfill
 \RequirePackage{amsmath,amsfonts,amssymb}
 \RequirePackage{fancybox} % for \fancyput
-\RequirePackage{multicol,varwidth,marvosym,soul,tasks,indentfirst}
+\RequirePackage{multicol,varwidth,marvosym,soul,tasks,indentfirst,enumitem}
 \RequirePackage{setspace} % \singlespacing, \onehalfspacing, \doublespacing
 
 \RequirePackage{tabularx}
