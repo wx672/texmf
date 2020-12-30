@@ -1,0 +1,10 @@
+In the beginning, there wasn't MS-Word.
+
+- 1964, RUNOFF
+- 1971, roff -> troff on Unix, man pages v1-v3
+- 1976, Electric Pencil --- The first word processor on Intel 8080, Zilog Z80
+- 1978, TeX, Donald Knuth; WordStar
+- early 1980s, LaTeX, Leslie Lamport
+- 1983, MS-Word on Xenix and MS-DOS with mouse support, no font rendering
+- 1984, MacWrite, the first WYSIWYG word processor
+- 1990+, MS-Word getting popular

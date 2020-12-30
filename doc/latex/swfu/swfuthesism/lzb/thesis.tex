@@ -4,22 +4,23 @@
 \addbibresource{os.bib}
 
 \swfusetup{
-  Title={一种高效回收僵尸进程资源的方法},%
-  enTitle={An efficient method for releasing resources from a zombie process},%
-  Author={罗志兵},%
-  enAuthor={LUO Zhibing},%
-  AuthorId={20151111002},%
-  Advisor={赵家刚},%
-  enAdvisor={ZHAO Jiagang (Associate Professor)},%
-  AdvisorTitle={副教授},%
+  Title={一种高效回收僵尸进程资源的方法},%论文题目
+  enTitle={AN EFFICIENT METHOD FOR RELEASING RESOURCES FROM A ZOMBIE PROCESS},%题目英文
+  Author={罗志兵},%作者姓名
+  enAuthor={LUO Zhibing},%作者姓名英文
+  AuthorId={20151111002},%学号
+  Advisor={赵家刚},%指导教师
+  enAdvisor={ZHAO Jiagang (Associate Professor)},%指导教师英文
+  AdvisorTitle={副教授},%指导教师职称
   ClsID={TP316.85},%分类号
-  Month, Year,%
+  Month, Year,%月、年
   DateA={2018/12/26},%提交论文日期
   DateB={2018/12/19},%论文答辩日期
   DateC,%独创性声明页上的日期
-  Subject={林业信息工程},%
-  enSubject={Forestry information engineering},%
-  Chairman=杨毅,}
+  Subject={林业信息工程},%学科专业
+  enSubject={Forestry information engineering},%学科专业英文
+  Chairman=杨毅,%答辩委员会主席
+}
 
 \begin{document}
 
@@ -572,7 +573,7 @@ Linux系统里负责上下文切换的函数是\texttt{switch\_to()}，该函数
 先从这个进程的上下文切换到调度器的上下文，然后调度器才能运行起来。所以，从一个进程（如进
 程A）切换到下一个进程（如进程B）的完整过程大致如图\ref{fig:sched5}所示。
 
-\begin{figure}[hb]
+\begin{figure}%[hb]
   \centering
   \includegraphics[width=.7\textwidth]{pswitch}
   \bicaption{进程切换}{Context switch}

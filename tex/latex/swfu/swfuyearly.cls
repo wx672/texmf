@@ -39,9 +39,9 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
 \ProcessOptions\relax
 
-\LoadClass[scheme=plain]{ctexart}
+\LoadClass[scheme=chinese,zihao=-4]{ctexart}
 
-\RequirePackage{tabularx}
+\RequirePackage{tabularx,makecell}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % for centering p column
 \newcolumntype{C}{>{\centering\arraybackslash}X}
@@ -50,7 +50,7 @@
 \newcommand{\mkvspace}[2]{\rule{0pt}{#1}\par{}#2\par{}\rule{0pt}{#1}}%\mkvspace{12ex}{text}
 
 \RequirePackage{graphicx}
-
+\RequirePackage{amssymb}% \smallsmile, \smallfrown
 \RequirePackage[% showframe,
 paperwidth=195mm, paperheight=270mm,
 top=2cm, bottom=2cm,
@@ -65,50 +65,55 @@ left=2.5cm, right=2.5cm,
 
 \newcommand{\makeform}{
   \begin{center}
-    \LARGE\heiti 西南林业大学教职工\,\SWFU@Year\,年度考核表
+    \Large\heiti 西南林业大学教职工\,\SWFU@Year{}\,年度考核表
   \end{center}
-  学院/部门：{\kaishu\SWFU@School}\hfill{}%
-  填表时间：{\kaishu\SWFU@Year{}年\SWFU@Month{}月\SWFU@Date{}日}\par
-  \noindent\begin{tabularx}{\linewidth}{|c|>{\kaishu}C|c|>{\kaishu}C|c|>{\kaishu}C|}
+  学院/部门：{\kaishu\SWFU@School}\par
+  \noindent{}填表时间：{\kaishu\SWFU@Year{}年\SWFU@Month{}月\SWFU@Date{}日}\par
+  \noindent%
+  \begin{tabularx}{\linewidth}{|*{3}{c|>{\kaishu}C|}}
     \hline
     姓名&\SWFU@Name&性别&\SWFU@Gender&出生年月&\SWFU@Birth\\\hline
   \end{tabularx}\\[-1pt]%
-  \noindent\begin{tabularx}{\linewidth}{|c|>{\kaishu}C|c|>{\kaishu}C|}
+  \noindent%
+  \begin{tabularx}{\linewidth}{|*{2}{c|>{\kaishu}C|}}
     政治面貌&\SWFU@Political&职称/职务&\SWFU@Title\\\hline
     学历&\SWFU@Degree&现从事工作&\SWFU@Job\\\hline
   \end{tabularx}\\[-1pt]
   \noindent%
   \begin{tabularx}{\linewidth}{|P{2em}|X|}
-    \mkvspace{20ex}{%
-    \parbox{1em}{\linespread{1}\centering% 
-    个人总结\par\rotatebox[origin=c]{270}{（}\par{}
-    履行岗位职责情况\par\vspace{-1.5ex}\hfill{}、\par\vspace{1ex}
-    工作成果\par\vspace{-1.5ex}\hfill{}、\par\vspace{1ex}
-    师德师风情况等\par\rotatebox[origin=c]{270}{）}}}
-    &\kaishu\SWFU@Sumup\\%[-5em]
-    & \hfill\makebox[16em][l]{本人签字：{\SWFU@Sig}}\\\hline
+    \makecell{个\\[-1ex]人\\[-1ex]总\\[-1ex]结\\[-1ex]\frown\\[-1.5ex]%
+    履\\[-1ex]行\\[-1ex]岗\\[-1ex]位\\[-1ex]职\\[-1ex]责\\[-1ex]情\\[-1ex]%
+    况\\[-1ex]\hspace{1ex}’\\[-1ex]工\\[-1ex]作\\[-1ex]成\\[-1ex]果\\[-1ex]\hspace{1ex}’\\[-1ex]%
+    师\\[-1ex]德\\[-1ex]师\\[-1ex]风\\[-1ex]情\\[-1ex]况\\[-1ex]等\\[-1.5ex]\smile}%
+    & \begin{minipage}[c][15cm]{\linewidth}
+      \qquad\kaishu\SWFU@Sumup
+    \end{minipage}\\
+    & \hfill{}本人签字：\makebox[3cm][c]{\SWFU@Sig}\\\hline
   \end{tabularx}
-  \clearpage%
+  \bigbreak
   \noindent%
   \begin{tabularx}{\linewidth}{|P{2em}|X|}
     \hline
-    \mkvspace{10ex}{所在单位师德考核意见} &\\[-3em]
-                                     & \hfill\makebox[16em][l]{签章}\par
-                                       \hfill\makebox[12em][r]{年\hspace{3em}月\hspace{3em}日}\\\hline
-    \mkvspace{10ex}{所在单位年度考核意见} &\\[-3em]
-                                     & \hfill\makebox[16em][l]{签章}\par
-                                       \hfill\makebox[12em][r]{年\hspace{3em}月\hspace{3em}日}\\\hline
-    \mkvspace{4ex}{个人确认师德考核和年度考核结 果} &\\[-7em]
-                                     & \hfill\makebox[12em][l]{\SWFU@Sig}\\
-                                     & \hfill\makebox[16em][l]{签章}\\[-1ex]
-                                     & \hfill\makebox[12em][r]{{\purisa\SWFU@Year}年%
-                                       \makebox[3em]{\purisa\SWFU@Month}月\makebox[3em]{\purisa\SWFU@Date}日}\\\hline%
-    \mkvspace{10ex}{%
-    \parbox{1em}{\linespread{1}\centering%
-    学校考核意见}}&\\[-3em]
-                                     & \hfill\makebox[16em][l]{签章}\\[-1ex]
-                                     & \hfill\makebox[12em][r]{年\hspace{3em}月\hspace{3em}日}\\\hline
+    \makecell{所在\\单位\\师德\\考核\\意见}%
+    &\\[-3em]%
+    & \hfill{}签章\makebox[5cm][l]{}\par%
+      \hfill\makebox[6cm][r]{年\hspace{1cm}月\hspace{1cm}日}\\\hline
+    \makecell{所在\\单位\\年度\\考核\\意见}
+    &\\[-3em]
+    & \hfill{}签章\makebox[5cm][l]{}\par%
+      \hfill\makebox[6cm][r]{年\hspace{1cm}月\hspace{1cm}日}\\\hline
+    \makecell{个人\\确认\\师德\\考核\\和年\\度考\\核结\\果}
+    &\\[-6em]
+    & \hfill\makebox[5cm][c]{\SWFU@Sig}\\[-3ex]
+    & \hfill{}签章\makebox[5cm][l]{}\\[-1ex]
+    & \hfill\makebox[6cm][r]{{\purisa\SWFU@Year}年%
+      \makebox[1cm]{\purisa\SWFU@Month}月%
+      \makebox[1cm]{\purisa\SWFU@Date}日}\\\hline%
+    \makecell{\,\\学\\校\\考\\核\\意\\见}
+    &\\[-2em]
+    & \hfill{}签章\makebox[5cm][l]{}\\[-1ex]
+    & \hfill\makebox[6cm][r]{年\hspace{1cm}月\hspace{1cm}日}\\\hline
   \end{tabularx}\\
-\noindent{}备注：A4纸双面打印}
+  \noindent{}备注：A4纸双面打印}
 
 \pagestyle{empty}

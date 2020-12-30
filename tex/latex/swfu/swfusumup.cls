@@ -2,9 +2,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfusumup}
 
-
-%\RequirePackage{ifxetex} % XeTeX only
-
 \RequirePackage{pgfkeys}
 
 \pgfkeys{
@@ -32,7 +29,7 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
 \ProcessOptions\relax
 
-\LoadClass[scheme=plain]{ctexart}
+\LoadClass[scheme=chinese]{ctexart}
 
 \RequirePackage[backend=biber,url=false,doi=false,isbn=false,
 style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false]{biblatex}
@@ -63,7 +60,7 @@ left=2.5cm, right=2.5cm,
 \newcommand{\YES}{{\Large\checked}是\quad\unchecked{}否}
 \newcommand{\NO}{\unchecked{}是\quad{\Large\checked}否}
 
-\RequirePackage{tabularx}
+\RequirePackage{tabularx,makecell}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % for centering p column
 \newcolumntype{C}{>{\centering\arraybackslash}X}
@@ -83,11 +80,17 @@ left=2.5cm, right=2.5cm,
       考核方式&\SWFU@Examtype\\\hline%
       所用教材&\multicolumn{5}{l|}{\,\SWFU@Textbook}\\\hline%&出版时间&\SWFU@Publishtime
     \end{tabularx}\\[-1pt]
-    \begin{tabularx}{\textwidth}{|P{1em}|>{\kaishu}X|}%
-      \rule{0pt}{12ex}\par{}课程教学总结\par\rule{0pt}{12ex}& \SWFU@Sumup\\\hline%%
-      \rule{0pt}{12ex}\par{}今后改革设想\par\rule{0pt}{12ex}& \SWFU@Suggestion\\\hline%
+    \begin{tabularx}{\textwidth}{|M{1em}|>{\kaishu}X|}%
+      \makecell{课\\程\\教\\学\\总\\结}
+      & \begin{minipage}[c][15em]{1.0\linewidth}
+        \SWFU@Sumup
+      \end{minipage}\\\hline%%
+      \makecell{今\\后\\改\\革\\设\\想}
+      & \begin{minipage}[c][12em]{1.0\linewidth}
+        \SWFU@Suggestion
+      \end{minipage}\\\hline%
     \end{tabularx}\\[-1pt]%
-    \begin{tabularx}{\textwidth}{|c|>{\kaishu}C|c|>{\kaishu}C|}%
+    \begin{tabularx}{\textwidth}{|*{2}{c|>{\kaishu}C|}}%
       填报人&\SWFU@TeacherName&职称&\SWFU@TeacherTitle\\\hline%
     \end{tabularx}\\[-1pt]
     \begin{tabularx}{\textwidth}{|X|}%

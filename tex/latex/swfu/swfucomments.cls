@@ -2,8 +2,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfucomments}
 
-%\RequirePackage{ifxetex} % XeTeX only
-
 \RequirePackage{pgfkeys,etoolbox,calc}
 
 \pgfkeys{%
@@ -12,10 +10,8 @@
   Studid/.store in         = \SWFU@Studid,         % 学号
   Studname/.store in       = \SWFU@Studname,       % 学生姓名
   Studsbj/.store in        = \SWFU@Studsbj,        % 学生专业
-%  Studclass/.store in      = \SWFU@Studclass,      % 学生班级
+  School/.store in         = \SWFU@School, School={大数据与智能工程学院},
   Studmark/.store in       = \SWFU@Studmark,       % 评分
-%  Advisorname/.store in    = \SWFU@Advisorname,    Advisorname = 王晓林,% 指导教师姓名
-%  Advisortitle/.store in   = \SWFU@Advisortitle,   Advisortitle = 讲师,  % 指导教师职称
   Signature/.store in      = \SWFU@Signature,      % 教师签名
   Commenterlabel/.store in = \SWFU@Commenterlabel, % 指导教师 | 评阅人 | 申请人
   Commentslabel/.store in  = \SWFU@Commentslabel,  % 评语： | 指导教师评审意见：
@@ -74,7 +70,7 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
 \ProcessOptions\relax
 
-\LoadClass[zihao=-4,scheme=plain]{ctexart}
+\LoadClass[scheme=chinese,zihao=-4]{ctexart}
 
 \RequirePackage{graphicx}
 
@@ -90,32 +86,39 @@ left=2.5cm,right=2.5cm,
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \renewcommand{\arraystretch}{1.5}
+
 \newcommand{\makeform}{\pagestyle{empty}
   \begin{center}
     \large\heiti 西南林业大学本科毕业（设计）论文\SWFU@Formsubtitle
   \end{center}
-  \begin{tabularx}{\textwidth}{%
-    @{}>{\heiti}r%
-    @{}>{\centering\arraybackslash\hsize=1.1\hsize\linewidth=\hsize\kaishu}X%
-    @{}>{\heiti}r%
-    @{}>{\centering\arraybackslash\hsize=.9\hsize\linewidth=\hsize\kaishu}X}%
-      论文(设计)题目：& \multicolumn{3}{c}{\kaishu\SWFU@Prjtitle} \\\cline{2-4}
-      学生姓名：&\SWFU@Studname&\quad{}学号：&\texttt{\SWFU@Studid}\\\cline{2-2}\cline{4-4}
-      学院：&大数据与智能工程学院&\quad{}专业：&\SWFU@Studsbj\\\cline{2-2}\cline{4-4}\\\hline
-      \multicolumn{4}{|c|}{\large\SWFU@Hinttitle{}}\\[2ex]
-      \multicolumn{4}{|l|}{\begin{minipage}{.8\linewidth}%
-          \SWFU@Hinttext%
-          \vskip 5pt%
-        \end{minipage}}\\\hline      
-    \end{tabularx}
-    {\centering
-    \begin{tabularx}{\textwidth}{@{}X}
-      \SWFU@Commentslabel\\
-      {\kaishu\SWFU@Comments}\\
-    \end{tabularx}}
-  \vfill
-  \noindent\SWFU@Marklabel{}
+  \begin{tabularx}{\textwidth}{*{2}{@{}>{\heiti}r>{\kaishu}C}}%
+    论文(设计)题目：& \multicolumn{3}{c}{\kaishu\SWFU@Prjtitle} \\\cline{2-4}
+    学生姓名：&\SWFU@Studname&学号：&\texttt{\SWFU@Studid}\\\cline{2-2}\cline{4-4}
+    学院：&\SWFU@School&专业：&\SWFU@Studsbj\\\cline{2-2}\cline{4-4}\\
+  \end{tabularx}
+  \smallskip%
+  \begin{tabularx}{\linewidth}{|X|}
+    \hline
+    \begin{minipage}{1.0\linewidth}
+      \smallskip%
+      \begin{center}
+        \large\SWFU@Hinttitle 
+      \end{center}
+      \SWFU@Hinttext%
+      \smallskip%
+    \end{minipage}\\\hline
+  \end{tabularx}
+  \begin{tabularx}{\textwidth}{X}
+    \begin{minipage}{1.0\linewidth}
+      \SWFU@Commentslabel\par
+      {\kaishu\SWFU@Comments}
+    \end{minipage}\\
+  \end{tabularx}
+  \vfill%
+  \noindent%
+  \SWFU@Marklabel%
   \SWFU@Commenterlabel{}\underline{\makebox[5em]{\SWFU@Signature}}\hfill
-  日期：\underline{\makebox[3.5em]{\purisa\SWFU@Year}}年
-  \underline{\makebox[1.5em]{\purisa\SWFU@Month}}月
-  \underline{\makebox[2em]{\purisa\SWFU@Date}}日}
+  日期：%
+  \underline{\makebox[3em]{\purisa\SWFU@Year}}年
+  \underline{\makebox[3ex]{\purisa\SWFU@Month}}月
+  \underline{\makebox[3ex]{\purisa\SWFU@Date}}日}

@@ -5,33 +5,59 @@
 \RequirePackage{pgfkeys}
 
 \pgfkeys{%
-          Title/.store in =\SWFU@Title,           % 论文题目
-         Author/.store in =\SWFU@Author,          % 姓名
          Studid/.store in =\SWFU@Studid,          % 学号
-         Gender/.store in =\SWFU@Gender,          % 姓名
+         Gender/.store in =\SWFU@Gender,          % 性别
         Subject/.store in =\SWFU@Subject,         % 学科专业
        Research/.store in =\SWFU@Research,        % 研究方向
-        Advisor/.store in =\SWFU@Advisor,         % 导师姓名
-   AdvisorTitle/.store in =\SWFU@AdvisorTitle,    % 职称
+        Advisor/.store in =\SWFU@Advisor,         % 导师姓名1
+   AdvisorTitle/.store in =\SWFU@AdvisorTitle,    % 职称1
      Advisortwo/.store in =\SWFU@Advisortwo,      % 导师姓名2
 AdvisorTitletwo/.store in =\SWFU@AdvisorTitletwo, % 职称2
            Host/.store in =\SWFU@Host,            % 报告主持人
      Reportdate/.store in =\SWFU@Reportdate,      % 报告日期
-           Year/.store in =\SWFU@Year,            % 填表年
-          Month/.store in =\SWFU@Month,           % 填表月
-           Date/.store in =\SWFU@Date,            % 填表日
-        Prjfrom/.store in =\SWFU@Prjfrom,         % 本研究题目为“其它”
-  Tutorcomments/.store in =\SWFU@Tutorcomments,   % 导师对开题报告的评价
-       Tutorsig/.store in =\SWFU@Tutorsig,        % 导师签名
-        Poneone/.store in =\SWFU@Poneone,
-        Ponetwo/.store in =\SWFU@Ponetwo,
-        Ptwoone/.store in =\SWFU@Ptwoone,
-        Ptwotwo/.store in =\SWFU@Ptwotwo,
-      Ptwothree/.store in =\SWFU@Ptwothree,
-       Ptwofour/.store in =\SWFU@Ptwofour,
-      Pthreeone/.store in =\SWFU@Pthreeone,
-      Pthreetwo/.store in =\SWFU@Pthreetwo,
-    Pthreethree/.store in =\SWFU@Pthreethree,
+           Year/.store in =\SWFU@Year,            % 填表日期（年）
+          Month/.store in =\SWFU@Month,           % 填表日期（月）
+           Date/.store in =\SWFU@Date,            % 填表日期（日）
+%%% 选题基本情况
+GeneralA/.store in =\SWFU@GeneralA, GeneralA={\quad{}},  % 导师课题的一部分
+GeneralB/.store in =\SWFU@GeneralB, GeneralB={\quad{}},  % 委培单位的课题
+GeneralC/.store in =\SWFU@GeneralC, GeneralC={\qquad{}}, % 其它（须具体说明）
+%%% 选题分类
+ClsA/.store in =\SWFU@ClsA, ClsA={\quad{}}, % 基础研究
+ClsB/.store in =\SWFU@ClsB, ClsB={\quad{}}, % 应用研究
+ClsC/.store in =\SWFU@ClsC, ClsC={\quad{}}, % 综合研究
+ClsD/.store in =\SWFU@ClsD, ClsD={\quad{}}, % 其它
+%%% 选题来源
+FromA/.store in =\SWFU@FromA, FromA={\quad{}}, % 973、863项目
+FromB/.store in =\SWFU@FromB, FromB={\quad{}}, % 国家社科规划、基金项目
+FromC/.store in =\SWFU@FromC, FromC={\quad{}}, % 教育部人文、社科研究项目
+FromD/.store in =\SWFU@FromD, FromD={\quad{}}, % 国家自然科学基金项目
+FromE/.store in =\SWFU@FromE, FromE={\quad{}}, % 中央、国家各部门项目
+FromF/.store in =\SWFU@FromF, FromF={\quad{}}, % 省（自治区、直辖市）项目
+FromG/.store in =\SWFU@FromG, FromG={\quad{}}, % 国际合作研究项目
+FromH/.store in =\SWFU@FromH, FromH={\quad{}}, % 与港、澳、台合作研究项目
+FromI/.store in =\SWFU@FromI, FromI={\quad{}}, % 企、事业单位委托项目
+FromJ/.store in =\SWFU@FromJ, FromJ={\quad{}}, % 外资项目
+FromK/.store in =\SWFU@FromK, FromK={\quad{}}, % 学校自选项目
+FromL/.store in =\SWFU@FromL, FromL={\quad{}}, % 国防项目
+FromM/.store in =\SWFU@FromM, FromM={\quad{}}, % 非立项
+FromN/.store in =\SWFU@FromN, FromN={\quad{}}, % 其它
+%%%
+Tutorcomments/.store in =\SWFU@Tutorcomments, % 导师对开题报告的评价
+Tutorsig/.store in =\SWFU@Tutorsig,           % 导师签名
+TutorYear/.store in =\SWFU@TutorYear,   TutorYear={\qquad},  % 导师评价日期(年)
+TutorMonth/.store in =\SWFU@TutorMonth, TutorMonth={\qquad}, % 导师评价日期(月)
+TutorDate/.store in =\SWFU@TutorDate,   TutorDate={\qquad},  % 导师评价日期(日)
+%%%
+    Poneone/.store in =\SWFU@Poneone,
+    Ponetwo/.store in =\SWFU@Ponetwo,
+    Ptwoone/.store in =\SWFU@Ptwoone,
+    Ptwotwo/.store in =\SWFU@Ptwotwo,
+  Ptwothree/.store in =\SWFU@Ptwothree,
+   Ptwofour/.store in =\SWFU@Ptwofour,
+  Pthreeone/.store in =\SWFU@Pthreeone,
+  Pthreetwo/.store in =\SWFU@Pthreetwo,
+Pthreethree/.store in =\SWFU@Pthreethree,
 }
 
 \newcommand{\swfusetup}[1]{\pgfkeys{#1}}
@@ -42,11 +68,10 @@ AdvisorTitletwo/.store in =\SWFU@AdvisorTitletwo, % 职称2
 \LoadClass[scheme=chinese,zihao=-4]{ctexart}
 
 \ctexset{% from swfuthesis.cls
-  section/format = {\zihao{4}{\heiti}},% 4号，黑体
-  subsection/format = \heiti,% 小4号，黑体
-  subsubsection/format = \heiti,% 黑体（在规范中未说明）
-  paragraph/format = \heiti,% 黑体（在规范中未说明）
-  subparagraph/format = \heiti,% 黑体（在规范中未说明）
+  section = {%
+    number=\chinese{section},%
+    format={\Large\bfseries},%
+  },%
 }
 
 \RequirePackage[%showframe,%showcrop,
@@ -67,6 +92,8 @@ nomarginpar,%
 % {\dejavu ☐} %0x2610
 % \Checkedbox - marvosym
 % \checkmark - amssymb
+
+\RequirePackage{caption,subcaption}
 
 \RequirePackage{tabularx,longtable,multicol,multirow,booktabs,makecell}
 \renewcommand\theadfont{\bfseries}%\normalfont
@@ -100,27 +127,26 @@ nomarginpar,%
 \RequirePackage[backend=biber,%
 style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false,%
 url=false,doi=false,isbn=false]{biblatex}
-%\renewcommand*{\bibfont}{\small} % 11pt
 
 % https://tex.stackexchange.com/questions/247185/tcolorbox-theorem-which-isnt-framed-on-the-sides
 \RequirePackage[breakable]{tcolorbox}
-\newtcolorbox{mainbodybox}[1]{breakable,sharp corners,
-  colback=white,coltitle=black,colbacktitle=white,
-  boxrule=.5pt,titlerule=0pt,
-  bottom=2ex,
+\newtcolorbox{mainbodybox}[1]{breakable,sharp corners,nobeforeafter,%
+  colback=white,coltitle=black,colbacktitle=white,%
+  boxrule=.5pt,titlerule=0pt,%
+  bottomrule at break=.5pt,after skip=-1.5pt,% bottomrule=0pt,bottom=2em,
   before upper={\parindent 2em},% indentfirst
   fonttitle=\large\bfseries,title=#1}
 
-\newtcolorbox{mainlistbox}[1]{sharp corners,
-  colback=white,coltitle=black,colbacktitle=white,
-  boxrule=.5pt,titlerule=0pt,
-  toptitle=1ex,bottomtitle=3ex,center title,
-  fonttitle=\bfseries,title={\Huge #1}}
-  
+\newtcolorbox{mainlistbox}[1]{sharp corners,nobeforeafter,%
+  colback=white,coltitle=black,colbacktitle=white,%
+  boxrule=.5pt,titlerule=0pt,%
+  bottom=1em,bottomrule at break=.5pt,after skip=-.5pt,% bottomrule=0pt,
+  toptitle=1ex,bottomtitle=3ex,center title,%
+  fonttitle=\bfseries,title={\Huge #1}}  
 
 % \singlespacing, \onehalfspacing, \doublespacing
 \RequirePackage[doublespacing]{setspace}
-\renewcommand{\doublespacing}{\setstretch{1.6}}
+\renewcommand\doublespacing{\setstretch{1.6}}
 
 % {\fontsize{font size}{base line strech}\selectfont TEXT}
 \newcommand{\TitleFont}[1]{{\heiti {\fontsize{40}{48}\selectfont #1}}}%{1.5cm}{1.8cm}
@@ -139,7 +165,7 @@ url=false,doi=false,isbn=false]{biblatex}
         {\heiti 题\quad{}目：}&%
           \makebox[0pt][t]{%
             \begin{minipage}[t]{25em}
-              \centering\parbox[t]{24em}{\centering\bfseries\large\SWFU@Title}
+              \centering\parbox[t]{24em}{\centering\bfseries\large\@title}
             \end{minipage}}%
           \rule[-.5ex]{25em}{.1pt}\par%
           \rule[-.1ex]{25em}{.1pt}\\%
@@ -150,30 +176,31 @@ url=false,doi=false,isbn=false]{biblatex}
         \begin{center}
         \begin{tabularx}{\textwidth}{@{}>{\heiti}rC>{\heiti}rC@{}}
           学\qquad{}号：&\SWFU@Studid&
-          姓\qquad{}名：&\SWFU@Author\\\cline{2-2}\cline{4-4}
+          姓\qquad{}名：&\@author\\[-1ex]\cline{2-2}\cline{4-4}
           学科专业：&\SWFU@Subject&
-          研究方向：&\SWFU@Research\\\cline{2-2}\cline{4-4}
+          研究方向：&\SWFU@Research\\[-1ex]\cline{2-2}\cline{4-4}
           导师姓名：&\SWFU@Advisor{}&
-          职\hspace{2em}称：&\SWFU@AdvisorTitle\\\cline{2-2}\cline{4-4}
+          职\hspace{2em}称：&\SWFU@AdvisorTitle\\[-1ex]\cline{2-2}\cline{4-4}
           &\SWFU@Advisortwo{}&
-          &\SWFU@AdvisorTitletwo\\\cline{2-2}\cline{4-4}
+          &\SWFU@AdvisorTitletwo\\[-1ex]\cline{2-2}\cline{4-4}
           报告主持人：&\SWFU@Host&
-          报告日期：&\SWFU@Reportdate\\\cline{2-2}\cline{4-4}
+          报告日期：&\SWFU@Reportdate\\[-1ex]\cline{2-2}\cline{4-4}
         \end{tabularx}
       \end{center}
     \end{minipage}
   \vfill
-  \textbf{填表日期：}\SWFU@Year\,\textbf{年}\,%
-  \SWFU@Month\,\textbf{月}\,\SWFU@Date\,\textbf{日}
+  {\heiti 填表日期：}%
+  \makebox[3em][c]{\SWFU@Year}{\heiti 年}%
+  \makebox[2em][c]{\SWFU@Month}{\heiti 月}%
+  \makebox[2em][c]{\SWFU@Date}{\heiti 日}
 \end{center}
-\clearpage
-}
+\clearpage}
 
 \newcommand{\instructionpage}{% Instruction page
   \begin{center}
-    {\LARGE\textbf{填\quad{}表\quad{}说\quad{}明}}\\[5mm]
+    \LARGE\heiti 填\quad{}表\quad{}说\quad{}明
   \end{center}
-  \vskip 3ex
+  \vskip 5ex
   {\large
     \begin{enumerate}
     \item 开题报告是硕士生培养的重要环节，研究生需在导师的指导下认真完成，具体要求参见《西
@@ -191,104 +218,99 @@ url=false,doi=false,isbn=false]{biblatex}
     \item 打印要求：此表用A4纸双面打印，各栏空格不够时，请自行加页。
     \item 开题报告通过、修改、签字完毕后，交各学院存档一份。
     \end{enumerate}}
-  \clearpage
-}
+  \clearpage}
 
 \newcommand{\tablebody}{% main part
+  \noindent%
   \begin{mainlistbox}{选题基本情况（{\checkmark}）}
     本研究题目为：
     \begin{enumerate}[itemsep=2ex]
-    \item 导师课题的一部分\, （\quad{}）；
-    \item 委培单位的课题\, （\quad{}）；
-    \item 其它（须具体说明）\,\underline{\,{\kaishu\SWFU@Prjfrom}\,}。
+    \item 导师课题的一部分\, （\SWFU@GeneralA）；
+    \item 委培单位的课题\, （\SWFU@GeneralB）；
+    \item 其它（须具体说明）\,\underline{\,{\kaishu\SWFU@GeneralC}\,}。
     \end{enumerate}
   \end{mainlistbox}
-  \vspace*{-2em}
+  \noindent%
   \begin{mainlistbox}{选题分类（{\checkmark}）}
     \begin{tasks}(2)
-      \task 基础研究\, （\quad{}）%{\checkmark}
-      \task 应用研究\, （\quad{}）
-      \task 综合研究\, （\quad{}）
-      \task 其\hspace{2em}他\, （\quad{}）
+      \task 基础研究\, （\SWFU@ClsA{}）
+      \task 应用研究\, （\SWFU@ClsB{}）
+      \task 综合研究\, （\SWFU@ClsC{}）
+      \task 其\hspace{2em}他\, （\SWFU@ClsD{}）
     \end{tasks}
   \end{mainlistbox}
-  \vspace*{-2em}
+  \noindent%
   \begin{mainlistbox}{选题来源（{\checkmark}）}
     \begin{tasks}(2)
-      \task 973、863 项目\, （\quad{}）
-      \task 国家社科规划、基金项目\, （\quad{}）
-      \task 教育部人文、社科研究项目\, （\quad{}）
-      \task 国家自然科学基金项目\, （\quad{}）
-      \task 中央、国家各部门项目\, （\quad{}）
-      \task 省（自治区、直辖市）项目\, （\quad{}）
-      \task 国际合作研究项目\, （\quad{}）
-      \task 与港、澳、台合作研究项目\, （\quad{}）
-      \task 企、事业单位委托项目\, （\quad{}）
-      \task 外资项目\, （\quad{}）
-      \task 学校自选项目\, （\quad{}）
-      \task 国防项目\, （\quad{}）
-      \task 非立项\, （\quad{}）
-      \task 其他\, （\quad{}）%{\checkmark}
+      \task 973、863 项目\, （\SWFU@FromA{}）
+      \task 国家社科规划、基金项目\, （\SWFU@FromB{}）
+      \task 教育部人文、社科研究项目\, （\SWFU@FromC{}）
+      \task 国家自然科学基金项目\, （\SWFU@FromD{}）
+      \task 中央、国家各部门项目\, （\SWFU@FromE{}）
+      \task 省（自治区、直辖市）项目\, （\SWFU@FromF{}）
+      \task 国际合作研究项目\, （\SWFU@FromG{}）
+      \task 与港、澳、台合作研究项目\, （\SWFU@FromH{}）
+      \task 企、事业单位委托项目\, （\SWFU@FromI{}）
+      \task 外资项目\, （\SWFU@FromJ{}）
+      \task 学校自选项目\, （\SWFU@FromK{}）
+      \task 国防项目\, （\SWFU@FromL{}）
+      \task 非立项\, （\SWFU@FromM{}）
+      \task 其他\, （\SWFU@FromN{}）
     \end{tasks}
   \end{mainlistbox}
 
   \clearpage
-  
-  \noindent{\Large\bfseries 一、\,{}立题依据}
+
+  \section{立题依据}
   \begin{mainbodybox}{1.\, 选题的理论和实践意义}
     \SWFU@Poneone
-  \end{mainbodybox}
-  \vspace*{-2em}
+  \end{mainbodybox}%
   \begin{mainbodybox}{2.\, 文献综述}
     \noindent{}（国内外本研究领域的发展现状、趋势及问题等，并附参考文献）\par
     \SWFU@Ponetwo
   \end{mainbodybox}
-  \bigbreak
-  \noindent{\Large\bfseries 二、\,{}研究方案}
+  
+  \section{研究方案}
   \begin{mainbodybox}{1.\, 研究内容、研究目标及拟解决的关键问题}
     \SWFU@Ptwoone
   \end{mainbodybox}
-  \vspace*{-2em}
   \begin{mainbodybox}{2.\, 拟采用的研究方法、技术路线、实验方案及可行性分析}
     \SWFU@Ptwotwo
   \end{mainbodybox}
-  \vspace*{-2em}
   \begin{mainbodybox}{3.\, 本研究的特色与创新之处}
     \SWFU@Ptwothree
   \end{mainbodybox}
-  \vspace*{-2em}  
   \begin{mainbodybox}{4.\, 研究计划及预期研究结果}
     \SWFU@Ptwofour
   \end{mainbodybox}
-  \bigbreak
-  \noindent{\Large\bfseries 三、\,{}研究基础}
+
+  \section{研究基础}
   \begin{mainbodybox}{1.\, 已参加过的相关研究工作和已取得的研究工作进展}
     \SWFU@Pthreeone
   \end{mainbodybox}
-  \vspace*{-2em}
   \begin{mainbodybox}{2.\, 已具备的实验条件，尚缺少的实验条件和拟解决的途径}
     \SWFU@Pthreetwo
   \end{mainbodybox}
-  \vspace*{-2em}
   \begin{mainbodybox}{3.\, 研究经费预算和经费落实情况}
     \SWFU@Pthreethree
   \end{mainbodybox}
-  \bigbreak
+
   \singlespacing
-  \noindent{}{\Large\bfseries 四、\,{}导师对开题报告的评价}\\[3pt]
+  
+  \section{导师对开题报告的评价}
   \begin{mainbodybox}{%
-      {\normalfont\normalsize
-        （就硕士生对国外研究现状的了解情况、研究内容、研究方法、预期成果等方面予以评价）}}%
+      \normalfont\normalsize
+        （就硕士生对国外研究现状的了解情况、研究内容、研究方法、预期成果等方面予以评价）}%
     \bigskip
-    \qquad\SWFU@Tutorcomments\par
-    \bigskip\bigskip
+    \SWFU@Tutorcomments\par
+    \vspace*{2em}    
     \makebox[25em][r]{导师签字：}{\LARGE\SWFU@Tutorsig{}}\par
-    \bigskip
-    \makebox[25em][r]{年}\makebox[4em][r]{月}\makebox[4em][r]{日}
+    \vspace*{2em}
+    \hfill\SWFU@TutorYear\,{}年\,\SWFU@TutorMonth\,{}月\,\SWFU@TutorDate\,{}日
   \end{mainbodybox}
-  \bigbreak
-  \noindent{\Large\bfseries 五、\, 开题报告小组评议意见}\\[3pt]
-  \renewcommand{\arraystretch}{2.5}
+
+  \section{开题报告小组评议意见}
+  \renewcommand\arraystretch{2}
   \noindent\begin{tabularx}{\textwidth}{|c|P{4em}|P{3em}|X|P{5em}|}
     \hline
     组成&姓名&职称&工作单位&本人签字\\\hline
@@ -299,26 +321,20 @@ url=false,doi=false,isbn=false]{biblatex}
        &&&&\\\cline{2-5}
        &&&&\\\cline{2-5}
        &&&&\\\hline
-  \end{tabularx}
+  \end{tabularx}\par
 
-  \clearpage
-  
-  \noindent{\Large\bfseries 六、\,{}学科审查意见}\\[3pt]
+  \section{学科审查意见}
   \noindent\begin{tabularx}{\textwidth}{|lX|}
     \hline
-    学科对开题报告的意见：&\\[16em]
-    % &\vspace*{20em}\\
+    学科对开题报告的意见：&\\[12em]
     &\makebox[20em][l]{学科负责人签字：}\\
     &\hfill\makebox[4em][l]{年} \makebox[3em][l]{月} \makebox[3em]{日}\\\hline
-  \end{tabularx}
+  \end{tabularx}\par
 
-  \bigbreak
-
-  \noindent{\Large \textbf{七、\,{}学院审查意见}}\\[3pt]
+  \section{学院审查意见}
   \noindent\begin{tabularx}{\textwidth}{|lX|}
     \hline
-    学院对开题报告的意见：&\\[16em]
-    % &\vspace*{20em}\\
+    学院对开题报告的意见：&\\[12em]
     &\makebox[20em][l]{主管（副）院长签字：}\\
     &\hfill\makebox[4em][l]{年} \makebox[3em][l]{月} \makebox[3em]{日}\\\hline
   \end{tabularx}
@@ -335,13 +351,13 @@ url=false,doi=false,isbn=false]{biblatex}
   \end{center}
   \begin{tabularx}{\linewidth}{|c|C|c|P{4em}|c|c|c|P{4em}|}
     \hline
-    学号&\SWFU@Studid&姓名&\SWFU@Author&性别&\SWFU@Gender&导师&\SWFU@Advisor\\\hline
+    学号&\SWFU@Studid&姓名&\@author&性别&\SWFU@Gender&导师&\SWFU@Advisor\\\hline
   \end{tabularx}
   \begin{tabularx}{\linewidth}{|c|C|c|C|}
     专业&\SWFU@Subject&攻读学位&{\dejavu ☑}\,硕士\quad{}{\dejavu ☐}博士\\\hline
   \end{tabularx}
   \begin{tabularx}{\linewidth}{|c|C|}
-    拟选学位论文题目&\SWFU@Title\\\hline
+    拟选学位论文题目&\@title\\\hline
   \end{tabularx}
   \begin{tabularx}{\linewidth}{|X|c|c|c|c|}
     评价等级（请在相应空格内划\checkmark{}）&优&良&中&差\\\hline
@@ -385,10 +401,10 @@ url=false,doi=false,isbn=false]{biblatex}
   \end{center}
   \begin{tabularx}{\linewidth}{|c|P{6em}|c|X|c|X|}
     \hline
-    姓\qquad{}名&\SWFU@Author&学科专业&\SWFU@Subject&学院&大数据\\\hline
+    姓\qquad{}名&\@author&学科专业&\SWFU@Subject&学院&大数据\\\hline
   \end{tabularx}
   \begin{tabularx}{\linewidth}{|c|P{6em}|c|X|}  
-    研究方向&\SWFU@Research&拟选题目&\SWFU@Title\\\hline
+    研究方向&\SWFU@Research&拟选题目&\@title\\\hline
   \end{tabularx}
   % \vskip -1.7ex
   % \begin{longtabu}{|p{4em}|@{}X@{}|}

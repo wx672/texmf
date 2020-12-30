@@ -48,13 +48,25 @@
 
 \newcommand{\swfusetup}[1]{\pgfkeys{#1}}
 
-\LoadClass[scheme=plain]{ctexart}
+\LoadClass[scheme=chinese]{ctexart}
+
+%%%%% hyperref
+\RequirePackage{xcolor}
+\RequirePackage{hyperref}
+\hypersetup{%
+  bookmarksnumbered, breaklinks=true,%
+  colorlinks=false,%
+  pdfborderstyle={/S/U/W .3},% underline of width .3pt 
+  linkbordercolor=red,       % internal links
+  citebordercolor=cyan,      % links to bibliography
+  filebordercolor=magenta,   % file links
+  urlbordercolor=blue,       % external links
+}
+\def\UrlBreaks{\do\/\do-} % break long url
 
 \RequirePackage[backend=biber,url=false,doi=false,isbn=false,
 style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false]{biblatex}
 \renewcommand*{\bibfont}{\scriptsize}
-
-\RequirePackage{wx672hyperref}
 
 \RequirePackage[ % showframe,
 paperwidth=210mm,paperheight=297mm,
@@ -62,11 +74,11 @@ top=2cm,bottom=2cm,
 left=1.5cm,right=1.5cm
 ]{geometry}
 
-\RequirePackage{tabularx}
+\RequirePackage{tabularx,makecell}
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % for centering p column
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
 \newcolumntype{C}{>{\centering\arraybackslash}X}
-\renewcommand{\arraystretch}{1.5}
+\renewcommand{\arraystretch}{1.2}
 
 \newcommand\vfixed[1]{\rule{0pt}{30pt}\par{}#1\par{}\rule{0pt}{30pt}}%\vfixed{text}
 
@@ -75,26 +87,39 @@ left=1.5cm,right=1.5cm
   \begin{center}
     \LARGE\heiti 西南林业大学双语教学课程申请表
   \end{center}
-  \begin{tabularx}{\textwidth}{|P{6em}|@{}C@{}|}\hline%
-    申请人基本\par{}信息 & {\begin{tabularx}{.857\textwidth}{r|>{\kaishu}c|r|>{\kaishu}c|r|>{\kaishu}C@{}}%
- 姓名 & \SWFU@Name & 性别 & \SWFU@Gender & 出生年月 & \texttt{\SWFU@Dayofbirth}\\\hline%
- 学历 & \SWFU@Diploma & 专业技术职务 & \SWFU@Title & 电话 & \texttt{\SWFU@Phone}\\\hline%
- 学位 & \SWFU@Degree & 行政职务 & \SWFU@Admin & 学科专业 & \SWFU@Subject\\\hline%
- 所在学院 & \multicolumn{5}{c}{\kaishu\SWFU@School}\\
- \end{tabularx}} \\\hline%
-      课程信息 &%
-{\begin{tabularx}{.857\textwidth}{r|>{\kaishu}c|r|>{\kaishu}C|r|>{\kaishu}C@{}}%
-   学期&\texttt{\SWFU@Term}&开课学院&\SWFU@Schooltwo&课程名称&\SWFU@Course\\\hline%
-   外语语种&{\SWFU@Language}&课程班级&\multicolumn{3}{c}{\kaishu\texttt{\SWFU@Class}}\\\hline%
-   使用教材&\multicolumn{5}{l}{\,\SWFU@Textbook}\\\hline
-   自编讲义&\multicolumn{5}{c}{\kaishu\SWFU@Owntext}\\
- \end{tabularx}} \\\hline
-    \end{tabularx}\\[-1pt]
-    \begin{tabularx}{\textwidth}{|M{6em}|@{}>{\kaishu}C@{}|}
-      \vfixed{学术研究} &\SWFU@Research\\\hline
-      \vfixed{外语水平及\par{}双语教学经历} & \SWFU@Experience\\\hline
-      \vfixed{获奖情况} & \SWFU@Award\\\hline
-      \vfixed{教研室审核\par{}意见} & \\\hline
-      \vfixed{教学院（部）\par{}审核意见} & \\\hline
-      \vfixed{教务处审核\par{}意见} & \\\hline
-    \end{tabularx}}
+  \begin{tabularx}{\textwidth}{|M{63.5pt}|@{}C@{}|}\hline%
+    \makecell{申请人\\基本信息}%.857
+    & {\begin{tabularx}{435pt}{r|>{\kaishu}c|r|>{\kaishu}c|r|>{\kaishu}C@{}}%
+         姓名 & \SWFU@Name & 性别 & \SWFU@Gender & 出生年月 & \texttt{\SWFU@Dayofbirth}\\\hline%
+         学历 & \SWFU@Diploma & 专业技术职务 & \SWFU@Title & 电话 & \texttt{\SWFU@Phone}\\\hline%
+         学位 & \SWFU@Degree & 行政职务 & \SWFU@Admin & 学科专业 & \SWFU@Subject\\\hline%
+         所在学院 & \multicolumn{5}{c}{\kaishu\SWFU@School}\\
+       \end{tabularx}} \\\hline%
+    课程信息
+    & {\begin{tabularx}{435pt}{r|>{\kaishu}c|r|>{\kaishu}c|r|>{\kaishu}C@{}}%
+         学期&\texttt{\SWFU@Term}&开课学院&\SWFU@Schooltwo&课程名称&\SWFU@Course\\\hline%
+         外语语种&{\SWFU@Language}&课程班级&\multicolumn{3}{c}{\kaishu\texttt{\SWFU@Class}}\\\hline%
+         使用教材&\multicolumn{5}{l}{\,\SWFU@Textbook}\\\hline
+         自编讲义&\multicolumn{5}{c}{\kaishu\SWFU@Owntext}\\
+       \end{tabularx}} \\\hline
+  \end{tabularx}\\[-1pt]
+  \begin{tabularx}{\textwidth}{|M{6em}|@{}>{\kaishu}C@{}|}
+    \makecell{学术研究}
+    & \begin{minipage}[c][3cm]{1.0\linewidth}
+      \centering\SWFU@Research
+    \end{minipage}\\\hline
+    \makecell{外语水平及\\双语教学经历}
+    & \begin{minipage}[c][3cm]{1.0\linewidth}
+      \centering\SWFU@Experience
+    \end{minipage}\\\hline
+    \makecell{获奖情况}
+    & \begin{minipage}[c][3cm]{1.0\linewidth}
+      \centering\SWFU@Award
+    \end{minipage}\\\hline
+    \makecell{教研室\\审核意见}
+    & \begin{minipage}[c][3cm]{1.0\linewidth}\end{minipage}\\\hline
+    \makecell{教学院（部）\\审核意见}
+    & \begin{minipage}[c][3cm]{1.0\linewidth}\end{minipage}\\\hline
+    \makecell{教务处\\审核意见}
+    & \begin{minipage}[c][3cm]{1.0\linewidth}\end{minipage}\\\hline
+  \end{tabularx}}

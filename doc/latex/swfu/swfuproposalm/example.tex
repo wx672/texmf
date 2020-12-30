@@ -2,41 +2,88 @@
 
 \usepackage{zhlipsum,lipsum}
 
+\title{How To Mess up Everything in Hogwarts}
+\author{Harry Potter}
+
 \swfusetup{
-  Title = {How To Mess up Everything in Hogwarts}, %题目
-  Author = {Harry Potter}, % 姓名
   Studid = 3.14159265, % 学号
   Gender = Male, % 性别（附件2）
   Subject = Magic, % 学科专业
   Research = {Dark Art Defence}, % 研究方向
-  Advisor = {Albus Dumbledore}, % 导师姓名
-  AdvisorTitle = Professor, % 导师职称
-  Advisortwo =, %导师2姓名
-  AdvisorTitletwo =, % 导师2职称
-  Host =, % 报告主持人
-  Reportdate =, % 报告日期
-  Year = 2019, % 年
-  Month = 4, % 月
-  Date = 30, % 日
-  Prjfrom = {No idea}, % 选题基本情况中的“其它”
-  Tutorcomments = {\zhlipsum[1-2]},%导师对开题报告的评价
-  Tutorsig =, %导师签名
+  Advisor = {Albus Dumbledore}, % 导师1姓名
+  AdvisorTitle = Professor, % 导师1职称
+  Advisortwo ={Voldemort}, %导师2姓名
+  AdvisorTitletwo =Dark Lord, % 导师2职称
+  Host ={You Know Who}, % 报告主持人
+  Reportdate ={2021年6月6日}, % 报告日期
+  Year = 2021, % 年
+  Month = 1, % 月
+  Date = 9, % 日
+%%% 选题基本情况（默认都未打勾。想勾谁，放开注释即可）
+% GeneralA={\checkmark{}},  % 导师课题的一部分
+% GeneralB={\checkmark{}},  % 委培单位的课题
+GeneralC={被逼无奈……}, % 其它（须具体说明）
+%%% 选题分类（默认都未打勾。想勾谁，放开注释即可）
+% ClsA={\checkmark{}}, % 基础研究
+% ClsB={\checkmark{}}, % 应用研究
+ClsC={\checkmark{}}, % 综合研究
+% ClsD={\checkmark{}}, % 其它
+%%% 选题来源（默认都未打勾。想勾谁，放开注释即可）
+% FromA={\checkmark{}}, % 973、863项目
+% FromB={\checkmark{}}, % 国家社科规划、基金项目
+% FromC={\checkmark{}}, % 教育部人文、社科研究项目
+% FromD={\checkmark{}}, % 国家自然科学基金项目
+% FromE={\checkmark{}}, % 中央、国家各部门项目
+% FromF={\checkmark{}}, % 省（自治区、直辖市）项目
+% FromG={\checkmark{}}, % 国际合作研究项目
+% FromH={\checkmark{}}, % 与港、澳、台合作研究项目
+% FromI={\checkmark{}}, % 企、事业单位委托项目
+% FromJ={\checkmark{}}, % 外资项目
+% FromK={\checkmark{}}, % 学校自选项目
+% FromL={\checkmark{}}, % 国防项目
+% FromM={\checkmark{}}, % 非立项
+FromN={\checkmark{}}, % 其它
+%%%
+Tutorcomments = {% 4. 导师对开题报告的评价
+  \zhlipsum[2]
+},
+Tutorsig =,      % 导师签名
+TutorYear  =2021,% 导师评价日期（年）
+TutorMonth =1,   % 导师评价日期（月）
+TutorDate  =15,  % 导师评价日期（日）
+%%%
   Poneone = {% 1.1 选题的理论和实践意义
-    \zhlipsum[1-3]
+    \zhlipsum[1]
+    \begin{center}\singlespacing
+      \captionof{table}{An example table\label{tab:hp}}
+      \begin{tabular}{lll}
+        \toprule
+        Name&School&Brief Info\\\midrule
+        Harry Potter&Gryffindor&Good\\
+        Draco Malfoy&Slytherin&Bad\\\bottomrule
+      \end{tabular}      
+    \end{center}
+    表\ref{tab:hp}为表格插入示例。\zhlipsum[2]%
   },%
-  Ponetwo = {% 3. 主要参考文献
-    \zhlipsum[4-6]
+  Ponetwo = {% 1.2. 文献综述
+    \zhlipsum[4]
+    \begin{center}
+      \includegraphics[width=.2\textwidth]{swfulogo-emblem}
+      \captionof{figure}{SWFU logo\label{fig:logo}}
+    \end{center}
+    图\ref{fig:logo}为图片插入示例。\zhlipsum[5-6]
     
     \nocite{wangshuang03,yuyuan2009orange,intel86,zouhengming09,os30days,tanenbaum2008modern}
     \printbibliography[heading=none]{}},% 参考文献
   Ptwoone = {% 2.1 研究内容、研究目标及拟解决的关键问题
-    \zhlipsum[7-10]},%
+    \zhlipsum[7-9]
+  },%
   Ptwotwo = {% 2.2 拟采用的研究方法、技术路线、实验方案及可行性分析
-    \zhlipsum[11-15]},%
+    \zhlipsum[11-13]},%
   Ptwothree = {% 2.3 本研究的特色与创新之处
     \zhlipsum[16-18]},%
   Ptwofour = {% 2.4 研究计划及预期研究结果
-    \zhlipsum[19-25]},%
+    \zhlipsum[19-21]},%
   Pthreeone = {% 3.1 已参加过的相关研究工作和已取得的研究工作进展
     \zhlipsum[26-27]},%
   Pthreetwo = {% 3.2 已具备的实验条件，尚缺少的实验条件和拟解决的途径

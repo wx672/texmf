@@ -1,0 +1,98 @@
+\documentclass[varwidth,crop]{standalone}
+
+\usepackage{fontspec}
+\newfontfamily\nerd{DejaVu Sans Mono Nerd Font Complete}%
+\newfontfamily\symbola{Symbola}%
+\newfontfamily\kbd{Linux Biolinum Keyboard O}
+
+\usepackage{graphicx}
+
+\usepackage[table]{xcolor}
+\usepackage{colortbl}
+\definecolor{A}{gray}{.95}
+\definecolor{B}{gray}{1}
+\definecolor{Gray}{gray}{0.5}
+\definecolor{BG}{rgb}{1,.8,0}
+
+\newcommand\ksuper{\kbd }
+\newcommand\kctrl{\kbd }
+\newcommand\Ctrla{{\kbd }+{\kbd a}}
+\newcommand\ktab{\kbd }
+\newcommand\kenter{\kbd }
+\newcommand\kshift{\kbd }
+\newcommand\kspace{\kbd }
+\newcommand\kdash{\kbd -}
+\newcommand\kbar{\kbd |}
+\newcommand\kfone{\kbd }
+\newcommand\kftwo{\kbd }
+\newcommand\kfthree{\kbd }
+\newcommand\kffour{\kbd }
+\newcommand\kffive{\kbd }
+\newcommand\pinyin{\includegraphics[width=1em]{pin}}
+\newcommand\chrome{\textcolor{orange}{\nerd }}
+\newcommand\terminal{{\nerd }}
+\newcommand\editor{{\LARGE\nerd ✍}}
+\newcommand\runit{{\symbola 🏃}} %  f96d 
+\newcommand\office{{\nerd }}
+\newcommand\help{\textcolor{red}{\nerd }}
+\newcommand\killit{{\LARGE\nerd ☠}}
+\newcommand\close{{\nerd }}
+\newcommand\switch{{\nerd }}
+\newcommand\swap{{\nerd }}
+\newcommand\zoom{{\nerd }}
+\newcommand\minimize{{\nerd }}
+\newcommand\create{{\nerd }}
+\newcommand\coding{{\nerd }}
+\newcommand\tmuxhsplit{{\nerd }}
+\newcommand\tmuxvsplit{{\nerd }}
+\newcommand\tmuxup{{\nerd }}
+\newcommand\tmuxdown{{\nerd }}
+\newcommand\tmuxleft{{\nerd }}
+\newcommand\tmuxright{{\nerd }}
+
+\begin{document}
+\begin{center}
+  \colorbox{BG}{\bfseries Window operations (Sawfish)}\\[1ex]
+  \rowcolors{1}{A}{B}
+  \begin{tabular} {rl@{\qquad}rl@{\qquad}rl}
+     %       
+    \terminal & {\ksuper}+{\kbd t}%
+    & \swap & {\ksuper}+{\ktab}%
+    & \runit &{\ksuper}+{\kbd r}\\
+    \editor & {\ksuper}+{\kbd e}
+    & \zoom & {\ksuper}+{\kenter}
+    &\pinyin&{\kshift}+{\kspace}\\
+    \chrome&{\ksuper}+{\kbd c}
+    & \close &{\ksuper}+{\kffour}
+    & \help &{\ksuper}+{\kfone}\\%
+    %\office &{\ksuper}+{\kbd o}& \killit &{\ksuper}+{\kffive} \\ %
+  \end{tabular}%\par
+  %  \minimize &{\ksuper}+{\kshift}+{\kenter} \\
+  % \hspace{-21em}{\tiny * Config file: \texttt{$\sim$/.sawfish/rc}}
+\end{center}
+\begin{center}
+  \colorbox{BG}{\bfseries Terminal operations (Tmux)}\\[1ex]
+  \rowcolors{1}{A}{B}
+  \begin{tabular} {rl@{\qquad}rl@{\qquad}rl}%
+    \create       & \Ctrla\quad\kbd{c}   % C-a c
+    & \tmuxhsplit & \Ctrla\quad\kdash    % C-a -
+    & \tmuxvsplit & \Ctrla\quad\kbar\\   % C-a |
+    \swap         & \Ctrla\quad\kbd{a}   % C-a a
+    & \tmuxup     & \Ctrla\quad\kbd{k}   % C-a k
+    & \tmuxleft   & \Ctrla\quad\kbd{h}\\ % C-a h
+    \switch       & \Ctrla\quad\kbd{n}   % C-a n
+    & \tmuxdown   & \Ctrla\quad\kbd{j}   % C-a j
+    & \tmuxright  & \Ctrla\quad\kbd{l}\\ % C-a l
+    &&&&&\\
+    \help   & \Ctrla\quad\kfone     % C-a F1
+    & \help & \Ctrla\quad\kftwo     % C-a F2
+    & \help & \Ctrla\quad\kfthree\\ % C-a F3
+  \end{tabular}%\par
+%\hspace{-24em}{\tiny * Config file: \texttt{$\sim$/.tmux.conf}}
+\end{center}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

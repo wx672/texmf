@@ -1,0 +1,39 @@
+\documentclass[tikz]{standalone}
+
+\usetikzlibrary{shapes,arrows,positioning}
+
+\begin{document}
+
+% Define block styles
+\tikzstyle{decision} = [diamond, aspect=2, inner sep=0pt, align=center]%
+\tikzstyle{block} = [rectangle, align=center, rounded corners]%
+
+\begin{tikzpicture}[auto, %node distance = 1cm,%
+  every node/.style={draw},%, fill=gray!20
+  every path/.style={draw, -latex'}]
+  
+  % Place nodes
+  \node [block] (init) {initialize model};%
+  \node [ellipse,   left=of init] (expert) {expert};%
+  \node [ellipse,  right=of init] (system) {system};%
+  \node [block,    below=of init] (identify) {identify\\candidate models};%
+  \node [block,    below=of identify] (evaluate) {evaluate\\candidate models};%
+  \node [block,     left=of evaluate] (update) {update\\model};%
+  \node [decision, below=of evaluate] (decide) {is best candidate\\better?};%
+  \node [block,    below=of decide]   (stop) {stop};%
+  % Draw edges
+  \path (init) -- (identify);%
+  \path (identify) -- (evaluate);%
+  \path (evaluate) -- (decide);%
+  \path (decide) -| node [near start, swap, draw=none] {yes} (update);%
+  \path (update) |- (identify);%
+  \path (decide) -- node [draw=none] {no}(stop);%
+  \path [dashed] (expert) -- (init);%
+  \path [dashed] (system) -- (init);%
+  \path [dashed] (system) |- (evaluate);%
+\end{tikzpicture}
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -2,8 +2,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfuprogress}
 
-%\RequirePackage{ifxetex} % XeTeX only
-
 \RequirePackage{pgfkeys}
 
 \pgfkeys{%
@@ -105,14 +103,14 @@ L/.style = {% 实验教学计划表
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
 \ProcessOptions\relax
 
-\LoadClass[scheme=plain]{ctexart}
+\LoadClass[scheme=chinese]{ctexart}
 
 \RequirePackage{graphicx,tabularx}
 
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % centering m column
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % centering p column
-\renewcommand{\arraystretch}{1.8}
+\renewcommand{\arraystretch}{1.3}
 
 \RequirePackage[%showframe,
 paperwidth=210mm,paperheight=297mm,

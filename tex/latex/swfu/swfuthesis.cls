@@ -2,8 +2,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfuthesis}
 
-%\RequirePackage{ifxetex} % XeTeX only
-
 \RequirePackage{pgfkeys}
 
 \pgfkeys{%
@@ -72,7 +70,6 @@ nomarginpar]{geometry}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % centering p column
 
-%\RequirePackage{ulem}
 \RequirePackage[bottom]{footmisc} % stick footnote at bottom of page
 \RequirePackage{enumitem} % \setlist
 

@@ -1,0 +1,53 @@
+\documentclass[tikz]{standalone}
+
+\usetikzlibrary{positioning,trees}
+
+\begin{document}
+\tikzstyle{arrow} = [->]
+\begin{tikzpicture}[%
+  level/.style={sibling distance=60mm/#1, arrow},%
+  every node/.style={circle,draw}
+  ]
+  \node {$n$}
+  child {
+    node {$\frac{n}{2}$}
+    child
+    {
+      node {$\frac{n}{2^2}$}
+      child { node {$\frac{n}{2^k}$}}
+      child { node {$\frac{n}{2^k}$}}
+    }
+    child
+    {
+      node {$\frac{n}{2^2}$}
+      child {node {$\vdots$}}
+      child {node {$\vdots$}}
+    }
+  }
+  child
+  {
+    node {$\frac{n}{2}$}
+    child
+    {
+      node {$\frac{n}{2^2}$}
+      child {node {$\vdots$}}
+      child {node {$\vdots$}}
+    }
+    child
+    {
+      node {$\frac{n}{2^2}$}
+      child {node {$\vdots$}}
+      child
+      {
+        node {$\vdots$}
+        child {node {$\frac{n}{2^k}$}}
+        child {node {$\frac{n}{2^k}$}}        
+      }
+    }
+  };
+\end{tikzpicture}
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

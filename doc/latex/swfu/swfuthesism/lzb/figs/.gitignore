@@ -1,0 +1,5 @@
+*.pbm
+*.ppm
+*.pnm
+*.tif
+.gitignore
