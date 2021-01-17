@@ -1,0 +1,112 @@
+\documentclass{swfu3in1}
+
+\usepackage{zhlipsum}
+
+\addbibresource{os.bib}
+
+\title{How to mess up everything in Hogwarts}
+\author{Harry Potter}
+
+\swfusetup{%
+  %%% 默认都未打勾。想勾谁，放开注释即可。
+  % PrjFrmA =\checked{},% 科研项目
+  % PrjFrmB =\checked{},% 社会实践
+  % PrjFrmC =\checked{},% 大学生创新创业项目
+  PrjFrmD =\checked{},  % 其它来源
+  %%%
+  AdvisoraSig = {\includegraphics[width=6em]{../signature}},%  指导教师a签名
+  Advisora = Albus Dumbledore,% 指导教师a姓名
+  AdvisoraTitle = Professor,  % 指导教师a职称
+  AdvisoraGender = 男,        % 指导教师a性别
+  AdvisoraAge = 888,          % 指导教师a年龄
+  AdvisoraDegree = DMagic,%   % 指导教师a学历
+  AdvisoraFrom = Hogwarts,%   % 指导教师a工作单位
+  % Advisorb =,       % 指导教师b姓名    
+  % AdvisorbTitle =,  % 指导教师b职称    
+  % AdvisorbGender =, % 指导教师b性别    
+  % AdvisorbAge =,    % 指导教师b年龄    
+  % AdvisorbDegree =, % 指导教师b学历    
+  % AdvisorbFrom =,   % 指导教师b工作单位
+  AdvisorComment = {% 指导教师意见
+    \zhlipsum[1]
+  },%
+  School = Gryffindor, % 学生所属学院
+  Studid = 3.1415926,  % 学号
+  Gyear = 8888,% 届
+  Year  = 8888,% 报告提交年、月、日
+  Month = 88,  %
+  Date  = 8,   %
+  Subject = Defence of dark art, %
+  Grade = 8884,%
+  %%%
+  PPSLi = {%（开题报告）1. 该研究的目的、意义
+    \zhlipsum[1]
+  },%
+  PPSLii = {%（开题报告）2. 国内外研究现状及发展趋势
+    \zhlipsum[3]
+    \begin{center}
+      \begin{minipage}{.5\linewidth}
+        \begin{center}\singlespacing
+          \captionof{table}{An example table\label{tab:hp}}
+          \begin{tabular}{lll}
+            \toprule
+            Name&School&Brief Info\\\midrule
+            Harry Potter&Gryffindor&Good\\
+            Draco Malfoy&Slytherin&Bad\\\bottomrule
+          \end{tabular}      
+        \end{center}
+      \end{minipage}\qquad
+      \begin{minipage}{.2\linewidth}
+        \begin{center}
+          \includegraphics[width=\textwidth]{swfulogo-emblem}%
+          \captionof{figure}{SWFU logo\label{fig:logo}}
+        \end{center}
+      \end{minipage}
+    \end{center}
+    表\ref{tab:hp}为表格插入示例。图\ref{fig:logo}为图片插入示例。\zhlipsum[4]
+  },%
+  BIB = {%（开题报告）3. 主要参考文献
+    \nocite{*} \printbibliography[heading=none]%
+  },%
+  PPSLiv = {%（开题报告）4. 该研究的主要内容，重点解决的问题，预期结果或成果
+    \zhlipsum[5]
+  },%
+  PPSLv = {%（开题报告）5. 拟采取的研究方法或实验方法，步骤，可能出现的技术问题及解决办法
+    \zhlipsum[7]
+  },%
+  PPSLvi = {%（开题报告）6. 完成该研究已具备的条件
+    \zhlipsum[9]
+  },
+  % TSKwhy={ %（任务书）目的、意义。不要超过400字。同 PPSLi
+  %   \zhlipsum[1]% 类似开题报告的第一部分：该研究的目的、意义
+  % },%
+  % TSKwhat={%（任务书）任务、要求。不要超过400字。同 PPSLiv
+  %   \zhlipsum[2]%
+  % },%
+  TSKwhen={%（任务书） 进度、安排。不要超过10行。
+    \begin{itemize}
+    \item 每周: 交一次周报告
+    \item 每两周: 开会讨论一次
+    \item 1 -- 4周: 调研，并确定论文一级目录
+    \item 5 -- 8周: 明确要实现的内核功能模块
+    \item 8 -- 12周: 编码实现，并完成论文的相应部分
+    \item 12 -- 16周: 测试、完善，并完成论文的相应部分
+    \item 16 -- 20周: 论文终稿
+    \end{itemize}},%
+  Plan={%（实习计划表）论文工作计划和预期目标摘要
+    \zhlipsum[11]
+  },%
+}
+
+\begin{document}
+\makeproposal{}% 开题报告
+\clearpage
+\maketaskspec{} % 任务书
+\clearpage
+\makeplan{} % 实习计划表
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
