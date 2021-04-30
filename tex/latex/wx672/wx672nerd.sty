@@ -6,24 +6,8 @@
 %\RequirePackage[svgnames]{xcolor}% Green, SkyBlue...
 
 \RequirePackage{fontspec}
-\RequirePackage{emoji}
-\RequirePackage{latexsym,pifont,marvosym,fontawesome,mathtools}% 
-
-\newCJKfontfamily\sig{signature}
-
-% special looking fonts
-\newfontfamily\humor{Humor Sans}% \humor{hello, world!}
-\newfontfamily\purisa{Purisa}
-\newfontfamily\kbd{Linux Biolinum Keyboard O}
-% \newfontfamily\quivira{Quivira} % large unicode coverage, but not come with Debian
-% \newfontfamily\US{USStarsNStripes}
-% \newfontfamily\USS{LMS Star Spangled}
-% \newfontfamily\UK{LMS God Save The Queen}
-
-\newcommand{\unix}{{\fontspec{Purisa}{UNIX}}}
-\newcommand{\emacs}{\includegraphics[width=1.2em]{emacs}}
-\newcommand{\google}{\raisebox{-.2em}{\includegraphics[width=3em]{google}}}
-\newcommand{\moodle}{\includegraphics[width=1em]{moodle}}
+\RequirePackage{latexsym,marvosym,fontawesome}% pifont,emoji,mathtools
+\RequirePackage{newunicodechar}
 
 %%% utf8 symbols
 % use C-x 8 RET to input utf8 symbols
@@ -31,55 +15,140 @@
 % M-x describe-char
 % fntsample -f 'DejaVu Sans Mono Nerd Font Complete.ttf' -o nerd.pdf
 
-% {\dejavu ➔ ➜ ➤ ✉ ⚓ ☭ ❂ …}
-\newfontfamily\dejavu{DejaVu Sans Mono}
+\newfontfamily\symbola{Symbola}
+\newfontfamily\dejavu{DejaVuSansMono Nerd Font Mono}
+\newfontfamily\noto{NotoSansMono Nerd Font}%
+\newfontfamily\nerd{FiraCode Nerd Font}%
+
 % \newfontfamily\nerd{DejaVuSansMono Nerd Font} % error with lualatex
+\newunicodechar{☛}{\symbola ☛}% pointing right
+\newunicodechar{☺}{\symbola ☺}%smiling
+\newunicodechar{☹}{\symbola ☹}%frown
+\newunicodechar{😐}{\symbola 😐}%okay
+\newunicodechar{⚠}{{\symbola ⚠}}%caution
+\newunicodechar{}{{\nerd }}%caution
+\newunicodechar{}{{\nerd }}%caution
+\newunicodechar{✔}{{\nerd ✔}}%checkmark
+\newunicodechar{✘}{{\dejavu ✘}}%crossmark
+\newunicodechar{□}{{\nerd □}}%ballot box
+\newunicodechar{☑}{{\nerd ☑}}%checked box
+\newunicodechar{➔}{{\dejavu ➔}}% right arrow
+\newunicodechar{➜}{{\dejavu ➜}}% right arrow
+\newunicodechar{➤}{{\dejavu ➤}}% right arrow
+\newunicodechar{✉}{{\dejavu ✉}}% envelope
+\newunicodechar{}{{\nerd }}%envelope
+\newunicodechar{ﬁ}{{\nerd ﬁ}}%old phone
+\newunicodechar{}{{\nerd }}%lightning
+\newunicodechar{}{{\nerd }}%thumbup
+\newunicodechar{}{{\nerd }}%thumbdown
+\newunicodechar{}{{\nerd }}%thumbup
+\newunicodechar{}{{\nerd }}%thumbdown
+\newunicodechar{⚓}{{\dejavu ⚓}}% anchor
+\newunicodechar{☭}{{\dejavu ☭}}% ccp
+\newunicodechar{❂}{{\dejavu ❂}}% tw, taiwan
+\newunicodechar{}{{\nerd }}%java
+\newunicodechar{}{{\nerd }}%python
+\newunicodechar{}{{\nerd }}%php
+\newunicodechar{}{{\nerd }}%php
+\newunicodechar{}{{\nerd }}%mysql
+\newunicodechar{}{{\nerd }}%javascript
+\newunicodechar{}{{\nerd }}%c
+\newunicodechar{}{{\nerd }}%c
+\newunicodechar{}{{\nerd }}%vim
+\newunicodechar{}{{\nerd }}%vim
+\newunicodechar{}{{\nerd }}%shadowsocks
+\newunicodechar{}{{\nerd }}%shadowsocks
+\newunicodechar{}{{\nerd }}%cisco
+\newunicodechar{}{{\nerd }}%wordpress
+\newunicodechar{}{{\nerd }}%youtube
+\newunicodechar{}{{\nerd }}%google
+\newunicodechar{}{{\nerd }}%earth,globe
+\newunicodechar{}{{\nerd }}%google plus
+\newunicodechar{}{{\nerd }}%google plus
+\newunicodechar{}{{\nerd }}%twitter
+\newunicodechar{}{{\nerd }}%facebook
+\newunicodechar{}{{\nerd }}%qq
+\newunicodechar{}{{\nerd }}%wechat
+\newunicodechar{}{{\nerd }}%sina
+\newunicodechar{}{{\nerd }}%walking
+\newunicodechar{}{{\nerd }}%msn
+\newunicodechar{}{{\nerd }}%bicycling
+\newunicodechar{}{{\nerd }}%bicycle
+\newunicodechar{}{{\nerd }}%gears
+\newunicodechar{}{{\nerd }}%skull
+\newunicodechar{}{{\nerd }}%globe,earth
+\newunicodechar{}{{\nerd }}%terminal
+\newunicodechar{}{{\nerd }}%shout
+\newunicodechar{}{{\nerd }}%lottery
+\newunicodechar{☡}{{\nerd ☡}}%difficulty
+\newunicodechar{}{{\nerd }}%tux linux
+\newunicodechar{}{{\nerd }}%gnu
+\newunicodechar{}{{\nerd }}%pdf adobe
+\newunicodechar{}{{\nerd }}%folder
+\newunicodechar{}{{\nerd }}%git
+\newunicodechar{}{{\nerd }}%github
+\newunicodechar{🕮}{\symbola 🕮}%openbook
+\newunicodechar{}{{\nerd }}%openbook
+\newunicodechar{}{{\nerd }}%terminal
+\newunicodechar{}{{\nerd }}%stackoverflow
+\newunicodechar{}{{\nerd }}%baidu
+\newunicodechar{}{{\nerd }}%debian
+\newunicodechar{}{{\nerd }}%ubuntu
+\newunicodechar{}{{\nerd }}%redhat
+\newunicodechar{}{{\nerd }}%fedora
+\newunicodechar{}{{\nerd }}%fedora
+\newunicodechar{}{{\nerd }}%arch
+\newunicodechar{}{{\nerd }}%mint
+\newunicodechar{}{{\nerd }}%android
+\newunicodechar{}{{\nerd }}%raspberry pie
+\newunicodechar{}{{\nerd }}%windows
+\newunicodechar{}{{\nerd }}%apple
+\newunicodechar{}{{\nerd }}%centos
+\newunicodechar{}{{\nerd }}%chrome
+\newunicodechar{}{{\nerd }}%firefox
+\newunicodechar{}{{\nerd }}%ie
+\newunicodechar{}{{\nerd }}%ios
+\newunicodechar{}{{\nerd }}%
 
-\newfontfamily\nerd{NotoSansMono Nerd Font}%
-% {\nerd %
-%             %
-%      %
-%            %
-%                    %
-% }
+% \newcommand\linux{\nerd } % u+f17c
+% \newcommand\gnu{\nerd }
+% \newcommand\GG{\textcolor{SkyBlue}{\nerd }}
+% \newcommand\world{\textcolor{SkyBlue}{\nerd }}
+% \newcommand\pdf{\textcolor{red}{\nerd }}%
+% \newcommand\folder{{\nerd }}%e5fe,e61e,e7a3,f07c
+% \newcommand\git{{\nerd }}%f1d2,f1d3
+% \newcommand\github{\nerd }
+% \newcommand\obook{{\nerd }}%f212,f401,f405
+% \newcommand\shell{{\nerd }}%e795
+% \newcommand\vim{{\nerd }}
+% \newcommand\stackoverflow{{\nerd }}%f16c, e710
+% \newcommand\phone{\nerd ﬁ} % 260e☎ fb01ﬁ
+% \newcommand\mail{\nerd } %f42f f6ef f6ed faee﫮 faef﫯 f430 
+% \newcommand\hw{\nerd } %f8ec f8ea f420 f26d f14b f0e7 e30e e315 e305
 
-\newcommand\correct{{\Large\textcolor{Green}{\dejavu ✔}}}
-\newcommand\Checked{{\dejavu ✔}}% ✓
-\newcommand\wrong{\textcolor{red}{\dejavu ✘}}
-\newcommand\RedCross{\textcolor{red}{\dejavu ✘}}
-\newcommand\good{{\nerd }}% 👍☺
-\newcommand\Good{{\textcolor{Green}{\good}}}
-\newcommand\bad{{\nerd }}% 👎☹
-\newcommand\Bad{{\textcolor{red}{\bad}}}
-\newcommand\okay{{\nerd }}
-\newcommand\Okay{{\textcolor{Green}{\okay}}}
-\newcommand\caution{{\nerd ☡}}
-\newcommand\pointright{{\nerd ☞}} % ☞
-\newcommand\pointleft{{\nerd ☜}} % ☜
-\newcommand\unchecked{{\nerd □}}%ballot box
-\newcommand\uncheckedbox{{\nerd □}} % ❏
-\newcommand\checked{{\large\nerd ☑}} %🗹
-\newcommand\checkedbox{{\nerd ☑}} % 🗹
-\newcommand\crossedbox{{\nerd 🗷}} % ☒
-\newcommand\ellipis{{\nerd …}}
+% \newcommand\correct{{\Large\textcolor{Green}{\dejavu ✔}}}
+% \newcommand\wrong{\textcolor{red}{\dejavu ✘}}
+% \newcommand\RedCross{\textcolor{red}{\dejavu ✘}}
 
-\newcommand\linux{\nerd } % u+f17c
-\newcommand\gnu{\nerd }
-\newcommand\GG{\textcolor{SkyBlue}{\nerd }}
-\newcommand\world{\textcolor{SkyBlue}{\nerd }}
-\newcommand\pdf{\textcolor{red}{\nerd }}%
-\newcommand\folder{{\nerd }}%e5fe,e61e,e7a3,f07c
-\newcommand\git{{\nerd }}%f1d2,f1d3
-\newcommand\github{\nerd }
-\newcommand\obook{{\nerd }}%f212,f401,f405
-\newcommand\shell{{\nerd }}%e795
-\newcommand\vim{{\nerd }}
-\newcommand\stackoverflow{{\nerd }}%f16c, e710
-\newcommand\phone{\nerd ﬁ} % 260e☎ fb01ﬁ
-\newcommand\mail{\nerd } %f42f f6ef f6ed faee﫮 faef﫯 f430 
-\newcommand\hw{\nerd } %f8ec f8ea f420 f26d f14b f0e7 e30e e315 e305
+% \newcommand\Checked{{\dejavu ✔}}% ✓
+% \newunicodechar{✔}{{\dejavu ✔}}
 
-% f421,f46e,f536 f1e6 
+% \newcommand\good{{\nerd }}% 👍☺
+% \newcommand\Good{{\textcolor{Green}{\good}}}
+% \newcommand\bad{{\nerd }}% 👎☹
+% \newcommand\Bad{{\textcolor{red}{\bad}}}
+% \newcommand\okay{{\nerd }}
+% \newcommand\Okay{{\textcolor{Green}{\okay}}}
+% \newcommand\caution{{\nerd ☡}}
+% \newcommand\pointright{{\nerd ☞}} % ☞
+% \newcommand\pointleft{{\nerd ☜}} % ☜
+% \newcommand\unchecked{{\nerd □}}%ballot box
+% \newcommand\uncheckedbox{{\nerd □}} % ❏
+% \newcommand\checked{{\large\nerd ☑}} %🗹
+% \newcommand\checkedbox{{\nerd ☑}} % 🗹
+% \newcommand\crossedbox{{\nerd 🗷}} % ☒
+% \newcommand\ellipis{{\nerd …}}
+
 
 \newtoggle{logocolor}
 
@@ -147,15 +216,18 @@
   \settoggle{logocolor}{#1}%
   \iftoggle{logocolor}{\textcolor{SteelBlue}{\nerd }}{{\nerd }}}
 
-%\newfontfamily\fa{FontAwesome} % (#xf000, #xf2e0) covered by nerd font
-% {\fa }
+\newCJKfontfamily\sig{signature}
 
-\newfontfamily\symbola{Symbola} % (#x1f000, #x1f9e6)
-\newfontfamily\emj{Symbola}% {\emj ☺}
+% special looking fonts
+\newfontfamily\humor{Humor Sans}% \humor{hello, world!}
+\newfontfamily\purisa{Purisa}
+\newfontfamily\lbkey{Linux Biolinum Keyboard O} % used in wx672tut.sty
+% \newfontfamily\quivira{Quivira} % large unicode coverage, but not come with Debian
+% \newfontfamily\US{USStarsNStripes}
+% \newfontfamily\USS{LMS Star Spangled}
+% \newfontfamily\UK{LMS God Save The Queen}
 
-%{\symbola 𐇐 👍 👎 ☛}
-\newcommand\Symbol[1]{\symbola #1}
-
-\newcommand\openbook{\symbola 🕮}
-%\newcommand\okay{\symbola 😐}
-\newcommand\pright{\symbola ☛}
+\newcommand{\unix}{{\fontspec{Purisa}{UNIX}}}
+\newcommand{\emacs}{\includegraphics[width=1.2em]{emacs}}
+\newcommand{\google}{\raisebox{-.2em}{\includegraphics[width=3em]{google}}}
+\newcommand{\moodle}{\includegraphics[width=1em]{moodle}}

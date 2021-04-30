@@ -1,0 +1,162 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{luapinyin}
+
+\RequirePackage{expl3}
+\RequirePackage{luacode}
+\RequirePackage{luatexja-ruby}
+
+\def\xpinyin@@pinyin@struct{\vrule width 0pt depth 0.5ex}
+
+\begin{luacode*}
+xpinyin = {}
+
+-- create map_token table
+xpinyin.map_token = {}
+for ascii = 97, 122 do
+  xpinyin.map_token[string.char(ascii)] = { token.create(ascii, 11) }
+end
+
+xpinyin.map_token[1] = { token.create('=') }
+xpinyin.map_token[2] = { token.create('\'') }
+xpinyin.map_token[3] = { token.create('v') }
+xpinyin.map_token[4] = { token.create('`') }
+xpinyin.map_token[5] = { token.create('i') }
+xpinyin.map_token[6] = { token.create('"') }
+
+do
+  local bgroup = token.create(string.byte('{'), 1)
+  local egroup = token.create(string.byte('}'), 2)
+  xpinyin.bgroup = bgroup
+  xpinyin.egroup = egroup
+  xpinyin.ruby_token = token.create('ltjruby')
+  xpinyin.struct_token = token.create('xpinyin@@pinyin@struct')
+
+  local token = xpinyin.map_token
+  token['ā'] = { unpack(token[1]), unpack(token['a'])}
+  token['á'] = { unpack(token[2]), unpack(token['a'])}
+  token['ǎ'] = { unpack(token[3]), unpack(token['a'])}
+  token['à'] = { unpack(token[4]), unpack(token['a'])}
+  token['ō'] = { unpack(token[1]), unpack(token['o'])}
+  token['ó'] = { unpack(token[2]), unpack(token['o'])}
+  token['ǒ'] = { unpack(token[3]), unpack(token['o'])}
+  token['ò'] = { unpack(token[4]), unpack(token['o'])}
+  token['ē'] = { unpack(token[1]), unpack(token['e'])}
+  token['é'] = { unpack(token[2]), unpack(token['e'])}
+  token['ě'] = { unpack(token[3]), unpack(token['e'])}
+  token['è'] = { unpack(token[4]), unpack(token['e'])}
+  token['ū'] = { unpack(token[1]), unpack(token['u'])}
+  token['ú'] = { unpack(token[2]), unpack(token['u'])}
+  token['ǔ'] = { unpack(token[3]), unpack(token['u'])}
+  token['ù'] = { unpack(token[4]), unpack(token['u'])}
+  token['ḿ'] = { unpack(token[2]), unpack(token['m'])}
+  token['ń'] = { unpack(token[2]), unpack(token['n'])}
+  token['ň'] = { unpack(token[3]), unpack(token['n'])}
+  token['ǹ'] = { unpack(token[4]), unpack(token['n'])}
+  token['ī'] = { unpack(token[1]), unpack(token[ 5 ])}
+  token['í'] = { unpack(token[2]), unpack(token[ 5 ])}
+  token['ǐ'] = { unpack(token[3]), unpack(token[ 5 ])}
+  token['ì'] = { unpack(token[4]), unpack(token[ 5 ])}
+  token['ü'] = { bgroup, unpack(token[6]), unpack(token['u']), egroup}
+  token['ǖ'] = { unpack(token[1]), unpack(token['ü'])}
+  token['ǘ'] = { unpack(token[2]), unpack(token['ü'])}
+  token['ǚ'] = { unpack(token[3]), unpack(token['ü'])}
+  token['ǜ'] = { unpack(token[4]), unpack(token['ü'])}
+end
+
+function xpinyin.toruby (toks)
+  local depth = 0
+  local data = xpinyin.data
+  local map_token = xpinyin.map_token
+  local new_toks = {}
+  for _, tok in ipairs(toks) do
+    if tok.cmdname == 'left_brace' then
+      depth = depth + 1
+    end
+    if tok.cmdname == 'right_brace' then
+      depth = depth - 1
+    end
+    if tok.cmdname == 'letter' and depth == 0 and xpinyin.data[tok.mode] then
+      table.insert(new_toks, xpinyin.ruby_token)
+      table.insert(new_toks, xpinyin.bgroup)
+      table.insert(new_toks, tok)
+      table.insert(new_toks, xpinyin.egroup)
+      table.insert(new_toks, xpinyin.bgroup)
+      table.insert(new_toks, xpinyin.struct_token)
+      for char in string.utfcharacters(xpinyin.data[tok.mode]) do
+        local py_toks = map_token[char]
+        for i = 1,#py_toks do
+          table.insert(new_toks, py_toks[i])
+        end
+      end
+      table.insert(new_toks, xpinyin.egroup)
+    else
+      table.insert(new_toks, tok)
+    end
+  end
+  token.put_next (new_toks)
+end
+
+xpinyin.data = {}
+function xpinyin.insert (index, str)
+  xpinyin.data[index] = stripped_str
+end
+\end{luacode*}
+
+%for \pinyin{"ni3 hao3"} -> nǐ hǎo
+\begin{luacode*}
+PinyinToneMark = {
+  {'ā', 'á', 'ǎ', 'à'},
+  {'ē', 'é', 'ě', 'è'},
+  {'ī', 'í', 'ǐ', 'ì'},
+  {'ō', 'ó', 'ǒ', 'ò'},
+  {'ū', 'ú', 'ǔ', 'ù'},
+  {'ǖ', 'ǘ', 'ǚ', 'ǜ'}
+}
+
+function convertPinyin(str)
+  if str~= nil and string.len(str)>0 then
+  local s = string.lower(str)
+  local r = ''
+  local t = ''
+  for i = 1, string.len(s) do
+    local c = s:sub(i,i)
+    if c >= 'a' and c <= 'z' then
+      t = t .. c
+    elseif c >= '0' and c <= '5' then
+        local tone = tonumber(c)
+        if tone ~= 0 then
+          if string.find(t, 'a') ~= nil then
+              t = string.gsub(t, "a", PinyinToneMark[1][tone])
+          elseif string.find(t, 'e') ~= nil then
+              t = string.gsub(t, "e", PinyinToneMark[2][tone])
+          elseif string.find(t, 'i') ~= nil then
+              t = string.gsub(t, "i", PinyinToneMark[3][tone])
+          elseif string.find(t, 'o') ~= nil then
+              t = string.gsub(t, "o", PinyinToneMark[4][tone])
+          elseif string.find(t, 'u') ~= nil then
+              t = string.gsub(t, "u", PinyinToneMark[5][tone])
+          elseif string.find(t, 'v') ~= nil then
+              t = string.gsub(t, "v", PinyinToneMark[6][tone])
+          end
+        end
+      r = r .. t
+      t = ""
+    end
+  end
+  tex.print(r)
+  end
+end
+\end{luacode*}
+
+\NewDocumentCommand\pinyin{m}{\directlua{convertPinyin("#1")}}
+
+\def\xpinyin#1{\directlua{xpinyin.toruby(token.scan_toks(false,false))}{#1}}
+\def\withpinyin#1#2{\ltjruby{#1}{\xpinyin@@pinyin@struct #2}}
+\def\setpinyin#1#2{\directlua{xpinyin.data[table.unpack(string.utfvalues([[#1]]))] = [[#2]]}}
+
+\begingroup
+\def\XPYU#1#2#3{\directlua{xpinyin.data[#2] = [[#3]]}}
+\def\XPYUM#1#2#3{\directlua{xpinyin.data[#2] = [[\getfirst #3\nil]]}}
+\def\getfirst#1,#2\nil{#1}
+\input{xpinyin-database.def}
+\endgroup

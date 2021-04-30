@@ -106,8 +106,8 @@
       计& & & & & & & & & & & \\[-.5ex]
       分& & & & & & & & & & & \\[-.5ex]
       人& & & & & & & & & & & \\\hline
-    \end{tabularx}\\[2em]
-    \underline{{\Large 直接卷上作答，不要另用答题纸}}
+    \end{tabularx}\\%[2em]
+%    \underline{{\Large 直接卷上作答，不要另用答题纸}}
   \end{center}
   \vspace{3mm}
 }

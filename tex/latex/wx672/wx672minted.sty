@@ -2,6 +2,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{wx672minted}
 
+\RequirePackage{fontspec}
+\newfontfamily\firacode{FiraCode Nerd Font}[NFSSFamily=FiraCode]
 \RequirePackage{minted}%[newfloat=true]
 %\usemintedstyle{bw}
 
@@ -10,9 +12,10 @@
 \renewcommand{\theFancyVerbLine}{
   \textcolor{lightgray}{\scriptsize \arabic{FancyVerbLine}}}
 
-\setmintedinline{breaklines=true,fontsize=\small,autogobble=false}
+\setmintedinline{breaklines=true,fontsize=\small,autogobble=false,fontfamily=FiraCode}
 
-\setminted{baselinestretch=1,fontsize=\small,xleftmargin=1em,breaklines=true,
+\setminted{baselinestretch=1,fontsize=\small,xleftmargin=1em,breaklines=true,%
+  fontfamily=FiraCode,%
   linenos,numbersep=1pt,%
   frame=leftline,framesep=5pt,%
   rulecolor=\color{lightgray},autogobble=true}
@@ -26,14 +29,15 @@
 \newminted{nasm}{}
 \newminted{python}{}
 \newminted{pascal}{}
+\newminted{makefile}{}
 
-\newmintedfile{c}{baselinestretch=1,linenos,breaklines,autogobble}%\cfile{filepath}
-\newmintedfile[mkfile]{makefile}{baselinestretch=1,linenos,breaklines,autogobble}%\mkfile{filepath}
-\newmintedfile{nasm}{baselinestretch=1,linenos,breaklines,autogobble}%\nasmfile{filepath}
-\newmintedfile[pasfile]{pascal}{baselinestretch=1,linenos,breaklines,autogobble}%\pasfile{filepath}
-\newmintedfile[pyfile]{python}{baselinestretch=1,linenos,breaklines,autogobble}%\pyfile{filepath}
-\newmintedfile{shell}{baselinestretch=1,linenos,breaklines,autogobble}%\shellfile{filepath}
-\newmintedfile[shfile]{shell}{baselinestretch=1,linenos,breaklines,autogobble}%\shfile{filepath}
+\newmintedfile{c}{baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%\cfile{filepath}
+\newmintedfile[mkfile]{makefile}{baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%\mkfile{filepath}
+\newmintedfile{nasm}{baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%\nasmfile{filepath}
+\newmintedfile[pasfile]{pascal}{baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%\pasfile{filepath}
+\newmintedfile[pyfile]{python}{baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%\pyfile{filepath}
+\newmintedfile{shell}{baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%\shellfile{filepath}
+\newmintedfile[shfile]{shell}{baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%\shfile{filepath}
 
 % code listing across pages
 \newenvironment{longlisting}{\captionsetup{type=listing}}{}

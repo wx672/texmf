@@ -31,7 +31,7 @@
   chapter/name = {},%
   chapter/number = {\thechapter},%
   chapter/format = \centering\large\heiti,% 小3号，黑体
-  section/format = {\zihao{4}{\heiti}},% 4号，黑体
+  section/format = {\heiti\zihao{4}},% 4号，黑体
   subsection/format = \heiti,% 小4号，黑体
   subsubsection/format = \heiti,% 黑体（在规范中未说明）
   paragraph/format = \heiti,% 黑体（在规范中未说明）
@@ -40,10 +40,27 @@
 
 %%%%% geometry
 \RequirePackage[%showframe,%showcrop,
-a4paper,asymmetric,%
-vmargin=3cm,left=3cm,right=2cm,%上下页边距为3cm，左=(2.5cm + 装订边0.5cm)，右2cm
-headsep=1cm,footskip=1cm,%headheight=15pt, to avoid "headheight too small"
+a4paper,asymmetric,twoside=true,% if oneside, left/right; if twoside, inner/outer
+vmargin=3cm,% 上下页边距为3cm，左=(2.5cm + 装订边0.5cm)，右2cm
+% left=3cm,right=2cm, % for oneside
+inner=3cm,outer=2cm,% for twoside (comment out \renewcommand{\cleardoublepage} following)
+headsep=1em,footskip=1cm,%headheight=15pt, to avoid "headheight too small"
 nomarginpar]{geometry}
+
+%\renewcommand\cleardoublepage{\clearpage} % for oneside configuration
+
+%%%%% titlesec, for making chapter header higher
+\RequirePackage{titlesec}%explicit
+\titleformat{\chapter}[hang]% shape
+{\normalfont\large\heiti}%    format
+{\thechapter}%                label
+{20pt}%                       sep between label and title body
+{\centering\large}%        before-code #1
+
+\titlespacing{\chapter}{0pt}{-20pt}{30pt}
+
+%%%%% xstring 
+\RequirePackage{xstring} % for \StrSubstitute{} in \fancyhead
 
 %%%%% fancyhdr
 \RequirePackage{fancyhdr}
@@ -55,14 +72,17 @@ nomarginpar]{geometry}
   \renewcommand{\headrulewidth}{0pt}}
 
 \pagestyle{fancy}
+
+\renewcommand{\chaptermark}[1]{%
+  \markboth{\thechapter.\ #1}{}}
+
 \fancyhead[CE]{\footnotesize\leftmark}
-\fancyhead[CO]{\footnotesize\@title}
+\fancyhead[CO]{\footnotesize\StrSubstitute{\@title}{\\}{}}
 \fancyfoot[C]{\fontsize{8}{8}\selectfont -- \thepage\ --}
 
-\renewcommand\cleardoublepage{\clearpage}
-
 %%%%% misc
-%\RequirePackage{indentfirst} % enabled if scheme=chinese
+% \RequirePackage{indentfirst} % enabled if scheme=chinese
+\RequirePackage{emptypage} % for removing header/footer on empty pages
 \RequirePackage{tabularx,longtable,multicol,multirow,booktabs,makecell}
 \renewcommand\theadfont{\bfseries}%\normalfont
 \renewcommand{\arraystretch}{1.5}
@@ -92,7 +112,8 @@ nomarginpar]{geometry}
 \RequirePackage{xcolor}
 \RequirePackage{hyperref}
 \hypersetup{%
-  bookmarksnumbered, breaklinks=true,%
+  % bookmarksnumbered,%
+  % breaklinks=true,%
   colorlinks=false,%
   pdfborderstyle={/S/U/W .3},% underline of width .3pt 
   linkbordercolor=red,       % internal links
@@ -114,6 +135,7 @@ nomarginpar]{geometry}
 %%%%% setspace (\singlespacing, \onehalfspacing, \doublespacing)
 \RequirePackage[doublespacing]{setspace}
 \renewcommand{\doublespacing}{\setstretch{1.5}}
+\renewcommand{\onehalfspacing}{\setstretch{1.2}}
 
 %%%%% tikz
 \RequirePackage{tikz}
@@ -134,9 +156,12 @@ url=false,doi=false,isbn=false]{biblatex}
 
 %%%%% caption
 \RequirePackage[labelfont=bf]{caption} % \captionsetup, font=footnotesize,
-\DeclareCaptionFont{hei}{\heiti}
+\DeclareCaptionFont{hei}{\small\heiti}
 \captionsetup{labelsep=quad, format=hang, skip=5pt, font=hei}
 \RequirePackage{subcaption}
+
+\captionsetup{subrefformat=parens}
+\labelformat{subfigure}{\thefigure(#1)}
 
 % set caption label style to, e.g. 3-2.
 % \renewcommand{\thefigure}{\thechapter{}-\arabic{figure}}
@@ -147,7 +172,7 @@ url=false,doi=false,isbn=false]{biblatex}
 
 %%%%% minted
 \RequirePackage[chapter]{minted} % has to be loaded at last!!!
-\usemintedstyle{bw}
+% \usemintedstyle{bw}
 
 \renewcommand{\listingscaption}{程序} % used by minted
 \renewcommand{\listoflistingscaption}{程序目录}
@@ -160,8 +185,10 @@ url=false,doi=false,isbn=false]{biblatex}
 
 \setminted{%
   linenos=true,numbersep=3pt,fontsize=\small,
+  baselinestretch=0.95,
   frame=leftline,framesep=10pt,%xleftmargin=2cm,
-  rulecolor=\color{lightgray},autogobble=true,breaklines=true}
+  % rulecolor=\color{lightgray},
+  autogobble=true,breaklines=true}
 
 \newminted{c}{} \newminted{shell}{} \newminted{latex}{} \newminted{bibtex}{}
 \newminted{gas}{} \newminted{nasm}{} \newminted{python}{}
@@ -182,7 +209,7 @@ url=false,doi=false,isbn=false]{biblatex}
     \begin{center}
       \makebox[17em][s]{\includegraphics[width=17em]{swfulogo-text}}\\[5mm]%
       \makebox[19em][s]{{\LARGE\heiti 本科毕业论文\hspace{-.5ex}（设计）}}\\[1mm]%
-      \makebox[13em][c]{\hspace{.5em}{\LARGE\heiti（\zhdigits*{\SWFU@Year}\,届）}}\\[2mm]%
+      \makebox[13em][c]{\hspace{.5em}{\LARGE\heiti（\zhdigits{\SWFU@Year}\,届）}}\\[2mm]%
       \makebox[8em][s]{\includegraphics[width=8em]{swfulogo-emblem}}\\[1mm]
       \begin{minipage}{\linewidth}
         \begin{large}
@@ -204,8 +231,8 @@ url=false,doi=false,isbn=false]{biblatex}
             学\qquad{}院&大数据与智能工程学院%
             &\hspace{1em}专\quad{}业&\SWFU@Major\\[-1ex]\cline{2-2}\cline{4-4}%
             学生姓名&\@author&\hspace{1em}学\quad{}号&\SWFU@ID\\[-1ex]\cline{2-2}\cline{4-4}%
-            指导教师&\multicolumn{3}{l}{\SWFU@Advisor{}}\\[-1ex]\cline{2-4}%
-            \makebox[4em][s]{评阅人}&\SWFU@Reviewer&&\\[-1ex]\cline{2-4}
+            指导教师&\multicolumn{3}{c}{\SWFU@Advisor}\\[-1ex]\cline{2-4}%
+            \makebox[4em][s]{评阅人}&\multicolumn{3}{c}{\SWFU@Reviewer}\\[-1ex]\cline{2-4}
           \end{tabularx}}
         \end{large}
       \end{minipage}
@@ -213,7 +240,7 @@ url=false,doi=false,isbn=false]{biblatex}
       {\Large\heiti\SWFU@Year\,年\,\SWFU@Month\,月\,\SWFU@Date\,日}%
     \end{center}%
   \end{titlepage}%
-  \clearpage%\shipout\null
+  \cleardoublepage
   \thispagestyle{empty}
   \begin{center}
     {\Large\heiti 原创性声明}
@@ -234,23 +261,22 @@ url=false,doi=false,isbn=false]{biblatex}
       \underline{\,\SWFU@Date{}\,}日
     \end{flushright}
   \end{large}
+  \cleardoublepage
 }
 
 \newenvironment{abstract}{% 中文摘要
   \thispagestyle{plain}\phantomsection{}%
-  \begin{center}
-    % 摘要标题，小2号（Large）、黑体、居中
-    {\singlespacing\Large\heiti\@title}\\[5mm]%
+  \begin{center}% 摘要标题，小2号（Large）、黑体、居中    
+    {\singlespacing\heiti\Large\StrSubstitute{\@title}{\\}{}}\\[5mm]%
     {\zihao{4} % 署名用4号，宋体
       \@author\par%      
       （西南林业大学\,大数据与智能工程学院\,\,昆明\,\,650224）}% 地址，4号宋体
   \end{center}%
   \vspace{3ex}%
-  % 摘要正文为5号字（small）
-  \noindent{\heiti 摘\quad{}要：}\small}{}
+  \noindent{\heiti 摘\quad{}要：}\small}{}% 摘要正文为5号字（small）
 
 \newenvironment{keyword}{% 关键词内容为5号字（small）
-  \vskip 2ex\noindent{\heiti 关键词：}\small}{\pagebreak}
+  \vskip 2ex\noindent{\heiti 关键词：}\small}{\cleardoublepage}
 
 \newenvironment{EAbstract}{%
   \thispagestyle{plain}\phantomsection{}%
@@ -271,11 +297,14 @@ url=false,doi=false,isbn=false]{biblatex}
   \noindent\textbf{Abstract:}}{}
 
 \newenvironment{EKeyword}{%Key Words一词，小4号加粗；关键词正文，小4号字。
-  \vskip 2ex\noindent\textbf{Key Words: }}{\pagebreak}
+  \vskip 2ex\noindent\textbf{Key Words: }}{\cleardoublepage}
 
 \newcommand{\makebib}{% 参考文献
   % \zihao{4}{学校规范要求“参考文献”四字用4号字，不要理它，保持小3号就好}
-  \printbibliography[heading={bibintoc},title={参考文献}]\label{p:ref}\pagebreak}% 
+  \begin{singlespace}%学校规范中对参考文献页的行距没有要求
+    \printbibliography[heading={bibintoc},title={参考文献}]\label{p:ref}
+  \end{singlespace}
+  \pagebreak}% 
 \renewcommand*{\bibfont}{\small} % 5号宋体
 
 \newenvironment{advisorInfo}{% 指导教师简介

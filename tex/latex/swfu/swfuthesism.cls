@@ -34,14 +34,14 @@
 
 %%%%% ctex
 \ctexset{%
-  chapter/name = {},%
-  chapter/number = {\thechapter},%
-  chapter/format = {\centering\zihao{-3}\heiti},% 小3号，黑体
-  section/format = {\zihao{4}\heiti},% 4号，黑体
-  subsection/format = {\zihao{4}\heiti},% 4号，黑体
-  subsubsection/format = {\zihao{-4}\heiti},% 小4，黑体
-  paragraph/format = {\zihao{-4}\heiti},% 黑体（在规范中未说明）
-  subparagraph/format = {\zihao{-4}\heiti},% 黑体（在规范中未说明）
+  chapter/name         = {},%
+  chapter/number       = {\thechapter},%
+  chapter/format       = {\centering\heiti\zihao{-3}},% 小3号，黑体
+  section/format       = {\heiti\zihao{4}},% 4号，黑体
+  subsection/format    = {\heiti\zihao{4}},% 4号，黑体
+  subsubsection/format = {\heiti\zihao{-4}},% 小4，黑体
+  paragraph/format     = {\heiti\zihao{-4}},% 黑体（在规范中未说明）
+  subparagraph/format  = {\heiti\zihao{-4}},% 黑体（在规范中未说明）
 }
 
 \RequirePackage[%showframe,%

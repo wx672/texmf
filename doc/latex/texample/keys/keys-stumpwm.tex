@@ -1,0 +1,97 @@
+\documentclass[varwidth,crop]{standalone}
+
+\usepackage{fontspec}
+\newfontfamily\nerd{DejaVu Sans Mono Nerd Font Complete}%
+\newfontfamily\symbola{Symbola}%
+\newfontfamily\kbd{Linux Biolinum Keyboard O}
+\usepackage{biolinum}
+
+\usepackage{graphicx}
+
+\usepackage[table]{xcolor}
+\usepackage{colortbl}
+\definecolor{A}{gray}{.95}
+\definecolor{B}{gray}{1}
+\definecolor{C}{gray}{1}
+\definecolor{Gray}{gray}{0.5}
+\definecolor{BG}{rgb}{1,.8,0}
+
+\renewcommand{\arraystretch}{1.5}
+
+\newcommand\ksuper{\kbd }
+\newcommand\kctrl{\kbd }
+\newcommand\kesc{\LKeyEsc}
+\newcommand\Ctrla{{\kbd }+{\kbd a}}
+\newcommand\ktab{\kbd }
+\newcommand\kenter{\kbd }
+\newcommand\kshift{\kbd }
+\newcommand\kspace{\kbd }
+\newcommand\kdash{\kbd -}
+\newcommand\kbar{\kbd |}
+\newcommand\kfone{\kbd }
+\newcommand\kftwo{\kbd }
+\newcommand\kfthree{\kbd }
+\newcommand\kffour{\kbd }
+\newcommand\kffive{\kbd }
+\newcommand\pinyin{\includegraphics[width=1em]{pin}}
+\newcommand\chrome{\textcolor{orange}{\nerd }}
+\newcommand\browser{{\nerd 慎}}
+\newcommand\terminal{{\nerd }}
+\newcommand\editor{{\nerd }}%  e7a3,  f1c2, 𓄯 f044,  f0f6, {\LARGE ✍}
+\newcommand\lswin{{\nerd }}% f0cb,
+\newcommand\runit{{\symbola 🏃}} %  f96d 
+\newcommand\office{{\nerd }}
+\newcommand\help{\textcolor{red}{\nerd }}
+\newcommand\killit{{\LARGE\nerd ☠}}
+\newcommand\close{{\nerd }}
+\newcommand\switch{{\nerd }}
+\newcommand\swap{{\nerd }}
+\newcommand\zoom{{\nerd }} %  f54b, 
+\newcommand\minimize{{\nerd }}
+\newcommand\create{{\nerd }}
+\newcommand\coding{{\nerd }}
+\newcommand\tmuxhsplit{{\nerd }}
+\newcommand\tmuxvsplit{{\nerd }}
+\newcommand\tmuxup{{\nerd }}
+\newcommand\tmuxdown{{\nerd }}
+\newcommand\tmuxleft{{\nerd }}
+\newcommand\tmuxright{{\nerd }}
+
+\begin{document}
+\begin{center}
+  \colorbox{BG}{\bfseries Window operations (Stumpwm)}\\[1ex]
+%  \rowcolors{1}{A}{B}
+  \begin{tabular} {*{3}{>{\columncolor{A}}rl}}
+    %       
+    \swap & {\ksuper}+{\ktab} & \tmuxvsplit & {\ksuper}+{\kbar}&\zoom & {\ksuper}+{\kenter}\\
+    \switch & {\ksuper}+{\kbd j} & \tmuxhsplit & {\ksuper}+{\kctrl}+{\kdash}
+                                                 & \lswin &{\ksuper}+{\kbd L}\\
+    \editor & {\ksuper}+{\kbd e} & \pinyin&{\kshift}+{\kspace}&\runit &{\ksuper}+{\kesc} \\
+    \browser& {\ksuper}+{\kbd q} & \terminal&{\ksuper}+{\kbd t}&\help &{\ksuper}+{\kfone}\\
+  \end{tabular}
+\end{center}
+\begin{center}
+  \colorbox{BG}{\bfseries Terminal operations (Tmux)}\\[1ex]
+  %\rowcolors{1}{A}{B}
+  \begin{tabular} {*{3}{>{\columncolor{A}}rl}}%
+    \create       & \Ctrla\quad\kbd{c}   % C-a c
+    & \tmuxhsplit & \Ctrla\quad\kdash    % C-a -
+    & \tmuxvsplit & \Ctrla\quad\kbar\\   % C-a |
+    \swap         & \Ctrla\quad\kbd{a}   % C-a a
+    & \tmuxup     & \Ctrla\quad\kbd{k}   % C-a k
+    & \tmuxleft   & \Ctrla\quad\kbd{h}\\ % C-a h
+    \switch       & \Ctrla\quad\kbd{n}   % C-a n
+    & \tmuxdown   & \Ctrla\quad\kbd{j}   % C-a j
+    & \tmuxright  & \Ctrla\quad\kbd{L}\\ % C-a l
+    \help   & \Ctrla\quad\kfone     % C-a F1
+    & \help & \Ctrla\quad\kftwo     % C-a F2
+    & \help & \Ctrla\quad\kfthree\\ % C-a F3
+  \end{tabular}%\par
+%\hspace{-24em}{\tiny * Config file: \texttt{$\sim$/.tmux.conf}}
+\end{center}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

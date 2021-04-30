@@ -1,0 +1,3 @@
+#!/bin/sh
+
+convert flowchart-hand-orig.png -crop 350x620+130+35 /tmp/tmp.png

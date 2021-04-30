@@ -35,6 +35,8 @@
   Subject/.store in       = \SWFU@Subject, % 专业
   Grade/.store in         = \SWFU@Grade,   % 年级
   StudSignature/.store in = \SWFU@StudSignature,%（任务书）学生签名
+  TaskDate/.store in = \SWFU@TaskDate, TaskDate=,%（任务书）任务下达日期
+  SubmitDate/.store in = \SWFU@SubmitDate, SubmitDate=,%（任务书）学生应送交毕业论文日期
   StudSignature           = {\includegraphics[width=2cm]{signature}},%
   School/.store in        = \SWFU@School,   %（实习计划表）学生所属学院
   School = {大数据与智能工程学院},%
@@ -149,7 +151,7 @@ url=false,doi=false,isbn=false]{biblatex}
       \end{minipage}
     \end{large}
     \vfill
-    {\Large\bfseries 西南林业大学教务处制}\\[1cm]
+    {\heiti 西南林业大学教务处制}\\[1cm]
   \end{center}
   \clearpage}
 
@@ -285,33 +287,41 @@ url=false,doi=false,isbn=false]{biblatex}
       \end{minipage}\\\hline
     \end{tabularx}
     \begin{tabularx}{\textwidth}{|*{2}{>{\bfseries}c|X|}}%
-      任务下达日期&&\makecell{学生应送交毕业论文\\（设计）日期}&\\\hline%
+      任务下达日期&\SWFU@TaskDate&\makecell{学生应送交毕业论文\\（设计）日期}&\SWFU@SubmitDate\\\hline%
     \end{tabularx}\\[-1pt]%
     \begin{tabularx}{\textwidth}{|*{2}{>{\bfseries}c|X|}}%
-      \parbox{4em}{\centering 指导教师签字}
-      &\begin{minipage}[c][6em]{1.0\linewidth}%
-        \makebox[7em][r]{\SWFU@AdvisoraSig}\par%
+      \makecell{指导教师\\签字}
+      &\begin{minipage}[c][25mm]{1.0\linewidth}%
+        \medskip%
+        \makebox[3cm][r]{\SWFU@AdvisoraSig}\par%
+        \vfill%
         \hfill\SWFU@Year{}年\SWFU@Month{}月\SWFU@Date{}日%
+        \medskip%
       \end{minipage}%
-      &\parbox{4em}{\centering 接受任务学生签字}
-      &\begin{minipage}[c][6em]{1.0\linewidth}%
-        \makebox[7em][r]{\SWFU@StudSignature}\par%
+      &\makecell{接受任务\\学生签字}
+      &\begin{minipage}[c][25mm]{1.0\linewidth}%
+        \medskip%
+        \makebox[3cm][r]{\SWFU@StudSignature}\par%
+        \vfill%
         \hfill\SWFU@Year{}年\SWFU@Month{}月\SWFU@Date{}日%
+        \medskip%
       \end{minipage}\\\hline%
-      \parbox{3em}{\centering 教研室审核}& \begin{minipage}[c][8em]{1.0\linewidth}%
+      \parbox{3em}{\centering 教研室审核}& \begin{minipage}[c][35mm]{1.0\linewidth}%
         \par\vspace{1ex}%
         审核意见：\par
         \vfill%
         签字：\par%
         \hfill{}年\qquad{}月\qquad{}日%
+        \medskip
       \end{minipage}%
       & \parbox{4.3em}{\centering 学院审核}%
-      & \begin{minipage}[c][8em]{1.0\linewidth}%
+      & \begin{minipage}[c][35mm]{1.0\linewidth}%
         \par\vspace{1ex}%
         审核意见：\par
         \vfill%
         签章：\par%
         \hfill\qquad{}年\qquad{}月\qquad{}日%
+        \medskip
       \end{minipage}\\\hline%
     \end{tabularx}\\%
     \begin{tabularx}{\textwidth}{@{}c@{\,\,}c@{\,}X@{}}

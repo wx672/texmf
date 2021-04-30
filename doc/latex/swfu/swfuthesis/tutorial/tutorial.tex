@@ -7,13 +7,13 @@
 \addbibresource{tutorial.bib}
 
 \swfusetup{
-  Title        ={怎样用\LaTeX{}排版毕业论文}, % 论文标题
+  Title        ={怎样用LaTeX排版毕业论文}, % 论文标题。xstring hates \LaTeX{}
   Author       ={王晓林}, % 作者姓名
   Signature    ={\includegraphics[width=6em]{signature.pdf}}, % 作者签名（用于原创声明页）
   enTitle      ={How to write your thesis in \LaTeX}, % 论文标题（英文）
   enAuthor     ={WANG Xiaolin}, % 作者姓名（英文）
   ID           ={20161152888}, % 学号
-  Year         ={2020},
+  Year         ={2021},
   Month        ={5},
   Date         ={20},
   Major        ={计算机科学与技术},
@@ -66,6 +66,7 @@
   \LaTeX{}; \TeX{}; thesis; template; SWFU
 \end{EKeyword}
 
+\vspace*{-60pt}
 \tableofcontents % 目录
 \clearpage
 \listoffigures % 图片目录，可以没有
@@ -137,7 +138,7 @@
 \subsection{封面}
 
 采用学校规定的统一格式（图\ref{fig:cover}），按要求填写论文中文题目、学生姓名、学号、专业、
-指导教师、评阅人、完成毕业论文（设计）的时间等内容{\wrong}\footnote{学校未对封面上的图片大小、字号、
+指导教师、评阅人、完成毕业论文（设计）的时间等内容{\textcolor{red}{✘}}\footnote{学校未对封面上的图片大小、字号、
   字距、行距做任何规范。也没有提供一个PDF格式的封面样本，只提供了一个\texttt{.doc}格式的模
   板，用不同的文字处理器打开，可以看到各种各样的效果。}。论文题目要简明、具体、确切，
 一般不超过20个汉字（英文题目不超过15个实词），必要时可加副标题。题目中应避免使用非公知公用
@@ -373,13 +374,10 @@
   \item 英文题目使用3号Times New Roman体、居中；
   \item 英文摘要、关键词内容使用小4号Times New Roman体字；
   \item 正文统一使用小4号宋体和Times New Roman字体；
-  \item 图、表内容使用5号宋体和Times New Roman字体{\wrong}\footnote{这个字号规定有点奇怪，不要理它
-      了，图片字号比正文略小就行了。绘图应该用独立、专用的绘图软件来完成。之后，生成PDF或者
-      其它格式的图片，再插入到论文中来。插入的时候，应该是要进行缩放处理的。缩放之后的字号，
-      鬼晓得。而且，图片中的字号，本来就是有大有小的，怎么可能统一用5号。}；公式字体、字号
-    与正文相同；
+  \item 图、表内容使用5号宋体和Times New Roman字体{\textcolor{red}{✘}}\footnote{图片中的字号，本来就是有大有小，怎么可能统一
+      用5号？图片字号比正文略小就行了。}；公式字体、字号与正文相同；
   \item 文本一级标题使用小3号黑体字，二级标题使用4号黑体字，三级标题使用小4号黑体字；
-  \item 注释、参考文献使用5号宋体字，“注释、参考文献”六个字用4号黑体{\wrong}\footnote{错！
+  \item 注释、参考文献使用5号宋体字，“注释、参考文献”六个字用4号黑体{\textcolor{red}{✘}}\footnote{
       第\ref{sec:endnote}节中说，注释要用尾注方式。因为是“尾注”，也就是在每章末尾列出注释，所
       以“注释”二字排版与二级标题一致，采用4号黑体字，这是没问题的。但第\ref{sec:endnote}节中
       也说到，参考文献要列于论文的最后，也就是说，不是以尾注的形式出现，而是以独立一章的形
