@@ -1,24 +1,24 @@
 #!/bin/bash
 
-. ~/.bin/ttyrec-utils
+. ~/.local/bin/ttyrec-utils
 
 clear
 
 cat <<EOF | PV
-Hi! I'm going to show you how to write your thesis with LaTeX and Emacs in a Linux machine.
+Hi! I'm going to show you how to write a SWFU thesis with LaTeX and Emacs on a Linux machine.
 
 My working environment:
 	1. Emacs (with AUCTeX, Yasnippet)
-	2. TeXLive (with XeTeX)
+	2. TeXLive (with lualatex)
 	3. A PDF viewer (emacs pdf-tools is recommended)
 	4. Linux is not mandatory though I prefer it
 
-This demo shows off the magic power you can have with all the above open source software tools equipped.
+With all these OSS tools ready, this demo is going to show you the magic power you can have. 
 
 My Emacs config files (including snippets):
 	- https://github.com/wx672/dotfile/tree/master/dot.emacs.d
 My LaTeX class for this demo:
-	- https://github.com/wx672/texmf/raw/master/tex/latex/swfcthesis.cls
+	- https://github.com/wx672/texmf/raw/master/tex/latex/swfuthesis.cls
 In case of dead links, please email $(em 'wx672ster@gmail.com').
 
 Now, let's begin...
@@ -29,7 +29,7 @@ echo "mkdir -p my-project/{src,doc}" | PV; prompt;
 echo "tree my-project" | PV; waiting
 
 cat <<EOF | PV
-See? we now have a new dir called 'my-project' with two sub-dirs in it
+See? we now have a new dir called 'my-project' with two sub-dirs in it:
 	src - for keeping our source code
 	doc - for our documentation, ie. our thesis
 

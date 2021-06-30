@@ -72,12 +72,12 @@ top=3cm,bottom=2.5cm,left=3cm,right=2.5cm,
 nomarginpar,headheight=15pt, % to avoid "headheight too small"
 ]{geometry}
 
-\RequirePackage{graphicx} % before xltxtra
+\RequirePackage{graphicx}
 \graphicspath{{./figs/}{./}{../}} %mind the trailing “/”
 
 \RequirePackage{caption,subcaption}% \captionof{table|figure}{t|f}
 
-\RequirePackage{tabularx,longtable,booktabs,makecell,multicol,multirow,array}
+\RequirePackage{tabularx,tabularray,longtable,booktabs,makecell,multicol,multirow,array}
 \renewcommand{\arraystretch}{1.5}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % centering m column
@@ -117,7 +117,7 @@ url=false,doi=false,isbn=false]{biblatex}
     \vskip 3cm
     \begin{large}
       \begin{minipage}{1.0\linewidth}
-        \begin{tabularx}{\textwidth}{@{}rX@{}}
+        \begin{tblr}{width=\textwidth, colspec={@{}rX@{}}}
           \makebox[5em][s]{论文题目}%
           &\makebox[0pt][t]{%
             \begin{minipage}[t]{30em}
@@ -127,12 +127,12 @@ url=false,doi=false,isbn=false]{biblatex}
             \end{minipage}}%
             \rule[-1.5ex]{30em}{.1pt}\par%
             \rule[-1.5ex]{30em}{.1pt}\\%
-        \end{tabularx}
+        \end{tblr}
       \end{minipage}
       \vskip 2cm
       \begin{minipage}{.8\linewidth}
         \begin{center}
-          \begin{tabularx}{\textwidth}{@{}rC@{}}
+          \begin{tblr}{width=\textwidth,colspec={@{}rX[c]@{}}}
             \makebox[7em][s]{专业名称}%
             & \SWFU@Subject\\[-1ex]\cline{2-2}
             \makebox[7em][s]{年级}%
@@ -146,7 +146,7 @@ url=false,doi=false,isbn=false]{biblatex}
             & \SWFU@Advisorb{} \SWFU@AdvisorbTitle\\[-1ex]\cline{2-2}
             \makebox[7em][s]{填表时间}%
             & \SWFU@Year{}年\,\SWFU@Month{}月\,\SWFU@Date{}日\\[-1ex]\cline{2-2}
-          \end{tabularx}
+          \end{tblr}
         \end{center}
       \end{minipage}
     \end{large}
@@ -173,25 +173,23 @@ url=false,doi=false,isbn=false]{biblatex}
 \newcommand{\PPSLmain}{% main part
   \begin{singlespace}
     \noindent
-    \begin{tabularx}{\linewidth}{|M{2em}|@{}X@{}|}\hline
-      指导教师基本情况%
-      & {\begin{tabularx}{\linewidth}{c|c|c|c|c|C}
-           指导教师姓名%
-           &\makecell*{性\\别}&\makecell*{年\\龄}&\makecell*{学历或\\学位}%
-           &\makecell*{专业技术\\职务或职称}&工作单位\\\hline
-           \SWFU@Advisora%
-           &\SWFU@AdvisoraGender&\SWFU@AdvisoraAge&\SWFU@AdvisoraDegree%
-           &\SWFU@AdvisoraTitle&\SWFU@AdvisoraFrom\\\hline
-           \SWFU@Advisorb%
-           &\SWFU@AdvisorbGender&\SWFU@AdvisorbAge&\SWFU@AdvisorbDegree%
-           &\SWFU@AdvisorbTitle&\SWFU@AdvisorbFrom\\
-         \end{tabularx}}\\\hline
-      课题来源%
-      & \qquad\SWFU@PrjFrmA{}科研项目%
-        \qquad\SWFU@PrjFrmB{}社会实践%
-        \qquad\SWFU@PrjFrmC{}大学生创新创业项目%
-        \qquad\SWFU@PrjFrmD{}其它来源\\[2ex]%
-    \end{tabularx}
+    \begin{tblr}{width=\linewidth,%
+        colspec={|c|c|c|c|c|c|X[c]|},%
+        rowspec={Q[m]|Q|Q|Q[m]}
+      }%
+      \hline
+      \SetCell[r=3]{m,2em}{指导\\教师\\基本\\情况} & 指导教师姓名 & {性\\别} &%
+      {年\\龄} & {学历或\\学位} & {专业技术\\职务或职称} &工作单位\\
+      & \SWFU@Advisora & \SWFU@AdvisoraGender & \SWFU@AdvisoraAge &%
+      \SWFU@AdvisoraDegree & \SWFU@AdvisoraTitle & \SWFU@AdvisoraFrom\\
+      \SWFU@Advisorb & \SWFU@AdvisorbGender & \SWFU@AdvisorbAge &%
+      \SWFU@AdvisorbDegree & \SWFU@AdvisorbTitle & \SWFU@AdvisorbFrom\\
+      {课题\\来源} & \SetCell[c=6]{m} %
+      \qquad\SWFU@PrjFrmA{}科研项目%
+      \qquad\SWFU@PrjFrmB{}社会实践%
+      \qquad\SWFU@PrjFrmC{}大学生创新创业项目%
+      \qquad\SWFU@PrjFrmD{}其它来源\\%
+    \end{tblr}
   \end{singlespace}
   \vskip -2pt
   \begin{mainbodybox}{1.\, 该研究的目的、意义}
@@ -224,20 +222,21 @@ url=false,doi=false,isbn=false]{biblatex}
     left=0pt,right=0pt,top=-13pt,bottom=0pt,boxsep=0pt,%
     colback=white, boxrule=.5pt]
     \singlespacing\noindent
-    \begin{tabularx}{\linewidth}{M{1em}|X|M{1em}|X}
-      \makecell{教\\研\\室\\意\\见}%
+    \begin{tblr}{width=\linewidth,
+        colspec={c|X|c|X},rowspec={Q[m]}}
+      {教\\研\\室\\意\\见}%
       & \begin{minipage}[c][3.5cm]{1.0\linewidth}
         教研室负责人：\par%
         \vfill
         \hfill{}年\qquad{}月\qquad{}日%
       \end{minipage}
-      & \makecell{教\\学\\院\\系\\部\\意\\见}%
+      & {教\\学\\院\\系\\部\\意\\见}%
       & \begin{minipage}[c][3.5cm]{1.0\linewidth}
         教学院系部负责人：\par%
         \vfill
         \hfill{}年\qquad{}月\qquad{}日          
       \end{minipage}\\
-    \end{tabularx}    
+    \end{tblr}    
   \end{tcolorbox}%
 }
 
@@ -245,90 +244,95 @@ url=false,doi=false,isbn=false]{biblatex}
   \pagestyle{empty}
   {\centering\singlespacing%
     {\heiti\Large 西南林业大学\SWFU@Gyear{}届本科毕业论文（设计）任务书}\\[3ex]%
-    \begin{tabularx}{\textwidth}{|>{\bfseries}M{6em}|>{\kaishu}C|}%
-      \hline%
-      论文（设计）\par{}题目&\@title\\\hline%
-    \end{tabularx}\\[-1pt]
-    \begin{tabularx}{\textwidth}{|>{\bfseries}M{6em}|>{\kaishu}C|*{2}{>{\bfseries}c|>{\kaishu}C|}}%
-      学生姓名&\@author& 学号&\SWFU@Studid& 专业&\SWFU@Subject\\\hline%
-    \end{tabularx}\\[-1pt]
-    \begin{tabularx}{\textwidth}{|*{2}{>{\bfseries}M{6em}|>{\kaishu}C|}}%
-      题目来源&%
-      \begin{minipage}[c][5em]{\linewidth}%
-        \SWFU@PrjFrmA{}科研项目\par%
-        \SWFU@PrjFrmB{}社会实践\par%
-        \SWFU@PrjFrmC{}大学生创新创业项目\par%
-        \SWFU@PrjFrmD{}其它%
-      \end{minipage}&%      
-      题目类别&\SWFU@PrjTypeA{}毕业论文\qquad{}\SWFU@PrjTypeB{}毕业设计\\\hline%
-    \end{tabularx}\\%
-    \begin{tabularx}{\textwidth}{|>{\bfseries}m{1em}|>{\kaishu}X|}
+    \begin{tblr}{width=\linewidth,
+        colspec={|c|X|c|c|c|X|}, rowspec={|Q[m]|Q[m]|Q[m]|},%
+        column{odd}={font=\bfseries}, column{even}={font=\kaishu}
+      }
+      % {|>{\bfseries}M{6em}|>{\kaishu}C|}%    
+      {论文（设计）\\题目} & \SetCell[c=5]{c} {\@title}\\
+      学生姓名 & \@author & 学号 & \SWFU@Studid & 专业 & \SWFU@Subject\\
+      题目来源 & {\SWFU@PrjFrmA{}科研项目\\\SWFU@PrjFrmB{}社会实践\\
+        \SWFU@PrjFrmC{}大学生创新创业项目\\\SWFU@PrjFrmD{}其它}%
+      & {题目\\类别} &%
+      \SetCell[c=3]{c}{\SWFU@PrjTypeA{}毕业论文\qquad{}\SWFU@PrjTypeB{}毕业设计}\\
+    \end{tblr}\\
+    \begin{tblr}{width=\linewidth,
+        colspec={|Q[1em,font=\bfseries]|X[font=\kaishu]|}, rowspec={Q[m]|Q[m]|}}
+      % {|>{\bfseries}m{1em}|>{\kaishu}X|}
       选题的目的及意义
       & \begin{minipage}[c][22em][t]{.9\columnwidth}
         \medskip
         \qquad\SWFU@TSKwhy
-      \end{minipage}\\\hline
+      \end{minipage}\\
       学生任务及要求
       & \begin{minipage}[c][24em][t]{.9\columnwidth}
         \medskip
         \qquad\SWFU@TSKwhat{}
-      \end{minipage}\\\hline
-    \end{tabularx}\clearpage
-    \begin{tabularx}{\textwidth}{|>{\bfseries}m{1em}|>{\kaishu}X|}\hline
+      \end{minipage}\\
+    \end{tblr}\clearpage
+    \begin{tblr}{width=\linewidth,
+        colspec={|Q[1em,font=\bfseries]|X[font=\kaishu]|}, rowspec={|Q[m]|Q[m]|}}
+      % {|>{\bfseries}m{1em}|>{\kaishu}X|}\hline
       进度安排
       & \begin{minipage}[c][15em][t]{.9\columnwidth}
         \medskip
         \qquad\SWFU@TSKwhen
-      \end{minipage}\\\hline
+      \end{minipage}\\
       参考文献
       & \begin{minipage}[c][20em][t]{.9\columnwidth}
         \medskip
         \SWFU@BIB
-      \end{minipage}\\\hline
-    \end{tabularx}
-    \begin{tabularx}{\textwidth}{|*{2}{>{\bfseries}c|X|}}%
-      任务下达日期&\SWFU@TaskDate&\makecell{学生应送交毕业论文\\（设计）日期}&\SWFU@SubmitDate\\\hline%
-    \end{tabularx}\\[-1pt]%
-    \begin{tabularx}{\textwidth}{|*{2}{>{\bfseries}c|X|}}%
-      \makecell{指导教师\\签字}
-      &\begin{minipage}[c][25mm]{1.0\linewidth}%
+      \end{minipage}\\
+    \end{tblr}
+    \begin{tblr}{width=\linewidth,%
+        colspec={|c|X|c|X|}, rowspec={Q[m]|}
+      }%{|*{2}{>{\bfseries}c|X|}}%
+      任务下达日期 & \SWFU@TaskDate & {学生应送交毕业论文\\（设计）日期} & %
+      \SWFU@SubmitDate\\
+    \end{tblr}\\[-1pt]%
+    \begin{tblr}{width=\linewidth,
+        colspec={|c|X|c|X|}, rowspec={Q[m]|Q[m]|}}
+      %{|*{2}{>{\bfseries}c|X|}}%
+      {指导教师\\签字}
+      & \begin{minipage}[c][25mm]{1.0\linewidth}%
         \medskip%
         \makebox[3cm][r]{\SWFU@AdvisoraSig}\par%
         \vfill%
         \hfill\SWFU@Year{}年\SWFU@Month{}月\SWFU@Date{}日%
         \medskip%
-      \end{minipage}%
-      &\makecell{接受任务\\学生签字}
-      &\begin{minipage}[c][25mm]{1.0\linewidth}%
+      \end{minipage} &%
+      {接受任务\\学生签字} &%
+      \begin{minipage}[c][25mm]{1.0\linewidth}%
         \medskip%
         \makebox[3cm][r]{\SWFU@StudSignature}\par%
         \vfill%
         \hfill\SWFU@Year{}年\SWFU@Month{}月\SWFU@Date{}日%
         \medskip%
-      \end{minipage}\\\hline%
-      \parbox{3em}{\centering 教研室审核}& \begin{minipage}[c][35mm]{1.0\linewidth}%
+      \end{minipage}\\%
+      {教研室\\审核} &%
+      \begin{minipage}[c][35mm]{1.0\linewidth}%
         \par\vspace{1ex}%
         审核意见：\par
         \vfill%
         签字：\par%
         \hfill{}年\qquad{}月\qquad{}日%
         \medskip
-      \end{minipage}%
-      & \parbox{4.3em}{\centering 学院审核}%
-      & \begin{minipage}[c][35mm]{1.0\linewidth}%
+      \end{minipage} &%
+      {学院审核} &%
+      \begin{minipage}[c][35mm]{1.0\linewidth}%
         \par\vspace{1ex}%
         审核意见：\par
         \vfill%
         签章：\par%
         \hfill\qquad{}年\qquad{}月\qquad{}日%
         \medskip
-      \end{minipage}\\\hline%
-    \end{tabularx}\\%
-    \begin{tabularx}{\textwidth}{@{}c@{\,\,}c@{\,}X@{}}
-      注：%
-      &1.&此任务书由指导教师填写，各院审定，在毕业论文（设计）开始前一周内填好并发给学生。\\
-      &2.&此任务书双面打印，一式两份。学生一份，另一份随毕业论文（设计）保存。
-    \end{tabularx}}}
+      \end{minipage}\\
+    \end{tblr}\\
+    \begin{tblr}{width=\linewidth, colspec={@{}c@{\;}X@{}}} 
+      注：&%
+      {1. 此任务书由指导教师填写，各院审定，在毕业论文（设计）开始前一周内填好并发给学生。\\
+      2. 此任务书双面打印，一式两份。学生一份，另一份随毕业论文（设计）保存。}\\
+    \end{tblr}}}
 
 \newcommand\makeplan{%
   \thispagestyle{empty}
@@ -337,39 +341,40 @@ url=false,doi=false,isbn=false]{biblatex}
   \bigskip
   \hfill（本表由毕业生填写）\par
   {\centering
-    \begin{tabularx}{1.0\linewidth}{|>{\bfseries}c|C|}
-      \hline
-      论文（设计）题目&\@title\\\hline
-    \end{tabularx}
+    \begin{tblr}{width=\linewidth,
+        colspec={|X[-1,c,font=\bfseries]|X[c,font=\kaishu]|}, rowspec={|Q|Q|}
+      }%
+      论文（设计）题目&\@title\\
+    \end{tblr}
     \vskip -1pt
-    \begin{tabularx}{1.0\linewidth}{|*{2}{>{\bfseries}c|C|}}
-      \makecell{题目\\类别}%
-      &\SWFU@PrjTypeA{}毕业论文\qquad\SWFU@PrjTypeB{}毕业设计%
-      &\makecell{题目\\来源}%
-      &\makecell[l]{%
-        \SWFU@PrjFrmA{}科研项目\quad\SWFU@PrjFrmB{}社会实践\quad\SWFU@PrjFrmD{}其它来源\\
-      \SWFU@PrjFrmC{}大学生创新创业项目}\\\hline
-    \end{tabularx}
+    \begin{tblr}{width=\linewidth, colspec={|c|X[c]|c|X|}, rowspec={Q[m]|},        
+        column{odd}={font=\bfseries}, column{even}={font=\kaishu}}
+      {题目\\类别} & \SWFU@PrjTypeA{}毕业论文\qquad\SWFU@PrjTypeB{}毕业设计 &%
+      {题目\\来源} & {\SWFU@PrjFrmA{}科研项目\quad\SWFU@PrjFrmB{}社会实践\quad%
+        \SWFU@PrjFrmD{}其它来源\\\SWFU@PrjFrmC{}大学生创新创业项目}\\
+    \end{tblr}
     \vskip -1pt
-    \begin{tabularx}{1.0\linewidth}{|*{2}{>{\bfseries}r|C|}}
-      指导教师&\SWFU@Advisora&职称&\SWFU@AdvisoraTitle\\\hline
-      辅助指导教师&\SWFU@Advisorb&职称&\SWFU@AdvisorbTitle\\\hline
-    \end{tabularx}
+    \begin{tblr}{width=\linewidth,%
+        colspec={|r|X[c]|r|X[c]|}, rowspec={Q[m]|Q[m]|},%
+        column{odd}={font=\bfseries}, column{even}={font=\kaishu}}%      
+      指导教师&\SWFU@Advisora&职称&\SWFU@AdvisoraTitle\\
+      辅助指导教师&\SWFU@Advisorb&职称&\SWFU@AdvisorbTitle\\
+    \end{tblr}
     \vskip -1pt
-    \begin{tabularx}{1.0\linewidth}{|*{3}{>{\bfseries}c|C|}}
-      学生姓名&\@author&专业&\SWFU@Subject&学号&\SWFU@Studid\\\hline
-    \end{tabularx}
+    \begin{tblr}{width=\linewidth,%
+        colspec={|c|X[-1,c]|c|X|c|X[-1,c]|}, column{odd}={font=\bfseries},
+        rowspec={Q[m]|Q[m]|Q[m]|Q[m]|Q[m]|Q[m]|}
+      }%
+      学生姓名&\@author&专业&\SWFU@Subject&学号&\SWFU@Studid\\
+      所属学院&\SetCell[c=5]{m}\SWFU@School\\
+    \end{tblr}
     \vskip -1pt
-    \begin{tabularx}{1.0\linewidth}{|>{\bfseries}c|C|}
-      所属学院&\SWFU@School\\\hline
-    \end{tabularx}
-    \vskip -1pt
-    \begin{tabularx}{1.0\linewidth}{|X|}
+    \begin{tblr}{width=\linewidth, colspec={|X|},rowspec={Q[m]Q[m]|}}
       论文工作计划和预期目标摘要：\\
       \begin{minipage}[t][15cm]{1.0\linewidth}
         \qquad{}\SWFU@Plan
-      \end{minipage}\\\hline
-    \end{tabularx}
+      \end{minipage}\\
+    \end{tblr}
     {\heiti 注：}每位毕业生须填写一份；如表栏不够填写，请加附页。
   }}
 

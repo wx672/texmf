@@ -2,8 +2,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfubilingual}
 
-%\RequirePackage{ifxetex} % XeTeX only
-
 \RequirePackage{pgfkeys}
 
 \pgfkeys{

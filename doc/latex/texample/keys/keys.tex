@@ -1,94 +1,79 @@
 \documentclass[varwidth,crop]{standalone}
 
 \usepackage{fontspec}
-\newfontfamily\nerd{DejaVu Sans Mono Nerd Font Complete}%
+\newfontfamily\nerd{FiraCode Nerd Font Mono}%DejaVuSansMono Nerd Font
 \newfontfamily\symbola{Symbola}%
 \newfontfamily\kbd{Linux Biolinum Keyboard O}
+\newfontfamily\noto{Noto Sans Mono CJK SC}
+
+\usepackage{biolinum,newunicodechar}
 
 \usepackage{graphicx}
 
-\usepackage[table]{xcolor}
-\usepackage{colortbl}
-\definecolor{A}{gray}{.95}
-\definecolor{B}{gray}{1}
-\definecolor{Gray}{gray}{0.5}
-\definecolor{BG}{rgb}{1,.8,0}
+\usepackage[table,svgnames]{xcolor}
+\usepackage{tabularray}
+\renewcommand{\arraystretch}{1.5}
 
-\newcommand\ksuper{\kbd }
-\newcommand\kctrl{\kbd }
-\newcommand\Ctrla{{\kbd }+{\kbd a}}
-\newcommand\ktab{\kbd }
-\newcommand\kenter{\kbd }
-\newcommand\kshift{\kbd }
-\newcommand\kspace{\kbd }
+\newunicodechar{}{{\kbd }}         % \newcommand\ksuper{\LKeyWin}
+\newunicodechar{}{\kbd }      % \newcommand\kctrl{\LKeyCtrl}
+\newunicodechar{}{\kbd }        % \newcommand\kesc{\LKeyEsc}
+\newunicodechar{}{\kbd }         % \newcommand\ktab{\LKeyTab}
+\newunicodechar{}{\kbd }         % \newcommand\kenter{\LKeyEnter}
+\newunicodechar{}{{\tiny\kbd }} % \newcommand\kspace{\LKeySpace}
+\newunicodechar{}{{\kbd }}         % \newcommand\kshift{\LKeyShift}
+\newunicodechar{}{\kbd }%\newcommand\kfone{\kbd   }
+\newunicodechar{}{\kbd }%\newcommand\kftwo{\kbd   }
+\newunicodechar{}{\kbd }%\newcommand\kfthree{\kbd }
+\newunicodechar{}{\kbd }%\newcommand\kffour{\kbd  }
+\newunicodechar{}{\kbd }%\newcommand\kffive{\kbd  }
 \newcommand\kdash{\kbd -}
 \newcommand\kbar{\kbd |}
-\newcommand\kfone{\kbd }
-\newcommand\kftwo{\kbd }
-\newcommand\kfthree{\kbd }
-\newcommand\kffour{\kbd }
-\newcommand\kffive{\kbd }
-\newcommand\pinyin{\includegraphics[width=1em]{pin}}
-\newcommand\chrome{\textcolor{orange}{\nerd }}
-\newcommand\terminal{{\nerd }}
-\newcommand\editor{{\LARGE\nerd ✍}}
-\newcommand\runit{{\symbola 🏃}} %  f96d 
-\newcommand\office{{\nerd }}
-\newcommand\help{\textcolor{red}{\nerd }}
-\newcommand\killit{{\LARGE\nerd ☠}}
-\newcommand\close{{\nerd }}
-\newcommand\switch{{\nerd }}
-\newcommand\swap{{\nerd }}
-\newcommand\zoom{{\nerd }}
-\newcommand\minimize{{\nerd }}
-\newcommand\create{{\nerd }}
-\newcommand\coding{{\nerd }}
-\newcommand\tmuxhsplit{{\nerd }}
-\newcommand\tmuxvsplit{{\nerd }}
-\newcommand\tmuxup{{\nerd }}
-\newcommand\tmuxdown{{\nerd }}
-\newcommand\tmuxleft{{\nerd }}
-\newcommand\tmuxright{{\nerd }}
+\newcommand\Ctrla{\LKeyCtrlX{A}}
+
+%\newcommand\pinyin{\includegraphics[width=1em]{pin}}
+\newunicodechar{漢}{{\normalsize\noto 漢}}
+\newcommand\chrome{\textcolor{orange}{\nerd \;}}
+\newunicodechar{慎}{\nerd 慎}\newcommand\browser{{\nerd 慎}}
+\newunicodechar{}{\nerd }%\newcommand\terminal{{\nerd \;}}
+\newunicodechar{}{\nerd }%\newcommand\editor{{\nerd \;}}%  e7a3,  f0f6, {\LARGE ✍}
+\newunicodechar{}{\nerd }%\newcommand\lswin{{\nerd    \;}}% f0cb,
+\newunicodechar{🏃}{\symbola 🏃}%\newcommand\runit{{\symbola 🏃}} %  f96d 
+\newunicodechar{}{\nerd }%\newcommand\office{{\nerd   \;}}
+\newunicodechar{}{\nerd }%\newcommand\help{\textcolor{red}{\nerd \;}}
+\newunicodechar{☠}{\nerd ☠}%\newcommand\killit{{\LARGE\nerd ☠}}
+\newunicodechar{}{\nerd }%\newcommand\close{{\nerd }}
+\newunicodechar{}{\nerd }%\newcommand\switch{{\nerd \;}}
+\newunicodechar{}{\nerd }%\newcommand\swap{{\nerd \;}}
+\newunicodechar{}{\nerd }%\newcommand\zoom{{\nerd \;}} %  f54b, 
+\newunicodechar{}{\nerd }%\newcommand\minimize{{\nerd \;}}
+\newunicodechar{}{\nerd }%\newcommand\create{{\nerd   \;}}
+\newunicodechar{}{\nerd }%\newcommand\coding{{\nerd   \;}}
+\newunicodechar{}{\nerd }%\newcommand\tmuxhsplit{{\nerd \;}}
+\newunicodechar{}{\nerd }%\newcommand\tmuxvsplit{{\nerd \;}}
+\newunicodechar{}{\nerd }%\newcommand\tmuxup{{\nerd     }}
+\newunicodechar{}{\nerd }%\newcommand\tmuxdown{{\nerd   }}
+\newunicodechar{}{\nerd }%\newcommand\tmuxleft{{\nerd   }}
+\newunicodechar{}{\nerd }%\newcommand\tmuxright{{\nerd  }}
+
+%    
 
 \begin{document}
 \begin{center}
-  \colorbox{BG}{\bfseries Window operations (Sawfish)}\\[1ex]
-  \rowcolors{1}{A}{B}
-  \begin{tabular} {rl@{\qquad}rl@{\qquad}rl}
-     %       
-    \terminal & {\ksuper}+{\kbd t}%
-    & \swap & {\ksuper}+{\ktab}%
-    & \runit &{\ksuper}+{\kbd r}\\
-    \editor & {\ksuper}+{\kbd e}
-    & \zoom & {\ksuper}+{\kenter}
-    &\pinyin&{\kshift}+{\kspace}\\
-    \chrome&{\ksuper}+{\kbd c}
-    & \close &{\ksuper}+{\kffour}
-    & \help &{\ksuper}+{\kfone}\\%
-    %\office &{\ksuper}+{\kbd o}& \killit &{\ksuper}+{\kffive} \\ %
-  \end{tabular}%\par
-  %  \minimize &{\ksuper}+{\kshift}+{\kenter} \\
-  % \hspace{-21em}{\tiny * Config file: \texttt{$\sim$/.sawfish/rc}}
+  \colorbox{yellow}{\bfseries Window operations (Sawfish)} \\[1ex]
+  \begin{tblr}{colspec={rl|[gray9]rl|[gray9]rl}, column{odd}={font=\LARGE,fg={Green}}}
+     & +       & 慎 & +{\kbd q} & 🏃 & +  \\
+     & +{\kbd j} &  & +{\kbd t} & 漢 & + \\
+     & +       &  & +{\kbd e} &  & +\\
+  \end{tblr}
 \end{center}
 \begin{center}
-  \colorbox{BG}{\bfseries Terminal operations (Tmux)}\\[1ex]
-  \rowcolors{1}{A}{B}
-  \begin{tabular} {rl@{\qquad}rl@{\qquad}rl}%
-    \create       & \Ctrla\quad\kbd{c}   % C-a c
-    & \tmuxhsplit & \Ctrla\quad\kdash    % C-a -
-    & \tmuxvsplit & \Ctrla\quad\kbar\\   % C-a |
-    \swap         & \Ctrla\quad\kbd{a}   % C-a a
-    & \tmuxup     & \Ctrla\quad\kbd{k}   % C-a k
-    & \tmuxleft   & \Ctrla\quad\kbd{h}\\ % C-a h
-    \switch       & \Ctrla\quad\kbd{n}   % C-a n
-    & \tmuxdown   & \Ctrla\quad\kbd{j}   % C-a j
-    & \tmuxright  & \Ctrla\quad\kbd{l}\\ % C-a l
-    &&&&&\\
-    \help   & \Ctrla\quad\kfone     % C-a F1
-    & \help & \Ctrla\quad\kftwo     % C-a F2
-    & \help & \Ctrla\quad\kfthree\\ % C-a F3
-  \end{tabular}%\par
-%\hspace{-24em}{\tiny * Config file: \texttt{$\sim$/.tmux.conf}}
+  \colorbox{yellow}{\bfseries Terminal operations (Tmux)}      \\[1ex]
+  \begin{tblr}{colspec={rl|[gray9]rl|[gray9]rl}, column{odd}={font=\LARGE,fg={Green}}}
+     & \Ctrla\;\kbd{c} &  & \Ctrla\;\kdash  &  & \Ctrla\;\kbar   \\
+     & \Ctrla\;\kbd{a} &  & \Ctrla\;\kbd{k} &  & \Ctrla\;\kbd{h} \\
+     & \Ctrla\;\kbd{n} &  & \Ctrla\;\kbd{j} &  & \Ctrla\;\kbd{L} \\
+     & \Ctrla\;      &  & \Ctrla\;      &  & \Ctrla\;       \\
+  \end{tblr}%\par
 \end{center}
 \end{document}
 
