@@ -225,12 +225,14 @@ url=false,doi=false,isbn=false]{biblatex}
             \end{tabularx}
           \end{center}
           {\setlength{\extrarowheight}{5pt}%
-            \begin{tabularx}{\textwidth}{@{}r%
-                >{\centering\arraybackslash\hsize=1.1\hsize\linewidth=\hsize}Xr%
-                >{\hsize=.9\hsize\linewidth=\hsize\centering\arraybackslash}X}%
-            学\qquad{}院&大数据与智能工程学院%
-            &\hspace{1em}专\quad{}业&\SWFU@Major\\[-1ex]\cline{2-2}\cline{4-4}%
-            学生姓名&\@author&\hspace{1em}学\quad{}号&\SWFU@ID\\[-1ex]\cline{2-2}\cline{4-4}%
+            \begin{tabularx}{\textwidth}{@{}%
+              r%
+              C%>{\centering\arraybackslash\hsize=1.01\hsize\linewidth=\hsize}
+              r%
+              C}%>{\hsize=1.03\hsize\linewidth=\hsize\centering\arraybackslash}
+            学\qquad{}院&\mbox{大数据与智能工程学院}%
+            &\quad{}专\enskip{}业&\mbox{\SWFU@Major}\\[-1ex]\cline{2-2}\cline{4-4}%
+            学生姓名&\@author&\quad{}学\enskip{}号&\SWFU@ID\\[-1ex]\cline{2-2}\cline{4-4}%
             指导教师&\multicolumn{3}{c}{\SWFU@Advisor}\\[-1ex]\cline{2-4}%
             \makebox[4em][s]{评阅人}&\multicolumn{3}{c}{\SWFU@Reviewer}\\[-1ex]\cline{2-4}
           \end{tabularx}}
