@@ -13,14 +13,28 @@
 % M-x describe-char
 % fntsample -f 'DejaVu Sans Mono Nerd Font Complete.ttf' -o nerd.pdf
 
+% special looking fonts
+% \newfontfamily\quivira{Quivira} % large unicode coverage, but not in Debian
+% \newfontfamily\US{USStarsNStripes}
+% \newfontfamily\USS{LMS Star Spangled}
+% \newfontfamily\UK{LMS God Save The Queen}
+
+\newcommand{\unix}{{\fontspec{Purisa}{UNIX}}}
+\newcommand{\emacs}{\includegraphics[width=1.2em]{emacs}}
+\newcommand{\google}{\raisebox{-.2em}{\includegraphics[width=3em]{google}}}
+\newcommand{\moodle}{\includegraphics[width=1em]{moodle}}
+
 \newfontfamily\symbola{Symbola}
 \newfontfamily\han{Noto Sans Mono CJK JP}%￥, Noto Sans Mono CJK SC
-\newfontfamily\kbd{Linux Biolinum Keyboard O}
 \newfontfamily\fira{FiraCode Nerd Font Mono}
 \newfontfamily\dejavu{DejaVuSansMono Nerd Font Mono}
 \newfontfamily\noto{NotoSansMono Nerd Font}%
 \newfontfamily\nerd{FiraCode Nerd Font Mono}
+\newfontfamily\humor{Humor Sans}
+\newfontfamily\purisa{Purisa}
 \newfontfamily\sig{signature}
+\newfontfamily\lbkey{Linux Biolinum Keyboard O}
+\newfontfamily\kbd{Linux Biolinum Keyboard O}
 
 \newunicodechar{漢}{{\han 漢}}
 \newunicodechar{}{{\nerd }}
@@ -60,78 +74,78 @@
 \newunicodechar{✉}{{\dejavu ✉}}% envelope
 \newunicodechar{}{{\nerd }}%envelope
 \newunicodechar{ﬁ}{{\nerd ﬁ}}%old phone
-\newunicodechar{}{{\nerd \;}}%lightning
-\newunicodechar{}{{\nerd \;}}%thumbup
-\newunicodechar{}{{\nerd \;}}%thumbdown
-\newunicodechar{}{{\nerd \;}}%thumbup
-\newunicodechar{}{{\nerd \;}}%thumbdown
+\newunicodechar{}{{\nerd }}%lightning
+\newunicodechar{}{{\nerd }}%thumbup
+\newunicodechar{}{{\nerd }}%thumbdown
+\newunicodechar{}{{\nerd }}%thumbup
+\newunicodechar{}{{\nerd }}%thumbdown
 \newunicodechar{⚓}{{\dejavu ⚓}}% anchor
 \newunicodechar{☭}{{\dejavu ☭}}% ccp
 \newunicodechar{❂}{{\dejavu ❂}}% tw, taiwan
-\newunicodechar{}{{\nerd \;}}%java
-\newunicodechar{}{{\nerd \;}}%python
-\newunicodechar{}{{\nerd \;}}%php
-\newunicodechar{}{{\nerd \;}}%php
-\newunicodechar{}{{\nerd \;}}%mysql
-\newunicodechar{}{{\nerd \;}}%javascript
-\newunicodechar{}{{\nerd \;}}%c
-\newunicodechar{}{{\nerd \;}}%c
-\newunicodechar{}{{\nerd \;}}%vim
-\newunicodechar{}{{\nerd \;}}%vim
-\newunicodechar{}{{\nerd \;}}%git
-\newunicodechar{}{{\nerd \;}}%chrome
-\newunicodechar{}{{\nerd \;}}%firefox
-\newunicodechar{}{{\nerd \;}}%ie
-\newunicodechar{}{{\nerd \;}}%wordpress
-\newunicodechar{慎}{{\nerd 慎\;}}
-\newunicodechar{}{{\nerd \;}}%earth,globe
-\newunicodechar{}{{\nerd \;}}%shadowsocks
-\newunicodechar{}{{\nerd \;}}%shadowsocks
-\newunicodechar{}{{\nerd \;}}%youtube
-\newunicodechar{}{{\nerd \;}}%google
-\newunicodechar{}{{\nerd \;}}%google plus
-\newunicodechar{}{{\nerd \;}}%google plus
-\newunicodechar{}{{\nerd \;}}%twitter
-\newunicodechar{}{{\nerd \;}}%facebook
-\newunicodechar{}{{\nerd \;}}%stackoverflow
-\newunicodechar{}{{\nerd \;}}%github
-\newunicodechar{}{{\nerd \;}}%baidu
-\newunicodechar{}{{\nerd \;}}%qq
-\newunicodechar{}{{\nerd \;}}%wechat
-\newunicodechar{}{{\nerd \;}}%sina
-\newunicodechar{}{{\nerd \;}}%walking
-\newunicodechar{}{{\nerd \;}}%msn
-\newunicodechar{}{{\nerd \;}}%bicycling
-\newunicodechar{}{{\nerd \;}}%bicycle
-\newunicodechar{}{{\nerd \;}}%gears
-\newunicodechar{}{{\nerd \;}}%shout
-\newunicodechar{}{{\nerd \;}}%lottery
+\newunicodechar{}{{\nerd }}%java
+\newunicodechar{}{{\nerd }}%python
+\newunicodechar{}{{\nerd }}%php
+\newunicodechar{}{{\nerd }}%php
+\newunicodechar{}{{\nerd }}%mysql
+\newunicodechar{}{{\nerd }}%javascript
+\newunicodechar{}{{\nerd }}%c
+\newunicodechar{}{{\nerd }}%c
+\newunicodechar{}{{\nerd }}%vim
+\newunicodechar{}{{\nerd }}%vim
+\newunicodechar{}{{\nerd }}%git
+\newunicodechar{}{{\nerd }}%chrome
+\newunicodechar{}{{\nerd }}%firefox
+\newunicodechar{}{{\nerd }}%ie
+\newunicodechar{}{{\nerd }}%wordpress
+\newunicodechar{慎}{{\nerd \;}}
+\newunicodechar{}{{\nerd }}%earth,globe
+\newunicodechar{}{{\nerd }}%shadowsocks
+\newunicodechar{}{{\nerd }}%shadowsocks
+\newunicodechar{}{{\nerd }}%youtube
+\newunicodechar{}{{\nerd }}%google
+\newunicodechar{}{{\nerd }}%google plus
+\newunicodechar{}{{\nerd }}%google plus
+\newunicodechar{}{{\nerd }}%twitter
+\newunicodechar{}{{\nerd }}%facebook
+\newunicodechar{}{{\nerd }}%stackoverflow
+\newunicodechar{}{{\nerd }}%github
+\newunicodechar{}{{\nerd }}%baidu
+\newunicodechar{}{{\nerd }}%qq
+\newunicodechar{}{{\nerd }}%wechat
+\newunicodechar{}{{\nerd }}%sina
+\newunicodechar{}{{\nerd }}%walking
+\newunicodechar{}{{\nerd }}%msn
+\newunicodechar{}{{\nerd }}%bicycling
+\newunicodechar{}{{\nerd }}%bicycle
+\newunicodechar{}{{\nerd }}%gears
+\newunicodechar{}{{\nerd }}%shout
+\newunicodechar{}{{\nerd }}%lottery
 \newunicodechar{☡}{{\nerd ☡}}%difficulty
-\newunicodechar{}{{\nerd \;}}%tux linux
-\newunicodechar{}{{\nerd \;}}%gnu
-\newunicodechar{}{{\nerd \;}}
-\newunicodechar{}{{\nerd \;}}%{\LARGE ✍}
-\newunicodechar{}{{\nerd \;}}%pdf adobe
-\newunicodechar{}{{\nerd \;}}
-\newunicodechar{}{{\nerd \;}}
-\newunicodechar{}{{\nerd \;}}%folder
+\newunicodechar{}{{\nerd }}%tux linux
+\newunicodechar{}{{\nerd }}%gnu
+\newunicodechar{}{{\nerd }}
+\newunicodechar{}{{\nerd }}%{\LARGE ✍}
+\newunicodechar{}{{\nerd }}%pdf adobe
+\newunicodechar{}{{\nerd }}
+\newunicodechar{}{{\nerd }}
+\newunicodechar{}{{\nerd }}%folder
 \newunicodechar{🕮}{\symbola 🕮}%openbook
-\newunicodechar{}{{\nerd \;}}%openbook
-\newunicodechar{}{{\nerd \;}}%debian
-\newunicodechar{}{{\nerd \;}}%ubuntu
-\newunicodechar{}{{\nerd \;}}%redhat
-\newunicodechar{}{{\nerd \;}}%fedora
-\newunicodechar{}{{\nerd \;}}%fedora
-\newunicodechar{}{{\nerd \;}}%arch
-\newunicodechar{}{{\nerd \;}}%mint
-\newunicodechar{}{{\nerd \;}}%android
-\newunicodechar{}{{\nerd \;}}%raspberry pie
-\newunicodechar{}{{\nerd \;}}%windows
-\newunicodechar{}{{\nerd \;}}%apple
-\newunicodechar{}{{\nerd \;}}%centos
-\newunicodechar{}{{\nerd \;}}%ios
-\newunicodechar{}{{\nerd \;}}%cisco
-\newunicodechar{}{{\nerd \;}}%
+\newunicodechar{}{{\nerd }}%openbook
+\newunicodechar{}{{\nerd }}%debian
+\newunicodechar{}{{\nerd }}%ubuntu
+\newunicodechar{}{{\nerd }}%redhat
+\newunicodechar{}{{\nerd }}%fedora
+\newunicodechar{}{{\nerd }}%fedora
+\newunicodechar{}{{\nerd }}%arch
+\newunicodechar{}{{\nerd }}%mint
+\newunicodechar{}{{\nerd }}%android
+\newunicodechar{}{{\nerd }}%raspberry pie
+\newunicodechar{}{{\nerd }}%windows
+\newunicodechar{}{{\nerd }}%apple
+\newunicodechar{}{{\nerd }}%centos
+\newunicodechar{}{{\nerd }}%ios
+\newunicodechar{}{{\nerd }}%cisco
+\newunicodechar{}{{\nerd }}%
 
 %%% biolinum
 \newunicodechar{}{{\kbd }}  % \newcommand\ksuper{\LKeyWin}
@@ -149,6 +163,49 @@
 \newcommand\kdash{\kbd -}
 \newcommand\kbar{\kbd |}
 \newcommand\Ctrla{\LKeyCtrlX{A}}
+
+\newcommand\Ca{{\kbd }+{\kbd a}}
+\newcommand\Cb{{\kbd }+{\kbd b}}
+\newcommand\Cc{{\kbd }+{\kbd c}}
+\newcommand\Cd{{\kbd }+{\kbd d}}
+\newcommand\Ce{{\kbd }+{\kbd e}}
+\newcommand\Cf{{\kbd }+{\kbd f}}
+\newcommand\Cg{{\kbd }+{\kbd g}}
+\newcommand\Ch{{\kbd }+{\kbd h}}
+\newcommand\Ci{{\kbd }+{\kbd i}}
+\newcommand\Cj{{\kbd }+{\kbd j}}
+\newcommand\Ck{{\kbd }+{\kbd k}}
+\newcommand\Cl{{\kbd }+{\kbd l}}
+\newcommand\Cm{{\kbd }+{\kbd m}}
+\newcommand\Cn{{\kbd }+{\kbd n}}
+\newcommand\Co{{\kbd }+{\kbd o}}
+\newcommand\Cp{{\kbd }+{\kbd p}}
+\newcommand\Cq{{\kbd }+{\kbd q}}
+\newcommand\Cr{{\kbd }+{\kbd r}}
+\newcommand\Cs{{\kbd }+{\kbd s}}
+\newcommand\Ct{{\kbd }+{\kbd t}}
+\newcommand\Cu{{\kbd }+{\kbd u}}
+\newcommand\Cv{{\kbd }+{\kbd v}}
+\newcommand\Cw{{\kbd }+{\kbd w}}
+\newcommand\Cx{{\kbd }+{\kbd x}}
+\newcommand\Cy{{\kbd }+{\kbd y}}
+\newcommand\Cz{{\kbd }+{\kbd z}}
+\newcommand\Cslash{{\kbd }+{\kbd /}}
+\newcommand\Se{{\kbd }+{\kbd e}}
+\newcommand\Md{{\kbd }+{\kbd d}}
+\newcommand\Mv{{\kbd }+{\kbd v}}
+\newcommand\Mx{{\kbd }+{\kbd x}}
+\newcommand\MEnter{{\kbd }+{\kbd }}
+\newcommand\Tab{{\kbd }} % 
+\newcommand\Enter{{\kbd }}
+\newcommand\Caps{{\kbd }}
+\newcommand\Ctrl{{\kbd }}
+
+\RequirePackage{hologo}
+\newcommand\latex{\LaTeX{}}
+\newcommand\bibtex{\hologo{BibTeX}}
+\newcommand\biblatex{\texttt{biblatex}}
+\newcommand\auctex{AUC\TeX{}}
 
 \newtoggle{logocolor}
 
@@ -217,16 +274,3 @@
   \iftoggle{logocolor}{\textcolor{SteelBlue}{\nerd }}{{\nerd }}}
 
 
-% special looking fonts
-\newfontfamily\humor{Humor Sans}% \humor{hello, world!}
-\newfontfamily\purisa{Purisa}
-\newfontfamily\lbkey{Linux Biolinum Keyboard O} % used in wx672tut.sty
-% \newfontfamily\quivira{Quivira} % large unicode coverage, but not come with Debian
-% \newfontfamily\US{USStarsNStripes}
-% \newfontfamily\USS{LMS Star Spangled}
-% \newfontfamily\UK{LMS God Save The Queen}
-
-\newcommand{\unix}{{\fontspec{Purisa}{UNIX}}}
-\newcommand{\emacs}{\includegraphics[width=1.2em]{emacs}}
-\newcommand{\google}{\raisebox{-.2em}{\includegraphics[width=3em]{google}}}
-\newcommand{\moodle}{\includegraphics[width=1em]{moodle}}
