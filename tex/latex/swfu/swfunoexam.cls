@@ -23,31 +23,37 @@
 
 \newcommand{\swfusetup}[1]{\pgfkeys{#1}}
 
-\LoadClass[scheme=plain]{ctexart}
+\LoadClass[zihao=-4,scheme=plain]{ctexart}
 
 \RequirePackage[ % showframe,
 paperwidth=210mm,paperheight=297mm,
 margin=4cm]{geometry}
 
-\RequirePackage{tabularx}
-\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % for centering p column
-\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-\renewcommand{\arraystretch}{2}
+\RequirePackage{tabularray}
+% \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % for centering p column
+% \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
+% \newcolumntype{C}{>{\centering\arraybackslash}X}
+% \renewcommand{\arraystretch}{2}
 
-\newcommand{\mkvspace}[2]{\rule{0pt}{#1}\par{}#2\par{}\rule{0pt}{#1}}%\mkvspace{12ex}{text}
+% \newcommand{\mkvspace}[2]{\rule{0pt}{#1}\par{}#2\par{}\rule{0pt}{#1}}%\mkvspace{12ex}{text}
 
 \newcommand{\makeform}{%
   \pagestyle{empty}%
-  {\centering
-    {\LARGE\heiti 西南林业大学非考试命题表}\\[4ex]
-    \begin{tabularx}{\textwidth}{|M{4em}|C|}\hline%
-      学年学期 & \SWFU@Term\\\hline
-      考试科目 & {\kaishu \SWFU@Course}\\\hline
-      考核方式& {\begin{tabularx}{1.0\linewidth}{C|C|C}
-                  {\kaishu\SWFU@Noexam}&任课教师&{\kaishu\SWFU@Teacher}\\
-                 \end{tabularx}} \\\hline
-      \mkvspace{20em}{考核内容\par{}及要求} & \begin{tabular}{p{.9\linewidth}}
-                                               {\kaishu\SWFU@Details}\\
-                                             \end{tabular}\\\hline
-    \end{tabularx}}}
+  \begin{center}
+    {\Large\heiti 西南林业大学非考试命题表}
+
+    \bigskip    
+    \begin{tblr}{width=\linewidth, hlines, vlines, colspec={cX[c]cX[c]},%
+          row{1-3}={rowsep=7pt}, row{4}={15cm},%
+          cell{1,2,4}{2}={c=3}{c,font=\kaishu},%
+          cell{3}{2,4}={c,font=\kaishu} }%
+        学年学期 & \SWFU@Term\\
+        考试科目 & {\SWFU@Course}\\
+        考核方式 & \SWFU@Noexam&任课教师&\SWFU@Teacher\\
+        {考核内容\\及要求} &%
+        \begin{tblr}{width=.9\columnwidth,colspec={X}}
+          \SWFU@Details\\
+        \end{tblr}\\
+     \end{tblr}
+   \end{center}
+ }

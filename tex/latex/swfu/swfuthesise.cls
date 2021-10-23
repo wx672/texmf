@@ -1,6 +1,6 @@
 % 西南林业大学本科毕业（设计）论文（留学生版） [2021]
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{swfuthesisen}
+\ProvidesClass{swfuthesise}
 
 \RequirePackage{pgfkeys}
 
@@ -9,7 +9,7 @@
   Title/.store in         = \@title, Title = Thesis title,% 
   Signature/.store in     = \SWFU@Signature, Signature = Your signature, % 作者签名（用于原创声明页）
   ID/.store in            = \SWFU@ID, ID = Your student ID,% 
-  Major/.store in         = \SWFU@Major, Major = Your major?,%  
+  % Major/.store in         = \SWFU@Major, Major = Your major?,%  
   % enTitle/.store in       = \SWFU@enTitle, enTitle = 英文标题, %
   % enAuthor/.store in      = \SWFU@enAuthor, enAuthor = 英文学生姓名,%
   Advisor/.store in       = \SWFU@Advisor, Advisor = Your advisor?,%
@@ -21,26 +21,27 @@
 
 \newcommand{\swfusetup}[1]{\pgfkeys{#1}}
 
-% pass unknown options to ctexbook
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
+% pass unknown options to report
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions\relax
 
-\LoadClass[scheme=plain,zihao=-4]{ctexbook}
+\LoadClass[12pt]{report}
 
+\RequirePackage{fontspec}
 \setmainfont{Liberation Serif}
 \setsansfont{Liberation Sans}
 \setmonofont{Liberation Mono}
 
-\ctexset{%
-  chapter/name = {},%
-  chapter/number = {\thechapter},%
-  chapter/format = \centering\large\bfseries,% 小3号，黑体
-  section/format = {\bfseries\zihao{4}},% 4号，黑体
-  subsection/format = \bfseries,% 小4号，黑体
-  subsubsection/format = \bfseries,% 黑体（在规范中未说明）
-  paragraph/format = \bfseries,% 黑体（在规范中未说明）
-  subparagraph/format = \bfseries,% 黑体（在规范中未说明）
-}
+% \ctexset{%
+%   chapter/name = {},%
+%   chapter/number = {\thechapter},%
+%   chapter/format = \centering\large\bfseries,% 小3号，黑体
+%   section/format = {\bfseries\zihao{4}},% 4号，黑体
+%   subsection/format = \bfseries,% 小4号，黑体
+%   subsubsection/format = \bfseries,% 黑体（在规范中未说明）
+%   paragraph/format = \bfseries,% 黑体（在规范中未说明）
+%   subparagraph/format = \bfseries,% 黑体（在规范中未说明）
+% }
 
 %%%%% geometry
 \RequirePackage[%showframe,%showcrop,
@@ -56,19 +57,23 @@ nomarginpar]{geometry}
 %%%%% titlesec, for making chapter header higher
 \RequirePackage{titlesec}%explicit
 \titleformat{\chapter}[hang]% shape
-{\normalfont\large\bfseries}%    format
+{\normalfont\LARGE\bfseries}% format
 {\thechapter}%                label
 {20pt}%                       sep between label and title body
-{\centering\large}%        before-code #1
+{\centering\LARGE}%        before-code #1
 
 \titlespacing{\chapter}{0pt}{-20pt}{30pt}
 
 %%%%% xstring 
-\RequirePackage{xstring} % for \StrSubstitute{} in \fancyhead
+% \RequirePackage{xstring} % for \StrSubstitute{} in \fancyhead
 
 %%%%% fancyhdr
 \RequirePackage{fancyhdr}
 \fancyhf{}
+
+% solve an overleaf warning
+\setlength\headheight{23pt}
+\addtolength\topmargin{-11pt}
 
 \fancypagestyle{plain}{% for the 1st page of each chapter
   \fancyhf{}%
@@ -85,17 +90,20 @@ nomarginpar]{geometry}
 \fancyfoot[C]{\fontsize{8}{8}\selectfont -- \thepage\ --}
 
 %%%%% misc
-% \RequirePackage{indentfirst} % enabled if scheme=chinese
+\RequirePackage{indentfirst} % enabled if scheme=chinese
 \RequirePackage{emptypage} % for removing header/footer on empty pages
 \RequirePackage{tabularx,tabularray,longtable,multicol,multirow,booktabs,makecell}
 \renewcommand\theadfont{\bfseries}%\normalfont
 \renewcommand{\arraystretch}{1.5}
 
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % centering p column
+% \newcolumntype{C}{>{\centering\arraybackslash}X}
+% \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % centering p column
 
 \RequirePackage[bottom]{footmisc} % stick footnote at bottom of page
 \RequirePackage{enumitem} % \setlist
+%\setlist{itemsep=-.5ex}
+%\setlist[1]{labelindent=\parindent,align=left}
+\setlist{nosep} % kills all vertical spacing
 
 %%%%% graphicx
 \RequirePackage{graphicx}
@@ -142,21 +150,21 @@ nomarginpar]{geometry}
 \renewcommand{\onehalfspacing}{\setstretch{1.2}}
 
 %%%%% tikz
-\RequirePackage{tikz}
-\usetikzlibrary{%
-  calc,positioning,fit,%
-  arrows,shapes,patterns,quotes,%
-  decorations.pathmorphing,%
-  backgrounds,scopes,%
-  mindmap,trees,%
-  tikzmark,%
-}%
+% \RequirePackage{tikz}
+% \usetikzlibrary{%
+%   calc,positioning,fit,%
+%   arrows,shapes,patterns,quotes,%
+%   decorations.pathmorphing,%
+%   backgrounds,scopes,%
+%   mindmap,trees,%
+%   tikzmark,%
+% }%
 
 %%%%% biblatex
 \RequirePackage[backend=biber,%
 style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false,%
 url=false,doi=false,isbn=false]{biblatex}
-%\renewcommand*{\bibfont}{\small} % 11pt
+\renewcommand*{\bibfont}{\small} % 11pt
 
 %%%%% caption
 \RequirePackage[labelfont=bf]{caption} % \captionsetup, font=footnotesize,
@@ -165,7 +173,7 @@ url=false,doi=false,isbn=false]{biblatex}
 \RequirePackage{subcaption}
 
 \captionsetup{subrefformat=parens}
-\labelformat{subfigure}{\thefigure(#1)}
+%\labelformat{subfigure}{\thefigure(#1)}
 
 % set caption label style to, e.g. 3-2.
 % \renewcommand{\thefigure}{\thechapter{}-\arabic{figure}}
@@ -211,39 +219,20 @@ url=false,doi=false,isbn=false]{biblatex}
   \begin{titlepage}
     \vspace*{1mm}
     \begin{center}
-      \includegraphics[width=17em]{swfulogo-text}\\[5mm]%
-      {\LARGE\bfseries Undergraduate Thesis (Design)}\\[1mm]%
-      {\LARGE\bfseries (Session \SWFU@Year)}\\[2mm]%
-      \includegraphics[width=8em]{swfulogo-emblem}\\[1mm]
-      \begin{minipage}{\linewidth}
-        \begin{large}
-          \begin{center}
-            \begin{tblr}{width=\textwidth, colspec={@{}rX@{}}}
-              Title&\makebox[0pt][t]{% wrapable long title
-                \begin{minipage}[t]{13.7cm}
-                  % 小2号、黑体、居中
-                  \centering\parbox[t]{13.2cm}{\centering\Large\bfseries\@title}
-                \end{minipage}}%
-              \rule[-.9ex]{13.7cm}{.1pt}\par%
-              \rule[-.5ex]{13.7cm}{.1pt}&\\
-            \end{tblr}
-          \end{center}
-          \begin{tblr}{width=\textwidth,abovesep=3ex,colspec={@{}rX[c]rc@{}},
-            rowspec={Q[b]QQQ}, row{1}={ht=1em}}
-              Department&
-              \begin{tabular}[b]{c}
-                College of Big Data and\\[-4ex]
-                Intelligence Engineering
-              \end{tabular} &%
-              \quad{}Major&\SWFU@Major\\[-1ex]\cline{2-2}\cline{4-4}%
-              Name&\@author&\quad{}ID №&\SWFU@ID\\[-1ex]\cline{2-2}\cline{4-4}%
-              Mentor&\SetCell[c=3]{c}\SWFU@Advisor\\[-1ex]\cline{2-4}%
-              Reviewer&\SetCell[c=3]{c}\SWFU@Reviewer\\[-1ex]\cline{2-4}
-          \end{tblr}
-        \end{large}
-      \end{minipage}
+      \includegraphics[width=10cm]{swfulogo}\\[2cm]%
+      {\Huge\bfseries\@title}\\[1.5cm]
+      {\LARGE\@author}\\
+      {\Large(№~\SWFU@ID)}\\\medskip
+      {\Large College of Big Data and Intelligence Engineering}\\
+      {\Large Southwest Forestry University}\\[3cm]
+      %\SetTblrInner{rowsep=-1ex}%X[c,font=\large]X[c,font=\large]
+      \begin{tblr}{width=.8\linewidth, colspec={X[c]X[c]},row{1}={font=\large}}
+        {\emph{Supervisor}\\[-1ex]\SWFU@Advisor}&{\emph{Reviewer}\\[-1ex]\SWFU@Reviewer}\\
+      \end{tblr}\\[1cm]
+      {\Large In partial fulfillment of the requirements for the degree of Bachelor of Science
+      in Engineering}
       \vfill
-      {\Large\bfseries\SWFU@Year/\SWFU@Month/\SWFU@Date}%
+      {\Large\SWFU@Month\enskip\SWFU@Date,\enskip\SWFU@Year}
     \end{center}%
   \end{titlepage}%
   \cleardoublepage
@@ -268,18 +257,22 @@ shall bear all related responsibilities.
 
     \vspace*{1em}
     \begin{flushright}
-      Author's signature: \underline{\,\makebox[7em][c]{\SWFU@Signature}\,}\quad{}%
-      Date: \underline{\SWFU@Year{}/\SWFU@Month{}/\SWFU@Date{}}
+      \begin{tblr}{width=.8\linewidth, colspec={X[r]c},%
+          abovesep=3mm, belowsep=-5pt,%
+          hline{2,3}={2}{}}%
+        Author's signature:&\SWFU@Signature\\
+        Date:&\SWFU@Month{}\enskip\SWFU@Date{},\;\SWFU@Year{}
+      \end{tblr}
     \end{flushright}
   \end{large}
   \cleardoublepage
 }
 
-\newenvironment{abstract}{%
+\renewenvironment{abstract}{%
   \thispagestyle{plain}\phantomsection{}%
   \begin{center}
     % 英文摘要标题，3号，居中，加粗。
-    {\singlespacing\zihao{3}\@title}\\[5mm]%
+    {\singlespacing\Large\@title}\\[5mm]%
     {\large
       \@author\\%
       % 官方模板的地址肯定是体育老师设计的，用不得。
@@ -294,7 +287,7 @@ shall bear all related responsibilities.
   \noindent\textbf{Summarize:}}{}
 
 \newenvironment{keyword}{%Key Words一词，小4号加粗；关键词正文，小4号字。
-  \vskip 2ex\noindent\textbf{Key Words: }}{\cleardoublepage}
+  \vskip 2ex\noindent\textbf{Key Words: }}{\cleardoublepage}%
 
 \newcommand{\makebib}{% 参考文献
   % \zihao{4}{学校规范要求“参考文献”四字用4号字，不要理它，保持小3号就好}
@@ -307,20 +300,20 @@ shall bear all related responsibilities.
 \newenvironment{advisorInfo}{% 指导教师简介
   \thispagestyle{plain}\phantomsection{}%
   \addcontentsline{toc}{chapter}{Instructor}%
-  \chapter*{\zihao{4}Instructor}%
+  \chapter*{Instructor}%
   \vskip 2em\begin{doublespace}\small}%5号宋体
   {\end{doublespace}\pagebreak}
   
 \newenvironment{acknowledgment}{% 致谢
   \thispagestyle{plain}\phantomsection{}%
-  \addcontentsline{toc}{chapter}{Acknowledgment}%
-  \chapter*{Acknowledgment}
+  \addcontentsline{toc}{chapter}{Acknowledgments}%
+  \chapter*{Acknowledgments}
   \vskip 2em\begin{doublespace}\small}%5号宋体
   {\end{doublespace}\pagebreak\singlespacing}
 
 %%%%% misc
 \renewcommand{\headrulewidth}{.4pt}
-\urlstyle{tt} % url.sty
+%\urlstyle{tt} % url.sty
 \raggedbottom{}
 \setlength{\parindent}{2em}
 %\setlist{nosep} % kills all vertical spacing

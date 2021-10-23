@@ -1,0 +1,74 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{backgrounds}
+\usepackage[scheme=plain]{ctex}
+
+\begin{document}
+\begin{tikzpicture}[inner sep=0,anchor=south west,
+  markline/.style={ultra thin,<->,red},  
+  ]
+  \node (bg) at (0,0) {\includegraphics[width=\paperwidth]{cover-bg}};
+
+  \begin{scope}
+	%%% grid
+	% \draw[help lines,red!10,step=1] (0,0) grid (20,30);%
+	% \foreach \x in {1,2,...,19} { \node at (\x,0) {\x}; }%
+	% \foreach \y in {1,2,...,29} { \node at (0,\y) {\y}; }%
+
+    \draw[markline] (3.1,5) -- (19.55,5) node [inner sep=1pt,midway,above] {Text width};
+    \draw[markline] (20,27.45) -- (20,3.1) node [inner sep=1pt,midway,auto,sloped] {Text height};
+    \draw[red] (19.55,3.1) -- (20.2,3.1);
+    \draw[red] (19.55,27.45) -- (20.2,27.45);
+
+    \draw[markline] (-.5,0) -- (-.5,31.4) node [inner sep=1pt,midway,sloped,auto] {A4
+      paper height};
+    \draw[red] (-.7,0) --(0,0);
+    \draw[red] (-.7,31.4) --(0,31.4);
+    
+    \draw[markline] (0,31.9) -- (21.6,31.9) node [inner sep=1pt,midway,sloped,auto] {A4
+      paper width};
+    \draw[red] (21.6,31.4) --(21.6,32.1);
+    \draw[red] (0,31.4) --(0,32.1);
+    
+    \draw[markline] (0,16) -- (3.1,16)  node [anchor=center,inner sep=1pt,above, midway]{3cm};
+    % \draw[markline] (0,15) -- (.5,15)   node [anchor=center,inner sep=1pt,above, midway,scale=.6]{5mm};
+    \draw[markline] (.5,15) -- (3.1,15) node [anchor=center,inner sep=1pt,above, midway]{2.5cm};
+    \draw[red] (.5,14.8)--(.5,15.2);
+    \draw[markline] (19.55,27.8) -- (21.6,27.8) node[inner sep=1pt,midway]{2cm};
+    \draw[red] (19.55,28) -- (19.55,27.45);
+    \draw[markline] (19.8,0) -- (19.8,3.05) node[inner sep=1pt,midway,right]{3cm};
+    \draw[markline] (18,0) -- (18,2.05) node[inner sep=1pt,midway,right]{2cm};
+    \draw[markline] (5,27.45) -- (5,31.4) node[inner sep=1pt,midway,right]{3cm};
+    \draw[markline] (7,28.35) -- (7,31.4) node[inner sep=1pt,midway,right]{2cm};
+
+    \node[red, inner sep=1pt,align=center,anchor=south] at (11,27.89) {Header (11pt, centered)};
+    \node[red, inner sep=1pt,align=center,anchor=south] at (11,2.05) {Footer(11pt, centered)};
+
+    \node (title) [red,align=left,inner sep=3pt] at (13,22.5) {25pt, centered};%Huge
+    \draw[red,-] (title) -- (13,21.6);
+
+    \node (author) [red,align=left,inner sep=3pt] at (15,19) {20pt, centered};%LARGE
+    \draw[red,-] (author) -- (13.5,18.5);
+
+    \node (school) [red,align=left,inner sep=3pt] at (15,17.9) {17pt, centered};%Large
+    \draw[red,-] (school) -- (13.5,17);
+
+    \node (advisor) [red,align=left,inner sep=3pt] at (11,13.5) {14pt, centered};
+    \draw[red,-] (advisor) -- (9,12);
+    \draw[red,-] (advisor) -- (14.5,12);
+
+    \node (bsc) [red,align=left,inner sep=3pt] at (15,6.5) {17pt, centered};
+    \draw[red,-] (bsc) -- (13,8);
+    
+    % \node at (6,6) [red,align=left,text width=30em] {对于校标、校徽，以及封面上除论文题目之外的所有其它文
+    %   字，学校规范中未给出任何数据，亦未给出PDF格式的模板，只提供了一个.doc文件，用不同的
+    %   工具打开，会产生不同的效果。跟着感觉走吧。};
+
+    \draw (0,0) rectangle (21.6,31.4);
+  \end{scope}
+\end{tikzpicture}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -83,7 +83,7 @@ nomarginpar]{geometry}
 %%%%% misc
 % \RequirePackage{indentfirst} % enabled if scheme=chinese
 \RequirePackage{emptypage} % for removing header/footer on empty pages
-\RequirePackage{tabularx,longtable,multicol,multirow,booktabs,makecell}
+\RequirePackage{tabularray,tabularx,longtable,multicol,multirow,booktabs,makecell}
 \renewcommand\theadfont{\bfseries}%\normalfont
 \renewcommand{\arraystretch}{1.5}
 
@@ -207,39 +207,42 @@ url=false,doi=false,isbn=false]{biblatex}
   \begin{titlepage}
     \vspace*{1mm}
     \begin{center}
-      \makebox[17em][s]{\includegraphics[width=17em]{swfulogo-text}}\\[5mm]%
+      \makebox[17em][s]{\includegraphics[width=17em]{swfulogo-text}}\\%
+      \medskip
       \makebox[19em][s]{{\LARGE\heiti 本科毕业论文\hspace{-.5ex}（设计）}}\\[1mm]%
-      \makebox[13em][c]{\hspace{.5em}{\LARGE\heiti（\zhdigits{\SWFU@Year}\,届）}}\\[2mm]%
-      \makebox[8em][s]{\includegraphics[width=8em]{swfulogo-emblem}}\\[1mm]
+      \makebox[13em][c]{\hspace{.5em}{\LARGE\heiti（\zhdigits{\SWFU@Year}\,届）}}\\%
+      \vspace*{5mm}
+      \makebox[8em][s]{\includegraphics[width=8em]{swfulogo-emblem}}\\
+      \bigskip
       \begin{minipage}{\linewidth}
         \begin{large}
-          \begin{center}
-            \begin{tabularx}{\textwidth}{@{}r@{\,\,}CX}%
-              题\qquad{}目&\makebox[0pt][t]{% wrapable long title
-                \begin{minipage}[t]{13.7cm}
-                  % 小2号、黑体、居中
-                  \centering\parbox[t]{13.2cm}{\centering\Large\heiti\@title}
-                \end{minipage}}%
-              \rule[-.9ex]{13.7cm}{.1pt}\par%
-              \rule[-.5ex]{13.7cm}{.1pt}&\\
-            \end{tabularx}
-          \end{center}
-          {\setlength{\extrarowheight}{5pt}%
-            \begin{tabularx}{\textwidth}{@{}%
-              r%
-              C%>{\centering\arraybackslash\hsize=1.01\hsize\linewidth=\hsize}
-              r%
-              C}%>{\hsize=1.03\hsize\linewidth=\hsize\centering\arraybackslash}
-            学\qquad{}院&\mbox{大数据与智能工程学院}%
-            &\quad{}专\enskip{}业&\mbox{\SWFU@Major}\\[-1ex]\cline{2-2}\cline{4-4}%
-            学生姓名&\@author&\quad{}学\enskip{}号&\SWFU@ID\\[-1ex]\cline{2-2}\cline{4-4}%
-            指导教师&\multicolumn{3}{c}{\SWFU@Advisor}\\[-1ex]\cline{2-4}%
-            \makebox[4em][s]{评阅人}&\multicolumn{3}{c}{\SWFU@Reviewer}\\[-1ex]\cline{2-4}
-          \end{tabularx}}
+          \begin{tblr}{width=\linewidth, colspec={@{}cX[c]@{}},
+              column{2}={font=\Large\heiti}% 小2号、黑体
+            }
+            题\qquad{}目&%
+            \makebox[0pt][t]{% wrapable long title
+              \begin{minipage}[t]{13.5cm}
+                \centering\parbox[t]{13.2cm}{\centering\@title}
+              \end{minipage}}%
+            \rule[-.9ex]{13.5cm}{.1pt}\par%
+            \rule[-.5ex]{13.5cm}{.1pt}
+          \end{tblr}\par
+          \vspace*{1cm}
+          \begin{tblr}{width=\linewidth, colspec={@{}rX[c]rc@{}},%
+              hline{2,3} = {2,4}{abovespace=-3pt, belowspace=5mm},% 
+              hline{4,5} = {2-4}{abovespace=-3pt, belowspace=5mm},% 
+              cell{3}{2} = {c=3}{c},% advisor
+              cell{4}{2} = {c=3}{c}% reviewer
+            }
+            学\qquad{}院&\mbox{大数据与智能工程学院}&\quad{}专\enskip{}业&\SWFU@Major\\
+            学生姓名&\@author&\quad{}学\enskip{}号&\SWFU@ID\\
+            指导教师&\mbox{\SWFU@Advisor}\\
+            \makebox[4em][s]{评阅人}&\mbox{\SWFU@Reviewer}\\
+          \end{tblr}
         \end{large}
       \end{minipage}
       \vfill
-      {\Large\heiti\SWFU@Year\,年\,\SWFU@Month\,月\,\SWFU@Date\,日}%
+      {\Large\bfseries\SWFU@Year\,年\,\SWFU@Month\,月\,\SWFU@Date\,日}%
     \end{center}%
   \end{titlepage}%
   \cleardoublepage

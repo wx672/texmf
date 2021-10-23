@@ -2,7 +2,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfucomments}
 
-\RequirePackage{pgfkeys,etoolbox,calc}
+\RequirePackage{pgfkeys}%,etoolbox,calc
 
 \pgfkeys{%
   Formsubtitle/.store in   = \SWFU@Formsubtitle,   % 指导教师意见 | 评阅意见 | 答辩申请表
@@ -82,38 +82,43 @@ top=3cm,bottom=2cm,
 left=2.5cm,right=2.5cm,
 ]{geometry}
 
-\RequirePackage{tabularx}
-\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-\renewcommand{\arraystretch}{1.5}
+\RequirePackage{tabularray}
+% \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
+% \newcolumntype{C}{>{\centering\arraybackslash}X}
+% \renewcommand{\arraystretch}{1.5}
 
 \newcommand{\makeform}{\pagestyle{empty}
   \begin{center}
     \large\heiti 西南林业大学本科毕业（设计）论文\SWFU@Formsubtitle
   \end{center}
-  \begin{tabularx}{\textwidth}{*{2}{@{}>{\heiti}r>{\kaishu}C}}%
-    论文(设计)题目：& \multicolumn{3}{c}{\kaishu\SWFU@Prjtitle} \\\cline{2-4}
-    学生姓名：&\SWFU@Studname&学号：&\texttt{\SWFU@Studid}\\\cline{2-2}\cline{4-4}
-    学院：&\SWFU@School&专业：&\SWFU@Studsbj\\\cline{2-2}\cline{4-4}\\
-  \end{tabularx}
-  \smallskip%
-  \begin{tabularx}{\linewidth}{|X|}
-    \hline
+  \bigskip\noindent%
+  \begin{tblr}{width=\linewidth, colspec={rX[c]rX[c]},% rowspec={Q[f]Q[f]Q[f]},%
+      column{1,3}={font=\heiti}, column{2,4}={font=\kaishu},%
+      cell{1}{2}={c=3}{c,font=\kaishu},%
+      hline{2}={2-4}{},%
+      hline{3,4}={2,4}{},
+    }
+    论文(设计)题目: & \SWFU@Prjtitle                                  \\
+    学生姓名:       & \SWFU@Studname & 学号: & \texttt{\SWFU@Studid} \\
+    学院:           & \SWFU@School   & 专业: & \SWFU@Studsbj         \\
+  \end{tblr}%
+  \par\vspace*{7mm}\noindent%
+  \begin{tblr}{width=\linewidth, colspec={X}, hlines, vlines}
     \begin{minipage}{1.0\linewidth}
       \smallskip%
       \begin{center}
-        \large\SWFU@Hinttitle 
+        \large\SWFU@Hinttitle
       \end{center}
       \SWFU@Hinttext%
       \smallskip%
-    \end{minipage}\\\hline
-  \end{tabularx}
-  \begin{tabularx}{\textwidth}{X}
+    \end{minipage}                                                     \\
+  \end{tblr}
+  \begin{tblr}{width=\textwidth, colspec={X}}
     \begin{minipage}{1.0\linewidth}
       \SWFU@Commentslabel\par
       {\kaishu\SWFU@Comments}
-    \end{minipage}\\
-  \end{tabularx}
+    \end{minipage}                                                     \\
+  \end{tblr}
   \vfill%
   \noindent%
   \SWFU@Marklabel%

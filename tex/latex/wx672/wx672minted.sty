@@ -4,7 +4,7 @@
 
 \RequirePackage{fontspec}
 \newfontfamily\firacode{FiraCode Nerd Font}[NFSSFamily=FiraCode]
-\RequirePackage{minted}%[newfloat=true]
+\RequirePackage[cache=false]{minted}%[newfloat=true]
 %\usemintedstyle{bw}
 
 \RequirePackage{caption} % \captionsetup
@@ -31,7 +31,7 @@
 \newminted{pascal}{}
 \newminted{makefile}{}
 
-\newmintedfile{c}{baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%\cfile{filepath}
+\newmintedfile[cfile]{c}{baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%\cfile{filepath}
 \newmintedfile[mkfile]{makefile}{baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%\mkfile{filepath}
 \newmintedfile{nasm}{baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%\nasmfile{filepath}
 \newmintedfile[pasfile]{pascal}{baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%\pasfile{filepath}

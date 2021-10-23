@@ -1,0 +1,78 @@
+\documentclass{swfuproposale}
+
+\usepackage{lipsum}
+
+\addbibresource{os.bib}
+
+\title{How to mess up everything in Hogwarts}
+\author{Harry Potter}
+
+\swfusetup{%
+  %%% 默认都未打勾。想勾谁，放开注释即可
+  % PrjFrmA =\checked{},% 科研项目
+  % PrjFrmB =\checked{},% 社会实践
+  % PrjFrmC =\checked{},% 大学生创新创业项目
+  PrjFrmD =\checked{},  % 其它来源
+  %%%
+  Studid = 3.1415926,%
+  AdvisorSig = {\includegraphics[width=6em]{../signature}},%
+  Advisor = Albus Dumbledore,
+  AdvisorTitle = Professor,
+  AdvisorGender = M,
+  AdvisorAge = 888,
+  AdvisorDegree = DMagic,%
+  AdvisorFrom = Hogwarts,%
+  AdvisorComment = {\lipsum[1]},%
+  Date = 8888/88/8,%
+  Subject = Defence of dark art, %
+}
+
+\begin{document}
+
+\front{}
+
+\section{The purpose and significance of the research}
+
+\lipsum[1]
+\begin{center}\singlespacing
+  \captionof{table}{An example table\label{tab:hp}}
+  \begin{tabular}{lll}
+    \toprule
+    Name&School&Brief Info\\\midrule
+    Harry Potter&Gryffindor&Good\\
+    Draco Malfoy&Slytherin&Bad\\\bottomrule
+  \end{tabular}      
+\end{center}
+Table~\ref{tab:hp} is an example table. \lipsum[2]
+
+\section{Research status and development trends at home and abroad}
+
+\lipsum[3]
+\begin{center}
+  \includegraphics[width=.2\textwidth]{swfulogo-emblem}%
+  \captionof{figure}{SWFU logo\label{fig:logo}}
+\end{center}
+Figure~\ref{fig:logo} is an example figure. \lipsum[4]
+
+\section{Main references}
+  
+\nocite{*} \printbibliography[heading=none]%
+
+\section{The brief contents of the research, the key problems to be solved, the expected result}
+
+\lipsum[5-6]
+
+\section{The proposed research methods, steps, possible technical problems, and solutions}
+
+\lipsum[7-8]
+
+\section{Prerequisites for completing the research}
+
+\lipsum[9]
+
+\mktail{}
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

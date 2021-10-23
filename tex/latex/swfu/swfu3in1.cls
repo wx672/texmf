@@ -8,9 +8,12 @@
 
 \LoadClass[scheme=chinese]{ctexart}
 
-\newfontfamily\dejavu{DejaVu Sans Mono}%
-\newcommand\unchecked{{\dejavu □}} %ballot box
-\newcommand\checked{{\large\dejavu ☑}} %🗹
+\newfontfamily\nerd{FiraCode Nerd Font Mono}
+\RequirePackage{newunicodechar}
+\newunicodechar{□}{{\large\nerd □}}%ballot box
+\newunicodechar{☑}{{\large\nerd ☑}}%checked box
+\newcommand\unchecked{{\large\nerd □}} %ballot box
+\newcommand\checked{{\large\nerd ☑}} %🗹
 
 \RequirePackage{pgfkeys}
 

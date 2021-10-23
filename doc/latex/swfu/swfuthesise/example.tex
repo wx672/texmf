@@ -1,4 +1,4 @@
-\documentclass{swfuthesisen}
+\documentclass{swfuthesise}
 
 %\usepackage{wx672nerd}
 \usepackage{lipsum}
@@ -13,9 +13,9 @@
   Signature    ={\includegraphics[width=6em]{signature.pdf}}, % 作者签名（用于原创声明页）
   ID           ={201801888}, % 学号
   Year         ={2021},
-  Month        ={12},
-  Date         ={10},
-  Major        ={Computer Science},%
+  Month        ={December},
+  Date         ={3},
+  % Major        ={Computer Science},%
   Advisor      ={Prof. Albus Dumbledore}, %第一指导教师，第二指导教师
   % Reviewer ={Name (Title)}, % 评阅人
 }
@@ -23,15 +23,15 @@
 \begin{document}
 
 \maketitle
-\frontmatter
+%\frontmatter
 
 \begin{abstract}
   \lipsum[1-3]
-\end{abstract}
 
-\begin{keyword}
-  Black magic; Dark art defence; Spells development; Muggle study;
-\end{keyword}
+  \begin{keyword}
+    Black magic; Dark art defence; Spells development; Muggle study;
+  \end{keyword}
+\end{abstract}
 
 \tableofcontents % 目录
 % \clearpage
@@ -39,7 +39,7 @@
 % \clearpage
 % \listoftables  % 表格目录，可以没有
 
-\mainmatter
+%\mainmatter
 
 \chapter{Introduction to Hogwarts}
 \label{cha:intr-hogw}
@@ -63,7 +63,7 @@ muggles.\cite{nla.cat-vn992642,nla.cat-vn7290756} Fig.~\ref{fig:hogwarts} shows 
   \caption{Studio model of Hogwarts at Leavesden Studios\label{fig:hogwarts}}
 \end{figure}
 
-\lipsum[3-6]
+\lipsum[3-4]
 
 \section{Good guys and bad guys}
 
@@ -79,16 +79,88 @@ muggles.\cite{nla.cat-vn992642,nla.cat-vn7290756} Fig.~\ref{fig:hogwarts} shows 
   \end{tabular}      
 \end{center}
 
-\lipsum[7-15]
+\lipsum[7-8]
 
-\chapter{How spells work}
+\chapter{The fundamental principle of breaking bad}
 
-\lipsum[16-30]
+\lipsum[150]
 
-\chapter{General Procedure of spells development}
+\section{The general rules}
+
+\lipsum[16-18]
+
+\section{Despicable me}
+
+\lipsum[19-20]
+
+\subsection{More than mess up}
+
+\lipsum[21-23]
+
+\chapter{General Procedure of dark art development}
 \label{cha:gener-proc-spells}
 
-\lipsum[31-45]
+\lipsum[31] Figure~\ref{fig:workflow} shows the general workflow of the system.
+
+\begin{figure}[!ht]
+  \centering
+  \begin{minipage}{.8\linewidth}
+\begin{verbatim}
+┌───────┐  ┌─────┐  still  ┌─────┐  ┌─────┐  ┌────┐
+│Brewing│  │Drink│  alive? │Mount│  │Speak│  │Take│
+│potion ├─>│ it  ├─> <> ──>│broom├─>│spell├─>│off │
+└───────┘  └─────┘         └─────┘  └─────┘  └────┘ 
+\end{verbatim}
+  \end{minipage}
+  \caption{General work flow}
+  \label{fig:workflow}
+\end{figure}
+
+\section{Top level design}
+
+\lipsum[32-34]
+
+\section{System modules design}
+
+The main function modules in this systems are:
+\begin{itemize}
+\item Spells generation
+\item Potions brewing
+\item Broom control
+\end{itemize}
+
+\subsection{Spells generation}
+\lipsum[35-36]
+
+\subsection{Potions brewing}
+\lipsum[37-38]
+
+\subsection{Broom control}
+\lipsum[39-40]
+
+\chapter{Tests and conclusions}
+
+\section{System tests}
+
+\subsection{General test cases}
+
+\begin{description}
+\item[Case 1] \lipsum[37]
+\item[Case 2] \lipsum[38]
+\item[Case 3] \lipsum[39]
+\end{description}
+
+\subsection{Corner cases}
+
+\begin{description}
+\item[Case 1] \lipsum[40]
+\item[Case 2] \lipsum[41]
+\item[Case 3] \lipsum[42]
+\end{description}
+
+\section{Conclusions}
+
+\lipsum[43-44]
 
 \appendix % 参考文献、指导教师简介、鸣谢、附录
 
@@ -115,16 +187,40 @@ muggles.\cite{nla.cat-vn992642,nla.cat-vn7290756} Fig.~\ref{fig:hogwarts} shows 
 \end{advisorInfo}
 
 \begin{acknowledgment} % 致谢
-  Thank God! I've done it.
+  Thank God, I've done it!
 \end{acknowledgment}
 
 %%%%% 附录章节
 \singlespacing
 
-\chapter{This is not necessary}
+\chapter{Not mandatory}
 
-\lipsum[50-60]
+If you want to include long code listings in your thesis, put it here.
 
+\section{C program example}
+\label{sec:c-example}
+
+\lipsum[50]
+
+\begin{ccode}
+#include<stdio.h>
+
+int main(void)
+{
+  printf("Hello, world!\n");
+}
+\end{ccode}
+
+\section{Shell script example}
+\label{sec:shell-script-example}
+
+\lipsum[51]
+
+\begin{shellcode}
+  #!/bin/bash
+
+  echo 'Hello, world!'
+\end{shellcode}
 
 \end{document}
 %%% Local Variables:

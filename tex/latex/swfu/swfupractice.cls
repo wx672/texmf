@@ -27,42 +27,49 @@
 
 \RequirePackage[paperwidth=210mm,paperheight=297mm,margin=2.5cm]{geometry}%showframe,
 
-\RequirePackage{tabularx,makecell}
-\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % centering p column
-\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % centering m column
-\newcolumntype{C}{>{\centering\arraybackslash}X}
+\RequirePackage{tabularray}
+% \RequirePackage{tabularx,makecell}
+% \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % centering p column
+% \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % centering m column
+% \newcolumntype{C}{>{\centering\arraybackslash}X}
 
 \newcommand{\makeform}{%
   \pagestyle{empty}%
   {\centering
-    {\Large\bfseries 西南林业大学实践教学（实习）计划表}\\[2.5ex]
-    \begin{tabularx}{\textwidth}{>{\bfseries}l@{：}>{\ttfamily}X}
-      学院名称&（公章）大数据与智能工程学院\\[.3ex]
-      学\hspace{2em}期&\SWFU@Term{}\\[.2ex]
-    \end{tabularx}
-    \setlength{\extrarowheight}{3pt}
-    \begin{tabularx}{\textwidth}{|*{2}{l|>{\ttfamily}X|}}\hline
-      课程名称%
-      &\multicolumn{3}{>{\ttfamily}p{.7\textwidth}|}{\centering{\SWFU@Coursetitle{}}}\\[3pt]\hline
-      实习时间&\SWFU@Prjdates&实习天数&\SWFU@Prjdays\\[3pt]\hline
-      实习地点&\multicolumn{3}{>{\ttfamily}p{.7\textwidth}|}{\SWFU@Prjlab}\\[3pt]\hline
-      实习班级&\SWFU@Prjclass&指导教师&\SWFU@AdvisorName\\[3pt]\hline
-      实习人数&\SWFU@Prjheads&分组情况&\SWFU@Prjgrp\\[3pt]\hline
-    \end{tabularx}\vskip -1pt
-    \begin{tabularx}{\textwidth}{|M{4em}|>{\ttfamily}X|}
-      \makecell[t]{实习要求}%
-      & \begin{minipage}[c][10em]{1.0\linewidth}
+    {\Large\bfseries 西南林业大学实践教学（实习）计划表}\\\bigskip
+    \begin{minipage}{\textwidth}
+      \noindent{}\textbf{学院名称：}（公章）大数据与智能工程学院\\
+      \textbf{学\qquad{}期：}\SWFU@Term{}
+    \end{minipage}\par\medskip
+    \noindent%
+    \begin{tblr}{width=\linewidth, colspec={cX[c]cX[c]}, vlines, hlines,%
+        cell{1,3}{2}={c=3}{c,m,font=\ttfamily},
+        % cell{6}{2}={c=3}{m,font=\ttfamily},
+        % cell{7}{2}={c=3}{m,font=\ttfamily},
+        % cell{8}{2}={c=3}{m,font=\ttfamily},
+      }
+      课程名称&\SWFU@Coursetitle\\
+      实习时间&\SWFU@Prjdates&实习天数&\SWFU@Prjdays\\
+      实习地点&\SWFU@Prjlab&&\\
+      实习班级&\SWFU@Prjclass&指导教师&\SWFU@AdvisorName\\
+      实习人数&\SWFU@Prjheads&分组情况&\SWFU@Prjgrp
+    \end{tblr}\par
+    \vspace*{-1pt}
+    \begin{tblr}{width=\linewidth, colspec={cX},rowspec={Q[m]Q[m]Q[m]},%
+        vlines,hline{2-4}={solid}}
+      实习要求 &%
+      \begin{minipage}[c][10em]{.9\columnwidth}
         \SWFU@Prjreq
-      \end{minipage}\\\hline
-      \makecell{实习内容}%
-      & \begin{minipage}[c][10em]{1.0\linewidth}
+      \end{minipage}\\
+      实习内容 &%
+      \begin{minipage}[c][10em]{.9\columnwidth}
         \SWFU@Prjcontent
-      \end{minipage}\\\hline
-      &（本栏须填写清楚实习的日期及该天实习的具体内容）\\[-2em]
-      \makecell{实习安排}%
-      & \begin{minipage}[c][20em]{1.0\linewidth}        
+      \end{minipage}\\
+      实习安排 &%
+      （本栏须填写清楚实习的日期及该天实习的具体内容）
+      \begin{minipage}[c][15em]{.9\columnwidth}        
         \SWFU@Prjplan
-      \end{minipage}\\\hline
-    \end{tabularx}
+      \end{minipage}
+    \end{tblr}
   }
 }
