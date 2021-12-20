@@ -16,7 +16,7 @@
 
 \newcommand{\class}[6][5/3]{%
   % #1 - default to 5/3      #3 - (day,time)   #5 - weeks
-  % #2 - lecture/lab/office  #4 - course name  #6 - room%           
+  % #2 - lecture/lab/office  #4 - course name  #6 - room
   \node[#2,minimum height=#1*\TT@Hourlength] at (#3) {#4\\{\scriptsize Weeks: #5}\\{\small #6}};%
 }%
 
@@ -35,7 +35,7 @@
   done/.style={pattern color=black!50,pattern=north east lines}%
 }%
 
-\newenvironment{timetable}
+\newenvironment{timetable}%
 {%
   \begin{tikzpicture}[start chain,%
     x=\TT@Daywidth, y=-\TT@Hourlength,%

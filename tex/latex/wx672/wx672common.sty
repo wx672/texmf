@@ -11,15 +11,17 @@
 \RequirePackage[normalem]{ulem}% ulem could conflict with lualatex/biblatex
 \RequirePackage{multicol,rotating,etoolbox,comment}
 
-\RequirePackage{amsmath,amsfonts,amssymb,mathtools}
+\RequirePackage{amsmath,amsfonts,amssymb,mathtools,units}
 
-\RequirePackage{longtable,tabularx,booktabs,array,makecell,tabularray}
-\renewcommand\theadfont{\normalfont\bfseries}%\normalsize
+\RequirePackage{tabularray}%longtable
 
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % centering p column
-\newcolumntype{R}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{L}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% \RequirePackage{tabularx,booktabs,array,makecell}
+% \renewcommand\theadfont{\normalfont\bfseries}%\normalsize
+
+% \newcolumntype{C}{>{\centering\arraybackslash}X}
+% \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % centering p column
+% \newcolumntype{R}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% \newcolumntype{L}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 %\RequirePackage[onehalfspacing]{setspace}% 
 % \renewcommand{\doublespacing}{\setstretch{1.6}}

@@ -4,22 +4,22 @@
 
 \RequirePackage{pgfkeys}
 
-\pgfkeys{%
-  Author/.store in        = \@author, Author = 学生姓名,% 
-  Title/.store in         = \@title, Title = 题目？,% 
-  Signature/.store in     = \SWFU@Signature, Signature =, % 作者签名（用于原创声明页）
-  ID/.store in            = \SWFU@ID, ID = 学号,% 
-  Major/.store in         = \SWFU@Major, Major = 专业,%  
-  enTitle/.store in       = \SWFU@enTitle, enTitle = 英文标题, %
-  enAuthor/.store in      = \SWFU@enAuthor, enAuthor = 英文学生姓名,%
-  Advisor/.store in       = \SWFU@Advisor, Advisor = 指导教师姓名（职称）,%
-  Reviewer/.store in      = \SWFU@Reviewer, Reviewer = 评阅人姓名（职称）,%
-  Month/.store in         = \SWFU@Month, Month = ？,%
-  Date/.store in          = \SWFU@Date, Date = ？,%
-  Year/.store in          = \SWFU@Year, Year = ？,%
+\pgfkeys{/swfu/.is family, /swfu,%
+  Author/.store in    = \@author,        Author = 学生姓名？,% 
+  Title/.store in     = \@title,         Title = 题目？,% 
+  Signature/.store in = \SWFU@Signature, Signature =, % 作者签名（用于原创声明页）
+  ID/.store in        = \SWFU@ID,        ID = 学号,% 
+  Major/.store in     = \SWFU@Major,     Major = 专业,%  
+  enTitle/.store in   = \SWFU@enTitle,   enTitle = 英文标题, %
+  enAuthor/.store in  = \SWFU@enAuthor,  enAuthor = 英文学生姓名,%
+  Advisor/.store in   = \SWFU@Advisor,   Advisor = 指导教师姓名（职称）,%
+  Reviewer/.store in  = \SWFU@Reviewer,  Reviewer = 评阅人姓名（职称）,%
+  Month/.store in     = \SWFU@Month,     Month = \the\month,%
+  Date/.store in      = \SWFU@Date,      Date = \the\day,%
+  Year/.store in      = \SWFU@Year,      Year = \the\year,%
 }
 
-\newcommand{\swfusetup}[1]{\pgfkeys{#1}}
+\newcommand{\swfusetup}[1]{\pgfkeys{/swfu, #1}}
 
 % pass unknown options to ctexbook
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
@@ -66,9 +66,9 @@ nomarginpar]{geometry}
 \RequirePackage{fancyhdr}
 \fancyhf{}
 
-\fancypagestyle{plain}{% for the 1st page of each chapter
+\fancypagestyle{plain}{% 1st page of each chapter
   \fancyhf{}%
-  \fancyfoot[C]{\fontsize{8}{8}\selectfont -- \thepage\ --}
+  \fancyfoot[C]{\fontsize{8}{8}\selectfont --\;\thepage\;--}
   \renewcommand{\headrulewidth}{0pt}}
 
 \pagestyle{fancy}
@@ -82,16 +82,12 @@ nomarginpar]{geometry}
 
 %%%%% misc
 % \RequirePackage{indentfirst} % enabled if scheme=chinese
-\RequirePackage{emptypage} % for removing header/footer on empty pages
-\RequirePackage{tabularray,tabularx,longtable,multicol,multirow,booktabs,makecell}
-\renewcommand\theadfont{\bfseries}%\normalfont
-\renewcommand{\arraystretch}{1.5}
-
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % centering p column
-
+\RequirePackage{emptypage} % removing header/footer on empty pages
+\RequirePackage{units,xparse}%
 \RequirePackage[bottom]{footmisc} % stick footnote at bottom of page
 \RequirePackage{enumitem} % \setlist
+\setlist{nosep} % kills all vertical spacing
+\RequirePackage{tabularray,multicol,tasks}%,booktabs,makecell,tabularx,multirow,longtable
 
 %%%%% graphicx
 \RequirePackage{graphicx}
@@ -121,13 +117,18 @@ nomarginpar]{geometry}
   filebordercolor=magenta,   % file links
   urlbordercolor=blue,       % external links
 }
-\def\UrlBreaks{\do\/\do-} % break long url
+%\def\UrlBreaks{\do\/\do-} % break long url
+\RequirePackage[nobiblatex]{xurl} % break long url
 
 %%%%% fixme
 \RequirePackage{fixme}
 \fxsetup{%
-  margin=true, marginclue=false,%
-  status=draft, author=, inline=false, theme=color}
+  status=draft,%
+  theme=color,%
+  margin=false,marginclue=false,%
+  inline=true,%  
+  author=,%
+}
 
 %%%%% fonts
 \RequirePackage{amsmath,amsfonts,amssymb,marvosym,pifont}
@@ -139,18 +140,11 @@ nomarginpar]{geometry}
 
 %%%%% tikz
 \RequirePackage{tikz}
-\usetikzlibrary{%
-  calc,positioning,fit,%
-  arrows,shapes,patterns,quotes,%
-  decorations.pathmorphing,%
-  backgrounds,scopes,%
-  mindmap,trees,%
-  tikzmark,%
-}%
+\usetikzlibrary{calc,positioning,backgrounds,scopes}%
 
 %%%%% biblatex
 \RequirePackage[backend=biber,%
-style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false,%
+style=gb7714-2015,sorting=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false,%
 url=false,doi=false,isbn=false]{biblatex}
 %\renewcommand*{\bibfont}{\small} % 11pt
 
@@ -172,7 +166,7 @@ url=false,doi=false,isbn=false]{biblatex}
 
 %%%%% minted
 \RequirePackage[chapter]{minted} % has to be loaded at last!!!
-% \usemintedstyle{bw}
+\usemintedstyle{bw}
 
 \renewcommand{\listingscaption}{程序} % used by minted
 \renewcommand{\listoflistingscaption}{程序目录}
@@ -181,7 +175,10 @@ url=false,doi=false,isbn=false]{biblatex}
 \renewcommand{\theFancyVerbLine}{
   \textcolor{lightgray}{\scriptsize\arabic{FancyVerbLine}}}
 
-\newcommand{\cinline}[1]{\mintinline{c}|#1|}
+\newmintinline{c}{} %e.g. \cinline{int main()}
+\newmintinline[ltx]{latex}{}
+\newmintinline{python}{}
+\newmintinline{shell}{}
 
 \setminted{%
   linenos=true,numbersep=3pt,fontsize=\small,
@@ -190,8 +187,25 @@ url=false,doi=false,isbn=false]{biblatex}
   % rulecolor=\color{lightgray},
   autogobble=true,breaklines=true}
 
-\newminted{c}{} \newminted{shell}{} \newminted{latex}{} \newminted{bibtex}{}
+\newminted{c}{} \newminted{cpp}{} \newminted{shell}{} \newminted{latex}{} \newminted{bibtex}{}
 \newminted{gas}{} \newminted{nasm}{} \newminted{python}{}
+
+\newmintedfile[cfile]{c}{%\cfile{filepath}
+  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
+\newmintedfile[cppfile]{cpp}{%\cppfile{filepath}
+  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
+\newmintedfile[mkfile]{makefile}{%\mkfile{filepath}
+  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
+\newmintedfile{nasm}{%\nasmfile{filepath}
+  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
+\newmintedfile[pasfile]{pascal}{%\pasfile{filepath}
+  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
+\newmintedfile[pyfile]{python}{%\pyfile{filepath}
+  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
+\newmintedfile{shell}{%\shellfile{filepath}
+  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
+\newmintedfile[shfile]{shell}{%\shfile{filepath}
+  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
 
 \newmint[csingle]{c}{linenos=false,frame=topline,framesep=3pt,}
 
@@ -203,36 +217,36 @@ url=false,doi=false,isbn=false]{biblatex}
   \begin{center}\begin{minipage}{#1\textwidth}\begin{singlespace}}%
       {\end{singlespace}\end{minipage}\end{center}}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\maketitle}{% Title page layout
   \begin{titlepage}
-    \vspace*{1mm}
+    \vspace*{5mm}
     \begin{center}
-      \makebox[17em][s]{\includegraphics[width=17em]{swfulogo-text}}\\%
-      \medskip
+      \makebox[17em][s]{\includegraphics[width=17em]{swfulogo-text}}\\[6mm]%
       \makebox[19em][s]{{\LARGE\heiti 本科毕业论文\hspace{-.5ex}（设计）}}\\[1mm]%
-      \makebox[13em][c]{\hspace{.5em}{\LARGE\heiti（\zhdigits{\SWFU@Year}\,届）}}\\%
-      \vspace*{5mm}
-      \makebox[8em][s]{\includegraphics[width=8em]{swfulogo-emblem}}\\
-      \bigskip
+      \makebox[13em][c]{\hspace{.5em}{\LARGE\heiti（\zhdigits{\SWFU@Year}\,届）}}\\[8mm]%
+      \makebox[8em][s]{\includegraphics[width=8em]{swfulogo-emblem}}\\[1cm]
       \begin{minipage}{\linewidth}
         \begin{large}
-          \begin{tblr}{width=\linewidth, colspec={@{}cX[c]@{}},
-              column{2}={font=\Large\heiti}% 小2号、黑体
+          \begin{tblr}{width=\linewidth, colspec={@{}cX[c]@{}},%
+              rowsep=-.17\baselineskip,% work with \raisebox{} below
+              column{2}={font=\Large\heiti},% 小2号、黑体
+              hline{Z}={2}{leftpos=-1,rightpos=-1},% 
             }
-            题\qquad{}目&%
-            \makebox[0pt][t]{% wrapable long title
-              \begin{minipage}[t]{13.5cm}
-                \centering\parbox[t]{13.2cm}{\centering\@title}
-              \end{minipage}}%
-            \rule[-.9ex]{13.5cm}{.1pt}\par%
-            \rule[-.5ex]{13.5cm}{.1pt}
-          \end{tblr}\par
-          \vspace*{1cm}
+            题\qquad{}目&{\setstretch{1.2}%
+              \makebox[0pt][s]{%
+                \parbox[t]{.99\linewidth}{%
+                  \centering\@title\strut%\fbox{你好\strut}                  
+                }}%
+              \raisebox{-.16\baselineskip}[0pt][0pt]{% work with rowsep above
+                \rule{\linewidth}{.4pt}}}\\%            
+          \end{tblr}\\[25mm]
+          %%%
           \begin{tblr}{width=\linewidth, colspec={@{}rX[c]rc@{}},%
-              hline{2,3} = {2,4}{abovespace=-3pt, belowspace=5mm},% 
-              hline{4,5} = {2-4}{abovespace=-3pt, belowspace=5mm},% 
-              cell{3}{2} = {c=3}{c},% advisor
-              cell{4}{2} = {c=3}{c}% reviewer
+              rows={belowsep=-5pt,abovesep=10pt},%
+              hline{2,3} = {2,4}{.4pt,solid},%
+              hline{4,5} = {2-4}{.4pt,solid},%
+              cell{3,4}{2} = {c=3}{c},% advisor, reviewer
             }
             学\qquad{}院&\mbox{大数据与智能工程学院}&\quad{}专\enskip{}业&\SWFU@Major\\
             学生姓名&\@author&\quad{}学\enskip{}号&\SWFU@ID\\
@@ -260,7 +274,7 @@ url=false,doi=false,isbn=false]{biblatex}
     申请学位论文与资料若有不实之处，本人承担一切相关责任。
     \vspace*{1em}
     \begin{flushright}
-      作者签名：\underline{\,\makebox[7em][c]{\SWFU@Signature}\,}\quad{}%
+      作者签名：\underline{\,\makebox[25mm][c]{\SWFU@Signature}\,}\quad{}%
       日期：\underline{\,\SWFU@Year{}\,}年%
       \underline{\,\makebox[1em][c]{\SWFU@Month{}}\,}月%
       \underline{\,\SWFU@Date{}\,}日
@@ -331,6 +345,6 @@ url=false,doi=false,isbn=false]{biblatex}
 \urlstyle{tt} % url.sty
 \raggedbottom{}
 \setlength{\parindent}{2em}
-%\setlist{nosep} % kills all vertical spacing
+
 \renewcommand{\listfigurename}{插图目录}
 \renewcommand{\listtablename}{表格目录}

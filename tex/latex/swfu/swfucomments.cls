@@ -10,15 +10,15 @@
   Studid/.store in         = \SWFU@Studid,         % 学号
   Studname/.store in       = \SWFU@Studname,       % 学生姓名
   Studsbj/.store in        = \SWFU@Studsbj,        % 学生专业
-  School/.store in         = \SWFU@School, School={大数据与智能工程学院},
+  School/.store in         = \SWFU@School, School={大数据与智能工程学院},%
   Studmark/.store in       = \SWFU@Studmark,       % 评分
   Signature/.store in      = \SWFU@Signature,      % 教师签名
   Commenterlabel/.store in = \SWFU@Commenterlabel, % 指导教师 | 评阅人 | 申请人
   Commentslabel/.store in  = \SWFU@Commentslabel,  % 评语： | 指导教师评审意见：
   Marklabel/.store in      = \SWFU@Marklabel,      % 评分 | NULL
-  Year/.store in           = \SWFU@Year,           %
-  Month/.store in          = \SWFU@Month,          %
-  Date/.store in           = \SWFU@Date,           %
+  Year/.store in           = \SWFU@Year,  Year = \the\year,%
+  Month/.store in          = \SWFU@Month, Month = \the\month,%
+  Date/.store in           = \SWFU@Date,  Date = \the\day,%
   Comments/.store in       = \SWFU@Comments,       % 意见正文
   Hinttitle/.store in      = \SWFU@Hinttitle,      % 提示部分的标题
   Hinttext/.store in       = \SWFU@Hinttext,       % 提示部分的内容
@@ -70,7 +70,7 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
 \ProcessOptions\relax
 
-\LoadClass[scheme=chinese,zihao=-4]{ctexart}
+\LoadClass[scheme=chinese,zihao=-4]{ctexart}%fontset=ubuntu
 
 \RequirePackage{graphicx}
 
@@ -103,22 +103,17 @@ left=2.5cm,right=2.5cm,
     学院:           & \SWFU@School   & 专业: & \SWFU@Studsbj         \\
   \end{tblr}%
   \par\vspace*{7mm}\noindent%
-  \begin{tblr}{width=\linewidth, colspec={X}, hlines, vlines}
-    \begin{minipage}{1.0\linewidth}
+  \fbox{\begin{minipage}{1.0\linewidth}
       \smallskip%
       \begin{center}
         \large\SWFU@Hinttitle
       \end{center}
       \SWFU@Hinttext%
       \smallskip%
-    \end{minipage}                                                     \\
-  \end{tblr}
-  \begin{tblr}{width=\textwidth, colspec={X}}
-    \begin{minipage}{1.0\linewidth}
-      \SWFU@Commentslabel\par
-      {\kaishu\SWFU@Comments}
-    \end{minipage}                                                     \\
-  \end{tblr}
+    \end{minipage}}
+  \par\medskip
+  \noindent\SWFU@Commentslabel\par
+  {\kaishu\SWFU@Comments}%
   \vfill%
   \noindent%
   \SWFU@Marklabel%

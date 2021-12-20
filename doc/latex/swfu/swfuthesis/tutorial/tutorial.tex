@@ -6,16 +6,16 @@
 
 \addbibresource{tutorial.bib}
 
-\swfusetup{
+\swfusetup{%
   Title        ={怎样用LaTeX排版一个双面打印，标题长得没必要的毕业论文}, % 论文标题。xstring hates \LaTeX{}
   Author       ={王晓林}, % 作者姓名
   Signature    ={\includegraphics[width=6em]{signature.pdf}}, % 作者签名（用于原创声明页）
   enTitle      ={How to write your thesis in \LaTeX}, % 论文标题（英文）
   enAuthor     ={WANG Xiaolin}, % 作者姓名（英文）
   ID           ={20161152888}, % 学号
-  Year         ={2021},
-  Month        ={5},
-  Date         ={20},
+  Year         ={\the\year},
+  Month        ={\the\month},
+  Date         ={\the\day},
   Major        ={数据科学与大数据技术},%计算机科学与技术
   Advisor      ={（），（），（）}, %指导教师甲（职称），指导教师乙（职称）
   % Reviewer ={Name (Title)}, % 评阅人
@@ -318,30 +318,31 @@
 
 \begin{table}
   \centering\caption{文献类型和标志代码\label{tab:ex1}}\small
-  \begin{tabularx}{\textwidth}{CCCC}
-    \Xhline{1.5pt}
-    文献类型   & 标志代码 & 文献类型 & 标志代码 \\\Xhline{1pt}
+  \begin{tblr}{width=\textwidth,colspec={X[c]X[c]X[c]X[c]},hline{1,2,Z}}
+    文献类型   & 标志代码 & 文献类型 & 标志代码 \\
     普通图书   & M        & 会议录   & C        \\
     汇编       & G        & 报纸     & N        \\
     期刊       & J        & 学位论文 & D        \\
     报告       & R        & 标准     & S        \\
     专利       & P        & 数据库   & DB       \\
-    计算机程序 & CP       & 电子公告 & EB       \\\Xhline{1.5pt}
-  \end{tabularx}
+    计算机程序 & CP       & 电子公告 & EB       \\
+  \end{tblr}
 \end{table}
 
 在三线表中可以加辅助线，以适应较复杂表格的需要，如表\ref{tab:ex2}所示。
 
 \begin{table}
   \centering\caption{方弯管内流动最大速度比较\label{tab:ex2}}\small
-  \begin{tabularx}{\textwidth}{cCCCC}
-    \Xhline{1.5pt}
-    \multirowthead{2}{项目}&\multicolumn{2}{c}{层流}&\multicolumn{2}{c}{紊流}\\\cline{2-5}
-                           &0\textdegree 截面&90\textdegree 截面&0\textdegree 截面&90\textdegree 截面\\\Xhline{1pt}
-    理论值\,$V_{max}/m\cdot{}s^{-1}$&    0.04 &            0.03  &        1.30&          1.25\\
-    计算值\,$V_{max}/m\cdot{}s^{-1}$&    0.04 &            0.03  &        1.26&          1.21\\
-    误差/$\%$       &   0.00 &            3.12  &        3.07&          3.20\\\Xhline{1.5pt}
-  \end{tabularx}  
+  \begin{tblr}{width=\textwidth,colspec={cX[c]X[c]X[c]X[c]},hline{1,2,3,Z},%
+      cell{1}{1}={r=2}{font=\bfseries},%
+      cell{1}{2,4}={c=2}{c},%
+    }
+    项目&层流&&紊流&\\
+    &0\textdegree 截面&90\textdegree 截面&0\textdegree 截面&90\textdegree 截面\\
+    理论值\,$V_{max}/m\cdot{}s^{-1}$& 0.04 & 0.03 & 1.30 & 1.25\\
+    计算值\,$V_{max}/m\cdot{}s^{-1}$& 0.04 & 0.03 & 1.26 & 1.21\\
+    误差/$\%$ & 0.00 & 3.12  & 3.07& 3.20\\
+  \end{tblr}  
 \end{table}
 
 公式：公式中各物理量及量纲均按国际标准（SI）及国家规定的法定符号和法定计量单位标注，禁止使

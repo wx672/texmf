@@ -36,10 +36,36 @@
 \newfontfamily\lbkey{Linux Biolinum Keyboard O}
 \newfontfamily\kbd{Linux Biolinum Keyboard O}
 
+
+\newunicodechar{🀪}{{\symbola 🀪}}
+\newunicodechar{🀇}{{\symbola 🀇}}
+\newunicodechar{🀊}{{\symbola 🀊}}
+\newunicodechar{🀍}{{\symbola 🀍}}
+\newunicodechar{🀑}{{\symbola 🀑}}
+\newunicodechar{🀔}{{\symbola 🀔}}
+\newunicodechar{🀗}{{\symbola 🀗}}
+\newunicodechar{🀛}{{\symbola 🀛}}
+\newunicodechar{🀞}{{\symbola 🀞}}
+\newunicodechar{🀡}{{\symbola 🀡}}
+\newunicodechar{🀅}{{\symbola 🀅}}
+\newunicodechar{🀐}{{\symbola 🀐}}
+\newunicodechar{■}{{\dejavu ■}}
+\newunicodechar{}{\dejavu }
+\newunicodechar{🡙}{\symbola 🡙}
+\newunicodechar{➠}{\symbola ➠} % wide fancy right arrow
+\newunicodechar{🄸}{\symbola 🄸}
+\newunicodechar{🄹}{\symbola 🄹}
+\newunicodechar{🅁}{\symbola 🅁}
+\newunicodechar{🅂}{\symbola 🅂}
+\newunicodechar{Ⓐ}{\symbola Ⓐ}
+\newunicodechar{Ⓑ}{\symbola Ⓑ}
+\newunicodechar{⩽}{\symbola ⩽}
 \newunicodechar{漢}{{\han 漢}}
-\newunicodechar{}{{\nerd }}
+\newunicodechar{￥}{{\han ￥}}
+\newunicodechar{}{{\nerd }}%terminal
 \newunicodechar{}{{\nerd }}%terminal
 \newunicodechar{}{{\nerd }}%terminal
+\newunicodechar{}{{\nerd }}%terminal
 \newunicodechar{}{\nerd }
 \newunicodechar{}{\nerd }
 \newunicodechar{}{\nerd }
@@ -148,58 +174,21 @@
 \newunicodechar{}{{\nerd }}%
 
 %%% biolinum
-\newunicodechar{}{{\kbd }}  % \newcommand\ksuper{\LKeyWin}
-\newunicodechar{}{\kbd } % \newcommand\kctrl{\LKeyCtrl}
-\newunicodechar{}{\kbd }   % \newcommand\kesc{\LKeyEsc}
-\newunicodechar{}{\kbd }    % \newcommand\ktab{\LKeyTab}
-\newunicodechar{}{\kbd }    % \newcommand\kenter{\LKeyEnter}
-\newunicodechar{}{{\tiny\kbd }} % \newcommand\kspace{\LKeySpace}
-\newunicodechar{}{{\kbd }}         % \newcommand\kshift{\LKeyShift}
-\newunicodechar{}{\kbd }%\newcommand\kfone{\kbd   }
-\newunicodechar{}{\kbd }%\newcommand\kftwo{\kbd   }
-\newunicodechar{}{\kbd }%\newcommand\kfthree{\kbd }
-\newunicodechar{}{\kbd }%\newcommand\kffour{\kbd  }
-\newunicodechar{}{\kbd }%\newcommand\kffive{\kbd  }
 \newcommand\kdash{\kbd -}
 \newcommand\kbar{\kbd |}
-\newcommand\Ctrla{\LKeyCtrlX{A}}
 
-\newcommand\Ca{{\kbd }+{\kbd a}}
-\newcommand\Cb{{\kbd }+{\kbd b}}
-\newcommand\Cc{{\kbd }+{\kbd c}}
-\newcommand\Cd{{\kbd }+{\kbd d}}
-\newcommand\Ce{{\kbd }+{\kbd e}}
-\newcommand\Cf{{\kbd }+{\kbd f}}
-\newcommand\Cg{{\kbd }+{\kbd g}}
-\newcommand\Ch{{\kbd }+{\kbd h}}
-\newcommand\Ci{{\kbd }+{\kbd i}}
-\newcommand\Cj{{\kbd }+{\kbd j}}
-\newcommand\Ck{{\kbd }+{\kbd k}}
-\newcommand\Cl{{\kbd }+{\kbd l}}
-\newcommand\Cm{{\kbd }+{\kbd m}}
-\newcommand\Cn{{\kbd }+{\kbd n}}
-\newcommand\Co{{\kbd }+{\kbd o}}
-\newcommand\Cp{{\kbd }+{\kbd p}}
-\newcommand\Cq{{\kbd }+{\kbd q}}
-\newcommand\Cr{{\kbd }+{\kbd r}}
-\newcommand\Cs{{\kbd }+{\kbd s}}
-\newcommand\Ct{{\kbd }+{\kbd t}}
-\newcommand\Cu{{\kbd }+{\kbd u}}
-\newcommand\Cv{{\kbd }+{\kbd v}}
-\newcommand\Cw{{\kbd }+{\kbd w}}
-\newcommand\Cx{{\kbd }+{\kbd x}}
-\newcommand\Cy{{\kbd }+{\kbd y}}
-\newcommand\Cz{{\kbd }+{\kbd z}}
-\newcommand\Cslash{{\kbd }+{\kbd /}}
-\newcommand\Se{{\kbd }+{\kbd e}}
-\newcommand\Md{{\kbd }+{\kbd d}}
-\newcommand\Mv{{\kbd }+{\kbd v}}
-\newcommand\Mx{{\kbd }+{\kbd x}}
-\newcommand\MEnter{{\kbd }+{\kbd }}
-\newcommand\Tab{{\kbd }} % 
-\newcommand\Enter{{\kbd }}
-\newcommand\Caps{{\kbd }}
-\newcommand\Ctrl{{\kbd }}
+\newcommand\Ctrl[1]{\LKeyCtrlX{#1}} % need biolinum
+\newcommand\Super[1]{\LKeyWin{}+\LKey{#1}}
+\newcommand\Meta[1]{\LKeyAltX{#1}}
+\newcommand\Shift[1]{\LKeyShift{#1}}
+
+\newcommand\Ctrlx[1]{\LKeyCtrlX{x}\;\;\LKey{#1}}% e.g. Ctrl-x o
+\newcommand\Ctrlh[1]{\LKeyCtrlX{h}\;\;\LKey{#1}}% e.g. Ctrl-h t
+\newcommand\Ctrlc[1]{\LKeyCtrlX{c}\;\;\LKey{#1}}% e.g. Ctrl-c {
+\newcommand\Ctrlcc[1]{\LKeyCtrlX{c}\;\;\LKeyCtrlX{#1}}% e.g. Ctrl-c Ctrl-e
+\newcommand\Ctrlxc[1]{\LKeyCtrlX{x}\;\;\LKeyCtrlX{#1}}% e.g. Ctrl-x Ctrl-f
+
+\newcommand\tbs[1]{{\ttfamily\textbackslash{}#1}}
 
 \RequirePackage{hologo}
 \newcommand\latex{\LaTeX{}}

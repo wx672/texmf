@@ -44,9 +44,9 @@
   School/.store in        = \SWFU@School,   %（实习计划表）学生所属学院
   School = {大数据与智能工程学院},%
   Gyear/.store in = \SWFU@Gyear,%（任务书、实习计划表）届
-  Year/.store in  = \SWFU@Year, %（开题报告、任务书）填表、签字时间（年）
-  Month/.store in = \SWFU@Month,%（开题报告、任务书）填表、签字时间（月）
-  Date/.store in  = \SWFU@Date, %（开题报告、任务书）填表、签字时间（日）
+  % Year/.store in  = \SWFU@Year, %（开题报告、任务书）填表、签字时间（年）
+  % Month/.store in = \SWFU@Month,%（开题报告、任务书）填表、签字时间（月）
+  Date/.store in  = \SWFU@Date, %（开题报告、任务书）填表、签字时间（年、月、日）
   PrjFrmA/.store in  = \SWFU@PrjFrmA, PrjFrmA={\unchecked{}},   %科研项目
   PrjFrmB/.store in  = \SWFU@PrjFrmB, PrjFrmB={\unchecked{}},   %社会实践
   PrjFrmC/.store in  = \SWFU@PrjFrmC, PrjFrmC={\unchecked{}},   %大学生创新创业项目
@@ -80,11 +80,11 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 
 \RequirePackage{caption,subcaption}% \captionof{table|figure}{t|f}
 
-\RequirePackage{tabularx,tabularray,longtable,booktabs,makecell,multicol,multirow,array}
-\renewcommand{\arraystretch}{1.5}
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % centering m column
-\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % centering p column
+\RequirePackage{tabularray}%tabularx,,longtable,booktabs,makecell,multicol,multirow,array
+% \renewcommand{\arraystretch}{1.5}
+% \newcolumntype{C}{>{\centering\arraybackslash}X}
+% \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % centering m column
+% \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % centering p column
 
 \RequirePackage{indentfirst,enumitem} % \setlist
 \setlist{nosep} % kills all vertical spacing
@@ -95,14 +95,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false,%
 url=false,doi=false,isbn=false]{biblatex}
 
-% https://tex.stackexchange.com/questions/247185/tcolorbox-theorem-which-isnt-framed-on-the-sides
-\RequirePackage[breakable]{tcolorbox}
-\newtcolorbox{mainbodybox}[1]{breakable,sharp corners,nobeforeafter,%
-  colback=white,coltitle=black,colbacktitle=white,%
-  boxrule=.5pt,titlerule=0pt,%
-  bottomrule at break=.5pt,after skip=-1.5pt,% bottomrule=0pt, bottom=1em,
-  before upper={\parindent 2em},% indentfirst  
-  fonttitle=\large\bfseries,title=#1}
+\RequirePackage{wx672tcb} % tcolorbox
 
 % \singlespacing, \onehalfspacing, \doublespacing
 \RequirePackage[doublespacing]{setspace}
@@ -135,7 +128,8 @@ url=false,doi=false,isbn=false]{biblatex}
       \vskip 2cm
       \begin{minipage}{.8\linewidth}
         \begin{center}
-          \begin{tblr}{width=\textwidth,colspec={@{}rX[c]@{}}}
+          \begin{tblr}{width=\textwidth,colspec={@{}rX[c]@{}},%
+              rows={12mm},hline{2-Z}={2}{abovespace=1pt}}
             \makebox[7em][s]{专业名称}%
             & \SWFU@Subject\\[-1ex]\cline{2-2}
             \makebox[7em][s]{年级}%
@@ -148,7 +142,7 @@ url=false,doi=false,isbn=false]{biblatex}
             & \SWFU@Advisora{}（\SWFU@AdvisoraTitle）\\[-1ex]\cline{2-2}
             & \SWFU@Advisorb{} \SWFU@AdvisorbTitle\\[-1ex]\cline{2-2}
             \makebox[7em][s]{填表时间}%
-            & \SWFU@Year{}年\,\SWFU@Month{}月\,\SWFU@Date{}日\\[-1ex]\cline{2-2}
+            & \SWFU@Date{}\\[-1ex]\cline{2-2}
           \end{tblr}
         \end{center}
       \end{minipage}
@@ -195,22 +189,22 @@ url=false,doi=false,isbn=false]{biblatex}
     \end{tblr}
   \end{singlespace}
   \vskip -2pt
-  \begin{mainbodybox}{1.\, 该研究的目的、意义}
+  \begin{mainbodybox}{该研究的目的、意义}
     \SWFU@PPSLi{}
   \end{mainbodybox}
-  \begin{mainbodybox}{2.\, 国内外研究现状及发展趋势}
+  \begin{mainbodybox}{国内外研究现状及发展趋势}
     \SWFU@PPSLii{}
   \end{mainbodybox}
-  \begin{mainbodybox}{3.\, 主要参考文献}
+  \begin{mainbodybox}{主要参考文献}
     \SWFU@BIB{}
   \end{mainbodybox}
-  \begin{mainbodybox}{4.\, 该研究的主要内容，重点解决的问题，预期结果或成果}
+  \begin{mainbodybox}{该研究的主要内容，重点解决的问题，预期结果或成果}
     \SWFU@PPSLiv{}
   \end{mainbodybox}
-  \begin{mainbodybox}{5.\, 拟采取的研究方法或实验方法，步骤，可能出现的技术问题及解决办法}
+  \begin{mainbodybox}{拟采取的研究方法或实验方法，步骤，可能出现的技术问题及解决办法}
     \SWFU@PPSLv{}
   \end{mainbodybox}
-  \begin{mainbodybox}{6.\, 完成该研究已具备的条件}
+  \begin{mainbodybox}{完成该研究已具备的条件}
     \SWFU@PPSLvi{}
   \end{mainbodybox}
   \begin{mainbodybox}{指导教师意见}
@@ -218,7 +212,7 @@ url=false,doi=false,isbn=false]{biblatex}
     \SWFU@AdvisorComment\par
     \hfill 签名：\makebox[7em]{\SWFU@AdvisoraSig}\par
     \medskip
-    \hfill\SWFU@Year 年 \SWFU@Month 月 \SWFU@Date 日
+    \hfill\SWFU@Date
   \end{mainbodybox}
   \noindent
   \begin{tcolorbox}[sharp corners,nobeforeafter,%
@@ -247,61 +241,44 @@ url=false,doi=false,isbn=false]{biblatex}
   \pagestyle{empty}
   {\centering\singlespacing%
     {\heiti\Large 西南林业大学\SWFU@Gyear{}届本科毕业论文（设计）任务书}\\[3ex]%
-    \begin{tblr}{width=\linewidth,
-        colspec={|c|X|c|c|c|X|}, rowspec={|Q[m]|Q[m]|Q[m]|},%
-        column{odd}={font=\bfseries}, column{even}={font=\kaishu}
-      }
-      % {|>{\bfseries}M{6em}|>{\kaishu}C|}%    
-      {论文（设计）\\题目} & \SetCell[c=5]{c} {\@title}\\
+    \begin{tblr}{width=\linewidth, vlines,hline{1,2,3},%
+        colspec={cXcccX}, rowspec={Q[m]Q[m]Q[m]},%
+        column{odd}={font=\bfseries}, column{even}={font=\kaishu},%
+        cell{1}{2}={c=5}{c},%
+        cell{3}{4}={c=3}{c},%
+      }%
+      {论文（设计）\\题目} & {\@title}\\
       学生姓名 & \@author & 学号 & \SWFU@Studid & 专业 & \SWFU@Subject\\
       题目来源 & {\SWFU@PrjFrmA{}科研项目\\\SWFU@PrjFrmB{}社会实践\\
-        \SWFU@PrjFrmC{}大学生创新创业项目\\\SWFU@PrjFrmD{}其它}%
-      & {题目\\类别} &%
-      \SetCell[c=3]{c}{\SWFU@PrjTypeA{}毕业论文\qquad{}\SWFU@PrjTypeB{}毕业设计}\\
-    \end{tblr}\\
-    \begin{tblr}{width=\linewidth,
-        colspec={|Q[1em,font=\bfseries]|X[font=\kaishu]|}, rowspec={Q[m]|Q[m]|}}
-      % {|>{\bfseries}m{1em}|>{\kaishu}X|}
-      选题的目的及意义
-      & \begin{minipage}[c][22em][t]{.9\columnwidth}
-        \medskip
-        \qquad\SWFU@TSKwhy
-      \end{minipage}\\
-      学生任务及要求
-      & \begin{minipage}[c][24em][t]{.9\columnwidth}
-        \medskip
-        \qquad\SWFU@TSKwhat{}
-      \end{minipage}\\
-    \end{tblr}\clearpage
-    \begin{tblr}{width=\linewidth,
-        colspec={|Q[1em,font=\bfseries]|X[font=\kaishu]|}, rowspec={|Q[m]|Q[m]|}}
-      % {|>{\bfseries}m{1em}|>{\kaishu}X|}\hline
-      进度安排
-      & \begin{minipage}[c][15em][t]{.9\columnwidth}
-        \medskip
-        \qquad\SWFU@TSKwhen
-      \end{minipage}\\
-      参考文献
-      & \begin{minipage}[c][20em][t]{.9\columnwidth}
-        \medskip
-        \SWFU@BIB
-      \end{minipage}\\
-    \end{tblr}
-    \begin{tblr}{width=\linewidth,%
-        colspec={|c|X|c|X|}, rowspec={Q[m]|}
-      }%{|*{2}{>{\bfseries}c|X|}}%
+        \SWFU@PrjFrmC{}大学生创新创业项目\\\SWFU@PrjFrmD{}其它} &%
+      {题目\\类别} &%
+      {\SWFU@PrjTypeA{}毕业论文\qquad{}\SWFU@PrjTypeB{}毕业设计}\\
+    \end{tblr}\\\vspace*{-1pt}%
+    \begin{titleleft}{选题的目的及意义}
+      \SWFU@TSKwhy
+    \end{titleleft}
+    \begin{titleleft}{学生任务及要求}
+      \SWFU@TSKwhat
+    \end{titleleft}
+    \begin{titleleft}{进度安排}
+      \SWFU@TSKwhen
+    \end{titleleft}
+    \begin{titleleft}{参考文献}
+      \SWFU@BIB
+    \end{titleleft}
+    \vspace*{2pt}
+    \begin{tblr}{width=\linewidth, colspec={|c|X|c|X|}, rowspec={Q[m]|}}%
       任务下达日期 & \SWFU@TaskDate & {学生应送交毕业论文\\（设计）日期} & %
       \SWFU@SubmitDate\\
     \end{tblr}\\[-1pt]%
     \begin{tblr}{width=\linewidth,
         colspec={|c|X|c|X|}, rowspec={Q[m]|Q[m]|}}
-      %{|*{2}{>{\bfseries}c|X|}}%
       {指导教师\\签字}
       & \begin{minipage}[c][25mm]{1.0\linewidth}%
         \medskip%
         \makebox[3cm][r]{\SWFU@AdvisoraSig}\par%
         \vfill%
-        \hfill\SWFU@Year{}年\SWFU@Month{}月\SWFU@Date{}日%
+        \hfill\SWFU@Date{}%
         \medskip%
       \end{minipage} &%
       {接受任务\\学生签字} &%
@@ -309,7 +286,7 @@ url=false,doi=false,isbn=false]{biblatex}
         \medskip%
         \makebox[3cm][r]{\SWFU@StudSignature}\par%
         \vfill%
-        \hfill\SWFU@Year{}年\SWFU@Month{}月\SWFU@Date{}日%
+        \hfill\SWFU@Date{}%
         \medskip%
       \end{minipage}\\%
       {教研室\\审核} &%

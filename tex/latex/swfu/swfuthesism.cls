@@ -4,27 +4,29 @@
 
 \RequirePackage{pgfkeys}
 
-\pgfkeys{
-  Title/.store in           = \@title,           % 论文题目             
-  enTitle/.store in         = \SWFU@enTitle,     % 论文题目（英文）     
-  Author/.store in          = \@author,          % 作者姓名             
-  enAuthor/.store in        = \SWFU@enAuthor,    % 作者姓名（英文）     
-  AuthorId/.store in        = \SWFU@AuthorId,    % 学号                 
-  Advisor/.store in         = \SWFU@Advisor,     % 指导教师             
-  enAdvisor/.store in       = \SWFU@enAdvisor,   % 指导教师（英文）     
-  AdvisorTitle/.store in    = \SWFU@AdvisorTitle,% 指导教师职称         
-  ClsID/.store in           = \SWFU@ClsID,       % 分类号               
-  DateA/.store in           = \SWFU@DateA, DateA/.default={\hspace{2em}},% 提交论文日期         
-  DateB/.store in           = \SWFU@DateB, DateB/.default={\hspace{2em}},% 论文答辩日期         
-  DateC/.store in           = \SWFU@DateC, DateC/.default={\hspace{2em}},% 独创性声明页上的日期 
-  Year/.store in            = \SWFU@Year,   Year/.default={\hspace{3em}},% 年
-  Month/.store in           = \SWFU@Month, Month/.default={\hspace{2em}},% 月
-  Chairman/.store in        = \SWFU@Chairman, % 答辩委员会主席       
-  Subject/.store in         = \SWFU@Subject,  % 学科专业             
-  enSubject/.store in       = \SWFU@enSubject,% 学科专业（英文）       
+\pgfkeys{/swfu/.is family, /swfu,%
+  Title/.store in        = \@title,            Title={论文题目？},%
+  enTitle/.store in      = \SWFU@enTitle,      enTitle={论文题目（英文）？},%
+  Author/.store in       = \@author,           Author={作者姓名？},%
+  Signature/.store in    = \SWFU@Signature,    Signature={作者签名？},%
+  enAuthor/.store in     = \SWFU@enAuthor,     enAuthor={作者姓名（英文）？},%
+  AuthorId/.store in     = \SWFU@AuthorId,     AuthorId={学号？},%
+  Advisor/.store in      = \SWFU@Advisor,      Advisor={指导教师？},%
+  AdvisorSig/.store in   = \SWFU@AdvisorSig,   AdvisorSig={导师签名？},%
+  enAdvisor/.store in    = \SWFU@enAdvisor,    enAdvisor={指导教师（英文）},%
+  AdvisorTitle/.store in = \SWFU@AdvisorTitle, AdvisorTitle={指导教师职称},%
+  ClsID/.store in        = \SWFU@ClsID,        ClsID={分类号？},%
+  DateA/.store in        = \SWFU@DateA,        DateA={提交论文日期？},%
+  DateB/.store in        = \SWFU@DateB,        DateB={论文答辩日期？},%
+  DateC/.store in        = \SWFU@DateC,        DateC={独创性声明页上的日期？},%  
+  Year/.store in         = \SWFU@Year,         Year={年？},% 
+  Month/.store in        = \SWFU@Month,        Month={月？},% 
+  Chairman/.store in     = \SWFU@Chairman,     Chairman={答辩委员会主席？},%
+  Subject/.store in      = \SWFU@Subject,      Subject={学科专业？},%
+  enSubject/.store in    = \SWFU@enSubject,    enSubject={学科专业（英文）？},%
 }
 
-\newcommand{\swfusetup}[1]{\pgfkeys{#1}}
+\newcommand{\swfusetup}[1]{\pgfkeys{/swfu, #1}}
 
 % pass unknown options to ctexbook
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
@@ -45,9 +47,21 @@
 }
 
 \RequirePackage[%showframe,%
+a4paper,asymmetric,twoside=true,% if oneside, left/right; if twoside, inner/outer
 margin=3cm,%
-nomarginpar,headheight=15pt% to avoid "headheight too small"
+headsep=1em,footskip=1cm,%headheight=15pt, to avoid "headheight too small"
+nomarginpar,%
 ]{geometry}
+
+%%%%% titlesec, for making chapter header higher
+\RequirePackage{titlesec}%explicit
+\titleformat{\chapter}[hang]% shape
+{\normalfont\large\heiti}%    format
+{\thechapter}%                label
+{20pt}%                       sep between label and title body
+{\centering\large}%        before-code #1
+
+\titlespacing{\chapter}{0pt}{-20pt}{30pt}
 
 %%%%% fancyhdr
 \RequirePackage{fancyhdr}
@@ -61,19 +75,13 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
   \fancyfoot[C]{\fontsize{8}{8}\selectfont\thepage}
   \renewcommand{\headrulewidth}{0pt}}
 
-%\RequirePackage{etoolbox,units,emptypage}%xkvltxp,
-%\RequirePackage{rotating,float,comment}%,ulem,varwidth
-%\RequirePackage{indentfirst}
-\RequirePackage{tabularx,longtable,multicol,multirow,booktabs,makecell}
-\renewcommand\theadfont{\bfseries}%\normalfont
+\RequirePackage{tabularray,longtable,multicol}%,multirow,booktabs,makecell
 \renewcommand{\arraystretch}{1.5}
 
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % centering p column
-
-\RequirePackage[bottom]{footmisc} % stick footnote at bottom of page
+\RequirePackage[bottom,perpage]{footmisc} % stick footnote at bottom of page
 \RequirePackage{enumitem} % \setlist
 \setlist{nosep} % kills all vertical spacing
+\RequirePackage{tasks,lua-ul}
 
 \RequirePackage{amsmath,amsfonts,amssymb,marvosym,pifont}
 
@@ -104,7 +112,8 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
   filebordercolor=magenta,   % file links
   urlbordercolor=blue,       % external links
 }
-\def\UrlBreaks{\do\/\do-} % break long url
+\RequirePackage[nobiblatex]{xurl} % break long url
+%\def\UrlBreaks{\do\/\do-} % break long url
 
 %%%%% fixme
 \RequirePackage{fixme}
@@ -126,7 +135,8 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 }%
 
 %%%%% biblatex
-\RequirePackage[backend=biber,style=gb7714-2015,gbpub=false,gbtype=true,gbpunctin=false,url=false,doi=false,isbn=false]{biblatex}
+\RequirePackage[backend=biber, style=gb7714-2015, gbpub=false, gbtype=true,
+gbpunctin=false, url=false, doi=false, isbn=false]{biblatex}
 
 %%%%% caption
 \RequirePackage{subcaption,bicaption} % \captionsetup
@@ -170,10 +180,12 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 \renewcommand{\theFancyVerbLine}{
   \textcolor{lightgray}{\scriptsize\arabic{FancyVerbLine}}}
 
-\newcommand{\codec}[1]{\mintinline{c}|#1|}
-\newcommand{\cinline}[1]{\mintinline{c}|#1|}
+\setmintedinline{breakbytokenanywhere=true,fontsize=\small,autogobble=false}
 
-\setmintedinline{breaklines=true,fontsize=\small,autogobble=false}
+\newmintinline{c}{} %e.g. \cinline{int main()}
+\newmintinline[ltx]{latex}{}
+\newmintinline{python}{}
+\newmintinline{shell}{}
 
 \setminted{%
   linenos=true,numbersep=3pt,fontsize=\small,
@@ -197,126 +209,167 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 \newenvironment{longlisting}{\captionsetup{type=listing}%
   \begin{singlespace}}{\end{singlespace}}
 
-\renewcommand{\maketitle}{% Title page layout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\maketitle}{% Titlepage layout
   \thispagestyle{empty}
   \begin{tikzpicture}%[remember picture,overlay]
-    \node (logo) at (current page.north) [yshift=-4.2cm,scale=.13]%
-    {\includegraphics{swfulogo}};%
-    \node (h1) [below=1.5cm of logo,xshift=7mm,scale=3.4,font=\heiti,align=center] {硕士学位论文};%
+    \node (logo) at (current page.north) [yshift=-4.2cm]%
+    {\includegraphics[width=13cm]{swfulogo}};%
+    \node (h1) [below=1.5cm of logo,xshift=7mm,scale=3.4,%
+    font=\heiti,align=center] {硕士学位论文};%
     \node (h2) [below=4mm of h1,scale=1.3,font=\bfseries] {MASTER THESIS};%
   \end{tikzpicture}%
   \begin{center}%
-    \vspace*{18ex}%
-    \begin{tabularx}{\textwidth}{@{}r@{\,\,}CX}%
-      {\Large\heiti 论文题目}&\makebox[0pt][t]{% wrapable long title
-        \begin{minipage}[t]{27em}
-          \centering\parbox[t]{26em}{\centering\heiti\Large\@title}
-        \end{minipage}}%
-      \rule[-1ex]{27em}{.2pt}\par%
-      \rule[-.6ex]{27em}{.2pt}&\\%
-    \end{tabularx}\\[3ex]%
-    \begin{Large}
-      \begin{tabularx}{.75\textwidth}{@{}>{\heiti}rC@{}}%
-        学科专业&\SWFU@Subject\\[-9pt]\cline{2-2}%
-        学\qquad{}号&\SWFU@AuthorId\\[-9pt]\cline{2-2}%
-        作者姓名&\@author\\[-9pt]\cline{2-2}%
-        指导教师 &\SWFU@Advisor\hspace{1ex}（\SWFU@AdvisorTitle）\\[-9pt]\cline{2-2}%
-      \end{tabularx}
-    \end{Large}
+    \vspace*{25mm}%
+    %%%
+    \begin{tblr}{width=\textwidth, colspec={rX[c]},%
+        rowsep=-.17\baselineskip,% work with \raisebox{} below        
+        hline{2}={2}{leftpos=-1,rightpos=-1},%
+        row{1}={font=\Large\heiti}}%
+      论文题目&{\setstretch{1.2}%
+        \makebox[0pt][s]{%
+          \parbox[t]{.99\linewidth}{%
+            \centering\@title\strut% \fbox{你好\strut}%
+          }}%
+        \raisebox{-.16\baselineskip}[0pt][0pt]{%
+          \rule{\linewidth}{.4pt}}}\\
+    \end{tblr}\\[2cm]
+    %%%
+    \begin{tblr}{width=.75\textwidth, colspec={rX[c]},%
+        column{1}={font=\Large\heiti},%
+        column{2}={font=\Large},%
+        rows={abovesep+=15pt,belowsep+=-5pt},%
+        hline{2-Z}={2}{.4pt,solid}%{abovespace=-3pt, belowspace=5mm},%
+      }%
+      学科专业&\SWFU@Subject\\
+      学\qquad{}号&\SWFU@AuthorId\\
+      作者姓名&\@author\\
+      指导教师 &\SWFU@Advisor\hspace{1ex}（\SWFU@AdvisorTitle）\\
+    \end{tblr}
   \end{center}
-
+  %%%
   \clearpage\shipout\null%
-
-  \thispagestyle{empty}%
+  %%%
+  \thispagestyle{empty}
+  %%%
   \begin{center}
-    \vspace*{-7ex}
-    \begin{footnotesize}
-      \begin{tabularx}{\linewidth}{rXrC}
-        分类号&\SWFU@ClsID&密级&\\[-5pt]\cline{2-2}\cline{4-4}
-        UDC&&&\\[-5pt]\cline{2-2}
-      \end{tabularx}
-    \end{footnotesize}
-  
-    \vspace{6ex}
-    \tikz\node [scale=2.7,font=\heiti] {\makebox[7em][s]{学位论文}};\\[10ex]
-    % https://tex.stackexchange.com/questions/89980/change-lineskip-to-fill-the-available-space
-    \begin{minipage}[c][4em][s]{.8\linewidth}
-      %https://tex.stackexchange.com/questions/74151/interline-spacing
-      \lineskip=6pt \lineskiplimit=\maxdimen %\baselineskip=-3pt
-      \centering \heiti\LARGE \underline{\,\@title\,}
-    \end{minipage}\\[3ex]
-    \begin{minipage}{.15\linewidth}
-      \centering \heiti\large \underline{\,\@author\,}
-    \end{minipage}\\[15ex]
-    
-    \begin{tabularx}{.8\linewidth}{r>{\heiti}C>{\heiti}C}
-      指导教师&\SWFU@Advisor&\SWFU@AdvisorTitle\\[-6pt]\cline{2-3}
-      &西南林业大学&昆明\\[-6pt]\cline{2-3}
-      &&\\[-6pt]\cline{2-3}
-      &&\\[-6pt]\cline{2-3}
-    \end{tabularx}\\[5ex]
-
-    \begin{tabularx}{.8\linewidth}{r>{\heiti}Cr>{\heiti}C}
-      申请学位级别&硕士&%
-      学科专业&\SWFU@Subject\\[-6pt]\cline{2-2}\cline{4-4}%
-      提交论文日期&\SWFU@DateA&%
-      论文答辩日期&\SWFU@DateB\\[-6pt]\cline{2-2}\cline{4-4}%
-    \end{tabularx}
-
-    \begin{tabularx}{.8\linewidth}{l>{\heiti}C}
-      学位授予单位和日期&西南林业大学\\[-6pt]\cline{2-2}
-      答辩委员会主席&\SWFU@Chairman\\[-6pt]\cline{2-2}
-    \end{tabularx}
+    \vspace*{-2cm}
+    %%%
+    \begin{tblr}{width=\linewidth, colspec={rXrX[c]},%
+        rows={belowsep+=-7pt,font=\footnotesize},%
+        hline{2}={2,4}{.4pt,solid},%
+        hline{3}={2}{.4pt,solid},%
+      }
+      分类号&\SWFU@ClsID&密级&\\
+      UDC&&&\\
+    \end{tblr}\\[1.5cm]
+    %%%
+    \tikz\node [scale=2.7,font=\heiti] {\makebox[7em][s]{学位论文}};\\[2cm]
+    %%%
+    \begin{tblr}{width=.9\linewidth,colspec={X[c]},%
+        rowsep=-.17\baselineskip,% work with \raisebox{} below        
+        row{1}={font=\LARGE\heiti},%
+        hline{Z}={1}{-}{leftpos=-1,rightpos=-1},%
+      }
+      {\setstretch{1.2}%
+        \makebox[0pt][s]{%
+          \parbox[t]{.99\linewidth}{%
+            \centering\@title\strut% \fbox{你好\strut}%
+          }}%
+        \raisebox{-.16\baselineskip}[0pt][0pt]{% work with rowsep above
+          \rule{\linewidth}{.4pt}}}\\
+    \end{tblr}\\[1cm]
+    %%%
+    \underline{\;\@author\;}\\[2cm]
+    %%%
+    \begin{tblr}{width=.8\linewidth,colspec={rX[c]X[c]},%
+        rows={abovesep+=10pt,belowsep+=-5pt},%
+        column{2,3}={c}{font=\heiti},%
+        hline{2-Z}={2-3}{.4pt,solid},%
+      }
+      指导教师&\SWFU@Advisor&\SWFU@AdvisorTitle\\
+      &西南林业大学&昆明\\
+      &&\\
+      &&\\
+    \end{tblr}\\[15mm]
+    %%%
+    \begin{tblr}{width=.8\linewidth,colspec={rX[c]rX[c]},%
+        rows={abovesep+=10pt,belowsep+=-5pt},%
+        column{2,4}={font=\bfseries},%
+        hline{2-Z}={2,4}{.4pt,solid},%
+      }%
+      申请学位级别&硕士&学科专业&\SWFU@Subject\\
+      提交论文日期&\SWFU@DateA&论文答辩日期&\SWFU@DateB\\
+    \end{tblr}\\%
+    %%%
+    \begin{tblr}{width=.8\linewidth,colspec={lX[c]},%
+        rows={abovesep+=10pt,belowsep+=-5pt},%
+        column{2}={font=\heiti},%
+        hline{2-Z}={2}{.4pt,solid},%
+      }
+      学位授予单位和日期&西南林业大学\\
+      答辩委员会主席&\SWFU@Chairman\\
+    \end{tblr}
   \end{center}  
-
+  %%%
   \clearpage\shipout\null
-
+  %%%
   \thispagestyle{empty}
   \begin{center}
     \vspace*{15ex}
+    %%%
     {\Large\bfseries\SWFU@enTitle}\\[25ex]
+    %%%
     \begin{large}
       {\bfseries A Master Thesis Submitted to}\\[-1ex]
       {\bfseries Southwest Forestry University}\\[15ex]
-      
-    \begin{tabularx}{.8\linewidth}{r>{\bfseries}C@{}}
-      Major:&\SWFU@enSubject\\[-7pt]\cline{2-2}
-      Author:&\SWFU@enAuthor\\[-7pt]\cline{2-2}
-      Advisor:&\SWFU@enAdvisor\\[-7pt]\cline{2-2}
-      School:&%
-      \makebox[0pt][t]{%
-        \begin{minipage}[t]{19em}
-          \centering\parbox[t]{17em}{%
-            \centering\heiti College of Big Data and Intelligence Engineering}
-        \end{minipage}}%
-      \rule[-.6ex]{19em}{.1pt}\par
-      \rule{19em}{.1pt}\\
-    \end{tabularx}
+      %%%
+      \begin{tblr}{width=.8\linewidth, colspec={rX[c]},%
+          rows={abovesep+=10pt,belowsep+=-6pt},%
+          column{2}={font=\bfseries},%
+          hline{2-Y}={2}{leftpos=-1,rightpos=-1},%
+          hline{Z}={2}{leftpos=-1,rightpos=-1},%
+        }%
+      Major:&\SWFU@enSubject\\
+      Author:&\SWFU@enAuthor\\
+      Advisor:&\SWFU@enAdvisor\\
+      School:&{%
+        \makebox[0pt][s]{%
+          \parbox[t]{.99\linewidth}{%
+            \centering College of Big Data and Intelligence Engineering\strut%
+          }}%
+        \raisebox{-.18\baselineskip}[0pt][0pt]{%
+          \rule{\linewidth}{.4pt}}}\\%
+    \end{tblr}
+    %%%
     \end{large}
   \end{center}
-  
+  %%%
   \clearpage\shipout\null
-
+  %%%
   \thispagestyle{empty}
   \vspace*{1ex}
+  %%%
   \begin{center}
-    \Large\heiti 独创性声明
+    \Large\bfseries 独创性声明
   \end{center}
+  %%%
   \begin{large}
     \qquad{}本人声明所呈交的学位论文是本人在导师指导下进行的研究工作及取得的研究成果。
     据我所知，除了文中特别加以标注和致谢的地方外，论文中不包含其他人已经发表或撰写过的研究
     成果，也不包含为获得西南林业大学或其它教育机构的学位或证书而使用过的材料。与我一同工作
     的同志对本研究所做的任何贡献均已在论文中作了明确的说明并表示谢意。
     \begin{flushright}
-      作者签名：\underline{\hspace{7em}}\qquad{}%
+      作者签名：\underline{\SWFU@Signature}\qquad{}%
       日期：\SWFU@Year{}年\SWFU@Month{}月\SWFU@DateC{}日
     \end{flushright}
   \end{large}
-
+  %%%
   \vspace{8ex}
   \begin{center}
     \Large\heiti 论文使用授权
   \end{center}
+  %%%
   \begin{large}
     \hspace{2em}本学位论文作者完全了解并同意西南林业大学有关保留、使用学位论文的规定，学校
     有权保留并向国家有关部门或机构送交论文的复印件和磁盘，允许论文被查阅和借阅。本人授权西
@@ -327,12 +380,13 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
 
     \vspace{3ex}
     \begin{flushright}
-      作者签名：\underline{\hspace{7em}}\quad{}导师签名：\underline{\hspace{8em}}\\[2ex]
+      作者签名：\underline{\SWFU@Signature}\quad{}%
+      导师签名：\underline{\SWFU@AdvisorSig}\\[2ex]%
       日期：\SWFU@Year{}年\SWFU@Month{}月\SWFU@DateC{}日
     \end{flushright}
   \end{large}
-
   \clearpage\shipout\null}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newenvironment{abstract}{%
   \providecommand\pdfbookmark[3][]{}\pdfbookmark[0]{摘要}{bm:cnAbstract}%
@@ -385,10 +439,62 @@ nomarginpar,headheight=15pt% to avoid "headheight too small"
   \begin{refsection}
     \begin{singlespace}
       \nocite{#1}%
-      \printbibliography[heading={bibintoc},title={获得成果目录}]\label{p:ref}\pagebreak
+      \printbibliography[heading={bibintoc},title={获得成果目录}]\label{p:ref2}\pagebreak
     \end{singlespace}
   \end{refsection}}
 
 \setlength{\parindent}{2em}
 % \setcounter{tocdepth}{1}
 \setcounter{secnumdepth}{3}
+
+
+%%% circled footnote numbers
+
+%% https://tex.stackexchange.com/questions/639370/how-to-enumerate-footnotes-with-circled-numbers
+
+% \setmainfont{Arial}
+
+%%% define circled command%%%%%%%%%%%%%%
+\tikzset{%
+  circlednode/.style={
+    circle,%
+    draw,%
+    inner sep=0.05ex,%
+    text depth=0ex,%
+    font=\normalfont,%
+    minimum size=1ex%
+  }
+}
+
+\newcommand*\circled[1]{%
+  \ifnumcomp{#1}{>}{9}{% 
+    % if > 9:
+    \tikz[baseline=(char.base)]%
+    \node[circlednode] (char) {%
+      \addfontfeature{LetterSpace=-9.0}\scalebox{0.5}[1]{\bfseries#1}};%
+  }{% if <= 9: 
+    \tikz[baseline=(char.base)]%
+    \node[circlednode] (char) {#1};%
+  }%
+}
+%%%footnote numbers setting%%%%%%%%%%%%%%%
+%make footnote numbers be circled------------------
+\renewcommand{\thefootnote}{%
+  \raisebox{0.25ex}{\scalebox{0.7}{\protect\circled{\arabic{footnote}}}}}
+
+%%% https://zhuanlan.zhihu.com/p/74515148
+
+\RequirePackage{xpatch}
+
+% cancel the superscript style of counter used in footnote text
+\xpatchcmd\@makefntext%
+{{\hss\@makefnmark}}%
+{{\hss\@makefnmark@nosuperscript}\space}%
+{}{\fail}
+
+% normal style, lower baseline
+\newcommand\@makefnmark@nosuperscript{%
+  % \lower -.1ex
+  \hbox{\scalebox{1.2}{\@thefnmark}\;}}
+
+\newcommand{\ring}[1]{\circled{#1}}

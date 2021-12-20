@@ -1,0 +1,111 @@
+%%
+%% This is file `ctex-fontset-windows.def',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% ctex.dtx  (with options: `fontset,windows')
+%% 
+%%     Copyright (C) 2003--2021
+%%     CTEX.ORG and any individual authors listed in the documentation.
+%% ---------------------------------------------------------------------
+%% 
+%%     This work may be distributed and/or modified under the
+%%     conditions of the LaTeX Project Public License, either
+%%     version 1.3c of this license or (at your option) any later
+%%     version. This version of this license is in
+%%        http://www.latex-project.org/lppl/lppl-1-3c.txt
+%%     and the latest version of this license is in
+%%        http://www.latex-project.org/lppl.txt
+%%     and version 1.3 or later is part of all distributions of
+%%     LaTeX version 2005/12/01 or later.
+%% 
+%%     This work has the LPPL maintenance status "maintained".
+%% 
+%% ---------------------------------------------------------------------
+%% 
+\GetIdInfo$Id: ctex.dtx fcbe2c0 2021-12-12 18:20:54 +0800 Qing Lee <sobenlee@gmail.com> $
+  {Windows fonts definition (CTEX)}
+\ProvidesExplFile{ctex-fontset-windows.def}
+  {\ExplFileDate}{2.5.8}{\ExplFileDescription}
+\file_if_exist:nTF { \c_dollar_str WINDIR/Fonts/msyh.ttc }
+  { \tl_const:Nn \c__ctex_msyh_suffix_tl { ttc } }
+  {
+    \file_if_exist:nTF { msyh.ttc }
+      { \tl_const:Nn \c__ctex_msyh_suffix_tl { ttc } }
+      { \tl_const:Nn \c__ctex_msyh_suffix_tl { ttf } }
+  }
+\ctex_fontset_case:nnn
+  {
+    \ctex_zhmap_case:nnn
+      {
+        \ctex_punct_set:n { windows }
+        \setCJKmainfont { simsun.ttc }
+          [ BoldFont = simhei.ttf, ItalicFont = simkai.ttf ]
+        \setCJKsansfont { msyh.\c__ctex_msyh_suffix_tl }
+          [ BoldFont = msyhbd.\c__ctex_msyh_suffix_tl ]
+        \setCJKmonofont { simfang.ttf }
+        \setCJKfamilyfont { zhsong  } { simsun.ttc  }
+        \setCJKfamilyfont { zhhei   } { simhei.ttf  }
+        \setCJKfamilyfont { zhfs    } { simfang.ttf }
+        \setCJKfamilyfont { zhkai   } { simkai.ttf  }
+        \setCJKfamilyfont { zhyahei } { msyh.\c__ctex_msyh_suffix_tl }
+          [ BoldFont = msyhbd.\c__ctex_msyh_suffix_tl ]
+        \setCJKfamilyfont { zhli    } { simli.ttf   }
+        \setCJKfamilyfont { zhyou   } { simyou.ttf  }
+        \ctex_punct_map_family:nn   { \CJKrmdefault          } { zhsong   }
+        \ctex_punct_map_bfseries:nn { \CJKrmdefault          } { zhhei    }
+        \ctex_punct_map_itshape:nn  { \CJKrmdefault          } { zhkai    }
+        \ctex_punct_map_family:nn   { \CJKsfdefault          } { zhyahei  }
+        \ctex_punct_map_bfseries:nn { \CJKsfdefault, zhyahei } { zhyaheib }
+        \ctex_punct_map_family:nn   { \CJKttdefault          } { zhfs     }
+      }
+      {
+        \ctex_load_zhmap:nnnn { rm } { zhhei } { zhfs } { windows }
+        \ctex_punct_set:n { windows }
+        \ctex_punct_map_family:nn   { \CJKrmdefault } { zhsong }
+        \ctex_punct_map_bfseries:nn { \CJKrmdefault } { zhhei  }
+        \ctex_punct_map_itshape:nn  { \CJKrmdefault } { zhkai  }
+      }
+      { }
+  }
+  {
+    \ctex_set_upfonts:nnnnnn
+      { simsun.ttc                   }
+      { simhei.ttf                   }
+      { simkai.ttf                   }
+      { msyh.\c__ctex_msyh_suffix_tl    }
+      { msyhbd.\c__ctex_msyh_suffix_tl  }
+      { simfang.ttf                  }
+    \ctex_set_upfamily:nnn { zhsong  } { upzhserif   } {}
+    \ctex_set_upfamily:nnn { zhhei   } { upzhserifb  } {}
+    \ctex_set_upfamily:nnn { zhfs    } { upzhmono    } {}
+    \ctex_set_upfamily:nnn { zhkai   } { upzhserifit } {}
+    \ctex_set_upfamily:nnn { zhyahei } { upzhsans    } { upzhsansb }
+    \ctex_set_upfamily:nnn { zhli    } { upschrm     } {}
+    \ctex_set_upfamily:nnn { zhyou   } { upschgt     } {}
+    \ctex_set_upmap:nnn { upstsl } { simli.ttf  } {}
+    \ctex_set_upmap:nnn { upstht } { simyou.ttf } {}
+  }
+  {
+    \setCJKmainfont   { SimSun } [ BoldFont = SimHei , ItalicFont = KaiTi ]
+    \setCJKsansfont   { Microsoft~YaHei } [ BoldFont = *~Bold ]
+    \setCJKmonofont   { FangSong }
+    \setCJKfamilyfont { zhsong  } { SimSun          }
+    \setCJKfamilyfont { zhhei   } { SimHei          }
+    \setCJKfamilyfont { zhfs    } { FangSong        }
+    \setCJKfamilyfont { zhkai   } { KaiTi           }
+    \setCJKfamilyfont { zhyahei } { Microsoft~YaHei } [ BoldFont = *~Bold ]
+    \setCJKfamilyfont { zhli    } { LiSu            }
+    \setCJKfamilyfont { zhyou   } { YouYuan         }
+  }
+\NewDocumentCommand \songti   { } { \CJKfamily { zhsong  } }
+\NewDocumentCommand \heiti    { } { \CJKfamily { zhhei   } }
+\NewDocumentCommand \fangsong { } { \CJKfamily { zhfs    } }
+\NewDocumentCommand \kaishu   { } { \CJKfamily { zhkai   } }
+\NewDocumentCommand \lishu    { } { \CJKfamily { zhli    } }
+\NewDocumentCommand \youyuan  { } { \CJKfamily { zhyou   } }
+\NewDocumentCommand \yahei    { } { \CJKfamily { zhyahei } }
+%% 
+%%
+%% End of file `ctex-fontset-windows.def'.

@@ -1,0 +1,69 @@
+%%
+%% This is a modified version of `ctex-fontset-fandol.def',
+%% basically a copy of ctex-fontset-ubuntu.def.
+%% 
+\GetIdInfo$Id: ctex.dtx fcbe2c0 2021-12-12 18:20:54 +0800 Qing Lee <sobenlee@gmail.com> $
+  {Fandol fonts definition (CTEX)}
+\ProvidesExplFile{ctex-fontset-fandol.def}
+  {\ExplFileDate}{2.5.8}{\ExplFileDescription}
+\ctex_fontset_case:nnnn
+  { \ctex_fontset_error:n { fandol } }
+  {
+    \ctex_zhmap_case:nnn
+      {
+        \setCJKmainfont { :2:NotoSerifCJK-Regular.ttc }
+          [ BoldFont = :2:NotoSerifCJK-Bold.ttc, ItalicFont = LXGWWenKai-Regular.ttf ]
+        \setCJKsansfont { :2:NotoSansCJK-Regular.ttc  }
+          [ BoldFont = :2:NotoSansCJK-Bold.ttc  ]
+        \setCJKmonofont { :2:NotoSerifCJK-Regular.ttc }
+          [ BoldFont = :2:NotoSerifCJK-Bold.ttc ]
+        \setCJKfamilyfont { zhsong } { :2:NotoSerifCJK-Regular.ttc }
+          [ BoldFont = :2:NotoSerifCJK-Bold.ttc ]
+        \setCJKfamilyfont { zhhei  } { :2:NotoSansCJK-Regular.ttc  }
+          [ BoldFont = :2:NotoSansCJK-Bold.ttc  ]
+        \setCJKfamilyfont { zhkai  } { LXGWWenKai-Regular.ttf }
+        \ctex_punct_set:n { fandol }
+        \ctex_punct_map_family:nn   { \CJKrmdefault        } { zhsong  }
+        \ctex_punct_map_family:nn   { \CJKsfdefault        } { zhhei   }
+        \ctex_punct_map_family:nn   { \CJKttdefault        } { zhsong  }
+        \ctex_punct_map_itshape:nn  { \CJKrmdefault        } { zhkai   }
+        \ctex_punct_map_bfseries:nn { \CJKsfdefault, zhhei } { zhheib  }
+        \ctex_punct_map_bfseries:nn
+          { \CJKrmdefault, \CJKttdefault, zhsong }
+          { zhsongb }
+      }
+      {
+        \ctex_load_zhmap:nnnn { rm } { zhhei } { zhsong } { fandol }
+        \ctex_punct_set:n { fandol }
+        \ctex_punct_map_family:nn   { \CJKrmdefault } { zhsong }
+        \ctex_punct_map_bfseries:nn { \CJKrmdefault } { zhhei  }
+        \ctex_punct_map_itshape:nn  { \CJKrmdefault } { zhkai  }
+      }
+      { \ctex_fontset_error:n { fandol } }
+  }
+  {
+    \ctex_set_upmap_unicode:nnn { upserif }
+      { :2:NotoSerifCJK-Regular.ttc } { :2:NotoSerifCJK-Bold.ttc }
+    \ctex_set_upmap_unicode:nnn { upsans  }
+      { :2:NotoSansCJK-Regular.ttc  } { :2:NotoSansCJK-Bold.ttc  }
+    \ctex_set_upmap_unicode:nnn { upmono  }
+      { :2:NotoSerifCJK-Regular.ttc } { }
+    \ctex_set_upmap:nnn { upserifit } { LXGWWenKai-Regular.ttf  } { }
+    \ctex_set_upfamily:nnn { zhsong } { upzhserif   } { upzhserifb }
+    \ctex_set_upfamily:nnn { zhhei  } { upzhsans    } { upzhsansb  }
+    \ctex_set_upfamily:nnn { zhkai  } { upzhserifit } { }
+  }
+  {
+    \setCJKmainfont { Noto~Serif~CJK~SC } [ ItalicFont = LXGW~WenKai ]
+    \setCJKsansfont { Noto~Sans~CJK~SC  }
+    \setCJKmonofont { Noto~Serif~CJK~SC }
+    \setCJKfamilyfont { zhsong } { Noto~Serif~CJK~SC }
+    \setCJKfamilyfont { zhhei  } { Noto~Sans~CJK~SC  }
+    \setCJKfamilyfont { zhkai  } { LXGW~WenKai       }
+  }
+\NewDocumentCommand \songti   { } { \CJKfamily { zhsong  } }
+\NewDocumentCommand \heiti    { } { \CJKfamily { zhhei   } }
+\NewDocumentCommand \kaishu   { } { \CJKfamily { zhkai   } }
+%% 
+%%
+%% End of file `ctex-fontset-fandol.def'.

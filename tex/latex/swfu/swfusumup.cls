@@ -43,7 +43,7 @@ top=2cm, bottom=2cm,
 left=2.5cm, right=2.5cm,
 ]{geometry}
 
-\RequirePackage{tikz}
+\RequirePackage{wx672tcb}
 \usetikzlibrary{backgrounds,positioning,fit}
 
 \newcommand{\Signit}[3]{%\Signit{-3cm}{-6.2cm}{../signature}
@@ -76,24 +76,24 @@ left=2.5cm, right=2.5cm,
       \begin{minipage}{.8\linewidth}
         \SWFU@Textbook
       \end{minipage}\\
-    \end{tblr}\\[-1pt]
-    \begin{tblr}{width=\textwidth, vlines, hline{2}, colspec={cX},%
-        column{1}={1em,m}, column{2}={font=\ttfamily}, 
-      }
-      {课\\程\\教\\学\\总\\结} &%
-      \begin{minipage}[c][15em]{1.0\linewidth}
+    \end{tblr}%\\[-1pt]
+    \vspace*{-1.2pt}
+    \begin{titleleft}{课程教学总结}
+      \begin{minipage}[c][15em]{.9\linewidth}
         \SWFU@Sumup
-      \end{minipage}\\
-      {今\\后\\改\\革\\设\\想} &%
-      \begin{minipage}[c][12em]{1.0\linewidth}
+      \end{minipage}
+    \end{titleleft}
+    \begin{titleleft}{今后改革设想}
+      \begin{minipage}[c][12em]{.9\linewidth}
         \SWFU@Suggestion
-      \end{minipage}\\
-    \end{tblr}\\[-1pt]%
-    \begin{tblr}{width=\textwidth, hlines, vlines,%
+      \end{minipage}
+    \end{titleleft}
+    \vspace*{1.2pt}
+    \begin{tblr}{width=\textwidth, vlines,%
         colspec={cX[c]cX[c]}, column{even}={font=\ttfamily}}
       填报人&\SWFU@TeacherName&职称&\SWFU@TeacherTitle\\
     \end{tblr}\\[-1pt]
-    \begin{tblr}{width=\textwidth, vlines, hline{2,4}, colspec={X} }
+    \begin{tblr}{width=\textwidth, vlines, hline{1,2,4}, colspec={X} }
       填报日期：\quad\texttt{\SWFU@Date}\hfill{}（以上为授课教师填写）\\
       教研室负责人审阅意见：\\[15ex]%
       \hfill\makebox[10em][l]{签名：}%

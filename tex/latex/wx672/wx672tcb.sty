@@ -1,0 +1,52 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{wx672tcb}
+
+% https://tex.stackexchange.com/questions/247185/tcolorbox-theorem-which-isnt-framed-on-the-sides
+\RequirePackage[most]{tcolorbox}
+\usetikzlibrary{calc}
+
+\tcbset{%show bounding box,%
+  enhanced, breakable, sharp corners, nobeforeafter,%
+  colback=white, coltitle=black, colbacktitle=white, colframe=black,%
+  bottomrule=.2pt, after skip=-1.5pt,%bottomrule at break=.5pt,
+  before upper={\parindent 2em},%
+  overlay middle={%
+    \draw[line width=.2pt] (frame.north west)--(frame.north east);
+    \draw[line width=.2pt] (frame.south west)--(frame.south east);%
+  },%
+  overlay last={%
+    \draw[line width=.2pt] (frame.north west)--(frame.north east);},%
+}
+
+% mainly for the proposal part of swfu3in1
+\newcounter{main}
+\newtcolorbox[use counter=main]{mainbodybox}[1]{%
+  boxrule=.4pt,titlerule=0pt,%
+  fonttitle=\large\bfseries,%
+  overlay unbroken and first={%
+    \draw[line width=.2pt] (frame.south west)--(frame.south east);%
+  },%
+  title=\thetcbcounter. #1}
+
+% mainly for the taskspec part in swfu3in1
+% #1 - text width;
+% #2 - title text.
+\newtcolorbox{Titleleft}[2][2em]{% 
+  frame hidden, left=40pt,%
+  borderline={.4pt}{0pt}{black},% vlines
+  borderline west={.4pt}{32pt}{black},% 2nd left vline
+  overlay unbroken and first={%
+    \node[anchor=center, text width=#1, font=\bfseries] at ($(frame.west)+(16pt,0)$) {#2};
+    \draw[line width=.2pt] (frame.south west)--(frame.south east);% bottom hline
+  },%
+}
+
+\newtcolorbox{titleleft}[1]{% 
+  frame hidden, left=24pt,%
+  borderline={.4pt}{0pt}{black},% vlines
+  borderline west={.4pt}{18pt}{black},% 2nd left vline
+  overlay unbroken and first={%
+    \node[anchor=west, text width=1em] at (frame.west) {#1};
+    \draw[line width=.2pt] (frame.south west)--(frame.south east);% bottom hline
+  },%
+}

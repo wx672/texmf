@@ -4,148 +4,185 @@
 
 clear
 
-cat <<EOF | PV
-Hi! I'm going to show you how to write a SWFU thesis with LaTeX and Emacs on a Linux machine.
+PV <<<"Hi, today [$(date +%F)] I'm going to show you how to write a SWFU BSc thesis
+with LaTeX and Emacs on a Linux machine. My working environment is purely built with
+open source software:
 
-My working environment:
-	1. Emacs (with AUCTeX, Yasnippet)
-	2. TeXLive (with lualatex)
-	3. A PDF viewer (emacs pdf-tools is recommended)
-	4. Linux is not mandatory though I prefer it
+	$(em ✔) Debian GNU/Linux Sid
+	$(em ✔) Emacs 27 (with AUCTeX, Yasnippet, pdf-tools)
+	$(em ✔) TeXLive2022 (with lualatex) and latexmk
+	$(em ✔) A PDF viewer (pdf-tools in Emacs is recommended)
+	$(em ✔) A terminal (with tmux)
 
-With all these OSS tools ready, this demo is going to show you the magic power you can have. 
+Now, let's have some fun with the power of open source... First, we need a dedicated directory
+for our project...
+"
 
-My Emacs config files (including snippets):
-	- https://github.com/wx672/dotfile/tree/master/dot.emacs.d
-My LaTeX class for this demo:
-	- https://github.com/wx672/texmf/raw/master/tex/latex/swfuthesis.cls
-In case of dead links, please email $(em 'wx672ster@gmail.com').
-
-Now, let's begin...
-EOF
-
-echo "First, we need a dedicated directory for our project..." | PV; prompt; 
-echo "mkdir -p my-project/{src,doc}" | PV; prompt;
-echo "tree my-project" | PV; waiting
-
-cat <<EOF | PV
-See? we now have a new dir called 'my-project' with two sub-dirs in it:
-	src - for keeping our source code
-	doc - for our documentation, ie. our thesis
-
-EOF
-
-echo "Now, let's put some simple source code in the src dir..." | PV; prompt;
-echo "cd my-project/src" | PV; prompt;
-echo "cat > hello.c" | PV; waiting
-echo "Done!" | PV
-echo 
-echo "After coding, it's time to start our big paper, in emacs of course." | PV; prompt
-echo "cd ../doc" | PV; prompt;
-echo -n "ec thesis.tex" | PV
-echo -e "\t$(tput dim)# ec is an alias to emacsclient.$(tput sgr0)" | PV; waiting
-echo "Now we're in Emacs, and have an empty file $(em thesis.tex) opened for editing." | PV
-echo "The easiest way to start our thesis is simply typing '$(em thesis)' followed by a [$(em TAB)]" | PV; waiting
-
-cat <<EOF | PV
-Bravo! Thanks to yasnippet, the Emacs buffer is now populated with a well written thesis template!
-Don't panic if you can't recognize those square characters, since all the LaTeX commands are still in English.
-
-The trick for bringing up the thesis template is 'yasnippet' which is a very popular Emacs plugin.
-Apart from having yasnippet installed, you also need a snippet to fit your needs. For example,
-the snippet we are currently using for writing thesis can be found at:
-	- https://github.com/wx672/dotfile/raw/master/dot.emacs.d/snippets/latex-mode/thesis
-With yasnippet and your snippet ready, typing [$(em TAB)] immediately after the keyword ($(em thesis) in our case) will trigger the magic.
-
-I assume you have basic LaTeX knowledge. Then, let's play some more with the template...
-
-First, find the cursor. It should be at the $(em \\Title{}) command now, right?
-If you type something (thesis title obviously) there, the Chinese words will be replaced by your input.
-EOF
-
+prompt; PV <<<"$(em mkdir -p my-project/\{src,doc\})"
+prompt; PV <<<"$(em tree my-project)"
 waiting
 
-# input thesis title
-echo "If you type [$(em TAB)] right after finishing your input, the cursor should jump into the next input field."| PV; waiting
-echo "Fill it with some reasonable words followed by another [$(em TAB)]..." | PV; waiting
+PV <<<"
+See? we now have a new dir called $(em my-project) with two sub-dirs in it:
+
+	$(em src) - for keeping our source code
+	$(em doc) - for our documentation, ie. the thesis"
+
+PV <<<"
+Let's put some simple source codes in the $(em src) dir...
+"
+
+prompt; PV <<<"$(em cd my-project/src)"
+prompt; PV <<<"$(em cat \> hello.c)"
+
+echo -e '\n----------------------------------'
+PV <<<'  #include <stdio.h>
+
+  int main(void){
+      printf("Hello, world!\n");
+  }'
+echo '----------------------------------'
+waiting
+
+PV <<<"
+Done! After finish coding, it's time to start our big paper, with Emacs of course.
+"
+prompt; PV <<<"$(em cd ../doc)"
+prompt; PV <<<"$(em e thesis.tex) $(tput dim)# e is an alias to emacsclient$(tput sgr0)"
+waiting
+
+PV <<<"
+Now we're facing an empty Emacs buffer named $(em thesis.tex) opened for editing.
+The easiest way to start our thesis is simply typing $(em thesis) followed by a $(em ⭾) (the TAB key)."
+waiting
+
+PV <<<"
+Bravo! Thanks to yasnippet, the Emacs buffer is now populated with a ready made
+thesis template! The trick to bringing up the thesis template is in $(em yasnippet)
+which is one of my favorite Emacs plugin. Yasnippet doesn't do anything unless you
+feed it a $(em snippet). It's very much like a magic wand in your hand, whenever you wave it
+you have to whisper a $(em spell) to make the magic happen.
+
+The snippet we are using for writing thesis is called $(em thesis), can be found at:
+
+- $(em https://github.com/wx672/dotfile/raw/master/dot.emacs.d/snippets/latex-mode/thesis)
+
+With yasnippet and your snippet ready, typing $(em thesis) immediately followed by a $(em ⭾)
+will trigger the magic.
+
+Assuming you have basic LaTeX knowledge, we can start playing with the template now.
+Found the cursor in Emacs? It should be sitting at this line now:
+
+     $(em Title={论文标题},)
+
+If you type something (thesis title obviously) there, the Chinese words will be replaced
+by your input."
+waiting
+
 # input something followed by [tab]
-echo -e "\t- [$(em TAB)] will forward the cursor to the next input field. And," | PV
-echo -e "\t- [$(em Shift-TAB)] will move the cursor backward." | PV; waiting
+PV <<<"
+You can type
+
+  - $(em ⭾) to forward the cursor to the next input field. Or,
+  - $(em Shift-⭾) to move the cursor backward one field."
+waiting
+
 # demo cursor forward/backward jumping, and filling all the fields
-echo "After filling in all the fields in the preamble, the cursor should be sitting at the first $(em '\\chapter{}') command. You know what you should do, right? Let's finish it quick..." | PV; waiting
+PV <<<"
+After filling in all the fields in the preamble, the cursor should be sitting right after
+the $(em '\\begin{abstract}') line. Now you are on your own. Neither the abstract nor any
+other part of your writing can be done by casting a spell in Emacs. Well, that's not
+entirely true. Let's try it with $(em '\\lipsum{}') or $(em '\\zhlipsum{}') if you prefer Chinese."
+waiting
+
 # finish all the chapters. getting to the bib part
+PV <<<"
+Wow, that's quick! Now, about the bibliography, it's pretty easy if you already have a
+bib file. If not, you can get an example from:
 
-cat <<EOF | PV
-Wow, that's quick! Now, about the bibliography...
-It's pretty easy if you already have a bib file. If not, you can get an example from:
-	- https://github.com/wx672/texmf/raw/master/doc/latex/swfu/swfcthesis/tutorial/tutorial.bib
-Put your bib file in the same dir of your thesis...
-EOF
+- $(em https://github.com/wx672/texmf/raw/master/doc/latex/swfu/swfcthesis/tutorial/tutorial.bib)
 
+Put your bib file in the same dir of your thesis. You can take a look at it. It's fairly
+easy to understand..."
 waiting
 
-echo "You can take a look inside the bib file. It's fairly easy to understand..." | PV; waiting
 # open bib file, and pointing to the entry to be cited. Perhaps split emacs window?
-echo "Then, in your $(em thesis.tex)..." | PV
-echo -e "\t1. Modify $(em '\\addbibresource{}') accordingly..." | PV; waiting
-echo -e "\t2. Adding citations. For example..." | PV; waiting
-echo -e "\t3. Make sure the $(em '\\printbibliography{}') command is there..." | PV; waiting
-echo "These are good enough for $(em biblatex) to work." | PV
-echo
-echo "Now, let's insert some source code into the thesis..." | PV ; waiting
-echo "Be very careful, our source code and thesis are not in the same directory. So we have to take care of the path to the source code." | PV
-echo
-echo "Hmm, seems we finished our writing. Let's compile it by typing $(em C-c C-c)..." | PV; waiting
+PV <<<"
+Back to the $(em thesis.tex) file,
 
-cat <<EOF | PV
+  $(em ✔) Modify $(em '\\addbibresource{}') accordingly..."
+waiting
+PV <<<"  $(em ✔) Adding citations. For example..."
+waiting
+PV <<<"  $(em ✔) Make sure the $(em '\\makebib') command is there..."
+waiting
+PV <<<"
+That's all we need for generating bibliographies."
+waiting
+
+# insert hello.c into thesis.tex (\\cfile{../src/hello.c})
+PV <<<"
+Now, let's see how to include source code into the thesis. Suppose we want to proudly
+show off our great $(em hello.c) in the thesis, we can simply do $(em '\\cfile{../src/hello.c}'). Be very
+careful, our source code and thesis are not in the same directory. So we have to take care
+of the $(em PATH) to the source code.
+
+BTW, besides $(em '\\cfile{}'), there are also $(em '\\pyfile{}, \\shfile{}, \\cppfile{}') available.
+These commands are defined in $(em swfuthesis.cls). You can easily write your own commands
+by following these examples.
+
+Hmm, seems we finished our writing. Let's compile it by typing $(em Ctrl-c Ctrl-c)..."
+waiting
+
+PV <<<"
 In the mini-buffer, you can see:
-	$(em 'Command: (default LaTeXMK)' )
-This means a default command ($(em LaTeXMK)) will be used to process our .tex file.
-You can press $(em Enter) to let it go
-EOF
 
+   $(em Command: \(default LaTeXMK\))
+
+This means a default command, $(em LaTeXMK), will be launched to compile our $(em thesis.tex) file.
+Just press $(em ⏎) (the ENTER key) and wait..."
 waiting
-
 # waiting for compiling to finish
-# echo -e "\t$(em 'You should run LaTeX again to get references right, {12} pages')" | PV
-# echo "Now, if you just type $(em 'C-c C-c') again, $(em LaTeX) will run again to generate $(em 'Table of Contents') for you." | PV; waiting
-# echo "After that, in mini-buffer, you should see:" | PV
-# echo -e "\t$(em 'LaTeX: there were unresolved citations, {12} pages')" | PV
-# echo "Now you should type $(em 'C-c C-c') again followed by $(em biber):" | PV
-# echo -e "\t$(em 'Command: (default LaTeX) biber')" | PV
-# echo "This is to process the citations using $(em biber)" | PV; waiting
-# echo "Now you probably have to type $(em 'C-c C-c') again to run $(em LaTeX) for the last time..." | PV
-# echo -e "\t$(em 'Command: (default Biber)') latex" | PV; waiting
 
-cat <<EOF | PV
-If nothing goes wrong, you should see something in the mini-buffer similar to the following line:
+PV <<<"
+for quite a while, right? That's because $(em lualatex) has been invoked several times
+to generate the PDF file. If everything's alright, you should see a message in the
+mini-buffer similar to the following line:
+
 	$(em 'LaTeXMK: done.')
+
 This means the compilation is finished successfully, and a PDF file is generated for you.
-If one more $(em 'C-c C-c'), you should see:
-	$(em 'Command: (default View)' )
-If you hit $(em Enter), it should be opened with your preferred pdf viewer.
+Another $(em 'Ctrl-c Ctrl-c ⏎') should bring up a PDF viewer with your fresh baked PDF file
+shown in it. Since I am recording this demo entirely in a plain text tmux session with
+$(em ttyrec), there is no easy way to open PDF file for instant viewing in my terminal. So
+I have to open it manually.
 
-Since I am recording this demo entirely in a tmux session with $(em ttyrec), there is no easy way to include this PDF file for instant viewing. But you can see it's sitting in my working directory now...
-EOF
-
+  $(em mupdf thesis.pdf&)"
 waiting
+
 # check current dir
 
-cat <<EOF | PV
-And I just opened it with xpdf. Believe me, it looks pretty good. :-)
+PV <<<"
+Looks pretty good, doesn't it? $(em 🙂) That's all for now. Many thanks to:
 
-That's all for now.
+  - Emacs + AUCTeX + Yasnippet
+  - TeXLive
+  - Debian GNU/Linux
+  - alacritty, tmux, and ttyrec for term-casting
 
-Thanks to:
-	- Emacs + AUCTeX + Yasnippet
-	- LaTeX
-	- Debian GNU/Linux
-	- tmux, ttyrec for term-casting
+For more information on preparing this demo, see:
 
-For more information on preparing this demo, see
-	- [script] https://github.com/wx672/texmf/raw/master/doc/latex/swfu/swfcthesis/tutorial/script.sh
-	- [helping functions] https://github.com/wx672/dotfile/raw/master/bin/ttyrec-utils
-	- [.tmux.conf] https://github.com/wx672/dotfile/raw/master/dot.tmux.conf
-EOF
+  - $(em Main script:)
+    https://github.com/wx672/texmf/raw/master/doc/latex/swfu/swfcthesis/tutorial/script.sh
+  - $(em Helper scripts:)
+    https://github.com/wx672/dotfile/raw/master/bin/ttyrec-utils
+  - $(em .tmux.conf:)
+    https://github.com/wx672/dotfile/raw/master/dot.tmux.conf
+  - $(em 'Emacs config files (including snippets):')
+    https://github.com/wx672/dotfile/tree/master/dot.emacs.d
+  - $(em LaTeX class file:)
+    https://github.com/wx672/texmf/raw/master/tex/latex/swfuthesis.cls
+
+In case of dead links, please email $(em 'wx672ster@gmail.com')."
 
 havefun2

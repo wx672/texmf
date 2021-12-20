@@ -33,9 +33,9 @@
   School = Gryffindor, % 学生所属学院
   Studid = 3.1415926,  % 学号
   Gyear = 8888,% 届
-  Year  = 8888,% 报告提交年、月、日
-  Month = 88,  %
-  Date  = 8,   %
+  % Year  = 8888,% 
+  % Month = 88,  %
+  Date  = 8888年88月8日,   % 报告提交年、月、日
   Subject = Defence of dark art, %
   Grade = 8884,%
   %%%
@@ -48,12 +48,11 @@
       \begin{minipage}{.5\linewidth}
         \begin{center}\singlespacing
           \captionof{table}{An example table\label{tab:hp}}
-          \begin{tabular}{lll}
-            \toprule
-            Name&School&Brief Info\\\midrule
+          \begin{tblr}{colspec={lll},hline{1,2,Z}}
+            Name&School&Brief Info\\
             Harry Potter&Gryffindor&Good\\
-            Draco Malfoy&Slytherin&Bad\\\bottomrule
-          \end{tabular}      
+            Draco Malfoy&Slytherin&Bad\\
+          \end{tblr}      
         \end{center}
       \end{minipage}\qquad
       \begin{minipage}{.2\linewidth}
@@ -78,10 +77,10 @@
     \zhlipsum[9]
   },
   TSKwhy={ %（任务书）目的、意义。不要超过400字。同 PPSLi
-    \zhlipsum[1]% 类似开题报告的第一部分：该研究的目的、意义
+    \zhlipsum[1-2]% 类似开题报告的第一部分：该研究的目的、意义
   },%
   TSKwhat={%（任务书）任务、要求。不要超过400字。同 PPSLiv
-    \zhlipsum[2]%
+    \zhlipsum[3-4]%
   },%
   TSKwhen={%（任务书） 进度、安排。不要超过10行。
     \begin{itemize}

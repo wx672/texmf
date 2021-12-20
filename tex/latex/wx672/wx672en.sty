@@ -6,20 +6,20 @@
 
 % ctex is too heavy in case of only a few Chinese words.
 % Example: {\cjk 你好}
-\newfontfamily\cjk{Noto Serif CJK JP}
+\newfontfamily\cjk{Noto Serif CJK JP}% \han in wx672nerd.sty
 \newfontfamily\cjksans{Noto Sans CJK JP}
 \newfontfamily\cjkmono{Noto sans Mono CJK JP} % Noto Sans Mono CJK SC
 
 %https://tex.stackexchange.com/questions/572212/substituting-fonts-for-emojis-in-lualatex
 %https://newbedev.com/is-there-a-way-to-get-u-2114-without-china2e-in-lualatex
 \directlua{luaotfload.add_fallback
-  ("genericfallback", { "NotoSans Nerd Font:mode=node;"})}
+  ("genericfallback", {"NotoSans Nerd Font:mode=node;"})}
 
 % Liberation fonts is a drop-in replacement for Microsoft Times, Arial and Courier fonts
 \setmainfont{Liberation Serif}[RawFeature={fallback=genericfallback}]
 \setsansfont{DejaVuSansMono Nerd Font}[RawFeature={fallback=genericfallback}]
 %\setsansfont{FiraCode Nerd Font}[RawFeature={fallback=emojifallback}]
-\setmonofont{FiraCode Nerd Font Mono}[RawFeature={fallback=genericfallback}]
+%\setmonofont{FiraCode Nerd Font Mono}[RawFeature={fallback=genericfallback}]%\ttfamily
 
 \newcommand{\verbatimfont}[1]{\def\verbatim@font{#1}}%
 \newcommand{\verbfont}[1]{\def\verbatim@font{#1}}%

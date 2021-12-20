@@ -43,14 +43,10 @@
 \RequirePackage{dashrule} % \dashfill
 \RequirePackage{amsmath,amsfonts,amssymb}
 \RequirePackage{fancybox} % for \fancyput
-\RequirePackage{multicol,varwidth,marvosym,soul,tasks,indentfirst,enumitem}
+\RequirePackage{multicol,marvosym,soul,tasks,indentfirst,enumitem}
 \RequirePackage{setspace} % \singlespacing, \onehalfspacing, \doublespacing
 
-\RequirePackage{tabularx}
-\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
-\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % for centering p column
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-\renewcommand{\arraystretch}{1.2}
+\RequirePackage{tabularray}
 
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
@@ -62,13 +58,12 @@
 
 \newcommand{\bblank}{\underline{\hspace{1in}}}
 \newcommand{\hroom}[1]{\underline{\quad{}#1\quad}}
-\newcommand{\vroom}[2]{\rule{0pt}{#1}\par{}#2\par{}\rule{0pt}{#1}}%\vroom{12ex}{text}
+%\newcommand{\vroom}[2]{\rule{0pt}{#1}\par{}#2\par{}\rule{0pt}{#1}}%\vroom{12ex}{text}
 \newcommand{\swfuhdash}[1]{%
   \hdashrule[.5ex][x]{.41\textheight}{.1pt}{2mm}#1%
   \hdashrule[.5ex][x]{.41\textheight}{.1pt}{2mm}}
 
 \newsavebox{\swfubbox}
-
 \newcommand{\SWFCbinding}{%
   \sbox{\swfubbox}{%
     \parbox{\textheight}{{\centering%
@@ -95,19 +90,15 @@
   \vspace*{1ex}
   \begin{center}
     {\bfseries
-      \mbox{\LARGE 西南林业大学\SWFU@Yfrom~\symbol{`~}~\SWFU@Yto{}学年第~\SWFU@Term~学期}\\[3mm]
-      \mbox{\LARGE 《\SWFU@Course{}》试题（\SWFU@AB{}卷）}\\[3mm]
+      \mbox{\LARGE 西南林业大学\SWFU@Yfrom~\symbol{`~}~\SWFU@Yto{}学年第~\SWFU@Term~学期}\\\bigskip
+      \mbox{\LARGE 《\SWFU@Course{}》试题（\SWFU@AB{}卷）}\\\bigskip
       \mbox{\large \SWFU@Group\qquad{}考试形式：\SWFU@EXtype\qquad{}考试时长：%
-        \SWFU@EXtime{}分钟}\\[1mm]}
-    \begin{tabularx}{.9\columnwidth}{|c|*{10}{M{1.5em}|}C|}
-      \hline
-      题号&一&二&三&四&五&六&七&八&九&十&总分\\\hline
-      分数& & & & & & & & & & & \\\hline
-      计& & & & & & & & & & & \\[-.5ex]
-      分& & & & & & & & & & & \\[-.5ex]
-      人& & & & & & & & & & & \\\hline
-    \end{tabularx}\\%[2em]
-%    \underline{{\Large 直接卷上作答，不要另用答题纸}}
+        \SWFU@EXtime{}分钟}\\\medskip}
+    \begin{tblr}{width=.9\columnwidth,colspec={cccccccccccX[c]}, vlines, hlines}
+      题号         &一&二&三&四&五&六&七&八&九&十&总分\\
+      分数         & & & & & & & & & & & \\
+      {计\\分\\人} & & & & & & & & & & & \\
+    \end{tblr}
   \end{center}
   \vspace{3mm}
 }
@@ -116,10 +107,40 @@
 \usemintedstyle{bw}
 \newCJKfontfamily\sig{signature}
 
-\ctexset{  
-  punct=kaiming,
-  section/format = \Large\bfseries,
+% \ctexset{  
+%   punct=kaiming,
+%   section/format = \Large\bfseries,
+% }
+
+\RequirePackage{zhnumber}
+\RequirePackage[explicit]{titlesec}
+
+\titleformat{\section}[hang]{\large\bfseries\raggedright}%
+{% label  
+  \begin{tblr}{width=2cm,colspec={X[c]},hline{1,2},vlines}
+    \normalfont{分数}\\
+    \\
+  \end{tblr}\quad\thesection{}
+}%
+{0pt}% sep
+{% before-code
+  #1\\\titlerule
 }
+\titlespacing*{\section}{0pt}{15mm}{3mm}
+
+% \titleformat{\subsection}[hang]{\large\bfseries\raggedright}%
+% {% label  
+%   \thesubsection{}
+% }%
+% {0pt}% sep
+% {% before-code
+%   #1
+% }
+% \titlespacing*{\subsection}{0pt}{15mm}{3mm}
+
+\setlength{\fboxsep}{2ex}
+
+\newcommand\setmark[3]{（共{#1}题，每题{#2}分，共{#3}分）}
 
 \newcommand{\blank}[1]{\underline{\hspace{#1}}}
 \newcommand{\blankone}{\underline{\hspace{1em}}}

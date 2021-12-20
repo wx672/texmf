@@ -1,0 +1,112 @@
+\documentclass{swfuthesism}
+
+% 参照教程自己去写一个.bib文件
+\addbibresource{ref.bib}   % 参考文献
+\addbibresource{paper.bib} % publication
+
+\swfusetup{
+  Title={怎样用LaTeX撰写硕士毕业论文},%
+  enTitle={How to write your MSc dissertation with LaTeX},%题目英文
+  Author={某某某},%作者姓名
+  enAuthor={Whoever},%作者姓名英文
+  AuthorId={3.14159265},%学号
+  Advisor={如雷贯耳},%指导教师
+  enAdvisor={You Know Who (Professor)},%指导教师英文
+  AdvisorTitle={教授},%指导教师职称
+  ClsID={TP3.1415},%分类号
+  Month=\the\month, Year=\the\year,%月、年
+  DateA={2022/12/26},%提交论文日期
+  DateB={2022/12/19},%论文答辩日期
+  DateC={3},%独创性声明页上的日期
+  Subject={很专业},%学科专业
+  enSubject={Whatever},%学科专业英文
+  Chairman={久仰久仰},%答辩委员会主席
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract} % 摘要
+  本文是关于……
+\end{abstract}
+
+\begin{keyword} % 关键词
+  关键词，关键词，关键词……
+\end{keyword}
+
+\begin{eabstract} % 英文摘要
+  This project is about...
+\end{eabstract}
+
+\begin{ekeyword} % 英文关键词
+  keyword, keyword, keyword...
+\end{ekeyword}
+
+\frontmatter
+\tableofcontents % 目录
+% \listoffigures % 插图目录，可以没有
+% \listoftables  % 表格目录，可以没有
+
+\cleardoublepage % keep this line
+
+\mainmatter
+
+% 参考教程，在chapters目录中单独写各章
+\include{chapters/ch1-pre}
+\include{chapters/ch2-quick}
+\include{chapters/ch3-adv}
+\include{chapters/ch4-thesis}
+
+\appendix % 参考文献、指导教师简介、鸣谢、附录
+
+\makebib  % 生成参考文献
+
+%%%%%%%%%%%%%%% 附录章节放在这里
+\singlespacing
+
+\include{chapters/ch6-spec}
+
+\include{chapters/ch5-app-sw}
+
+\chapter{中文article模板}
+\label{app:article}
+
+\inputminted{latex}{article.tex}
+
+\chapter{毕业论文模板}
+\label{app:thesis}
+
+\inputminted{latex}{thesis-template.tex}
+
+\chapter{\texttt{swfuthesism.cls}文件}
+\label{app:class}
+
+\inputminted{latex}{swfuthesism.cls}
+
+\chapter{\texttt{ref.bib}文件}
+\label{app:bib}
+
+\inputminted{bibtex}{ref.bib}
+
+
+%%% tail pages
+\doublespacing
+
+\begin{authorInfo}
+  某研究生，初从文，三年不中；后习武，校场发一矢，中鼓吏，逐之出；遂学医，有所成。自撰一良方，服之，卒。
+\end{authorInfo}
+
+\begin{advisorInfo}
+  某教授，初从文，三年不中；后习武，校场发一矢，中鼓吏，逐之出；遂学医，有所成。自撰一良方，服之，卒。
+\end{advisorInfo}
+
+\publication{key1,key2,key3,key4,} %获得成果目录
+
+\begin{acknowledgment}
+  感谢美国计算机教授高德纳（Donald Ervin Knuth）编写的功能强大的排版软件\TeX{}。感谢美国计
+  算机科学家莱斯利·兰波特（Leslie Lamport）教授为\TeX{}开发的简单易用的\LaTeX{}宏包。感谢本
+  文作者能有如此多的闲功夫和好心情来饶有兴致地做这样一件不能当饭吃的事情。
+\end{acknowledgment}
+
+\end{document}

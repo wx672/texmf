@@ -1,0 +1,41 @@
+\chapter{与排版论文相关的软件清单}%
+\footnotetext{这份清单是用如下命令获得的：\par
+  \texttt{aptitude search '\~{}i "texlive|fonts|latexmk|pygments|emacs|fcitx|xterm|sawfish"' > pkg-list}}
+\label{app:pkg}
+
+\begin{enumerate}
+\item emacs25 - GNU Emacs editor (with GTK+ GUI support)
+\item emacs25-common-non-dfsg - GNU Emacs common non-DFSG items, including the core documentation
+\item fcitx - Flexible Input Method Framework
+\item fcitx-pinyin - Flexible Input Method Framework - classic Pinyin engine
+\item fonts-noto - metapackage to pull in all Noto fonts
+\item fonts-noto-cjk-extra - "No Tofu" font families with large Unicode coverage (CJK all weight)
+\item fonts-arphic-ukai - "AR PL UKai" Chinese Unicode TrueType font collection Kaiti style
+\item fonts-symbola - symbolic font providing emoji characters from Unicode 9.0
+\item fonts-tlwg-purisa - Thai Purisa font (dependency package)
+\item latexmk - Perl script for running LaTeX the correct number of times
+\item sawfish - window manager for X11
+\item sawfish-merlin-ugliness - More flexible functions for sawfish
+\item texlive-bibtex-extra - TeX Live: BibTeX additional styles
+\item texlive-extra-utils - TeX Live: TeX auxiliary programs
+\item texlive-generic-extra - TeX Live: transitional dummy package
+\item texlive-generic-recommended - TeX Live: transitional dummy package
+\item texlive-lang-chinese - TeX Live: Chinese
+\item texlive-lang-english - TeX Live: US and UK English
+\item texlive-latex-recommended - TeX Live: LaTeX recommended packages
+\item texlive-luatex - TeX Live: LuaTeX packages
+\item texlive-xetex - TeX Live: XeTeX and packages
+\item python-pygments - syntax highlighting package written in Python   
+\item xterm - X terminal emulator
+\end{enumerate}
+
+\vspace{2ex}
+
+注意，这是一个不完全的软件包列表。但是，在安装这些软件包时，其它一些被依赖的软件包会被自动
+安装上。另外，Emacs的很多插件，比如\auctex{}, pdf-tools等，可以通过Emacs的插件管理模块来安装、
+更新，在此没有列出。
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../example"
+%%% End:

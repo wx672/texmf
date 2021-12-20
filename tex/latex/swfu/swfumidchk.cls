@@ -1,3 +1,4 @@
+% !!! OBSOLETE !!! Use swfu4in1.cls instead.
 % 西南林业大学本科毕业论文（设计）中期检查表
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfumidchk}
@@ -19,9 +20,9 @@
   AdvisorComments={进度符合要求，抓紧完成论文。},%指导教师评语
   Signature/.store in       = \SWFU@Signature,%
   Signature={\includegraphics[width=25mm]{signature}},%指导教师签名
-  Year/.store in            = \SWFU@Year,%
-  Month/.store in           = \SWFU@Month,%
-  Date/.store in            = \SWFU@Date,%
+  % Year/.store in            = \SWFU@Year,%
+  % Month/.store in           = \SWFU@Month,%
+  Date/.store in            = \SWFU@Date, Date={\the\year 年\the\month 月\the\day 日}%
 }
 
 \newcommand{\swfusetup}[1]{\pgfkeys{#1}}
@@ -29,16 +30,9 @@
 \LoadClass[scheme=chinese]{ctexart}
 
 \RequirePackage[ % showframe,
-paperwidth=195mm,paperheight=270mm,
-top=25mm,bottom=20mm,
-left=20mm,right=20mm
-]{geometry}
+hmargin=2.5cm,top=1.5cm,bottom=1cm]{geometry}
 
-\RequirePackage{tabularx,makecell,array,graphicx}
-\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % for centering p column
-\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
-\newcolumntype{C}{>{\centering\arraybackslash}X}
-%\renewcommand{\arraystretch}{1.2}
+\RequirePackage{tabularray,graphicx,wx672tcb}
 
 \RequirePackage{enumitem} % \setlist
 \setlist{itemsep=-.5ex}
@@ -46,71 +40,66 @@ left=20mm,right=20mm
 
 \setlength{\parindent}{0pt}
 
-\newfontfamily\dejavu{DejaVu Sans Mono}
-\newcommand\unchecked{\dejavu □}%ballot box
-\newcommand\checked{\large\dejavu ☑} %🗹
+\newfontfamily\nerd{FiraCode Nerd Font Mono}
+\RequirePackage{newunicodechar}
+\newunicodechar{□}{{\large\nerd □}}%ballot box
+\newunicodechar{☑}{{\large\nerd ☑}}%checked box
+\newcommand\unchecked{{\large\nerd □}} %ballot box
+\newcommand\checked{{\large\nerd ☑}} %🗹
 
 \newcommand{\makeform}{\pagestyle{empty}%
   {\centering\Large\heiti 西南林业大学本科毕业论文（设计）中期检查表\par}
   \medskip
-  \begin{tabularx}{\linewidth}{|c|C|c|C|}\hline
-    学生姓名&\SWFU@Studid&学生学号&\SWFU@Studname\\\hline
-    专\quad{}业&\SWFU@Subject&指导教师&\SWFU@AdvisorName\\\hline
-  \end{tabularx}\vspace{-1pt}
-  \begin{tabularx}{\linewidth}{|M{4em}|X|}
-    论文题目%
-    &\makecell[c]{\SWFU@Prjtitle}\\\hline
-    \makecell{目前已完\\成任务}%
-    &\begin{minipage}[c]{1.0\linewidth}
-      \SWFU@Prjdone
-    \end{minipage}\\[-1em]
-    &\hfill{}是否符合计划进度？\checked{}是\quad\unchecked{}否\\\hline
-    \makecell{尚需完成\\的任务}%
-    &\begin{minipage}[c]{1.0\linewidth}
-      \SWFU@Prjtodo
-    \end{minipage}\\[-1em]
-    &\hfill{}能否按期完成任务？\checked{}是\quad\unchecked{}否\\\hline
-    \makecell{存在的问\\题和解决\\办法}
-    &\begin{minipage}[c]{1.0\linewidth}
-      \SWFU@Prjproblem
-    \end{minipage}\\\hline
-  \end{tabularx}\vspace{-1pt}
-  \begin{tabularx}{\linewidth}{|C|} （以上部分由学生填写）\\\hline \end{tabularx}\vspace*{-1.5pt}
-  \begin{tabularx}{\linewidth}{|c|X|}
-    \hline
-    \makecell[t]{指\\[-1ex]导\\[-1ex]教\\[-1ex]师\\[-1ex]评\\[-1ex]语}
-    &\begin{minipage}[c]{1.0\linewidth}
-      \qquad\SWFU@AdvisorComments
-    \end{minipage}\\[-5em]
-    &\hfill{}指导教师（签名）：\makebox[5cm][c]{\SWFU@Signature}\par%
-    \hfill\SWFU@Year{}年\makebox[2em][c]{\SWFU@Month}月\makebox[2em][c]{\SWFU@Date}日\\\hline
-  \end{tabularx}\vspace{-1pt}
-  \begin{tabularx}{\linewidth}{|C|}
-    （以下部分由教学院、系、部填写）\\\hline
-  \end{tabularx}
-  \vskip -1.5pt%
-  \begin{tabularx}{\linewidth}{|X|c|c|C|}\hline
-    \makecell[c]{评\, 分\, 项\, 目}
-    &最高分值&评分&备\, 注\\\hline
-    指导教师对毕业实习的指导力度&25&&\\\hline
-    毕业论文的实验条件&15&&\\\hline
-    毕业论文的适合度&20&&\\\hline
-    完成论文的进度&15&&\\\hline
-    学生表现&25&&\\\hline
-    \multicolumn{2}{|c|}{总\qquad{}分}&
-    \multicolumn{2}{c|}{}\\\hline
-  \end{tabularx}
+  \begin{tblr}{width=\linewidth,colspec={cX[c]cX[c]},hline{1-7},vlines,%
+      cell{3-5}{2}={c=3}{c}, cell{7}{1}={c=4}{c},%
+      cell{6}{2}={c=3}{l}}
+    学生姓名&\SWFU@Studname&学生学号&\SWFU@Studid\\
+    专\quad{}业&\SWFU@Subject&指导教师&\SWFU@AdvisorName\\
+    论文题目 &{\SWFU@Prjtitle}&&\\
+    {目前已完\\成任务} & %
+    \begin{tblr}{width=.85\textwidth,colspec={X},row{1}={2cm}{t},row{2}={f}}
+        \SWFU@Prjdone\\
+        \hfill{}是否符合计划进度？\qquad\checked{}是\quad\unchecked{}否\\
+    \end{tblr} &&\\
+    {尚需完成\\的任务} & %
+    \begin{tblr}{width=.85\textwidth,colspec={X},row{1}={2cm}{t},row{2}={f}}
+      \SWFU@Prjtodo\\
+      \hfill{}能否按期完成任务？\qquad\checked{}是\quad\unchecked{}否\\
+    \end{tblr} &&\\
+    {存在的问\\题和解决\\办法} & {\SWFU@Prjproblem} \\%    
+    \mbox{（以上部分由学生填写）}&&&\\
+  \end{tblr}\vspace{-1pt}
+  \begin{titleleft}{指导教师评语}
+    \SWFU@AdvisorComments\par\bigskip%
+    \hfill{}指导教师（签名）：\makebox[3cm][c]{\SWFU@Signature}\par\medskip%
+    \hfill{}\SWFU@Date
+  \end{titleleft}\vspace{-1pt}
+  \begin{tblr}{width=\linewidth,colspec={lccX[c]},hline{2-Z},vlines,%
+      cell{1}{1}={c=4}{c}, cell{8}{1,3}={c=2}{c}, cell{2}{1}={c},%
+    }
+    \mbox{（以下部分由教学院、系、部填写）}&&&\\
+    {评\, 分\, 项\, 目} &最高分值&评分&备\, 注\\
+    指导教师对毕业实习的指导力度&25&&\\
+    毕业论文的实验条件&15&&\\
+    毕业论文的适合度&20&&\\
+    完成论文的进度&15&&\\
+    学生表现&25&&\\
+    总\qquad{}分&&&\\
+  \end{tblr}
   \vskip -1.5pt
-  \begin{tabularx}{\linewidth}{|M{1em}|X|M{1em}|X|}
-    \hline
-    \makecell{教\\[-1ex]研\\[-1ex]室\\[-1ex]意\\[-1ex]见}%
-    & \begin{minipage}[c][4cm]{1.0\linewidth}
+  \begin{tblr}{width=\linewidth,colspec={cXcX},vlines,hlines,%
+      column{1,3}={5mm,m},%
+    }
+    {教研室意见} & %
+    \begin{minipage}[c][3cm]{\linewidth}
+      \vfill{}%
+      教研室负责人：\par%
+      \hfill{}年\qquad{}月\qquad{}日%
+    \end{minipage} & %
+    {学院意见} & %
+    \begin{minipage}[c][3cm]{\linewidth}
       \vfill{}
-      教研室负责人：\par\hfill{}年\qquad{}月\qquad{}日%
-    \end{minipage}      
-    &\makecell{学\\[-1ex]院\\[-1ex]意\\[-1ex]见}%
-    & \begin{minipage}[c][4cm]{1.0\linewidth}
-      \vfill{}
-      学院负责人：\par\hfill{}年\qquad{}月\qquad{}日
-    \end{minipage}\\\hline
-  \end{tabularx}}
+      学院负责人：\par%
+      \hfill{}年\qquad{}月\qquad{}日
+    \end{minipage}\\
+  \end{tblr}}

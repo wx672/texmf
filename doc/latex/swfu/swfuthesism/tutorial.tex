@@ -1,0 +1,143 @@
+\documentclass{swfuthesism}
+
+\usepackage{wx672cn,wx672nerd}
+\addbibresource{paper.bib}
+\addbibresource{ref.bib}
+
+\swfusetup{%
+  Title={怎样用LaTeX撰写一篇双面打印且标题长得没必要的硕士毕业论文},%
+  enTitle={How to write your MSc dissertation with LaTeX},%题目英文
+  Author={\textcolor{red}{\LARGE 🀐🀐🀐}},%作者姓名
+  Signature={\includegraphics[width=3cm]{sig-Harry}},%作者签名
+  enAuthor={Harry Potter},%作者姓名英文
+  AuthorId={3.14159265},%学号
+  Advisor={\textcolor{green}{\LARGE 🀅🀅🀅}},%指导教师
+  AdvisorSig={\includegraphics[width=3cm]{sig-Albus}},%导师签名
+  enAdvisor={You Know Who (Professor)},%指导教师英文
+  AdvisorTitle={教授},%指导教师职称
+  ClsID={TP3.1415},%分类号
+  Month=\the\month, Year=\the\year,%月、年
+  DateA={\the\year/\the\month/\the\day},%提交论文日期
+  DateB={\the\year/\the\month/\the\day},%论文答辩日期
+  DateC={\the\day},%独创性声明页上的日期
+  Subject={🀇🀊🀍🀑🀔🀗🀛🀞🀡},%学科专业
+  enSubject={Whatever, like I care.},%学科专业英文
+  Chairman={\textcolor{red}{\LARGE 🀙🀙🀙}},%答辩委员会主席
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    \LaTeX{}\footnote{\url{https://en.wikipedia.org/wiki/LaTeX}}是一种基于
+  \TeX{}\footnote{\url{https://en.wikipedia.org/wiki/TeX}}文件格式的排版系统，由美国电脑学
+  家莱斯利·兰伯特在20世纪80年代初期开发。利用这种格式，即使用户没有排版和程序设计的知识，也
+  可以充分利用TEX所提供的强大功能，在几天，甚至几小时内生成很多具有书籍质量的印刷品。对于生成复杂表格和数学公式，
+  这一点表现得尤为突出。因此它非常适用于生成高印刷质量的科技和数学类文档。这个系统同样适用
+  于生成从简单如信件到完整如书籍的所有种类的文档\cite{wiki:latexcn}。
+
+  本文对如何利用\LaTeX{}来撰写西南林业大学研究生毕业论文做一个简要的介绍。读者也可以将本文作
+  为毕业论文模板来使用\footnote{本文所使用的毕业论文模板（\texttt{cls}文件），
+    \texttt{tex}源文件，及其它相关文件都可以在下面的网址找
+    到：\url{https://gitee.com/sunyongke/swfu-latex/tree/master/mscthesis}}。
+\end{abstract}
+
+\begin{keyword}
+  \LaTeX{}；西南林业大学；研究生毕业论文模板；教程  
+\end{keyword}
+
+\begin{eabstract}
+  \LaTeX{} is a document preparation system. When writing, the writer uses plain text as
+  opposed to formatted text as users of word processors like Microsoft Word. The writer
+  uses markup tagging conventions to define the general structure of a document (such as
+  article, book, and letter), to stylise text throughout a document (such as bold and
+  italic), and to add citations and cross-references. A \TeX{} distribution such as
+  \TeX{}Live or Mik\TeX{} is used to produce an output file (such as PDF or DVI) suitable
+  for printing or digital distribution. Within the typesetting system, its name is
+  stylised as \LaTeX{}\cite{wiki:latex}.
+
+  This short tutorial shows you how to write an undergraduate thesis in \LaTeX{}. It can
+  also serve as a perfect template to ease your thesis writing\footnote{The class file
+    used for typesetting this thesis, and the \texttt{tex} source of this file can be
+    found at \url{https://gitee.com/sunyongke/swfu-latex/tree/master/mscthesis}.}.
+\end{eabstract}
+
+\begin{ekeyword}
+  \LaTeX{}; \TeX{}; thesis; template; SWFU
+\end{ekeyword}
+
+\frontmatter          
+\tableofcontents     % 目录
+%\listoffigures       % 插图目录
+%\listoflistings
+%\listoftables        % 表格目录
+%\listoffixmes{}
+\cleardoublepage % without this page number gets wrong
+
+\mainmatter{}
+
+\include{chapters/ch1-pre}
+\include{chapters/ch2-quick}
+\include{chapters/ch3-adv}
+\include{chapters/ch4-thesis}
+
+\appendix % 参考文献、指导教师简介、鸣谢、附录
+
+\makebib % 参考文献
+
+% 附录章节放在这里
+\singlespacing
+
+\include{chapters/ch6-spec}
+
+\include{chapters/ch5-app-sw}
+
+\chapter{中文article模板}
+\label{app:article}
+
+\inputminted{latex}{article.tex}
+
+\chapter{毕业论文模板}
+\label{app:thesis}
+
+\inputminted{latex}{thesis-template.tex}
+
+\chapter{\texttt{swfuthesism.cls}文件}
+\label{app:class}
+
+\inputminted{latex}{swfuthesism.cls}
+
+\chapter{\texttt{ref.bib}文件}
+\label{app:bib}
+
+\inputminted{bibtex}{ref.bib}
+
+
+%%% tail pages
+\doublespacing
+
+\begin{authorInfo}
+  某研究生，初从文，三年不中；后习武，校场发一矢，中鼓吏，逐之出；遂学医，有所成。自撰一良方，服之，卒。
+\end{authorInfo}
+
+\begin{advisorInfo}
+  某教授，初从文，三年不中；后习武，校场发一矢，中鼓吏，逐之出；遂学医，有所成。自撰一良方，服之，卒。
+\end{advisorInfo}
+
+\publication{key1,key2,key3,key4,} %获得成果目录
+
+\begin{acknowledgment}
+  感谢美国计算机教授高德纳（Donald Ervin Knuth）编写的功能强大的排版软件\TeX{}。感谢美国计
+  算机科学家莱斯利·兰波特（Leslie Lamport）教授为\TeX{}开发的简单易用的\LaTeX{}宏包。感谢本
+  文作者能有如此多的闲功夫和好心情来饶有兴致地做这样一件不能当饭吃的事情。
+\end{acknowledgment}
+
+\end{document}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -26,34 +26,27 @@
 \LoadClass[zihao=-4,scheme=plain]{ctexart}
 
 \RequirePackage[ % showframe,
-paperwidth=210mm,paperheight=297mm,
-margin=4cm]{geometry}
+a4paper,%
+margin=3cm]{geometry}
 
 \RequirePackage{tabularray}
-% \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % for centering p column
-% \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
-% \newcolumntype{C}{>{\centering\arraybackslash}X}
-% \renewcommand{\arraystretch}{2}
-
-% \newcommand{\mkvspace}[2]{\rule{0pt}{#1}\par{}#2\par{}\rule{0pt}{#1}}%\mkvspace{12ex}{text}
 
 \newcommand{\makeform}{%
   \pagestyle{empty}%
   \begin{center}
-    {\Large\heiti 西南林业大学非考试命题表}
-
-    \bigskip    
+    {\Large\heiti 西南林业大学非考试命题表}\par
+    \bigskip\noindent%
     \begin{tblr}{width=\linewidth, hlines, vlines, colspec={cX[c]cX[c]},%
-          row{1-3}={rowsep=7pt}, row{4}={15cm},%
-          cell{1,2,4}{2}={c=3}{c,font=\kaishu},%
-          cell{3}{2,4}={c,font=\kaishu} }%
-        学年学期 & \SWFU@Term\\
-        考试科目 & {\SWFU@Course}\\
-        考核方式 & \SWFU@Noexam&任课教师&\SWFU@Teacher\\
-        {考核内容\\及要求} &%
-        \begin{tblr}{width=.9\columnwidth,colspec={X}}
-          \SWFU@Details\\
-        \end{tblr}\\
-     \end{tblr}
-   \end{center}
- }
+        row{1-3}={rowsep=7pt}, row{4}={18cm},%
+        cell{1,2,4}{2}={c=3}{c,font=\kaishu},%
+        cell{3}{2,4}={c,font=\kaishu} }%
+      学年学期 & \SWFU@Term\\
+      考试科目 & {\SWFU@Course}\\
+      考核方式 & \SWFU@Noexam&任课教师&\SWFU@Teacher\\
+      {考核内容\\及要求} &%
+      \begin{tblr}{width=.7\columnwidth,colspec={X}}
+        \SWFU@Details\\
+      \end{tblr}\\
+    \end{tblr}
+  \end{center}
+}

@@ -4,6 +4,7 @@
 \newfontfamily\nerd{FiraCode Nerd Font Mono}%DejaVuSansMono Nerd Font
 \newfontfamily\symbola{Symbola}%
 \newfontfamily\kbd{Linux Biolinum Keyboard O}
+\newfontfamily\lbkey{Linux Biolinum Keyboard O}
 \newfontfamily\noto{Noto Sans Mono CJK SC}
 
 \usepackage{biolinum,newunicodechar}
@@ -26,9 +27,6 @@
 \newunicodechar{}{\kbd }%\newcommand\kfthree{\kbd }
 \newunicodechar{}{\kbd }%\newcommand\kffour{\kbd  }
 \newunicodechar{}{\kbd }%\newcommand\kffive{\kbd  }
-\newcommand\kdash{\kbd -}
-\newcommand\kbar{\kbd |}
-\newcommand\Ctrla{\LKeyCtrlX{A}}
 
 %\newcommand\pinyin{\includegraphics[width=1em]{pin}}
 \newunicodechar{漢}{{\normalsize\noto 漢}}
@@ -57,25 +55,49 @@
 
 %       
 
+\newcommand\kdash{\kbd -}
+\newcommand\kbar{\kbd |}
+\newcommand\Ctrl[1]{\LKeyCtrlX{#1}} % need biolinum
+\newcommand\Meta[1]{\LKeyAltX{#1}}
+\newcommand\Shift[1]{\LKeyShift{#1}}
+\newcommand\ShiftSpace{\LKeyShift{}+\LKeySpace}
+\newcommand\Super[1]{\LKeyWin{}+\LKey{#1}}
+\newcommand\SuperTab{\LKeyWin{}+\LKeyTab}
+\newcommand\SuperBar{\LKeyWin{}+{\kbar}}
+\newcommand\SuperDash{\LKeyWin{}+{\kdash}}
+\newcommand\SuperBack{\LKeyWin{}+\LKeyCtrl+\LKeyBack}
+\newcommand\SuperEsc{\LKeyWin{}+\LKeyEsc}
+\newcommand\SuperF[1]{\LKeyWin{}+\LKeyF{#1}}
+
+\newcommand\Ctrla[1]{\LKeyCtrlX{a}\;\;\LKey{#1}}% e.g. Ctrl-a c
+\newcommand\CtrlaF[1]{\LKeyCtrlX{a}\;\;\LKeyF{#1}}% e.g. Ctrl-a F1
+\newcommand\CtrlaDash{\LKeyCtrlX{a}\;\;\kdash}% e.g. Ctrl-a c
+\newcommand\CtrlaBar{\LKeyCtrlX{a}\;\;\kbar}% e.g. Ctrl-a c
+% \newcommand\Ctrlx[1]{\LKeyCtrlX{x}\;\;\LKey{#1}}% e.g. Ctrl-x o
+% \newcommand\Ctrlh[1]{\LKeyCtrlX{h}\;\;\LKey{#1}}% e.g. Ctrl-h t
+% \newcommand\Ctrlc[1]{\LKeyCtrlX{c}\;\;\LKey{#1}}% e.g. Ctrl-c {
+% \newcommand\Ctrlcc[1]{\LKeyCtrlX{c}\;\;\LKeyCtrlX{#1}}% e.g. Ctrl-c Ctrl-e
+% \newcommand\Ctrlxc[1]{\LKeyCtrlX{x}\;\;\LKeyCtrlX{#1}}% e.g. Ctrl-x Ctrl-f
+
 \begin{document}
 \begin{center}
   \colorbox{yellow}{\bfseries Window operations (Stumpwm)} \\[1ex]
   \begin{tblr}{colspec={rl|[gray9]rl|[gray9]rl},
       column{odd}={font=\LARGE,fg={Green}}}
-     & +       &  & +\kbar    &   & + \\
-     & +{\kbd j} &  & +\kdash   &   & +{\kbd L} \\
-     & +{\kbd e} & 漢 & +   & 🏃 & + \\
-    慎 & +{\kbd q} &  & +{\kbd t} &   & + \\
+      & \SuperTab  &   & \SuperBar   &   & \SuperBack   \\
+      & \Super{j}  &   & \SuperDash  &   & \Super{l}    \\
+      & \Super{e}  & 漢 & \ShiftSpace & 🏃 & \SuperEsc    \\
+    慎 & \Super{q}  &   & \Super{t}   &   & \SuperF{1}   \\
   \end{tblr}
 \end{center}
 \begin{center}
-  \colorbox{yellow}{\bfseries Terminal operations (Tmux)} \\[1ex]
+  \colorbox{yellow}{\bfseries Terminal operations (Tmux)}  \\[1ex]
   \begin{tblr}{colspec={rl|[gray9]rl|[gray9]rl},
     column{odd}={font=\LARGE,fg={Green}}}
-     & \Ctrla\;\kbd{c} &  & \Ctrla\;\kdash  &  & \Ctrla\;\kbar   \\
-     & \Ctrla\;\kbd{a} &  & \Ctrla\;\kbd{k} &  & \Ctrla\;\kbd{h} \\
-     & \Ctrla\;\kbd{n} &  & \Ctrla\;\kbd{j} &  & \Ctrla\;\kbd{L} \\
-     & \Ctrla\;      &  & \Ctrla\;      &  & \Ctrla\;       \\
+      & \Ctrla{c}  &   & \CtrlaDash  &   & \CtrlaBar \\
+      & \Ctrla{a}  &   & \Ctrla{k}   &   & \Ctrla{h} \\
+      & \Ctrla{n}  &   & \Ctrla{j}   &   & \Ctrla{l} \\
+      & \CtrlaF{1} &   & \CtrlaF{2}  &   & \CtrlaF{3}\\
   \end{tblr}%\par
 %\hspace{-24em}{\tiny * Config file: \texttt{$\sim$/.tmux.conf}}
 \end{center}
