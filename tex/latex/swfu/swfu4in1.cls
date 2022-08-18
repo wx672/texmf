@@ -8,6 +8,32 @@
 
 \LoadClass[scheme=chinese]{ctexart}
 
+\ctexset{%
+  section={%
+    format={\kaishu\zihao{-4}\bfseries},%
+    number={\chinese{section}、},%
+    beforeskip=1.2ex,%
+    afterskip=1.2ex,%
+    aftername=\hspace{1ex}%
+  },%
+  subsection={%
+    format={\zihao{-4}\bfseries },%
+    number={\arabic{subsection}. },%
+    beforeskip=1.2ex,%
+    afterskip=1.2ex,%
+    aftername=\hspace{1ex}%
+  },%
+  subsubsection={%
+    format={\songti\zihao{-4}},%
+    name={,)\,},%
+    number={\arabic{subsubsection}\)},%
+    beforeskip=2pt,afterskip=2pt,%
+    aftername=\hspace{2pt}%
+  }
+}
+
+\setcounter{secnumdepth}{3}
+
 %\newfontfamily\nerd{FiraCode Nerd Font Mono}
 \newfontfamily\nerd{Noto Sans Symbols2}
 % \RequirePackage{newunicodechar}
@@ -36,6 +62,8 @@
   AdvisorbFrom/.store in   = \SWFU@AdvisorbFrom, %（开题报告）指导教师b工作单位
   AdvisoraFrom = {大数据与智能工程学院},%a
   AdvisorbFrom =,%b  
+  DeptAdmin/.store in = \SWFU@DeptAdmin, DeptAdmin=, %(开题报告) 教研室负责人
+  SchoolAdmin/.store in = \SWFU@SchoolAdmin, SchoolAdmin=, %(开题报告) 教学院系部负责人
   Studid/.store in        = \SWFU@Studid,  % 学号
   Subject/.store in       = \SWFU@Subject, Subject={计算机科学与技术},% 专业
   Grade/.store in         = \SWFU@Grade,   % 年级
@@ -100,6 +128,8 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false,%
 url=false,doi=false,isbn=false]{biblatex}
 
+\renewcommand{\bibfont}{\zihao{5}\songti}
+
 %\RequirePackage{wx672tcb} % tcolorbox
 \RequirePackage[most]{tcolorbox}
 \usetikzlibrary{calc}
@@ -117,7 +147,7 @@ url=false,doi=false,isbn=false]{biblatex}
     \draw[line width=.2pt] (frame.north west)--(frame.north east);},%
 }
 
-% mainly for the proposal part of swfu3in1
+% for the proposal part
 \newcounter{main}
 \newtcolorbox[use counter=main]{mainbodybox}[1]{%
   boxrule=.4pt,titlerule=0pt,%
@@ -127,7 +157,7 @@ url=false,doi=false,isbn=false]{biblatex}
   },%
   title=\thetcbcounter. #1}
 
-% mainly for the taskspec part in swfu3in1
+% for the taskspec part
 % #1 - text width;
 % #2 - title text.
 \newtcolorbox{Titleleft}[2][2em]{% 
@@ -167,7 +197,7 @@ url=false,doi=false,isbn=false]{biblatex}
     \begin{large}
       \begin{minipage}{1.0\linewidth}
         \begin{tblr}{width=\textwidth, colspec={@{}rX@{}}}
-          \makebox[5em][s]{论文题目}%
+          \makebox[7em][s]{论文（设计）题目}%
           &\makebox[0pt][t]{%
             \begin{minipage}[t]{30em}
               \begin{center}
@@ -181,8 +211,9 @@ url=false,doi=false,isbn=false]{biblatex}
       \vskip 2cm
       \begin{minipage}{.8\linewidth}
         \begin{center}
-          \begin{tblr}{width=\textwidth,colspec={@{}rX[c]@{}},%
-              rows={12mm},hline{2-Z}={2}{abovespace=1pt}}
+          \begin{tblr}{%
+              colspec={@{}rX[c]@{}},%
+              rows={12mm,belowsep=-1pt},hline{2-Z}={2}{solid}}
             \makebox[7em][s]{专业名称}%
             & \SWFU@Subject\\[-1ex]\cline{2-2}
             \makebox[7em][s]{年级}%
@@ -274,17 +305,23 @@ url=false,doi=false,isbn=false]{biblatex}
     \singlespacing\noindent
     \begin{tblr}{width=\linewidth,
         colspec={c|X|c|X},rowspec={Q[m]}}
-      {教\\研\\室\\意\\见}%
-      & \begin{minipage}[c][3.5cm]{1.0\linewidth}
-        教研室负责人：\par%
+      {教\\研\\室\\意\\见} &%
+      \begin{minipage}[c][3.5cm]{1.0\linewidth}
+        教研室负责人：%
+        \begin{center}
+          \SWFU@DeptAdmin
+        \end{center}
         \vfill
-        \hfill{}年\qquad{}月\qquad{}日%
+        \hfill\SWFU@Date%{}年\qquad{}月\qquad{}日%
       \end{minipage}
-      & {教\\学\\院\\系\\部\\意\\见}%
-      & \begin{minipage}[c][3.5cm]{1.0\linewidth}
-        教学院系部负责人：\par%
+      & {教\\学\\院\\系\\部\\意\\见} &%
+      \begin{minipage}[c][3.5cm]{1.0\linewidth}
+        教学院系部负责人：
+        \begin{center}
+          \SWFU@SchoolAdmin
+        \end{center}
         \vfill
-        \hfill{}年\qquad{}月\qquad{}日          
+        \hfill{}\SWFU@Date%年\qquad{}月\qquad{}日          
       \end{minipage}\\
     \end{tblr}    
   \end{tcolorbox}%

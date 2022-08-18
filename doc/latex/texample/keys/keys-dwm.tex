@@ -1,0 +1,111 @@
+\documentclass[varwidth,crop]{standalone}
+
+\usepackage{fontspec}
+\newfontfamily\nerd{FiraCode Nerd Font Mono}%DejaVuSansMono Nerd Font
+\newfontfamily\symbola{Symbola}%
+\newfontfamily\kbd{Linux Biolinum Keyboard O}
+\newfontfamily\lbkey{Linux Biolinum Keyboard O}
+\newfontfamily\noto{Noto Sans Mono CJK SC}
+
+\usepackage{biolinum,newunicodechar}
+
+\usepackage{graphicx}
+
+\usepackage[table,svgnames]{xcolor}
+\usepackage{tabularray}
+\renewcommand{\arraystretch}{1.5}
+
+\newunicodechar{}{{\kbd }}         % \newcommand\ksuper{\LKeyWin}
+\newunicodechar{}{\kbd }      % \newcommand\kctrl{\LKeyCtrl}
+\newunicodechar{}{\kbd }        % \newcommand\kesc{\LKeyEsc}
+\newunicodechar{}{\kbd }         % \newcommand\ktab{\LKeyTab}
+\newunicodechar{}{\kbd }         % \newcommand\kenter{\LKeyEnter}
+\newunicodechar{}{{\tiny\kbd }} % \newcommand\kspace{\LKeySpace}
+\newunicodechar{}{{\kbd }}         % \newcommand\kshift{\LKeyShift}
+\newunicodechar{}{\kbd }%\newcommand\kfone{\kbd   }
+\newunicodechar{}{\kbd }%\newcommand\kftwo{\kbd   }
+\newunicodechar{}{\kbd }%\newcommand\kfthree{\kbd }
+\newunicodechar{}{\kbd }%\newcommand\kffour{\kbd  }
+\newunicodechar{}{\kbd }%\newcommand\kffive{\kbd  }
+
+%\newcommand\pinyin{\includegraphics[width=1em]{pin}}
+\newunicodechar{漢}{{\normalsize\noto 漢}}
+\newcommand\chrome{\textcolor{orange}{\nerd \;}}
+\newunicodechar{慎}{\nerd 慎}\newcommand\browser{{\nerd 慎}}
+\newunicodechar{}{\nerd }%\newcommand\terminal{{\nerd \;}}
+\newunicodechar{}{\nerd }%\newcommand\editor{{\nerd \;}}%  e7a3,  f0f6, {\LARGE ✍}
+\newunicodechar{}{\nerd }%\newcommand\lswin{{\nerd    \;}}% f0cb,
+\newunicodechar{🏃}{\symbola 🏃}%\newcommand\runit{{\symbola 🏃}} %  f96d 
+\newunicodechar{}{\nerd }%\newcommand\office{{\nerd   \;}}
+\newunicodechar{}{\nerd }%\newcommand\help{\textcolor{red}{\nerd \;}}
+\newunicodechar{☠}{\nerd ☠}%\newcommand\killit{{\LARGE\nerd ☠}}
+\newunicodechar{}{\nerd }%\newcommand\close{{\nerd }}
+\newunicodechar{}{\nerd }%\newcommand\switch{{\nerd \;}}
+\newunicodechar{}{\nerd }%\newcommand\swap{{\nerd \;}}
+\newunicodechar{}{\nerd }%\newcommand\zoom{{\nerd \;}} %  f54b, 
+\newunicodechar{}{\nerd }%\newcommand\minimize{{\nerd \;}}
+\newunicodechar{}{\nerd }%\newcommand\create{{\nerd   \;}}
+\newunicodechar{}{\nerd }%\newcommand\coding{{\nerd   \;}}
+\newunicodechar{}{\nerd }%\newcommand\tmuxhsplit{{\nerd \;}}
+\newunicodechar{}{\nerd }%\newcommand\tmuxvsplit{{\nerd \;}}
+\newunicodechar{}{\nerd }%\newcommand\tmuxup{{\nerd     }}
+\newunicodechar{}{\nerd }%\newcommand\tmuxdown{{\nerd   }}
+\newunicodechar{}{\nerd }%\newcommand\tmuxleft{{\nerd   }}
+\newunicodechar{}{\nerd }%\newcommand\tmuxright{{\nerd  }}
+
+%       
+
+\newcommand\kdash{\kbd -}
+\newcommand\kbar{\kbd |}
+\newcommand\Ctrl[1]{\LKeyCtrlX{#1}} % need biolinum
+\newcommand\Meta[1]{\LKeyAltX{#1}}
+\newcommand\Shift[1]{\LKeyShift{#1}}
+\newcommand\ShiftSpace{\LKeyShift{}+\LKeySpace}
+\newcommand\Super[1]{\LKeyWin{}+\LKey{#1}}
+\newcommand\SuperTab{\LKeyWin{}+\LKeyTab}
+\newcommand\SuperBar{\LKeyWin{}+{\kbar}}
+\newcommand\SuperDash{\LKeyWin{}+{\kdash}}
+\newcommand\SuperBack{\LKeyWin{}+\LKeyCtrl+\LKeyBack}
+\newcommand\SuperEsc{\LKeyWin{}+\LKeyEsc}
+\newcommand\SuperSpace{\LKeyWin{}+\LKeySpace}
+\newcommand\SuperF[1]{\LKeyWin{}+\LKeyF{#1}}
+
+\newcommand\Ctrla[1]{\LKeyCtrlX{a}\;\;\LKey{#1}}% e.g. Ctrl-a c
+\newcommand\CtrlaF[1]{\LKeyCtrlX{a}\;\;\LKeyF{#1}}% e.g. Ctrl-a F1
+\newcommand\CtrlaDash{\LKeyCtrlX{a}\;\;\kdash}% e.g. Ctrl-a c
+\newcommand\CtrlaBar{\LKeyCtrlX{a}\;\;\kbar}% e.g. Ctrl-a c
+% \newcommand\Ctrlx[1]{\LKeyCtrlX{x}\;\;\LKey{#1}}% e.g. Ctrl-x o
+% \newcommand\Ctrlh[1]{\LKeyCtrlX{h}\;\;\LKey{#1}}% e.g. Ctrl-h t
+% \newcommand\Ctrlc[1]{\LKeyCtrlX{c}\;\;\LKey{#1}}% e.g. Ctrl-c {
+% \newcommand\Ctrlcc[1]{\LKeyCtrlX{c}\;\;\LKeyCtrlX{#1}}% e.g. Ctrl-c Ctrl-e
+% \newcommand\Ctrlxc[1]{\LKeyCtrlX{x}\;\;\LKeyCtrlX{#1}}% e.g. Ctrl-x Ctrl-f
+
+\begin{document}
+\begin{center}
+  \colorbox{yellow}{\bfseries Window operations (Dwm)}    \\[1ex]
+  \begin{tblr}{colspec={rl|[gray9]rl|[gray9]rl},
+      column{odd}={font=\LARGE,fg={Green}}}
+       & \Super{t}  &  & \Super{j}   & 漢 & \ShiftSpace \\
+     慎 & \Super{q}  &  & \SuperTab   &   & \SuperF{1}  \\
+       & \Super{e}  &  & \Super{L}  &    &             \\
+     🏃 & \SuperEsc  &  & \SuperSpace &    &             \\
+  \end{tblr}
+\end{center}
+\begin{center}
+  \colorbox{yellow}{\bfseries Terminal operations (Tmux)} \\[1ex]
+  \begin{tblr}{colspec={rl|[gray9]rl|[gray9]rl},
+    column{odd}={font=\LARGE,fg={Green}}}
+       & \Ctrla{c}  &  & \CtrlaDash  &   & \CtrlaBar   \\
+       & \Ctrla{a}  &  & \Ctrla{k}   &   & \Ctrla{h}   \\
+       & \Ctrla{n}  &  & \Ctrla{j}   &   & \Ctrla{l}   \\
+       & \CtrlaF{1} &  & \CtrlaF{2}  &   & \CtrlaF{3}  \\
+  \end{tblr}%\par
+%\hspace{-24em}{\tiny * Config file: \texttt{$\sim$/.tmux.conf}}
+\end{center}
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -6,26 +6,30 @@
 \pgfkeys{
   Term/.store in       = \TT@Term,%
   Teacher/.store in    = \TT@Teacher,  Teacher = {WANG Xiaolin},%
-  Daywidth/.store in   = \TT@Daywidth, Daywidth = 45mm,%
+  Daywidth/.store in   = \TT@Daywidth, Daywidth = 4cm,%
   Hourlength/.store in = \TT@Hourlength, Hourlength = 1cm,%
+  Last/.store in = \TT@Last, Last=18,% bottom line
 }
 
 \RequirePackage[scheme=plain]{ctex}
 
 \usetikzlibrary{calc,positioning,patterns,chains}
 
+% Usage:   \class[#1]{#2}{#3}{#4}{#5}{#6}
+% Example: \class{clsfull,lecture}{1,16}{OS}{1 -- 16}{3-404}
 \newcommand{\class}[6][5/3]{%
   % #1 - default to 5/3      #3 - (day,time)   #5 - weeks
   % #2 - lecture/lab/office  #4 - course name  #6 - room
-  \node[#2,minimum height=#1*\TT@Hourlength] at (#3) {#4\\{\scriptsize Weeks: #5}\\{\small #6}};%
+  % minimum height is the class-length
+  \node[#2,minimum width=\TT@Daywidth,minimum height=#1*\TT@Hourlength] at (#3) {#4\\{\scriptsize #6}\\{\scriptsize Weeks: #5}};%
 }%
 
 \tikzset{%
-  help lines/.style={very thin,dotted},%
-  day/.style={on chain,rectangle, fill=gray!20, node font=\bfseries\Large,%
-    minimum width=\TT@Daywidth, minimum height=2ex},%
-  clsfull/.style={rectangle, anchor=north west, rounded corners=10pt,%
-    minimum width=.99*\TT@Daywidth, align=center, text width=.99*\TT@Daywidth},%
+  % help lines/.style={thick},%very thin, dotted
+  day/.style={on chain, rectangle, node font=\bfseries\Large,%fill=gray!20,
+    minimum height=2ex},%minimum width=\TT@Daywidth, 
+  clsfull/.style={rectangle, anchor=north west, rounded corners=25pt,%draw,%
+    minimum width=.9*\TT@Daywidth, align=center, text width=.9*\TT@Daywidth},%
   lecture/.style={fill=red!30},%
   lab/.style={fill=Green!20},%
   lecturelab/.style={left color=red!30,right color=Green!20},%
@@ -39,26 +43,33 @@
 {%
   \begin{tikzpicture}[start chain,%
     x=\TT@Daywidth, y=-\TT@Hourlength,%
-    node distance=0cm, outer sep=0pt, inner sep=1pt]%
+    node distance=0cm, outer sep=0pt, inner sep=2pt]%
 
     % grids
-    \draw[help lines] (1,8) grid[xstep=\TT@Daywidth,ystep=2*\TT@Hourlength] (6,22);%
+    \draw[help lines] (1,8) grid[xstep=\TT@Daywidth,ystep=2*\TT@Hourlength] (6,\TT@Last);%
 
     % time ticks
-    \foreach \h in {8,9,...,22} \draw [ultra thin] (1,\h) -- ++(-5pt,0);% Hours
-    \foreach \hh in {8.5,9.5,...,21.5} \draw [ultra thin] (1,\hh) -- ++(-3pt,0);% Half hours
+    \foreach \h in {8,9,...,\TT@Last}% Hour ticks
+    {
+      \draw [ultra thin] (1,\h) -- ++(-5pt,0)%
+      node[left=3pt,font=\scriptsize] {\h:00};%
+    }
+    
+    \foreach \hh in {8.5,9.5,...,\TT@Last}% Half hour ticks
+    {
+      \draw [ultra thin] (1,\hh) -- ++(-3pt,0);%
+    }
 
-    \foreach \h/\htext in {%
-      8/{08:00},9/{09:00},10/{10:00},11/{11:00},12/{12:00},13/{13:00},14/{14:00},15/{15:00},%
-      16/{16:00},17/{17:00},18/{18:00},19/{19:00},20/{20:00},21/{21:00},22/{22:00}%,23/{23:00}%
-    } \draw [ultra thin] (1,\h) -- ++(-3pt,0) node[left=3pt,font=\scriptsize] {\htext};%
-
+    % \foreach \h in {8,9,...,\TT@Last}
+    % \draw [ultra thin] (1,\h) - ++(-3pt,0)
+    % node[left=3pt,font=\scriptsize] {\h:00};%
+    
     % Header line (week days)
-    \node [day, anchor=south west,%
-    label={above,xshift=2em:{\TT@Teacher,\quad{}\TT@Term}}]%
-    at (1,8) {Mon};%
-    \node [day] {Tue};%
-    \node [day] {Wed};%, label={12:{\TT@Teacher}}
-    \node [day] {Thu};%
-    \node [day] {Fri};%
+    \node [day, anchor=center,%south west,%
+    label={above,xshift=2em:{\TT@Teacher,\quad\TT@Term}}]%
+    at (1.5,7.75) {Mon};%
+    \node [day, anchor=center] at (2.5,7.75) {Tue};%
+    \node [day, anchor=center] at (3.5,7.75) {Wed};%, label={12:{\TT@Teacher}}
+    \node [day, anchor=center] at (4.5,7.75) {Thu};%
+    \node [day, anchor=center] at (5.5,7.75) {Fri};%
   }{\end{tikzpicture}}%

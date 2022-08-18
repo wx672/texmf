@@ -15,7 +15,7 @@
 
 \begin{enumerate}
 \item \Super{e}，如果你的系统配置和我的一样，那么只要按下\Super{e}键，Emacs窗口就
-  出现在你面前了，而且（感谢Sawfish）是全屏的；
+  出现在你面前了，而且（感谢dwm）是全屏的；
 \item \Ctrlxc{f}，开始编辑一个新文件。这时，在Emacs窗口的最下面（也就是mini buffer里）有提
   示，输入你要编辑的文件的名字，也就是\texttt{hello.c}，然后按\LKeyEnter{}（回车键），或者\Ctrl{j}，其
   实，后面你会发现，\Ctrl{j}带自动缩进，比按\LKeyEnter{}更方便；
@@ -53,30 +53,20 @@ Hello, world!
 \end{latexcode}
   \end{codeblock}
 \item 存盘：\Ctrlxc{s}
-\item 编译：\texttt{xelatex hello.tex}
+\item 编译：\texttt{lualatex hello.tex}
 \item 看结果：\texttt{xpdf hello.pdf}
 \end{enumerate}
 
-怎么样？ \texttt{hello.c}和\texttt{hello.tex}的编辑过程没什么分别吧。只要把Emacs用熟，触
-类旁通，不管写什么程序，都是这么个过程。你
-\begin{itemize}
-\item 不必学习VC去写C/C++；
-\item 不必学习eclipse去写Java；
-\item 不必学习MS-Word去写报告、幻灯片；
-\item 不必学习……
-\end{itemize}
-一句话，“Everything Emacs”，用程序员的方式做程序员的事情，你可以省下大量不必要的学习时间。
-人生苦短，何必让你的生活被 VC/eclipse/MS-Word 搞得头昏脑胀呢？ 简单而强大，就是计科专业和非
-专业学生所应有的不同。如果你对Emacs操作还很陌生，那么现在就打开Emacs，\Ctrlh{t}，重
-温一下那些基本操作吧。
+怎么样，\texttt{hello.c}和\texttt{hello.tex}的编辑过程没什么分别吧？实
+际上，用\LaTeX{}写论文就是“比编程更简单的编程”。只要把Emacs用熟，触类旁
+通，不管写什么程序，都是这么个过程。如果你对Emacs操作还很陌生，那么现在
+就打开Emacs，\Ctrlh{t}，重温一下那些基本操作吧。
 
 \subsection{什么是 \Ctrlxc{f}？}
 
-% 「如果你爱他，逼着他用我的桌面环境；如果你恨他，逼着他用我的桌面环境。因为这里没有鼠标
-% ！」
-使用Emacs是可以（而且应该）完全抛开鼠标的。对于初次上手的人，抛开鼠标就像病人抛开拐杖一
-样痛苦。但只有不依赖拐杖的人才是健康的，不是吗？  
-现在，你终于有了走向健康生活的冲动，那就开始吧。简短截说，
+使用Emacs是可以（而且应该）完全抛开鼠标的。对于初次上手的人，抛开鼠标就
+像病人抛开拐杖一样痛苦。但只有不依赖拐杖的人才是健康的，不是吗？  现在，
+你终于有了走向健康生活的冲动，那么就迎着朝阳，开始敲键盘吧！简短截说，
 \begin{enumerate}
 \item 先把你的双手在标准键盘上放好。然后，
 \item 左手小指稍向左移，按在\LKeyCapsLock{}(CapsLock)键上\footnote{如果你的系统配置和我一
@@ -937,14 +927,14 @@ PDF文件中我们会看到“\cite{biblatex}”。至于为什么是“6”而�
 在上面的两步中，我们分别准备好了\texttt{.bib}和\texttt{.tex}文件，现在调用\texttt{latexmk}来编
 译一下就行了。
 
-前面我们都是用\texttt{xelatex}编译\texttt{.tex}文件，从来没提过\texttt{latexmk}。其实，不
+前面我们都是用\texttt{lualatex}编译\texttt{.tex}文件，从来没提过\texttt{latexmk}。其实，不
 用\texttt{latexmk}当然也可以完成文件的编译，具体步骤就是：
 \vspace{-3ex}
 \begin{singlespace}
   \begin{enumerate}
-  \item \texttt{xelatex texfilename}
+  \item \texttt{lualatex texfilename}
   \item \texttt{biber texfilename}
-  \item \texttt{xelatex texfilename}
+  \item \texttt{lualatex texfilename}
   \item 也许还要再执行一次上一行命令
   \end{enumerate}
 \end{singlespace}
@@ -954,7 +944,7 @@ PDF文件中我们会看到“\cite{biblatex}”。至于为什么是“6”而�
 \begin{codeblock}[.9]
 \begin{shellcode}
 $pdf_mode = 1; $postscript_mode = $dvi_mode = 0;
-$pdflatex = 'xelatex -interaction=nonstopmode -8bit --shell-escape %O %S';
+$pdflatex = 'lualatex -interaction=nonstopmode -8bit --shell-escape %O %S';
 
 $bibtex_use = 1;
 $biber = 'biber --debug %O %S';

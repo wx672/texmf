@@ -1,0 +1,31 @@
+\documentclass{timetable}
+
+\begin{document}
+
+\pgfkeys{
+  Term={2022 -- 2023 -- 01},%
+  Daywidth=32mm,%
+  % Teacher={Wang Xiaolin},
+}
+
+\begin{timetable}
+  \class{clsfull,lecture}{1,16}{OS}{1 -- 16}{3-404} % 
+  \class{clsfull,lecturelab}{2,8}{OS | OS Lab}{1 -- 16}{3-404 (o) | J-219 (e)} %
+  % 1-8
+  \class{office,clsfull}{1,10}{Net}{1 -- 8}{4-603} % 
+  \class{office,clsfull}{1,14}{Net Lab}{1 -- 8}{J-219} % 
+  \class{office,clsfull}{2,10}{Net}{1 -- 8}{4-603} %
+  \class{office,clsfull}{3,14}{Linux}{1 -- 8}{J-219}%
+  \class{office,clsfull}{5,14}{Linux}{1 -- 8}{J-219}%
+  % 9-16
+  \class{clsfull,lecture}{2,14}{Net}{9 -- 16}{4-406}%
+  \class{clsfull,lab}{2,16}{Net Lab}{9 -- 16}{J-219}%
+  \class{clsfull,lecture}{4,16}{Net}{9 -- 16}{4-406}%
+\end{timetable}
+
+\end{document}
+  
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
