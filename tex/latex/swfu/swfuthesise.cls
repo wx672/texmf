@@ -32,6 +32,12 @@
 \setsansfont{Liberation Sans}
 \setmonofont{Liberation Mono}
 
+\RequirePackage{newunicodechar}
+\newunicodechar{✓}{{\symbola ✓}}%
+\newunicodechar{✔}{{\dejavu ✔}}%checkmark
+\newfontfamily\purisa{Purisa}
+\newfontfamily\symbola{Symbola}
+
 % \ctexset{%
 %   chapter/name = {},%
 %   chapter/number = {\thechapter},%
@@ -204,8 +210,14 @@ url=false,doi=false,isbn=false]{biblatex}
 
 \newminted{c}{} \newminted{shell}{} \newminted{latex}{} \newminted{bibtex}{}
 \newminted{gas}{} \newminted{nasm}{} \newminted{python}{}
+\newminted{php}{} \newminted{js}{}
 
 \newmint[csingle]{c}{linenos=false,frame=topline,framesep=3pt,}
+
+\newmintedfile[phpfile]{php}{%\phpfile{filepath}
+  baselinestretch=1,linenos,breaklines,autogobble}%,fontfamily=FiraCode
+\newmintedfile[jsfile]{javascript}{%\jsfile{filepath}
+  baselinestretch=1,linenos,breaklines,autogobble}%,fontfamily=FiraCode
 
 % code listing across pages
 \newenvironment{longlisting}{\captionsetup{type=listing}%

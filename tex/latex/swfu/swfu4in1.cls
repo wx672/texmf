@@ -45,42 +45,67 @@
 \RequirePackage{pgfkeys}
 
 \pgfkeys{%
-  Advisora/.store in       = \SWFU@Advisora,       Advisora={王晓林}, % 指导教师a
-  Advisorb/.store in       = \SWFU@Advisorb,       Advisorb=,        % 指导教师b
-  AdvisoraTitle/.store in  = \SWFU@AdvisoraTitle,  AdvisoraTitle={讲师}, % 指导教师a职称
-  AdvisorbTitle/.store in  = \SWFU@AdvisorbTitle,  AdvisorbTitle=,  % 指导教师b职称
-  AdvisoraSig/.store in    = \SWFU@AdvisoraSig,
-  AdvisoraSig={\includegraphics[width=3cm]{Albus}},    % 指导教师a签名
-  AdvisorbSig/.store in    = \SWFU@AdvisorbSig,    AdvisorbSig=,    % 指导教师b签名
-  AdvisoraGender/.store in = \SWFU@AdvisoraGender, AdvisoraGender={男}, % 指导教师a性别
-  AdvisorbGender/.store in = \SWFU@AdvisorbGender, AdvisorbGender=, % 指导教师b性别
-  AdvisoraAge/.store in    = \SWFU@AdvisoraAge,    AdvisoraAge={53}, % 指导教师a年龄
-  AdvisorbAge/.store in    = \SWFU@AdvisorbAge,    AdvisorbAge=,    % 指导教师b年龄
-  AdvisoraDegree/.store in = \SWFU@AdvisoraDegree, AdvisoraDegree={硕士}, % 指导教师a学位
-  AdvisorbDegree/.store in = \SWFU@AdvisorbDegree, AdvisorbDegree=, % 指导教师b学位
-  AdvisoraFrom/.store in   = \SWFU@AdvisoraFrom, %（开题报告）指导教师a工作单位
-  AdvisorbFrom/.store in   = \SWFU@AdvisorbFrom, %（开题报告）指导教师b工作单位
-  AdvisoraFrom = {大数据与智能工程学院},%a
-  AdvisorbFrom =,%b  
-  DeptAdmin/.store in = \SWFU@DeptAdmin, DeptAdmin=, %(开题报告) 教研室负责人
-  SchoolAdmin/.store in = \SWFU@SchoolAdmin, SchoolAdmin=, %(开题报告) 教学院系部负责人
-  Studid/.store in        = \SWFU@Studid,  % 学号
-  Subject/.store in       = \SWFU@Subject, Subject={计算机科学与技术},% 专业
-  Grade/.store in         = \SWFU@Grade,   % 年级
-  StudSignature/.store in = \SWFU@StudSignature,%（任务书）学生签名
-  TaskDate/.store in = \SWFU@TaskDate, TaskDate={2021年11月12日},%（任务书）任务下达日期
-  SubmitDate/.store in = \SWFU@SubmitDate, SubmitDate={2022年4月25日},%（任务书）学生应送交毕业论文日期
-  StudSignature           ={\includegraphics[width=25mm]{Harry}},%
-  School/.store in        = \SWFU@School,   %（实习计划表）学生所属学院
-  School = {大数据与智能工程学院},%
-  Gyear/.store in = \SWFU@Gyear, Gyear = \the\year,%（任务书、实习计划表）届
-  % Year/.store in  = \SWFU@Year, %（开题报告、任务书）填表、签字时间（年）
-  % Month/.store in = \SWFU@Month,%（开题报告、任务书）填表、签字时间（月）
-  Date/.store in  = \SWFU@Date, Date={\today}, %（开题报告、任务书）填表、签字时间（年、月、日）
-  PrjFrmA/.store in  = \SWFU@PrjFrmA, PrjFrmA={\unchecked{}},   %科研项目
-  PrjFrmB/.store in  = \SWFU@PrjFrmB, PrjFrmB={\unchecked{}},   %社会实践
-  PrjFrmC/.store in  = \SWFU@PrjFrmC, PrjFrmC={\unchecked{}},   %大学生创新创业项目
-  PrjFrmD/.store in  = \SWFU@PrjFrmD, PrjFrmD={\unchecked{}},   %其它来源
+        Prjtitle/.store in = \SWFU@Prjtitle, %论文题目
+        Advisora/.store in = \SWFU@Advisora, %指导教师a
+        Advisorb/.store in = \SWFU@Advisorb, %指导教师b
+   AdvisoraTitle/.store in = \SWFU@AdvisoraTitle, %指导教师a职称
+   AdvisorbTitle/.store in = \SWFU@AdvisorbTitle, %指导教师b职称
+     AdvisoraSig/.store in = \SWFU@AdvisoraSig, % 指导教师a签名
+     AdvisorbSig/.store in = \SWFU@AdvisorbSig, % 指导教师a签名
+  AdvisoraGender/.store in = \SWFU@AdvisoraGender, % 指导教师a性别
+  AdvisorbGender/.store in = \SWFU@AdvisorbGender, % 指导教师b性别
+     AdvisoraAge/.store in = \SWFU@AdvisoraAge, % 指导教师a年龄 
+     AdvisorbAge/.store in = \SWFU@AdvisorbAge, % 指导教师a年龄 
+  AdvisoraDegree/.store in = \SWFU@AdvisoraDegree, % 指导教师a学位
+  AdvisorbDegree/.store in = \SWFU@AdvisorbDegree, % 指导教师b学位
+    AdvisoraFrom/.store in = \SWFU@AdvisoraFrom, %（开题报告）指导教师a工作单位
+    AdvisorbFrom/.store in = \SWFU@AdvisorbFrom, %（开题报告）指导教师b工作单位
+        Studname/.store in = \SWFU@Studname, %学生姓名
+          Studid/.store in = \SWFU@Studid,  % 学号
+         Subject/.store in = \SWFU@Subject, % 专业
+           Grade/.store in = \SWFU@Grade,   % 年级
+   StudSignature/.store in = \SWFU@StudSignature,%（任务书）学生签名
+          School/.store in = \SWFU@School,   %（实习计划表）学生所属学院
+       DeptAdmin/.store in = \SWFU@DeptAdmin, %(开题报告) 教研室负责人
+     SchoolAdmin/.store in = \SWFU@SchoolAdmin, %(开题报告) 教学院系部负责人
+        TaskDate/.store in = \SWFU@TaskDate, %（任务书）任务下达日期
+      SubmitDate/.store in = \SWFU@SubmitDate,%（任务书）学生应送交毕业论文日期
+           Gyear/.store in = \SWFU@Gyear, %（任务书、实习计划表）届
+            Date/.store in = \SWFU@Date,%（开题报告、任务书）填表、签字时间（年、月、日）
+      Midchkdate/.store in = \SWFU@Midchkdate,% 中期检查表日期
+%%% defaults
+DeptAdmin   =, %(开题报告) 教研室负责人
+SchoolAdmin =, %(开题报告) 教学院系部负责人
+Date        ={\the\year{}年3月11日},%（开题报告、任务书）填表、签字时间
+TaskDate    ={2021年11月12日},%（任务书）任务下达日期
+SubmitDate  ={\the\year{}年4月25日},%（任务书）学生应送交毕业论文日期
+Gyear       =\the\year,%（任务书、实习计划表）届
+Midchkdate={\the\year{}年4月15日},% 中期检查表日期
+% 指导教师a
+Advisora       ={王晓林},            % 姓名
+AdvisoraTitle  ={讲师},              % 职称
+AdvisoraFrom   ={大数据与智能工程学院}, %（开题报告）工作单位
+AdvisoraGender ={男},               % 性别  
+AdvisoraAge    ={53},               % 年龄     
+AdvisoraDegree ={硕士},              % 学位
+AdvisoraSig    ={\includegraphics[width=3cm]{Albus}}, % 指导教师a签名
+% 指导教师b
+Advisorb       =, % 姓名
+AdvisorbTitle  =, % 职称
+AdvisorbFrom   =, %（开题报告）工作单位
+AdvisorbSig    =, % 签名      
+AdvisorbGender =, % 性别      
+AdvisorbAge    =, % 年龄      
+AdvisorbDegree =, % 学位
+% 学生
+Subject       ={计算机科学与技术},% 专业
+StudSignature ={\includegraphics[width=25mm]{Harry}},% 签名
+School        = {大数据与智能工程学院}, %（实习计划表）学生所属学院
+%%%%%
+   PrjFrmA/.store in = \SWFU@PrjFrmA, PrjFrmA={\unchecked{}},   %科研项目
+   PrjFrmB/.store in = \SWFU@PrjFrmB, PrjFrmB={\unchecked{}},   %社会实践
+   PrjFrmC/.store in = \SWFU@PrjFrmC, PrjFrmC={\unchecked{}},   %大学生创新创业项目
+   PrjFrmD/.store in = \SWFU@PrjFrmD, PrjFrmD={\unchecked{}},   %其它来源
   PrjTypeA/.store in = \SWFU@PrjTypeA, PrjTypeA={\unchecked{}}, %毕业论文
   PrjTypeB/.store in = \SWFU@PrjTypeB, PrjTypeB={\checked{}},   %毕业设计
   AdvisorComment/.store in = \SWFU@AdvisorComment, %（开题报告）指导教师意见
@@ -102,7 +127,6 @@
   Prjproblem/.store in      = \SWFU@Prjproblem,     %(中期检查表)存在的问题和解决办法
   AdvisorComments/.store in = \SWFU@AdvisorComments,%(中期检查表)指导教师评语
   AdvisorComments={进度符合要求，抓紧完成论文。},%
-  Midchkdate/.store in = \SWFU@Midchkdate, Midchkdate={\today},%
 }
 
 \newcommand{\swfusetup}[1]{\pgfkeys{#1}}
@@ -201,7 +225,7 @@ url=false,doi=false,isbn=false]{biblatex}
           &\makebox[0pt][t]{%
             \begin{minipage}[t]{30em}
               \begin{center}
-                \parbox[t]{29em}{\centering\bfseries\Large\@title}
+                \parbox[t]{29em}{\centering\bfseries\Large\SWFU@Prjtitle}
               \end{center}
             \end{minipage}}%
             \rule[-1.5ex]{30em}{.1pt}\par%
@@ -219,7 +243,7 @@ url=false,doi=false,isbn=false]{biblatex}
             \makebox[7em][s]{年级}%
             & \SWFU@Grade\\[-1ex]\cline{2-2}
             \makebox[7em][s]{学生姓名}%
-            & \@author\\[-1ex]\cline{2-2}
+            & \SWFU@Studname\\[-1ex]\cline{2-2}
             \makebox[7em][s]{学生学号}%
             & \SWFU@Studid\\[-1ex]\cline{2-2}
             \makebox[7em][s]{指导教师 (职称)}%
@@ -337,8 +361,8 @@ url=false,doi=false,isbn=false]{biblatex}
         cell{1}{2}={c=5}{c},%
         cell{3}{4}={c=3}{c},%
       }%
-      {论文（设计）\\题目} & {\@title}\\
-      学生姓名 & \@author & 学号 & \SWFU@Studid & 专业 & \SWFU@Subject\\
+      {论文（设计）\\题目} & {\SWFU@Prjtitle}\\
+      学生姓名 & \SWFU@Studname & 学号 & \SWFU@Studid & 专业 & \SWFU@Subject\\
       题目来源 & {\SWFU@PrjFrmA{}科研项目\\\SWFU@PrjFrmB{}社会实践\\
         \SWFU@PrjFrmC{}大学生创新创业项目\\\SWFU@PrjFrmD{}其它} &%
       {题目\\类别} &%
@@ -414,7 +438,7 @@ url=false,doi=false,isbn=false]{biblatex}
     \begin{tblr}{width=\linewidth,
         colspec={|X[-1,c,font=\bfseries]|X[c]|}, rowspec={|Q|Q|}%,font=\kaishu
       }%
-      论文（设计）题目&\@title\\
+      论文（设计）题目&\SWFU@Prjtitle\\
     \end{tblr}
     \vskip -1pt
     \begin{tblr}{width=\linewidth, colspec={|c|X[c]|c|l|}, rowspec={Q[m]|},        
@@ -435,7 +459,7 @@ url=false,doi=false,isbn=false]{biblatex}
         colspec={|c|X[-1,c]|c|X|c|X[-1,c]|}, column{odd}={font=\bfseries},
         rowspec={Q[m]|Q[m]|Q[m]|Q[m]|Q[m]|Q[m]|}
       }%
-      学生姓名&\@author&专业&\SWFU@Subject&学号&\SWFU@Studid\\
+      学生姓名&\SWFU@Studname&专业&\SWFU@Subject&学号&\SWFU@Studid\\
       所属学院&\SetCell[c=5]{m}\SWFU@School\\
     \end{tblr}
     \vskip -1pt
@@ -459,9 +483,9 @@ url=false,doi=false,isbn=false]{biblatex}
   \begin{tblr}{width=\linewidth,colspec={cX[c]cX[c]},hline{1-7},vlines,%
       cell{3-5}{2}={c=3}{c}, cell{7}{1}={c=4}{c},%
       cell{6}{2}={c=3}{l}}
-    学生姓名&\@author&学生学号&\SWFU@Studid\\
+    学生姓名&\SWFU@Studname&学生学号&\SWFU@Studid\\
     专\quad{}业&\SWFU@Subject&指导教师&\SWFU@Advisora\\
-    论文题目 &{\@title}&&\\
+    论文题目 &{\SWFU@Prjtitle}&&\\
     {目前已完\\成任务} & %
     \begin{tblr}{width=.85\textwidth,colspec={X},row{1}={2cm}{t},row{2}={f}}
         \SWFU@Prjdone\\

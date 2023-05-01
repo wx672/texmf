@@ -1,0 +1,24 @@
+\documentclass{standalone}
+
+\usepackage{tabularray,fontspec}
+
+\begin{document}
+\begin{tblr}{width=\linewidth, colspec={lllllll},%
+    hline{1,2,Z}={solid}, row{1}={m,font=\bfseries}, }
+  {ISO\\country\\code} & Country     & {Sub-national\\region} & {World\\region} & {MPI\\National} & {MPI\\Regional} & {Headcount\\Ratio\\Region}\\
+AFG& Afghanistan & Badakhshan& South Asia& 0.295& 0.387 &67.5\\
+AFG& Afghanistan & Badghis   & South Asia& 0.295& 0.466 &79.3\\
+AFG& Afghanistan & Baghlan   & South Asia& 0.295& 0.3   &59.7\\
+AFG& Afghanistan & Balkh     & South Asia& 0.295& 0.301 &58.7\\
+AFG& Afghanistan & Bamyan    & South Asia& 0.295& 0.325 &61.0\\
+AFG& Afghanistan & Daykundi  & South Asia& 0.295& 0.313 &65.1\\
+AFG& Afghanistan & Farah     & South Asia& 0.295& 0.319 &61.4\\
+AFG& Afghanistan & Faryab    & South Asia& 0.295& 0.25 &49.4 \\
+AFG& Afghanistan & Ghazni    & South Asia& 0.295& 0.245&47.4 \\
+\end{tblr}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

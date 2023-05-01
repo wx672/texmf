@@ -87,9 +87,9 @@ margin=2cm
     Forestry University
   \end{center}
   \bigskip\noindent%
-  \begin{tblr}{width=\linewidth, colspec={rX[c]},%
+  \begin{tblr}{colspec={rX[c]},%
       column{1}={b,font=\bfseries}, column{2}={b,c},%
-      hline{2-5}={2}{belowspace=5pt,abovespace=0pt},%
+      hline{2-5}={2}{.4pt,solid},%{belowsep=5pt,abovesep=0pt},%
       rows={m}
     }
     {Thesis (Design) title} & {\SWFU@Prjtitle}                \\
@@ -98,7 +98,7 @@ margin=2cm
     Department            & {\SWFU@School}                  \\
   \end{tblr}%
   \par\vspace*{7mm}\noindent%
-  \begin{tblr}{width=\linewidth, colspec={X}, hlines, vlines}
+  \begin{tblr}{colspec={X}, hlines, vlines}
     \begin{minipage}{1.0\linewidth}
       \smallskip%
       \begin{center}

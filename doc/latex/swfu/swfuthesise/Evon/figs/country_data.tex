@@ -1,0 +1,24 @@
+\documentclass{standalone}
+
+\usepackage{tabularray,fontspec}
+
+\begin{document}
+\begin{tblr}{width=\linewidth, colspec={llllllllll},%
+    hline{1,2,Z}={solid}, row{1}={m,font=\bfseries}, }
+  country             & child\_mort & exports & health & imports & income & inflation & life\_expec & total\_fer & gdpp  \\
+  Afghanistan         & 90.2        & 10      & 7.58   & 44.9    & 1610   & 9.44      & 56.2      & 5.82     & 553   \\
+  Albania             & 16.6        & 28      & 6.55   & 48.6    & 9930   & 4.49      & 76.3      & 1.65     & 4090  \\
+  Algeria             & 27.3        & 38.4    & 4.17   & 31.4    & 12900  & 16.1      & 76.5      & 2.89     & 4460  \\
+  Angola              & 119         & 62.3    & 2.85   & 429     & 5900   & 22.4      & 60.1      & 6.16     & 3530  \\
+  Antigua and Barbuda & 10.3        & 45.5    & 6.03   & 58.9    & 19100  & 1.44      & 76.8      & 2.13     & 12200 \\
+  Argentina           & 14.5        & 18.9    & 8.1    & 16      & 18700  & 20.9      & 75.8      & 2.37     & 10300 \\
+  Armenia             & 18.1        & 20.8    & 4.4    & 45.3    & 6700   & 7.77      & 73.3      & 1.69     & 3220  \\
+  Australia           & 4.8         & 19.8    & 8.73   & 20.9    & 41400  & 1.16      & 82        & 1.93     & 51900 \\
+  Austria             & 4.3         & 51.3    & 11     & 47.8    & 43200  & 0.873     & 80.5      & 1.44     & 46900
+\end{tblr}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

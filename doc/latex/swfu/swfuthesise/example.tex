@@ -1,29 +1,27 @@
 \documentclass{swfuthesise}
 
-%\usepackage{wx672nerd}
 \usepackage{lipsum}
 
 %\includeonly{chapters/ch2-quick}
 
-\addbibresource{example.bib}
+\addbibresource{ref.bib}
 
 \swfusetup{
   Title        ={How to mess up everything in Hogwarts},
   Author       ={Harry Potter}, % 作者姓名
   Signature    ={\includegraphics[width=6em]{signature.pdf}}, % 作者签名（用于原创声明页）
   ID           ={201901888}, % 学号
-  Year         ={2023},
+  Year         ={\the\year},
   Month        ={May},
   Date         ={3},
   % Major        ={Computer Science},%
-  Advisor      ={Prof. Albus Dumbledore}, %第一指导教师，第二指导教师
-  % Reviewer ={Name (Title)}, % 评阅人
+  Advisor      ={Albus Dumbledore (Prof.)}, %第一指导教师，第二指导教师
+  Reviewer ={Who (Dr.)}, % 评阅人
 }
 
 \begin{document}
 
 \maketitle
-%\frontmatter
 \pagenumbering{roman}
 
 \begin{abstract}
@@ -40,7 +38,6 @@
 % \clearpage
 % \listoftables  % 表格目录，可以没有
 
-% \mainmatter
 \clearpage
 \pagenumbering{arabic}
 

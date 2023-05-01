@@ -117,7 +117,8 @@ url=false,doi=false,isbn=false]{biblatex}
       \end{tblr}
       \vskip 2cm
       \begin{tblr}{width=.8\linewidth,colspec={rX[c]},%
-          rowsep=10pt,rows={m},hline{2-7}={2}{abovespace=2pt}}
+          rows={m,belowsep=0pt,abovesep=15pt},%rowsep=15pt,%rows={m},
+          hline{2-7}={2}{.4pt,solid}}
         Name:&\@author\\
         ID:&\SWFU@Studid\\
         Subject:&\SWFU@Subject\\
