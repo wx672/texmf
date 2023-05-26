@@ -16,7 +16,7 @@
   Tutor/.store in = \SWFU@Tutor, Tutor = 否,%担任班主任情况
   Parttime/.store in = \SWFU@Parttime, Parttime = 无,%社会兼职工作
   TLoad/.store in = \SWFU@TLoad, TLoad = ,%教学工作量（标准学时/教学积分）
-  SLoad/.store in = \SWFU@SLoad, SLoad = ,%科研工作量（科研积分）
+  RLoad/.store in = \SWFU@RLoad, RLoad = ,%科研工作量（科研积分）
   % Gender/.store in = \SWFU@Gender, Gender = 男,%
   % Birth/.store in = \SWFU@Birth, Birth = 1969年3月,%
   % Political/.store in = \SWFU@Political, Political = 群众,%政治面貌
@@ -93,7 +93,7 @@
       rows={m},row{1}={1cm,font=\bfseries}}%
     项目&个人填写&单位填写\\
     {教学工作量\\（标准学时/教学积分）}&\SWFU@TLoad&\\
-    {科研工作量\\（科研积分）}&\SWFU@SLoad&\\
+    {科研工作量\\（科研积分）}&\SWFU@RLoad&\\
   \end{tblr}
   \vspace*{-2pt}
   \begin{Titleleft}{师德考核结果}

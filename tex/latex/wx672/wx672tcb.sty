@@ -1,7 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{wx672tcb}
 
-% https://tex.stackexchange.com/questions/247185/tcolorbox-theorem-which-isnt-framed-on-the-sides
 \RequirePackage[most]{tcolorbox}
 \usetikzlibrary{calc}
 
@@ -18,7 +17,7 @@
     \draw[line width=.2pt] (frame.north west)--(frame.north east);},%
 }
 
-% mainly for the proposal part of swfu3in1
+% mainly for the proposal part of swfu4in1
 \newcounter{main}
 \newtcolorbox[use counter=main]{mainbodybox}[1]{%
   boxrule=.4pt,titlerule=0pt,%
@@ -28,7 +27,7 @@
   },%
   title=\thetcbcounter. #1}
 
-% mainly for the taskspec part in swfu3in1
+% mainly for the taskspec part in swfu4in1
 % #1 - text width;
 % #2 - title text.
 \newtcolorbox{Titleleft}[2][2em]{% 
@@ -50,3 +49,6 @@
     \draw[line width=.2pt] (frame.south west)--(frame.south east);% bottom hline
   },%
 }
+
+
+% https://tex.stackexchange.com/questions/247185/tcolorbox-theorem-which-isnt-framed-on-the-sides

@@ -73,6 +73,7 @@ margin=2cm
 ]{geometry}
 
 \RequirePackage{graphicx} % for signature
+\graphicspath{{../figs/}{./figs/}{../img/}{./img/}{./}{../}} %note that the trailing “/” is required
 
 \RequirePackage{tabularray}
 % \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column

@@ -54,12 +54,18 @@ hyperref={unicode,naturalnames,%
 \setmainfont{Liberation Serif}
 \setsansfont{DejaVu Sans Mono}
 
+\newfontfamily\nerd{Symbols Nerd Font Mono}
+% \newcommand\unchecked{{\large\nerd □}} %ballot box
+% \newcommand\checked{{\large\nerd ☑}} %🗹
+\RequirePackage{newunicodechar}
+\newunicodechar{□}{{\large\nerd □}}%ballot box
+\newunicodechar{☑}{{\large\nerd ☑}}%checked box
+
 % ctex is too heavy in case of only a few Chinese words.
 % Example: {\cjk 你好}
 \newfontfamily\cjk{Noto Serif CJK JP}% \han in wx672nerd.sty
 \newfontfamily\cjksans{Noto Sans CJK JP}
 \newfontfamily\cjkmono{Noto Sans Mono CJK JP} % Noto Sans Mono CJK SC
-%\newfontfamily\firacode{FiraCode Nerd Font}[NFSSFamily=FiraCode] % for minted
 \newfontfamily\firacode{Fira Code}[NFSSFamily=FiraCode] % for minted
 
 \newcommand{\verbatimfont}[1]{\def\verbatim@font{#1}}%

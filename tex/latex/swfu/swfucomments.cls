@@ -73,6 +73,7 @@
 \LoadClass[scheme=chinese,zihao=-4]{ctexart}%fontset=ubuntu
 
 \RequirePackage{graphicx}
+\graphicspath{{./figs/}{../figs/}{./img/}{./}{../}} %note that the trailing “/” is required
 
 \newfontfamily\purisa{Purisa}
 

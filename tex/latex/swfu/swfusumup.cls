@@ -14,7 +14,6 @@
   Studnum/.store in      = \SWFU@Studnum,%
   Examtype/.store in     = \SWFU@Examtype,%
   Textbook/.store in     = \SWFU@Textbook,%
-  % Publishtime/.store in  = \SWFU@Publishtime,%
   Sumup/.store in        = \SWFU@Sumup,%
   Suggestion/.store in   = \SWFU@Suggestion,%
   Date/.store in         = \SWFU@Date,%
@@ -36,6 +35,7 @@
 %\renewcommand*{\bibfont}{\scriptsize}
 
 \RequirePackage{graphicx}
+\graphicspath{{../figs/}{./figs/}{./}{../}} %note that the trailing “/” is required
 
 \RequirePackage[%showframe,
 paperwidth=195mm, paperheight=270mm,
@@ -53,7 +53,7 @@ left=2.5cm, right=2.5cm,
   };%
 \end{tikzpicture}}
 
-\newfontfamily\nerd{FiraCode Nerd Font Mono}
+\newfontfamily\nerd{Symbols Nerd Font Mono}
 \RequirePackage{newunicodechar}
 \newunicodechar{□}{{\large\nerd □}}%ballot box
 \newunicodechar{☑}{{\large\nerd ☑}}%checked box

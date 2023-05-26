@@ -7,6 +7,8 @@
 \newfontfamily\han{Noto Serif CJK SC}%￥, Noto Sans Mono CJK SC
 
 \RequirePackage{graphicx}
+\graphicspath{{./figs/}{../figs/}{./}{../}} %note that the trailing “/” is required
+
 \RequirePackage{tikz}
 
 \usetikzlibrary{%
@@ -47,23 +49,6 @@
 }
 
 \pagestyle{plain}
-
-% \newcommand\firstpagerule{%
-%   \begin{tikzpicture}[overlay,remember picture]
-%     \node at (current page.north) [yshift=-115pt,Green] {\rule{\linewidth}{2pt}};
-%     \node (foot) at (current page.south) [yshift=27mm,Green] {\rule{\linewidth}{1pt}};
-%     \node (han) [below=-5pt of foot.south west, anchor=north west, %
-%     Green, font=\footnotesize] {%scale=.65
-%       \han{地址：云南省昆明市盘龙区白龙寺300号\qquad{}邮编：650224}};
-%     % \node (en) [below=-3pt of han.south west, anchor=north west, %
-%     % Green, font=\footnotesize] {
-%     %   № 300, Bailongsi, Panlongqu, Kunming 650224, China
-%     % };
-%   \end{tikzpicture}
-%   % \tikz[overlay,remember picture]{%
-%   %   \node at (current page.north) [yshift=-115pt,Green] {\rule{\linewidth}{2pt}};
-%   % }
-% }
 
 \newcommand\sign[3]{\tikz[baseline,overlay,inner sep=0pt]{
     \node (sig) at (#3) [opacity=.7] { \includegraphics[width=3cm]{#1}};

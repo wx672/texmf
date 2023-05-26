@@ -34,13 +34,28 @@
 
 \setcounter{secnumdepth}{3}
 
-%\newfontfamily\nerd{FiraCode Nerd Font Mono}
-\newfontfamily\nerd{Noto Sans Symbols2}
+\RequirePackage{calc}
+\newcounter{age}
+\setcounter{age}{\the\year - 1969} %AdvisoraAge
+
+\newcounter{grade}
+\setcounter{grade}{\the\year - 2}% Grade
+%%% check box
+\newfontfamily\notosym{Noto Sans Symbols2}
+\newcommand\unchecked{{\large\notosym □}} %ballot box
+\newcommand\checked{{\large\notosym ☑}} %🗹
+%
+% \newfontfamily\fira{Fira Code}
+% \newcommand\unchecked{{\large\fira □}} %ballot box
+% \newcommand\checked{{\large\fira ☑}} %🗹
+%
+% \newfontfamily\dejavu{DejaVu Sans Mono}%
+% \newcommand\unchecked{{\dejavu □}} %ballot box
+% \newcommand\checked{{\large\dejavu ☑}} %🗹
+
 % \RequirePackage{newunicodechar}
 % \newunicodechar{□}{{\large\nerd □}}%ballot box
 % \newunicodechar{☑}{{\large\nerd ☑}}%checked box
-\newcommand\unchecked{{\large\nerd □}} %ballot box
-\newcommand\checked{{\large\nerd ☑}} %🗹
 
 \RequirePackage{pgfkeys}
 
@@ -76,17 +91,17 @@
 %%% defaults
 DeptAdmin   =, %(开题报告) 教研室负责人
 SchoolAdmin =, %(开题报告) 教学院系部负责人
-Date        ={\the\year{}年3月11日},%（开题报告、任务书）填表、签字时间
-TaskDate    ={2021年11月12日},%（任务书）任务下达日期
+Date        ={\the\year{}年3月10日},%（开题报告、任务书）填表、签字时间
+TaskDate    ={\the\year{}年1月5日},%（任务书）任务下达日期
 SubmitDate  ={\the\year{}年4月25日},%（任务书）学生应送交毕业论文日期
-Gyear       =\the\year,%（任务书、实习计划表）届
-Midchkdate={\the\year{}年4月15日},% 中期检查表日期
+Gyear       ={\the\year},%（任务书、实习计划表）届
+Midchkdate  ={\the\year{}年4月15日},% 中期检查表日期
 % 指导教师a
 Advisora       ={王晓林},            % 姓名
 AdvisoraTitle  ={讲师},              % 职称
 AdvisoraFrom   ={大数据与智能工程学院}, %（开题报告）工作单位
 AdvisoraGender ={男},               % 性别  
-AdvisoraAge    ={53},               % 年龄     
+AdvisoraAge    ={\arabic{age}},               % 年龄     
 AdvisoraDegree ={硕士},              % 学位
 AdvisoraSig    ={\includegraphics[width=3cm]{Albus}}, % 指导教师a签名
 % 指导教师b
@@ -101,7 +116,8 @@ AdvisorbDegree =, % 学位
 Subject       ={计算机科学与技术},% 专业
 StudSignature ={\includegraphics[width=25mm]{Harry}},% 签名
 School        = {大数据与智能工程学院}, %（实习计划表）学生所属学院
-%%%%%
+Grade         ={\arabic{grade}},% 年级
+%%%%% 
    PrjFrmA/.store in = \SWFU@PrjFrmA, PrjFrmA={\unchecked{}},   %科研项目
    PrjFrmB/.store in = \SWFU@PrjFrmB, PrjFrmB={\unchecked{}},   %社会实践
    PrjFrmC/.store in = \SWFU@PrjFrmC, PrjFrmC={\unchecked{}},   %大学生创新创业项目
@@ -137,7 +153,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 ]{geometry}
 
 \RequirePackage{graphicx}
-\graphicspath{{./figs/}{./}{../}} %mind the trailing “/”
+\graphicspath{{../figs/}{./figs/}{../img/}{./img/}{./}{../}} %note that the trailing “/” is required
 
 \RequirePackage{caption,subcaption}% \captionof{table|figure}{t|f}
 

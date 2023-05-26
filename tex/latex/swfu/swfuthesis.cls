@@ -5,18 +5,31 @@
 \RequirePackage{pgfkeys}
 
 \pgfkeys{/swfu/.is family, /swfu,%
-  Author/.store in    = \@author,        Author = 学生姓名？,% 
-  Title/.store in     = \@title,         Title = 题目？,% 
-  Signature/.store in = \SWFU@Signature, Signature =, % 作者签名（用于原创声明页）
-  ID/.store in        = \SWFU@ID,        ID = 学号,% 
-  Major/.store in     = \SWFU@Major,     Major = 专业,%  
-  enTitle/.store in   = \SWFU@enTitle,   enTitle = 英文标题, %
-  enAuthor/.store in  = \SWFU@enAuthor,  enAuthor = 英文学生姓名,%
-  Advisor/.store in   = \SWFU@Advisor,   Advisor = 指导教师姓名（职称）,%
-  Reviewer/.store in  = \SWFU@Reviewer,  Reviewer = 评阅人姓名（职称）,%
-  Month/.store in     = \SWFU@Month,     Month = \the\month,%
-  Date/.store in      = \SWFU@Date,      Date = \the\day,%
-  Year/.store in      = \SWFU@Year,      Year = \the\year,%
+  Author/.store in    = \@author, %
+  Title/.store in     = \@title, %
+  Signature/.store in = \SWFU@Signature, %
+  ID/.store in        = \SWFU@ID, %
+  Major/.store in     = \SWFU@Major, %
+  enTitle/.store in   = \SWFU@enTitle, %
+  enAuthor/.store in  = \SWFU@enAuthor, %
+  Advisor/.store in   = \SWFU@Advisor, %
+  Reviewer/.store in  = \SWFU@Reviewer, %
+  Month/.store in     = \SWFU@Month, %
+  Date/.store in      = \SWFU@Date, %
+  Year/.store in      = \SWFU@Year, %
+  %%% Defaults
+  Author    = \textcolor{red}{学生姓名？},% 
+  Title     = \textcolor{red}{题目？},% 
+  Signature = \textcolor{red}{手写签名图片}, % 用于原创声明页
+  ID        = \textcolor{red}{学号},% 
+  Major     = \textcolor{red}{专业},% 
+  enTitle   = \textcolor{red}{英文标题}, % 
+  enAuthor  = \textcolor{red}{英文学生姓名},% 
+  Advisor   = \textcolor{red}{指导教师姓名（职称）},% 
+  Reviewer  = \textcolor{red}{评阅人姓名（职称）},% 
+  Month     = \the\month,% 
+  Date      = \the\day,% 
+  Year      = \the\year,%   
 }
 
 \newcommand{\swfusetup}[1]{\pgfkeys{/swfu, #1}}
@@ -58,6 +71,12 @@ nomarginpar]{geometry}
 {\centering\large}%        before-code #1
 
 \titlespacing{\chapter}{0pt}{-20pt}{30pt}
+
+%%%%% tocloft
+\RequirePackage{tocloft}
+\setlength{\cftbeforetoctitleskip}{0em}% make "目录" higher
+\setlength{\cftbeforeloftitleskip}{0em}
+\setlength{\cftbeforelottitleskip}{0em}
 
 %%%%% xstring 
 \RequirePackage{xstring} % for \StrSubstitute{} in \fancyhead

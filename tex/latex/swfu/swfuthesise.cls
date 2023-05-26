@@ -7,16 +7,13 @@
 \pgfkeys{%
   Author/.store in        = \@author, Author = Author name,% 
   Title/.store in         = \@title, Title = Thesis title,% 
-  Signature/.store in     = \SWFU@Signature, Signature = Your signature, % 作者签名（用于原创声明页）
-  ID/.store in            = \SWFU@ID, ID = Your student ID,% 
-  % Major/.store in         = \SWFU@Major, Major = Your major?,%  
-  % enTitle/.store in       = \SWFU@enTitle, enTitle = 英文标题, %
-  % enAuthor/.store in      = \SWFU@enAuthor, enAuthor = 英文学生姓名,%
-  Advisor/.store in       = \SWFU@Advisor, Advisor = Your advisor?,%
-  Reviewer/.store in      = \SWFU@Reviewer, Reviewer = Lord Voldemort,%
-  Month/.store in         = \SWFU@Month, Month = ？,%
-  Date/.store in          = \SWFU@Date, Date = ？,%
-  Year/.store in          = \SWFU@Year, Year = ？,%
+  Signature/.store in     = \SWFU@Signature, Signature = {\purisa\@author}, % 原创声明页签名
+  ID/.store in            = \SWFU@ID, ID = 202x0x0xx,% 
+  Advisor/.store in       = \SWFU@Advisor, Advisor = Who (Dr.),%
+  Reviewer/.store in      = \SWFU@Reviewer, Reviewer = Who (Prof.),%
+  Year/.store in          = \SWFU@Year, Year = \the\year,%
+  Month/.store in         = \SWFU@Month, Month = \the\month,%
+  Date/.store in          = \SWFU@Date, Date = \the\day,%
 }
 
 \newcommand{\swfusetup}[1]{\pgfkeys{#1}}
@@ -38,17 +35,6 @@
 \newfontfamily\purisa{Purisa}
 \newfontfamily\symbola{Symbola}
 
-% \ctexset{%
-%   chapter/name = {},%
-%   chapter/number = {\thechapter},%
-%   chapter/format = \centering\large\bfseries,% 小3号，黑体
-%   section/format = {\bfseries\zihao{4}},% 4号，黑体
-%   subsection/format = \bfseries,% 小4号，黑体
-%   subsubsection/format = \bfseries,% 黑体（在规范中未说明）
-%   paragraph/format = \bfseries,% 黑体（在规范中未说明）
-%   subparagraph/format = \bfseries,% 黑体（在规范中未说明）
-% }
-
 %%%%% geometry
 \RequirePackage[%showframe,%showcrop,
 a4paper,asymmetric,twoside=true,% if oneside, left/right; if twoside, inner/outer
@@ -69,9 +55,6 @@ nomarginpar]{geometry}
 {\centering\LARGE}%        before-code #1
 
 \titlespacing{\chapter}{0pt}{-20pt}{30pt}
-
-%%%%% xstring 
-% \RequirePackage{xstring} % for \StrSubstitute{} in \fancyhead
 
 %%%%% fancyhdr
 \RequirePackage{fancyhdr}
@@ -101,9 +84,6 @@ nomarginpar]{geometry}
 \RequirePackage{tabularx,tabularray,longtable,multicol,multirow,booktabs,makecell}
 \renewcommand\theadfont{\bfseries}%\normalfont
 \renewcommand{\arraystretch}{1.5}
-
-% \newcolumntype{C}{>{\centering\arraybackslash}X}
-% \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % centering p column
 
 \RequirePackage[bottom]{footmisc} % stick footnote at bottom of page
 \RequirePackage{enumitem} % \setlist
@@ -177,23 +157,14 @@ url=false,doi=false,isbn=false]{biblatex}
 \DeclareCaptionFont{hei}{\small\bfseries}
 \captionsetup{labelsep=quad, format=hang, skip=5pt, font=hei}
 \RequirePackage{subcaption}
-
 \captionsetup{subrefformat=parens}
-%\labelformat{subfigure}{\thefigure(#1)}
 
-% set caption label style to, e.g. 3-2.
-% \renewcommand{\thefigure}{\thechapter{}-\arabic{figure}}
-% \renewcommand{\thetable}{\thechapter{}-\arabic{table}}
-% \renewcommand{\thesubfigure}{\thechapter{}-\arabic{subfigure}}
-% \renewcommand{\thesubtable}{\thechapter{}-\arabic{subtable}}
 \renewcommand{\theequation}{\thechapter{}-\arabic{equation}}
 
 %%%%% minted
 \RequirePackage[chapter]{minted} % has to be loaded at last!!!
 % \usemintedstyle{bw}
 
-% \renewcommand{\listingscaption}{程序} % used by minted
-% \renewcommand{\listoflistingscaption}{程序目录}
 \renewcommand{\thelisting}{\thechapter{}-\arabic{listing}}
 
 \renewcommand{\theFancyVerbLine}{
@@ -237,7 +208,6 @@ url=false,doi=false,isbn=false]{biblatex}
       {\Large(№~\SWFU@ID)}\\\medskip
       {\Large College of Big Data and Intelligence Engineering}\\
       {\Large Southwest Forestry University}\\[3cm]
-      %\SetTblrInner{rowsep=-1ex}%X[c,font=\large]X[c,font=\large]
       \begin{tblr}{width=.8\linewidth, colspec={X[c]X[c]},row{1}={font=\large}}
         {\emph{Supervisor}\\[-1ex]\SWFU@Advisor}&{\emph{Reviewer}\\[-1ex]\SWFU@Reviewer}\\
       \end{tblr}\\[1cm]
@@ -328,6 +298,3 @@ shall bear all related responsibilities.
 %\urlstyle{tt} % url.sty
 \raggedbottom{}
 \setlength{\parindent}{2em}
-%\setlist{nosep} % kills all vertical spacing
-% \renewcommand{\listfigurename}{插图目录}
-% \renewcommand{\listtablename}{表格目录}

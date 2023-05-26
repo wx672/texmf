@@ -16,8 +16,8 @@
   ("genericfallback", {"NotoSans Nerd Font:mode=node;"})}
 
 % Liberation fonts is a drop-in replacement for Microsoft Times, Arial and Courier fonts
-\setmainfont{Liberation Serif}[RawFeature={fallback=genericfallback}]
-\setsansfont{DejaVuSansMono Nerd Font}[RawFeature={fallback=genericfallback}]
+\setmainfont{Liberation Serif}%[RawFeature={fallback=genericfallback}]
+\setsansfont{DejaVu Sans Mono}%[RawFeature={fallback=genericfallback}]
 %\setsansfont{FiraCode Nerd Font}[RawFeature={fallback=emojifallback}]
 %\setmonofont{FiraCode Nerd Font Mono}[RawFeature={fallback=genericfallback}]%\ttfamily
 

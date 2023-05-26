@@ -51,7 +51,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 ]{geometry}
 
 \RequirePackage{graphicx} % before xltxtra
-\graphicspath{{./figs/}{./}{../}} %mind the trailing “/”
+\graphicspath{{../figs/}{./figs/}{../img/}{./img/}{./}{../}} %note that the trailing “/” is required
 
 \RequirePackage{caption,subcaption}% \captionof{table|figure}{t|f}
 
