@@ -124,8 +124,8 @@ nomarginpar]{geometry}
 %%%%% fixme
 \RequirePackage{fixme}
 \fxsetup{%
-  margin=true, marginclue=false,%
-  status=draft, author=, inline=false, theme=color}
+  margin=false, marginclue=true,%
+  status=draft, author=, inline=true, theme=color}
 
 %%%%% fonts
 \RequirePackage{amsmath,amsfonts,amssymb,marvosym,pifont}
@@ -181,7 +181,7 @@ url=false,doi=false,isbn=false]{biblatex}
 
 \newminted{c}{} \newminted{shell}{} \newminted{latex}{} \newminted{bibtex}{}
 \newminted{gas}{} \newminted{nasm}{} \newminted{python}{}
-\newminted{php}{} \newminted{js}{}
+\newminted{php}{} \newminted{js}{} \newminted{html}{}
 
 \newmint[csingle]{c}{linenos=false,frame=topline,framesep=3pt,}
 
@@ -189,6 +189,10 @@ url=false,doi=false,isbn=false]{biblatex}
   baselinestretch=1,linenos,breaklines,autogobble}%,fontfamily=FiraCode
 \newmintedfile[jsfile]{javascript}{%\jsfile{filepath}
   baselinestretch=1,linenos,breaklines,autogobble}%,fontfamily=FiraCode
+
+\newenvironment{jsxcode}%
+{\VerbatimEnvironment\begin{minted}{lexer.py:JsxLexer -x}}%
+{\end{minted}}
 
 % code listing across pages
 \newenvironment{longlisting}{\captionsetup{type=listing}%

@@ -180,7 +180,7 @@ url=false,doi=false,isbn=false]{biblatex}
 
   \SWFU@AdvisorComment\par
   \begin{flushright}
-    \begin{tblr}{width=.3\linewidth,colspec={rX}}%
+    \begin{tblr}{width=.35\linewidth,colspec={rX}}%
       Signature:&\SWFU@AdvisorSig\\
       Date:&{\purisa\SWFU@Date}\\
     \end{tblr}

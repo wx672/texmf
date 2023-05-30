@@ -51,6 +51,7 @@
   subparagraph/format = \heiti,% 黑体（在规范中未说明）
 }
 
+\newCJKfontfamily\HEI{Noto Sans CJK SC}% for a better "〇"
 %%%%% geometry
 \RequirePackage[%showframe,%showcrop,
 a4paper,asymmetric,twoside=true,% if oneside, left/right; if twoside, inner/outer
@@ -206,8 +207,16 @@ url=false,doi=false,isbn=false]{biblatex}
   % rulecolor=\color{lightgray},
   autogobble=true,breaklines=true}
 
-\newminted{c}{} \newminted{cpp}{} \newminted{shell}{} \newminted{latex}{} \newminted{bibtex}{}
-\newminted{gas}{} \newminted{nasm}{} \newminted{python}{}
+\newminted{c}{} \newminted{cpp}{} \newminted[shcode]{shell}{}
+\newminted{latex}{} \newminted{bibtex}{} \newminted{gas}{}
+\newminted{nasm}{} \newminted{python}{} \newminted{js}{}
+\newminted{html}{}
+
+% need lexer.py
+% https://github.com/fcurella/jsx-lexer/blob/master/jsx/lexer.py
+\newenvironment{jsxcode}%
+{\VerbatimEnvironment\begin{minted}{lexer.py:JsxLexer -x}}%
+{\end{minted}}
 
 \newmintedfile[cfile]{c}{%\cfile{filepath}
   baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
@@ -244,7 +253,7 @@ url=false,doi=false,isbn=false]{biblatex}
       \makebox[17em][s]{\includegraphics[width=17em]{swfulogo-text}}\\[6mm]%
       \makebox[19em][s]{{\LARGE\heiti%
           本科毕业论文\:(设计)}}\\[1mm]%
-      \makebox[13em][c]{\hspace{.5em}{\LARGE\heiti%
+      \makebox[13em][c]{\hspace{.5em}{\LARGE\HEI%\heiti%
           （\zhdigits{\SWFU@Year}\,届）}}\\[8mm]%
       \makebox[8em][s]{\includegraphics[width=8em]{swfulogo-emblem}}\\[1cm]
       \begin{minipage}{\linewidth}
