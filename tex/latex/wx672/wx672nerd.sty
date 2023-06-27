@@ -7,6 +7,51 @@
 \RequirePackage{biolinum,latexsym,marvosym,fontawesome}% pifont,emoji,mathtools
 \RequirePackage{newunicodechar}
 
+%%% Pinyin chars
+%┌─────┬─────┬──────┬──────┬──────┬──────┐
+%│ā 101│ē 113│ī 12B │ō 14D │ū 16B │ǖ 1D6 │
+%│á E1 │é  E9│í ED  │ó  F3 │ú  FA │ǘ 1D8 │
+%│ǎ 1CE│ě 11B│ǐ 1D0  │ǒ 1D2 │ǔ 1D4 │ǚ 1DA │
+%│à E0 │è  E8│ì EC  │ò  F2 │ù  F9 │ǜ 1DC │
+%│     │     │      │      │      │ü  FC │
+%└─────┴─────┴──────┴──────┴──────┴──────┘
+%
+% fc-list :charset='01d0': family
+\newfontfamily\pychar{DejaVuSansM Nerd Font}%LXGW Bright
+%
+\newunicodechar{ā}{{\pychar ā}}
+\newunicodechar{á}{{\pychar á}}
+\newunicodechar{ǎ}{{\pychar ǎ}}
+\newunicodechar{à}{{\pychar à}}
+%
+\newunicodechar{ē}{{\pychar ē}}
+\newunicodechar{é}{{\pychar é}}
+\newunicodechar{ě}{{\pychar ě}}
+\newunicodechar{è}{{\pychar è}}
+%
+\newunicodechar{ī}{{\pychar ī}}
+\newunicodechar{í}{{\pychar í}}
+\newunicodechar{ǐ}{{\pychar ǐ}}
+\newunicodechar{ì}{{\pychar ì}}
+%
+\newunicodechar{ō}{{\pychar ō}}
+\newunicodechar{ó}{{\pychar ó}}
+\newunicodechar{ǒ}{{\pychar ǒ}}
+\newunicodechar{ò}{{\pychar ò}}
+%
+\newunicodechar{ū}{{\pychar ū}}
+\newunicodechar{ú}{{\pychar ú}}
+\newunicodechar{ǔ}{{\pychar ǔ}}
+\newunicodechar{ù}{{\pychar ù}}
+%
+\newunicodechar{ü}{{\pychar ü}}
+\newunicodechar{ǖ}{{\pychar ǖ}}
+\newunicodechar{ǘ}{{\pychar ǘ}}
+\newunicodechar{ǚ}{{\pychar ǚ}}
+\newunicodechar{ǜ}{{\pychar ǜ}}
+
+%%% 
+
 %%% utf8 symbols
 % use C-x 8 RET to input utf8 symbols
 % C-x 8 C-h for more
@@ -25,10 +70,11 @@
 \newcommand{\qutebrowser}{\includegraphics[width=1em]{Qutebrowser}}
 
 \newfontfamily\icon{file-icons}%
-\newfontfamily\nerd{Symbols Nerd Font Mono}
-\newfontfamily\symbola{Symbola}
+\newfontfamily\nerd{DejaVuSansM Nerd Font Mono}%Symbols Nerd Font Mono
+\newfontfamily\symbola{Symbola Nerd Font}
 \newfontfamily\han{Noto Sans Mono CJK JP}%￥, Noto Sans Mono CJK SC
-\newfontfamily\fira{Fira Code}
+\newfontfamily\fira{FiraCode Nerd Font}
+\newfontfamily\jetbrains{JetBrainsMono Nerd Font}
 \newfontfamily\dejavu{DejaVu Sans Mono}
 \newfontfamily\noto{Noto Sans Mono}%
 \newfontfamily\humor{Humor Sans}
@@ -50,8 +96,8 @@
 \newunicodechar{🀡}{{\symbola 🀡}}
 \newunicodechar{🀅}{{\symbola 🀅}}
 \newunicodechar{🀐}{{\symbola 🀐}}
-\newunicodechar{■}{{\dejavu ■}}
-\newunicodechar{}{\dejavu }
+\newunicodechar{⏹}{{\symbola ⏹}} %■
+\newunicodechar{⏺}{{\symbola ⏺}}   %
 \newunicodechar{🡙}{\symbola 🡙}
 \newunicodechar{➠}{\symbola ➠} % wide fancy right arrow
 \newunicodechar{🄸}{\symbola 🄸} % for process resource graph
@@ -60,6 +106,8 @@
 \newunicodechar{🅂}{\symbola 🅂}
 \newunicodechar{Ⓐ}{\symbola Ⓐ}
 \newunicodechar{Ⓑ}{\symbola Ⓑ}
+\newunicodechar{①}{\symbola ①}
+\newunicodechar{⑴}{\symbola ⑴}
 \newunicodechar{⩽}{\symbola ⩽}
 \newunicodechar{漢}{{\han 漢}}
 \newunicodechar{￥}{{\han ￥}}
@@ -82,25 +130,23 @@
 \newunicodechar{➔}{{\dejavu ➔}}% right arrow
 \newunicodechar{➜}{{\dejavu ➜}}% right arrow
 \newunicodechar{➤}{{\dejavu ➤}}% right arrow
-\newunicodechar{☛}{{\symbola ☛}}% pointing right
+\newunicodechar{🖙}{{\symbola 🖙}}% pointing right
 \newunicodechar{￥}{{\han ￥}}
 \newunicodechar{🏃}{{\symbola 🏃}}
-\newunicodechar{☺}{{\symbola ☺}}%smiling
-\newunicodechar{☹}{{\symbola ☹}}%frown
+\newunicodechar{🙂}{{\symbola 🙂}}%smiling
+\newunicodechar{🙁}{{\symbola 🙁}}%frown
 \newunicodechar{😐}{{\symbola 😐}}%okay
 \newunicodechar{⚠}{{\symbola ⚠}}%caution
 \newunicodechar{}{{\nerd }}%caution
 \newunicodechar{}{{\nerd \;}}%caution
-\newunicodechar{}{{\nerd \;}}%skull
-\newunicodechar{☠}{{\nerd ☠}}
-\newunicodechar{}{\nerd }
-\newunicodechar{✔}{{\dejavu ✔}}%checkmark
-\newunicodechar{✘}{{\dejavu ✘}}%crossmark
-\newunicodechar{□}{{\nerd □}}%ballot box
-\newunicodechar{☑}{{\nerd ☑}}%checked box
-\newunicodechar{✉}{{\dejavu ✉}}% envelope
-\newunicodechar{}{{\nerd }}%envelope
-\newunicodechar{ﬁ}{{\nerd ﬁ}}%old phone
+\newunicodechar{🕱}{{\symbola 🕱}}%skull  ☠
+\newunicodechar{☐}{{\symbola ☐}}%ballot box 🗆
+\newunicodechar{☑}{{\symbola ☑}}%checked box tick 🗹
+\newunicodechar{☒}{{\symbola ☒}}%checked box cross 🗷
+\newunicodechar{✔}{{\symbola ✔}}%checkmark
+\newunicodechar{✘}{{\symbola ✘}}%crossmark
+\newunicodechar{🖃}{{\symbola 🖃}}%envelope ✉
+\newunicodechar{🕿}{{\symbola 🕿}}%old phone ☎
 \newunicodechar{}{{\nerd }}%lightning
 \newunicodechar{}{{\nerd }}%thumbup
 \newunicodechar{}{{\nerd }}%thumbdown
@@ -126,7 +172,7 @@
 \newunicodechar{}{{\nerd }}%ie
 \newunicodechar{}{{\nerd }}%wordpress
 \newunicodechar{慎}{{\nerd \;}}
-\newunicodechar{}{{\nerd }}%earth,globe
+\newunicodechar{🌎}{{\symbola 🌎}}%world, earth, globe 
 \newunicodechar{}{{\nerd }}%shadowsocks
 \newunicodechar{}{{\nerd }}%shadowsocks
 \newunicodechar{}{{\nerd }}%youtube
@@ -171,7 +217,7 @@
 \newunicodechar{}{{\nerd }}%windows
 \newunicodechar{}{{\nerd }}%apple
 \newunicodechar{}{{\nerd }}%centos
-\newunicodechar{}{{\nerd }}%ios
+\newunicodechar{}{{\fira }}%ios
 \newunicodechar{}{{\nerd }}%cisco
 \newunicodechar{}{{\nerd }}%
 
@@ -241,6 +287,14 @@
 \newcommand\apple[1][true]{%
   \settoggle{logocolor}{#1}%
   \iftoggle{logocolor}{\textcolor{LightGray}{\nerd }}{{\nerd }}}
+
+\newcommand\iOS[1][true]{%
+  \settoggle{logocolor}{#1}%
+  \iftoggle{logocolor}{\textcolor{LightGray}{\fira }}{{\fira }}}
+
+\newcommand\globe[1][true]{%
+  \settoggle{logocolor}{#1}%
+  \iftoggle{logocolor}{\textcolor{SkyBlue}{\symbola 🌎}}{{\symbola 🌎}}}
 
 \newcommand\linuxmint{\nerd }
 

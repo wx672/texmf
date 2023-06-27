@@ -1,0 +1,89 @@
+\GetIdInfo$Id: ctex.dtx 13a2256 2023-07-14 14:15:09 +0800 Xiaolin WANG <wx672ster@gmail.com> $
+  {wx672 personal fonts definition (CTEX)}
+\ProvidesExplFile{ctex-fontset-wx672.def}
+  {\ExplFileDate}{2.5.10}{\ExplFileDescription}
+\ctex_fontset_case:nnnn
+  { \ctex_fontset_error:n { wx672 } }
+  {
+    \ctex_zhmap_case:nnn
+      {
+        \setCJKmainfont { NotoSerifCJK-Regular.ttc }
+          [
+            cmap       = UniGB-UTF16-H,
+            BoldFont   = NotoSerifCJK-Bold.ttc,
+            ItalicFont = LXGWBrightGB-SemiLightItalic.otf
+          ]
+        \setCJKsansfont { LXGWBright-SemiLight.otf }
+          [ cmap = UniGB-UTF16-H, BoldFont = LXGWBrightGB-Regular.otf ]
+        \setCJKmonofont { LXGWBrightGB-SemiLight.otf }
+          [ cmap = UniGB-UTF16-H ]
+        \setCJKfamilyfont { zhsong } { NotoSerifCJK-Regular.ttc }
+          [ cmap = UniGB-UTF16-H, BoldFont = NotoSerifCJK-Bold.ttc ]
+        \setCJKfamilyfont { zhhei  } { FandolHei-Regular.otf }
+          [ cmap = UniGB-UTF16-H, BoldFont = FandolHei-Bold.otf ]
+        \setCJKfamilyfont { zhfs   } { NotoSerifCJK-Regular.ttc }
+          [ cmap = UniGB-UTF16-H ]
+        \setCJKfamilyfont { zhkai  } { LXGWBrightGB-SemiLight.otf }
+          [ cmap = UniGB-UTF16-H ]
+        \ctex_punct_set:n { wx672 }
+        \ctex_punct_map_family:nn   { \CJKrmdefault         } { zhsong  }
+        \ctex_punct_map_family:nn   { \CJKsfdefault         } { zhhei   }
+        \ctex_punct_map_family:nn   { \CJKttdefault         } { zhfs    }
+        \ctex_punct_map_bfseries:nn { \CJKrmdefault, zhsong } { zhsongb }
+        \ctex_punct_map_bfseries:nn { \CJKsfdefault, zhhei  } { zhheib  }
+        \ctex_punct_map_itshape:nn  { \CJKrmdefault         } { zhkai   }
+      }
+      {
+        \ctex_load_zhmap:nnnn { rm } { zhhei } { zhfs } { wx672 }
+        \ctex_punct_set:n { wx672 }
+        \ctex_punct_map_family:nn   { \CJKrmdefault } { zhsong }
+        \ctex_punct_map_bfseries:nn { \CJKrmdefault } { zhhei  }
+        \ctex_punct_map_itshape:nn  { \CJKrmdefault } { zhkai  }
+      }
+      { \ctex_fontset_error:n { wx672 } }
+  }
+  {
+    \ctex_set_upfonts:nnnnnn
+      { NotoSerifCJK-Regular.ttc }
+      { NotoSerifCJK-Bold.ttc    }
+      { LXGWBrightGB-SemiLight.otf  }
+      { LXGWBrightGB-Medium.otf  }
+      { LXGWBrightGB-Regular.otf  }
+      { FandolHei-Regular.otf  }
+      { FandolHei-Bold.otf     }
+      { NotoSerifCJK-Regular.ttc }
+    \ctex_set_upfamily:nnn { zhsong } { upzhserif   } { upzhserifb }
+    \ctex_set_upfamily:nnn { zhhei  } { upzhsans    } { upzhsansb  }
+    \ctex_set_upfamily:nnn { zhfs   } { upzhmono    } {}
+    \ctex_set_upfamily:nnn { zhkai  } { upzhserifit } {}
+  }
+  {
+    \setCJKmainfont { NotoSerifCJK-Regular.ttc }
+      [
+        BoldFont   = NotoSerifCJK-Bold,
+        ItalicFont = LXGWBrightGB-SemiLightItalic.otf
+      ]
+    \setCJKsansfont { LXGWBrightGB-SemiLight  }
+      [ Extension = .otf, BoldFont = LXGWBrightGB-Regular ]
+    \setCJKmonofont { LXGWBrightGB-SemiLight }
+      [ Extension = .otf ]
+
+    \setCJKfamilyfont { zhsong } { NotoSerifCJK-Regular }
+      [ Extension = .ttc, BoldFont = NotoSerifCJK-Bold ]
+    \setCJKfamilyfont { zhhei  } { FandolHei-Regular  }
+      [ Extension = .otf, BoldFont = FandolHei-Bold  ]
+    \setCJKfamilyfont { zhfs   } { NotoSerifCJK-Regular }
+      [ Extension = .ttc ]
+    \setCJKfamilyfont { zhkai  } { LXGWBrightGB-SemiLight }
+      [ Extension = .otf ]
+    \setCJKfamilyfont { lxgw  } { LXGWBrightGB-SemiLight }
+      [ Extension = .otf ]
+  }
+\NewDocumentCommand \songti   { } { \CJKfamily { zhsong  } }
+\NewDocumentCommand \heiti    { } { \CJKfamily { zhhei   } }
+\NewDocumentCommand \fangsong { } { \CJKfamily { zhfs    } }
+\NewDocumentCommand \kaishu   { } { \CJKfamily { zhkai   } }
+\NewDocumentCommand \lxgw     { } { \CJKfamily { lxgw    } }
+%% 
+%%
+%% End of file `ctex-fontset-wx672.def'.

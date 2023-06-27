@@ -16,7 +16,7 @@
   Textbook/.store in     = \SWFU@Textbook,%
   Sumup/.store in        = \SWFU@Sumup,%
   Suggestion/.store in   = \SWFU@Suggestion,%
-  Date/.store in         = \SWFU@Date,%
+  Date/.store in         = \SWFU@Date, Date={\today},%
   School/.store in       = \SWFU@School,       School       = 大数据与智能工程学院,%
   TeacherName/.store in  = \SWFU@TeacherName,  TeacherName  = 王晓林,%
   TeacherTitle/.store in = \SWFU@TeacherTitle, TeacherTitle = 讲师,%
@@ -30,6 +30,9 @@
 
 \LoadClass[scheme=chinese]{ctexart}
 
+\ctexset{%
+  today=small
+}
 \RequirePackage[backend=biber,url=false,doi=false,isbn=false]{biblatex}
 %style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false
 %\renewcommand*{\bibfont}{\scriptsize}
@@ -53,7 +56,7 @@ left=2.5cm, right=2.5cm,
   };%
 \end{tikzpicture}}
 
-\newfontfamily\nerd{Symbols Nerd Font Mono}
+\newfontfamily\nerd{Noto Sans Symbols2}
 \RequirePackage{newunicodechar}
 \newunicodechar{□}{{\large\nerd □}}%ballot box
 \newunicodechar{☑}{{\large\nerd ☑}}%checked box
@@ -65,7 +68,7 @@ left=2.5cm, right=2.5cm,
   {\centering%
     {\LARGE\heiti 西南林业大学课程教学小结表}\\\bigskip%
     \begin{tblr}{width=\textwidth,hlines,vlines,%
-        colspec={cX[c]cX[-1,c]cc}, column{even}={font=\ttfamily},%
+        colspec={cX[c]cX[-1,c]cc}, column{even}={font=\kaishu},%
         row{3}={m}, cell{1}{4}={c=3}{},cell{5}{2}={c=5}{l,m},%
       }
       授课学期&\SWFU@Term&课程名称&\SWFU@Coursetitle\\

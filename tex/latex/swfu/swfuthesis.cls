@@ -44,6 +44,7 @@
   chapter/name = {},%
   chapter/number = {\thechapter},%
   chapter/format = \centering\large\heiti,% 小3号，黑体
+  chapter/beforeskip = {0pt},% 抬高章标题
   section/format = {\heiti\zihao{4}},% 4号，黑体
   subsection/format = \heiti,% 小4号，黑体
   subsubsection/format = \heiti,% 黑体（在规范中未说明）
@@ -64,20 +65,28 @@ nomarginpar]{geometry}
 %\renewcommand\cleardoublepage{\clearpage} % for oneside configuration
 
 %%%%% titlesec, for making chapter header higher
-\RequirePackage{titlesec}%explicit
-\titleformat{\chapter}[hang]% shape
-{\normalfont\large\heiti}%    format
-{\thechapter}%                label
-{20pt}%                       sep between label and title body
-{\centering\large}%        before-code #1
+% \RequirePackage{titlesec}%explicit
+% \titleformat{\chapter}[hang]% shape
+% {\normalfont\large\heiti}%    format
+% {\thechapter}%                label
+% {20pt}%                       sep between label and title body
+% {\centering\large}%        before-code #1
 
-\titlespacing{\chapter}{0pt}{-20pt}{30pt}
+% \titlespacing{\chapter}{0pt}{-20pt}{30pt}
 
 %%%%% tocloft
 \RequirePackage{tocloft}
 \setlength{\cftbeforetoctitleskip}{0em}% make "目录" higher
-\setlength{\cftbeforeloftitleskip}{0em}
-\setlength{\cftbeforelottitleskip}{0em}
+\setlength{\cftbeforeloftitleskip}{0em}%
+\setlength{\cftbeforelottitleskip}{0em}%
+\renewcommand\cftdotsep{2}%
+\renewcommand\cfttoctitlefont{\hfill\Large\heiti}%
+\renewcommand\cftaftertoctitle{\hfill}%
+\renewcommand\cftloftitlefont{\hfill\Large\heiti}%
+\renewcommand\cftafterloftitle{\hfill}%
+\renewcommand\cftlottitlefont{\hfill\Large\heiti}%
+\renewcommand\cftafterlottitle{\hfill}%
+
 
 %%%%% xstring 
 \RequirePackage{xstring} % for \StrSubstitute{} in \fancyhead
@@ -113,16 +122,6 @@ nomarginpar]{geometry}
 \RequirePackage{graphicx}
 \graphicspath{% mind the trailing '/'
   {./figs/}{../figs/}{./img/}{../img/}{./pics/}{../pics/}{./}{../}}
-
-%%%%% tocloft
-\RequirePackage{tocloft}
-\renewcommand\cftdotsep{2}
-\renewcommand\cfttoctitlefont{\hfill\Large\heiti}
-\renewcommand\cftaftertoctitle{\hfill}
-\renewcommand\cftloftitlefont{\hfill\Large\heiti}
-\renewcommand\cftafterloftitle{\hfill}
-\renewcommand\cftlottitlefont{\hfill\Large\heiti}
-\renewcommand\cftafterlottitle{\hfill}
 
 %%%%% hyperref
 \RequirePackage{xcolor}
@@ -207,7 +206,7 @@ url=false,doi=false,isbn=false]{biblatex}
   % rulecolor=\color{lightgray},
   autogobble=true,breaklines=true}
 
-\newminted{c}{} \newminted{cpp}{} \newminted[shcode]{shell}{}
+\newminted{c}{} \newminted{cpp}{} \newminted{shell}{}
 \newminted{latex}{} \newminted{bibtex}{} \newminted{gas}{}
 \newminted{nasm}{} \newminted{python}{} \newminted{js}{}
 \newminted{html}{}
@@ -215,8 +214,8 @@ url=false,doi=false,isbn=false]{biblatex}
 % need lexer.py
 % https://github.com/fcurella/jsx-lexer/blob/master/jsx/lexer.py
 \newenvironment{jsxcode}%
-{\VerbatimEnvironment\begin{minted}{lexer.py:JsxLexer -x}}%
-{\end{minted}}
+{\VerbatimEnvironment%
+\begin{minted}{lexer.py:JsxLexer -x}}{\end{minted}}%
 
 \newmintedfile[cfile]{c}{%\cfile{filepath}
   baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
