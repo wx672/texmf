@@ -40,23 +40,17 @@
 
 \newcounter{grade}
 \setcounter{grade}{\the\year - 2}% Grade
+
+\newcounter{lastyear}
+\setcounter{lastyear}{\the\year - 1}%for taskdate
 %%% check box
-\newfontfamily\notosym{Noto Sans Symbols2}
-\newcommand\unchecked{{\large\notosym □}} %ballot box
-\newcommand\checked{{\large\notosym ☑}} %🗹
+%\newfontfamily\notosym{Noto Sans Symbols2}
+\newfontfamily\symbola{Symbola Nerd Font}
+% \newunicodechar{☐}{{\symbola ☐}}%ballot box 🗆
+% \newunicodechar{☑}{{\symbola ☑}}%checked box tick 🗹
+\newcommand\unchecked{{\large\symbola ☐}} %ballot box
+\newcommand\checked{{\large\symbola ☑}} %🗹
 %
-% \newfontfamily\fira{Fira Code}
-% \newcommand\unchecked{{\large\fira □}} %ballot box
-% \newcommand\checked{{\large\fira ☑}} %🗹
-%
-% \newfontfamily\dejavu{DejaVu Sans Mono}%
-% \newcommand\unchecked{{\dejavu □}} %ballot box
-% \newcommand\checked{{\large\dejavu ☑}} %🗹
-
-% \RequirePackage{newunicodechar}
-% \newunicodechar{□}{{\large\nerd □}}%ballot box
-% \newunicodechar{☑}{{\large\nerd ☑}}%checked box
-
 \RequirePackage{pgfkeys}
 
 \pgfkeys{%
@@ -89,10 +83,10 @@
             Date/.store in = \SWFU@Date,%（开题报告、任务书）填表、签字时间（年、月、日）
       Midchkdate/.store in = \SWFU@Midchkdate,% 中期检查表日期
 %%% defaults
-DeptAdmin   =, %(开题报告) 教研室负责人
-SchoolAdmin =, %(开题报告) 教学院系部负责人
+DeptAdmin   ={\Large 强振平}, %(开题报告) 教研室负责人
+SchoolAdmin ={\Large 张晴晖}, %(开题报告) 教学院系部负责人
 Date        ={\the\year{}年3月10日},%（开题报告、任务书）填表、签字时间
-TaskDate    ={\the\year{}年1月5日},%（任务书）任务下达日期
+TaskDate    ={\arabic{lastyear}年11月12日},%（任务书）任务下达日期
 SubmitDate  ={\the\year{}年4月25日},%（任务书）学生应送交毕业论文日期
 Gyear       ={\the\year},%（任务书、实习计划表）届
 Midchkdate  ={\the\year{}年4月15日},% 中期检查表日期
@@ -103,7 +97,7 @@ AdvisoraFrom   ={大数据与智能工程学院}, %（开题报告）工作单�
 AdvisoraGender ={男},               % 性别  
 AdvisoraAge    ={\arabic{age}},               % 年龄     
 AdvisoraDegree ={硕士},              % 学位
-AdvisoraSig    ={\includegraphics[width=3cm]{Albus}}, % 指导教师a签名
+AdvisoraSig    ={\includegraphics[width=3cm]{wangxiaolin}}, % 指导教师a签名
 % 指导教师b
 Advisorb       =, % 姓名
 AdvisorbTitle  =, % 职称
@@ -116,12 +110,12 @@ AdvisorbDegree =, % 学位
 Subject       ={计算机科学与技术},% 专业
 StudSignature ={\includegraphics[width=25mm]{Harry}},% 签名
 School        = {大数据与智能工程学院}, %（实习计划表）学生所属学院
-Grade         ={\arabic{grade}},% 年级
+Grade         ={\arabic{grade}级（专升本）},% 年级
 %%%%% 
    PrjFrmA/.store in = \SWFU@PrjFrmA, PrjFrmA={\unchecked{}},   %科研项目
    PrjFrmB/.store in = \SWFU@PrjFrmB, PrjFrmB={\unchecked{}},   %社会实践
    PrjFrmC/.store in = \SWFU@PrjFrmC, PrjFrmC={\unchecked{}},   %大学生创新创业项目
-   PrjFrmD/.store in = \SWFU@PrjFrmD, PrjFrmD={\unchecked{}},   %其它来源
+   PrjFrmD/.store in = \SWFU@PrjFrmD, PrjFrmD={\checked{}},   %其它来源
   PrjTypeA/.store in = \SWFU@PrjTypeA, PrjTypeA={\unchecked{}}, %毕业论文
   PrjTypeB/.store in = \SWFU@PrjTypeB, PrjTypeB={\checked{}},   %毕业设计
   AdvisorComment/.store in = \SWFU@AdvisorComment, %（开题报告）指导教师意见
@@ -129,6 +123,9 @@ Grade         ={\arabic{grade}},% 年级
   PPSLi/.store in  = \SWFU@PPSLi,    %（开题报告）1. 该研究的目的、意义
   PPSLii/.store in = \SWFU@PPSLii,   %（开题报告）2. 国内外研究现状及发展趋势
   BIB/.store in    = \SWFU@BIB,      %（开题报告、任务书）参考文献
+  BIB={%（开题报告）3. 主要参考文献
+    \nocite{*} \printbibliography[heading=none]%
+  },%
   PPSLiv/.store in = \SWFU@PPSLiv,   %（开题报告）4. 该研究的主要内容，重点解决的问题，
                                      %             预期结果或成果
   PPSLv/.store in  = \SWFU@PPSLv,    %（开题报告）5. 拟采取的研究方法或实验方法，步骤，
@@ -137,6 +134,16 @@ Grade         ={\arabic{grade}},% 年级
   TSKwhy/.store in  = \SWFU@TSKwhy,  %（任务书）选题的目的及意义
   TSKwhat/.store in = \SWFU@TSKwhat, %（任务书）学生任务及要求
   TSKwhen/.store in = \SWFU@TSKwhen, %（任务书）进度安排
+  TSKwhen={%（任务书） 进度、安排。不要超过10行。
+    \begin{itemize}
+    \item 每周: 交一次周报告
+    \item 每两周: 开会讨论一次
+    \item 1 -- 4周: 调研，并确定论文一级目录
+    \item 5 -- 8周: 明确要实现的内核功能模块
+    \item 8 -- 12周: 编码实现，并完成论文的相应部分
+    \item 12 -- 16周: 测试、完善，并完成论文的相应部分
+    \item 16 -- 20周: 论文终稿
+    \end{itemize}},%
   Plan/.store in    = \SWFU@Plan,    %（实习计划表）论文工作计划和预期目标摘要
   Prjdone/.store in         = \SWFU@Prjdone,        %(中期检查表)目前已完成任务
   Prjtodo/.store in         = \SWFU@Prjtodo,        %(中期检查表)尚需完成的任务

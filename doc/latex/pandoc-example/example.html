@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="王晓林" />
+  <title>怎样将中文Markdown文件转为PDF</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="org.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">怎样将中文Markdown文件转为PDF</h1>
+<p class="author">王晓林</p>
+<p class="date">2023年6月6日</p>
+</header>
+<p>很简单，在Markdown文件的开头加上下面两行就行了:</p>
+<pre><code>CJKmainfont: Noto Serif CJK SC
+CJKsansfont: Noto Sans CJK SC</code></pre>
+<p>显而易见，上面两行无非就是指明了在生成PDF文件时要采用的中文字体。字体
+当然可以随便换。想知道系统里有哪些现成的中文字体可用，可以这样:</p>
+<pre><code>fc-list | rg cjk</code></pre>
+<p>默认情况下，<code>pandoc</code>会采用<code>pdflatex</code>来生成PDF文件。不幸的是<code>pdflatex</code>天生不
+支持中文，所以我们把pdf-engine换成<code>xelatex</code>或者<code>lualatex</code>。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> example.md <span class="at">--pdf-engine</span><span class="op">=</span>lualatex <span class="at">-o</span> example.pdf</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> example.md <span class="at">--pdf-engine</span><span class="op">=</span>lualatex <span class="at">-o</span> example.pdf <span class="at">--template</span><span class="op">=</span>eisvogel <span class="at">--listings</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># eisvogel is a fancy template</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># https://github.com/Wandmalfarbe/pandoc-latex-template</span></span></code></pre></div>
+<p>下面是在我的Debian系统里利用LaTeX排版所需软件的列表:</p>
+<ul>
+<li>texlive - TeX Live: A decent selection of the TeX Live packages</li>
+<li>texlive-base - TeX Live: Essential programs and files</li>
+<li>texlive-bibtex-extra - TeX Live: BibTeX additional styles</li>
+<li>texlive-binaries - Binaries for TeX Live</li>
+<li>texlive-extra-utils - TeX Live: TeX auxiliary programs</li>
+<li>texlive-font-utils - TeX Live: Graphics and font utilities</li>
+<li>texlive-fonts-extra - TeX Live: Additional fonts</li>
+<li>texlive-fonts-extra-doc - TeX Live: Documentation files for
+texlive-fonts-extra</li>
+<li>texlive-fonts-extra-links - TeX Live: Setup of fonts for TeX Live
+and search via kpathsea</li>
+<li>texlive-fonts-recommended - TeX Live: Recommended fonts</li>
+<li>texlive-lang-chinese - TeX Live: Chinese</li>
+<li>texlive-lang-cjk - TeX Live: Chinese/Japanese/Korean (base)</li>
+<li>texlive-lang-english - TeX Live: US and UK English</li>
+<li>texlive-lang-greek - TeX Live: Greek</li>
+<li>texlive-lang-japanese - TeX Live: Japanese</li>
+<li>texlive-latex-base - TeX Live: LaTeX fundamental packages</li>
+<li>texlive-latex-base-doc - TeX Live: Documentation files for
+texlive-latex-base</li>
+<li>texlive-latex-extra - TeX Live: LaTeX additional packages</li>
+<li>texlive-latex-extra-doc - TeX Live: Documentation files for
+texlive-latex-extra</li>
+<li>texlive-latex-recommended - TeX Live: LaTeX recommended
+packages</li>
+<li>texlive-latex-recommended-doc - TeX Live: Documentation files for
+texlive-latex-recommended</li>
+<li>texlive-luatex - TeX Live: LuaTeX packages</li>
+<li>texlive-pictures - TeX Live: Graphics, pictures, diagrams</li>
+<li>texlive-pictures-doc - TeX Live: Documentation files for
+texlive-pictures</li>
+<li>texlive-plain-generic - TeX Live: Plain (La)TeX packages</li>
+<li>texlive-science - TeX Live: Mathematics, natural sciences, computer
+science packages</li>
+</ul>
+<p>生成上表所需的命令是：<code>aptitude search '~i texlive'</code>。</p>
+</body>
+</html>

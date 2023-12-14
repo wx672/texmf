@@ -1,28 +1,35 @@
 ---
+title: "怎样将中文Markdown文件转为PDF"
+author: [王晓林]
+date: "2023年6月6日"
 CJKmainfont: Noto Serif CJK SC
 CJKsansfont: Noto Sans CJK SC
-title: 怎样将中文Markdown文件转为PDF
-author: 王晓林
-date: 2023年6月6日
+geometry: [margin=2cm]
+titlepage: true
 ...
 
-很简单，在Markdown文件的开头加上下面两行就行了。
+很简单，在Markdown文件的开头加上下面两行就行了:
 
     CJKmainfont: Noto Serif CJK SC
 	CJKsansfont: Noto Sans CJK SC
 	
 显而易见，上面两行无非就是指明了在生成PDF文件时要采用的中文字体。字体
-当然可以随便换。想知道系统里有哪些现成的中文字体可用，可以这样：
+当然可以随便换。想知道系统里有哪些现成的中文字体可用，可以这样:
 
     fc-list | rg cjk
 
-默认情况下，`pandoc`会采用`pdflatex`来生成PDF文件。不幸的是`pdflatex`，天生不
-支持中文，所以我们可以把pdf-engine换成`xelatex`或者`lualatex`。
+默认情况下，`pandoc`会采用`pdflatex`来生成PDF文件。不幸的是`pdflatex`天生不
+支持中文，所以我们把pdf-engine换成`xelatex`或者`lualatex`。
 
-    pandoc example.md --pdf-engine=lualatex -o example.pdf
+```sh
+pandoc example.md --pdf-engine=lualatex -o example.pdf
 
-
-下面是在我的Debian系统里利用LaTeX排版所需软件的列表。
+pandoc example.md --pdf-engine=lualatex -o example.pdf --template=eisvogel --listings
+# eisvogel is a fancy template
+# https://github.com/Wandmalfarbe/pandoc-latex-template
+```
+	
+下面是在我的Debian系统里利用LaTeX排版所需软件的列表:
 
 - texlive - TeX Live: A decent selection of the TeX Live packages
 - texlive-base - TeX Live: Essential programs and files

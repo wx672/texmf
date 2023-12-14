@@ -56,7 +56,8 @@ left=2.5cm, right=2.5cm,
   };%
 \end{tikzpicture}}
 
-\newfontfamily\nerd{Noto Sans Symbols2}
+\newfontfamily\nerd{DejaVuSansM Nerd Font Mono}%Symbols Nerd Font Mono
+%\newfontfamily\nerd{Noto Sans Symbols2}
 \RequirePackage{newunicodechar}
 \newunicodechar{□}{{\large\nerd □}}%ballot box
 \newunicodechar{☑}{{\large\nerd ☑}}%checked box

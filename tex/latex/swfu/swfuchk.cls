@@ -6,13 +6,13 @@
 
 \pgfkeys{
   Course/.store in  = \SWFU@Course,%
-  Teacher/.store in  = \SWFU@Teacher,  Teacher  = 王晓林,%
-  Class/.store in        = \SWFU@Class,% 专业班级
-  AB/.store in    = \SWFU@AB, AB={\ab},% \paperA
-  Date/.store in         = \SWFU@Date,% 考试日期
-  Loc/.store in          = \SWFU@Loc, % 考试地点
-  Sig/.store in          = \SWFU@Sig, Sig={\Signit},%
-  Yesno/.store in        = \SWFU@Yesno, Yesno={\yesno},%\YES
+  Teacher/.store in = \SWFU@Teacher, Teacher={王晓林},%
+  Class/.store in   = \SWFU@Class,% 专业班级
+  Date/.store in    = \SWFU@Date,% 考试日期
+  Loc/.store in     = \SWFU@Loc, % 考试地点
+  Sig/.store in     = \SWFU@Sig, Sig={\Signit},%
+  Yesno/.store in   = \SWFU@Yesno, Yesno={\yesno},%\YES
+  AB/.store in      = \SWFU@AB, AB={\ab},%
 }
 \newcommand{\swfusetup}[1]{\pgfkeys{#1}}
 
@@ -29,19 +29,21 @@
 \RequirePackage{tikz,hyperref}
 \usetikzlibrary{backgrounds,positioning,fit}
 
-\newcommand\yesno{%
-  \CheckBox[checkboxsymbol=✔]{是}\qquad{}%
-  \CheckBox[checkboxsymbol=✔]{否}
-}
-\newcommand\ab{%
-  \CheckBox[checkboxsymbol=✔]{A卷}\qquad{}%
-  \CheckBox[checkboxsymbol=✔]{B卷}
-}
+% \newcommand\yesno{%
+%   \CheckBox[checkboxsymbol=✔]{是}\qquad{}%
+%   \CheckBox[checkboxsymbol=✔]{否}
+% }
+% \newcommand\ab{%
+%   \CheckBox[checkboxsymbol=✔]{A卷}\qquad{}%
+%   \CheckBox[checkboxsymbol=✔]{B卷}
+% }
 
-% \newcommand{\YES}{☑ 是\qquad{} □ 否}
-% \newcommand{\NO}{□ 是\qquad{} ☑ 否}
-% \newcommand{\paperA}{☑ A卷\qquad{} □ B卷}
-% \newcommand{\paperB}{□ A卷\qquad{} ☑ B卷}
+\newcommand\YES{\quad{}是\;☑\qquad\quad{}否\;☐}%
+\newcommand\NO{\quad{}是\;☐\qquad\quad{}否\;☑ }%
+\newcommand\paperA{A卷\;☑\qquad{}B卷\;☐}%
+\newcommand\paperB{A卷\;☐\qquad{}B卷\;☑}%
+\newcommand\yesno[1][\YES]{#1}% #1 should be \YES or \NO
+\newcommand\ab[1][\paperA]{#1} % #1 should be \paperA or \paperB
 
 \newcommand{\Signit}[1][signature]{%\Signit{-3cm}{-6.2cm}{../signature}
   \begin{tikzpicture}[baseline,overlay]%
@@ -60,7 +62,8 @@
         cell{4}{1}={c=3}{c},%
         cell{5-15}{1}={c=2}{r},%
         cell{2}{4}={r=15}{},%
-        % cell{16}{2}={r},%
+        cell{1-3,17}{2}={font=\ttfamily},%
+        cell{16}{2}={font=\purisa},%
         cell{18}{4}={r},%
       }
       课程名称 &\SWFU@Course&& 系主任审核意见 \\

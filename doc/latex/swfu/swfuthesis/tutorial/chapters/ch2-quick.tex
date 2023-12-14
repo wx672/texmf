@@ -942,21 +942,21 @@ PDF文件中我们会看到“\cite{biblatex}”。至于为什么是“6”而�
 们就改用\texttt{latexmk}算了，唯一的前提条件是准备好一个小配置文件\texttt{.latexmkrc}，内容
 如下：
 \begin{codeblock}[.9]
-\begin{shcode}
+\begin{shellcode}
 $pdf_mode = 1; $postscript_mode = $dvi_mode = 0;
 $pdflatex = 'lualatex -interaction=nonstopmode -8bit --shell-escape %O %S';
 
 $bibtex_use = 1;
 $biber = 'biber --debug %O %S';
-\end{shcode}
+\end{shellcode}
 \end{codeblock}
 
 把这个小文件放到你自己的\verb|$HOME|目录下就行了。然后，只要：
 
 \begin{codeblock}[.9]
-  \begin{shcode}
+  \begin{shellcode}
     latexmk texfilename
-  \end{shcode}
+  \end{shellcode}
 \end{codeblock}
 不出错的话，一个带参考文献的PDF文件就诞生了。参考文献的样式就和本文的第\pageref{p:ref}页
 差不多。
