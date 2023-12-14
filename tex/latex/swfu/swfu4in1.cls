@@ -41,22 +41,13 @@
 \newcounter{grade}
 \setcounter{grade}{\the\year - 2}% Grade
 %%% check box
-\newfontfamily\notosym{Noto Sans Symbols2}
-\newcommand\unchecked{{\large\notosym □}} %ballot box
-\newcommand\checked{{\large\notosym ☑}} %🗹
+%\newfontfamily\notosym{Noto Sans Symbols2}
+\newfontfamily\symbola{Symbola Nerd Font}
+% \newunicodechar{☐}{{\symbola ☐}}%ballot box 🗆
+% \newunicodechar{☑}{{\symbola ☑}}%checked box tick 🗹
+\newcommand\unchecked{{\large\symbola ☐}} %ballot box
+\newcommand\checked{{\large\symbola ☑}} %🗹
 %
-% \newfontfamily\fira{Fira Code}
-% \newcommand\unchecked{{\large\fira □}} %ballot box
-% \newcommand\checked{{\large\fira ☑}} %🗹
-%
-% \newfontfamily\dejavu{DejaVu Sans Mono}%
-% \newcommand\unchecked{{\dejavu □}} %ballot box
-% \newcommand\checked{{\large\dejavu ☑}} %🗹
-
-% \RequirePackage{newunicodechar}
-% \newunicodechar{□}{{\large\nerd □}}%ballot box
-% \newunicodechar{☑}{{\large\nerd ☑}}%checked box
-
 \RequirePackage{pgfkeys}
 
 \pgfkeys{%

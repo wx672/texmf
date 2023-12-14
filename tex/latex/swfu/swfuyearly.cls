@@ -140,7 +140,7 @@
   \end{Titleleft}
   \vskip 1pt%
   \noindent%
-  \begin{tblr}{colspec={c|X|c|X},rowspec={Q[m]},vlines,hline{Z}}
+  \begin{tblr}{colspec={c|X|c|X},rowspec={Q[m]},vlines}%,hline{Z}
     {被\\考\\核\\人\\意\\见} &%
     \begin{minipage}[c][3.5cm]{\linewidth}
       确认考核结果。\par
