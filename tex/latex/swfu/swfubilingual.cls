@@ -46,7 +46,9 @@
 
 \newcommand{\swfusetup}[1]{\pgfkeys{#1}}
 
-\LoadClass[scheme=chinese]{ctexart}
+%\LoadClass[scheme=chinese]{ctexart}
+\LoadClass{article}
+\RequirePackage{wx672babel}
 
 %%%%% hyperref
 \RequirePackage{xcolor}
@@ -78,7 +80,7 @@ left=1.5cm,right=1.5cm
 \newcommand{\makeform}{%
   \pagestyle{empty}%
   \begin{center}
-    \LARGE\heiti 西南林业大学双语教学课程申请表
+    \LARGE\bfseries 西南林业大学双语教学课程申请表
   \end{center}
   \begin{tblr}{width=\linewidth,colspec={Q[6em,c]rcrcrX[c]}, vlines, hline{1-4}={solid},%
       cell{1}{1}={r=4,c=1}{c,m},%

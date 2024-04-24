@@ -1,0 +1,32 @@
+\documentclass{swfubilingual}
+
+\usepackage{filecontents}
+
+\begin{filecontents}{os.bib}
+@book{tanenbaum2015modern,
+  author	   = {Tanenbaum, Andrew S.},
+  title		   = {Modern Operating Systems},
+  year		   = 2015,
+  edition	   = 4,
+  publisher	   = {Prentice Hall Press}
+}
+\end{filecontents}
+
+\addbibresource{os.bib}
+
+\swfusetup{
+  Default,
+  Term = 232402,
+  Course = {操作系统原理},
+  Class = {数据科学与大数据技术2022},
+  Textbook = {\nocite{tanenbaum2015modern}\printbibliography[heading=none]},
+}
+
+\begin{document}
+\makeform
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

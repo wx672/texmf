@@ -163,7 +163,7 @@ nomarginpar]{geometry}
 
 %%%%% biblatex
 \RequirePackage[backend=biber,%
-style=gb7714-2015,sorting=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false,%
+style=gb7714-2015,sorting=none,gbpub=false,gbtype=false,gbpunctin=false,%
 url=false,doi=false,isbn=false]{biblatex}
 %\renewcommand*{\bibfont}{\small} % 11pt
 
@@ -271,14 +271,14 @@ url=false,doi=false,isbn=false]{biblatex}
                 \rule{\linewidth}{.4pt}}}\\%            
           \end{tblr}\\[25mm]
           %%%
-          \begin{tblr}{width=\linewidth, colspec={@{}rX[c]rc@{}},%
+          \begin{tblr}{width=\linewidth, colspec={@{}rcrX[c]@{}},%
               rows={belowsep=-5pt,abovesep=10pt},%
               hline{2,3} = {2,4}{.4pt,solid},%
               hline{4,5} = {2-4}{.4pt,solid},%
               cell{3,4}{2} = {c=3}{c},% advisor, reviewer
             }
-            学\qquad{}院&\mbox{大数据与智能工程学院}&\quad{}专\enskip{}业&\SWFU@Major\\
-            学生姓名&\@author&\quad{}学\enskip{}号&\SWFU@ID\\
+            学\qquad{}院&大数据与智能工程学院&\quad{}专\;业&\SWFU@Major\\
+            学生姓名&\@author&\quad{}学\;号&\SWFU@ID\\
             指导教师&\mbox{\SWFU@Advisor}\\
             \makebox[4em][s]{评阅人}&\mbox{\SWFU@Reviewer}\\
           \end{tblr}

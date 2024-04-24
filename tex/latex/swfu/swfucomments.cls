@@ -35,7 +35,7 @@
       \end{enumerate}},%
     Commenterlabel = {评阅人（签名）：},%
     Commentslabel = {评\hspace{1ex}语：},%
-    Marklabel = {评分：\underline{\makebox[2.5em]{\purisa\SWFU@Studmark}}\hfill},},
+    Marklabel = {评分：\underline{\makebox[2.5em]{\hwfamily\SWFU@Studmark}}\hfill},},
   A/.style = {%指导教师意见
     Formsubtitle = 指导教师意见,
     Hinttitle = 请参照以下几个方面提出意见,
@@ -49,7 +49,7 @@
       \end{enumerate}},%
     Commenterlabel = 指导教师（签名）：,%
     Commentslabel = {评\hspace{1ex}语：},%
-    Marklabel = {评分：\underline{\makebox[2.5em]{\purisa\SWFU@Studmark}}\hfill}},
+    Marklabel = {评分：\underline{\makebox[2.5em]{\hwfamily\SWFU@Studmark}}\hfill}},
   S/.style = {%答辩申请表
     Formsubtitle = 答辩申请表,%
     Hinttitle = 指导教师评审意见主要包含以下几个方面,%
@@ -67,20 +67,22 @@
 
 \newcommand{\swfusetup}[1]{\pgfkeys{#1}}
 
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}%ctexart
 \ProcessOptions\relax
 
-\LoadClass[scheme=chinese,zihao=-4]{ctexart}%fontset=ubuntu
+%\LoadClass[scheme=chinese,zihao=-4]{ctexart}%fontset=ubuntu
+\LoadClass[12pt]{article}
 
 \RequirePackage{graphicx}
 \graphicspath{{./figs/}{../figs/}{./img/}{./}{../}} %note that the trailing “/” is required
 
-\newfontfamily\purisa{Purisa}
+%\newfontfamily\purisa{Purisa}
 
+\RequirePackage{wx672babel}
 \RequirePackage[%showframe,nomarginpar,
 paperwidth=195mm,paperheight=270mm,
 top=3cm,bottom=2cm,
-left=2.5cm,right=2.5cm,
+hmargin=2cm%,right=2.5cm,
 ]{geometry}
 
 \RequirePackage{tabularray}
@@ -90,18 +92,18 @@ left=2.5cm,right=2.5cm,
 
 \newcommand{\makeform}{\pagestyle{empty}
   \begin{center}
-    \large\heiti 西南林业大学本科毕业（设计）论文\SWFU@Formsubtitle
+    \large\bfseries 西南林业大学本科毕业（设计）论文\SWFU@Formsubtitle%\heiti
   \end{center}
   \bigskip\noindent%
-  \begin{tblr}{width=\linewidth, colspec={rX[c]rX[c]},% rowspec={Q[f]Q[f]Q[f]},%
-      column{1,3}={font=\heiti}, column{2,4}={font=\kaishu},%
-      cell{1}{2}={c=3}{c,font=\kaishu},%
-      hline{2}={2-4}{},%
-      hline{3,4}={2,4}{},
+  \begin{tblr}{colspec={rcrX[c]},%
+      hline{2}={2-4}{}, hline{3,4}={2,4}{},%
+      cell{1}{2}={c=3}{font=\ttfamily},%\kaishu
+      column{1,3}={font=\bfseries}, column{2,4}={font=\ttfamily},%\kaishu\heiti
+      rows={m},%
     }
-    论文(设计)题目: & \SWFU@Prjtitle                                  \\
-    学生姓名:       & \SWFU@Studname & 学号: & \texttt{\SWFU@Studid} \\
-    学院:           & \SWFU@School   & 专业: & \SWFU@Studsbj         \\
+    {论文(设计)\\题目:} & {\SWFU@Prjtitle} & & \\
+    学生姓名: & \SWFU@Studname & 学号: & \SWFU@Studid \\
+    学院: & \SWFU@School & 专业: & \SWFU@Studsbj \\
   \end{tblr}%
   \par\vspace*{7mm}\noindent%
   \fbox{\begin{minipage}{1.0\linewidth}
@@ -114,12 +116,12 @@ left=2.5cm,right=2.5cm,
     \end{minipage}}
   \par\medskip
   \noindent\SWFU@Commentslabel\par
-  {\kaishu\SWFU@Comments}%
+  {\texttt\SWFU@Comments}%kaishu
   \vfill%
   \noindent%
   \SWFU@Marklabel%
   \SWFU@Commenterlabel{}\underline{\makebox[5em]{\SWFU@Signature}}\hfill
   日期：%
-  \underline{\makebox[3em]{\purisa\SWFU@Year}}年
-  \underline{\makebox[3ex]{\purisa\SWFU@Month}}月
-  \underline{\makebox[3ex]{\purisa\SWFU@Date}}日}
+  \underline{\makebox[3em]{\hwfamily\SWFU@Year}}年
+  \underline{\makebox[3ex]{\hwfamily\SWFU@Month}}月
+  \underline{\makebox[3ex]{\hwfamily\SWFU@Date}}日}
