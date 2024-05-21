@@ -11,15 +11,36 @@
   Date         ={\the\day},%
   Major        ={电子信息工程2021级},%专业班级
   Advisor      ={李俊萩、戴杨}, %指导教师
+  Reviewer  = {\includegraphics[width=12mm]{wangxiaolin}},%
+  % Reviewer = {戴杨},%
+  ReviewDate= \today,%
+  Mark      = {100},%
+  LabDate   = {\today},%
+  LabDays   = {3},%
+  Lab       = {经管楼219},%
+  Class     = {电子信息工程2021级},%
+  Mates     = {88},%
+  Group     = {不分组},%
+  Why       = {\zhlipsum[8]},%实验目的
+  Must      = {\zhlipsum[9]},%实验要求
+  What      = {\zhlipsum[10]},%实验内容
+  How       = {%课程实习安排
+    \begin{description}
+    \item[2024/5/30:] \zhlipsum[1]
+    \item[2024/5/31:] \zhlipsum[2]
+    \item[2024/6/01:] \zhlipsum[3]
+    \end{description}
+  },%
+  Sum       = {\zhlipsum[12]},%实习总结
 }
 
 \begin{document}
 
 \maketitle % 封面
 
-\chapter{程序及仿真}
+\section{程序及仿真}
 
-\section{单片机连接扬声器播放单个音符}
+\subsection{单片机连接扬声器播放单个音符}
 
 单片机 P1.0 引脚接扬声器播放单个音符，从低音哆，一直到超高音嘻。仿真图
 如下：
@@ -28,7 +49,7 @@
   \includegraphics[width=.6\textwidth]{fig-002}
 \end{center}
 
-\subsection{器件清单}
+\subsubsection{器件清单}
 
 \begin{tasks}(2)
   \task 单片机 STC89C52
@@ -38,7 +59,7 @@
 说明：可以通过示波器观察 P1.0 口输出的方波信号，随着音高的增加，信号频
 率不断增加。
 
-\subsection{【参考程序】}
+\subsubsection{【参考程序】}
 
 \begin{ccode}
 #include <reg52.h>
@@ -109,9 +130,9 @@ void main()
 \end{ccode}
 
 
-\section{一首完整歌曲的播放}
+\subsection{一首完整歌曲的播放}
 
-\subsection{【参考程序】}
+\subsubsection{【参考程序】}
 
 \begin{ccode}
 #include <reg52.h>
@@ -209,7 +230,7 @@ void main()
 【要求】对以上代码添加注释信息，描述全局变量的含义，各函数的功能，以及重要语句的
 功能。
 
-\section{用一个按键切换音乐的播放/停止}
+\subsection{用一个按键切换音乐的播放/停止}
 
 在 P3.2 引脚增加一个按键，第一次按下停止播放，再次按下继续播放。仿真图
 如下：
@@ -229,7 +250,7 @@ int main(){
 }
 \end{ccode}
 
-\section{播放多首歌曲}
+\subsection{播放多首歌曲}
 
 在 P2 口接一个共阴极七段数码管，P1.3 和 P3.5 引脚增加两个按键，按
 下 P1.3 引脚的键就切换到上一首歌，按下 P3.5 引脚的键就切换的到下一首歌，
@@ -240,7 +261,7 @@ int main(){
 \end{center}
 
 
-\subsection{【请将调试正确的 C51 程序粘贴在此处】}
+\subsubsection{【请将调试正确的 C51 程序粘贴在此处】}
 
 \begin{ccode}
 int main(){
@@ -249,14 +270,14 @@ int main(){
 }
 \end{ccode}
 
-\subsection{【绘制流程图】}
+\subsubsection{【绘制流程图】}
 
 \begin{center}
   \includegraphics[width=.3\textwidth]{swfulogo-emblem}
 \end{center}
 
 
-\subsection{【描述代码编写过程中遇到的问题及解决方法】}
+\subsubsection{【描述代码编写过程中遇到的问题及解决方法】}
 
 \begin{enumerate}
 \item 问题一问题一问题一
@@ -273,64 +294,64 @@ int main(){
 
 \end{enumerate}
 
-\chapter{PCB绘制及电路焊接}
+\section{PCB绘制及电路焊接}
 
-\subsection{参考电路图}
+\subsubsection{参考电路图}
 
 \begin{center}
   \includegraphics[width=.8\textwidth]{8-crop}
 \end{center}
 
-\subsection{参考 PCB 图}
+\subsubsection{参考 PCB 图}
 
 \begin{center}
   \includegraphics[width=.45\textwidth]{fig-005}\quad
   \includegraphics[width=.45\textwidth]{fig-006}
 \end{center}
 
-\subsection{【要求】}
+\subsubsection{【要求】}
 
-\subsubsection{请将自己绘制的电路原理图截图粘贴在此处}
+\paragraph{请将自己绘制的电路原理图截图粘贴在此处}
 
 \begin{center}
   \includegraphics[width=.3\textwidth]{swfulogo-emblem}
 \end{center}
 
-\subsubsection{请将自己绘制的 PCB 正、反面截图粘贴在此处}
+\paragraph{请将自己绘制的 PCB 正、反面截图粘贴在此处}
 
 \begin{center}
   \includegraphics[width=.3\textwidth]{swfulogo-emblem}\qquad
   \includegraphics[width=.3\textwidth]{swfulogo-emblem}
 \end{center}
 
-\subsubsection{请对 PCB 板绘制过程进行简要描述}
+\paragraph{请对 PCB 板绘制过程进行简要描述}
 
 要求：包括但不限于 PCB 板的设计流程、电气规则的设置、绘制过程中遇到的问
 题及解决方法。
 
 \zhlipsum[1-2]
 
-\subsubsection{描述实物焊接过程中遇到的问题}
+\paragraph{描述实物焊接过程中遇到的问题}
 
 \zhlipsum[3-4]
 
-\subsubsection{如何检测晶振是否起振？请描述检测过程，并将示波器检测结
+\paragraph{如何检测晶振是否起振？请描述检测过程，并将示波器检测结
   果拍照粘贴在此处}
 
 \zhlipsum[5-6]
 
-\subsubsection{描述单片机程序烧录的过程，请将识别串口、程序下载的过程截图粘贴在此处，并简要
+\paragraph{描述单片机程序烧录的过程，请将识别串口、程序下载的过程截图粘贴在此处，并简要
 描述每个步骤}
 
 \zhlipsum[7-8]
 
-\subsubsection{本次实习有什么收获和体会？请简要叙述}
+\paragraph{本次实习有什么收获和体会？请简要叙述}
 
 \zhlipsum[9-10]
 
 
 
-\chapter{照片}
+\section{照片}
 
 \begin{enumerate}
 \item 请将最终实物拍照粘贴在此处（正反面照片，背面用黑色笔写上自己的学
@@ -349,6 +370,7 @@ int main(){
 
 \end{enumerate}
 
+\lastpage
 \end{document}
 %%% Local Variables:
 %%% mode: latex

@@ -10,10 +10,14 @@
   \PassOptionsToPackage{onecolumn,paperwidth=195mm,paperheight=270mm,%
     vmargin=20mm,left=25mm,right=15mm}{geometry}}
 
+\DeclareOption{b5}{%16K: 185x260
+  \PassOptionsToPackage{onecolumn,paperwidth=184mm,paperheight=260mm,%
+    vmargin=20mm,left=15mm,right=15mm}{geometry}}
+
 \DeclareOption*{
   \PassOptionsToClass{\CurrentOption}{ctexart}
 }
-\ExecuteOptions{a3} % default to a3
+\ExecuteOptions{b5} % default to a3
 \ProcessOptions\relax
 
 \LoadClass[scheme=chinese,zihao=-4]{ctexart}
@@ -33,7 +37,7 @@
 
 \RequirePackage{amsmath,amsfonts,amssymb,biolinum}
 \RequirePackage{fancybox,fancyvrb} % for \fancyput
-\RequirePackage{multicol,marvosym,ulem,tasks,indentfirst,enumitem}
+\RequirePackage{multicol,marvosym,ulem,soul,tasks,indentfirst,enumitem}
 \RequirePackage{setspace} % \singlespacing, \onehalfspacing, \doublespacing
 
 \RequirePackage{tabularray}
@@ -45,13 +49,13 @@
 \renewcommand{\headrulewidth}{0pt}
 
 \newcommand{\code}[1]{\texttt{#1}}
-\newcommand{\bblank}{\underline{\hspace{1in}}}
-\newcommand{\blank}[1][6em]{\underline{\hspace{#1}}} % default 6em
-\newcommand{\blankone}{\underline{\hspace{1em}}}
-\newcommand{\blanksix}{\underline{\hspace{6em}}}
+\newcommand{\bblank}{\uline{\,\hspace{1in}}\,}
+\newcommand{\blank}[1][6em]{\uline{\hspace{#1}}} % default 6em
+\newcommand{\blankone}{\uline{\,\hspace{1em}\,}}
+\newcommand{\blanksix}{\uline{\,\hspace{6em}\,}}
 
 \newCJKfontfamily\sig{signature}
-\newfontfamily\dejavu{DejaVuSansMono Nerd Font Mono}
+\newfontfamily\dejavu{DejaVuSansM Nerd Font Mono}
 
 \newcommand{\verbatimfont}[1]{\def\verbatim@font{#1}}%
 \newcommand{\verbfont}[1]{\def\verbatim@font{#1}}%

@@ -46,8 +46,9 @@
 \newunicodechar{}{\nerd }%\newcommand\minimize{{\nerd \;}}
 \newunicodechar{}{\nerd }%\newcommand\create{{\nerd   \;}}
 \newunicodechar{}{\nerd }%\newcommand\coding{{\nerd   \;}}
-\newunicodechar{}{\nerd }%\newcommand\tmuxhsplit{{\nerd \;}}
-\newunicodechar{}{\nerd }%\newcommand\tmuxvsplit{{\nerd \;}}
+\newunicodechar{響}{\nerd 響}%\newcommand\tmuxhsplit{{\nerd \;}}%響
+\newunicodechar{}{\nerd }%\newcommand\tmuxvsplit{{\nerd \;}}%𤋮﬿
+\newunicodechar{}{\nerd }%
 \newunicodechar{}{\nerd }%\newcommand\tmuxup{{\nerd     }}
 \newunicodechar{}{\nerd }%\newcommand\tmuxdown{{\nerd   }}
 \newunicodechar{}{\nerd }%\newcommand\tmuxleft{{\nerd   }}
@@ -82,23 +83,23 @@
 
 \begin{document}
 \begin{center}
-  \colorbox{yellow}{\bfseries Window operations (Dwm)}    \\[1ex]
+  \colorbox{yellow}{\bfseries Window operations (Dwm)}         \\[1ex]
   \begin{tblr}{colspec={rl|[gray9]rl|[gray9]rl},
       column{odd}={font=\LARGE,fg={Green}}}
-       & \Super{t}  &  & \Super{j}   & 漢 & \ShiftSpace \\
-     慎 & \Super{q}  &  & \SuperTab   &   & \SuperF{1}  \\
-       & \Super{e}  &  & \Super{L}  &    &             \\
-     🏃 & \SuperEsc  &  & \SuperSpace &    &             \\
+       & \Super{t}  &   & \Super{L}       & 漢 & \ShiftSpace \\
+     慎 & \Super{q}  &   & \Super{greater} &   & \SuperF{1}  \\
+       & \Super{e}  &   & \Super{j}       &    &             \\
+     🏃 & \SuperEsc  &   & \SuperSpace     &    &             \\
   \end{tblr}
 \end{center}
 \begin{center}
-  \colorbox{yellow}{\bfseries Terminal operations (Tmux)} \\[1ex]
+  \colorbox{yellow}{\bfseries Terminal operations (Tmux)}      \\[1ex]
   \begin{tblr}{colspec={rl|[gray9]rl|[gray9]rl},
     column{odd}={font=\LARGE,fg={Green}}}
-       & \Ctrla{c}  &  & \CtrlaDash  &   & \CtrlaBar   \\
-       & \Ctrla{a}  &  & \Ctrla{k}   &   & \Ctrla{h}   \\
-       & \Ctrla{n}  &  & \Ctrla{j}   &   & \Ctrla{l}   \\
-       & \CtrlaF{1} &  & \CtrlaF{2}  &   & \CtrlaF{3}  \\
+       & \Ctrla{c}  & 響 & \CtrlaDash      &   & \CtrlaBar   \\
+       & \Ctrla{a}  &   & \Ctrla{k}       &   & \Ctrla{h}   \\
+       & \Ctrla{n}  &   & \Ctrla{j}       &   & \Ctrla{l}   \\
+       & \CtrlaF{1} &   & \CtrlaF{2}      &   & \CtrlaF{3}  \\
   \end{tblr}%\par
 %\hspace{-24em}{\tiny * Config file: \texttt{$\sim$/.tmux.conf}}
 \end{center}

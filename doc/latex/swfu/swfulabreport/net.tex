@@ -1,0 +1,183 @@
+\documentclass{swfulabreport}
+
+\usepackage{zhlipsum}
+
+\swfusetup{%
+  Title        ={《计算机网络》课程实习}, % 课程名称
+  Author       ={张三}, % 
+  ID           ={20231152xxx}, % 学号
+  Year         ={\the\year},%
+  Month        ={\the\month},%
+  Date         ={\the\day},%
+  Major        ={计算机科学与技术2023级},%专业班级
+  Advisor      ={王晓林}, %指导教师
+  Reviewer  = {\includegraphics[width=12mm]{wangxiaolin}},%
+  ReviewDate= \today,%
+  Mark      = {100},%
+  LabDate   = {\today},%
+  LabDays   = {3},%
+  Lab       = {经管楼219},%
+  Class     = {计科2023级},%
+  Mates     = {88},%
+  Group     = {不分组},%
+  Why       = {%实验目的
+    掌握Linux平台上常用网络工具的使用，并理解基本的网络编程过程。
+    \begin{enumerate}
+    \item 掌握用tcpdump捕获并分析数据包；
+    \item 掌握用netcat完成简单的网络会话；
+    \item 掌握基本的网络编程。
+    \end{enumerate}
+  },%
+  Must      = {%实验要求
+    \begin{enumerate}
+    \item 在Linux平台完成所有实验；
+    \item 在Linux平台完成实验报告；
+    \item 努力尝试用英文撰写实验报告；
+    \item 将实验作业及报告以tgz格式打包，并上传到指定教学网站；
+    \item 迟交报告将被扣分。
+    \end{enumerate}
+  },
+  What      = {%实验内容
+    详见《实验指导书》。
+  },%
+  How       = {%课程实习安排
+    \begin{description}
+    \item[2024/7/1:] 学习使用tmux，ttyrec等实验所需的命令
+      行工具。学习使用ip, tcpdump, netcat, curl, ss, nmap等网络工具。
+    \item[2024/7/2:] 完成用tcpdump捕获、分析数据包，用netcat实现网络协
+      议会话，以及网络编程等规定实验项目。
+    \item[2024/7/3:] 完成所有实验，并撰写实验报告。
+    \end{description}
+  },%
+  Sum       = {%实习总结
+    你自己写三、五百字。
+  },%
+}
+
+\begin{document}
+
+\maketitle % 封面
+\clearpage
+\section{Packet analysis}
+
+Upon running the following command:
+
+\begin{shcode}
+sudo tcpdump -ilo -nnvvvxXKS -s0 port 3333
+\end{shcode}
+
+the following packet is captured:
+
+\begin{outputcode}
+08:34:10.790666 IP (tos 0x0, ttl 64, id 12824, offset 0, flags [DF],
+proto TCP (6), length 64)
+  127.0.0.1.46668 > 127.0.0.1.3333: Flags [P.], seq 2400005725:2400005737,
+ack 373279396,
+  win 512, options [nop,nop,TS val 3259949783 ecr 3259896343], length 12
+      0x0000:  4500 0040 3218 4000 4006 0a9e 7f00 0001  E..@2.@.@.......
+      0x0010:  7f00 0001 b64c 0d05 8f0d 2e5d 163f caa4  .....L.....].?..
+      0x0020:  8018 0200 fe34 0000 0101 080a c24e e2d7  .....4.......N..
+      0x0030:  c24e 1217 6865 6c6c 6f20 776f 726c 640a  .N..hello.world.
+\end{outputcode}
+
+\begin{enumerate}
+\item Tell me the meaning of each option used in the previous command.
+  \begin{itemize}
+  \item -i:
+  \item -nn:
+  \item -vvv:
+  \item -x:
+  \item -X:
+  \item -S:
+  \item -K:
+  \item -s0:
+  \end{itemize}
+
+\item Please analyze this captured packet and explain it to me as
+  detailed as you can.
+  \begin{description}
+  \item[Answer:]
+  \end{description}
+\end{enumerate}
+
+\section{HTTP}
+
+\begin{enumerate}
+\item Write a simple script showing how HTTP works (you need
+  \texttt{curl});
+
+  \begin{shcode}
+    #!/bin/bash
+
+    echo 'Hello, world!'
+  \end{shcode}
+
+\item Record your HTTP demo session with \texttt{ttyrec}.
+\end{enumerate}
+
+\section{Socket programming}
+
+\subsection{TCP}
+
+\begin{ccode}
+/* A simple TCP server written in C */
+
+/* Your code */
+\end{ccode}
+
+\begin{ccode}
+/* A simple TCP client written in C */
+
+// Your code
+\end{ccode}
+
+\subsection{UDP}
+
+\begin{ccode}
+/* A simple UDP server written in C */
+
+// Your code
+\end{ccode}
+
+\begin{ccode}
+/* A simple UDP client written in C */
+
+// Your code
+\end{ccode}
+
+\section{Questions}
+
+List at least 5 problems you've met while doing this work. When
+listing your problems, you have to tell me:
+\begin{enumerate}
+\item Description of this problem. For example,
+  \begin{itemize}
+  \item What were you trying to do before seeing this problem?
+  \end{itemize}
+\item How did you try solving this problem？ For example,
+  \begin{itemize}
+  \item Did you google? web links?
+  \item Did you read the man page?
+  \item Did you ask others for hints?
+  \end{itemize}
+\end{enumerate}
+
+\subsection{Problems}
+
+\begin{enumerate}
+\item
+
+\item
+
+\item
+
+\item
+
+\item
+\end{enumerate}
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

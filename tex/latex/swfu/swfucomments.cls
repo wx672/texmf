@@ -5,25 +5,25 @@
 \RequirePackage{pgfkeys}%,etoolbox,calc
 
 \pgfkeys{%
-  Formsubtitle/.store in   = \SWFU@Formsubtitle,   % 指导教师意见 | 评阅意见 | 答辩申请表
-  Prjtitle/.store in       = \SWFU@Prjtitle,       % 论文(设计)题目
-  Studid/.store in         = \SWFU@Studid,         % 学号
-  Studname/.store in       = \SWFU@Studname,       % 学生姓名
-  Studsbj/.store in        = \SWFU@Studsbj,        % 学生专业
-  School/.store in         = \SWFU@School, School={大数据与智能工程学院},%
-  Studmark/.store in       = \SWFU@Studmark,       % 评分
+  School/.store in = \SWFU@School, School={大数据与智能工程学院},%
+  FormHeading/.store in = \SWFU@FormHeading, % 指导教师意见 | 评阅意见 | 答辩申请表
+  Title/.store in = \SWFU@Title, % 论文(设计)题目
+  Name/.store in    = \SWFU@Name,    % 学生姓名
+  ID/.store in      = \SWFU@ID,      % 学号
+  Subject/.store in = \SWFU@Subject, % 学生专业
+  Mark/.store in    = \SWFU@Mark,    % 评分
   Signature/.store in      = \SWFU@Signature,      % 教师签名
   Commenterlabel/.store in = \SWFU@Commenterlabel, % 指导教师 | 评阅人 | 申请人
   Commentslabel/.store in  = \SWFU@Commentslabel,  % 评语： | 指导教师评审意见：
   Marklabel/.store in      = \SWFU@Marklabel,      % 评分 | NULL
-  Year/.store in           = \SWFU@Year,  Year = \the\year,%
+  Year/.store in           = \SWFU@Year,  Year  = \the\year,%
   Month/.store in          = \SWFU@Month, Month = \the\month,%
-  Date/.store in           = \SWFU@Date,  Date = \the\day,%
-  Comments/.store in       = \SWFU@Comments,       % 意见正文
-  Hinttitle/.store in      = \SWFU@Hinttitle,      % 提示部分的标题
-  Hinttext/.store in       = \SWFU@Hinttext,       % 提示部分的内容
+  Date/.store in           = \SWFU@Date,  Date  = \the\day,%
+  Comments/.store in       = \SWFU@Comments,  % 意见正文
+  Hinttitle/.store in      = \SWFU@Hinttitle, % 提示部分的标题
+  Hinttext/.store in       = \SWFU@Hinttext,  % 提示部分的内容
   C/.style = {%评阅意见
-    Formsubtitle = 评阅意见,%
+    FormHeading = 评阅意见,%
     Hinttitle = 请参照以下几个方面提出意见,%
     Hinttext = {%
       \begin{enumerate}
@@ -35,9 +35,9 @@
       \end{enumerate}},%
     Commenterlabel = {评阅人（签名）：},%
     Commentslabel = {评\hspace{1ex}语：},%
-    Marklabel = {评分：\underline{\makebox[2.5em]{\hwfamily\SWFU@Studmark}}\hfill},},
+    Marklabel = {评分：\underline{\makebox[2.5em]{\hwfamily\SWFU@Mark}}\hfill},},
   A/.style = {%指导教师意见
-    Formsubtitle = 指导教师意见,
+    FormHeading = 指导教师意见,
     Hinttitle = 请参照以下几个方面提出意见,
     Hinttext = {%
       \begin{enumerate}
@@ -49,9 +49,9 @@
       \end{enumerate}},%
     Commenterlabel = 指导教师（签名）：,%
     Commentslabel = {评\hspace{1ex}语：},%
-    Marklabel = {评分：\underline{\makebox[2.5em]{\hwfamily\SWFU@Studmark}}\hfill}},
+    Marklabel = {评分：\underline{\makebox[2.5em]{\hwfamily\SWFU@Mark}}\hfill}},
   S/.style = {%答辩申请表
-    Formsubtitle = 答辩申请表,%
+    FormHeading = 答辩申请表,%
     Hinttitle = 指导教师评审意见主要包含以下几个方面,%
     Hinttext = {%
       \begin{enumerate}
@@ -86,13 +86,10 @@ hmargin=2cm%,right=2.5cm,
 ]{geometry}
 
 \RequirePackage{tabularray}
-% \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % for centering p column
-% \newcolumntype{C}{>{\centering\arraybackslash}X}
-% \renewcommand{\arraystretch}{1.5}
 
 \newcommand{\makeform}{\pagestyle{empty}
   \begin{center}
-    \large\bfseries 西南林业大学本科毕业（设计）论文\SWFU@Formsubtitle%\heiti
+    \large\bfseries 西南林业大学本科毕业（设计）论文\SWFU@FormHeading%\heiti
   \end{center}
   \bigskip\noindent%
   \begin{tblr}{colspec={rcrX[c]},%
@@ -101,9 +98,9 @@ hmargin=2cm%,right=2.5cm,
       column{1,3}={font=\bfseries}, column{2,4}={font=\ttfamily},%\kaishu\heiti
       rows={m},%
     }
-    {论文(设计)\\题目:} & {\SWFU@Prjtitle} & & \\
-    学生姓名: & \SWFU@Studname & 学号: & \SWFU@Studid \\
-    学院: & \SWFU@School & 专业: & \SWFU@Studsbj \\
+    {论文(设计)\\题目:} & {\SWFU@Title} & & \\
+    学生姓名: & \SWFU@Name & 学号: & \SWFU@ID \\
+    学院: & \SWFU@School & 专业: & \SWFU@Subject \\
   \end{tblr}%
   \par\vspace*{7mm}\noindent%
   \fbox{\begin{minipage}{1.0\linewidth}

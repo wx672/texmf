@@ -65,7 +65,9 @@
 
 \newcommand{\swfusetup}[1]{\pgfkeys{#1}}
 
-\LoadClass[scheme=chinese]{ctexart}%zihao=-4
+\LoadClass{article}%[scheme=chinese]{ctexart}%zihao=-4
+
+\RequirePackage{wx672babel}
 
 \RequirePackage[ % showframe,
 paperwidth=210mm,paperheight=297mm,

@@ -35,11 +35,12 @@
 
 \newcommand{\swfusetup}[1]{\pgfkeys{#1}}
 
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}%ctexart
 \ProcessOptions\relax
 
-\LoadClass[scheme=chinese]{ctexart}
+\LoadClass{article}%[scheme=chinese]{ctexart}
 
+\RequirePackage{wx672babel}
 \RequirePackage{tabularray}
 \RequirePackage{wx672tcb}
 
@@ -58,19 +59,19 @@
 % \usetikzlibrary{backgrounds,positioning,fit}
 
 \RequirePackage{amssymb}% \smallsmile, \smallfrown
-\newCJKfontfamily\sig{signature}
-\newfontfamily\purisa{Purisa}
+% \newCJKfontfamily\sig{signature}
+% \newfontfamily\purisa{Purisa}
 
 \newcommand{\makeform}{
   \begin{center}
-    \Large\heiti 西南林业大学\,\SWFU@Year{}\,年教职工年度考核登记表 \\
-    \Large\heiti （专业技术岗位）
+    \Large\heifamily 西南林业大学\,\SWFU@Year{}\,年教职工年度考核登记表 \\
+    \Large\heifamily （专业技术岗位）
   \end{center}
-  单位（部门）：{\kaishu\underline{\,\SWFU@School\,}}\hfill\par\smallskip%
+  单位（部门）：{\kaifamily\underline{\,\SWFU@School\,}}\hfill\par\smallskip%
   \noindent%
   \begin{tblr}{width=\linewidth, hline{1-4}={solid}, vlines, rows={2em,m},%
       colspec={cX[c]cX[c]cX[c]cX[c]cX[c]},%
-      column{even}={font=\kaishu},%
+      column{even}={font=\kaifamily},%
       cell{2}{2,8}={c=3}{c},%
       cell{3,4}{1}={c=2}{c},%
       cell{3}{3}={c=3}{c},%
@@ -89,7 +90,7 @@
   % \begin{tblr}{width=\linewidth, hline{2}, vlines, rows={2em},%
   %     colspec={cX[c]cX[c]},%
   %     cell{2}{2}={c=3}{c},%
-  %     column{even}={font=\kaishu}}
+  %     column{even}={font=\kaifamily}}
   %   是否担任研究生导师&\SWFU@MScTutor&担任班主任情况&\SWFU@Tutor\\
   %   社会兼职工作&\SWFU@Parttime\\
   % \end{tblr}\\[-1pt]
@@ -100,7 +101,7 @@
       % 担和完成岗位任务的情况，在专业建设、课程建设、创新创业教育等本科
       % 教育教学工作中的成果和贡献，参加集体活动等情况。)
       % \vfill
-      \doublespacing\qquad\kaishu\SWFU@Sumup
+      \doublespacing\qquad\kaifamily\SWFU@Sumup
     \end{minipage}
   \end{Titleleft}
   \noindent%

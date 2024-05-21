@@ -25,8 +25,8 @@
   Major     = \textcolor{red}{专业},% 
   enTitle   = \textcolor{red}{英文标题}, % 
   enAuthor  = \textcolor{red}{英文学生姓名},% 
-  Advisor   = \textcolor{red}{指导教师姓名（职称）},% 
-  Reviewer  = \textcolor{red}{评阅人姓名（职称）},% 
+  Advisor   = {赵辛楣（教授），高松年（教授）},% 
+  Reviewer  = {李梅亭（教授）},% 
   Month     = \the\month,% 
   Date      = \the\day,% 
   Year      = \the\year,%   
@@ -89,7 +89,7 @@ nomarginpar]{geometry}
 
 
 %%%%% xstring 
-\RequirePackage{xstring} % for \StrSubstitute{} in \fancyhead
+%\RequirePackage{xstring} % for \StrSubstitute{} in \fancyhead
 
 %%%%% fancyhdr
 \RequirePackage{fancyhdr}
@@ -97,7 +97,8 @@ nomarginpar]{geometry}
 
 \fancypagestyle{plain}{% 1st page of each chapter
   \fancyhf{}%
-  \fancyfoot[C]{\fontsize{8}{8}\selectfont --\;\thepage\;--}
+  %\fancyfoot[C]{\fontsize{8}{8}\selectfont --\;\thepage\;--} % like "-88-"
+  \fancyfoot[C]{\fontsize{8}{8}\selectfont\thepage}% like "88"
   \renewcommand{\headrulewidth}{0pt}}
 
 \pagestyle{fancy}
@@ -106,8 +107,10 @@ nomarginpar]{geometry}
   \markboth{\thechapter.\ #1}{}}
 
 \fancyhead[CE]{\footnotesize\leftmark}
-\fancyhead[CO]{\footnotesize\StrSubstitute{\@title}{\\}{}}
-\fancyfoot[C]{\fontsize{8}{8}\selectfont -- \thepage\ --}
+%\fancyhead[CO]{\footnotesize\StrSubstitute{\@title}{\\}{}}
+\fancyhead[CO]{\footnotesize\@title}
+\fancyfoot[C]{\fontsize{8}{8}\selectfont\thepage}% e.g. "88"
+% \fancyfoot[C]{\fontsize{8}{8}\selectfont --\;\thepage\;--} % e.g. "-88-"
 
 %%%%% misc
 % \RequirePackage{indentfirst} % enabled if scheme=chinese
@@ -257,7 +260,7 @@ url=false,doi=false,isbn=false]{biblatex}
       \makebox[8em][s]{\includegraphics[width=8em]{swfulogo-emblem}}\\[1cm]
       \begin{minipage}{\linewidth}
         \begin{large}
-          \begin{tblr}{width=\linewidth, colspec={@{}cX[c]@{}},%
+          \begin{tblr}{width=1.01\linewidth, colspec={cX[c]},%
               rowsep=-.17\baselineskip,% work with \raisebox{} below
               column{2}={font=\Large\heiti},% 小2号、黑体
               hline{Z}={2}{leftpos=-1,rightpos=-1},% 
@@ -271,7 +274,7 @@ url=false,doi=false,isbn=false]{biblatex}
                 \rule{\linewidth}{.4pt}}}\\%            
           \end{tblr}\\[25mm]
           %%%
-          \begin{tblr}{width=\linewidth, colspec={@{}rcrX[c]@{}},%
+          \begin{tblr}{width=1.01\linewidth, colspec={rcrX[c]},%
               rows={belowsep=-5pt,abovesep=10pt},%
               hline{2,3} = {2,4}{.4pt,solid},%
               hline{4,5} = {2-4}{.4pt,solid},%
@@ -315,7 +318,8 @@ url=false,doi=false,isbn=false]{biblatex}
 \newenvironment{abstract}{% 中文摘要
   \thispagestyle{plain}\phantomsection{}%
   \begin{center}% 摘要标题，小2号（Large）、黑体、居中    
-    {\singlespacing\heiti\Large\StrSubstitute{\@title}{\\}{}}\\[5mm]%
+    % {\singlespacing\heiti\Large\StrSubstitute{\@title}{\\}{}}\\[5mm]%
+    {\singlespacing\heiti\Large\@title}\\[5mm]%
     {\zihao{4} % 署名用4号，宋体
       \@author\par%      
       （西南林业大学\,大数据与智能工程学院\,\,昆明\,\,650224）}% 地址，4号宋体

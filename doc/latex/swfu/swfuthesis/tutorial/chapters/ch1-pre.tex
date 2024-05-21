@@ -42,8 +42,8 @@
 如果没有经济上的困扰，我觉得把时间兑换成钞票是相当不划算的事情。所以，
 当我不得不对人家坦白说“我在事业上一事无成”的时候，我通常会向人家展示一
 下我寒暑假的骑行游记\footnote{https://cs6.swfu.edu.cn/~wx672/travelogs}，%
-以此证明我这些年也没白活。否则，后面的聊天……我反正脸皮厚，但对方会感到
-尴尬的。不管怎么说，我就是一个地地道道的Linux日常使用者，而且不搞开发，
+以此证明我这些年也没白活。否则，后面的聊天……反正我不觉得尴尬，
+尴尬的就是别人。不管怎么说，我就是一个地地道道的Linux日常使用者，而且不搞开发，
 而且我的Debian能满足我几乎所有的日常需求。当然，我的日常需求也的确相当
 简单（上网、听歌、看片、写讲义、做幻灯片……）。
 
@@ -73,11 +73,14 @@
   也尝试了在Virtualbox虚拟机里装
   个Android-x86\footnote{https://www.android-x86.org/}，%
   两个办法都行得通，但总感觉代价偏高。WINE和Virtualbox都很优秀，问题出
-  在钉钉上，它不仅臃肿，而且buggy，我实在没心情伺候它。所以我目前的解决
-  方案是：1）如果想借用电脑的实体键盘快速打字的话，我就用scrcpy%
-  \footnote{https://github.com/Genymobile/scrcpy}；2）如果想在电脑与手
-  机之间快速传输文件，我就用qrcp%
-  \footnote{https://github.com/claudiodangelis/qrcp}。
+  在钉钉上，它不仅臃肿，而且buggy，我实在没心情伺候它。还好，折腾了一
+  年多之后，钉钉终于有了Linux版，虽然还是很臃肿、很buggy，但总算能对付
+  着用了。
+  % 所以我目前的解决
+  % 方案是：1）如果想借用电脑的实体键盘快速打字的话，我就用scrcpy%
+  % \footnote{https://github.com/Genymobile/scrcpy}；2）如果想在电脑与手
+  % 机之间快速传输文件，我就用qrcp%
+  % \footnote{https://github.com/claudiodangelis/qrcp}。
 \item Linux平台没有原生的炒股软件，但通过WINE也还可以挺顺畅地应付。
 \end{itemize}
 
@@ -86,13 +89,15 @@
 
 \begin{itemize}
 \item 他习惯于使用MS-Office做事情（可以尝试Libreoffice，或者WPS）
-\item 他要QQ（可以尝试WebQQ）
-\item 他要微信（可以尝试web版\footnote{https://web.wechat.com}）
 \item 他要玩游戏（也许可以WINE）
+\item 他要QQ
+\item 他要微信
 \item 他要……
 \end{itemize}
 
-总之，做为入门用户，而且被Windows/QQ/Wechat/Baidu/360用户群包围着，又生
+
+总之，做为入门用户，而且被Windows/QQ/Wechat/Baidu/360用户群包围着
+\footnote{腾讯已经发布了QQ和微信的Linux版本，据说还不错。}，又生
 活在防火长城之下……困难总会有的，但并非无法克服。Debian可能是我人生中最
 正确的一个选择了，干净，自由。
 
@@ -115,20 +120,20 @@ desktop”。为了这一梦想，Linux的各个品牌都热衷于以华丽的�
 不依赖于拐杖的人才是健康的，不是吗？所以，怎么才算是方便呢，作为计科专
 业的学生，你不该斟酌一下吗？
 
-我们不需要桌面环境，有个window manager就足够了。前面刚忏悔过，年轻的时
-候，我是个desktop-hopper，在眼花缭乱的桌面环境间换来跳去。“十年一觉扬州
-梦”之后，眼睛也花了，胡子也白了，“再回首，恍然如梦……才知道平平淡淡从从
-容容才是真”，于是舍弃了所有花哨的桌面环境，返璞归真，
-由 desktop-hopper 变异为 WM-hopper。先用了十多年Sawfish%
+写毕业论文的话，我们完全不需要昂贵的桌面环境，有个便宜的window
+manager就足够了。前面刚忏悔过，年轻的我是个desktop-hopper，在眼花
+缭乱的桌面环境间换来跳去。“十年一觉扬州梦”，如今眼睛也花了，胡子也白
+了，“再回首，……，才知道平平淡淡从从容容才是真”，于是
+我返璞归真，由 desktop-hopper 变异为 WM-hopper。先用了十多年Sawfish%
 \footnote{\url{https://en.wikipedia.org/wiki/Sawfish_(window_manager)}}
-，Sawfish曾经是Gnome默认的窗口管理器，它界面足够的简单，功能足够的
-丰富，配置足够的容易。而且和Emacs一样，它也是用Lisp写成的，算是Emacs的
-近亲吧。这是我偏爱Sawfish的一个重要原因。后来，Sawfish老不更新，我就见
-异思迁，另觅新欢，找了yet another Lisp-based tiling window manager ---
+，Sawfish曾经是Gnome默认的窗口管理器，它界面足够的简单，功能足够的丰富，
+配置足够的容易。而且和Emacs一样，它也是用Lisp写成的，算是Emacs的近亲吧。
+这是我偏爱Sawfish的一个重要原因。后来，Sawfish老不更新，我就见异思迁，
+另觅新欢，找了yet another Lisp-based tiling window manager ---
 stumpwm\footnote{\url{https://stumpwm.github.io/}}。一直想好好学学Lisp，
 无奈拖延症晚期了……又一变异，就躺平了。
 
-最近一年我都在用DWM\footnote{\url{https://dwm.suckless.org/}}，一个很不
+近两年我都在用DWM\footnote{\url{https://dwm.suckless.org/}}，一个很不
 错的平铺式窗口管理器（tiling window manager%
 \footnote{\url{https://en.wikipedia.org/wiki/Tiling_window_manager}}）。%
 它可以自动让所有的窗口互不重叠地铺满整个屏幕，非常适合大屏幕。%
@@ -148,7 +153,7 @@ stumpwm\footnote{\url{https://stumpwm.github.io/}}。一直想好好学学Lisp�
     \qutebrowser{}: \url{https://en.wikipedia.org/wiki/Qutebrowser}} ，因为它小、快、灵、
   省内存、支持全键盘操作；
 \item[PDF阅读工具] 我用Emacs的pdf-tools插件。在Emacs里，可以在一
-  个buffer里写tex，在另一个buffer里看PDF。还可以很方便地在两个buffer中
+  个buffer里写\TeX{}，在另一个buffer里看PDF。还可以很方便地在两个buffer中
   对应的位置跳来跳去；
 \item[终端] 我用st\footnote{\url{https://st.suckless.org/}}。其实，终端
   软件都差不多，有一个就行。真正不可或缺的
@@ -158,35 +163,38 @@ stumpwm\footnote{\url{https://stumpwm.github.io/}}。一直想好好学学Lisp�
 
 除了“窗口”之外，你还需要：
 \begin{description}
-\item[\LaTeX{}套件：] TeXLive\footnote{\url{https://en.wikipedia.org/wiki/TeX_Live}}，它完备
-  而庞大，但如果就是写个科技论文，我们只需要其中很少的一些软件包就够了。附录\ref{app:pkg}中列出了参照本教程写论
-  文所需的所有软件包，可供参考。
-\item[中文字体：] 完全不必操心，因为TeXLive有很好的中文支持。如果抛开\TeX{}不谈，就日常使用而
-  言，我比较喜欢Noto字体\footnote{\url{https://en.wikipedia.org/wiki/Noto_fonts}}。
-  它是Google推出的开源字体。Debian库里自带，装上就好。所谓“Noto”就是No tofu的意思，也就是
-  说Noto字体的终极目标是消灭所有的豆腐块（缺字）。Noto有专门的CJK字体包，只是尚缺楷体。%
-  楷体我用Debian库里自带的arphic-ukai，它是台湾文鼎科技\footnote{%
-    \url{https://en.wikipedia.org/wiki/Arphic_Technology}}推出的开源字体。
-  你当然也可以选用Windows字体，只要从你的Windows系统里拷贝过来就行了。
-  这也许是你人生中唯一需要Windows的时候。
+\item[\LaTeX{}套件：]
+  TeXLive\footnote{\url{https://en.wikipedia.org/wiki/TeX_Live}}，它完
+  备而庞大，但如果就是写个科技论文，我们只需要其中很少的一些软件包就够
+  了。附录\ref{app:pkg}中列出了参照本教程写论文所需的所有软件包，可供参
+  考。
+\item[中文字体：] 完全不必操心，因为TeXLive有很好的中文支持。如果抛
+  开\TeX{}不谈，就日常使用而言，我比较喜欢Noto字体\footnote{%
+    \url{https://en.wikipedia.org/wiki/Noto_fonts}}。它是Google推出的开
+  源字体。Debian库里自带，装上就好。所谓“Noto”就是Notofu的意思，也就是
+  说Noto字体的终极目标是消灭所有的豆腐块（缺字）。Noto有专门的CJK字体包，
+  只是尚缺楷体。楷体我用Debian库里自带的arphic-ukai，它是台湾文鼎科技\footnote{%
+    \url{https://en.wikipedia.org/wiki/Arphic_Technology}}推出的开源字
+  体。你当然也可以选用Windows字体，只要从你的Windows系统里拷贝过来就行
+  了。这也许是你人生中唯一需要Windows的时候。
 \end{description}
 
 \subsection{编辑器}
 \label{sec:emacs}
 
-Emacs（）是世界上最强大的编辑器\cite{emacs}，没有之一。作为计科专业的学生，
-如果你不熟悉它的使用，怎么好意思写毕业论文呢？我从1997年开始接触Emacs，
-至今已经25年了。我不是程序员，从来就不是，但是，I love Emacs! 1997年的
-时候，还没有你今天见到的这么多IDE\footnote{集成开发环境（Integrated
-  Development Environment）。}，%
-所以Emacs就是当年最好的IDE。25年来，虽然我既没有搞开发，也没为Emacs贡献
-任何插件，但我还是从Emacs获得了巨大的乐趣。直到今天，在我看，Emacs还是
-最好的IDE。不信？我们先看看什么是IDE。一个IDE无非包括如下一些功能模块：
-一个编辑器，一个编译器，一个调试器，和其他一些辅助功能，比如用鼠标拖控
-件。什么是最好的IDE？那肯定是：
-\[
+Emacs（）是世界上最强大的编辑器\cite{emacs}，没有之一。作为计科专业的
+学生，如果你不熟悉它的使用，怎么好意思写毕业论文呢？我从1997年开始接
+触Emacs，至今已经27年了。我不是程序员，从来就不是，但是，I love Emacs!
+1997年的时候，还没有你今天见到的这么多IDE\footnote{%
+  集成开发环境（Integrated Development Environment）。}，所以Emacs就是
+当年最好的IDE。25年来，虽然我既没有搞开发，也没为Emacs贡献任何插件，但
+我还是从Emacs获得了巨大的乐趣。直到今天，在我看，Emacs还是最好的IDE。不
+信？我们先看看什么是IDE。一个IDE无非包括如下一些功能模块：一个编辑器，
+一个编译器，一个调试器，和其他一些辅助功能，比如用鼠标拖控件。什么是最
+好的IDE？那肯定是：
+\begin{center}
   最好的IDE = 最好的编辑器 + 最好的编译器 + 最好的调试器
-\]
+\end{center}
 有哪个IDE做到这一点了吗？只有Emacs。Emacs可以很方便地调用世界上
 最牛的编译器（gcc）和调试器（gdb）。也许你会说“Emacs不能拖控件啊”，
 没错，但在我看，拖控件并不总是一个受人欢迎的功能，至少在系统编程的时候，
@@ -219,7 +227,7 @@ Environment，这名字是我刚编出来的）。Emacs的设计目标就是，�
 科专业学生和非专业学生应有的不同 。
 
 Emacs绝对强大，但方便与否就见仁见智了，因为“方便”是一个很主观的概
-念。反正，作为一个25年的老用户，我肯定觉得方便。其他IDE太无聊了，那么花
+念。反正，作为一个27年的老用户，我肯定觉得方便。其他IDE太无聊了，那么花
 哨而庞大的东西，却只适用于应用层编程。既不能用来写论文，又不能做幻灯片，
 更不能用来听歌、玩游戏。生活也太没有乐趣了。
 
@@ -251,10 +259,8 @@ Emacs绝对强大，但方便与否就见仁见智了，因为“方便”是一
 
 \begin{figure}[ht]
   \centering
-  \begin{center}
     \includegraphics[width=.9\textwidth]{screenshot}
-  \end{center}
-  \caption{在Emacs中编辑、预览论文\label{fig:screenshot}}  
+    \caption{在Emacs中编辑、预览论文\label{fig:screenshot}}  
 \end{figure}
 
 附录\ref{app:pkg}中列出了我的Debian系统上安装的与写论文相关的所有软件包，当然，清单里的

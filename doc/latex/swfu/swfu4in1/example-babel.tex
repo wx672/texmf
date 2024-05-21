@@ -1,4 +1,4 @@
-\documentclass{swfu4in1}
+\documentclass{swfu4in1-babel}
 
 \usepackage{zhlipsum}
 
@@ -8,19 +8,18 @@
   Prjtitle={How to mess up everything at Hogwarts},
   Studname={Harry Potter},
   Studid = 3.1415926,  % 学号
-  % StudSig={},%学生签名
-  % Date  = 8888年88月8日,   % 报告提交年、月、日（封面日期）
-  % Gyear = \the\year,% 届
-  Grade = 2021,% 年级
+  % Date  = 8888年88月8日,   % 报告提交年、月、日
+  Gyear = \the\year,% 届
+  % Grade = 2021,% 年级
   % School = Gryffindor, % 学生所属学院
-  Subject = Defence of dark art, %
+  % Subject = Defence of dark art, %
   %%% 默认都未打勾。想勾谁，放开注释即可。
-  % PrjFrmA =☑,% 科研项目
-  % PrjFrmB =☑,% 社会实践
-  % PrjFrmC =☑,% 大学生创新创业项目
-  PrjFrmD =☑,  % 其它来源
+  % PrjFrmA =\checked{},% 科研项目
+  % PrjFrmB =\checked{},% 社会实践
+  % PrjFrmC =\checked{},% 大学生创新创业项目
+  PrjFrmD =\checked{},  % 其它来源
   %%%
-  % AdvisoraSig = {\includegraphics[width=3cm]{wangxiaolin}},%  指导教师a签名
+  AdvisoraSig = {\includegraphics[width=6em]{../wangxiaolin}},%  指导教师a签名
   % Advisora = Albus Dumbledore,% 指导教师a姓名
   % AdvisoraTitle = Professor,  % 指导教师a职称
   % AdvisoraGender = 男,        % 指导教师a性别
@@ -34,7 +33,7 @@
   % AdvisorbAge =,    % 指导教师b年龄    
   % AdvisorbDegree =, % 指导教师b学历    
   % AdvisorbFrom =,   % 指导教师b工作单位
-  % PPSLComment = {%（开题报告）指导教师意见
+  % AdvisorComment = {% （开题报告）指导教师意见
   %   \zhlipsum[1]
   % },%
   %%%
@@ -94,10 +93,10 @@
   Plan={%（实习计划表）论文工作计划和预期目标摘要
     \zhlipsum[11]
   },%
-  PrjDone={hello, world.},    %(中期检查表) 
-  PrjTodo={hello, world.},    %(中期检查表)
-  PrjProblem={hello, world.}, %(中期检查表)
-  % MidchkComments={},       %(中期检查表)
+  Prjdone={hello, world.},    %(中期检查表) 
+  Prjtodo={hello, world.},    %(中期检查表)
+  Prjproblem={hello, world.}, %(中期检查表)
+  % AdvisorComments={},       %(中期检查表)
   % Midchkdate={2022年2月22日},  %(中期检查表)
 }
 

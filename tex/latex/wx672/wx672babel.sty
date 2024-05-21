@@ -1,15 +1,18 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{wx672babel}
 
-\RequirePackage[bidi=basic,chinese,provide=*]{babel}%
+\RequirePackage[chinese,provide=*]{babel}%
 
-\babelprovide[onchar=ids fonts]{chinese}
+\babelcharproperty{`“}{linebreak}{op}
+\babelcharproperty{`”}{linebreak}{cl}
 
-\babelfont[english]{rm}[Renderer=HarfBuzz,Ligatures=Common]{DejaVu Serif}%Latin Modern Roman
-\babelfont[english]{sf}[Renderer=HarfBuzz,Ligatures=Common]{DejaVu Sans}%Latin Modern Sans
+% \babelfont[english]{rm}[Renderer=HarfBuzz,Ligatures=Common]{DejaVu Serif}%Latin Modern Roman
+% \babelfont[english]{sf}[Renderer=HarfBuzz,Ligatures=Common]{DejaVu Sans}%Latin Modern Sans
 
-\babelfont[chinese]{rm}{Noto Serif CJK SC}
+\babelfont[chinese]{rm}{Noto Serif CJK SC}%BabelStone Han
 \babelfont[chinese]{sf}{Noto Sans CJK SC}
 \babelfont[chinese]{tt}{LXGW Bright GB}
+\babelfont[chinese]{kai}{LXGW Bright GB}%\kaifamily, \kaidefault, \textkai{...}
+\babelfont[chinese]{hei}{Noto Sans CJK SC}
 
 \babelfont{hw}[Renderer=HarfBuzz,Ligatures=Common]{Purisa}%handwriting

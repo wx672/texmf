@@ -25,14 +25,16 @@
 }
 \newcommand{\swfusetup}[1]{\pgfkeys{#1}}
 
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}%ctexart
 \ProcessOptions\relax
 
-\LoadClass[scheme=chinese]{ctexart}
+\LoadClass{article}%[scheme=chinese]{ctexart}
 
-\ctexset{%
-  today=small
-}
+% \ctexset{%
+%   today=small
+% }
+\RequirePackage{wx672babel}
+
 \RequirePackage[backend=biber,url=false,doi=false,isbn=false]{biblatex}
 %style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false
 %\renewcommand*{\bibfont}{\scriptsize}
@@ -67,9 +69,9 @@ left=2.5cm, right=2.5cm,
 
 \newcommand{\makeform}{
   {\centering%
-    {\LARGE\heiti 西南林业大学课程教学小结表}\\\bigskip%
+    {\LARGE\heifamily 西南林业大学课程教学小结表}\\\bigskip%
     \begin{tblr}{width=\textwidth,hlines,vlines,%
-        colspec={cX[c]cX[-1,c]cc}, column{even}={font=\kaishu},%
+        colspec={cX[c]cX[-1,c]cc}, column{even}={font=\kaifamily},%
         row{3}={m}, cell{1}{4}={c=3}{},cell{5}{2}={c=5}{l,m},%
       }
       授课学期&\SWFU@Term&课程名称&\SWFU@Coursetitle\\
