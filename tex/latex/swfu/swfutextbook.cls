@@ -11,10 +11,16 @@
   Degree/.store in     = \SWFU@Degree,% 开课层次（本科）
   Teacher/.store in    = \SWFU@Teacher,% 课程负责人
   TeacherSig/.store in = \SWFU@TeacherSig,%课程负责人签字
-  TeacherSigDate/.store in = \SWFU@TeacherSigDate,%课程负责人签字时间戳
+  TeacherSigYear/.store in  = \SWFU@TeacherSigYear, %
+  TeacherSigMonth/.store in = \SWFU@TeacherSigMonth,%
+  TeacherSigDay/.store in   = \SWFU@TeacherSigDay,  %
+  %TeacherSigDate/.store in = \SWFU@TeacherSigDate,%课程负责人签字时间戳
   Dept/.store in = \SWFU@Dept,% 课程负责教研室（系）
   DeptSig/.store in = \SWFU@DeptSig,%教研室（系）主任签字
-  DeptSigDate/.store in = \SWFU@DeptSigDate,%教研室（系）主任签字时间戳
+  DeptSigYear/.store in  = \SWFU@DeptSigYear, %
+  DeptSigMonth/.store in = \SWFU@DeptSigMonth,%
+  DeptSigDay/.store in   = \SWFU@DeptSigDay,  %
+  %DeptSigDate/.store in = \SWFU@DeptSigDate,%教研室（系）主任签字时间戳
   Grade/.store in = \SWFU@Grade, %授课年级
   Subject/.store in    = \SWFU@Subject,% 授课专业
   Book/.store in = \SWFU@Book,%教材名称
@@ -40,10 +46,16 @@
     Degree     = {本科}, %开课层次
     Teacher       = {王晓林},%课程负责人
     TeacherSig =,%课程负责人签字
-    TeacherSigDate={年\hspace{2em}月\hspace{2em}日},%课程负责人签字时间戳
+    %TeacherSigDate={年\hspace{2em}月\hspace{2em}日},%课程负责人签字时间戳
+    TeacherSigYear  ={{\hwfamily\the\year}}, %
+    TeacherSigMonth ={{\hwfamily\the\month}},%
+    TeacherSigDay   ={{\hwfamily\the\day}},  %
     Dept ={计算机科学与工程系},% 课程负责教研室（系）
     DeptSig =,%教研室（系）主任签字
-    DeptSigDate ={年\hspace{2em}月\hspace{2em}日},%教研室（系）主任签字时间戳
+    DeptSigYear  ={{\hwfamily\the\year}}, %
+    DeptSigMonth ={{\hwfamily\the\month}},%
+    DeptSigDay   ={{\hwfamily\the\day}},  %
+    %DeptSigDate ={年\hspace{2em}月\hspace{2em}日},%教研室（系）主任签字时间戳
     Grade =, %授课年级
     Subject    = {计算机科学与技术},       %授课专业
     Book =,%教材名称
@@ -65,7 +77,7 @@
 
 \newcommand{\swfusetup}[1]{\pgfkeys{#1}}
 
-\LoadClass{article}%[scheme=chinese]{ctexart}%zihao=-4
+\LoadClass[12pt]{article}%[scheme=chinese]{ctexart}%zihao=-4
 
 \RequirePackage{wx672babel}
 
@@ -97,7 +109,8 @@ left=2cm,right=2.5cm
       cell{3}{2}={c,m},%
       cell{8}{2}={c,m},%
       cell{12-15}{2}={c=5}{c,f},%
-      cell{8-11}{3}={c,font=\ttfamily},%
+      cell{8-10}{3}={c,m,font=\ttfamily},%
+      cell{11}{3}={c,m},%
       cell{1,2,3,6,7}{6}={c,font=\ttfamily}
     }
     {课程\\信息}&课程名称&\SWFU@Course&&开课层次&\SWFU@Degree\\
@@ -114,18 +127,23 @@ left=2cm,right=2.5cm
     &媒质类型&\SWFU@BookType&{1.\,纸质教材\quad 2.\,数字教材\quad 3.\,新形态教材}&&\\
     &教材出处&\SWFU@BookFrom&{1.\,境内教材\quad 2.\,境外原版\quad 3.\,境内影印或%
       翻译出版}&&\\
-    &教材类型&\SWFU@BookCls&{1.\,“马工程”重点教材及国家统编教材\quad
-      2.\,规划教材（国家级、省级）\\3.\,精品、优秀教材（国家级、省级、学会、
-      行业等）\\4.\,普通教材\quad 5.\,其他\underline{\hspace{4em}}\quad 6.\,无}&&\\
+    &教材类型&{后\\面\\打\\勾}&{1.\:☐\,“马工程”重点教材及国家统编教材\\
+      2.\:☑\,规划教材（国家级、省级）\\3.\:☐\,精品、优秀教材（国家级、省级、学会、
+      行业等）\\4.\:☐\,普通教材\quad 5.\:☐\,其他\underline{\hspace{4em}}\quad 6.\:☐\,无}&&\\
     %%%%%%%%%%%%%%%%%%%
     {首次选\\用依据\\/\\再次选\\用使用\\效果评\\价意见}&
       \begin{minipage}[m]{.95\linewidth}
         {\ttfamily\SWFU@BookWhy}\par
         \vspace*{1cm}
         \begin{flushright}
-          课程负责人签字：\quad\SWFU@TeacherSig\qquad%
-          教研室（系）主任签字：\quad\SWFU@DeptSig\\
-          \SWFU@TeacherSigDate\hspace{9em}\SWFU@DeptSigDate%
+          课程负责人签字：\;\SWFU@TeacherSig\qquad%
+          教研室（系）主任签字：\;\SWFU@DeptSig\\
+          {\SWFU@TeacherSigYear{}\;}年\;%
+          {\SWFU@TeacherSigMonth{}\;}月\;%
+          {\SWFU@TeacherSigDay{}\;}日\hspace{9em}%
+          {\SWFU@DeptSigYear{}\;}年\;%
+          {\SWFU@DeptSigMonth{}\;}月\;%
+          {\SWFU@DeptSigDay{}\;}日%
         \end{flushright}
       \end{minipage}%
     &&&&\\
