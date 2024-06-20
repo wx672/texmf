@@ -4,17 +4,17 @@
 
 \RequirePackage{pgfkeys}
 
-\pgfkeys{
-  Term/.store in         = \SWFU@Term,%
-  Coursetitle/.store in  = \SWFU@Coursetitle,%
-  Totaltime/.store in    = \SWFU@Totaltime,%
-  Labtime/.store in      = \SWFU@Labtime,%
-  Labweek/.store in = \SWFU@Labweek,%
-  Class/.store in        = \SWFU@Class,%
-  Studnum/.store in      = \SWFU@Studnum,%
-  Examtype/.store in     = \SWFU@Examtype,%
-  Textbook/.store in     = \SWFU@Textbook,%
-  Sumup/.store in        = \SWFU@Sumup,%
+\pgfkeys{%
+  Term/.store in   = \SWFU@Term,  %授课学期
+  Course/.store in = \SWFU@Course,%课程名称
+  Totalhours/.store in = \SWFU@Totalhours,%总学时
+  Labhours/.store in   = \SWFU@Labhours,  %实验学时
+  Labweek/.store in    = \SWFU@Labweek,   %实习天数
+  Class/.store in     = \SWFU@Class,    %授课班级
+  Studtotal/.store in = \SWFU@Studtotal,%学生人数
+  Examtype/.store in  = \SWFU@Examtype,%
+  Textbook/.store in  = \SWFU@Textbook,%
+  Sumup/.store in     = \SWFU@Sumup,%
   Suggestion/.store in   = \SWFU@Suggestion,%
   Date/.store in         = \SWFU@Date, Date={\today},%
   School/.store in       = \SWFU@School,       School       = 大数据与智能工程学院,%
@@ -25,60 +25,48 @@
 }
 \newcommand{\swfusetup}[1]{\pgfkeys{#1}}
 
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}%ctexart
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}%
 \ProcessOptions\relax
 
-\LoadClass{article}%[scheme=chinese]{ctexart}
+\LoadClass{article}%
 
-% \ctexset{%
-%   today=small
-% }
 \RequirePackage{wx672babel}
 
 \RequirePackage[backend=biber,url=false,doi=false,isbn=false]{biblatex}
-%style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false
-%\renewcommand*{\bibfont}{\scriptsize}
 
-\RequirePackage{graphicx}
-\graphicspath{{../figs/}{./figs/}{./}{../}} %note that the trailing “/” is required
-
-\RequirePackage[%showframe,
-paperwidth=195mm, paperheight=270mm,
-top=2cm, bottom=2cm,
-left=2.5cm, right=2.5cm,
+\RequirePackage[%showframe,%
+a4paper,nomarginpar,%
+vmargin=2cm,%
+hmargin=2.5cm,%
 ]{geometry}
 
 \RequirePackage{wx672tcb}
 \usetikzlibrary{backgrounds,positioning,fit}
 
-\newcommand{\Signit}[3]{%\Signit{-3cm}{-6.2cm}{../signature}
-\begin{tikzpicture}[overlay,remember picture]%
-  \node [xshift=#1,yshift=#2] at (current page.center) {%
-    \includegraphics[scale=.1]{#3}%
-  };%
-\end{tikzpicture}}
-
-\newfontfamily\nerd{DejaVuSansM Nerd Font Mono}%Symbols Nerd Font Mono
-%\newfontfamily\nerd{Noto Sans Symbols2}
 \RequirePackage{newunicodechar}
-\newunicodechar{□}{{\large\nerd □}}%ballot box
-\newunicodechar{☑}{{\large\nerd ☑}}%checked box
-\newcommand{\YES}{☑是\quad □否}
+\newfontfamily\symbola{Symbola Nerd Font}
+\newunicodechar{☐}{{\symbola ☐}}%ballot box 🗆
+\newunicodechar{☑}{{\symbola ☑}}%checked box tick 🗹
+\newcommand{\YES}{☑是\quad ☐否}
 
 \RequirePackage{tabularray}
 
 \newcommand{\makeform}{
   {\centering%
     {\LARGE\heifamily 西南林业大学课程教学小结表}\\\bigskip%
-    \begin{tblr}{width=\textwidth,hlines,vlines,%
-        colspec={cX[c]cX[-1,c]cc}, column{even}={font=\kaifamily},%
-        row{3}={m}, cell{1}{4}={c=3}{},cell{5}{2}={c=5}{l,m},%
+    \begin{tblr}{colspec={cX[c]cX[-1,c]cc}, hlines, vlines,%
+        rowsep={5pt},%
+        column{even}={font=\kaifamily},%
+        cell{1}{4}={c=3}{},cell{5}{2}={c=5}{l,m},%row{3}={m}, 
       }
-      授课学期&\SWFU@Term&课程名称&\SWFU@Coursetitle\\
-      \makebox[4em][s]{总学时}&\SWFU@Totaltime&实验学时&\SWFU@Labtime&实习天数&\SWFU@Labweek\\
-      开课院系&\SWFU@School&授课班级&{\SWFU@Class}&学生人数&\SWFU@Studnum\\
-      多媒体教学&\SWFU@Multimedia&双语教学&\SWFU@Bilingual&考核方式&\SWFU@Examtype\\
-      所用教材&
+      授课学期&\SWFU@Term&课程名称&\SWFU@Course\\
+      \makebox[4em][s]{总学时}&\SWFU@Totalhours&%
+      实验学时&\SWFU@Labhours&实习天数&\SWFU@Labweek\\
+      开课院系&\SWFU@School&授课班级&{\SWFU@Class}&%
+      学生人数&\SWFU@Studtotal\\
+      多媒体教学&\SWFU@Multimedia&双语教学&\SWFU@Bilingual&%
+      考核方式&\SWFU@Examtype\\
+      所用教材&%
       \begin{minipage}{.8\linewidth}
         \SWFU@Textbook
       \end{minipage}\\
@@ -95,15 +83,15 @@ left=2.5cm, right=2.5cm,
       \end{minipage}
     \end{titleleft}
     \vspace*{1.2pt}
-    \begin{tblr}{width=\textwidth, vlines,%
-        colspec={cX[c]cX[c]}, column{even}={font=\ttfamily}}
+    \begin{tblr}{colspec={cX[c]cX[c]}, vlines, rowsep={5pt},%
+        column{even}={font=\ttfamily}}
       填报人&\SWFU@TeacherName&职称&\SWFU@TeacherTitle\\
     \end{tblr}\\[-1pt]
-    \begin{tblr}{width=\textwidth, vlines, hline{1,2,4}, colspec={X} }
-      填报日期：\quad\texttt{\SWFU@Date}\hfill{}（以上为授课教师填写）\\
+    \begin{tblr}{colspec={X},vlines, hline{1,2,4}, rowsep={5pt}}
+      填报日期：\quad{\ttfamily\SWFU@Date}\hfill{}（以上为授课教师填写）\\
       教研室负责人审阅意见：\\[15ex]%
-      \hfill\makebox[10em][l]{签名：}%
-      \makebox[5em][r]{年}\makebox[3em][r]{月}\makebox[3em][r]{日}\\
+      \hfill\makebox[5cm][l]{签名：}%
+      \makebox[5cm][r]{年\qquad{}月\qquad{}日}\\
     \end{tblr}\\[1pt]
     注：本表复制有效}}
 

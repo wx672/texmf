@@ -66,24 +66,12 @@
 \newCJKfontfamily\HEI{Noto Sans CJK SC}% for a better "〇"
 %%%%% geometry
 \RequirePackage[%showframe,%showcrop,
-a4paper,asymmetric,twoside=true,% if oneside, left/right; if twoside, inner/outer
-vmargin=3cm,%
-% left=3cm,right=2cm, % for oneside
-inner=35mm,outer=25mm,% for twoside (comment out \renewcommand{\cleardoublepage} following)
+a4paper,asymmetric,twoside=true,%
+vmargin=3cm,inner=35mm,outer=25mm,% for twoside
 headsep=1em,footskip=1cm,%headheight=15pt, to avoid "headheight too small"
 nomarginpar]{geometry}
 
 %\renewcommand\cleardoublepage{\clearpage} % for oneside configuration
-
-%%%%% titlesec, for making chapter header higher
-% \RequirePackage{titlesec}%explicit
-% \titleformat{\chapter}[hang]% shape
-% {\normalfont\large\heiti}%    format
-% {\thechapter}%                label
-% {20pt}%                       sep between label and title body
-% {\centering\large}%        before-code #1
-
-% \titlespacing{\chapter}{0pt}{-20pt}{30pt}
 
 %%%%% tocloft
 \RequirePackage{tocloft}
@@ -97,10 +85,6 @@ nomarginpar]{geometry}
 \renewcommand\cftafterloftitle{\hfill}%
 \renewcommand\cftlottitlefont{\hfill\Large\bfseries}%
 \renewcommand\cftafterlottitle{\hfill}%
-
-
-%%%%% xstring 
-%\RequirePackage{xstring} % for \StrSubstitute{} in \fancyhead
 
 %%%%% fancyhdr
 \RequirePackage{fancyhdr}
@@ -121,8 +105,7 @@ nomarginpar]{geometry}
 %%%%% misc
 % \RequirePackage{indentfirst} % enabled if scheme=chinese
 \RequirePackage{emptypage} % removing header/footer on empty pages
-\RequirePackage{xparse}%
-\RequirePackage[]{siunitx}%
+\RequirePackage{siunitx}%
 \sisetup{%
   sticky-per=true,%
   detect-mode=true,%
@@ -144,8 +127,6 @@ nomarginpar]{geometry}
 \RequirePackage{xcolor}
 \RequirePackage{hyperref}
 \hypersetup{%
-  % bookmarksnumbered,%
-  % breaklinks=true,%
   colorlinks=false,%
   pdfborderstyle={/S/U/W .3},% underline of width .3pt 
   linkbordercolor=red,       % internal links
@@ -153,7 +134,6 @@ nomarginpar]{geometry}
   filebordercolor=magenta,   % file links
   urlbordercolor=blue,       % external links
 }
-%\def\UrlBreaks{\do\/\do-} % break long url
 \RequirePackage[nobiblatex]{xurl} % break long url
 
 %%%%% fixme
@@ -397,9 +377,4 @@ url=false,doi=false,isbn=false]{biblatex}
 \renewcommand{\listfigurename}{插图目录}
 \renewcommand{\listtablename}{表格目录}
 
-% \newcommand\sign[3]{\tikz[baseline,overlay,inner sep=0pt]{
-%     \node (sig) at (#3) [opacity=.7] { \includegraphics[width=3cm]{#1}};
-%     \node (fp) [below=20pt of sig.south, anchor=west, opacity=.5] {%
-%       \includegraphics[width=2cm]{#2}};
-%   }}
 \newcommand\fromto[2]{#1\,\char`~\,#2}

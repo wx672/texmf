@@ -5,26 +5,33 @@
 \begin{filecontents}{os.bib}
 @book{tanenbaum2015modern,
   author	   = {Tanenbaum, Andrew S.},
-  title		   = {Modern Operating Systems},
+  title		   = {Modern Operating Systems (4ed)},
   year		   = 2015,
-  edition	   = 4,
   publisher	   = {Prentice Hall Press}
+}
+@Book{tangxiaodan21,
+  Author	= "汤小丹",
+  Title		= "计算机操作系统（慕课版）",
+  Publisher	= "人民邮电出版社",
+  Year		= 2021,
 }
 \end{filecontents}
 
 \addbibresource{os.bib}
 
-\swfusetup{
-  Term         ={2016-2017-02},
-  Coursetitle  ={操作系统原理},
-  Totaltime    =64,
-  Labtime      =16,
-  Labweek =0,
-  Class        =电信14,
-  Studnum      =70,
-  Examtype     =开卷机试,
-  Textbook     ={\nocite{tanenbaum2015modern}\printbibliography[heading=none]}, 
-  Date         ={2017-07-24},
+\swfusetup{%
+  Term       ={2023-2024-02},%
+  Course     ={操作系统原理},%
+  Totalhours =64,%
+  Labhours   =16,%
+  Labweek    =0,%
+  Class      ={大数据2022级},%
+  Studtotal  =97,%
+  Examtype   =开卷机试,%
+  Textbook   ={%
+    \nocite{tangxiaodan21,tanenbaum2015modern}%
+    \printbibliography[heading=none]},%
+  Date       ={2024-07-10},
   % School       = 大数据与智能工程学院,
   % TeacherName  = 王晓林,
   % TeacherTitle = 讲师,
@@ -43,7 +50,6 @@
 
 \begin{document}
 \makeform
-%\Signit{-3cm}{-6.2cm}{../signature}
 \end{document}
 
 %%% Local Variables:

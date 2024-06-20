@@ -11,11 +11,11 @@
   Title*   ={How to write your thesis in \LaTeX}, % 论文标题（英文）
   Author    ={王晓林}, % 作者姓名
   Author*  ={WANG Xiaolin}, % 作者姓名（英文）
-  Signature ={\includegraphics[width=6em]{wangxiaolin}}, % 作者签名（用于原创声明页）
+  Signature ={\includegraphics[width=3cm]{wangxiaolin}}, % 作者签名（用于原创声明页）
   ID        ={01234567890}, % 学号
-  Year      ={\the\year},
-  Month     ={\the\month},
-  Date      ={\the\day},
+  Year      ={\the\year},%
+  Month     ={\the\month},%
+  Date      ={\the\day},%
   Major     ={数据科学与大数据技术},%计算机科学与技术
   Advisor   ={方鸿渐（副教授），高松年（教授）}, %指导教师甲（职称），指导教师乙（职称）
   Reviewer  ={李梅亭（教授）}, % 评阅人
@@ -26,47 +26,7 @@
 \maketitle % 封面
 
 \frontmatter
-
-\begin{abstract} % 摘要
-  \LaTeX{}\footnote{\url{https://en.wikipedia.org/wiki/LaTeX}}是一种基
-  于\TeX{}\footnote{\url{https://en.wikipedia.org/wiki/TeX}}文件格式的
-  排版系统，由美国电脑学家莱斯利·兰伯特在20世纪80年代初期开发。利用这种
-  格式，即使用户没有排版和程序设计的知识，也可以充分利用\TeX{}所提供的
-  强大功能，在几天，甚至几小时内生成很多具有书籍质量的印刷品。对于生成
-  复杂表格和数学公式，这一点表现得尤为突出。因此它非常适用于生成高印刷
-  质量的科技和数学类文档。这个系统同样适用于生成从简单如信件到完整如书
-  籍的所有种类的文档\cite{wiki:latexcn}。
-
-  本文对如何利用\LaTeX{}来撰写西南林业大学本科毕业论文做一个简要的介绍。
-  读者也可以将本文作为毕业论文模板来使用\footnote{本文所使用的毕业论文
-    模板（\texttt{cls}文件），\texttt{tex}源文件，及其它相关文件都可以
-    在下面的网址找到：%
-    \url{https://github.com/wx672/texmf/tree/master/doc/latex/swfu/swfcthesis/tutorial}}。
-\end{abstract}
-
-\begin{keyword} % 关键词
-  \LaTeX{}；西南林业大学；本科毕业论文模板；教程
-\end{keyword}
-
-\begin{EAbstract} % 英文摘要
-  \LaTeX{} is a document preparation system. When writing, the writer uses plain text as
-  opposed to formatted text as users of word processors like Microsoft Word. The writer
-  uses markup tagging conventions to define the general structure of a document (such as
-  article, book, and letter), to stylise text throughout a document (such as bold and
-  italic), and to add citations and cross-references. A \TeX{} distribution such as
-  \TeX{}Live or Mik\TeX{} is used to produce an output file (such as PDF or DVI) suitable
-  for printing or digital distribution. Within the typesetting system, its name is
-  stylised as \LaTeX{}\cite{wiki:latex}.
-
-  This short tutorial shows you how to write an undergraduate thesis in \LaTeX{}. It can
-  also serve as a perfect template to ease your thesis writing\footnote{The class file
-    used for typesetting this thesis, and the \texttt{tex} source of this file can be
-    found at \url{https://github.com/wx672/texmf/tree/master/doc/latex/swfu/swfcthesis}.}.
-\end{EAbstract}
-
-\begin{EKeyword} % 英文关键词
-  \LaTeX{}; \TeX{}; thesis; template; SWFU
-\end{EKeyword}
+\include{chapters/abstract}
 
 \tableofcontents % 目录
 \clearpage
@@ -82,59 +42,9 @@
 \include{chapters/ch4-thesis}
 
 \appendix % 参考文献、指导教师简介、鸣谢、附录
-
 \makebib % 参考文献
-
-\begin{advisorInfo} % 指导教师简介
-  三闾大学校长高松年是位老科学家。这“老”字的位置非常为难，可以形容科学，
-  也可以形容科学家。不幸的是，科学家跟科学不大相同；科学家像酒，愈老愈
-  可贵，而科学像女人，老了便不值钱。将来国语文法发展完备，终有一天可以
-  明白地分开“老的科学家”和“老科学的家”，或者说“科学老家”和“老科学家”。
-  现在还早得很呢，不妨笼统称呼。高校长肥而结实的脸像没发酵的黄面粉馒
-  头，“馋嘴的时间”（edaxvetustas）咬也咬不动他，一条牙齿印或皱纹都没有。
-  假使一个犯校规的女学生长得很漂亮，高校长只要她向自己求情认错，也许会
-  不尽本于教育精神地从宽处分。这证明这位科学家还不老。他是二十年前在外
-  国研究昆虫学的；想来三十年前的昆虫都进化成为大学师生了，所以请他来表
-  率多士。他在大学校长里，还是前途无量的人。大学校长分文科出身和理科出
-  身两类。文科出身的人轻易做不到这位子的。做到了也不以为荣，准是干政治
-  碰壁下野，仕而不优则学，借诗书之泽，弦诵之声来休养身心。理科出身的人
-  呢，就完全不同了。中国是世界上最提倡科学的国家，没有旁的国度肯这样给
-  科学家大官做的。外国科学进步，中国科学家进爵。在国外，研究人情的学问
-  始终跟研究物理的学问分歧；而在中国，只要你知道水电，土木，机械，动植
-  物等等，你就可以行政治人——这是“自然齐一律”最大的胜利。理科出身的人当
-  个把校长，不过是政治生涯的开始；从前大学之道在治国平天下，现在治国平
-  天下在大学之道，并且是条坦道大道。对于第一类，大学是张休息的靠椅；对
-  于第二类，它是个培养的摇篮 --- 只要他小心别摇摆得睡熟了。
-
-  高松年发奋办公，夙夜匪懈，精明得真是睡觉还睁着眼睛，戴着眼镜，做梦都
-  不含糊的。摇篮也挑选得很好，在平成县乡下一个本地财主家的花园里，面溪
-  背山。这乡镇绝非战略上必争之地，日本人唯一豪不吝惜的东西——炸弹——也不
-  会浪费在这地方。所以，离开学校不到半里的镇上，一天繁荣似一天，照相铺，
-  饭店，浴室，戏院，警察局，中小学校，一应俱全。今年春天，高松年奉命筹
-  备学校，重庆几个老朋友为他饯行，席上说起国内大学多而教授少，新办尚未
-  成名的学校，地方偏僻，怕请不到名教授。高松年笑道:“我的看法跟诸位不同。
-  名教授当然好，可是因为他的名望，学校沾着他的光，他并不倚仗学校里地位。
-  他有架子，有脾气，他不会全副精神为学校服务，更不会绝对服从当局指挥。
-  万一他闹别扭，你不容易找替人，学生又要借题目麻烦。我以为学校不但造就
-  学生，并且应该造就教授。找到一批没有名望的人来，他们要借学校的光，他
-  们要靠学校才有地位，而学校并非非有他们不可，这种人才真能跟学校合为一
-  体，真肯为公家做事。学校也是个机关，机关当然需要科学管理，在健全的机
-  关里，决没有特殊人物，只有安分受支配的一个个单位。所以，找教授并非难
-  事”。大家听了，倾倒不已。高松年事先并没有这番意见，临时信口胡扯一阵。
-  经朋友们这样一恭维，他渐渐相信这真是至理名言，也对自己倾倒不已。他从
-  此动不动就发表这段议论，还加上个帽子道:“我是研究生物学的，学校也是个
-  有机体，教职员之于学校，应当像细胞之于有机体” --- 这段至理名言更变而为科
-  学定律了。\qquad{}------ 《围城》，钱钟书
-\end{advisorInfo}
-
-\begin{acknowledgment} % 致谢
-  感谢美国计算机教授高德纳（Donald Ervin Knuth）编写的功能强大的排版软
-  件\TeX{}。感谢美国计算机科学家莱斯利·兰波特（Leslie Lamport）教授
-  为\TeX{}开发的简单易用的\LaTeX{}宏包。感谢本文作者能有如此多的闲功夫
-  和好心情来饶有兴致地做这样一件不能当饭吃的事情。文凭贩子的人生无非两
-  种状态，要么做无耻的事情恭喜发财；要么做无聊的事情打发时光。昆明的天气
-  这么好，还是烤烤太阳打发时光吧。
-\end{acknowledgment}
+\include{chapters/advisor}
+\include{chapters/thanks}
 
 %%%%% 附录章节
 \singlespacing

@@ -26,7 +26,7 @@
   % Title/.store in = \SWFU@Title, Title = 讲师,%职称/职务
   % Degree/.store in = \SWFU@Degree, Degree = 硕士,%学历
   Sig/.store in = \SWFU@Sig,%
-  Sig = {\includegraphics[width=6em]{../signature}},%
+  Sig = {\includegraphics[width=3cm]{wangxiaolin}},%
   Sumup/.store in = \SWFU@Sumup,%
   Sumup = {本年度，本人认真完成了《计算机网络》、《操作系统原理》、
     《Linux应用基础》等课程的教学工作，教学效果良好。同时本人认真完成了
@@ -69,7 +69,7 @@
   \end{center}
   单位（部门）：{\kaifamily\underline{\,\SWFU@School\,}}\hfill\par\smallskip%
   \noindent%
-  \begin{tblr}{width=\linewidth, hline{1-4}={solid}, vlines, rows={2em,m},%
+  \begin{tblr}{hline{1-4}, vlines, rows={2em,m},%
       colspec={cX[c]cX[c]cX[c]cX[c]cX[c]},%
       column{even}={font=\kaifamily},%
       cell{2}{2,8}={c=3}{c},%
@@ -79,10 +79,11 @@
       cell{4}{3}={c=8}{c}%
     }
     % 姓名&\SWFU@Name&{岗位\\等级}&\SWFU@Level&专业技术职务&\SWFU@Job\\
-    姓名&\SWFU@Name&性别&\SWFU@Gender&政治面貌&\SWFU@Political&出生年
-    月&\SWFU@Birth&{岗位\\等级}&\SWFU@Level\\
-    {专业技\\术职务}&\SWFU@Post&&&{是否担任\\研究生导
-      师}&\SWFU@MScTutor&{担任班\\主任情况}&\SWFU@Tutor&&\\
+    姓名&\SWFU@Name&性别&\SWFU@Gender&政治面貌&\SWFU@Political&%
+    出生年月&\SWFU@Birth&{岗位\\等级}&\SWFU@Level\\
+    {专业技\\术职务}&\SWFU@Post&&&%
+    {是否担任\\研究生导师}&\SWFU@MScTutor&%
+    {担任班\\主任情况}&\SWFU@Tutor&&\\
     现岗位聘用时间&&\SWFU@Years&&&从事工作&\SWFU@Job&&&\\
     社会兼职工作&&\SWFU@Parttime&&&&&&&\\
   \end{tblr}\\[-2pt]%

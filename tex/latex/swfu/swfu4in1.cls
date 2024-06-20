@@ -32,17 +32,17 @@
 %   }
 % }
 
-% \setcounter{secnumdepth}{3}
+% \defcounter{secnumdepth}{3}
 
-\RequirePackage{calc}
+\RequirePackage{calc,etoolbox}
 \newcounter{age}
-\setcounter{age}{\the\year - 1969} %AdvisoraAge
+\defcounter{age}{\the\year - 1969} %AdvisoraAge
 
 \newcounter{grade}
-\setcounter{grade}{\the\year - 2}% Grade
+\defcounter{grade}{\the\year - 2}% Grade
 
 \newcounter{lastyear}
-\setcounter{lastyear}{\the\year - 1}%for \TaskDate
+\defcounter{lastyear}{\the\year - 1}%for \TaskDate
 
 %%% check box
 \RequirePackage{newunicodechar}
@@ -152,7 +152,7 @@
   MidchkComment={进度符合要求，抓紧完成论文。},%
 }
 
-\newcommand{\swfusetup}[1]{\pgfkeys{#1}}
+\newrobustcmd{\swfusetup}[1]{\pgfkeys{#1}}
 
 \RequirePackage[%showframe,%showcrop,
 top=3cm,bottom=2.5cm,left=3cm,right=2.5cm,
@@ -160,7 +160,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 ]{geometry}
 
 \RequirePackage{graphicx}
-\graphicspath{{../figs/}{./figs/}{../img/}{./img/}{./}{../}} %note that the trailing “/” is required
+\graphicspath{{../figs/}{./figs/}{./}{../}} %mind the trailing “/”
 
 \RequirePackage{caption,subcaption}% \captionof{table|figure}{t|f}
 
@@ -175,7 +175,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false,%
 url=false,doi=false,isbn=false]{biblatex}
 
-\renewcommand{\bibfont}{\zihao{5}\songti}
+\renewrobustcmd{\bibfont}{\zihao{5}\songti}
 
 % \RequirePackage{wx672tcb} % tcolorbox
 \RequirePackage[most]{tcolorbox}
@@ -234,14 +234,14 @@ url=false,doi=false,isbn=false]{biblatex}
 
 % \singlespacing, \onehalfspacing, \doublespacing
 \RequirePackage[doublespacing]{setspace}
-\renewcommand\doublespacing{\setstretch{1.6}}
-% \renewcommand\singlespacing{\setstretch{1.2}}
+\renewrobustcmd\doublespacing{\setstretch{1.6}}
+% \renewrobustcmd\singlespacing{\setstretch{1.2}}
 
 \setlength{\parindent}{2em}
 
 \pagestyle{plain}
 
-\newcommand{\PPSLtitlepage}{% Proposal title page
+\newrobustcmd{\PPSLtitlepage}{% Proposal title page
   \thispagestyle{empty}
   \begin{center}
     \makebox[14em][s]{\LARGE\heiti 西南林业大学}\\[5mm]
@@ -289,7 +289,7 @@ url=false,doi=false,isbn=false]{biblatex}
   \end{center}
   \clearpage}
 
-\newcommand{\PPSLinstructionpage}{% Proposal instruction page
+\newrobustcmd{\PPSLinstructionpage}{% Proposal instruction page
   \begin{center}
     \LARGE\bfseries\makebox[7em][s]{填表说明}
   \end{center}
@@ -304,7 +304,7 @@ url=false,doi=false,isbn=false]{biblatex}
   \end{itemize}
   \clearpage}
 
-\newcommand{\PPSLmain}{% main part
+\newrobustcmd{\PPSLmain}{% main part
   \begin{singlespace}
     \noindent
     \begin{tblr}{width=\linewidth,%
@@ -372,7 +372,7 @@ url=false,doi=false,isbn=false]{biblatex}
   \end{tcolorbox}%
 }
 
-\newcommand{\maketaskspec}{%
+\newrobustcmd{\maketaskspec}{%
   \pagestyle{empty}
   {\centering%\singlespacing%
     {\heiti\Large 西南林业大学\SWFU@Gyear{}届本科毕业论文（设计）任务
@@ -460,7 +460,7 @@ url=false,doi=false,isbn=false]{biblatex}
         2. 此任务书双面打印，一式两份。学生一份，另一份随毕业论文（设计）保存。}\\
     \end{tblr}}}
 
-\newcommand\makeplan{%
+\newrobustcmd\makeplan{%
   \thispagestyle{empty}
   % \singlespacing
   {\centering\heiti\Large 西南林业大学\SWFU@Gyear{}届本科毕业论文（设计）实习计划表\par}
@@ -505,12 +505,12 @@ url=false,doi=false,isbn=false]{biblatex}
     \end{tblr}\par%
     {\heiti 注：}每位毕业生须填写一份；如表栏不够填写，请加附页。}\clearpage}
 
-\newcommand{\makeproposal}{%
+\newrobustcmd{\makeproposal}{%
   \PPSLtitlepage{}
   \PPSLinstructionpage{}
   \PPSLmain{}}
 
-\newcommand\midchk{\pagestyle{empty}%
+\newrobustcmd\midchk{\pagestyle{empty}%
   {\centering\Large\heiti 西南林业大学本科毕业论文（设计）中期检查表\par}
   \singlespacing\medskip\noindent%  
   \begin{tblr}{width=\linewidth,colspec={cX[c]cX[c]},hline{1-7},vlines,%

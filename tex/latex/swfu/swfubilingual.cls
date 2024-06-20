@@ -4,7 +4,7 @@
 
 \RequirePackage{pgfkeys}
 
-\pgfkeys{
+\pgfkeys{%
   Name/.store in       = \SWFU@Name,%
   Gender/.store in     = \SWFU@Gender,%
   Dayofbirth/.store in = \SWFU@Dayofbirth,%
@@ -50,29 +50,13 @@
 \LoadClass{article}
 \RequirePackage{wx672babel}
 
-%%%%% hyperref
-\RequirePackage{xcolor}
-\RequirePackage{hyperref}
-\hypersetup{%
-  bookmarksnumbered, breaklinks=true,%
-  colorlinks=false,%
-  pdfborderstyle={/S/U/W .3},% underline of width .3pt 
-  linkbordercolor=red,       % internal links
-  citebordercolor=cyan,      % links to bibliography
-  filebordercolor=magenta,   % file links
-  urlbordercolor=blue,       % external links
-}
-\def\UrlBreaks{\do\/\do-} % break long url
-
-\RequirePackage[backend=biber,url=false,doi=false,isbn=false,
-% style=gb7714-2015,gbpub=false,gbtype=false,gbpunctin=false
-]{biblatex}
+\RequirePackage[backend=biber,style=gb7714-2015]{biblatex}
 \renewcommand*{\bibfont}{\small}
 
-\RequirePackage[ % showframe,
-paperwidth=210mm,paperheight=297mm,
-top=2cm,bottom=2cm,
-left=1.5cm,right=1.5cm
+\RequirePackage[%showframe,
+a4paper,nomarginpar,%
+vmargin=2cm,%
+hmargin=15mm,%
 ]{geometry}
 
 \RequirePackage{tabularray}
@@ -80,37 +64,37 @@ left=1.5cm,right=1.5cm
 \newcommand{\makeform}{%
   \pagestyle{empty}%
   \begin{center}
-    \LARGE\bfseries 西南林业大学双语教学课程申请表
+    \Large\sffamily\bfseries 西南林业大学双语教学课程申请表
   \end{center}
-  \begin{tblr}{width=\linewidth,colspec={Q[6em,c]rcrcrX[c]}, vlines, hline{1-4}={solid},%
-      cell{1}{1}={r=4,c=1}{c,m},%
-      cell{4}{3}={c=5}{c,font=\ttfamily},%
+  \begin{tblr}{colspec={Q[6em,c]rcrcrX[c]}, vlines, hline{1-4},%
+      rows={6mm,m},cells={m},%
       column{3,5,7}={font=\ttfamily},%
+      cell{1}{1}={r=4}{c},%
+      cell{4}{3}={c=5}{c},%
     }
-    {申请人\\基本信息}&%
-    姓名 & \SWFU@Name & 性别 & \SWFU@Gender & 出生年月 & \SWFU@Dayofbirth\\
+    {申请人\\基本信息}%
+    &姓名 & \SWFU@Name & 性别 & \SWFU@Gender & 出生年月 & \SWFU@Dayofbirth\\
     &学历 & \SWFU@Diploma & 专业技术职务 & \SWFU@Title & 电话 & \SWFU@Phone\\
     &学位 & \SWFU@Degree & 行政职务 & \SWFU@Admin & 学科专业 & \SWFU@Subject\\
     &所在学院 & \SWFU@School\\
-  \end{tblr}\par
-  \vspace*{-1pt}
-  \noindent%
-  \begin{tblr}{width=\linewidth,colspec={Q[6em,c]rcrcrX[c]}, vlines, hline{1-4}={solid},%
-      cell{1}{1}={r=4,c=1}{c,m},%
-      cell{2}{5}={c=3}{c,font=\ttfamily},%
-      cell{3,4}{3}={c=5}{c,font=\ttfamily},%
+  \end{tblr}\par%
+  \vspace*{-1pt}\noindent%
+  \begin{tblr}{colspec={Q[6em,c]rcrcrX[c]}, vlines, hline{1-4},%
+      rows={6mm,m},cells={m},%
       column{3,5,7}={font=\ttfamily},%
+      cell{1}{1}={r=4}{c},%
+      cell{2}{5}={c=3}{c},%
+      cell{3,4}{3}={c=5}{c},%
     }
-    课程信息&%
-    学期&\SWFU@Term&开课学院&\SWFU@Schooltwo&课程名称&\SWFU@Course\\
+    课程信息%
+    &学期&\SWFU@Term&开课学院&\SWFU@Schooltwo&课程名称&\SWFU@Course\\
     &外语语种&\SWFU@Language&课程班级&\SWFU@Class\\
     &使用教材&\parbox{35em}{\SWFU@Textbook}\\
     &自编讲义&\SWFU@Owntext\\
-  \end{tblr}\par
-  \vspace*{-1pt}
-  \noindent
-  \begin{tblr}{width=\linewidth, colspec={cX}, vlines, hlines,%
-      column{2}={c,font=\ttfamily}, rows={28mm},
+  \end{tblr}\par%
+  \vspace*{-1pt}\noindent%
+  \begin{tblr}{colspec={cX}, vlines, hlines,%
+      column{2}={c,font=\ttfamily}, rows={27mm},
     }
     学术研究                   &\SWFU@Research\\
     {外语水平及\\双语教学经历} & \SWFU@Experience\\

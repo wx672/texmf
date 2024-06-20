@@ -2,6 +2,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfuthesis}
 
+\RequirePackage{calc,etoolbox}
+
 \RequirePackage{pgfkeys}
 
 \pgfkeys{/swfu/.is family, /swfu,%
@@ -32,7 +34,7 @@
   Year      = \the\year,%   
 }
 
-\newcommand{\swfusetup}[1]{\pgfkeys{/swfu, #1}}
+\newrobustcmd{\swfusetup}[1]{\pgfkeys{/swfu, #1}}
 
 % pass unknown options to ctexbook
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
@@ -53,43 +55,27 @@
 }
 
 \newCJKfontfamily\HEI{Noto Sans CJK SC}% for a better "〇"
+
 %%%%% geometry
 \RequirePackage[%showframe,%showcrop,
-a4paper,asymmetric,twoside=true,% if oneside, left/right; if twoside, inner/outer
-vmargin=3cm,% 上下页边距为3cm，左=(2.5cm + 装订边0.5cm)，右2cm
-% left=3cm,right=2cm, % for oneside
-inner=3cm,outer=2cm,% for twoside (comment out \renewcommand{\cleardoublepage} following)
+a4paper,asymmetric,twoside=true,%
+vmargin=3cm,% 上下页边距为3cm
+inner=3cm,outer=2cm,% for twoside. 左=(2.5cm + 装订边0.5cm)，右2cm
 headsep=1em,footskip=1cm,%headheight=15pt, to avoid "headheight too small"
 nomarginpar]{geometry}
 
-%\renewcommand\cleardoublepage{\clearpage} % for oneside configuration
-
-%%%%% titlesec, for making chapter header higher
-% \RequirePackage{titlesec}%explicit
-% \titleformat{\chapter}[hang]% shape
-% {\normalfont\large\heiti}%    format
-% {\thechapter}%                label
-% {20pt}%                       sep between label and title body
-% {\centering\large}%        before-code #1
-
-% \titlespacing{\chapter}{0pt}{-20pt}{30pt}
-
 %%%%% tocloft
 \RequirePackage{tocloft}
-\setlength{\cftbeforetoctitleskip}{0em}% make "目录" higher
-\setlength{\cftbeforeloftitleskip}{0em}%
-\setlength{\cftbeforelottitleskip}{0em}%
-\renewcommand\cftdotsep{2}%
-\renewcommand\cfttoctitlefont{\hfill\Large\heiti}%
-\renewcommand\cftaftertoctitle{\hfill}%
-\renewcommand\cftloftitlefont{\hfill\Large\heiti}%
-\renewcommand\cftafterloftitle{\hfill}%
-\renewcommand\cftlottitlefont{\hfill\Large\heiti}%
-\renewcommand\cftafterlottitle{\hfill}%
-
-
-%%%%% xstring 
-%\RequirePackage{xstring} % for \StrSubstitute{} in \fancyhead
+\deflength{\cftbeforetoctitleskip}{0em}% make "目录" higher
+\deflength{\cftbeforeloftitleskip}{0em}%
+\deflength{\cftbeforelottitleskip}{0em}%
+\renewrobustcmd{\cftdotsep}{2}%
+\renewrobustcmd{\cfttoctitlefont}{\hfill\Large\heiti}%
+\renewrobustcmd{\cftaftertoctitle}{\hfill}%
+\renewrobustcmd{\cftloftitlefont}{\hfill\Large\heiti}%
+\renewrobustcmd{\cftafterloftitle}{\hfill}%
+\renewrobustcmd{\cftlottitlefont}{\hfill\Large\heiti}%
+\renewrobustcmd{\cftafterlottitle}{\hfill}%
 
 %%%%% fancyhdr
 \RequirePackage{fancyhdr}
@@ -97,41 +83,34 @@ nomarginpar]{geometry}
 
 \fancypagestyle{plain}{% 1st page of each chapter
   \fancyhf{}%
-  %\fancyfoot[C]{\fontsize{8}{8}\selectfont --\;\thepage\;--} % like "-88-"
   \fancyfoot[C]{\fontsize{8}{8}\selectfont\thepage}% like "88"
-  \renewcommand{\headrulewidth}{0pt}}
+  \renewrobustcmd{\headrulewidth}{0pt}}
 
 \pagestyle{fancy}
 
-\renewcommand{\chaptermark}[1]{%
+\renewrobustcmd{\chaptermark}[1]{%
   \markboth{\thechapter.\ #1}{}}
 
 \fancyhead[CE]{\footnotesize\leftmark}
-%\fancyhead[CO]{\footnotesize\StrSubstitute{\@title}{\\}{}}
 \fancyhead[CO]{\footnotesize\@title}
 \fancyfoot[C]{\fontsize{8}{8}\selectfont\thepage}% e.g. "88"
-% \fancyfoot[C]{\fontsize{8}{8}\selectfont --\;\thepage\;--} % e.g. "-88-"
 
 %%%%% misc
-% \RequirePackage{indentfirst} % enabled if scheme=chinese
+\RequirePackage{tabularray,multicol,tasks}%
 \RequirePackage{emptypage} % removing header/footer on empty pages
-\RequirePackage{units,xparse}%
 \RequirePackage[bottom]{footmisc} % stick footnote at bottom of page
 \RequirePackage{enumitem} % \setlist
 \setlist{nosep} % kills all vertical spacing
-\RequirePackage{tabularray,multicol,tasks}%,booktabs,makecell,tabularx,multirow,longtable
 
 %%%%% graphicx
 \RequirePackage{graphicx}
 \graphicspath{% mind the trailing '/'
-  {./figs/}{../figs/}{./img/}{../img/}{./pics/}{../pics/}{./}{../}}
+  {./figs/}{../figs/}{./}{../}}
 
 %%%%% hyperref
 \RequirePackage{xcolor}
 \RequirePackage{hyperref}
 \hypersetup{%
-  % bookmarksnumbered,%
-  % breaklinks=true,%
   colorlinks=false,%
   pdfborderstyle={/S/U/W .3},% underline of width .3pt 
   linkbordercolor=red,       % internal links
@@ -157,8 +136,8 @@ nomarginpar]{geometry}
 
 %%%%% setspace (\singlespacing, \onehalfspacing, \doublespacing)
 \RequirePackage[doublespacing]{setspace}
-\renewcommand{\doublespacing}{\setstretch{1.5}}
-\renewcommand{\onehalfspacing}{\setstretch{1.2}}
+\renewrobustcmd{\doublespacing}{\setstretch{1.5}}
+\renewrobustcmd{\onehalfspacing}{\setstretch{1.2}}
 
 %%%%% tikz
 \RequirePackage{tikz}
@@ -168,7 +147,7 @@ nomarginpar]{geometry}
 \RequirePackage[backend=biber,%
 style=gb7714-2015,sorting=none,gbpub=false,gbtype=false,gbpunctin=false,%
 url=false,doi=false,isbn=false]{biblatex}
-%\renewcommand*{\bibfont}{\small} % 11pt
+%\renewrobustcmd*{\bibfont}{\small} % 11pt
 
 %%%%% caption
 \RequirePackage[labelfont=bf]{caption} % \captionsetup, font=footnotesize,
@@ -179,22 +158,22 @@ url=false,doi=false,isbn=false]{biblatex}
 \captionsetup{subrefformat=parens}
 \labelformat{subfigure}{\thefigure(#1)}
 
-% set caption label style to, e.g. 3-2.
-% \renewcommand{\thefigure}{\thechapter{}-\arabic{figure}}
-% \renewcommand{\thetable}{\thechapter{}-\arabic{table}}
-% \renewcommand{\thesubfigure}{\thechapter{}-\arabic{subfigure}}
-% \renewcommand{\thesubtable}{\thechapter{}-\arabic{subtable}}
-\renewcommand{\theequation}{\thechapter{}-\arabic{equation}}
+% set caption label style to dashed, e.g. 3-2.
+% \renewrobustcmd{\thefigure}{\thechapter{}-\arabic{figure}}
+% \renewrobustcmd{\thesubfigure}{\thechapter{}-\arabic{subfigure}}
+% \renewrobustcmd{\thetable}{\thechapter{}-\arabic{table}}
+% \renewrobustcmd{\thesubtable}{\thechapter{}-\arabic{subtable}}
+\renewrobustcmd{\theequation}{\thechapter{}-\arabic{equation}}
 
 %%%%% minted
 \RequirePackage[chapter]{minted} % has to be loaded at last!!!
 \usemintedstyle{bw}
 
-\renewcommand{\listingscaption}{程序} % used by minted
-\renewcommand{\listoflistingscaption}{程序目录}
-\renewcommand{\thelisting}{\thechapter{}-\arabic{listing}}
+\renewrobustcmd{\listingscaption}{程序} % used by minted
+\renewrobustcmd{\listoflistingscaption}{程序目录}
+\renewrobustcmd{\thelisting}{\thechapter{}-\arabic{listing}}
 
-\renewcommand{\theFancyVerbLine}{
+\renewrobustcmd{\theFancyVerbLine}{
   \textcolor{lightgray}{\scriptsize\arabic{FancyVerbLine}}}
 
 \newmintinline{c}{} %e.g. \cinline{int main()}
@@ -248,47 +227,45 @@ url=false,doi=false,isbn=false]{biblatex}
       {\end{singlespace}\end{minipage}\end{center}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\renewcommand{\maketitle}{% Title page layout
+\renewrobustcmd{\maketitle}{% Title page layout
   \begin{titlepage}
     \vspace*{5mm}
     \begin{center}
-      \makebox[17em][s]{\includegraphics[width=17em]{swfulogo-text}}\\[6mm]%
-      \makebox[19em][s]{{\LARGE\heiti%
-          本科毕业论文\:(设计)}}\\[1mm]%
-      \makebox[13em][c]{\hspace{.5em}{\LARGE\HEI%\heiti%
-          （\zhdigits{\SWFU@Year}\,届）}}\\[8mm]%
-      \makebox[8em][s]{\includegraphics[width=8em]{swfulogo-emblem}}\\[1cm]
-      \begin{minipage}{\linewidth}
-        \begin{large}
-          \begin{tblr}{width=1.01\linewidth, colspec={cX[c]},%
-              rowsep=-.17\baselineskip,% work with \raisebox{} below
-              column{2}={font=\Large\heiti},% 小2号、黑体
-              hline{Z}={2}{leftpos=-1,rightpos=-1},% 
-            }
-            题\qquad{}目&{\setstretch{1.2}%
-              \makebox[0pt][s]{%
-                \parbox[t]{.99\linewidth}{%
-                  \centering\@title\strut%\fbox{你好\strut}                  
-                }}%
-              \raisebox{-.16\baselineskip}[0pt][0pt]{% work with rowsep above
-                \rule{\linewidth}{.4pt}}}\\%            
-          \end{tblr}\\[25mm]
-          %%%
-          \begin{tblr}{width=1.01\linewidth, colspec={rcrX[c]},%
-              rows={belowsep=-5pt,abovesep=10pt},%
-              hline{2,3} = {2,4}{.4pt,solid},%
-              hline{4,5} = {2-4}{.4pt,solid},%
-              cell{3,4}{2} = {c=3}{c},% advisor, reviewer
-            }
-            学\qquad{}院&大数据与智能工程学院&\quad{}专\;业&\SWFU@Major\\
-            学生姓名&\@author&\quad{}学\;号&\SWFU@ID\\
-            指导教师&\mbox{\SWFU@Advisor}\\
-            \makebox[4em][s]{评阅人}&\mbox{\SWFU@Reviewer}\\
-          \end{tblr}
-        \end{large}
-      \end{minipage}
+      \includegraphics[width=17em]{swfulogo-text}\\[6mm]%
+      \makebox[19em][s]{\LARGE\heiti%
+        本科毕业论文\:(设计)}\\[1mm]%
+      {\LARGE\HEI%
+        （\zhdigits{\SWFU@Year}\,届）}\\[8mm]%
+      \includegraphics[width=8em]{swfulogo-emblem}\\[1cm]
+      \begin{large}
+        \begin{tblr}{colspec={cX[c]},%
+            rowsep=-.17\baselineskip,% work with \raisebox{} below
+            column{2}={font=\Large\heiti},% 小2号、黑体
+            hline{Z}={2}{leftpos=-1,rightpos=-1},%
+          }
+          题\qquad{}目&{\setstretch{1.2}%
+            \makebox[0pt][s]{%
+              \parbox[t]{\linewidth}{\centering%
+                \@title\strut%\fbox{你好\strut}
+              }}%
+            \raisebox{-.16\baselineskip}[0pt][0pt]{% work with rowsep above
+              \rule{\linewidth}{.4pt}}}\\%
+        \end{tblr}\\[25mm]
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+        \begin{tblr}{colspec={rcrX[c]},%
+            rows={belowsep=-5pt,abovesep=10pt},%
+            hline{2,3}={2,4}{.4pt},%
+            hline{4,5}={2-4}{.4pt},%
+            cell{3,4}{2}={c=3}{c},% advisor, reviewer
+          }
+          学\qquad{}院&\mbox{大数据与智能工程学院}&\enskip{}专业&\mbox{\SWFU@Major}\\
+          学生姓名&\mbox{\@author}&\enskip{}学号&\mbox{\SWFU@ID}\\
+          指导教师&\mbox{\SWFU@Advisor}\\
+          \makebox[4em][s]{评阅人}&\mbox{\SWFU@Reviewer}\\
+        \end{tblr}
+      \end{large}
       \vfill
-      {\Large\bfseries\SWFU@Year\,年\,\SWFU@Month\,月\,\SWFU@Date\,日}%
+      {\Large\SWFU@Year\,年\,\SWFU@Month\,月\,\SWFU@Date\,日}%
     \end{center}%
   \end{titlepage}%
   \cleardoublepage
@@ -351,13 +328,13 @@ url=false,doi=false,isbn=false]{biblatex}
 \newenvironment{EKeyword}{%Key Words一词，小4号加粗；关键词正文，小4号字。
   \vskip 2ex\noindent\textbf{Key Words: }}{\cleardoublepage}
 
-\newcommand{\makebib}{% 参考文献
+\newrobustcmd{\makebib}{% 参考文献
   % \zihao{4}{学校规范要求“参考文献”四字用4号字，不要理它，保持小3号就好}
   \begin{singlespace}%学校规范中对参考文献页的行距没有要求
     \printbibliography[heading={bibintoc},title={参考文献}]\label{p:ref}
   \end{singlespace}
   \pagebreak}% 
-\renewcommand*{\bibfont}{\small} % 5号宋体
+\renewrobustcmd*{\bibfont}{\small} % 5号宋体
 
 \newenvironment{advisorInfo}{% 指导教师简介
   \thispagestyle{plain}\phantomsection{}%
@@ -366,7 +343,7 @@ url=false,doi=false,isbn=false]{biblatex}
   \vskip 2em\begin{doublespace}\small}%5号宋体
   {\end{doublespace}\pagebreak}
   
-\newenvironment{acknowledgment}{% 致谢
+\newenvironment{Thanks}{% 致谢
   \thispagestyle{plain}\phantomsection{}%
   \addcontentsline{toc}{chapter}{致\hspace{1em}谢}%
   \chapter*{致\quad{}谢}
@@ -374,10 +351,10 @@ url=false,doi=false,isbn=false]{biblatex}
   {\end{doublespace}\pagebreak\singlespacing}
 
 %%%%% misc
-\renewcommand{\headrulewidth}{.4pt}
+\renewrobustcmd{\headrulewidth}{.4pt}
 \urlstyle{tt} % url.sty
 \raggedbottom{}
-\setlength{\parindent}{2em}
+\deflength{\parindent}{2em}
 
-\renewcommand{\listfigurename}{插图目录}
-\renewcommand{\listtablename}{表格目录}
+\renewrobustcmd{\listfigurename}{插图目录}
+\renewrobustcmd{\listtablename}{表格目录}
