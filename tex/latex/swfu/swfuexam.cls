@@ -20,7 +20,7 @@
 
 \setCJKmainfont{Noto Serif CJK SC}
 \setCJKsansfont{Noto Sans CJK SC}
-% \newCJKfontfamily\kaishu{LXGW Bright GB}%
+% \newCJKfontfamily\kaishu{LXGW WenKai GB}%
 % \newCJKfontfamily\heiti{WenQuanYi Micro Hei}%
 
 \RequirePackage{calc,etoolbox}%
@@ -59,7 +59,7 @@
 
 \newrobustcmd{\swfusetup}[1]{\pgfkeys{#1}}
 
-\newrobustcmd{\blank}[1]{\underline{\hspace{#1}}}
+\newrobustcmd{\blank}[1][4em]{\underline{\hspace{#1}}}
 
 \newrobustcmd{\mydash}{%
   \hdashrule[.5ex][x]{.41\textheight}{.1pt}{2mm}}%
@@ -72,10 +72,10 @@
   \parbox{\textheight}{%
     {\centering%
       \makebox[\textheight][s]{%
-        \makebox[.28\textheight][l]{姓名\blank{.2\textheight}}%
-        \makebox[.28\textheight][l]{学号\blank{.2\textheight}}%
-        \makebox[.28\textheight][l]{班级\blank{.2\textheight}}%
-        \makebox[5em][l]{任课教师\blank{25mm}}%
+        \makebox[.28\textheight][l]{姓名\blank[.2\textheight]}%
+        \makebox[.28\textheight][l]{学号\blank[.2\textheight]}%
+        \makebox[.28\textheight][l]{班级\blank[.2\textheight]}%
+        \makebox[5em][l]{任课教师\blank[25mm]}%
         \begin{minipage}[c][1cm]{2cm}%
           \SWFU@Lecturer% 
         \end{minipage}%          
