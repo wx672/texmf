@@ -3,62 +3,75 @@
 \usepackage{zhlipsum}
 
 \swfusetup{%
-%  Title        ={《计算机网络》课程实习}, % 课程名称
-  Title        ={综合实习二}, % 课程名称
-  Author       ={张三}, % 
-  ID           ={20231159xxx}, % 学号
-  Class     = {计科2023级专升本2班},%
-  Tutor      ={王晓林}, %指导教师
-  Year         ={\the\year},%
-  Month        ={6},%
-  Date         ={30},%
-  % Major        ={计算机科学与技术2023级专升本2班},%专业班级
-  Reviewer  = {\includegraphics[width=12mm]{wangxiaolin}},%
-  ReviewDate={2024/7/8},%
-  Mark      =,%
-  LabDate   = {2024/6/28 - 2024/6/30},%
-  LabDays   = {3},%
-  Lab       = {经管楼219},%
-  Heads     = {74},%
-  Grouping  = {不分组},%
-  Why       = {%实验目的
-    掌握Linux平台上常用网络工具的使用，并理解基本的网络编程过程。
-    \begin{enumerate}
-    \item 掌握用tcpdump捕获并分析数据包
-    \item 掌握用netcat完成简单的网络会话
-    \item 掌握基本的网络编程
-    \end{enumerate}
-  },%
-  Req      = {%实验要求
-    \begin{enumerate}
-    \item 在Linux平台完成所有实验
-    \item 在Linux平台完成实验报告
-    \item 努力尝试用英文撰写实验报告
-    \item 将实验作业及报告以tgz格式打包，并上传到指定教学网站
-    \item 迟交报告将被扣分
-    \end{enumerate}
-  },
-  What      = {%实验内容
-    详见《实验指导书》。
-  },%
-  Sched       = {%课程实习安排
-    \begin{description}
-    \item[2024/6/28:] 学习使用tmux，ttyrec等实验所需的命令
-      行工具。学习使用ip, tcpdump, netcat, curl, ss, nmap等网络工具。
-    \item[2024/6/29:] 完成用tcpdump捕获、分析数据包，用netcat实现网络协
-      议会话，以及网络编程等规定实验项目。
-    \item[2024/6/30:] 完成所有实验，并撰写实验报告。
-    \end{description}
-  },%
-  Sumup       = {%实习总结
-    你自己写三、五百字。
-  },%
+  % Title     ={综合实习二}, % 课程名称
+  Title ={《计算机网络》课程实习}, % 课程名称
+  % School={},%
+  % Subject=,%
+  Grade={2023},%
+  Tutor     ={王晓林}, %指导教师
+  Author    ={}, % 
+  ID        ={}, % 学号
+  % Class     ={计科2023级专升本2班},%
+  Year      ={\the\year},%
+  Month     ={\the\month},%
+  Date      ={\the\day},%
+  % Sig  ={\includegraphics[width=12mm]{wangxiaolin}},%
+  % ReviewDate={2024/7/8},%
+  % Mark      =,%
+  LabDate   ={2024/12/16 - 2024/12/17},%
+  LabDays   ={2},%
+  % Lab       ={经管楼219},%
+  % Heads     ={74},%
+  % Grouping  ={不分组},%
+  % Sched = {%课程实习安排
+  %   \begin{description}
+  %   \item[2024/6/28:] 学习使用tmux，ttyrec等实验所需的命令
+  %     行工具。学习使用ip, tcpdump, netcat, curl, ss, nmap等网络工具。
+  %   \item[2024/6/29:] 完成用tcpdump捕获、分析数据包，用netcat实现网络协
+  %     议会话，以及网络编程等规定实验项目。
+  %   \item[2024/6/30:] 完成所有实验，并撰写实验报告。
+  %   \end{description}
+  % },%
+  % Sumup = {%实习总结
+  %   见实习报告结尾。
+  % },%
 }
 
 \begin{document}
 
 \maketitle % 封面
+
+\tableofcontents
 \clearpage
+
+\section{实习的任务、作用和目的}
+
+\subsection{实习目的}
+
+掌握Linux平台上常用网络工具的使用，并理解基本的网络编程过程。
+\begin{enumerate}
+\item 掌握用tcpdump捕获并分析数据包
+\item 掌握用netcat完成简单的网络会话
+\item 掌握基本的网络编程
+\end{enumerate}
+
+\subsection{实验要求}
+
+\begin{enumerate}
+\item 在Linux平台完成所有实验
+\item 在Linux平台完成实验报告
+\item 努力尝试用英文撰写实验报告
+\item 将实验作业及报告以tgz格式打包，并上传到指定教学网站
+\item 迟交报告将被扣分
+\end{enumerate}
+
+\section{实习主要内容（含工具、方法等）}
+
+详见《实习指导书》。
+\begin{itemize}
+\item \url{https://cs6.swfu.edu.cn/~wx672/lecture_notes/network_basics/proj-week/proj-week.html}
+\end{itemize}
+
 \section{Packet analysis}
 
 Upon running the following command:
@@ -81,75 +94,80 @@ ack 373279396,
       0x0030:  c24e 1217 6865 6c6c 6f20 776f 726c 640a  .N..hello.world.
 \end{outputcode}
 
-\begin{enumerate}
-\item Tell me the meaning of each option used in the previous command.
-  \begin{description}
-  \item[-i:] Specify the network interface card to listen from.
-  \item[-nn:] Don't print addresses.
-  \item[-vvv:] Verbose output.
-  \item[-x:] When parsing and printing, in addition to printing the
-    headers of each packet, print the data of each packet, including
-    its link level header, in hex.
-  \item[-X:] When parsing and printing, in addition to printing the
-    headers of each packet, print the data of each packet (minus its
-    link level header) in hex and ASCII.  This is very handy for
-    analysing new protocols.  In the current implementation this flag
-    may have the same effect as -XX if the packet is truncated.
-  \item[-S:] Print absolute, rather than relative, TCP sequence
-    numbers.
-  \item[-K:] Don't attempt to verify IP, TCP, or UDP checksums.  This
-    is useful for interfaces that perform some or all of those
-    checksum calcula‐ tion in hardware; otherwise, all outgoing TCP
-    checksums will be flagged as bad.
-  \item[-s0:] Setting snaplen to 0 sets it to the default of 262144,
-    for backwards compatibility with recent older versions of tcpdump.
-  \end{description}
-  
-\item Please analyze this captured packet and explain it to me as
-  detailed as you can.
-  \begin{description}
-  \item[Answer:] \fbox{4}means ipv4; \fbox{5}is the header length in
-    word; The \fbox{00} following \fbox{45} are the ToS bits;
-    \fbox{0040} is the total length of this IPv4 packet; \fbox{3218}
-    is the identification field; \fbox{4000} are the 2 flag bits plus
-    the fragment offset field; \fbox{4006} means TTL is 0x40, 0x06
-    means TCP; \fbox{0a9e} is the header checksum; \fbox{7f00 0001} is
-    the IPv4 address of the loopback interface; \fbox{b64c} is the
-    source port number; \fbox{0d05} is the destination port number,
-    3333 in decimal; 
-  \end{description}
-\end{enumerate}
+\subsection{Command line}
+
+Tell me the meaning of each option used in the previous command.
+
+\begin{description}[align=right,left=2cm,itemindent=-.5em]
+\item[-i:] Specify the network interface card to listen from.
+\item[-nn:] Don't print addresses.
+\item[-vvv:] Verbose output.
+\item[-x:] When parsing and printing, in addition to printing the
+  headers of each packet, print the data of each packet, including its
+  link level header, in hex.
+\item[-X:] When parsing and printing, in addition to printing the
+  headers of each packet, print the data of each packet (minus its
+  link level header) in hex and ASCII.  This is very handy for
+  analysing new protocols.  In the current implementation this flag
+  may have the same effect as -XX if the packet is truncated.
+\item[-S:] Print absolute, rather than relative, TCP sequence numbers.
+\item[-K:] Don't attempt to verify IP, TCP, or UDP checksums.  This is
+  useful for interfaces that perform some or all of those checksum
+  calculation in hardware; otherwise, all outgoing TCP checksums
+  will be flagged as bad.
+\item[-s0:] Setting snaplen to 0 sets it to the default of 262144, for
+  backwards compatibility with recent older versions of tcpdump.
+\end{description}
+
+\subsection{Packet analysis}
+
+Please analyze this captured packet and explain it to me as detailed
+as you can.
+
+\begin{description}
+\item[Answer:] \fbox{4} means IPv4; \fbox{5} is the header length in
+  word; The \fbox{00} following \fbox{45} are the ToS bits;
+  \fbox{0040} is the total length of this IPv4 packet; \fbox{3218} is
+  the identification field; \fbox{4000} are the 2 flag bits plus the
+  fragment offset field; \fbox{4006} means TTL is 0x40, 0x06 means
+  TCP; \fbox{0a9e} is the header checksum; \fbox{7f00 0001} is the
+  IPv4 address of the loopback interface; \fbox{b64c} is the source
+  port number; \fbox{0d05} is the destination port number, 3333 in
+  decimal;
+\end{description}
 
 \section{HTTP}
 
+\subsection[curl, netcat, tcpdump]{Write a simple script
+  showing how HTTP works (you need \texttt{curl})}
+
+\begin{listing}
+  \shfile{http-demo.sh}
+  \caption{http-demo.sh}
+\end{listing}
+
+\subsection[ttyrec]{Record your HTTP demo session with \texttt{ttyrec}}
+
 \begin{enumerate}
-\item Write a simple script showing how HTTP works (you need
-  \texttt{curl});
-
-  \begin{shcode}
-    #!/bin/bash
-
-    echo 'Hello, world!'
-  \end{shcode}
-
-\item Record your HTTP demo session with \texttt{ttyrec}.
+\item Open a new terminal window without tmux.
+\item Start \texttt{ttyrec}.
+\item Start \texttt{tmux}.
+\item Run \texttt{http-demo.sh}.
 \end{enumerate}
 
 \section{Socket programming}
 
 \subsection{TCP}
 
-\begin{ccode}
-/* A simple TCP server written in C */
+\begin{longlisting}
+  \cfile{us_xfr_sv.c}
+  \caption{A simple TCP server}
+\end{longlisting}
 
-/* Your code */
-\end{ccode}
-
-\begin{ccode}
-/* A simple TCP client written in C */
-
-// Your code
-\end{ccode}
+\begin{longlisting}
+  \cfile{us_xfr_cl.c}
+  \caption{A simple TCP client}
+\end{longlisting}
 
 \subsection{UDP}
 
@@ -167,7 +185,7 @@ ack 373279396,
 
 \section{Questions}
 
-List at least 5 problems you've met while doing this work. When
+List at least 5 problems you've met while doing this work. While
 listing your problems, you have to tell me:
 \begin{enumerate}
 \item Description of this problem. For example,
@@ -182,19 +200,21 @@ listing your problems, you have to tell me:
   \end{itemize}
 \end{enumerate}
 
-\subsection{Problems}
+\subsection{Problem 1}
 
-\begin{enumerate}
-\item
+\subsection{Problem 2}
 
-\item
+\subsection{Problem 3}
 
-\item
+\subsection{Problem 4}
 
-\item
+\subsection{Problem 5}
 
-\item
-\end{enumerate}
+\section{实习总结}
+
+不要少于300字。
+
+\comments % 别动这一行！
 
 \end{document}
 %%% Local Variables:

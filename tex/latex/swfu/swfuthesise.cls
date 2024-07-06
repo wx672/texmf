@@ -24,10 +24,10 @@
 
 \LoadClass[12pt]{report}
 
-\RequirePackage{fontspec}
-\setmainfont{Liberation Serif}
-\setsansfont{Liberation Sans}
-\setmonofont{Liberation Mono}
+\RequirePackage{fontspec,libertine}
+% \setmainfont{Liberation Serif}
+% \setsansfont{Liberation Sans}
+% \setmonofont{Liberation Mono}
 
 \RequirePackage{newunicodechar}
 \newunicodechar{✓}{{\symbola ✓}}%

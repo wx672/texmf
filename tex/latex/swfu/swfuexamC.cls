@@ -1,6 +1,6 @@
 % 西南林业大学成教函授试卷
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{swfuexamb}
+\ProvidesClass{swfuexamC}
 
 \DeclareOption{a3}{%
   \PassOptionsToPackage{a3paper,landscape,twocolumn,%showframe,
@@ -40,6 +40,19 @@
 \RequirePackage{multicol,marvosym,ulem,soul,tasks,indentfirst,enumitem}
 \RequirePackage{setspace} % \singlespacing, \onehalfspacing, \doublespacing
 
+\RequirePackage{tikz}
+\usetikzlibrary{calc,positioning,backgrounds,scopes}%
+
+% Example: \choice{4}{SMTP}{FTP}{HTTP}{DHCP}
+\DeclareDocumentCommand\choice{mmmmm}{%
+  \begin{tasks}[label=\Alph*.](#1)
+  \task #2
+  \task #3
+  \task #4
+  \task #5
+  \end{tasks}
+}
+
 \RequirePackage{tabularray}
 
 \RequirePackage{fancyhdr}
@@ -50,7 +63,8 @@
 
 \newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\bblank}{\uline{\,\hspace{1in}}\,}
-\newcommand{\blank}[1][6em]{\uline{\hspace{#1}}} % default 6em
+\newcommand{\blank}[1][3em]{\uline{\hspace{#1}}} % \blank{2em}
+\newcommand{\answer}[1][\quad]{\uline{\quad{}#1\quad}}%
 \newcommand{\blankone}{\uline{\,\hspace{1em}\,}}
 \newcommand{\blanksix}{\uline{\,\hspace{6em}\,}}
 

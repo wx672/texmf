@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{wx672en}
 
-\RequirePackage{fontspec}
+\RequirePackage{fontspec,libertine}
 \defaultfontfeatures{Ligatures=TeX}
 
 % ctex is too heavy in case of only a few Chinese words.
@@ -16,10 +16,10 @@
   ("genericfallback", {"NotoSans Nerd Font:mode=node;"})}
 
 % Liberation fonts is a drop-in replacement for Microsoft Times, Arial and Courier fonts
-\setmainfont{Liberation Serif}[RawFeature={fallback=genericfallback}]
-\setsansfont{DejaVuSansM Nerd Font}[RawFeature={fallback=genericfallback}]
+% \setmainfont{Liberation Serif}[RawFeature={fallback=genericfallback}]
+% \setsansfont{DejaVuSansM Nerd Font}[RawFeature={fallback=genericfallback}]
 %\setsansfont{FiraCode Nerd Font}[RawFeature={fallback=emojifallback}]
-%\setmonofont{FiraCode Nerd Font Mono}[RawFeature={fallback=genericfallback}]%\ttfamily
+\setmonofont{FiraCode Nerd Font Mono}[RawFeature={fallback=genericfallback}]%\ttfamily
 
 \newcommand{\verbatimfont}[1]{\def\verbatim@font{#1}}%
 \newcommand{\verbfont}[1]{\def\verbatim@font{#1}}%

@@ -11,20 +11,20 @@
           [
             cmap       = UniGB-UTF16-H,
             BoldFont   = NotoSerifCJK-Bold.ttc,
-            ItalicFont = LXGWBrightGB-SemiLightItalic.otf
+            ItalicFont = LXGWWenKaiGB-Regular.ttf
           ]
-        \setCJKsansfont { LXGWBright-SemiLight.otf }
-          [ cmap = UniGB-UTF16-H, BoldFont = LXGWBrightGB-Regular.otf ]
-        \setCJKmonofont { LXGWBrightGB-SemiLight.otf }
-          [ cmap = UniGB-UTF16-H ]
+        \setCJKsansfont { NotoSansCJK-Retular.ttc }
+          [ cmap = UniGB-UTF16-H, BoldFont = NotoSansCJK-Medium.ttc }
+        \setCJKmonofont { NotoSansCJK-Regular.ttc }
+          [ cmap = UniGB-UTF16-H, BoldFont = NotoSansCJK-Bold.ttc ]
         \setCJKfamilyfont { zhsong } { NotoSerifCJK-Regular.ttc }
-          [ cmap = UniGB-UTF16-H, BoldFont = NotoSerifCJK-Bold.ttc ]
+          [ cmap = UniGB-UTF16-H, BoldFont = NotoSerifCJK-Medium.ttc ]
         \setCJKfamilyfont { zhhei  } { FandolHei-Regular.otf }
           [ cmap = UniGB-UTF16-H, BoldFont = FandolHei-Bold.otf ]
         \setCJKfamilyfont { zhfs   } { NotoSerifCJK-Regular.ttc }
-          [ cmap = UniGB-UTF16-H ]
-        \setCJKfamilyfont { zhkai  } { LXGWBrightGB-SemiLight.otf }
-          [ cmap = UniGB-UTF16-H ]
+          [ cmap = UniGB-UTF16-H, BoldFont = NotoSerifCJK-Medium.ttc ]
+        \setCJKfamilyfont { zhkai  } { LXGWWenKaiGB-Regular.ttf }
+          [ cmap = UniGB-UTF16-H, BoldFont = LXGWWenKaiGB-Medium.ttf ]
         \ctex_punct_set:n { wx672 }
         \ctex_punct_map_family:nn   { \CJKrmdefault         } { zhsong  }
         \ctex_punct_map_family:nn   { \CJKsfdefault         } { zhhei   }
@@ -45,12 +45,13 @@
   {
     \ctex_set_upfonts:nnnnnn
       { NotoSerifCJK-Regular.ttc }
-      { NotoSerifCJK-Bold.ttc    }
-      { LXGWBrightGB-SemiLight.otf  }
-      { LXGWBrightGB-Medium.otf  }
-      { LXGWBrightGB-Regular.otf  }
-      { FandolHei-Regular.otf  }
-      { FandolHei-Bold.otf     }
+      { NotoSerifCJK-Medium.ttc }
+      { NotoSansCJK-Regular.ttc }
+      { NotoSansCJK-Medium.ttc }
+      { LXGWWenKaiGB-Medium.ttf }
+      { LXGWWenKaiGB-Regular.ttf }
+      { FandolHei-Regular.otf }
+      { FandolHei-Bold.otf }
       { NotoSerifCJK-Regular.ttc }
     \ctex_set_upfamily:nnn { zhsong } { upzhserif   } { upzhserifb }
     \ctex_set_upfamily:nnn { zhhei  } { upzhsans    } { upzhsansb  }
@@ -60,24 +61,24 @@
   {
     \setCJKmainfont { NotoSerifCJK-Regular.ttc }
       [
-        BoldFont   = NotoSerifCJK-Bold,
-        ItalicFont = LXGWBrightGB-SemiLightItalic.otf
+        BoldFont   = NotoSerifCJK-Medium,
+        ItalicFont = LXGWWenKaiGB-Regular.ttf
       ]
-    \setCJKsansfont { LXGWBrightGB-SemiLight  }
-      [ Extension = .otf, BoldFont = LXGWBrightGB-Regular ]
-    \setCJKmonofont { LXGWBrightGB-SemiLight }
-      [ Extension = .otf ]
+    \setCJKsansfont { NotoSansCJK-Regular.ttc  }
+      [ BoldFont = NotoSansCJK-Medium.ttc ]
+    \setCJKmonofont { NotoSansCJK-Regular.ttc }
+      [ BoldFont = NotoSansCJK-Medium.ttc ]
 
-    \setCJKfamilyfont { zhsong } { NotoSerifCJK-Regular }
-      [ Extension = .ttc, BoldFont = NotoSerifCJK-Bold ]
-    \setCJKfamilyfont { zhhei  } { FandolHei-Regular  }
-      [ Extension = .otf, BoldFont = FandolHei-Bold  ]
-    \setCJKfamilyfont { zhfs   } { NotoSerifCJK-Regular }
-      [ Extension = .ttc ]
-    \setCJKfamilyfont { zhkai  } { LXGWBrightGB-SemiLight }
-      [ Extension = .otf ]
-    \setCJKfamilyfont { lxgw  } { LXGWBrightGB-SemiLight }
-      [ Extension = .otf ]
+    \setCJKfamilyfont { zhsong } { NotoSerifCJK-Regular.ttc }
+      [ BoldFont = NotoSerifCJK-Medium.ttc ]
+    \setCJKfamilyfont { zhhei  } { FandolHei-Regular.otf  }
+      [ BoldFont = FandolHei-Bold.otf  ]
+    \setCJKfamilyfont { zhfs   } { NotoSerifCJK-Regular.ttc }
+      [ BoldFont = NotoSerifCJK-Medium.ttc ]
+    \setCJKfamilyfont { zhkai  } { LXGWWenKaiGB-Regular.ttf }
+      [ BoldFont = LXGWWenKaiGB-Medium.ttf ]
+    \setCJKfamilyfont { lxgw  } { LXGWWenKaiGB-Regular.ttf }
+      [ BoldFont = LXGWWenKaiGB-Medium.ttf ]
   }
 \NewDocumentCommand \songti   { } { \CJKfamily { zhsong  } }
 \NewDocumentCommand \heiti    { } { \CJKfamily { zhhei   } }

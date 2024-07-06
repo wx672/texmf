@@ -13,7 +13,7 @@
   \graphicspath{{./figs/}{./}}
   
   \begin{document}
-  \includegraphics[width=5cm]{tux}
+  \includegraphics[width=5cm]{bad_good}
   \end{document}
 \end{latexcode}
 \end{codeblock}
@@ -35,10 +35,10 @@
   \item \texttt{./}，也就是当前目录。如果在这个目录里还是没找到想插入的图片，那么编译器就要
     报错了。
   \end{enumerate}
-\item \ltx{\includegraphics[width=5cm]{tux}}，这显然就是在插入图片了。
+\item \ltx{\includegraphics[width=5cm]{bad_good}}，这显然就是在插入图片了。
   \begin{enumerate}
-  \item 图片的名字叫 \texttt{tux.pdf}, 后缀（\texttt{.pdf}）可以被省略掉。显
-    然 \texttt{tux.pdf} 应该被存放在 \texttt{./} 或者 \texttt{./figs/} 中，才能被找到。我喜
+  \item 图片的名字叫 \texttt{bad\_good.pdf}, 后缀（\texttt{.pdf}）可以被省略掉。显
+    然 \texttt{bad\_good.pdf} 应该被存放在 \texttt{./} 或者 \texttt{./figs/} 中，才能被找到。我喜
     欢PDF图片，因为它可以自由缩放。你当然可以插入jpeg、png图片。
   \item 宽度是5cm，也可以是相对宽度，比如 \ltx{[width=.5\linewidth]} 就表示宽度等于0.5倍的行宽。
   \end{enumerate}
@@ -55,7 +55,7 @@
   
   \begin{document}
   \begin{center}
-    \includegraphics[width=5cm]{tux}
+    \includegraphics[width=5cm]{bad_good}
   \end{center}
   \end{document}
 \end{latexcode}
@@ -64,7 +64,7 @@
 编译后的效果大致就是这样，居中，5cm宽。
 
 \begin{center}
-  \includegraphics[width=5cm]{tux}
+  \includegraphics[width=5cm]{bad_good}
 \end{center}
 
 \subsection{Figure环境}

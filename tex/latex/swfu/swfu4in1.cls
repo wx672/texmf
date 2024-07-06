@@ -73,17 +73,21 @@
   Subject/.store in = \SWFU@Subject, % 专业
   Grade/.store in = \SWFU@Grade, % 年级
   Gyear/.store in = \SWFU@Gyear, %（任务书、实习计划表）届
-  StudSig/.store in   = \SWFU@StudSig,   %（任务书）学生签名
-  DeptSig/.store in   = \SWFU@DeptSig,   %(开题报告) 教研室负责人签名
-  SchoolSig/.store in = \SWFU@SchoolSig, %(开题报告) 教学院系部负责人签名
+  StudSig/.store    in = \SWFU@StudSig,   %（任务书）学生签名
+  DeptSig/.store    in = \SWFU@DeptSig,   %(开题报告) 教研室负责人签名
+  SchoolSig/.store  in = \SWFU@SchoolSig, %(开题报告) 教学院系部负责人签名
   ReviewDate/.store in = \SWFU@ReviewDate, %（开题报告、任务书）签字日期
-  Date/.store in       = \SWFU@Date,       %（开题报告、任务书）封面日期
-  TaskDate/.store in   = \SWFU@TaskDate,   %（任务书）任务下达日期
-  DueDate/.store in    = \SWFU@DueDate,    %（任务书）学生应送交毕业论文日期
+  Date/.store       in = \SWFU@Date,       %（开题报告、任务书）封面日期
+  TaskDate/.store   in = \SWFU@TaskDate,   %（任务书）任务下达日期
+  DueDate/.store    in = \SWFU@DueDate,    %（任务书）学生应送交毕业论文日期
   Midchkdate/.store in = \SWFU@Midchkdate, %（中期检查表）日期
+  AgreeD/.store     in = \SWFU@AgreeD, %（中期检查表）教研室意见
+  AgreeS/.store     in = \SWFU@AgreeS, %（中期检查表）学院意见
   %%% defaults
   DeptSig   ={\includegraphics[width=3cm]{qiangzhenping}}, %(开题报告) 教研室负责人
   SchoolSig ={\includegraphics[width=3cm]{zhangqinghui}}, %(开题报告) 教学院系部负责人
+  AgreeD    ={\includegraphics[width=2cm]{agree}},%（中期检查表）教研室、学院意见
+  AgreeS    ={\includegraphics[width=2cm]{agree2}},%（中期检查表）教研室、学院意见
   Gyear       ={\the\year},%（任务书、实习计划表）届
   Date        ={\the\year{}年1月15日},%（开题报告、任务书）封面日期
   ReviewDate  ={\the\year{}年1月20日},%（开题报告、任务书）签字日期
@@ -558,15 +562,15 @@ url=false,doi=false,isbn=false]{biblatex}
       column{1,3}={5mm,m},%
     }
     {教研室意见} & %
-    \begin{minipage}[c][3cm]{\linewidth}
-      \vfill{}%
-      教研室负责人：\qquad\SWFU@DeptSig\par%
+    \begin{minipage}[c][35mm]{\linewidth}
+      \makebox[4cm][r]{\SWFU@AgreeD}\\\bigskip%
+      教研室负责人：\hfill\makebox[3cm][r]{\SWFU@DeptSig}\par%
       \hfill\SWFU@Midchkdate%
     \end{minipage} & %
     {学院意见} & %
-    \begin{minipage}[c][3cm]{\linewidth}
-      \vfill{}
-      学院负责人：\qquad\SWFU@SchoolSig\par%
+    \begin{minipage}[c][35mm]{\linewidth}
+      \makebox[4cm][r]{\SWFU@AgreeS}\\\bigskip%
+      学院负责人：\hfill\makebox[3cm][r]{\SWFU@SchoolSig}\par%
       \hfill\SWFU@Midchkdate
     \end{minipage}\\
   \end{tblr}}

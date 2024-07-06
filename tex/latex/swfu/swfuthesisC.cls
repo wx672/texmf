@@ -47,11 +47,12 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions\relax
 
-\LoadClass[scheme=chinese,zihao=-4]{ctexbook}
+\LoadClass[fontset=none,scheme=chinese,zihao=-4]{ctexbook}
 %一号\Huge; 二号\LARGE; 小三\large;      五号\small;        六号\scriptsize
 %小一\huge; 小二\Large; 小四\normalsize; 小五\footnotesize; 小六\tiny
 
 \ctexset{%
+  fontset=windows,%
   chapter/name = {},%
   chapter/number = {\large\bfseries\thechapter},%
   chapter/format = {\large\heiti},% 小3号，黑体
@@ -66,12 +67,14 @@
 \newCJKfontfamily\HEI{Noto Sans CJK SC}% for a better "〇"
 %%%%% geometry
 \RequirePackage[%showframe,%showcrop,
-a4paper,asymmetric,twoside=true,%
-vmargin=3cm,inner=35mm,outer=25mm,% for twoside
+a4paper,asymmetric,%
+vmargin=3cm,%
+twoside=false,left=35mm,right=25mm,% for oneside
+%twoside=true,inner=35mm,outer=25mm,% for twoside
 headsep=1em,footskip=1cm,%headheight=15pt, to avoid "headheight too small"
 nomarginpar]{geometry}
 
-%\renewcommand\cleardoublepage{\clearpage} % for oneside configuration
+\renewcommand\cleardoublepage{\clearpage} % for oneside configuration
 
 %%%%% tocloft
 \RequirePackage{tocloft}
@@ -87,7 +90,7 @@ nomarginpar]{geometry}
 \renewcommand\cftafterlottitle{\hfill}%
 
 %%%%% fancyhdr
-\RequirePackage{fancyhdr}
+\RequirePackage[twoside]{fancyhdr}% even in oneside layout
 \fancyhf{}
 
 \fancypagestyle{plain}{% 1st page of each chapter
@@ -98,7 +101,7 @@ nomarginpar]{geometry}
 \pagestyle{fancy}
 % 奇数页：“西南林业大学 20XX”届本/专科毕业论文（宋体5号字）
 % 偶数页：“姓名   论文题目”（宋体5号字）
-\fancyhead[CE]{\small 西南林业大学\the\year{}届\SWFU@Level{}毕业论文}
+\fancyhead[CE]{\small 西南林业大学2025届\SWFU@Level{}毕业论文}%\the\year{}
 \fancyhead[CO]{\small\@author\qquad\@title}
 \fancyfoot[C]{\fontsize{8}{8}\selectfont\thepage}% e.g. "88"
 
@@ -152,7 +155,7 @@ nomarginpar]{geometry}
 %%%%% setspace (\singlespacing, \onehalfspacing, \doublespacing)
 \RequirePackage[doublespacing]{setspace}
 \renewcommand{\doublespacing}{\setstretch{1.5}}
-\renewcommand{\onehalfspacing}{\setstretch{1.2}}
+\renewcommand{\onehalfspacing}{\setstretch{1.25}}
 
 %%%%% tikz
 \RequirePackage{tikz}
@@ -317,9 +320,8 @@ url=false,doi=false,isbn=false]{biblatex}
       } \par\bigskip%
       \makebox[6cm][l]{\SWFU@Year{}年\SWFU@Month{}月\SWFU@Date{}日}
     \end{flushright}
-
-  \cleardoublepage
-}
+    \cleardoublepage
+  }
 
 \newenvironment{abstract}{% 中文摘要
   \thispagestyle{plain}\phantomsection{}%
@@ -340,7 +342,7 @@ url=false,doi=false,isbn=false]{biblatex}
   \begin{center}
     \begin{singlespace}
       % 英文摘要标题，小三号，居中，加粗。
-      {\Large\bfseries\SWFU@Title*}\\[5mm]%
+      {\Large\bfseries\sffamily\SWFU@Title*}\\[5mm]%
       {\large\SWFU@Author*\\\medskip
         (\SWFU@Address*)}
     \end{singlespace}
@@ -361,7 +363,7 @@ url=false,doi=false,isbn=false]{biblatex}
   \pagebreak}% 
 \renewcommand*{\bibfont}{\small} % 5号宋体
 
-\newenvironment{acknowledgment}{% 致谢
+\newenvironment{Thanks}{% 致谢
   \thispagestyle{plain}\phantomsection{}%
   \addcontentsline{toc}{chapter}{致\hspace{1em}谢}%
   \chapter*{致\quad{}谢}
@@ -374,6 +376,7 @@ url=false,doi=false,isbn=false]{biblatex}
 \raggedbottom{}
 \setlength{\parindent}{2em}
 
+\renewcommand{\contentsname}{目\qquad{}录}
 \renewcommand{\listfigurename}{插图目录}
 \renewcommand{\listtablename}{表格目录}
 

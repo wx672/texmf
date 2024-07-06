@@ -1,58 +1,62 @@
-% 实践（实习）报告
+% 本科生实习报告（教务处版）
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{swfulabreport}
 
-\RequirePackage{etoolbox}
+\RequirePackage{etoolbox,calc}
+\newcounter{CDate}
 
 \RequirePackage{pgfkeys}
 
-\pgfkeys{/swfu/.is family, /swfu, %
-  Title/.store in     = \@title,  %
-  Author/.store in    = \@author, %
-  ID/.store in        = \SWFU@ID, %
-  Class/.store in     = \SWFU@Class,%实习班级
-  Tutor/.store in   = \SWFU@Tutor,   %
-  Reviewer/.store in  = \SWFU@Reviewer,  %
-  ReviewDate/.store in= \SWFU@ReviewDate,%
+\pgfkeys{/swfu/.is family, /swfu,%
+  Title/.store in     = \@title, %实习名称
+  School/.store in    = \SWFU@School,%学院
+  Subject/.store in   = \SWFU@Subject,%专业
+  Grade/.store in     = \SWFU@Grade,%年级
+  Author/.store in    = \@author,%姓名
+  ID/.store in        = \SWFU@ID,%学号
+  Tutor/.store in     = \SWFU@Tutor,%指导教师
+  LabDays/.store in   = \SWFU@LabDays,  %实习天数
+  LabDate/.store in   = \SWFU@LabDate,  %实习时间
+  Lab/.store in       = \SWFU@Lab,      %实习单位及地点
   Month/.store in     = \SWFU@Month, %
   Date/.store in      = \SWFU@Date,  %
   Year/.store in      = \SWFU@Year,  %
-  Mark/.store in      = \SWFU@Mark,  %
-  LabDate/.store in   = \SWFU@LabDate,%实习日期
-  LabDays/.store in   = \SWFU@LabDays,%实习天数
-  Lab/.store in       = \SWFU@Lab,%实习地点
-  Heads/.store in     = \SWFU@Heads,%实习人数
-  Grouping/.store in     = \SWFU@Grouping,%分组情况
-  Why/.store in       = \SWFU@Why,%实习目的
-  Req/.store in      = \SWFU@Req,%实习要求
-  What/.store in      = \SWFU@What,%实习内容
-  Sched/.store in       = \SWFU@Sched,%课程实习安排
-  Sumup/.store in       = \SWFU@Sumup,%实习总结
+  Comments/.store in  = \SWFU@Comments, %教师评语
+  CommentsDate/.store in = \SWFU@CommentsDate,%评语日期
+  Mark/.store in      = \SWFU@Mark,  %成绩
+  Sig/.store in       = \SWFU@Sig, %指导教师（签名）
   %%% Defaults
-  Title     = \textcolor{red}{课程名称？},% 
-  Author    = \textcolor{red}{学生姓名？},% 
+  Title     = \textcolor{red}{实习名称？},%
+  School    = {大数据与智能工程学院},%
+  Subject   = {计算机科学与技术},%
+  Grade     = \textcolor{red}{年级？},%
+  Tutor     = {王晓林},% 
+  Author    = \textcolor{red}{姓名？},% 
   ID        = \textcolor{red}{学号？},% 
-  Class     = \textcolor{red}{实习班级？},%
-  Tutor     = \textcolor{red}{指导教师？},% 
-  Reviewer  = \textcolor{red}{批阅教师？},%
-  ReviewDate= \textcolor{red}{批阅日期？},%
-  Mark      = \textcolor{red}{分数？},%
   Month     = \the\month,% 
   Date      = \the\day,  % 
   Year      = \the\year, %
-  LabDate   = \textcolor{red}{实习日期？},%
   LabDays   = \textcolor{red}{实习天数？},%
-  Lab       = \textcolor{red}{实习地点？},%
-  Heads     = \textcolor{red}{实习人数？},%
-  Grouping  = \textcolor{red}{分组情况？},%
-  Why       = \textcolor{red}{实习目的？},%
-  What      = \textcolor{red}{实习内容？},%
-  Req       = \textcolor{red}{实习要求？},%
-  Sched     = \textcolor{red}{课程实习安排？},%
-  Sumup     = \textcolor{red}{实习总结？},%
+  LabDate   = \textcolor{red}{实习时间？},%
+  Lab       = {校本部生物楼219机房},%
+  Mark      =,% \textcolor{red}{分数？},%成绩
+  Sig       = {\includegraphics[width=25mm]{wangxiaolin}},%
+  CommentsDate = {年\qquad{}月\qquad{}日},%评语日期
+  Comments  = {
+    \begin{minipage}[c][5cm][c]{.8\linewidth}
+      \vspace*{2cm}
+      \begin{flushright}
+        \begin{tblr}{width=.3\linewidth,colspec={rX},cell{3}{1}={c=2}{r},rowsep=10pt}
+        成绩：&\SWFU@Mark\\
+        指导教师（签名）：&\SWFU@Sig\\
+        \SWFU@CommentsDate&\\
+        \end{tblr}
+      \end{flushright}
+    \end{minipage}
+  },%教师评语
 }
 
-\newcommand{\swfusetup}[1]{\pgfkeys{/swfu, #1}}
+\newrobustcmd{\swfusetup}[1]{\pgfkeys{/swfu, #1}}
 
 % pass unknown options to ctexart
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
@@ -66,30 +70,13 @@
   subsubsection/format = \bfseries,% 黑体（在规范中未说明）
   paragraph/format = \bfseries,% 黑体（在规范中未说明）
   subparagraph/format = \bfseries,% 黑体（在规范中未说明）
-  % chapter/name = {第,部分},%
-  % chapter/number = {\chinese{chapter}},%
-  % chapter/format = \centering\large\heiti,% 小3号，黑体
-  % chapter/beforeskip = {0pt},%
-  % section/name = {第,步},%
-  % section/number = {\arabic{section}},%
-  % section/format = {\heiti\zihao{4}},% 4号，黑体
-  % subsection/name = {},%
-  % subsection/format = \heiti,% 小4号，黑体
-  % subsection/numbering = false,%
-  % subsubsection/name = {},%
-  % subsubsection/format = \heiti,% 小4号，黑体
-  % subsubsection/numbering = false,%
-  % paragraph/format = \heiti,% 黑体
-  % subparagraph/format = \heiti,% 黑体
 }
 
-\setCJKmainfont{Noto Serif CJK SC}
-\setCJKsansfont{Noto Sans CJK SC}
-% \newCJKfontfamily\kaishu{LXGW Bright GB}%
-% \newCJKfontfamily\heiti{WenQuanYi Micro Hei}%
+\setCJKmainfont{Noto Serif CJK SC}%
+\setCJKsansfont{Noto Sans  CJK SC}%
+\setCJKmonofont{Noto Sans  Mono CJK SC}%
+\newfontfamily\purisa{Purisa}%
 
-\newfontfamily\purisa{Purisa}
-%\newfontfamily\noto{Noto Serif CJK KR}
 %%%%% geometry
 \RequirePackage[%showframe,%showcrop,
 a4paper,nomarginpar,twoside=false,%
@@ -101,20 +88,19 @@ headsep=1em,footskip=1cm,%headheight=15pt, to avoid "headheight too small"
 
 %%%%% fancyhdr
 \RequirePackage{fancyhdr}
-\fancyhf{}
-
+\fancyhf{}%
 \fancypagestyle{plain}{%
   \fancyhf{}%
   \fancyfoot[C]{\fontsize{8}{8}\selectfont\thepage}
-  \renewcommand{\headrulewidth}{0pt}}
+  \renewrobustcmd{\headrulewidth}{0pt}}
 
 \pagestyle{plain}
 
 %%%%% misc
-% \RequirePackage{indentfirst} % enabled if scheme=chinese
-\RequirePackage{units,xparse}%
+\RequirePackage{units}%
 \RequirePackage{enumitem} % \setlist
 \setlist{nosep} % kills all vertical spacing
+\RequirePackage{caption} %work with minted
 \RequirePackage{tabularray,multicol,tasks}%
 
 \settasks{%
@@ -131,7 +117,7 @@ headsep=1em,footskip=1cm,%headheight=15pt, to avoid "headheight too small"
 \RequirePackage{xcolor}
 \RequirePackage{hyperref}
 \hypersetup{%
-  colorlinks=false,%
+  colorlinks,%
   pdfborderstyle={/S/U/W .3},% underline of width .3pt 
   linkbordercolor=red,       % internal links
   citebordercolor=cyan,      % links to bibliography
@@ -141,27 +127,31 @@ headsep=1em,footskip=1cm,%headheight=15pt, to avoid "headheight too small"
 \RequirePackage[nobiblatex]{xurl} % break long url
 
 %%%%% fonts
-\RequirePackage{amsmath,amsfonts,amssymb,marvosym,pifont}
+\RequirePackage{amsmath,amsfonts,amssymb}
 
 %%%%% setspace (\singlespacing, \onehalfspacing, \doublespacing)
 \RequirePackage[onehalfspacing]{setspace}
-\renewcommand{\doublespacing}{\setstretch{1.5}}
-\renewcommand{\onehalfspacing}{\setstretch{1.2}}
+\renewrobustcmd{\doublespacing}{\setstretch{1.5}}
+\renewrobustcmd{\onehalfspacing}{\setstretch{1.2}}
 
 %%%%% tikz
 \RequirePackage{tikz}
 \usetikzlibrary{calc,positioning,backgrounds,scopes}%
 
 %%%%% minted
-\RequirePackage{minted} % has to be loaded at last!!!
+\RequirePackage[newfloat]{minted} % has to be loaded at last!!!
 %\usemintedstyle{bw}
 
-\renewcommand{\listingscaption}{程序} % used by minted
-\renewcommand{\listoflistingscaption}{程序目录}
-% \renewcommand{\thelisting}{\thechapter{}-\arabic{listing}}
-\renewcommand{\thelisting}{\thesection{}-\arabic{listing}}
+%\renewrobustcmd{\listingscaption}{程序} % without newfloat
+%\renewrobustcmd{\listoflistingscaption}{程序目录}%
+\SetupFloatingEnvironment{listing}{name={程序}}        % with newfloat
+\SetupFloatingEnvironment{listing}{listname={程序目录}}% 
+\SetupFloatingEnvironment{listing}{placement=htbp}% 
 
-\renewcommand{\theFancyVerbLine}{
+\renewrobustcmd{\thelisting}{%
+  \thesection{}-\arabic{listing}}
+
+\renewrobustcmd{\theFancyVerbLine}{%
   \textcolor{lightgray}{\scriptsize\arabic{FancyVerbLine}}}
 
 \newmintinline{c}{} %e.g. \cinline{int main()}
@@ -181,28 +171,22 @@ headsep=1em,footskip=1cm,%headheight=15pt, to avoid "headheight too small"
 \newminted{nasm}{} \newminted{python}{} \newminted{js}{}
 \newminted{html}{} \newminted{output}{}
 
-% need lexer.py
-% https://github.com/fcurella/jsx-lexer/blob/master/jsx/lexer.py
-% \newenvironment{jsxcode}%
-% {\VerbatimEnvironment\begin{minted}{lexer.py:JsxLexer -x}}%
-% {\end{minted}}
-
 \newmintedfile[cfile]{c}{%\cfile{filepath}
-  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
+  baselinestretch=1,linenos,breaklines,autogobble}%
 \newmintedfile[cppfile]{cpp}{%\cppfile{filepath}
-  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
+  baselinestretch=1,linenos,breaklines,autogobble}%
 \newmintedfile[mkfile]{makefile}{%\mkfile{filepath}
-  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
+  baselinestretch=1,linenos,breaklines,autogobble}%
 \newmintedfile{nasm}{%\nasmfile{filepath}
-  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
+  baselinestretch=1,linenos,breaklines,autogobble}%
 \newmintedfile[pasfile]{pascal}{%\pasfile{filepath}
-  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
+  baselinestretch=1,linenos,breaklines,autogobble}%
 \newmintedfile[pyfile]{python}{%\pyfile{filepath}
-  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
+  baselinestretch=1,linenos,breaklines,autogobble}%
 \newmintedfile{shell}{%\shellfile{filepath}
-  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
+  baselinestretch=1,linenos,breaklines,autogobble}%
 \newmintedfile[shfile]{shell}{%\shfile{filepath}
-  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
+  baselinestretch=1,linenos,breaklines,autogobble}%
 
 \newmint[csingle]{c}{linenos=false,frame=topline,framesep=3pt,}
 
@@ -215,79 +199,73 @@ headsep=1em,footskip=1cm,%headheight=15pt, to avoid "headheight too small"
       {\end{singlespace}\end{minipage}\end{center}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\renewcommand{\maketitle}{% Title page layout
+\renewrobustcmd{\maketitle}{% Title page layout
   \begin{titlepage}
-    \begin{tikzpicture}[remember picture, overlay]
-
-      \draw ($(current page.north west) + (3cm,-3cm)$) rectangle %
-      ($(current page.south east) + (-2cm,3cm)$);%
-      
-      \node (tbl) at (current page.north west) [anchor=north west,%
-      xshift=3.2cm,yshift=-3.2cm]{%
-        \begin{tabular}{|c|c|}
-          \hline%
-          实验成绩&{\purisa\SWFU@Mark}\\\hline%
-          批阅教师&\\\hline%
-          日\hfill{}期&{\purisa\SWFU@ReviewDate}\\\hline%
-        \end{tabular}%
-      };%
-      
-      \node at (tbl.center) [xshift=1cm] {\SWFU@Reviewer};%
-    \end{tikzpicture}
-
-    \vspace*{25mm}
     \begin{center}
-      \includegraphics[width=.75\linewidth]{swfulogo}\\[25mm]%6mm
-      {\Huge\bfseries%
-        大数据与智能工程学院\\\bigskip%
-        实践（实习）报告}\\[1cm]%
+      \includegraphics[width=4in]{swfulogo-text}\\[15mm]%6mm
+      \includegraphics[width=1.8in]{swfulogo-emblem}\\[8mm]%6mm
+      {\makebox[19em][s]{\Huge\heiti%
+          本科生实习报告}}\\[1cm]%
       \begin{minipage}{.7\linewidth}
         \begin{large}
-          \begin{tblr}{width=\linewidth, colspec={@{}rX[c]@{}},%
-              column{1}={font=\bfseries},%
-              rows={belowsep=-5pt,abovesep=20pt},%
-              hline{2,3,4,5,6} = {2}{.4pt,solid},%
-            }
-            课程名称&\@title\\
-            专业班级&\SWFU@Class\\
+          \begin{tblr}{colspec={rX[c]},%
+              column{1}={font=\heiti},%
+              rows={belowsep=-4pt,abovesep=16pt},%
+              hline{2,3,4,5,6,7,8} = {2}{.4pt},%
+            }%
+            实习名称&\@title\\
+            学\qquad{}院&\SWFU@School\\
+            专\qquad{}业&\SWFU@Subject\\
+            年\qquad{}级&\SWFU@Grade\\
+            指导教师&\SWFU@Tutor\\
+            姓\qquad{}名&\@author\\
             学\qquad{}号&\SWFU@ID\\
-            学生姓名&\@author\\
-            指导教师&\mbox{\SWFU@Tutor}\\
           \end{tblr}
         \end{large}
       \end{minipage}
       \vfill
-      {\Large\SWFU@Year\,年\,\SWFU@Month\,月\,\SWFU@Date\,日}%
+      {\heiti\SWFU@Year\,年\,\SWFU@Month\,月\,\SWFU@Date\,日}\\%
+      {\heiti 西南林业大学教务处}
     \end{center}%
+    \clearpage
+    \begin{center}
+      {\makebox[15em][s]{\LARGE\heiti 实习环节情况说明}}
+    \end{center}
+    \vspace*{1cm}
+    \begin{enumerate}[itemsep=1ex,parsep=1ex,topsep=2ex]
+    \item 实习应拟定实习指导书或计划，实习报告应规定基本内容，拟定框架
+      要求。
+    \item 实习期间，学生应每日填写实习日志，内容包括：实习时间、地点、
+      单位、内容、收获和体会，也可摘抄实习实 测数据资料。实习结束后按
+      照要求认真撰写实习报告。实习日志和实习报告在实习完成后一起交指导
+      教师，作为实 习成绩评定的依据。
+    \item 指导教师按照实习计划的要求，根据学生的实习日志、实习报告、纪律、表现等综合评定实习成绩。
+    \end{enumerate}
+    凡有下列情况之一者实习成绩为不合格：
+    \begin{itemize}[itemsep=1ex,parsep=1ex,topsep=2ex]
+    \item[（1）] 未达到实习计划规定的基本要求；
+    \item[（2）] 实习报告混乱，分析有原则性错误；实习日志缺失，或内容大
+      部分未完成；
+    \item[（3）] 实习缺课三分之一以上或无故旷课三天以上；
+    \item[（4）] 实习中严重违反纪律。
+    \end{itemize}
   \end{titlepage}%
   \cleardoublepage
-  \begin{center}
-    \begin{tblr}{colspec={cXcX},hlines,vlines,}%      
-      实习时间 & \SWFU@LabDate & 实习天数 & \SWFU@LabDays \\
-      实习地点 & \SWFU@Lab     & 实习班级 & \SWFU@Class \\
-      实习人数 & \SWFU@Heads   & 分组情况 & \SWFU@Grouping    \\
-    \end{tblr}
-  \end{center}
-  
-\section*{实习目的}
-\SWFU@Why
-\section*{实习要求}
-\SWFU@Req
-\section*{实习内容}
-\SWFU@What
-\section*{课程实习安排}
-\noindent{}（本栏须填写清楚实习的日期及该天实习的具体内容）\par%
-\SWFU@Sched
-\clearpage
+  \noindent{}实习天数：\underline{\quad\SWFU@LabDays\quad}\quad{}实习时间：\underline{\quad\SWFU@LabDate\quad}\\
+  实习单位及地点：\underline{\quad\SWFU@Lab\quad}
 }
 
-\newcommand\lastpage{
-  \section*{实习总结}
-  \SWFU@Sumup
+\newrobustcmd\comments{
+  \section{指导教师评语}
+  \SWFU@Comments
 }
-%%%%% misc
-\renewcommand{\headrulewidth}{0pt}
+
+%%%%%   misc
+\renewrobustcmd{\headrulewidth}{0pt}
 \urlstyle{tt} % url.sty
 \raggedbottom{}
-\setlength{\parindent}{2em}
+\deflength{\parindent}{2em}
+
+\providerobustcmd{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 

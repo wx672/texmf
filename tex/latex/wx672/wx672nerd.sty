@@ -4,20 +4,20 @@
 \RequirePackage{etoolbox,units}% \newtoggle
 
 \RequirePackage{fontspec}
-\RequirePackage{biolinum,latexsym,marvosym,fontawesome}% pifont,emoji,mathtools
+\RequirePackage{libertine,latexsym,marvosym,fontawesome}% pifont,emoji,mathtools
 \RequirePackage{newunicodechar}
 
 %%% Pinyin chars
 %┌─────┬─────┬──────┬──────┬──────┬──────┐
 %│ā 101│ē 113│ī 12B │ō 14D │ū 16B │ǖ 1D6 │
 %│á E1 │é  E9│í ED  │ó  F3 │ú  FA │ǘ 1D8 │
-%│ǎ 1CE│ě 11B│ǐ 1D0  │ǒ 1D2 │ǔ 1D4 │ǚ 1DA │
+%│ǎ 1CE│ě 11B│ǐ 1D0 │ǒ 1D2 │ǔ 1D4 │ǚ 1DA │
 %│à E0 │è  E8│ì EC  │ò  F2 │ù  F9 │ǜ 1DC │
 %│     │     │      │      │      │ü  FC │
 %└─────┴─────┴──────┴──────┴──────┴──────┘
 %
 % fc-list :charset='01d0': family
-\newfontfamily\pychar{DejaVuSansM Nerd Font}%LXGW Bright
+\newfontfamily\pychar{DejaVuSansM Nerd Font}%LXGW WenKai
 %
 \newunicodechar{ā}{{\pychar ā}}
 \newunicodechar{á}{{\pychar á}}
@@ -159,11 +159,11 @@
 \newunicodechar{}{{\nerd }}%javascript
 \newunicodechar{}{{\nerd }}%c
 \newunicodechar{}{{\nerd }}%c
-\newunicodechar{}{{\nerd }}%vim
+\newunicodechar{}{{\large\nerd }}%vim
 \newunicodechar{}{{\nerd }}%vim
 \newunicodechar{}{{\icon }}%emacs
 \newunicodechar{}{{\nerd }}%git
-\newunicodechar{}{{\nerd }}%chrome
+\newunicodechar{}{{\large\nerd }}%chrome
 \newunicodechar{}{{\nerd }}%firefox
 \newunicodechar{}{{\nerd }}%ie
 \newunicodechar{}{{\nerd }}%wordpress
