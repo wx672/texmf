@@ -118,8 +118,6 @@ nomarginpar]{geometry}
   filebordercolor=magenta,   % file links
   urlbordercolor=blue,       % external links
 }
-%\def\UrlBreaks{\do\/\do-} % break long url
-\RequirePackage[nobiblatex]{xurl} % break long url
 
 %%%%% fixme
 \RequirePackage{fixme}
@@ -148,6 +146,10 @@ nomarginpar]{geometry}
 style=gb7714-2015,sorting=none,gbpub=false,gbtype=false,gbpunctin=false,%
 url=false,doi=false,isbn=false]{biblatex}
 %\renewrobustcmd*{\bibfont}{\small} % 11pt
+
+% texdoc xurl
+\RequirePackage{xurl} % break long url
+\urlstyle{sf} % url.sty, tt/sf/rm/same
 
 %%%%% caption
 \RequirePackage[labelfont=bf]{caption} % \captionsetup, font=footnotesize,
@@ -182,8 +184,9 @@ url=false,doi=false,isbn=false]{biblatex}
 \newmintinline{shell}{}
 
 \setminted{%
-  linenos=true,numbersep=3pt,fontsize=\small,
-  baselinestretch=0.95,
+  linenos=true,numbersep=3pt,fontsize=\small,%
+  baselinestretch=0.95,%
+  %fontfamily=FiraCode Nerd Font Mono,%
   frame=leftline,framesep=10pt,%xleftmargin=2cm,
   % rulecolor=\color{lightgray},
   autogobble=true,breaklines=true}
@@ -200,21 +203,21 @@ url=false,doi=false,isbn=false]{biblatex}
 \begin{minted}{lexer.py:JsxLexer -x}}{\end{minted}}%
 
 \newmintedfile[cfile]{c}{%\cfile{filepath}
-  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
+  baselinestretch=1,linenos,breaklines,autogobble}%,fontfamily=FiraCode
 \newmintedfile[cppfile]{cpp}{%\cppfile{filepath}
-  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
+  baselinestretch=1,linenos,breaklines,autogobble}%
 \newmintedfile[mkfile]{makefile}{%\mkfile{filepath}
-  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
+  baselinestretch=1,linenos,breaklines,autogobble}%
 \newmintedfile{nasm}{%\nasmfile{filepath}
-  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
-\newmintedfile[pasfile]{pascal}{%\pasfile{filepath}
-  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
+  baselinestretch=1,linenos,breaklines,autogobble}%
+% \newmintedfile[pasfile]{pascal}{%\pasfile{filepath}
+%   baselinestretch=1,linenos,breaklines,autogobble}%
 \newmintedfile[pyfile]{python}{%\pyfile{filepath}
-  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
-\newmintedfile{shell}{%\shellfile{filepath}
-  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
+  baselinestretch=1,linenos,breaklines,autogobble}%
+% \newmintedfile{shell}{%\shellfile{filepath}
+%   baselinestretch=1,linenos,breaklines,autogobble}%
 \newmintedfile[shfile]{shell}{%\shfile{filepath}
-  baselinestretch=1,linenos,breaklines,autogobble,fontfamily=FiraCode}%
+  baselinestretch=1,linenos,breaklines,autogobble}%
 
 \newmint[csingle]{c}{linenos=false,frame=topline,framesep=3pt,}
 
@@ -352,7 +355,6 @@ url=false,doi=false,isbn=false]{biblatex}
 
 %%%%% misc
 \renewrobustcmd{\headrulewidth}{.4pt}
-\urlstyle{tt} % url.sty
 \raggedbottom{}
 \deflength{\parindent}{2em}
 
