@@ -1,6 +1,6 @@
-% 本科生实习报告（教务处版）
+% 实验报告 --- 改版自本科生实习报告（教务处版）
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{swfulabreport}
+\ProvidesClass{swfucoursework}
 
 \RequirePackage{etoolbox,calc}
 \newcounter{CDate}
@@ -10,39 +10,27 @@
 \pgfkeys{/swfu/.is family, /swfu,%
   Title/.store in     = \@title, %实习名称
   School/.store in    = \SWFU@School,%学院
-  Subject/.store in   = \SWFU@Subject,%专业
-  Grade/.store in     = \SWFU@Grade,%年级
   Author/.store in    = \@author,%姓名
   ID/.store in        = \SWFU@ID,%学号
+  Class/.store in     = \SWFU@Class,%班级
   Tutor/.store in     = \SWFU@Tutor,%指导教师
-  LabDays/.store in   = \SWFU@LabDays,  %实习天数
-  LabDate/.store in   = \SWFU@LabDate,  %实习时间
-  Lab/.store in       = \SWFU@Lab,      %实习单位及地点
-  Month/.store in     = \SWFU@Month, %
-  Date/.store in      = \SWFU@Date,  %
-  Year/.store in      = \SWFU@Year,  %
-  Comments/.store in  = \SWFU@Comments, %教师评语
-  CommentsDate/.store in = \SWFU@CommentsDate,%评语日期
+  Term/.store in     = \SWFU@Term,%学期
+  Comment/.store in  = \SWFU@Comment, %教师评语
+  CommentDate/.store in = \SWFU@CommentDate,%评语日期
   Mark/.store in      = \SWFU@Mark,  %成绩
   Sig/.store in       = \SWFU@Sig, %指导教师（签名）
   %%% Defaults
   Title     = \textcolor{red}{实习名称？},%
   School    = {大数据与智能工程学院},%
-  Subject   = {计算机科学与技术},%
-  Grade     = \textcolor{red}{年级？},%
-  Tutor     = {王晓林},% 
   Author    = \textcolor{red}{姓名？},% 
-  ID        = \textcolor{red}{学号？},% 
-  Month     = \the\month,% 
-  Date      = \the\day,  % 
-  Year      = \the\year, %
-  LabDays   = \textcolor{red}{实习天数？},%
-  LabDate   = \textcolor{red}{实习时间？},%
-  Lab       = {校本部生物楼219机房},%
-  Mark      = 95,% \textcolor{red}{分数？},%成绩
+  ID        = \textcolor{red}{学号？},%
+  Class     = \textcolor{red}{班级？},%
+  Tutor     = {王晓林},% 
+  Term      = \textcolor{red}{学期？},%
+  CommentDate = {年\qquad{}月\qquad{}日},%评语日期
+  Comment  = {},%教师评语
+  Mark      = {B},% \textcolor{red}{分数？},%成绩
   Sig       = {wangxiaolin},%
-  CommentsDate = {年\qquad{}月\qquad{}日},%评语日期
-  Comments  = {Well done!},%教师评语
 }
 
 \newrobustcmd{\swfusetup}[1]{\pgfkeys{/swfu, #1}}
@@ -64,6 +52,7 @@
 \setCJKmainfont{Noto Serif CJK SC}%
 \setCJKsansfont{Noto Sans  CJK SC}%
 \setCJKmonofont{Noto Sans  Mono CJK SC}%
+\setmonofont{DejaVu Sans Mono}
 \newfontfamily\purisa{Purisa}%
 
 %%%%% geometry
@@ -193,69 +182,31 @@ headsep=1em,footskip=1cm,%headheight=15pt, to avoid "headheight too small"
     \begin{center}
       \includegraphics[width=4in]{swfulogo-text}\\[15mm]%6mm
       \includegraphics[width=1.8in]{swfulogo-emblem}\\[8mm]%6mm
-      {\makebox[19em][s]{\Huge\heiti%
-          本科生实习报告}}\\[1cm]%
-      \begin{minipage}{.7\linewidth}
-        \begin{large}
-          \begin{tblr}{colspec={rX[c]},%
-              column{1}={font=\heiti},%
-              rows={belowsep=-4pt,abovesep=16pt},%
-              hline{2,3,4,5,6,7,8} = {2}{.4pt},%
-            }%
-            实习名称&\@title\\
-            学\qquad{}院&\SWFU@School\\
-            专\qquad{}业&\SWFU@Subject\\
-            年\qquad{}级&\SWFU@Grade\\
-            指导教师&\SWFU@Tutor\\
-            姓\qquad{}名&\@author\\
-            学\qquad{}号&\SWFU@ID\\
-          \end{tblr}
-        \end{large}
-      \end{minipage}
+      {\Huge\heiti\SWFU@School}\\[1cm]%
+      {\LARGE\bfseries 《\@title{}》课程实验报告}\\[2cm]%
+      \begin{Large}%
+        \@author (\SWFU@ID)\\\medskip% 姓名（学号）
+        \SWFU@Class\\\medskip% 班级
+        指导教师：\SWFU@Tutor\\\medskip% 指导教师
+      \end{Large}
       \vfill
-      {\heiti\SWFU@Year\,年\,\SWFU@Month\,月\,\SWFU@Date\,日}\\%
-      {\heiti 西南林业大学教务处}
+      {\Large 学期：\SWFU@Term}%学期
     \end{center}%
-    \clearpage
-    \begin{center}
-      {\makebox[15em][s]{\LARGE\heiti 实习环节情况说明}}
-    \end{center}
-    \vspace*{1cm}
-    \begin{enumerate}[itemsep=1ex,parsep=1ex,topsep=2ex]
-    \item 实习应拟定实习指导书或计划，实习报告应规定基本内容，拟定框架
-      要求。
-    \item 实习期间，学生应每日填写实习日志，内容包括：实习时间、地点、
-      单位、内容、收获和体会，也可摘抄实习实 测数据资料。实习结束后按
-      照要求认真撰写实习报告。实习日志和实习报告在实习完成后一起交指导
-      教师，作为实 习成绩评定的依据。
-    \item 指导教师按照实习计划的要求，根据学生的实习日志、实习报告、纪律、表现等综合评定实习成绩。
-    \end{enumerate}
-    凡有下列情况之一者实习成绩为不合格：
-    \begin{itemize}[itemsep=1ex,parsep=1ex,topsep=2ex]
-    \item[（1）] 未达到实习计划规定的基本要求；
-    \item[（2）] 实习报告混乱，分析有原则性错误；实习日志缺失，或内容大
-      部分未完成；
-    \item[（3）] 实习缺课三分之一以上或无故旷课三天以上；
-    \item[（4）] 实习中严重违反纪律。
-    \end{itemize}
   \end{titlepage}%
-  \cleardoublepage
-  \noindent{}实习天数：\underline{\quad\SWFU@LabDays\quad}\quad{}实习时间：\underline{\quad\SWFU@LabDate\quad}\\
-  实习单位及地点：\underline{\quad\SWFU@Lab\quad}
 }
 
-% #1 - comments text
-% #2 - comments date
-\newrobustcmd\comments{%
+% #1 - comment text
+% #2 - comment date
+\newrobustcmd\comment{%
   \section{指导教师评语}%
   \begin{center}
-    \Huge\purisa\textcolor{red}{\SWFU@Comments}
+    \Huge\purisa\textcolor{red}{\SWFU@Comment}
   \end{center}
   \vspace*{1cm}%
   \begin{flushright}
     \makebox[15em][l]{成绩：\quad{\Huge\purisa\textcolor{red}{\SWFU@Mark}}}\par\bigskip%
     \makebox[15em][l]{指导教师（签名）：\quad\includegraphics[width=25mm]{\SWFU@Sig}}\par\bigskip
-    \makebox[15em][r]{\SWFU@CommentsDate}
+    \makebox[15em][r]{\purisa\SWFU@CommentDate}
   \end{flushright}
 }
 

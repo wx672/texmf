@@ -8,32 +8,6 @@
 
 \LoadClass[scheme=chinese]{ctexart}
 
-% \ctexset{%
-%   section={%
-%     format={\kaishu\zihao{-4}\bfseries},%
-%     number={\chinese{section}、},%
-%     beforeskip=1.2ex,%
-%     afterskip=1.2ex,%
-%     aftername=\hspace{1ex}%
-%   },%
-%   subsection={%
-%     format={\zihao{-4}\bfseries },%
-%     number={\arabic{subsection}. },%
-%     beforeskip=1.2ex,%
-%     afterskip=1.2ex,%
-%     aftername=\hspace{1ex}%
-%   },%
-%   subsubsection={%
-%     format={\songti\zihao{-4}},%
-%     name={,)\,},%
-%     number={\arabic{subsubsection}\)},%
-%     beforeskip=2pt,afterskip=2pt,%
-%     aftername=\hspace{2pt}%
-%   }
-% }
-
-% \defcounter{secnumdepth}{3}
-
 \RequirePackage{calc,etoolbox}
 \newcounter{age}
 \defcounter{age}{\the\year - 1969} %AdvisoraAge
@@ -84,13 +58,13 @@
   AgreeD/.store     in = \SWFU@AgreeD, %（中期检查表）教研室意见
   AgreeS/.store     in = \SWFU@AgreeS, %（中期检查表）学院意见
   %%% defaults
-  DeptSig   ={\includegraphics[width=3cm]{qiangzhenping}}, %(开题报告) 教研室负责人
-  SchoolSig ={\includegraphics[width=3cm]{zhangqinghui}}, %(开题报告) 教学院系部负责人
-  AgreeD    ={\includegraphics[width=2cm]{agree}},%（中期检查表）教研室、学院意见
-  AgreeS    ={\includegraphics[width=2cm]{agree2}},%（中期检查表）教研室、学院意见
+  DeptSig   ={\includegraphics[height=1cm]{qiangzhenping}}, %(开题报告) 教研室负责人
+  SchoolSig ={\includegraphics[height=1cm]{zhangqinghui}}, %(开题报告) 教学院系部负责人
+  AgreeD    ={\includegraphics[height=1cm]{agree-qzp}},%（中期检查表）教研室、学院意见
+  AgreeS    ={\includegraphics[height=1cm]{agree-zqh}},%（中期检查表）教研室、学院意见
   Gyear       ={\the\year},%（任务书、实习计划表）届
   Date        ={\the\year{}年1月15日},%（开题报告、任务书）封面日期
-  ReviewDate  ={\the\year{}年1月20日},%（开题报告、任务书）签字日期
+  ReviewDate  ={\the\year{}年1月20日},%（开题报告、任务书）教研室、学院签字日期
   TaskDate    ={\arabic{lastyear}年10月30日},%（任务书）任务下达日期
   DueDate  ={\the\year{}年5月15日},       %（任务书）学生应送交毕业论文日期
   Midchkdate  ={\the\year{}年3月10日},%（中期检查表）日期
@@ -112,7 +86,7 @@
   AdvisorbDegree =, % 学位
   % 学生
   Subject       ={计算机科学与技术},% 专业
-  StudSig ={\includegraphics[width=25mm]{Harry}},% 签名
+  StudSig ={\includegraphics[width=25mm]{wangxiaolin}},% 签名
   School        = {大数据与智能工程学院}, %（实习计划表）学生所属学院
   Grade         ={\arabic{grade}级（专升本）},% 年级
   %%%%% 
@@ -171,8 +145,7 @@ nomarginpar,headheight=15pt, % to avoid "headheight too small"
 \RequirePackage{tabularray}%tabularx,,longtable,booktabs,makecell,multicol,multirow,array
 
 \RequirePackage{indentfirst,enumitem} % \setlist
-\setlist{nosep} % kills all vertical spacing
-% \setlist{itemsep=-.5ex}
+\setlist{leftmargin=1em,nosep} % kills all vertical spacing
 
 %%%%% biblatex
 \RequirePackage[backend=biber,%
@@ -181,65 +154,12 @@ url=false,doi=false,isbn=false]{biblatex}
 
 \renewrobustcmd{\bibfont}{\zihao{5}\songti}
 
-% \RequirePackage{wx672tcb} % tcolorbox
-\RequirePackage[most]{tcolorbox}
-\usetikzlibrary{calc}
-
-\tcbset{%show bounding box,%
-  enhanced, breakable, sharp corners, nobeforeafter,%
-  colback=white, coltitle=black, colbacktitle=white, colframe=black,%
-  bottomrule=.2pt, after skip=-1.5pt,%bottomrule at break=.5pt,
-  before upper={\parindent 2em},%
-  overlay middle={%
-    \draw[line width=.2pt] (frame.north west)--(frame.north east);
-    \draw[line width=.2pt] (frame.south west)--(frame.south east);%
-  },%
-  overlay last={%
-    \draw[line width=.2pt] (frame.north west)--(frame.north east);},%
-}
-
-% for the proposal part
-\newcounter{main}
-\newtcolorbox[use counter=main]{mainbodybox}[1]{%
-  boxrule=.4pt,titlerule=0pt,%
-  fonttitle=\large\bfseries,%
-  overlay unbroken and first={%
-    \draw[line width=.2pt] (frame.south west)--(frame.south east);%
-  },%
-  title=\zhnumber{\thetcbcounter}、#1}
-
-% for the taskspec part
-% #1 - text width;
-% #2 - title text.
-\newtcolorbox{Titleleft}[2][2em]{% 
-  frame hidden, left=40pt,%
-  borderline={.4pt}{0pt}{black},% vlines
-  borderline west={.4pt}{32pt}{black},% 2nd left vline
-  overlay unbroken and first={%
-    \node at ($(frame.west)+(16pt,0)$) %
-    [anchor=center, text width=#1, font=\bfseries] {#2};%
-
-    \draw[line width=.2pt] (frame.south west)--(frame.south east);% bottom hline
-  },%
-}
-
-\newtcolorbox{titleleft}[1]{% 
-  frame hidden, left=24pt,%
-  borderline={.4pt}{0pt}{black},% vlines
-  borderline west={.4pt}{18pt}{black},% 2nd left vline
-  overlay unbroken and first={%
-    \node at (frame.west) [anchor=west, text width=1em,%
-    execute at begin node=\setlength{\baselineskip}{3pt}]%
-    {#1};%
-
-    \draw[line width=.2pt] (frame.south west)--(frame.south east);% bottom hline
-  },%
-}
+\RequirePackage{wx672tcb} % tcolorbox
 
 % \singlespacing, \onehalfspacing, \doublespacing
 \RequirePackage[doublespacing]{setspace}
-\renewrobustcmd\doublespacing{\setstretch{1.6}}
-% \renewrobustcmd\singlespacing{\setstretch{1.2}}
+\renewrobustcmd\doublespacing{\setstretch{1.5}}
+%\renewrobustcmd\singlespacing{\setstretch{1.4}}
 
 \setlength{\parindent}{2em}
 
@@ -328,65 +248,63 @@ url=false,doi=false,isbn=false]{biblatex}
     \end{tblr}
   \end{singlespace}
   \vskip -2pt
-  \begin{mainbodybox}{该研究的目的、意义}
-    \SWFU@PPSLi{}
-  \end{mainbodybox}
-  \begin{mainbodybox}{国内外研究现状及发展趋势}
-    \SWFU@PPSLii{}
-  \end{mainbodybox}
-  \begin{mainbodybox}{主要参考文献}
-    \SWFU@BIB{}
-  \end{mainbodybox}
-  \begin{mainbodybox}{该研究的主要内容，重点解决的问题，预期结果或成果}
-    \SWFU@PPSLiv{}
-  \end{mainbodybox}
-  \begin{mainbodybox}{拟采取的研究方法或实验方法，步骤，可能出现的技术问题及解决办法}
-    \SWFU@PPSLv{}
-  \end{mainbodybox}
-  \begin{mainbodybox}{完成该研究已具备的条件}
-    \SWFU@PPSLvi{}
-  \end{mainbodybox}
-  \begin{mainbodybox}{指导教师意见}
+  \begin{secbox}{该研究的目的、意义}
+    \SWFU@PPSLi
+  \end{secbox}
+  \vskip -2pt
+  \begin{secbox}{国内外研究现状及发展趋势}
+    \SWFU@PPSLii
+  \end{secbox}
+  \vskip -2pt
+  \begin{secbox}{主要参考文献}
+    \SWFU@BIB
+  \end{secbox}
+  \vskip -2pt
+  \begin{secbox}{该研究的主要内容，重点解决的问题，预期结果或成果}
+    \SWFU@PPSLiv
+  \end{secbox}
+  \vskip -2pt
+  \begin{secbox}{拟采取的研究方法或实验方法，步骤，可能出现的技术问题及解决办法}
+    \SWFU@PPSLv
+  \end{secbox}
+  \vskip -2pt
+  \begin{secbox}{完成该研究已具备的条件}
+    \SWFU@PPSLvi
+  \end{secbox}
+  \vskip -2pt
+  \begin{secbox}{指导教师意见}
     \bigskip
     \SWFU@PPSLComment\par
     \hfill 签名：\qquad\SWFU@AdvisoraSig\par\medskip%
     \hfill\SWFU@Date
-  \end{mainbodybox}
-  \noindent
-  \begin{tcolorbox}[sharp corners,nobeforeafter,%
-    left=0pt,right=0pt,top=-13pt,bottom=0pt,boxsep=0pt,%
-    colback=white, boxrule=.5pt]
-    \singlespacing\noindent
-    \begin{tblr}{width=\linewidth,rows={m},%%
-        colspec={c|X|c|X},%        
-      }
-      {教\\研\\室\\意\\见} &%
-      \begin{minipage}[c][3.5cm]{\linewidth}
-        教研室负责人：\par\vfill%
-        \hfill\SWFU@DeptSig\par\medskip%
-        \hfill\SWFU@ReviewDate%
-      \end{minipage} &%
-      {教\\学\\院\\系\\部\\意\\见} &%
-      \begin{minipage}[c][3.5cm]{\linewidth}
-        教学院系部负责人：\par\vfill%
-        \hfill\SWFU@SchoolSig\par\medskip%
-        \hfill\SWFU@ReviewDate%
-      \end{minipage}\\
-    \end{tblr}    
-  \end{tcolorbox}%
-}
+  \end{secbox}%
+  \twinbox%
+  {教研室意见}%
+  {教研室负责人：\par\bigskip%
+    \hspace{4em}\SWFU@AgreeD\par%
+    \vfill%
+    \hfill\SWFU@DeptSig\par\medskip%
+    \hfill\SWFU@ReviewDate}%
+  {教学院系部意见}%
+  {教学院系部负责人：\par\bigskip%
+    \hspace{4em}\SWFU@AgreeS\par%
+    \vfill%
+    \hfill\SWFU@SchoolSig\par\medskip%
+    \hfill\SWFU@ReviewDate}%
+}%
 
 \newrobustcmd{\maketaskspec}{%
   \pagestyle{empty}
   {\centering%\singlespacing%
-    {\heiti\Large 西南林业大学\SWFU@Gyear{}届本科毕业论文（设计）任务
-      书}\\[3ex]%
+    {\heiti\Large%
+      西南林业大学\SWFU@Gyear{}届本科毕业论文（设计）任务书}\\[3ex]%
     \begin{singlespace}
       \begin{tblr}{width=\linewidth, vlines,hline{1,2,3},%
-          colspec={cXcccX}, rowspec={Q[m]Q[m]Q[m]},%
-          column{odd}={font=\bfseries},% column{even}={font=\kaishu},%
-          cell{1}{2}={c=5}{c},%
-          cell{3}{4}={c=3}{c},%
+        colspec={cXcccX[c]}, rowspec={Q[m]Q[m]Q[m]},%
+        column{odd}={font=\bfseries},% column{even}={font=\kaishu},%
+        cell{1}{2}={c=5}{c},%
+        cell{2}{2}={c},%
+        cell{3}{4}={c=3}{c},%
         }%
         {论文（设计）\\题目} & {\SWFU@Prjtitle}\\
         学生姓名 & \SWFU@Studname & 学号 & \SWFU@Studid & 专业 & \SWFU@Subject\\
@@ -396,73 +314,76 @@ url=false,doi=false,isbn=false]{biblatex}
         {\SWFU@PrjTypeA{}毕业论文\qquad{}\SWFU@PrjTypeB{}毕业设计}\\
       \end{tblr}\\\vspace*{-1pt}%
     \end{singlespace}
-    \begin{titleleft}{选题的目的及意义}
+    \begin{Titleleft}{选题的目的及意义}
       \SWFU@TSKwhy
-    \end{titleleft}
-    \begin{titleleft}{学生任务及要求}
+    \end{Titleleft}
+    \vskip -2pt
+    \begin{Titleleft}{学生任务及要求}
       \SWFU@TSKwhat
-    \end{titleleft}
-    \begin{titleleft}{进度安排}
+    \end{Titleleft}
+    \vskip -2pt
+    \begin{Titleleft}{进度安排}
       \SWFU@TSKwhen
-    \end{titleleft}
-    \begin{titleleft}{参考文献}
+    \end{Titleleft}
+    \vskip -2pt
+    \begin{Titleleft}{参考文献}
       \SWFU@BIB
-    \end{titleleft}
-    \noindent
-    \begin{tcolorbox}[sharp corners,nobeforeafter,%
-      left=0pt,right=0pt,top=-13pt,bottom=0pt,boxsep=0pt,%
-      colback=white, boxrule=.5pt]
-      \singlespacing\noindent%
-      \begin{tblr}{width=\linewidth, colspec={cX[c]cX[c]},%
-          vline{2,3,4}={solid}, rows={m},%
-        }%
-        任务下达日期 & \SWFU@TaskDate &%
-        {学生应送交毕业论文\\（设计）日期} & \SWFU@DueDate\\
-      \end{tblr}%
-    \end{tcolorbox}\\[-3pt]
+    \end{Titleleft}
     \noindent%
-    \begin{tcolorbox}[sharp corners,nobeforeafter,%
-      left=0pt,right=0pt,top=-13pt,bottom=0pt,boxsep=0pt,%
-      colback=white, boxrule=.5pt]
-      \singlespacing\noindent
-      \begin{tblr}{width=\linewidth, colspec={cXcX},%
-          rows={m}, hline{2}={solid}, vline{2-4}={solid},%
-        }%
-        {指导教师\\签字} &%
-        \begin{minipage}[c][25mm]{\linewidth}%
-          \begin{center}
-            \makebox[0pt][c]{\SWFU@AdvisoraSig}
-          \end{center}
-          \vfill%
-          \hfill\SWFU@ReviewDate{}%
-        \end{minipage} &%
-        {接受任务\\学生签字} &%
-        \begin{minipage}[c][25mm]{\linewidth}%
-          \begin{center}
-            \makebox[0pt][c]{\SWFU@StudSig}
-          \end{center}
-          \vfill%
-          \hfill\SWFU@Date%
-        \end{minipage}\\%
-        {教研室\\审核} &%
-        \begin{minipage}[c][35mm]{\linewidth}%
-          审核意见：\par\vfill%
-          \hfill{}签字：\quad\SWFU@DeptSig\par\medskip%
-          \hfill\SWFU@ReviewDate%
-        \end{minipage} &%
-        {学院审核} &%
-        \begin{minipage}[c][35mm]{\linewidth}%
-          审核意见：\par\vfill%
-          \hfill{}签章：\quad\SWFU@SchoolSig\par%
-          \hfill\SWFU@ReviewDate%
-        \end{minipage}\\
-      \end{tblr}\\
-    \end{tcolorbox}
-    \begin{tblr}{width=\linewidth, colspec={@{}c@{\;}X@{}}} 
-      注：&%
-      {1. 此任务书由指导教师填写，各院审定，在毕业论文（设计）开始前一周内填好并发给学生。\\
-        2. 此任务书双面打印，一式两份。学生一份，另一份随毕业论文（设计）保存。}\\
-    \end{tblr}}}
+    %%%%%%%%%%%
+    % \begin{tcolorbox}[sharp corners,nobeforeafter,%
+    %   left=0pt,right=0pt,top=-13pt,bottom=0pt,boxsep=0pt,%
+    %   colback=white, boxrule=.4pt]
+    %   \singlespacing\noindent%
+    %   \begin{tblr}{width=\linewidth, colspec={cX[c]cX[c]},%
+    %       vline{2,3,4}={solid}, rows={m},%
+    %     }%
+    %     任务下达日期 & \SWFU@TaskDate &%
+    %     {学生应送交毕业论文\\（设计）日期} & \SWFU@DueDate\\
+    %   \end{tblr}%
+    % \end{tcolorbox}\\[-3pt]
+    \noindent\twinbox[7em]%
+    {任务下达日期}%
+    {\SWFU@TaskDate}%
+    {学生应送交毕业\\论文（设计）日期}%
+    {\SWFU@DueDate}%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+    \noindent\twinbox[4em]%
+    {指导教师\\签字}%
+    { \makebox[\linewidth][c]{\SWFU@AdvisoraSig}\par\bigskip%
+      \makebox[\linewidth][r]{\SWFU@ReviewDate}}%
+    %%%
+    {接受任务\\学生签字}%
+    { \makebox[\linewidth][c]{\SWFU@StudSig}\par\bigskip%
+      \makebox[\linewidth][r]{\SWFU@Date}}%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \noindent\twinbox[4em]%
+    {教研室审核}%
+    {审核意见：\par\bigskip%
+      \makebox[\linewidth][c]{\SWFU@AgreeD}\par\bigskip%
+      \makebox[\linewidth][r]{签字：\quad\SWFU@DeptSig}\par%
+      \makebox[\linewidth][r]{\SWFU@ReviewDate}}%
+    %%%
+    {学院审核}%
+    {审核意见：\par\bigskip%
+      \makebox[\linewidth][c]{\SWFU@AgreeS}\par\bigskip%
+      \makebox[\linewidth][r]{签章：\quad\SWFU@SchoolSig}\par%
+      \makebox[\linewidth][r]{\SWFU@ReviewDate}}%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{tcolorbox}[empty, sidebyside, sidebyside gap=1em, sidebyside align=top,%
+      lower separated=false, left=-1em, nobeforeafter,%
+      lefthand width=1em]%
+      注：%
+        \tcblower%
+        \begin{enumerate}[itemsep=-5pt]
+        \item 此任务书由指导教师填写，各院审定，在毕业论文（设计）开始
+          前一周内填好并发给学生。
+        \item 此任务书双面打印，一式两份。学生一份，另一份随毕业论文
+          （设计）保存。
+        \end{enumerate}
+      \end{tcolorbox}
+    }
+}
 
 \newrobustcmd\makeplan{%
   \thispagestyle{empty}
@@ -493,7 +414,7 @@ url=false,doi=false,isbn=false]{biblatex}
       \end{tblr}
       \vskip -1pt
       \begin{tblr}{width=\linewidth,%
-          colspec={|c|X[-1,c]|c|X|c|X[-1,c]|}, column{odd}={font=\bfseries},
+          colspec={|c|X[-1,c]|c|X[c]|c|X[-1,c]|}, column{odd}={font=\bfseries},
           rowspec={Q[m]|Q[m]|Q[m]|Q[m]|Q[m]|Q[m]|}
         }%
         学生姓名&\SWFU@Studname&专业&\SWFU@Subject&学号&\SWFU@Studid\\
@@ -501,20 +422,21 @@ url=false,doi=false,isbn=false]{biblatex}
       \end{tblr}
     \end{singlespace}
     \vskip -1pt
-    \begin{tblr}{width=\linewidth, colspec={|X|},rowspec={Q[m]Q[m]|}}
-      论文工作计划和预期目标摘要：\\
-      \begin{minipage}[t][12cm]{1.0\linewidth}
-        \qquad{}\SWFU@Plan
-      \end{minipage}\\
-    \end{tblr}\par%
-    {\heiti 注：}每位毕业生须填写一份；如表栏不够填写，请加附页。}\clearpage}
+    \begin{plainbox}{论文工作计划和预期目标摘要：}
+      \SWFU@Plan
+    \end{plainbox}
+    \vskip -2ex
+    \textbf{注：}每位毕业生须填写一份；如表栏不够填写，请加附页。}%
+  \clearpage}
 
 \newrobustcmd{\makeproposal}{%
-  \PPSLtitlepage{}
-  \PPSLinstructionpage{}
-  \PPSLmain{}}
+  \PPSLtitlepage{}%
+  \PPSLinstructionpage{}%
+  \PPSLmain{}%
+}
 
-\newrobustcmd\midchk{\pagestyle{empty}%
+\newrobustcmd\midchk{%
+  \pagestyle{empty}%
   {\centering\Large\heiti 西南林业大学本科毕业论文（设计）中期检查表\par}
   \singlespacing\medskip\noindent%  
   \begin{tblr}{width=\linewidth,colspec={cX[c]cX[c]},hline{1-7},vlines,%
@@ -539,11 +461,11 @@ url=false,doi=false,isbn=false]{biblatex}
     \end{tblr} &&\\% 
     \mbox{（以上部分由学生填写）}&&&\\
   \end{tblr}\vspace{-1pt}
-  \begin{titleleft}{指导教师评语}
+  \begin{Titleleft}{指导教师评语}
     \SWFU@MidchkComment\par\bigskip%
     \hfill{}指导教师（签名）：\makebox[3cm][c]{\SWFU@AdvisoraSig}\par\medskip%
     \hfill{}\SWFU@Midchkdate%
-  \end{titleleft}
+  \end{Titleleft}
   \noindent%
   \begin{tblr}{width=\linewidth,colspec={lccX[c]},hline{2-Z},vlines,%
       cell{1}{1}={c=4}{c}, cell{8}{1,3}={c=2}{c}, cell{2}{1}={c},%
@@ -558,19 +480,13 @@ url=false,doi=false,isbn=false]{biblatex}
     总\qquad{}分&&&\\
   \end{tblr}
   \vskip -1.5pt\noindent%
-  \begin{tblr}{width=\linewidth,colspec={cXcX},vlines,hline{2-Z},%
-      column{1,3}={5mm,m},%
-    }
-    {教研室意见} & %
-    \begin{minipage}[c][35mm]{\linewidth}
-      \makebox[4cm][r]{\SWFU@AgreeD}\\\bigskip%
-      教研室负责人：\hfill\makebox[3cm][r]{\SWFU@DeptSig}\par%
-      \hfill\SWFU@Midchkdate%
-    \end{minipage} & %
-    {学院意见} & %
-    \begin{minipage}[c][35mm]{\linewidth}
-      \makebox[4cm][r]{\SWFU@AgreeS}\\\bigskip%
-      学院负责人：\hfill\makebox[3cm][r]{\SWFU@SchoolSig}\par%
-      \hfill\SWFU@Midchkdate
-    \end{minipage}\\
-  \end{tblr}}
+  \twinbox%
+  {\noindent{}教\\研\\室\\意\\见}%
+  {\bigskip\makebox[4cm][r]{\SWFU@AgreeD}\\\bigskip%
+    教研室负责人：\hfill\makebox[3cm][r]{\SWFU@DeptSig}\par%
+    \hfill\SWFU@Midchkdate}%
+  {\noindent{}学\\院\\意\\见}%
+  {\bigskip\makebox[4cm][r]{\SWFU@AgreeS}\\\bigskip%
+    学院负责人：\hfill\makebox[3cm][r]{\SWFU@SchoolSig}\par%
+    \hfill\SWFU@Midchkdate}%
+}

@@ -47,16 +47,16 @@
 
 % --- Metadata Setup with pgfkeys ---
 \pgfkeys{/swfu/.is family, /swfu,%
-  Author/.store in    = \@author,         Author    =,%
-  Author*/.store in   = \SWFU@Author*,    Author*   =,%英文姓名
-  Title/.store in     = \@title,          Title     =,%
-  Title*/.store in    = \SWFU@Title*,     Title*    =,%英文标题
-  Signature/.store in = \SWFU@Signature,  Signature =,%作者签名
-  ID/.store in        = \SWFU@ID,         ID        =,%学号
-  Major/.store in     = \SWFU@Major,      Major     =,%专业
-  Advisor/.store in   = \SWFU@Advisor,    Advisor   =,%
-  AdvisorSig/.store in= \SWFU@AdvisorSig, AdvisorSig=,%指导教师签名
-  Reviewer/.store in  = \SWFU@Reviewer,   Reviewer  =,%评阅人
+  Author/.store in    = \@author,         Author    = {},%
+  Author*/.store in   = \SWFU@Author*,    Author*   = {},%英文姓名
+  Title/.store in     = \@title,          Title     = {},%
+  Title*/.store in    = \SWFU@Title*,     Title*    = {},%英文标题
+  Signature/.store in = \SWFU@Signature,  Signature = {},%作者签名
+  ID/.store in        = \SWFU@ID,         ID        = {},%学号
+  Major/.store in     = \SWFU@Major,      Major     = {},%专业
+  Advisor/.store in   = \SWFU@Advisor,    Advisor   = {},%
+  AdvisorSig/.store in= \SWFU@AdvisorSig, AdvisorSig= {},%指导教师签名
+  Reviewer/.store in  = \SWFU@Reviewer,   Reviewer  = {},%评阅人
   Year/.store in      = \SWFU@Year,       Year      = \the\year,%
   Month/.store in     = \SWFU@Month,      Month     = \the\month,%
   Date/.store in      = \SWFU@Date,       Date      = \the\day,%
@@ -96,16 +96,16 @@
    \ClassWarning{swfuthesis}{Noto Sans CJK SC not found; using SimHei}}
 
 % --- Formatting Setup ---
-\ctexset{%
-  chapter/name = {},%
-  chapter/number = {\thechapter},%
-  chapter/format = \centering\large\heiti,% 小3号，黑体
-  chapter/beforeskip = {0pt},% 抬高章标题
-  section/format = {\heiti\zihao{4}},% 4号，黑体
-  subsection/format = \heiti,% 小4号，黑体
-  subsubsection/format = \heiti,% 黑体（在规范中未说明）
-  paragraph/format = \heiti,% 黑体（在规范中未说明）
-  subparagraph/format = \heiti,% 黑体（在规范中未说明）
+\ctexset{
+  chapter/name = {},
+  chapter/number = {\thechapter},
+  chapter/format = \centering\large\heiti, % 小3号，黑体
+  chapter/beforeskip = {0pt}, % Lift chapter title
+  section/format = {\heiti\zihao{4}}, % 4号，黑体
+  subsection/format = \heiti, % 小4号，黑体
+  subsubsection/format = \heiti,
+  paragraph/format = \heiti,
+  subparagraph/format = \heiti,
 }
 
 % --- Page Layout (geometry) ---
@@ -118,7 +118,7 @@
 
 % --- Table of Contents (tocloft) ---
 \RequirePackage{tocloft}%
-\setlength{\cftbeforetoctitleskip}{0em}% make "目录" higher
+\setlength{\cftbeforetoctitleskip}{0em}%
 \setlength{\cftbeforeloftitleskip}{0em}%
 \setlength{\cftbeforelottitleskip}{0em}%
 \renewcommand{\cftdotsep}{2}%
@@ -183,9 +183,9 @@
 
 % --- Line Spacing (setspace) ---
 \RequirePackage{setspace}
-\renewcommand{\doublespacing}{\setstretch{1.5}}
-\renewcommand{\singlespacing}{\setstretch{1.2}}
-\doublespacing%default spacing
+\newcommand{\swfudoublespacing}{\setstretch{1.5}}
+\newcommand{\swfusinglespacing}{\setstretch{1.2}}
+\swfudoublespacing % Default spacing
 
 % --- TikZ (optional) ---
 \ifSWFU@usetikz
@@ -253,12 +253,6 @@
   \newmintinline{c}{} \newmintinline[ltx]{latex}{}
   \newmintinline{python}{}  \newmintinline{shell}{}
   %
-  % need lexer.py
-  % https://github.com/fcurella/jsx-lexer/blob/master/jsx/lexer.py
-  % \newenvironment{jsxcode}%
-  % {\VerbatimEnvironment\begin{minted}{lexer.py:JsxLexer -x}}%
-  % { \end{minted} }
-  % 
   \renewcommand{\listingscaption}{程序}
   \renewcommand{\listoflistingscaption}{程序目录}
   \renewcommand{\thelisting}{\thechapter-\arabic{listing}}
@@ -289,22 +283,38 @@
   \begin{center}\begin{minipage}{#1\textwidth}\begin{singlespace}}%
       {\end{singlespace}\end{minipage}\end{center}}
 
+% \newenvironment{codeblock}[2][.8]{% #1=width, #2=type (code/text)
+%   \begin{center}\begin{minipage}{#1\textwidth}
+%       \ifstrequal{#2}{code}{\begin{singlespace}}{\begin{\swfudoublespacing}}}
+%         {\ifstrequal{#2}{code}{\end{singlespace}}{\end{\swfudoublespacing}}
+%     \end{minipage}\end{center}}
+
 % --- Long Listing Environment ---
 \newenvironment{longlisting}
 {\captionsetup{type=listing}\begin{singlespace}}
   {\end{singlespace}}
 
+% need lexer.py
+% https://github.com/fcurella/jsx-lexer/blob/master/jsx/lexer.py
+% \newenvironment{jsxcode}%
+% {\VerbatimEnvironment%
+% \begin{minted}{lexer.py:JsxLexer -x}}{\end{minted}}%
+
 % --- Title Page ---
-\renewrobustcmd{\maketitle}{%
+\renewrobustcmd{\maketitle}{% Title page layout
   \begin{titlepage}
     \vspace*{5mm}
     \begin{center}
-      \includegraphics[width=17em]{swfulogo-text}\\[6mm]%
-      \makebox[19em][s]{\LARGE\heiti%
-        本科毕业论文\:(设计)}\\[1mm]%
-      {\LARGE\HEI%
-        （\SWFU@Year\,届）}\\[8mm]%（\zhdigits{\SWFU@Year}\,届）}\\[8mm]%
-      \includegraphics[width=8em]{swfulogo-emblem}\\[1cm]
+      \IfFileExists{\SWFU@LogoText.pdf}
+        {\includegraphics[width=17em]{\SWFU@LogoText}}
+        {\ClassWarning{swfuthesis}{Logo \SWFU@LogoText not found}}
+      \\[6mm]
+      \makebox[19em][s]{\LARGE\heiti 本科毕业论文\:(设计)}\\[1mm]%
+      {\LARGE\HEI （\SWFU@Year\,届）}\\[8mm]%（\zhdigits{\SWFU@Year}\,届）}\\[8mm]%
+      \IfFileExists{\SWFU@LogoEmblem.pdf}
+        {\includegraphics[width=8em]{\SWFU@LogoEmblem}}
+        {\ClassWarning{swfuthesis}{Logo \SWFU@LogoEmblem not found}}
+      \\[1cm]
       \begin{large}
         \begin{tblr}{colspec={cX[c]},%
             rowsep=-.17\baselineskip,% work with \raisebox{} below
@@ -356,9 +366,7 @@
       \underline{\,\SWFU@Date{}\,}日
     \end{flushright}
   \end{large}
-
-  \vspace{2em} % 增加段落间的空间，使两个声明有足够间隔
-
+  \vspace*{2em}
   \begin{center} {\Large\heiti 使用授权声明} \end{center}%
   \begin{large}
     \hspace{2em}本人完全了解学校有关保留、使用毕业论文（设计）的规定，
@@ -383,12 +391,11 @@
 
 % --- Abstract Environment ---
 \newenvironment{abstract}{% 中文摘要
-  \thispagestyle{plain}\phantomsection{}%
+  \thispagestyle{plain}\phantomsection%
   \begin{center}% 摘要标题，小2号（Large）、黑体、居中    
-    % {\singlespacing\heiti\Large\StrSubstitute{\@title}{\\}{}}\\[5mm]%
-    {\singlespacing\heiti\Large\@title}\\[5mm]%
-    {\zihao{4} % 署名用4号，宋体
-      \@author\par%      
+    % {\swfusinglespacing\heiti\Large\StrSubstitute{\@title}{\\}{}}\\[5mm]%
+    {\swfusinglespacing\heiti\Large\@title}\\[5mm]%
+    {\zihao{4}\@author\par% 署名用4号，宋体
       （西南林业大学\,大数据与智能工程学院\,\,昆明\,\,650224）}% 地址，4号宋体
   \end{center}%
   \vspace{3ex}%
@@ -399,9 +406,9 @@
 
 % --- English Abstract Environment ---
 \newenvironment{EAbstract}{%
-  \thispagestyle{plain}\phantomsection{}%
+  \thispagestyle{plain}\phantomsection%
   \begin{center}
-    {\singlespacing\zihao{3}\SWFU@Title*}\\[5mm]% 英文摘要标题，3号，居中，加粗。
+    {\swfusinglespacing\zihao{3}\SWFU@Title*}\\[5mm]%% 英文摘要标题，3号，居中，加粗。
     {\large
       \SWFU@Author*\\%
       % 官方模板的地址肯定是体育老师设计的，用不得。
@@ -419,31 +426,58 @@
   \vskip 2ex\noindent\textbf{Key Words: }}{\cleardoublepage}
 
 % --- Bibliography ---
-\newrobustcmd{\makebib}{% 
+\newrobustcmd{\makebib}{
   % \zihao{4}{学校规范要求“参考文献”四字用4号字，不要理它，保持小3号就好}
   \begin{singlespace}%学校规范中对参考文献页的行距没有要求
     \printbibliography[heading=bibintoc,title=参考文献]\label{p:ref}
   \end{singlespace}
-  \pagebreak}% 
+  \pagebreak
+}
 
 % --- Advisor Info ---
 \newenvironment{advisorInfo}{%
   \thispagestyle{plain}\phantomsection%
   \addcontentsline{toc}{chapter}{指导教师简介}%
   \chapter*{\zihao{4}指导教师简介}%
-  \vskip 2em\begin{doublespace}\small}%5号宋体
-  {\end{doublespace}\pagebreak}
+  \vskip 2em\begin{\swfudoublespacing}\small%
+}{\end{\swfudoublespacing}\pagebreak}
 
 % --- Thanks ---
-\newenvironment{Thanks}{% 致谢
-  \thispagestyle{plain}\phantomsection{}%
-  \addcontentsline{toc}{chapter}{致\quad{}谢}%
+\newenvironment{Thanks}{
+  \thispagestyle{plain}\phantomsection
+  \addcontentsline{toc}{chapter}{致\quad{}谢}
   \chapter*{致\quad{}谢}
-  \vskip 2em\begin{doublespace}\small}%5号宋体
-  {\end{doublespace}\pagebreak\singlespacing}
+  \vskip 2em\begin{\swfudoublespacing}\small
+}{\end{\swfudoublespacing}\pagebreak\swfusinglespacing}
+  
+% % --- Appendix Support ---
+% \newenvironment{swfuappendix}{
+%   \appendix\chapter*{附录}
+%   \addcontentsline{toc}{chapter}{附录}
+% }{\cleardoublepage}
 
 % --- Miscellaneous ---
 \raggedbottom
 \setlength{\parindent}{2em}
 \renewcommand{\listfigurename}{插图目录}
 \renewcommand{\listtablename}{表格目录}
+
+% --- Example Usage (Commented) ---
+% \documentclass[debug,minted]{swfuthesis}
+% \swfusetup{
+%   Author=张三, Author*=San Zhang,
+%   Title=论文题目, Title*=Thesis Title,
+%   ID=123456, Major=计算机科学与技术,
+%   Advisor=李四（教授）, Reviewer=王五（教授）,
+%   Signature=signature.pdf, AdvisorSig=advisor_sig.pdf,
+%   Year=2025, Month=5, Date=13
+% }
+% \begin{document}
+% \maketitle
+% \begin{abstract}...\end{abstract}
+% \begin{keyword}...\end{keyword}
+% \tableofcontents
+% \chapter{引言}
+% \makebib
+% \begin{Thanks}...\end{Thanks}
+% \end{document}

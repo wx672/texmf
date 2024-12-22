@@ -1,1 +1,0 @@
-/home/wx672/texmf/tex/latex/swfu/swfuthesis.cls
