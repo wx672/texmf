@@ -60,6 +60,7 @@
 \newrobustcmd{\swfusetup}[1]{\pgfkeys{#1}}
 
 \newrobustcmd{\blank}[1][4em]{\underline{\hspace{#1}}}
+\newrobustcmd{\blankfill}{\hrulefill}
 
 \newrobustcmd{\mydash}{%
   \hdashrule[.5ex][x]{.41\textheight}{.1pt}{2mm}}%
