@@ -14,12 +14,10 @@
   Subject/.store in = \SWFU@Subject,%专业
   Grade/.store   in = \SWFU@Grade,%年级
   Tutor/.store   in = \SWFU@Tutor,%指导教师
-  YearS/.store   in = \SWFU@YearS,  %
-  YearE/.store   in = \SWFU@YearE,  %
-  MonthS/.store  in = \SWFU@MonthS, %
-  MonthE/.store  in = \SWFU@MonthE, %
-  DateS/.store   in = \SWFU@DateS,  %
-  DateE/.store   in = \SWFU@DateE,  %
+  Year/.store   in = \SWFU@Year,  %
+  Month/.store  in = \SWFU@Month, %
+  DayA/.store   in = \SWFU@DayA,  %
+  DayZ/.store   in = \SWFU@DayZ,  %
   %%% Defaults
   Title   = \textcolor{red}{课程名称？},% 
   Author  = \textcolor{red}{学生姓名？},% 
@@ -28,12 +26,10 @@
   Subject = \textcolor{red}{专业？},%
   Grade   = \textcolor{red}{年级？},%
   Tutor   = \textcolor{red}{指导教师？},% 
-  YearS   = \the\year, %
-  YearE   = \the\year, %
-  MonthS  = \the\month,% 
-  MonthE  = \the\month,% 
-  DateS   = \the\day,  % 
-  DateE   = \the\day,  % 
+  Year   = \the\year, %
+  Month  = \the\month,% 
+  DayA   =,% First day
+  DayZ   =,% Last day
 }
 
 \newrobustcmd{\swfusetup}[1]{\pgfkeys{/swfu, #1}}
@@ -132,8 +128,8 @@ headsep=1em,footskip=1cm,%headheight=15pt, to avoid "headheight too small"
       \end{minipage}
       \vfill
       {\large\bfseries\sffamily%
-        \SWFU@YearS\,年\,\SWFU@MonthS\,月\,\SWFU@DateS\,日 --- %
-        \SWFU@YearE\,年\,\SWFU@MonthE\,月\,\SWFU@DateE\,日}%
+        \SWFU@Year\,年\,\SWFU@Month\,月\,\SWFU@DayA\,日 --- %
+        \SWFU@Year\,年\,\SWFU@Month\,月\,\SWFU@DayZ\,日}%
     \end{center}%
   \end{titlepage}%
   \clearpage
