@@ -69,12 +69,12 @@
 
 \newcommand{\swfusetup}[1]{\pgfkeys{#1}}
 
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}%ctexart
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}%article
 \ProcessOptions\relax
 
-\LoadClass[12pt]{article}
+\LoadClass[12pt]{ctexart}%article
 
-\RequirePackage{wx672babel,tabularray,graphicx}
+\RequirePackage{wx672en,tabularray,graphicx}%wx672babel,
 
 \RequirePackage[%showframe,
 a4paper,nomarginpar,%

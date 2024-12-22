@@ -1,54 +1,138 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{wx672tcb}
 
+\RequirePackage[doublespacing]{setspace}
+\renewrobustcmd{\doublespacing}{\setstretch{1.5}}
+\renewrobustcmd{\singlespacing}{\setstretch{1.2}}
+
 \RequirePackage[most]{tcolorbox}
 \usetikzlibrary{calc}
 
-\tcbset{%show bounding box,%
-  enhanced, breakable, sharp corners, nobeforeafter,%
-  colback=white, coltitle=black, colbacktitle=white, colframe=black,%
-  bottomrule=.2pt, after skip=-1.5pt,%bottomrule at break=.5pt,
-  before upper={\parindent 2em},%
-  overlay middle={%
-    \draw[line width=.2pt] (frame.north west)--(frame.north east);
-    \draw[line width=.2pt] (frame.south west)--(frame.south east);%
-  },%
-  overlay last={%
-    \draw[line width=.2pt] (frame.north west)--(frame.north east);},%
-}
+% \tcbset{show bounding box}
 
-% mainly for the proposal part of swfu4in1
+
+%%%%%%%%%%%%% For 开题报告 %%%%%%%%%%%%%
+% ┌───────────────────────────────┐
+% │ 一、本节标题                    │
+% │                               │
+% │ \begin{secbox}{Section title} │
+% │ \lipsum[1-5]                  │
+% │ \end{secbox}                  │
+% │                               │
+% └───────────────────────────────┘
 \newcounter{main}
-\newtcolorbox[use counter=main]{mainbodybox}[1]{%
-  boxrule=.4pt,titlerule=0pt,%
+\newtcolorbox[use counter=main]{secbox}[1]{enhanced, boxrule=.4pt,%
+  breakable, sharp corners, nobeforeafter,%  
+  colframe=black, colback=white,%
+  title filled=false, titlerule=0pt,%  title hidden, 
+  colbacktitle=white, coltitle=black,%
+  toprule at break=.4pt, bottomrule at break=.4pt,%
+  before upper={\parindent 2em},%
   fonttitle=\large\bfseries,%
-  overlay unbroken and first={%
-    \draw[line width=.2pt] (frame.south west)--(frame.south east);%
+  title={\zhnumber{\thetcbcounter}、#1},%
+  overlay first={%
+    \draw[line width=.4pt] (frame.south west) -- (frame.south east);%
   },%
-  title=\thetcbcounter. #1}
+  overlay middle={%
+    \draw[line width=.4pt] (frame.south west) -- (frame.south east);%
+    \draw[line width=.4pt] (frame.north west) -- (frame.north east);%
+  },
+  overlay last={%
+    \draw[line width=.4pt] (frame.north west) -- (frame.north east);%
+  }%
+}
 
-% mainly for the taskspec part in swfu4in1
-% #1 - text width;
+%%%%%%%%%%%%%% For 实习计划表 %%%%%%%%%%%%%%
+% ┌──────────────────┐
+% │ 标题             │
+% │                  │ \begin{plainbox}{论文工作计划及预期目标摘要}
+% │ \lipsum[1-2]     │   \lipsum[1-5] 
+% │                  │ \end{plainbox} 
+% └──────────────────┘
+\newtcolorbox{plainbox}[1]{enhanced, boxrule=.4pt,%
+  breakable, sharp corners, nobeforeafter,%  
+  colframe=black, colback=white,%
+  title filled=false, titlerule=0pt,% 
+  colbacktitle=white, coltitle=black,%
+  toprule at break=.4pt, bottomrule at break=.4pt,%
+  before upper={\parindent 2em},%
+  fonttitle=\bfseries, title={#1},%
+  overlay first={%
+    \draw[line width=.4pt] (frame.south west) -- (frame.south east);%
+  },%
+  overlay middle={%
+    \draw[line width=.4pt] (frame.south west) -- (frame.south east);%
+    \draw[line width=.4pt] (frame.north west) -- (frame.north east);%
+  },
+  overlay last={%
+    \draw[line width=.4pt] (frame.north west) -- (frame.north east);%
+  }%
+}
+
+%%%%%%%%%%%%%%%%%% For 任务书 %%%%%%%%%%%%%%%%%%
+% #1 - text width, default 1em;
 % #2 - title text.
-\newtcolorbox{Titleleft}[2][2em]{% 
-  frame hidden, left=40pt,%
-  borderline={.4pt}{0pt}{black},% vlines
-  borderline west={.4pt}{32pt}{black},% 2nd left vline
+% ┌─┬──────────────┐  
+% │ │              │  \begin{Titleleft}[1em]{选题的目的及意义}
+% │2│              │    \lipsum[1-5]               
+% │ │              │  \end{Titleleft} 
+% └─┴──────────────┘
+\newtcolorbox{Titleleft}[2][1em]{enhanced,%
+  breakable, sharp corners, nobeforeafter,%
+  % bottomrule at break=.4pt, toprule at break=.4pt,%
+  boxrule=.4pt,%
+  colback=white, colframe=black,%
+  title empty, titlerule=0pt,coltitle=black, colbacktitle=white,%
+  detach title, title={#2},%
+  before upper={\parindent 2em},%
+  left=1cm, right=0pt, boxsep=3mm,%
+  borderline west={.4pt}{1cm}{black},% 2nd left vline
   overlay unbroken and first={%
-    \node[anchor=center, text width=#1, font=\bfseries] at ($(frame.west)+(16pt,0)$) {#2};
-    \draw[line width=.2pt] (frame.south west)--(frame.south east);% bottom hline
+    \node[minimum width=1cm, text width=#1, align=center, anchor=west]%
+    at (frame.west) {%
+      \noindent{}\parbox[c][][c]{#1}{\singlespacing\tcbtitle}%
+    };%
+    \draw[line width=.4pt] (frame.south west) -- (frame.south east);%
   },%
+  overlay middle={%
+    \draw[line width=.4pt] (frame.south west) -- (frame.south east);%
+    \draw[line width=.4pt] (frame.north west) -- (frame.north east);%
+  },
+  overlay last={%
+    \draw[line width=.4pt] (frame.north west) -- (frame.north east);%
+  }%
 }
 
-\newtcolorbox{titleleft}[1]{% 
-  frame hidden, left=24pt,%
-  borderline={.4pt}{0pt}{black},% vlines
-  borderline west={.4pt}{18pt}{black},% 2nd left vline
-  overlay unbroken and first={%
-    \node[anchor=west, text width=1em] at (frame.west) {#1};
-    \draw[line width=.2pt] (frame.south west)--(frame.south east);% bottom hline
-  },%
+%%%%%%%%%%%%%%%%% twinbox %%%%%%%%%%%%%%%%%
+% #1 - left bar width, default 1em
+% ┌─┬───────┬─┬───────┐
+% │2│   3   │4│   5   │
+% │ │       │ │       │
+% └─┴───────┴─┴───────┘
+% \twinbox{教研室意见}{签名、日期}{学院意见}{签名、日期}
+%
+\newrobustcmd{\twinbox}[5][1em]{%
+  \begin{tcbraster}[raster columns=2, raster width=\linewidth,%
+    raster equal skip=0pt, raster equal height,%
+    raster left skip=-2.5pt,%
+    raster right skip=2.5pt,%
+    size=small, sharp corners, nobeforeafter]
+    %%%%%%%%%%%%%%%%%%%%%%%%%%
+    \tcbset{enhanced, sidebyside, sidebyside gap=1.5em, nobeforeafter,%
+      colframe=black, colback=white, title empty,% coltitle=black, colbacktitle=white,%
+      lefthand width=#1, boxrule=.4pt,%
+      segmentation style=solid, valign=center}
+    %%%
+    \begin{tcolorbox}[rightrule=0pt]%
+      {\noindent{}\parbox[c][][c]{#1}{\singlespacing #2}}%
+      \tcblower%
+      #3%
+    \end{tcolorbox}%
+    %%%
+    \begin{tcolorbox}
+      {\noindent{}\parbox[c][][c]{#1}{\singlespacing #4}}%
+      \tcblower%
+      #5%
+    \end{tcolorbox}%
+  \end{tcbraster}%
 }
-
-
-% https://tex.stackexchange.com/questions/247185/tcolorbox-theorem-which-isnt-framed-on-the-sides

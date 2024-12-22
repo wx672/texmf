@@ -36,6 +36,12 @@
   BookCls/.store in = \SWFU@BookCls,%教材类型（1. “马工程”；2. 规划教
   %                                  材；3. 精品、优秀教材；4. 普通教材；
   %                                  5. 其它______；6. 无。）
+  BookClsOne/.store in = \SWFU@BookClsOne,     %教材类型（1. “马工程”）
+  BookClsTwo/.store in = \SWFU@BookClsTwo,     %教材类型（2. 规划教材）
+  BookClsThree/.store in = \SWFU@BookClsThree, %教材类型（3. 精品、优秀教材）
+  BookClsFour/.store in = \SWFU@BookClsFour,   %教材类型（4. 普通教材；）
+  BookClsFive/.store in = \SWFU@BookClsFive,   %教材类型（5. 其它______）
+  BookClsSix/.store in = \SWFU@BookClsSix,     %教材类型（6. 无。）
   BookWhy/.store in = \SWFU@BookWhy,%首次选用依据/再次选用使用效果评价意见
   Default/.style = {%
     School = {大数据与智能工程学院},%教学单位
@@ -63,8 +69,12 @@
     DBYear={\hspace{3em}},%入库时间___年
     BookType={1},%媒质类型（1. 纸质教材；2. 数字教材；3. 新形态教材）
     BookFrom={1},%教材出处（1. 境内教材；2. 境外原版；3. 境内影印或翻译出版）
-    BookCls={3},%教材类型（1. “马工程”；2. 规划教材；
-    %            3. 精品、优秀教材；4. 普通教材； 5. 其它______；6. 无。）
+    BookClsOne={☐},%
+    BookClsTwo={☑},%
+    BookClsThree={☐},%
+    BookClsFour={☐},%
+    BookClsFive={☐},%
+    BookClsSix={☐},%
     BookWhy={规划教材，使用效果良好。}%首次选用依据/再次选用使用效果评价意见
   }}
 
@@ -125,10 +135,13 @@ hmargin=2cm,%
     &教材出处&\SWFU@BookFrom&{%
       \makebox[10em][l]{1.\,境内教材\quad 2.\,境外原版\quad 3.\,境内影印或翻译出版}}&&\\
     &教材类型&{后\\面\\打\\勾}&{%
-      \makebox[10em][l]{1.\:☐\,“马工程”重点教材及国家统编教材}\\%
-      \makebox[10em][l]{2.\:☑\,规划教材（国家级、省级）}\\%
-      \makebox[10em][l]{3.\:☐\,精品、优秀教材(国家级、省级、学会、行业等)}\\%
-      \makebox[10em][l]{4.\:☐\,普通教材\quad5.\:☐\,其他\underline{\hspace{4em}}\quad6.\:☐\,无}}&&\\
+      \makebox[10em][l]{1.\:\SWFU@BookClsOne\,“马工程”重点教材及国家统编教材}\\%
+      \makebox[10em][l]{2.\:\SWFU@BookClsTwo\,规划教材（国家级、省级）}\\%
+      \makebox[10em][l]{3.\:\SWFU@BookClsThree\,精品、优秀教材(国家级、省级、学会、行业等)}\\%
+    \makebox[10em][l]{%
+    4.\:\SWFU@BookClsFour\,普通教材\quad%
+    5.\:\SWFU@BookClsFive\,其他\underline{\hspace{4em}}\quad%
+    6.\:\SWFU@BookClsSix\,无}}&&\\
   \end{tblr}\par\vspace*{-2pt}%
   \noindent%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \begin{tblr}{colspec={cX[l]}, vlines, hline{2-Z},%

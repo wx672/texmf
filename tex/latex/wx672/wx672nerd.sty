@@ -3,6 +3,9 @@
 
 \RequirePackage{etoolbox,units}% \newtoggle
 
+\RequirePackage{graphicx}
+\graphicspath{{./figs/}{../figs/}} %note that the trailing “/” is required
+
 \RequirePackage{fontspec}
 \RequirePackage{libertine,latexsym,marvosym,fontawesome}% pifont,emoji,mathtools
 \RequirePackage{newunicodechar}
@@ -17,7 +20,7 @@
 %└─────┴─────┴──────┴──────┴──────┴──────┘
 %
 % fc-list :charset='01d0': family
-\newfontfamily\pychar{DejaVuSansM Nerd Font}%LXGW WenKai
+\newfontfamily\pychar{Noto Serif CJK SC}%DejaVuSansM Nerd Font, LXGW WenKai
 %
 \newunicodechar{ā}{{\pychar ā}}
 \newunicodechar{á}{{\pychar á}}
@@ -64,20 +67,21 @@
 % \newfontfamily\USS{LMS Star Spangled}
 % \newfontfamily\UK{LMS God Save The Queen}
 
+\newfontfamily\emoji{Segoe UI Symbol}
 \newfontfamily\icon{file-icons}% 
-\newfontfamily\nerd{DejaVuSansM Nerd Font Mono}%Symbols Nerd Font Mono
-\newfontfamily\symbola{Symbola Nerd Font}
+\newfontfamily\nerd{Maple Mono Normal NL NF CN}%Symbols Nerd Font Mono
+\newfontfamily\symbola{Symbola}
 \newfontfamily\han{Noto Sans Mono CJK JP}%￥, Noto Sans Mono CJK SC
-\newfontfamily\fira{FiraCode Nerd Font}
-\newfontfamily\jetbrains{JetBrainsMono Nerd Font}
+\newfontfamily\fira{Fira Code}
+\newfontfamily\jetbrains{JetBrains Mono}
 \newfontfamily\dejavu{DejaVu Sans Mono}
 \newfontfamily\noto{Noto Sans Mono}%
 \newfontfamily\humor{Humor Sans}
 \newfontfamily\purisa{Purisa}
+\newfontfamily\brosig{Brother Signature}
 %\newCJKfontfamily\sig{signature} % need ctex
 \newfontfamily\lbkey{Linux Biolinum Keyboard O}
 \newfontfamily\kbd{Linux Biolinum Keyboard O}
-
 
 \newunicodechar{🀪}{{\symbola 🀪}}
 \newunicodechar{🀇}{{\symbola 🀇}}
@@ -149,6 +153,7 @@
 \newunicodechar{}{{\nerd }}%thumbup
 \newunicodechar{}{{\nerd }}%thumbdown
 \newunicodechar{⚓}{{\dejavu ⚓}}% anchor
+\newunicodechar{🔤}{{\emoji 🔤}}%ABC
 \newunicodechar{☭}{{\dejavu ☭}}% ccp
 \newunicodechar{❂}{{\dejavu ❂}}% tw, taiwan
 \newunicodechar{}{{\nerd }}%java
@@ -213,7 +218,6 @@
 \newunicodechar{}{{\nerd }}%windows
 \newunicodechar{}{{\nerd }}%apple
 \newunicodechar{}{{\nerd }}%centos
-\newunicodechar{}{{\fira }}%ios
 \newunicodechar{}{{\nerd }}%cisco
 \newunicodechar{}{{\nerd }}%
 
@@ -314,9 +318,9 @@
   \settoggle{logocolor}{#1}%
   \iftoggle{logocolor}{\textcolor{SteelBlue}{\nerd }}{{\nerd }}}
 
-\newcommand{\bug}{\textcolor{red}{✘}}
-\newcommand{\unix}{{\fontspec{Purisa}{UNIX}}}
-\newcommand{\google}{\raisebox{-.2em}{\includegraphics[width=3em]{google}}}
-\newcommand{\moodle}{\includegraphics[width=1em]{moodle}}
-\newcommand{\qutebrowser}{\includegraphics[width=1em]{Qutebrowser}}
-
+\newcommand\bug{\textcolor{red}{✘}}
+\newcommand\unix{{\fontspec{Purisa}{UNIX}}}
+\newcommand\google{\raisebox{-.2em}{\includegraphics[width=3em]{google}}}
+\newcommand\moodle{\includegraphics[width=1em]{moodle}}
+\newcommand\qutebrowser{\includegraphics[width=1em]{Qutebrowser}}
+\newcommand\chatgpt{\includegraphics[width=1em]{ChatGPT}}
