@@ -39,21 +39,10 @@
   LabDays   = \textcolor{red}{实习天数？},%
   LabDate   = \textcolor{red}{实习时间？},%
   Lab       = {校本部生物楼219机房},%
-  Mark      =,% \textcolor{red}{分数？},%成绩
-  Sig       = {\includegraphics[width=25mm]{wangxiaolin}},%
+  Mark      = 95,% \textcolor{red}{分数？},%成绩
+  Sig       = {wangxiaolin},%
   CommentsDate = {年\qquad{}月\qquad{}日},%评语日期
-  Comments  = {
-    \begin{minipage}[c][5cm][c]{.8\linewidth}
-      \vspace*{2cm}
-      \begin{flushright}
-        \begin{tblr}{width=.3\linewidth,colspec={rX},cell{3}{1}={c=2}{r},rowsep=10pt}
-        成绩：&\SWFU@Mark\\
-        指导教师（签名）：&\SWFU@Sig\\
-        \SWFU@CommentsDate&\\
-        \end{tblr}
-      \end{flushright}
-    \end{minipage}
-  },%教师评语
+  Comments  = {Well done!},%教师评语
 }
 
 \newrobustcmd{\swfusetup}[1]{\pgfkeys{/swfu, #1}}
@@ -255,9 +244,19 @@ headsep=1em,footskip=1cm,%headheight=15pt, to avoid "headheight too small"
   实习单位及地点：\underline{\quad\SWFU@Lab\quad}
 }
 
-\newrobustcmd\comments{
-  \section{指导教师评语}
-  \SWFU@Comments
+% #1 - comments text
+% #2 - comments date
+\newrobustcmd\comments{%
+  \section{指导教师评语}%
+  \begin{center}
+    \Huge\purisa\textcolor{red}{\SWFU@Comments}
+  \end{center}
+  \vspace*{1cm}%
+  \begin{flushright}
+    \makebox[15em][l]{成绩：\quad{\Huge\purisa\textcolor{red}{\SWFU@Mark}}}\par\bigskip%
+    \makebox[15em][l]{指导教师（签名）：\quad\includegraphics[width=25mm]{\SWFU@Sig}}\par\bigskip
+    \makebox[15em][r]{\SWFU@CommentsDate}
+  \end{flushright}
 }
 
 %%%%%   misc
